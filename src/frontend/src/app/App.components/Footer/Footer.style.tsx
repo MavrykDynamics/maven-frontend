@@ -25,7 +25,7 @@ export const FooterTop = styled.div`
 
 export const FooterSocials = styled.div`
   display: grid;
-  grid-template-columns: 48px 48px 48px 48px;
+  grid-template-columns: 48px 48px 48px 48px 48px;
   grid-gap: 10px;
 
   > a {

@@ -115,7 +115,7 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
 export const JumbotronSocials = styled.div`
   margin: 50px 0 150px 0;
   display: grid;
-  grid-template-columns: 24px 24px 24px 24px;
+  grid-template-columns: 24px 24px 24px 24px 24px;
   grid-gap: 40px;
 
   svg {
