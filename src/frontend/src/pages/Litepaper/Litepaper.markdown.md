@@ -40,9 +40,9 @@ Notably :
 
 [^(1)]: [Yield farming](https://coinmarketcap.com/alexandria/article/what-is-yield-farming) corresponds to earning interest on a deposit like in a bank.
 
-Mavryk uses a [decentralized oracle](#Satellites) to ensure that users' collateral remains free from centralized control and manipulation. Following a model inspired by Tezos' innovative governance, Mavryk allows stakeholders to delegate their governance tokens (**MVK**s) to nodes called *Satellites*, who vote on governance proposals and sign price feeds on stakeholders' behalf. For doing this they earn rewards which are passed back (minus satellite fee) to the delegating stakeholders.[^(2)]
+Mavryk uses a [decentralized oracle](#satellites-governance-and-the-decentralized-oracle) to ensure that users' collateral remains free from centralized control and manipulation. Following a model inspired by Tezos' innovative governance, Mavryk allows stakeholders to delegate their governance tokens (**MVK**s) to nodes called *Satellites*, who vote on governance proposals and sign price feeds on stakeholders' behalf. For doing this they earn rewards which are passed back (minus satellite fee) to the delegating stakeholders.[^(2)]
 
-[^(2)]: MVK is the governance token for Mavryk Finance. It is used to operate a Satellite, delegate voting power, and is the payment token that Satellites receive for signing price feeds. More on this [here](#MVK-and-vMVK-Doorman-Module).
+[^(2)]: MVK is the governance token for Mavryk Finance. It is used to operate a Satellite, delegate voting power, and is the payment token that Satellites receive for signing price feeds. More on this [here](#mvk-and-vmvk-doorman-module).
 
 ## Multi-Asset Backed Loans
 Stablecoins are secure and convenient means of payment for goods and services in the context of a crypto-asset portfolio. Mavryk allows its users to put up existing crypto-assets as equity for a zUSD stablecoin loan, up to a 50% loan-to-value ratio (**LTV**). 
@@ -67,7 +67,7 @@ You can take out a loan by depositing a single/multi-asset collateral into a vau
 
 [^(5)]: 50% loan-to-value means that there is double the amount of collateral relative to the borrowed amount. This means exactly the same as being 200% over-collateralized. If the loan is 33% LTV, it would be 300% over-collateralized. The higher the collateralization rate, the more secure the loan is against being liquidated in foreclosure due to price movements of the (possibly volatile) underlying crypto used as collateral.
 
-**_The system does not allow you to obtain a loan that would be lower than the required collateralization ratio, i.e., you can borrow up to half the value of the underlying assets. It is highly recommended to healthily over-collateralize the loan, to avoid [liquidation](#Liquidations)!_**
+**_The system does not allow you to obtain a loan that would be lower than the required collateralization ratio, i.e., you can borrow up to half the value of the underlying assets. It is highly recommended to healthily over-collateralize the loan, to avoid [liquidation](#liquidations-and-collateral-auctions)!_**
 
 ### zUSD: A Multi-Collateral Soft-Pegged Stablecoin
 The off-chain world is dominated by fiat currencies (e.g., U.S. Dollars), relative to which cryptocurrency assets may be susceptible to price fluctuations, as by design there are no factors to stabilize their off-chain value in fiat currency. This disqualifies most cryptocurrencies as a means of stable payment.
@@ -77,9 +77,9 @@ Mavryk’s soft-pegged zUSD stablecoin bridges the gap between potentially volat
 ### Instruments For Maintaining A Soft Peg To USD
 zUSD’s ecosystem health is determined by its ability to maintain a soft-peg between zUSD and the U.S. Dollar. The ecosystem becomes unstable if the soft-peg is lost, so multiple fail-safe mechanisms work to maintain the peg and thus preserve platform stability:
 
-1. [Stability Fee](#Stability-Fee)
-1. [Dynamic Savings Rate (DSR)](#Dynamic-Savings-Rate-(DSR))
-1. [Liquidations](#Liquidations) (Under-collateralized vault foreclosures)
+1. [Stability Fee](#stability-fee)
+1. [Dynamic Savings Rate (DSR)](#dynamic-savings-rate-dsr)
+1. [Liquidations](#liquidations-and-collateral-auctions) (Under-collateralized vault foreclosures)
 
 ### Stability Fee
 The _stability fee_ is compound interest on loans, levied by the system on borrowers. It is calculated per block and set at an annualized rate of 2% (which can be adjusted, as explained below). It equation is:
@@ -90,7 +90,7 @@ where
 
 <img src="/images/eq-k.png" width="300" />
 
-[The example below](#Stability-fee-calculation-example) illustrates that if you borrow 500 zUSD (at 2% interest) then you would owe 510.10 zUSD after 12 months.
+[The example below](#stability-fee-calculation-example) illustrates that if you borrow 500 zUSD (at 2% interest) then you would owe 510.10 zUSD after 12 months.
 
 Stability fees oblige borrowers to acquire new zUSD to pay back the interest on their loan.
 There are two ways to do this: buy zUSD (e.g. on a DEX), or mint zUSD by taking out a new loan. This means that the Mavryk governance can adjust the stability fee to maintain the zUSD price peg.
@@ -133,7 +133,7 @@ Worked example (debt, collateral, fees)
 </i></center>
 <br />
 
-_Note:_ If we assume instead in the worked example above that 1 XTZ = 1 USD then the CDP would become liquidatable after one block because the fee (although minuscule) for that block would take the [collateralization ratio below 200%](#Liquidations).
+_Note:_ If we assume instead in the worked example above that 1 XTZ = 1 USD then the CDP would become liquidatable after one block because the fee (although minuscule) for that block would take the [collateralization ratio below 200%](#liquidations).
 
 ### Dynamic Savings Rate (DSR)
 Mavryk offers an interest-paying **DSR savings account** for zUSD. There is no minimum period to keep zUSD in a savings account and no penalty for removing funds. Savers can use the DSR savings account to participate in the Mavryk ecosystem, just by owning zUSD (e.g. by purchasing zUSD on the open market), and without having to maintain a CDP (unless they want to).
@@ -141,7 +141,7 @@ Mavryk offers an interest-paying **DSR savings account** for zUSD. There is no m
 Savers are rewarded for holding their zUSD in a DSR savings account in two ways:
 
 - With zUSD interest funded by the on-chain treasury from lending income. 
-- With vMVK funded by the on-chain treasury from [yield farms](#Yield-Farming).
+- With vMVK funded by the on-chain treasury from [yield farms](#yield-farming).
 
 <!-- mjg keeping this info for future reference
 [mjg -> Alex: what determines the interest rate? what is the relationship between the stability fee and the interest rate on savings accounts? Presumably, they are linked, but how?]**[Alex -> mjg: At launch, we will be setting the interest rates as a means of jump-starting the DSR, and will be conducted more so like a yield farm (high yields) than savings account returns (traditionally lower yields). After launch, the DAO governance will set the interest rates. When enough income streams into the on-chain treasury, the DAO can (and should) migrate the yield returns from vMVK (as yield farms) to zUSD % from the treasury. When returns are in vMVK, they will be higher than from zUSD lending income. This is because the lending income flows into the treasury, which funds multiple features such as: buying back MVK for continued yield farms, for feeding Satellite rewards, and a portion for operations. I wouldn't advertise that zUSD rewards would be lower though.**
@@ -189,19 +189,19 @@ They perform two functions as:
 
 1. **Curators of Governance Voting:**
     Satellites vote on 
-    *  updates to business logic (e.g. disbursing funds from the [Treasury](#Treasury), adjusting the [Stability Fee](#Stability-Fee), or the [interest paid on DSR saving accounts](#Dynamic-Savings-Rate-DSR,)), and on 
-    *  updates to the Mavryk protocol (e.g. adding a new [collateral asset class for CDPs](#Multi-Asset-Backed-Loans), or adding a new type of lending to the system). 
+    *  updates to business logic (e.g. disbursing funds from the [Treasury](#governance--treasury), adjusting the [Stability Fee](#stability-fee), or the [interest paid on DSR saving accounts](#dynamic-savings-rate-dsr), and on 
+    *  updates to the Mavryk protocol (e.g. adding a new [collateral asset class for CDPs](#multi-asset-backed-loans), or adding a new type of lending to the system). 
 
 2. **Oracle Price Feed Providers:** 
-  Satellites are nodes of Mavryk's decentralized oracle, which provides price data for the asset classes that can be used as collateral for [the CDPs](#Multi-Asset-Backed-Loans) (XTZ, wWBTC, wWETH, etc.).
+  Satellites are nodes of Mavryk's decentralized oracle, which provides price data for the asset classes that can be used as collateral for [the CDPs](#multi-asset-backed-loans) (XTZ, wWBTC, wWETH, etc.).
 
 A Satellite can act on its own behalf and can receive delegations on behalf of others.
 
-To operate a Mavryk Satellite, a user needs to stake a security deposit in MVK as a bond, which the user can buy on the open market or earn by participating in the ecosystem (e.g. through yield farming, or MVK returned on [DSR savings](Dynamic-Savings-Rate-DSR)). 
+To operate a Mavryk Satellite, a user needs to stake a security deposit in MVK as a bond, which the user can buy on the open market or earn by participating in the ecosystem (e.g. through yield farming, or MVK returned on [DSR savings](#dynamic-savings-rate-dsr). 
 
 The supported assets at launch will be XTZ, wWBTC (WBTC wrapped on Tezos via the WRAP Protocol), and wWETH (WETH wrapped on Tezos via WRAP Protocol).
 
-Satellites are reimbursed for their services with zUSD and/or vMVK. The amount that Satellites are reimbursed and in which assets is set by a [Governance decision](#Governance) (to be applied transparently by smart contracts), but as a general rule:
+Satellites are reimbursed for their services with zUSD and/or vMVK. The amount that Satellites are reimbursed and in which assets is set by a [Governance decision](#governance) (to be applied transparently by smart contracts), but as a general rule:
 
 * making governance decisions earns zUSD, and 
 * providing Oracle pricing information earns vMVK 
@@ -216,11 +216,11 @@ Rewards are distributed to Satellites' delegates, just as Tezos Bakers share rew
 ### Governance
 Stakeholders can participate in governance by either delegating their voting power to a Satellite or by operating a Satellite themselves. For this participation, users receive governance and oracle rewards.
 
-There is no cost to [staking MVK to obtain vMVK](#MVK-and-vMVK-(Doorman-Module-Technicalities)) aside from the corresponding Tezos transaction fee, and stakeholders need not delegate the vMVK that they hold, except for the opportunity cost of _not_ participating in governance and so _not_ receiving these rewards (similarly for XTZ in a wallet that is not delegated; it just sits there).
+There is no cost to [staking MVK to obtain vMVK](#obtaining-vmvk) aside from the corresponding Tezos transaction fee, and stakeholders need not delegate the vMVK that they hold, except for the opportunity cost of _not_ participating in governance and so _not_ receiving these rewards (similarly for XTZ in a wallet that is not delegated; it just sits there).
 
 Stakeholders are free to re-delegate to a different Satellite whenever desired, and with zero penalties. 
 
-Governance votes, whether for the business logic or upgrades to the Mavryk ecosystem, are rewarded with a portion of the earned income from the on-chain [Treasury](#Treasury). This functions to reward stakeholders who participate in guiding the platform, similarly to how consultants are remunerated for their advisory services.
+Governance votes, whether for the business logic or upgrades to the Mavryk ecosystem, are rewarded with a portion of the earned income from the on-chain [Treasury](#treasury). This functions to reward stakeholders who participate in guiding the platform, similarly to how consultants are remunerated for their advisory services.
 
 This form of representative liquid democracy incentivizes stakeholders to participate in governance (either directly, by setting up a Satellite, or indirectly by delegating to one), and so contributes to voter participation and the stability of the system.
 
@@ -243,11 +243,11 @@ For example, suppose a malicious actor wants to skew the price of a Bitcoin coll
 ### What is MVK and how does it differ from vMVK?
 MVK is the governance token of the Mavryk network.
 
-It is a fully transferable token on the Tezos network. Broadly speaking, 1 MVK gives 1 vote on a [governance decision](#Governance) (Mavryk governance is like proof-of-stake: a user's voting power is proportional to the MVK held).
+It is a fully transferable token on the Tezos network. Broadly speaking, 1 MVK gives 1 vote on a [governance decision](#governance) (Mavryk governance is like proof-of-stake: a user's voting power is proportional to the MVK held).
 
 However, to use an MVK to _actually vote_, a user must first **stake** it via the **doorman module**. This Tezos smart contract burns MVK tokens and mints an equal amount of a *non-transferable* token called vMVK (_virtual_ MVK). vMVK represents MVK locked inside the Mavryk ecosystem.
 
-MVK is a Tezos _FA_ token: it exists outside of the Mavryk system and can be freely traded. vMVK is also a Tezos _FA_ token, but it is used as an internal accounting token and has special permissions to interact with the Mavryk system (described [below](#benefits)), e.g. it is not transferable between users but can be used to vote on Governance decisions.
+MVK is a Tezos _FA_ token: it exists outside of the Mavryk system and can be freely traded. vMVK is also a Tezos _FA_ token, but it is used as an internal accounting token and has special permissions to interact with the Mavryk system (described [below](#obtaining-vmvk)), e.g. it is not transferable between users but can be used to vote on Governance decisions.
 
 In other words: vMVK represents a direct right to vote in the governance of Mavryk, whereas MVK is a freely tradable Tezos token whose underlying collateral is precisely the ability to obtain that right. 
 
@@ -265,9 +265,9 @@ Finally, the voting power of vMVK can be deleagated to a satellite but never tra
 Users may obtain vMVK in several ways:
 
 1. Staking their MVK to vMVK at a 1:1 ratio (1MVK = 1vMVK). 
-2. Earning vMVK from participating in the incentive programs (e.g. yield farms or yield from the [DSR savings account](#Dynamic-Savings-Rate-DSR)). 
-3. Delegating their vMVK to a Satellite, and earning a share of that Satellites vMVK rewards for [Governance](#Governance) or [Oracle price information](#The-Decentralized-Oracle).
-4. Users may also be awarded vMVK as their share of the system's [vMVK exit fees as discussed below](#Converting-vMVK-back-to-MVK-exit-fees). 
+2. Earning vMVK from participating in the incentive programs (e.g. yield farms or yield from the [DSR savings account](#dynamic-savings-rate-dsr). 
+3. Delegating their vMVK to a Satellite, and earning a share of that Satellites vMVK rewards for [Governance](#governance) or [Oracle price information](#the-decentralized-oracle).
+4. Users may also be awarded vMVK as their share of the system's [vMVK exit fees as discussed below](#converting-vmvk-back-to-mvk-exit-fees). 
 
 vMVK holders enjoy benefits which include (non-exhaustive list): 
 
