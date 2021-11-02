@@ -132,6 +132,7 @@ export const LitepaperRef = styled.a<{ selected?: boolean }>`
 
 export const LitepaperLink = styled.div<{ selected?: boolean }>`
   padding-left: 5px;
+  white-space: pre-wrap;
 
   ${(props) =>
     props.selected &&
