@@ -109,3 +109,14 @@ export const NewsletterStatus = styled.div`
     color: ${downColor};
   }
 `
+
+export const NewsletterClose = styled.div`
+  cursor: pointer;
+  float: right;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    stroke: #fff;
+  }
+`

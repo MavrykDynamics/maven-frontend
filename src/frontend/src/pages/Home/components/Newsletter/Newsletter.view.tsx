@@ -3,9 +3,13 @@ import { useState } from 'react'
 import { useMailChimpForm } from 'use-mailchimp-form'
 
 // prettier-ignore
-import { NewsletterButton, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
+import { NewsletterButton, NewsletterClose, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
 
-export const NewsletterView = () => {
+type NewsLetterProps = {
+  closeCallback?: () => void
+}
+
+export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
   const url = 'https://Finance.us5.list-manage.com/subscribe/post?u=2c7f8eeb6244c13270dca7a76&amp;id=da98ceea07'
   const { loading, error, success, message, handleSubmit } = useMailChimpForm(url)
   //@ts-ignore
@@ -20,6 +24,13 @@ export const NewsletterView = () => {
   return (
     <NewsletterStyled id="newsletter">
       <h1>Subscribe to Mavryk News</h1>
+      {typeof closeCallback !== 'undefined' && (
+        <NewsletterClose onClick={() => closeCallback()}>
+          <svg>
+            <use xlinkHref="/icons/sprites.svg#close" />
+          </svg>
+        </NewsletterClose>
+      )}
       <NewsletterGrid>
         <img alt="ship" src="/images/ship-stars.svg" />
         <NewsletterForm

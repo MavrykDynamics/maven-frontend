@@ -3,7 +3,6 @@ import styled from 'styled-components/macro'
 export const PopupStyled = styled.div`
   .popup-enter {
     opacity: 0;
-    
   }
 
   .popup-enter-active {
