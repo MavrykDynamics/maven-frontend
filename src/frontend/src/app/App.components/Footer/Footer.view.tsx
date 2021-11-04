@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 
 // prettier-ignore
-import { FooterContainer, FooterDescription, FooterLinks, FooterLogo, FooterSocials, FooterStyled, FooterTop } from "./Footer.style";
+import { FooterBottom, FooterContainer, FooterDescription, FooterLinks, FooterLogo, FooterSocials, FooterStyled, FooterTop } from "./Footer.style";
 
 export const FooterView = () => {
   return (
-    <FooterStyled>
+    <FooterStyled id="footer">
       <FooterContainer>
         <FooterTop>
           <div>
@@ -16,10 +16,7 @@ export const FooterView = () => {
               Mavryk is a decentralized finance ecosystem designed to allow users to borrow and earn, to unlock the
               world from legacy financial systems.
             </FooterDescription>
-            <div>© Mavryk. 2021</div>
           </div>
-
-          <div />
 
           <FooterSocials>
             <a href="https://twitter.com/Mavryk_Finance" target="_blank" rel="noreferrer">
@@ -49,9 +46,12 @@ export const FooterView = () => {
             </a>
           </FooterSocials>
         </FooterTop>
-        <FooterLinks>
-          <Link to="privacy">Privacy Policy</Link>
-        </FooterLinks>
+        <FooterBottom>
+          <div>© Mavryk. 2021</div>
+          <FooterLinks>
+            <Link to="privacy">Privacy Policy</Link>
+          </FooterLinks>
+        </FooterBottom>
       </FooterContainer>
     </FooterStyled>
   )

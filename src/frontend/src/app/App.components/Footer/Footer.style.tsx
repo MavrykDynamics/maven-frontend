@@ -4,6 +4,7 @@ import { backgroundColor, borderColor, Page, textColor } from 'styles'
 export const FooterStyled = styled.div`
   background-color: ${borderColor};
   color: ${backgroundColor};
+  margin-top: 20px;
 `
 
 export const FooterContainer = styled(Page)`
@@ -13,16 +14,29 @@ export const FooterContainer = styled(Page)`
 export const FooterTop = styled.div`
   margin: 0 auto;
   width: 100%;
-  display: grid;
-  grid-template-columns: 40% auto 222px;
-  grid-gap: 10px;
+  max-width: 1270px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-weight: 500;
 
   @media (max-width: 700px) {
-    grid-template-columns: auto;
+    flex-direction: column;
   }
 `
+export const FooterBottom = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1270px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+  @media (max-width: 700px) {
+    justify-content: space-evenly;
+    margin-top: 20px;
+  }
+`
 export const FooterSocials = styled.div`
   display: grid;
   grid-template-columns: 48px 48px 48px 48px 48px;
@@ -53,6 +67,14 @@ export const FooterSocials = styled.div`
     height: 24px;
     fill: ${backgroundColor};
   }
+
+  @media (max-width: 700px) {
+    margin-top: 20px;
+    align-self: center;
+  }
+  @media (max-width: 400px) {
+    align-self: end;
+  }
 `
 
 export const FooterLogo = styled.img`
@@ -74,17 +96,14 @@ export const FooterButton = styled.div`
 
 export const FooterDescription = styled.div`
   margin: 10px 0;
+  max-width: 400px;
 `
 
 export const FooterLinks = styled.div`
   float: right;
   text-align: center;
-  margin: -20px 20px 0 0;
+  margin-right: 10px;
   text-decoration: underline;
-
-  @media (max-width: 700px) {
-    margin: -40px 20px 0 0;
-  }
 
   a {
     font-size: 14px;

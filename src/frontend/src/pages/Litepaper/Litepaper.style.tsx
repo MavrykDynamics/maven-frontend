@@ -70,6 +70,17 @@ export const LitepaperStyled = styled(Page)`
   footer > div {
     margin-top: 10px;
   }
+
+  @media (max-width: 700px) {
+    p {
+      margin-right: 10px;
+      white-space: normal;
+    }
+
+    table {
+      font-size: small;
+    }
+  }
 `
 
 export const LitepaperGrid = styled.div`
@@ -85,10 +96,12 @@ export const LitepaperGrid = styled.div`
 export const LitepaperIndex = styled.ul`
   font-size: 14px;
   line-height: 14px;
-  margin-top: 0;
+  margin-top: 30px;
   position: fixed;
   width: 260px;
   padding-left: 0;
+  /* position: sticky;
+  top: 0; */
 
   @media (max-width: 700px) {
     display: none;
