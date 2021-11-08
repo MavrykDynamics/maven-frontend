@@ -87,6 +87,7 @@ export const LitepaperGrid = styled.div`
   display: grid;
   grid-template-columns: 260px auto;
   grid-gap: 30px;
+  margin-bottom: 100px;
 
   @media (max-width: 700px) {
     grid-template-columns: auto;
