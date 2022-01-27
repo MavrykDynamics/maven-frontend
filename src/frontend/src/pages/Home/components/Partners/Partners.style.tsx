@@ -41,15 +41,16 @@ export const PartnersGrid = styled.div`
     z-index: -1;
 
     @media (max-width: 1000px) {
-      width: 70px;
-      height: 70px;
-      left: calc(50% - 35px);
-      top: calc(50% - 35px);
+      width: 56px;
+      height: 56px;
+      left: calc(50% - 28px);
+      top: calc(50% - 28px);
     }
   }
 
   @media (max-width: 1240px) {
     grid-template-columns: repeat(15, 1fr);
+    grid-gap: 40px;
 
     > a:nth-child(6), a:nth-child(7), a:nth-child(8) {
       grid-column: span 5;
@@ -64,6 +65,8 @@ export const PartnersGrid = styled.div`
   }
 
   @media (max-width: 1000px) {
+    grid-gap: 20px;
+
     grid-template-columns: repeat(15, 1fr);
     
     > a:nth-child(6), a:nth-child(7), a:nth-child(8) {
