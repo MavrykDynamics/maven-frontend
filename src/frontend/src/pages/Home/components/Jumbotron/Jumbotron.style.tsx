@@ -2,11 +2,20 @@ import styled, { css } from 'styled-components/macro'
 import { primaryColor, subTextColor } from 'styles'
 
 export const JumbotronStyled = styled.div`
-  background-image: url('/images/jumbo-bg.svg');
-  background-position: top right;
-  background-repeat: no-repeat;
   padding: 204px 0px 30px 0px;
   margin: 80px auto 0 auto;
+
+  > div {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 0;
+    background-image: url('/images/parallax/layer 5.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
   @media (max-width: 1240px) {
     background-position: top 0 right -200px;
