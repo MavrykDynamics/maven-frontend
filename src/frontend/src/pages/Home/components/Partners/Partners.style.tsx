@@ -41,10 +41,10 @@ export const PartnersGrid = styled.div`
     z-index: -1;
 
     @media (max-width: 1000px) {
-      width: 56px;
-      height: 56px;
-      left: calc(50% - 28px);
-      top: calc(50% - 28px);
+      width: 48px;
+      height: 48px;
+      left: calc(50% - 24px);
+      top: calc(50% - 24px);
     }
   }
 
