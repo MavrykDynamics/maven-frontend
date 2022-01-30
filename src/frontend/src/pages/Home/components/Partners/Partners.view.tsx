@@ -24,7 +24,7 @@ export const PartnersView = () => {
         <a href="https://angeldao.org/" target="_blank" rel="noreferrer">
           <img alt="partner" src="/images/angel_dao.png" />
         </a>
-        <a href="https://collective-ventures.org/" target="_blank" rel="noreferrer">
+        <a href="https://collective.town/" target="_blank" rel="noreferrer">
           <img alt="partner" src="/images/collective-ventures.svg" />
         </a>
         <a href="https://bullperks.com/" target="_blank" rel="noreferrer">
