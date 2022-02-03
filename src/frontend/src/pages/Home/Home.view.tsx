@@ -24,11 +24,6 @@ export const HomeView = () => {
         <ParallaxBanner
           layers={[
             {
-              image: '/images/parallax/layer10.svg',
-              translateY: [-80, 80],
-              expanded: false
-            },
-            {
               image: '/images/parallax/layer8.svg',
               translateY: [-70, 70],
               expanded: false
