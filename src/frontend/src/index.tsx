@@ -5,13 +5,17 @@ import { App } from './app/App.controller'
 import { unregister } from './serviceWorker'
 import { GlobalStyle } from './styles'
 
+import { ParallaxProvider } from 'react-scroll-parallax'
+
 import './styles/fonts.css'
 
 export const Root = () => {
   return (
     <div>
-      <GlobalStyle />
-      <App />
+      <ParallaxProvider>
+        <GlobalStyle />
+        <App />
+      </ParallaxProvider>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, containerColor, Page, primaryColor } from 'styles'
+import { backgroundColor, containerColor, Page, primaryColor, secondaryColor } from 'styles'
 
 export const CalculatorStyled = styled(Page)`
   margin-bottom: 100px;
@@ -79,7 +79,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean }>`
     width: 100%;
     height: 10px;
     margin-top: 27px;
-    background: ${backgroundColor};
+    background: ${secondaryColor};
     outline: none;
 
     &::-webkit-slider-thumb {
@@ -105,8 +105,9 @@ export const CalculatorInput = styled.div<{ shift?: boolean }>`
 `
 
 export const CalculatorResults = styled.div`
-  background: url('./images/calculator-bg.svg'), radial-gradient(65.55% 65.55% at 50% 40.11%, #60558b 0%, #53487f 100%);
+  background: url('./images/parallax/layer2.svg'), linear-gradient(90deg, #1C1C3F 0%, #171735 100%);
   background-repeat: no-repeat;
+  background-size: cover;
   background-position: bottom right;
   border-radius: 0px 10px 10px 0px;
   padding: 15px 35px;

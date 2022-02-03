@@ -11,36 +11,36 @@ import { Popup } from './App.components/Popup/Popup.controller'
 export const App = () => {
   const [currentPage, setCurrentPage] = useState('/')
   return (
-    <Router>
-      <Popup />
-      <Header />
-      <Switch>
-        <Route
-          exact
-          path="/"
-          component={() => {
-            setCurrentPage('/')
-            return <Home />
-          }}
-        />
-        <Route
-          exact
-          path="/litepaper"
-          component={() => {
-            setCurrentPage('/litepaper')
-            return <Litepaper />
-          }}
-        />
-        <Route
-          exact
-          path="/privacy"
-          component={() => {
-            setCurrentPage('/')
-            return <Privacy />
-          }}
-        />
-      </Switch>
-      {currentPage !== '/litepaper' && <Footer />}
-    </Router>
+      <Router>
+        <Popup />
+        <Header />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() => {
+              setCurrentPage('/')
+              return <Home />
+            }}
+          />
+          <Route
+            exact
+            path="/litepaper"
+            component={() => {
+              setCurrentPage('/litepaper')
+              return <Litepaper />
+            }}
+          />
+          <Route
+            exact
+            path="/privacy"
+            component={() => {
+              setCurrentPage('/')
+              return <Privacy />
+            }}
+          />
+        </Switch>
+        {currentPage !== '/litepaper' && <Footer />}
+      </Router>
   )
 }

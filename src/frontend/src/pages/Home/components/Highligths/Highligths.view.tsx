@@ -52,35 +52,35 @@ export const HighligthsView = () => {
           <HighligthsSelector>
             <HighligthsItem
               selected={selectedItem.title === contents.loans.title}
-              onClick={() => setSelectedItem(contents.loans)}
+              onMouseEnter={() => setSelectedItem(contents.loans)}
             >
               <img alt="feature" src="/images/dollar.svg" />
               <div>Loans</div>
             </HighligthsItem>
             <HighligthsItem
               selected={selectedItem.title === contents.savings.title}
-              onClick={() => setSelectedItem(contents.savings)}
+              onMouseEnter={() => setSelectedItem(contents.savings)}
             >
               <img alt="feature" src="/images/percent.svg" />
               <div>Savings APY​</div>
             </HighligthsItem>
             <HighligthsItem
               selected={selectedItem.title === contents.oracle.title}
-              onClick={() => setSelectedItem(contents.oracle)}
+              onMouseEnter={() => setSelectedItem(contents.oracle)}
             >
               <img alt="feature" src="/images/price.svg" />
               <div>Price Oracle​</div>
             </HighligthsItem>
             <HighligthsItem
               selected={selectedItem.title === contents.governance.title}
-              onClick={() => setSelectedItem(contents.governance)}
+              onMouseEnter={() => setSelectedItem(contents.governance)}
             >
               <img alt="feature" src="/images/governance.svg" />
               <div>Governance</div>
             </HighligthsItem>
             <HighligthsItem
               selected={selectedItem.title === contents.delegations.title}
-              onClick={() => setSelectedItem(contents.delegations)}
+              onMouseEnter={() => setSelectedItem(contents.delegations)}
             >
               <img alt="feature" src="/images/delegations.svg" />
               <div>Delegations</div>

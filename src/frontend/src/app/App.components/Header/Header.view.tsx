@@ -21,7 +21,7 @@ export const HeaderView = () => {
   }, [])
 
   return (
-    <HeaderStyled showBg={scrollPosition > 10}>
+    <HeaderStyled showBg={scrollPosition > 900}>
       <HeaderGrid>
         <Link to="/">
           <HeaderLogo alt="logo" src="/logo.svg" />

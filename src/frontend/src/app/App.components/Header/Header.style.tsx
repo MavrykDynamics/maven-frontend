@@ -5,9 +5,9 @@ export const HeaderStyled = styled.div<{ showBg: boolean }>`
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 20;
 
-  background-color: ${(props) => (props.showBg ? '#FFFFFFFF' : '#FFFFFF00')};
+  background-color: ${(props) => (props.showBg ? '#171735' : '#FFFFFF00')};
   will-change: background-color;
   transition: background-color 200ms ease-in-out;
 `

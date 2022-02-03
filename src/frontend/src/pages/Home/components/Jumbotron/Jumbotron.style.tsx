@@ -1,12 +1,9 @@
 import styled, { css } from 'styled-components/macro'
-import { primaryColor, subTextColor } from 'styles'
+import { primaryColor, secondaryColor, subTextColor } from 'styles'
 
 export const JumbotronStyled = styled.div`
-  background-image: url('/images/jumbo-bg.svg');
-  background-position: top right;
-  background-repeat: no-repeat;
-  padding: 204px 0px 30px 0px;
-  margin: 80px auto 0 auto;
+  padding: 304px 0px 30px 0px;
+  //margin: 80px auto 0 auto;
 
   @media (max-width: 1240px) {
     background-position: top 0 right -200px;
@@ -31,7 +28,7 @@ export const JubontronTitle = styled.div`
     color: ${subTextColor};
 
     &:nth-child(2) {
-      color: ${primaryColor};
+      color: ${secondaryColor};
     }
 
     @media (max-width: 1240px) {
@@ -100,7 +97,7 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
   color: #fff;
   text-align: center;
   background-color: ${primaryColor};
-  border-radius: 10px;
+  border-radius: 25px;
   max-width: 200px;
 
   ${(props) =>
@@ -121,6 +118,6 @@ export const JumbotronSocials = styled.div`
   svg {
     width: 24px;
     height: 24px;
-    fill: ${primaryColor};
+    fill: ${secondaryColor};
   }
 `

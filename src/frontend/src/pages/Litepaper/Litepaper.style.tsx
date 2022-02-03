@@ -124,7 +124,7 @@ export const LitepaperIndex = styled.ul`
 
   li a {
     font-size: 12px;
-    color: #7068aa;
+    color: ${secondaryColor};
     text-decoration: none;
   }
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, Page, selectedColor } from 'styles'
+import { backgroundColor, Page, secondaryColor, selectedColor } from 'styles'
 
 export const HighligthsStyled = styled.div`
   padding: 100px 0 200px 0;
@@ -34,7 +34,7 @@ export const HighligthsItem = styled.div<{ selected?: boolean }>`
   display: grid;
   grid-template-columns: 56px auto;
   grid-gap: 30px;
-  background-color: ${(props) => (props.selected ? selectedColor : backgroundColor)};
+  background: ${(props) => (props.selected ? secondaryColor : "#171735")};
   cursor: pointer;
   font-size: 24px;
   line-height: 56px;

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components/macro'
 
-import { placeholderColor, subTextColor, textColor } from './colors'
+import { placeholderColor, subTextColor, textColor, backgroundColor } from './colors'
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -12,7 +12,7 @@ body {
   font-display: optional;
   margin: 0;
   padding: 0;
-  background-color: #FFF;
+  background-color: #171735;
   color: ${textColor};
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
