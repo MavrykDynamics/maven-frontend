@@ -55,6 +55,14 @@ h3 {
   margin: 0;
 }
 
+h4 {
+  font-size: 30px;
+  font-weight: normal;
+  display: block;
+  margin: 0;
+  text-align: center;
+}
+
 input {
   color: ${textColor};
   font-size: 14px;

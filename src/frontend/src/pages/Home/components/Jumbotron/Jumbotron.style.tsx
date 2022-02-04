@@ -11,6 +11,7 @@ export const JumbotronStyled = styled.div`
 
   @media (max-width: 1000px) {
     background-position: top 0 right -300px;
+    padding: 104px 0px 30px 0px;
   }
 
   @media (max-width: 700px) {
@@ -94,7 +95,7 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
   line-height: 56px;
   font-size: 16px;
   font-weight: bold;
-  color: #fff;
+  color: ${subTextColor};
   text-align: center;
   background-color: ${primaryColor};
   border-radius: 25px;

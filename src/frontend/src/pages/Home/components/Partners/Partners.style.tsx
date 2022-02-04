@@ -2,7 +2,12 @@ import styled from 'styled-components/macro'
 import { Page } from 'styles/components'
 
 export const PartnersStyled = styled(Page)`
-  margin: 150px auto;
+  margin-bottom: 150px;
+  margin-top: 150px;
+  @media (max-width: 1000px) {
+    margin-top: 0px;
+    margin-bottom: 50px;
+  }
 `
 
 export const PartnersGrid = styled.div`

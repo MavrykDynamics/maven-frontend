@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, Page } from 'styles'
+import { backgroundColor, Page, subTextColor } from 'styles'
 
 export const GovernanceStyled = styled.div`
   //background: url('./images/governance-bg.svg'), #1C1C3F;
@@ -12,7 +12,7 @@ export const GovernanceStyled = styled.div`
 
 export const GovernanceContent = styled(Page)`
   > h1 {
-    color: ${backgroundColor};
+    color: ${subTextColor};
   }
 
   > img {
@@ -21,27 +21,37 @@ export const GovernanceContent = styled(Page)`
   }
 `
 
-export const GovernanceImage = styled.div`
-  background-image: url('/images/governance.svg');
+export const GovernanceImage = styled.div<{img: string, height?: string, backgroundSize?: string}>`
+  background-image: url(${props => props.img || ""});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
-  height: 200px;
+  background-size: ${props => props.backgroundSize || "contain"};
+  height: ${props => props.height || "200px"};
 
   @media (max-width: 500px) {
-    background-image: url('/images/governance-cycle-mobile.svg');
-    height: 1200px;
+    background-image: url(${props => props.img || ""});
+    height: ${props => props.height || "350"};
   }
 `
 
 export const GovernanceGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  //grid-gap: 40px;
+  grid-template-columns: repeat(6, 1fr);
 
   > div {
     position: relative;
-    z-index: 0;
-    grid-column: span 4;
+    grid-column: span 2;
+  }
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
+`
+
+export const GovernanceList = styled.div`
+  display: none;
+  
+  @media (max-width: 1000px) {
+    display: block;
   }
 `

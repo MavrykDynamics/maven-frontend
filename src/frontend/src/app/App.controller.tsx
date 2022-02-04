@@ -40,7 +40,7 @@ export const App = () => {
             }}
           />
         </Switch>
-        {currentPage !== '/litepaper' && <Footer />}
+        {/* {currentPage !== '/litepaper' && <Footer />} */}
       </Router>
   )
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, containerColor, Page, primaryColor, secondaryColor } from 'styles'
+import { backgroundColor, containerColor, Page, primaryColor, secondaryColor, textColor } from 'styles'
 
 export const CalculatorStyled = styled(Page)`
   margin-bottom: 100px;
@@ -45,7 +45,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean }>`
   div {
     font-size: 14px;
     line-height: 14px;
-    color: ${primaryColor};
+    color: ${secondaryColor};
   }
 
   select,
@@ -79,7 +79,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean }>`
     width: 100%;
     height: 10px;
     margin-top: 27px;
-    background: ${secondaryColor};
+    background: ${primaryColor};
     outline: none;
 
     &::-webkit-slider-thumb {
@@ -88,7 +88,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean }>`
       width: 23px;
       height: 23px;
       border-radius: 100%;
-      background: ${primaryColor};
+      background: ${secondaryColor};
       cursor: pointer;
     }
   }
@@ -124,14 +124,14 @@ export const CalculatorResult = styled.div`
   > div {
     font-size: 14px;
     line-height: 14px;
-    color: ${backgroundColor};
+    color: ${textColor};
     font-weight: 500;
   }
 
   > p {
     font-size: 50px;
     line-height: 50px;
-    color: ${backgroundColor};
+    color: ${textColor};
     font-weight: bold;
   }
 `
@@ -141,7 +141,7 @@ export const CalculatorResultFee = styled.div`
   font-size: 14px;
   line-height: 14px;
   font-weight: 500;
-  color: ${backgroundColor};
+  color: ${textColor};
   opacity: 0.8;
 `
 
@@ -150,9 +150,9 @@ export const CalculatorButton = styled.div`
   line-height: 50px;
   font-size: 16px;
   font-weight: bold;
-  color: ${backgroundColor};
+  color: ${textColor};
   text-align: center;
   background-color: ${primaryColor};
-  border-radius: 10px;
+  border-radius: 25px;
   cursor: pointer;
 `

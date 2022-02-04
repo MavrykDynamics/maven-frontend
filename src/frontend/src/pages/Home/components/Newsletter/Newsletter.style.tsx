@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, downColor, Page, primaryColor, upColor } from 'styles'
+import { backgroundColor, borderColor, containerColor, downColor, Page, primaryColor, secondaryColor, subTextColor, upColor } from 'styles'
 
 export const NewsletterStyled = styled(Page)`
-  background: url('./images/newsletter-bg.svg'), radial-gradient(65.55% 65.55% at 50% 40.11%, #60558b 0%, #53487f 100%);
+  background: url('./images/newsletter-bg.svg'), linear-gradient(0deg, ${borderColor} 0%, ${containerColor} 100%);
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: fill;
@@ -17,7 +17,7 @@ export const NewsletterStyled = styled(Page)`
   }
 
   > h1 {
-    color: ${backgroundColor};
+    color: ${subTextColor};
     margin: auto;
 
     @media (max-width: 700px) {
@@ -79,10 +79,10 @@ export const NewsletterButton = styled.button`
   line-height: 50px;
   font-size: 16px;
   font-weight: bold;
-  color: ${primaryColor};
+  color: ${subTextColor};
   text-align: center;
-  background-color: ${backgroundColor};
-  border-radius: 10px;
+  background-color: ${primaryColor};
+  border-radius: 25px;
   cursor: pointer;
   width: 200px;
   float: right;

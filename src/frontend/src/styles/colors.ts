@@ -1,4 +1,4 @@
-export const backgroundColor = '#FFFFFF'
+export const backgroundColor = '#171735'//'#FFFFFF'
 export const containerColor = '#1C1C3F' //'#F7F9FD'
 export const borderColor = '#4F457C'
 export const textColor = '#F7F9FD' //'#000000'
