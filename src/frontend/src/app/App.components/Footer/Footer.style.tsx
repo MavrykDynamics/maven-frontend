@@ -1,9 +1,9 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, borderColor, Page, textColor } from 'styles'
+import { backgroundColor, borderColor, Page, secondaryColor, textColor } from 'styles'
 
 export const FooterStyled = styled.div`
   background-color: ${borderColor};
-  color: ${backgroundColor};
+  color: ${textColor};
   margin-top: 20px;
 `
 
@@ -49,23 +49,23 @@ export const FooterSocials = styled.div`
     z-index: 1;
   }
 
-  > a:before {
-    width: 48px;
-    height: 48px;
-    left: calc(50% - 36px);
-    top: calc(50% - 36px);
-    content: '';
-    background: ${backgroundColor};
-    opacity: 0.08;
-    position: absolute;
-    border-radius: 100%;
-    z-index: -1;
-  }
+  // > a:before {
+  //   width: 48px;
+  //   height: 48px;
+  //   left: calc(50% - 36px);
+  //   top: calc(50% - 36px);
+  //   content: '';
+  //   background: ${backgroundColor};
+  //   opacity: 0.08;
+  //   position: absolute;
+  //   border-radius: 100%;
+  //   z-index: -1;
+  // }
 
   svg {
     width: 24px;
     height: 24px;
-    fill: ${backgroundColor};
+    fill: ${secondaryColor};
   }
 
   @media (max-width: 700px) {
@@ -108,6 +108,6 @@ export const FooterLinks = styled.div`
   a {
     font-size: 14px;
     font-weight: 500;
-    color: ${backgroundColor};
+    color: ${textColor};
   }
 `
