@@ -49,7 +49,7 @@ export const JubontronTitle = styled.div`
 export const JubontronSubTitle = styled.div`
   margin: 20px 0 40px 0;
   color: ${subTextColor};
-  font-weight: 300;
+  font-weight: 500;
   font-size: 16px;
   line-height: 160%;
 
@@ -97,7 +97,7 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
   font-weight: bold;
   color: ${subTextColor};
   text-align: center;
-  background-color: ${primaryColor};
+  background: linear-gradient(90deg, ${secondaryColor} 0%, ${primaryColor} 100%);
   border-radius: 25px;
   max-width: 200px;
 
@@ -105,7 +105,7 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
     props.secondary &&
     css`
       color: ${primaryColor};
-      background-color: #fff;
+      background: #fff;
       border: 1px solid ${primaryColor};
     `}
 `

@@ -1,59 +1,43 @@
 import * as React from 'react'
 import { Parallax, ParallaxBanner } from 'react-scroll-parallax'
 
-import { GovernanceContent, GovernanceImage, GovernanceStyled, GovernanceGrid, GovernanceList } from './Governance.style'
+import { GovernanceContent, GovernanceImage, GovernanceStyled, GovernanceGrid, GovernanceList, GovernanceImagePlanet, GovernanceParallaxLayer } from './Governance.style'
 
 export const GovernanceView = () => {
   return (
     <GovernanceStyled>
       <GovernanceContent>
         <h1>Cycle of Governance & Oracle</h1>
-        {/* <ParallaxBanner
-            layers={[
-              {
-                image: '/images/governance-cycle/governance-3.svg',
-                translateY: [15,5, 'easeOutQuad'],
-                // scale: [0.8,0.8],
-              },
-              {
-                image: '/images/governance-cycle/governance-2.svg',
-                // scale: [0.8,0.8],
-              },
-              {
-                image: '/images/governance-cycle/governance-1.svg',
-                translateY: [-15,-5, 'easeOutQuad'],
-                // speed: -15,
-                // scale: [0.8,0.8],
-              }
-            ]}
-            style={{ aspectRatio: '1.8/1'}}
-          /> */}
           <GovernanceGrid>
-            <Parallax speed={5}>
-              <GovernanceImage img="/images/governance/governance1.svg"/>
-              <h4>Take a loan out</h4>
-            </Parallax>
-            <Parallax speed={-10}>
+            <GovernanceParallaxLayer zIndex={1}>
+              <Parallax speed={5}>
+                <GovernanceImage img="/images/governance/governance1.svg"/>
+                <h4>Take a loan out</h4>
+              </Parallax>
+            </GovernanceParallaxLayer>
+            <Parallax speed={-5}>
               <GovernanceImage img="/images/governance/arrow1.svg" backgroundSize='auto'/>
             </Parallax>
-            <Parallax speed={5}>
-              <GovernanceImage img="/images/governance/governance2.svg"/>
-              <h4>Deposit tokens into Yield Farms (DSR)</h4>
+            <GovernanceParallaxLayer zIndex={1}>
+              <Parallax speed={5}>
+                <GovernanceImage img="/images/governance/governance2.svg"/>
+                <h4>Deposit tokens into Yield Farms (DSR)</h4>
+              </Parallax>
+            </GovernanceParallaxLayer>
+            <Parallax speed={-5}>
+              <GovernanceImage img="/images/governance/arrow4.svg" backgroundSize='auto' height='150px'/>
             </Parallax>
             <Parallax speed={-10}>
-              <GovernanceImage img="/images/governance/arrow4.svg" backgroundSize='auto' height='350px'/>
+              <GovernanceImagePlanet img="/images/governance/planet.svg" height='400px'/>
             </Parallax>
-            <Parallax speed={-30}>
-              <GovernanceImage img="/images/governance/planet.svg" height='350px'/>
-            </Parallax>
-            <Parallax speed={-10}>
-              <GovernanceImage img="/images/governance/arrow2.svg" backgroundSize='auto' height='350px'/>
+            <Parallax speed={-5}>
+              <GovernanceImage img="/images/governance/arrow2.svg" backgroundSize='auto' height='150px'/>
             </Parallax>
             <Parallax speed={5}>
               <GovernanceImage img="/images/governance/governance3.svg"/>
               <h4>Earn MVK rewards</h4>
             </Parallax>
-            <Parallax speed={-10}>
+            <Parallax speed={-5}>
               <GovernanceImage img="/images/governance/arrow3.svg" backgroundSize='auto'/>
             </Parallax>
             <Parallax speed={5}>

@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
+import Toggle from 'react-toggle'
+
+import { TOGGLE_DARKTHEME } from 'actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 // prettier-ignore
 import { HeaderGrid, HeaderLogo, HeaderStyled } from "./Header.style";
 
 export const HeaderView = () => {
   const [scrollPosition, setScrollPosition] = useState(0)
+  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled);
+  const dispatch = useDispatch();
+
   const handleScroll = () => {
     const position = window.pageYOffset
     setScrollPosition(position)
@@ -75,6 +82,14 @@ export const HeaderView = () => {
         >
           Tokenomics
         </HashLink>
+        <label>
+          <Toggle
+            //defaultChecked={themeMode}
+            defaultChecked={darkThemeEnabled}
+            icons={{ checked: "🌙", unchecked: "🔆" }}
+            aria-label="Dark mode toggle"
+            onChange={() => dispatch({type: TOGGLE_DARKTHEME})} />
+        </label>
       </HeaderGrid>
     </HeaderStyled>
   )

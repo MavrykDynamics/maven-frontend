@@ -20,7 +20,7 @@ export const SatellitesImage = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  height: 600px;
+  height: 700px;
 
   @media (max-width: 500px) {
     background-image: url('/images/satellites.svg');

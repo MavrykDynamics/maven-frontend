@@ -22,7 +22,7 @@ export const HeaderGrid = styled.div`
   height: 80px;
   z-index: 1;
   display: grid;
-  grid-template-columns: 170px auto 100px 100px 100px 100px 100px;
+  grid-template-columns: 170px auto 100px 100px 100px 100px 100px 50px;
   grid-gap: 10px;
   font-weight: 500;
 
@@ -31,10 +31,15 @@ export const HeaderGrid = styled.div`
     margin-top: 33px;
   }
 
+
+  > label {
+    margin: auto;
+  }
+
   @media (max-width: 1000px) {
     padding: 0 10px;
     max-width: calc(100vw - 20px);
-    grid-template-columns: 170px auto 100px;
+    grid-template-columns: 170px auto 100px 50px;
 
     a:nth-child(4),
     a:nth-child(5),

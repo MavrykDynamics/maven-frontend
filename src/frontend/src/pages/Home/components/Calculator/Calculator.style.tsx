@@ -2,7 +2,7 @@ import styled from 'styled-components/macro'
 import { backgroundColor, containerColor, Page, primaryColor, secondaryColor, textColor } from 'styles'
 
 export const CalculatorStyled = styled(Page)`
-  margin-bottom: 100px;
+  //margin-bottom: 100px;
 `
 
 export const CalculatorCointainer = styled.div`

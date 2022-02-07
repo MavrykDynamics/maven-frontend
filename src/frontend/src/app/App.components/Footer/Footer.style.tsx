@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, borderColor, Page, secondaryColor, textColor } from 'styles'
+import { backgroundColor, containerColor, Page, secondaryColor, textColor } from 'styles'
 
 export const FooterStyled = styled.div`
-  background-color: ${borderColor};
+  background-color: ${containerColor};
   color: ${textColor};
   margin-top: 20px;
 `

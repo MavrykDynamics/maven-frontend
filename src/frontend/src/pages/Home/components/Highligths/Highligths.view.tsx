@@ -27,11 +27,11 @@ In order to ensure the credibility & accuracy of the price data provided, Mavryk
   },
   governance: {
     title: 'Governance',
-    content: `Mavryk’s governance is completely controlled by the community through an on-chain DAO via an array of Satellite nodes & delegations. Once launched, MVK stakeholders have direct control of the Mavryk ecosystem.
+    content: `Mavryk’s governance is controlled an on-chain community DAO, via an array of Satellite nodes & delegations. Once launched, MVK stakeholders have direct control of the entire Mavryk ecosystem.
 
-MVK stakeholders are simply need to stake their tokens and delegate them to a Satellite of their choice, which votes on their behalf. Similar to Tezos, MVK stakeholders may re-delegate to a different Satellite at any moment, with zero penalty. This form of liquid democracy helps mitigate low voter turnouts which are detrimental to decentralized entities.
-    
-Additionally, governance participation is also rewarded with income from the on-chain treasury. This incentivizes stakeholders to take an active role in Mavryk’s governance, and rewards them for their advisory similar to how consultants are remunerated for their services.`,
+    MVK stakeholders simply need to stake & delegate their tokens to a Satellite of their choice, or choose to operate a Satellite themselves. Similar to Tezos, MVK stakeholders may change Satellites at any moment with zero penalty. This form of delegated democracy helps mitigate low voter turnouts which are detrimental to decentralized entities.
+        
+    Additionally, governance participation is also rewarded with income from the on-chain Treasury. This incentivizes stakeholders to take an active role in Mavryk’s governance, and rewards them for their advisory similar to how consultants are compensated for their services.`,
   },
   delegations: {
     title: 'Delegations',

@@ -21,16 +21,36 @@ export const GovernanceContent = styled(Page)`
   }
 `
 
+export const GovernanceParallaxLayer = styled.div<{zIndex: number}>`
+  z-index: ${props => props.zIndex || "0"};
+`
+
 export const GovernanceImage = styled.div<{img: string, height?: string, backgroundSize?: string}>`
   background-image: url(${props => props.img || ""});
   background-position: center;
   background-repeat: no-repeat;
   background-size: ${props => props.backgroundSize || "contain"};
   height: ${props => props.height || "200px"};
+  margin: auto auto 20px auto;
 
   @media (max-width: 500px) {
     background-image: url(${props => props.img || ""});
-    height: ${props => props.height || "350"};
+  }
+`
+
+export const GovernanceImagePlanet = styled.div<{img: string, height?: string, top?: string, backgroundSize?: string}>`
+  position: absolute;
+  background-image: url(${props => props.img || ""});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: ${props => props.backgroundSize || "contain"};
+  height: ${props => props.height || "200px"};
+  width: 100%;
+  margin: auto auto 20px auto;
+  top: ${props => props.top || "-50%"};
+
+  @media (max-width: 500px) {
+    background-image: url(${props => props.img || ""});
   }
 `
 
