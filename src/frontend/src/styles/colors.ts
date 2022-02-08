@@ -13,10 +13,10 @@ export const selectedColor = '#aea3ff3d'
 
 export const darkMode = {
     backgroundColor: '#171735',
-    containerColor: '#1C1C3F', //'#F7F9FD'
+    containerColor: '#1C1C3F', 
     borderColor: '#4F457C',
-    textColor: '#F7F9FD', //'#000000'
-    subTextColor: '#fff', //'#29264C'
+    textColor: '#F7F9FD',
+    subTextColor: '#fff',
     backgroundTextColor: '#191919',
     placeholderColor: '#9090A0',
     primaryColor: '#7068AA',
@@ -27,11 +27,11 @@ export const darkMode = {
 }
 
 export const lightMode = {
-    backgroundColor: '#F7F9FD',
-    containerColor: '#1C1C3F', //'#F7F9FD'
+    backgroundColor: '#FFF',
+    containerColor: '#F7F9FD', 
     borderColor: '#4F457C',
-    textColor: '#F7F9FD', //'#000000'
-    subTextColor: '#fff', //'#29264C'
+    textColor: '#000000', 
+    subTextColor: '#29264C', 
     backgroundTextColor: '#191919',
     placeholderColor: '#9090A0',
     primaryColor: '#7068AA',

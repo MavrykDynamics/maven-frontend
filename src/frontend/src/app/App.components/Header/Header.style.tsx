@@ -1,18 +1,18 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, subTextColor, textColor } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const HeaderStyled = styled.div<{ showBg: boolean }>`
+export const HeaderStyled = styled.div<{ showBg: boolean, theme: MavrykTheme }>`
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 20;
 
-  background-color: ${(props) => (props.showBg ? '#171735' : '#FFFFFF00')};
+  background-color: ${(props) => (props.showBg ? ({theme}) => theme.backgroundColor : '#FFFFFF00')};
   will-change: background-color;
   transition: background-color 200ms ease-in-out;
 `
 
-export const HeaderGrid = styled.div`
+export const HeaderGrid = styled.div<{theme: MavrykTheme}>`
   margin: 0 auto;
   max-width: calc(100vw - 40px);
   width: 1280px;
@@ -27,7 +27,7 @@ export const HeaderGrid = styled.div`
   font-weight: 500;
 
   > a {
-    color: ${subTextColor};
+    color: ${({theme}) => theme.subTextColor};
     margin-top: 33px;
   }
 
@@ -56,12 +56,12 @@ export const HeaderLogo = styled.img`
   width: 170px;
 `
 
-export const HeaderButton = styled.div`
+export const HeaderButton = styled.div<{theme: MavrykTheme}>`
   cursor: pointer;
-  background: ${textColor};
+  background: ${({theme}) => theme.textColor};
   border-radius: 5px;
   padding: 10px;
-  color: ${backgroundColor};
+  color: ${({theme}) => theme.backgroundColor};
   text-align: center;
   font-weight: bold;
   margin-top: 10px;

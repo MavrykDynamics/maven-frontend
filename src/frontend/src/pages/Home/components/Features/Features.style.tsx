@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro'
-import { containerColor, Page, primaryColor, subTextColor } from 'styles'
+import { Page } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
 export const FeaturesStyled = styled(Page)`
   text-align: center;
@@ -17,8 +18,8 @@ export const FeaturesGrid = styled.div`
   }
 `
 
-export const FeaturesComponent = styled.div`
-  background-color: ${containerColor};
+export const FeaturesComponent = styled.div<{theme: MavrykTheme}>`
+  background-color: ${({theme}) => theme.containerColor};
   border-radius: 10px;
   padding: 60px 30px;
 
@@ -29,12 +30,12 @@ export const FeaturesComponent = styled.div`
     margin-top: 30px;
     font-size: 24px;
     font-weight: bold;
-    color: ${primaryColor};
+    color: ${({theme}) => theme.primaryColor};
   }
 
   > p {
     margin-top: 20px;
     font-size: 16px;
-    color: ${subTextColor};
+    color: ${({theme}) => theme.subTextColor};
   }
 `

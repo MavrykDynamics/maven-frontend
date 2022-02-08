@@ -1,18 +1,19 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, Page, subTextColor } from 'styles'
+import { Page } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const GovernanceStyled = styled.div`
-  //background: url('./images/governance-bg.svg'), #1C1C3F;
-  background: #1C1C3F;
+export const GovernanceStyled = styled.div<{theme: MavrykTheme}>`
+  //background: url('./images/governance-bg.svg'), ${({theme}) => theme.containerColor};
+  background: ${({theme}) => theme.containerColor};
   background-repeat: no-repeat;
   background-position: bottom right;
   margin-bottom: 100px;
   padding: 50px 0;
 `
 
-export const GovernanceContent = styled(Page)`
+export const GovernanceContent = styled(Page)<{theme: MavrykTheme}>`
   > h1 {
-    color: ${subTextColor};
+    color: ${({theme}) => theme.subTextColor};
   }
 
   > img {

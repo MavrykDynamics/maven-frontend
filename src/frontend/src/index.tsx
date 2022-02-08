@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 
 import { App } from './app/App.controller'
@@ -8,7 +7,7 @@ import { GlobalStyle } from './styles'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import store from './store'
 
-import { Provider as ReduxProvider, useSelector } from 'react-redux'
+import { Provider as ReduxProvider } from 'react-redux'
 
 import './styles/fonts.css'
 import DarkThemeProvider from 'app/App.components/DarkThemeProvider/DarkThemeProvider.view'

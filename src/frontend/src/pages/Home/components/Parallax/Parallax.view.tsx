@@ -2,8 +2,12 @@ import * as React from 'react'
 import { ParallaxBanner } from 'react-scroll-parallax'
 import { ParallaxStyled, ParallaxDesktop, ParallaxGroup, ParallaxLayer } from './Parallax.style'
 import { JumbotronView } from '../Jumbotron/Jumbotron.view'
+import { useSelector } from 'react-redux'
 
 export const ParallaxView = () => {
+  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled);
+  const folder = "/images/parallax/" + (darkThemeEnabled ? "dark" : "light")
+
   return (
     <ParallaxStyled>
       <ParallaxDesktop>
@@ -45,12 +49,12 @@ export const ParallaxView = () => {
                 expanded: false
               },
               {
-                image: '/images/parallax/layer2.svg',
+                image: folder+'/layer2.svg',
                 translateY: [-15, 15],
                 expanded: false
               },
               {
-                image: '/images/parallax/layer1.svg',
+                image: folder+'/layer1.svg',
                 speed: 0,
               }
             ]}
@@ -67,8 +71,8 @@ export const ParallaxView = () => {
           <ParallaxLayer img="/images/parallax/layer5.svg" zIndex={5} translateZ="-525px" scale={2.75}/>
           <ParallaxLayer img="/images/parallax/layer4.svg" zIndex={6} translateZ="-400px" scale={2.33333333}/>
           <ParallaxLayer img="/images/parallax/layer3.svg" zIndex={7} translateZ="-250px" scale={1.833333333}/>
-          <ParallaxLayer img="/images/parallax/layer2.svg" zIndex={8} translateZ="-125px" scale={1.4167}/>
-          <ParallaxLayer img="/images/parallax/layer1.svg" zIndex={9} translateZ="0" scale={1.01}>
+          <ParallaxLayer img={folder+"/layer2.svg"} zIndex={8} translateZ="-125px" scale={1.4167}/>
+          <ParallaxLayer img={folder+"/layer1.svg"} zIndex={9} translateZ="0" scale={1.01}>
             <JumbotronView />
           </ParallaxLayer>
         </ParallaxGroup>

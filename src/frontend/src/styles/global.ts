@@ -1,20 +1,6 @@
 import { createGlobalStyle } from 'styled-components/macro'
-import { placeholderColor, subTextColor, textColor, backgroundColor, secondaryColor } from './colors'
-
-export interface MavrykTheme {  
-  backgroundColor: string,
-  containerColor: string,
-  borderColor: string,
-  textColor: string,
-  subTextColor: string,
-  backgroundTextColor: string,
-  placeholderColor: string,
-  primaryColor: string,
-  secondaryColor: string,
-  upColor: string,
-  downColor: string,
-  selectedColor: string
-}
+import { backgroundColor, secondaryColor } from './colors'
+import { MavrykTheme } from 'utils/interfaces'
 
 export const GlobalStyle = createGlobalStyle<{theme: MavrykTheme}>`
 * {
@@ -27,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: ${({theme}) => theme.backgroundColor};
-  color: ${textColor};
+  color: ${({theme}) => theme.textColor};
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,7 +25,7 @@ h1 {
   font-weight: bold;
   display: inline-block;
   margin: 30px auto;
-  color: ${subTextColor};
+  color: ${({theme}) => theme.subTextColor};
 
   @media (max-width: 700px) {   
     font-size: 30px;
@@ -51,7 +37,7 @@ h1 {
     display: block;
     width: 80px;
     height: 5px;
-    background-color: #7068AA;
+    background-color: ${({theme}) => theme.primaryColor};
     margin: 7px 0 10px 1px;
   }
 }
@@ -79,12 +65,12 @@ h4 {
 }
 
 input {
-  color: ${textColor};
+  color: ${({theme}) => theme.textColor};
   font-size: 14px;
 }
 
 ::placeholder {
-  color: ${placeholderColor};
+  color: ${({theme}) => theme.placeholderColor};
   font-size: 14px;
 }
 
@@ -93,7 +79,7 @@ input {
 }
 
 a {
-  color: ${textColor};
+  color: ${({theme}) => theme.textColor};
   text-decoration: none;
   opacity: 1;
   transition: opacity 0.15s ease-in-out-out;
@@ -234,9 +220,9 @@ p {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 
-  -webkit-transition: all 0.25s ease;
-  -moz-transition: all 0.25s ease;
-  transition: all 0.25s ease;
+  // -webkit-transition: all 0.25s ease;
+  // -moz-transition: all 0.25s ease;
+  // transition: all 0.25s ease;
 }
 
 .react-toggle--checked .react-toggle-thumb {

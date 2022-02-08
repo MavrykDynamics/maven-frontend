@@ -1,8 +1,9 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, borderColor, containerColor, downColor, Page, primaryColor, secondaryColor, subTextColor, upColor } from 'styles'
+import { Page } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const NewsletterStyled = styled(Page)`
-  background: url('./images/newsletter-bg.svg'), linear-gradient(0deg, ${borderColor} 0%, ${containerColor} 100%);
+export const NewsletterStyled = styled(Page)<{theme: MavrykTheme}>`
+  background: url('./images/newsletter-bg.svg'), linear-gradient(0deg, ${({theme}) => theme.borderColor} 0%, ${({theme}) => theme.containerColor} 100%);
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: fill;
@@ -17,7 +18,7 @@ export const NewsletterStyled = styled(Page)`
   }
 
   > h1 {
-    color: ${subTextColor};
+    color: ${({theme}) => theme.subTextColor};
     margin: auto;
 
     @media (max-width: 700px) {
@@ -42,7 +43,7 @@ export const NewsletterGrid = styled.div`
   }
 `
 
-export const NewsletterForm = styled.form`
+export const NewsletterForm = styled.form<{theme: MavrykTheme}>`
   margin-top: 60px;
 
   @media (max-width: 700px) {
@@ -50,7 +51,7 @@ export const NewsletterForm = styled.form`
   }
 
   input {
-    background: ${primaryColor}65;
+    background: ${({theme}) => theme.primaryColor}65;
     border-radius: 10px;
     border: none;
     height: 50px;
@@ -59,7 +60,7 @@ export const NewsletterForm = styled.form`
     padding: 0 0 0 20px;
     margin: 0 0 30px 0;
     box-sizing: border-box;
-    color: ${backgroundColor};
+    color: ${({theme}) => theme.backgroundColor};
     font-size: 16px;
     font-weight: bold;
 
@@ -74,14 +75,14 @@ export const NewsletterForm = styled.form`
   }
 `
 
-export const NewsletterButton = styled.button`
+export const NewsletterButton = styled.button<{theme: MavrykTheme}>`
   height: 50px;
   line-height: 50px;
   font-size: 16px;
   font-weight: bold;
-  color: ${subTextColor};
+  color: ${({theme}) => theme.subTextColor};
   text-align: center;
-  background-color: ${primaryColor};
+  background-color: ${({theme}) => theme.primaryColor};
   border-radius: 25px;
   cursor: pointer;
   width: 200px;
@@ -89,7 +90,7 @@ export const NewsletterButton = styled.button`
   border: none;
 `
 
-export const NewsletterStatus = styled.div`
+export const NewsletterStatus = styled.div<{theme: MavrykTheme}>`
   float: right;
   line-height: 60px;
   width: 50%;
@@ -98,15 +99,15 @@ export const NewsletterStatus = styled.div`
   text-overflow: ellipsis;
 
   .loading {
-    color: ${backgroundColor};
+    color: ${({theme}) => theme.backgroundColor};
   }
 
   .success {
-    color: ${upColor};
+    color: ${({theme}) => theme.upColor};
   }
 
   .error {
-    color: ${downColor};
+    color: ${({theme}) => theme.downColor};
   }
 `
 

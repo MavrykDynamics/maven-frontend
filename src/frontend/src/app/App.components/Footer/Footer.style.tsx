@@ -1,9 +1,10 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, containerColor, Page, secondaryColor, textColor } from 'styles'
+import { Page } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const FooterStyled = styled.div`
-  background-color: ${containerColor};
-  color: ${textColor};
+export const FooterStyled = styled.div<{theme: MavrykTheme}>`
+  background-color: ${({theme}) => theme.containerColor};
+  color: ${({theme}) => theme.textColor};
   margin-top: 20px;
 `
 
@@ -37,7 +38,7 @@ export const FooterBottom = styled.div`
     margin-top: 20px;
   }
 `
-export const FooterSocials = styled.div`
+export const FooterSocials = styled.div<{theme: MavrykTheme}>`
   display: grid;
   grid-template-columns: 48px 48px 48px 48px 48px;
   grid-gap: 10px;
@@ -55,7 +56,7 @@ export const FooterSocials = styled.div`
   //   left: calc(50% - 36px);
   //   top: calc(50% - 36px);
   //   content: '';
-  //   background: ${backgroundColor};
+  //   background: ${({theme}) => theme.backgroundColor};
   //   opacity: 0.08;
   //   position: absolute;
   //   border-radius: 100%;
@@ -65,7 +66,7 @@ export const FooterSocials = styled.div`
   svg {
     width: 24px;
     height: 24px;
-    fill: ${secondaryColor};
+    fill: ${({theme}) => theme.secondaryColor};
   }
 
   @media (max-width: 700px) {
@@ -83,12 +84,12 @@ export const FooterLogo = styled.img`
   width: 170px;
 `
 
-export const FooterButton = styled.div`
+export const FooterButton = styled.div<{theme: MavrykTheme}>`
   cursor: pointer;
-  background: ${textColor};
+  background: ${({theme}) => theme.textColor};
   border-radius: 5px;
   padding: 10px;
-  color: ${backgroundColor};
+  color: ${({theme}) => theme.backgroundColor};
   text-align: center;
   font-weight: bold;
   margin-top: 10px;
@@ -99,7 +100,7 @@ export const FooterDescription = styled.div`
   max-width: 400px;
 `
 
-export const FooterLinks = styled.div`
+export const FooterLinks = styled.div<{theme: MavrykTheme}>`
   float: right;
   text-align: center;
   margin-right: 10px;
@@ -108,6 +109,6 @@ export const FooterLinks = styled.div`
   a {
     font-size: 14px;
     font-weight: 500;
-    color: ${textColor};
+    color: ${({theme}) => theme.textColor};
   }
 `

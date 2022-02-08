@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Parallax, ParallaxBanner } from 'react-scroll-parallax'
+import { Parallax } from 'react-scroll-parallax'
 
 import { GovernanceContent, GovernanceImage, GovernanceStyled, GovernanceGrid, GovernanceList, GovernanceImagePlanet, GovernanceParallaxLayer } from './Governance.style'
 

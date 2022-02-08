@@ -1,14 +1,14 @@
 import { Home } from 'pages/Home/Home.controller'
 import { Litepaper } from 'pages/Litepaper/Litepaper.controller'
 import { Privacy } from 'pages/Privacy/Privacy.controller'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import { Footer } from './App.components/Footer/Footer.controller'
 
 import { Header } from './App.components/Header/Header.controller'
 import { Popup } from './App.components/Popup/Popup.controller'
 
 export const App = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentPage, setCurrentPage] = useState('/')
   return (
       <Router>
