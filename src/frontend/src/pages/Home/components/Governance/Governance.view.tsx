@@ -1,9 +1,13 @@
 import * as React from 'react'
 import { Parallax } from 'react-scroll-parallax'
+import { useSelector } from 'react-redux'
 
 import { GovernanceContent, GovernanceImage, GovernanceStyled, GovernanceGrid, GovernanceList, GovernanceImagePlanet, GovernanceParallaxLayer } from './Governance.style'
 
 export const GovernanceView = () => {
+  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled);
+  const planetUrl = darkThemeEnabled ? "/images/governance/planet-dark.svg" : "/images/governance/planet-light.svg"
+
   return (
     <GovernanceStyled>
       <GovernanceContent>
@@ -28,7 +32,7 @@ export const GovernanceView = () => {
               <GovernanceImage img="/images/governance/arrow4.svg" backgroundSize='auto' height='150px'/>
             </Parallax>
             <Parallax speed={-10}>
-              <GovernanceImagePlanet img="/images/governance/planet.svg" height='400px'/>
+              <GovernanceImagePlanet img={planetUrl} height='400px'/>
             </Parallax>
             <Parallax speed={-5}>
               <GovernanceImage img="/images/governance/arrow2.svg" backgroundSize='auto' height='150px'/>

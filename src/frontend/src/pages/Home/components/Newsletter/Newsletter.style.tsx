@@ -1,9 +1,9 @@
 import styled from 'styled-components/macro'
-import { borderColor, Page, textColor } from 'styles'
+import { Page, textColor, primaryColor, secondaryColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const NewsletterStyled = styled(Page)<{theme: MavrykTheme}>`
-  background: url('./images/newsletter-bg.svg'), ${borderColor}; //linear-gradient(0deg, ${({theme}) => theme.borderColor} 0%, ${({theme}) => theme.secondaryColor} 100%);
+  background: url('./images/newsletter-bg.svg'), ${({theme}) => theme.containerColor}; //linear-gradient(0deg, ${({theme}) => theme.borderColor} 0%, ${({theme}) => theme.secondaryColor} 100%);
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: fill;
@@ -14,11 +14,11 @@ export const NewsletterStyled = styled(Page)<{theme: MavrykTheme}>`
 
   @media (max-width: 700px) {
     padding: 20px;
-    margin: 0 auto 100px auto;
+    margin: 100px auto 100px auto;
   }
 
   > h1 {
-    color: ${textColor};
+    color: ${({theme}) => theme.textColor};
     margin: auto;
 
     @media (max-width: 700px) {
@@ -51,7 +51,7 @@ export const NewsletterForm = styled.form<{theme: MavrykTheme}>`
   }
 
   input {
-    background: ${({theme}) => theme.primaryColor}65;
+    background: ${({theme}) => theme.backgroundColor}75;
     border-radius: 10px;
     border: none;
     height: 50px;
@@ -60,7 +60,7 @@ export const NewsletterForm = styled.form<{theme: MavrykTheme}>`
     padding: 0 0 0 20px;
     margin: 0 0 30px 0;
     box-sizing: border-box;
-    color: ${({theme}) => theme.backgroundColor};
+    color: ${({theme}) => theme.textColor};
     font-size: 16px;
     font-weight: bold;
 
@@ -70,7 +70,7 @@ export const NewsletterForm = styled.form<{theme: MavrykTheme}>`
 
     &::placeholder {
       font-size: 16px;
-      color: #ffffff64;
+      color: ${({theme}) => theme.placeholderColor}80;
     }
   }
 `
@@ -80,14 +80,23 @@ export const NewsletterButton = styled.button<{theme: MavrykTheme}>`
   line-height: 50px;
   font-size: 16px;
   font-weight: bold;
-  color: ${({theme}) => theme.subTextColor};
+  color: ${textColor};
   text-align: center;
-  background-color: ${({theme}) => theme.primaryColor};
+  background: linear-gradient(to right, ${primaryColor}, ${primaryColor}, ${secondaryColor}, ${primaryColor});
+  background-size: 300% 100%;
   border-radius: 25px;
   cursor: pointer;
   width: 200px;
   float: right;
   border: none;
+
+  &:hover {
+    background-position: -100% 0;
+  }
+  moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 `
 
 export const NewsletterStatus = styled.div<{theme: MavrykTheme}>`
@@ -118,6 +127,13 @@ export const NewsletterClose = styled.div`
   svg {
     width: 24px;
     height: 24px;
-    stroke: #fff;
+    stroke: ${({theme}) => theme.textColor};
+  }
+`
+
+export const NewsletterAnimation = styled.div`
+  height: 400px;
+  @media (max-width: 700px) {
+    height: 200px;
   }
 `

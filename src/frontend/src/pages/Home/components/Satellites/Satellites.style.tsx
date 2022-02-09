@@ -15,7 +15,7 @@ export const SatellitesStyled = styled.div`
   position: relative;
 `
 
-export const SatellitesImage = styled.div<{src: string}>`
+export const SatellitesImage = styled.div<{src: string, srcMobile: string}>`
   background-image: url(${(props) => props.src});
   background-position: center;
   background-repeat: no-repeat;
@@ -24,7 +24,7 @@ export const SatellitesImage = styled.div<{src: string}>`
   transition: all 0.25s linear;
 
   @media (max-width: 500px) {
-    background-image: url('/images/satellites-dark.svg');
+    background-image: url(${(props) => props.srcMobile});
     height: 650px;
   }
 `

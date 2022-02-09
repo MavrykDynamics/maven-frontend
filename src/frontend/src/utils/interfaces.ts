@@ -10,5 +10,6 @@ export interface MavrykTheme {
     secondaryColor: string,
     upColor: string,
     downColor: string,
-    selectedColor: string
+    selectedColor: string,
+    litepaperLinkColor: string
 }

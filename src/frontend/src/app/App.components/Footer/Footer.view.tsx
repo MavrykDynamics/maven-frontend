@@ -1,16 +1,20 @@
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 // prettier-ignore
 import { FooterBottom, FooterContainer, FooterDescription, FooterLinks, FooterLogo, FooterSocials, FooterStyled, FooterTop } from "./Footer.style";
 
 export const FooterView = () => {
+  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled);
+  const logoUrl = darkThemeEnabled ? "/logo-dark.svg" : "/logo-light.svg";
+
   return (
     <FooterStyled id="footer">
       <FooterContainer>
         <FooterTop>
           <div>
             <Link to="/">
-              <FooterLogo alt="logo" src="/images/logo-white.svg" />
+              <FooterLogo alt="logo" src={logoUrl} />
             </Link>
             <FooterDescription>
               Mavryk is a decentralized finance ecosystem designed to allow users to borrow and earn, to unlock the

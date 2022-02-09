@@ -2,8 +2,11 @@ import * as React from 'react'
 import { useState } from 'react'
 import { useMailChimpForm } from 'use-mailchimp-form'
 
+import Lottie from 'react-lottie'
+import animationData from './ship-loop.json'
+
 // prettier-ignore
-import { NewsletterButton, NewsletterClose, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
+import { NewsletterButton, NewsletterAnimation, NewsletterClose, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
 
 type NewsLetterProps = {
   closeCallback?: () => void
@@ -21,6 +24,15 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
 
   const subscribe = () => {}
 
+  var shipLoopOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   return (
     <NewsletterStyled id="newsletter">
       <h1>Subscribe to Mavryk News</h1>
@@ -32,7 +44,12 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
         </NewsletterClose>
       )}
       <NewsletterGrid>
-        <img alt="ship" src="/images/ship-stars.svg" />
+        <NewsletterAnimation>
+          <Lottie
+            options={shipLoopOptions}
+            isClickToPauseDisabled={true}
+          />
+        </NewsletterAnimation>
         <NewsletterForm
           onSubmit={(event) => {
             event.preventDefault()
@@ -40,7 +57,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
           }}
         >
           <input
-            id="NAME"
+            id="name"
             placeholder="Name"
             type="text"
             value={values.NAME}
@@ -52,7 +69,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
             }
           />
           <input
-            id="ORGANISATI"
+            id="company"
             placeholder="Organisation"
             type="text"
             value={values.ORGANISATI}
@@ -64,7 +81,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
             }
           />
           <input
-            id="EMAIL"
+            id="username"
             placeholder="Email*"
             type="email"
             value={values.EMAIL}

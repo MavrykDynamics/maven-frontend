@@ -9,13 +9,17 @@ import Toggle from 'react-toggle'
 import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from "./Header.style";
 
 export const HeaderView = () => {
-  const [scrollPosition, setScrollPosition] = useState(0)
   const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled);
   const dispatch = useDispatch();
 
+  const isLitepaperPage = window.location.pathname === "/litepaper";
+
+  /**
+   * handle scroll for desktop (parallax)
+   */
+  const [scrollPositionDesktop, setScrollPositionDesktop] = useState(0);
   const handleScroll = () => {
-    const position = window.pageYOffset
-    setScrollPosition(position)
+    setScrollPositionDesktop(window.pageYOffset)
   }
 
   useEffect(() => {
@@ -26,14 +30,19 @@ export const HeaderView = () => {
     }
   }, [])
 
-  const logoUrl = darkThemeEnabled || scrollPosition < 900 ? "/logo-dark.svg" : "/logo-light.svg";
+  /**
+   * handle scroll for mobile (Pure CSS)
+   */
+  const scrollPositionMobile = useSelector((state: any) => state.preferences.scrollPosition);
+
+  const logoUrl = (darkThemeEnabled || (scrollPositionMobile < 800 && scrollPositionDesktop < 900)) && !isLitepaperPage ? "/logo-dark.svg" : "/logo-light.svg";
 
   return (
-    <HeaderStyled showBg={scrollPosition > 900}>
-      <HeaderGrid showBg={scrollPosition > 900}>
-        <Link to="/">
+    <HeaderStyled showBg={(scrollPositionMobile > 800 || scrollPositionDesktop > 900) || isLitepaperPage}>
+      <HeaderGrid showBg={(scrollPositionMobile > 800 || scrollPositionDesktop > 900) || isLitepaperPage}>
+        <a href="/">
           <HeaderLogo src={logoUrl} />
-        </Link>
+        </a>
 
         <div />
 

@@ -33,6 +33,9 @@ export const HeaderGrid = styled.div<{showBg: boolean, theme: MavrykTheme}>`
     margin-top: 33px;
   }
 
+  > a:hover {
+    color: ${(props) => (props.showBg ? ({theme}) => theme.litepaperLink : secondaryColor)};
+  }
 
   > label {
     margin: auto;

@@ -28,7 +28,7 @@ export const HighligthsGrid = styled.div<{theme: MavrykTheme}>`
 
 export const HighligthsSelector = styled.div<{theme: MavrykTheme}>`
   background: ${({theme}) => theme.backgroundColor};
-  box-shadow: 0 1px 0 rgb(34 37 49 / 8%), 0 8px 8px rgb(34 37 49 / 4%);
+  // box-shadow: 0 1px 0 rgb(34 37 49 / 8%), 0 8px 8px rgb(34 37 49 / 4%);
   border-radius: 10px;
   overflow: hidden;
 
@@ -44,13 +44,18 @@ export const HighligthsItem = styled.div<{ selected?: boolean, theme: MavrykThem
   grid-template-columns: 56px auto;
   grid-gap: 30px;
   background: ${(props) => (props.selected ? ({theme}) => theme.containerColor : ({theme}) => theme.backgroundColor)};
-  color: ${(props) => (props.selected ? ({theme}) => theme.secondaryColor : ({theme}) => theme.subTextColor)};
+  color: ${(props) => (props.selected ? ({theme}) => theme.litepaperLinkColor : ({theme}) => theme.subTextColor)};
   border-radius: 10px;
   cursor: pointer;
   font-size: 24px;
   line-height: 56px;
   font-weight: 500;
   text-align: left;
+
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 
   @media (max-width: 1000px) {
     padding: 16px 0;

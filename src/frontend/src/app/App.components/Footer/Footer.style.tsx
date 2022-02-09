@@ -66,7 +66,7 @@ export const FooterSocials = styled.div<{theme: MavrykTheme}>`
   svg {
     width: 24px;
     height: 24px;
-    fill: ${({theme}) => theme.secondaryColor};
+    fill: ${({theme}) => theme.primaryColor};
   }
 
   @media (max-width: 700px) {

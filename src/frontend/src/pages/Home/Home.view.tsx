@@ -1,6 +1,8 @@
 import { Footer } from 'app/App.components/Footer/Footer.controller'
 import * as React from 'react'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { scroll } from 'actions'
 
 import { ParallaxView } from './components/Parallax/Parallax.view'
 import { CalculatorView } from './components/Calculator/Calculator.view'
@@ -14,12 +16,17 @@ import { TokenomicsView } from './components/Tokenomics/Tokenomics.view'
 import { HomeStyled, HomeNoParallax } from './Home.style'
 
 export const HomeView = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
     window.scroll(0, 0)
   }, [])
 
+  const onScroll = (e:any) => {
+    dispatch(scroll(e.target.scrollTop))
+  }
+
   return (
-    <HomeStyled>
+    <HomeStyled onScroll={onScroll}>
       <ParallaxView/>
       <HomeNoParallax>
         <PartnersView />

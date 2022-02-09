@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { Page } from 'styles'
+import { Page, textColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const CalculatorStyled = styled(Page)`
@@ -80,7 +80,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean, theme: MavrykTheme}
     width: 100%;
     height: 10px;
     margin-top: 27px;
-    background: ${({theme}) => theme.primaryColor};
+    background: ${({theme}) => theme.backgroundColor};
     outline: none;
 
     &::-webkit-slider-thumb {
@@ -89,7 +89,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean, theme: MavrykTheme}
       width: 23px;
       height: 23px;
       border-radius: 100%;
-      background: ${({theme}) => theme.secondaryColor};
+      background: ${({theme}) => theme.primaryColor};
       cursor: pointer;
     }
   }
@@ -106,7 +106,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean, theme: MavrykTheme}
 `
 
 export const CalculatorResults = styled.div<{theme: MavrykTheme}>`
-  background: url('./images/parallax/layer2.svg'), linear-gradient(90deg, ${({theme}) => theme.containerColor} 0%, ${({theme}) => theme.backgroundColor} 100%);
+  background: url('./images/parallax/layer2.svg'), linear-gradient(to right, ${({theme}) => theme.containerColor} 0%, ${({theme}) => theme.backgroundColor} 100%);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom right;
@@ -116,6 +116,7 @@ export const CalculatorResults = styled.div<{theme: MavrykTheme}>`
 
   @media (max-width: 1000px) {
     border-radius: 0 0 10px 10px;
+    background: url('./images/parallax/layer2.svg'), linear-gradient(to bottom, ${({theme}) => theme.containerColor} 0%, ${({theme}) => theme.backgroundColor} 100%);
   }
 `
 
@@ -125,14 +126,14 @@ export const CalculatorResult = styled.div<{theme: MavrykTheme}>`
   > div {
     font-size: 14px;
     line-height: 14px;
-    color: ${({theme}) => theme.secondaryColor};
+    color: ${({theme}) => theme.subTextColor};
     font-weight: 500;
   }
 
   > p {
     font-size: 50px;
     line-height: 50px;
-    color: ${({theme}) => theme.textColor};
+    color: ${({theme}) => theme.primaryColor};
     font-weight: bold;
   }
 `
@@ -142,7 +143,7 @@ export const CalculatorResultFee = styled.div<{theme: MavrykTheme}>`
   font-size: 14px;
   line-height: 14px;
   font-weight: 500;
-  color: ${({theme}) => theme.textColor};
+  color: ${({theme}) => theme.litepaperLinkColor};
   opacity: 0.8;
 `
 
@@ -151,7 +152,7 @@ export const CalculatorButton = styled.div<{theme: MavrykTheme}>`
   line-height: 50px;
   font-size: 16px;
   font-weight: bold;
-  color: ${({theme}) => theme.textColor};
+  color: ${textColor};
   text-align: center;
   background-color: ${({theme}) => theme.primaryColor};
   border-radius: 25px;

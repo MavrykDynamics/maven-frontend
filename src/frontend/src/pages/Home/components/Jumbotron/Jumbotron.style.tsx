@@ -98,17 +98,17 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
   color: ${subTextColor};
   text-align: center;
   //background: linear-gradient(to right, ${secondaryColor} 0%, ${primaryColor} 100%);
-  background: linear-gradient(to right, ${primaryColor}, ${primaryColor}, ${primaryColor}, ${secondaryColor});
+  background: linear-gradient(to right, ${primaryColor}, ${primaryColor}, ${secondaryColor}, ${primaryColor});
   border-radius: 25px;
   max-width: 200px;
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
+  moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
   background-size: 300% 100%;
 
   &:hover {
-    background-position: 100% 0;
+    background-position: -100% 0;
   }
 
   ${(props) =>

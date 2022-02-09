@@ -9,6 +9,7 @@ export const HomeStyled = styled.div`
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
+    overflow-anchor: auto;
     perspective: 300px;
   }
 `
