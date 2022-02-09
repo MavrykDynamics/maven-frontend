@@ -1,13 +1,12 @@
+import { TOGGLE_DARKTHEME } from 'actions';
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 import Toggle from 'react-toggle'
 
-import { TOGGLE_DARKTHEME } from 'actions';
-import { useDispatch, useSelector } from 'react-redux';
-
 // prettier-ignore
-import { HeaderGrid, HeaderLogo, HeaderStyled } from "./Header.style";
+import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from "./Header.style";
 
 export const HeaderView = () => {
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -27,11 +26,13 @@ export const HeaderView = () => {
     }
   }, [])
 
+  const logoUrl = darkThemeEnabled || scrollPosition < 900 ? "/logo-dark.svg" : "/logo-light.svg";
+
   return (
     <HeaderStyled showBg={scrollPosition > 900}>
-      <HeaderGrid>
+      <HeaderGrid showBg={scrollPosition > 900}>
         <Link to="/">
-          <HeaderLogo alt="logo" src="/logo.svg" />
+          <HeaderLogo src={logoUrl} />
         </Link>
 
         <div />
@@ -86,7 +87,10 @@ export const HeaderView = () => {
           <Toggle
             //defaultChecked={themeMode}
             defaultChecked={darkThemeEnabled}
-            icons={{ checked: "🌙", unchecked: "🔆" }}
+            icons={{
+              checked: <HeaderIcon src='/images/moon.svg'/>,
+              unchecked: <HeaderIcon src='/images/sun.svg'/>
+            }}
             aria-label="Dark mode toggle"
             onChange={() => dispatch({type: TOGGLE_DARKTHEME})} />
         </label>

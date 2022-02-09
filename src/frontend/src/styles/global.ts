@@ -17,7 +17,6 @@ body {
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: all 0.25s linear;
 }
 
 h1 {
@@ -164,14 +163,14 @@ p {
 
 .react-toggle-track-check {
   position: absolute;
-  width: 14px;
-  height: 10px;
+  width: 18px;
+  height: 18px;
   top: 0px;
   bottom: 0px;
   margin-top: auto;
   margin-bottom: auto;
   line-height: 10px;
-  left: 8px;
+  left: 6px;
   opacity: 0;
   -webkit-transition: opacity 0.25s ease;
   -moz-transition: opacity 0.25s ease;
@@ -187,14 +186,14 @@ p {
 
 .react-toggle-track-x {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 18px;
+  height: 18px;
   top: 0px;
   bottom: 0px;
   margin-top: auto;
   margin-bottom: auto;
   line-height: 10px;
-  right: 10px;
+  right: 6px;
   opacity: 1;
   -webkit-transition: opacity 0.25s ease;
   -moz-transition: opacity 0.25s ease;

@@ -15,15 +15,16 @@ export const SatellitesStyled = styled.div`
   position: relative;
 `
 
-export const SatellitesImage = styled.div`
-  background-image: url('/images/satellites.svg');
+export const SatellitesImage = styled.div<{src: string}>`
+  background-image: url(${(props) => props.src});
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   height: 700px;
+  transition: all 0.25s linear;
 
   @media (max-width: 500px) {
-    background-image: url('/images/satellites.svg');
+    background-image: url('/images/satellites-dark.svg');
     height: 650px;
   }
 `

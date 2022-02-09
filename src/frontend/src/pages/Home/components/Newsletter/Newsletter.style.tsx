@@ -1,9 +1,9 @@
 import styled from 'styled-components/macro'
-import { Page } from 'styles'
+import { borderColor, Page, textColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const NewsletterStyled = styled(Page)<{theme: MavrykTheme}>`
-  background: url('./images/newsletter-bg.svg'), linear-gradient(0deg, ${({theme}) => theme.borderColor} 0%, ${({theme}) => theme.containerColor} 100%);
+  background: url('./images/newsletter-bg.svg'), ${borderColor}; //linear-gradient(0deg, ${({theme}) => theme.borderColor} 0%, ${({theme}) => theme.secondaryColor} 100%);
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: fill;
@@ -18,7 +18,7 @@ export const NewsletterStyled = styled(Page)<{theme: MavrykTheme}>`
   }
 
   > h1 {
-    color: ${({theme}) => theme.subTextColor};
+    color: ${textColor};
     margin: auto;
 
     @media (max-width: 700px) {

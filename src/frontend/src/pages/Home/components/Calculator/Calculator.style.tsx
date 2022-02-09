@@ -46,7 +46,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean, theme: MavrykTheme}
   div {
     font-size: 14px;
     line-height: 14px;
-    color: ${({theme}) => theme.secondaryColor};
+    color: ${({theme}) => theme.subTextColor};
   }
 
   select,
@@ -125,7 +125,7 @@ export const CalculatorResult = styled.div<{theme: MavrykTheme}>`
   > div {
     font-size: 14px;
     line-height: 14px;
-    color: ${({theme}) => theme.textColor};
+    color: ${({theme}) => theme.secondaryColor};
     font-weight: 500;
   }
 
@@ -153,7 +153,7 @@ export const CalculatorButton = styled.div<{theme: MavrykTheme}>`
   font-weight: bold;
   color: ${({theme}) => theme.textColor};
   text-align: center;
-  background-color: $${({theme}) => theme.primaryColor};
+  background-color: ${({theme}) => theme.primaryColor};
   border-radius: 25px;
   cursor: pointer;
 `

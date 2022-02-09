@@ -37,8 +37,8 @@ export const GovernanceView = () => {
               <GovernanceImage img="/images/governance/governance3.svg"/>
               <h4>Earn MVK rewards</h4>
             </Parallax>
-            <Parallax speed={-5}>
-              <GovernanceImage img="/images/governance/arrow3.svg" backgroundSize='auto'/>
+            <Parallax speed={-5} scale={[1.15,1.15]}>
+              <GovernanceImage img="/images/governance/arrow3.svg" backgroundSize='auto' translateY='70px'/>
             </Parallax>
             <Parallax speed={5}>
               <GovernanceImage img="/images/governance/governance4.svg"/>

@@ -14,8 +14,8 @@ export const TokenomicsStyled = styled(Page)`
   }
 `
 
-export const TokenomicsImage = styled.div`
-  background-image: url('/images/tokenomics.svg');
+export const TokenomicsImage = styled.div<{src: string}>`
+  background-image: url(${props => props.src || ""});
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

@@ -26,13 +26,14 @@ export const GovernanceParallaxLayer = styled.div<{zIndex: number}>`
   z-index: ${props => props.zIndex || "0"};
 `
 
-export const GovernanceImage = styled.div<{img: string, height?: string, backgroundSize?: string}>`
+export const GovernanceImage = styled.div<{img: string, height?: string, backgroundSize?: string, translateY?: string}>`
   background-image: url(${props => props.img || ""});
   background-position: center;
   background-repeat: no-repeat;
   background-size: ${props => props.backgroundSize || "contain"};
   height: ${props => props.height || "200px"};
   margin: auto auto 20px auto;
+  transform: translateY(${props => props.translateY || "0px"});
 
   @media (max-width: 500px) {
     background-image: url(${props => props.img || ""});

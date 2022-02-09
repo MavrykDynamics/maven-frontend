@@ -55,7 +55,8 @@ export const ParallaxView = () => {
               },
               {
                 image: folder+'/layer1.svg',
-                speed: 0,
+                translateY: [0, 0],
+                expanded: false
               }
             ]}
             style={{'paddingBottom': '200px'}}
