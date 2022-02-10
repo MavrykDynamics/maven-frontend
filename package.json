@@ -49,6 +49,8 @@
     ]
   },
   "dependencies": {
+    "@types/react-lottie": "^1.2.6",
+    "react-lottie": "^1.2.3",
     "react-toggle": "^4.1.2"
   }
 }

@@ -97,7 +97,6 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
   font-weight: bold;
   color: ${subTextColor};
   text-align: center;
-  //background: linear-gradient(to right, ${secondaryColor} 0%, ${primaryColor} 100%);
   background: linear-gradient(to right, ${primaryColor}, ${primaryColor}, ${secondaryColor}, ${primaryColor});
   border-radius: 25px;
   max-width: 200px;

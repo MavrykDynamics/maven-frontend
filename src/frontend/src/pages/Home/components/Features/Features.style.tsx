@@ -4,7 +4,7 @@ import { MavrykTheme } from 'utils/interfaces'
 
 export const FeaturesStyled = styled(Page)`
   text-align: center;
-  margin-bottom: 200px;
+  margin-bottom: 150px;
 `
 
 export const FeaturesGrid = styled.div`

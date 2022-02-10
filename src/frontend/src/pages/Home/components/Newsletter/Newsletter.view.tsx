@@ -1,12 +1,11 @@
 import * as React from 'react'
 import { useState } from 'react'
+import Lottie from 'react-lottie'
 import { useMailChimpForm } from 'use-mailchimp-form'
 
-import Lottie from 'react-lottie'
-import animationData from './ship-loop.json'
-
 // prettier-ignore
-import { NewsletterButton, NewsletterAnimation, NewsletterClose, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
+import { NewsletterAnimation, NewsletterButton, NewsletterClose, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
+import animationData from './ship-loop.json'
 
 type NewsLetterProps = {
   closeCallback?: () => void

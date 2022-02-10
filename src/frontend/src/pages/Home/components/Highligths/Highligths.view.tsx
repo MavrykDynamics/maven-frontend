@@ -40,7 +40,7 @@ In order to ensure the credibility & accuracy of the price data provided, Mavryk
 }
 
 export const HighligthsView = () => {
-  const [selectedItem, setSelectedItem] = useState(contents.loans)
+  const [selectedItem, setSelectedItem] = useState(contents.governance)
 
   return (
     <HighligthsStyled id="highlights">

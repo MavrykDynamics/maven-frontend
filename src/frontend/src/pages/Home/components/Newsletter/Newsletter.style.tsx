@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { Page, textColor, primaryColor, secondaryColor } from 'styles'
+import { Page, primaryColor, secondaryColor, textColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const NewsletterStyled = styled(Page)<{theme: MavrykTheme}>`
@@ -10,8 +10,8 @@ export const NewsletterStyled = styled(Page)<{theme: MavrykTheme}>`
   border-radius: 10px;
   padding: 60px;
   text-align: center;
-  margin: 200px auto 100px auto;
-
+  margin: 0px auto 100px auto;
+  
   @media (max-width: 700px) {
     padding: 20px;
     margin: 100px auto 100px auto;

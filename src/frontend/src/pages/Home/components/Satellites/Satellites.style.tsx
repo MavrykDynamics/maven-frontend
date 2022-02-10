@@ -21,7 +21,6 @@ export const SatellitesImage = styled.div<{src: string, srcMobile: string}>`
   background-repeat: no-repeat;
   background-size: contain;
   height: 700px;
-  transition: all 0.25s linear;
 
   @media (max-width: 500px) {
     background-image: url(${(props) => props.srcMobile});

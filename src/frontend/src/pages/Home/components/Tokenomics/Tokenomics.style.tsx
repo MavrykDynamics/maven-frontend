@@ -3,6 +3,7 @@ import { Page } from 'styles'
 
 export const TokenomicsStyled = styled(Page)`
   text-align: center;
+  margin-bottom: 150px;
 
   > img {
     margin-top: 20px;
@@ -14,7 +15,7 @@ export const TokenomicsStyled = styled(Page)`
   }
 `
 
-export const TokenomicsImage = styled.div<{src: string}>`
+export const TokenomicsImage = styled.div<{src: string, srcMobile: string}>`
   background-image: url(${props => props.src || ""});
   background-position: center;
   background-repeat: no-repeat;
@@ -22,6 +23,6 @@ export const TokenomicsImage = styled.div<{src: string}>`
   height: 520px;
 
   @media (max-width: 500px) {
-    background-image: url('/images/tokenomics-mobile.svg');
+    background-image: url(${props => props.srcMobile || ""});
   }
 `
