@@ -35,14 +35,12 @@ export const HeaderView = () => {
    */
   const scrollPositionMobile = useSelector((state: any) => state.preferences.scrollPosition);
 
-  const logoUrl = (darkThemeEnabled || (scrollPositionMobile < 800 && scrollPositionDesktop < 900)) && !isLitepaperPage ? "/logo-dark.svg" : "/logo-light.svg";
+  const logoUrl = darkThemeEnabled || (!darkThemeEnabled && !isLitepaperPage && scrollPositionMobile < 800 && scrollPositionDesktop < 900) ? "/logo-dark.svg" : "/logo-light.svg";
 
   return (
     <HeaderStyled showBg={(scrollPositionMobile > 800 || scrollPositionDesktop > 900) || isLitepaperPage}>
       <HeaderGrid showBg={(scrollPositionMobile > 800 || scrollPositionDesktop > 900) || isLitepaperPage}>
-        <a href="/">
-          <HeaderLogo src={logoUrl} />
-        </a>
+        <Link to="/"><HeaderLogo src={logoUrl} /></Link>
 
         <div />
 

@@ -23,10 +23,12 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
 
   const subscribe = () => {}
 
+  const animation = JSON.parse(JSON.stringify(animationData))
+
   var shipLoopOptions = {
     loop: true,
     autoplay: true,
-    animationData: animationData,
+    animationData: animation,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
     },
