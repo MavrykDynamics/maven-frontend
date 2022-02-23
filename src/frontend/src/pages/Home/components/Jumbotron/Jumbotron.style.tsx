@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components/macro'
 import { primaryColor, secondaryColor, subTextColor } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
 export const JumbotronStyled = styled.div`
   padding: 304px 0px 30px 0px;
@@ -20,7 +21,7 @@ export const JumbotronStyled = styled.div`
   }
 `
 
-export const JubontronTitle = styled.div`
+export const JubontronTitle = styled.div<{theme: MavrykTheme}>`
   > div {
     font-weight: bold;
     font-size: 64px;
@@ -29,7 +30,7 @@ export const JubontronTitle = styled.div`
     color: ${subTextColor};
 
     &:nth-child(2) {
-      color: ${secondaryColor};
+      color: ${({theme}) => theme.litepaperLinkColor};
     }
 
     @media (max-width: 1240px) {
@@ -115,11 +116,11 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
     css`
       color: ${primaryColor};
       background: #fff;
-      border: 1px solid ${primaryColor};
+      /* border: 1px solid ${primaryColor}; */
     `}
 `
 
-export const JumbotronSocials = styled.div`
+export const JumbotronSocials = styled.div<{theme: MavrykTheme}>`
   margin: 50px 0 150px 0;
   display: grid;
   grid-template-columns: 24px 24px 24px 24px 24px;

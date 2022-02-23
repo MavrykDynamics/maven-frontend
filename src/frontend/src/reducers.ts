@@ -1,8 +1,8 @@
-
-import * as actions from "./actions";
 import { combineReducers } from "redux";
 
-const preferences = (state = { darkThemeEnabled: false, scrollPosition: 0 }, action: any) => {
+import * as actions from "./actions";
+
+const preferences = (state = { darkThemeEnabled: true, scrollPosition: 0 }, action: any) => {
   switch (action.type) {
     case actions.TOGGLE_DARKTHEME:
       return { ...state, darkThemeEnabled: !state.darkThemeEnabled };

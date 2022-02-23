@@ -28,13 +28,13 @@ export const HeaderGrid = styled.div<{showBg: boolean, theme: MavrykTheme}>`
   font-weight: 500;
 
   > a {
-    color: ${(props) => (props.showBg ? ({theme}) => theme.subTextColor : subTextColor)};
+    color: ${({theme}) => theme.subTextColor};
     transition: all 0.25s linear;
     margin-top: 33px;
   }
 
   > a:hover {
-    color: ${(props) => (props.showBg ? ({theme}) => theme.litepaperLink : secondaryColor)};
+    color: ${({theme}) => theme.litepaperLinkColor};
   }
 
   > label {
