@@ -114,10 +114,10 @@ export const CalculatorView = () => {
               <p>%</p>
             </CalculatorInput>
             <CalculatorInput>
-              <div>Min 200%</div>
+              <div>Min 300%</div>
               <input
                 type="range"
-                min="200"
+                min="300"
                 max="1000"
                 value={values.collateralRatio}
                 onChange={(e: any) => setValues({ ...values, collateralRatio: e.target.value })}
