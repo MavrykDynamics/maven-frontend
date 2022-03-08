@@ -94,6 +94,16 @@ export const LitepaperGrid = styled.div`
   }
 `
 
+export const LitepaperMarkdown = styled.div`
+  > div {
+    > img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+`
+
 export const LitepaperIndex = styled.ul`
   font-size: 14px;
   line-height: 14px;

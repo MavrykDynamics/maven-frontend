@@ -9,15 +9,15 @@ const contents = {
     title: 'Loans',
     content: `Free the equity trapped in your crypto assets by utilizing them to mint a loan for yourself without any paperwork or bankers. Mavryk’s multi asset vaults are maintained by a set of trust-less & decentralized smart contracts that run on the Tezos blockchain.
     
-Mavryk vaults allow users to mint for themselves a loan in an algorithmic stablecoin called zUSD. Users can deposit multiple assets into the vault to best diversify the stability of their loan. zUSD may be used to to earn passive income with a zUSD savings account, utilized for yield farming, to leverage their positions, or send to any Tezos wallet.`,
+Mavryk vaults allow users to mint for themselves a loan in an algorithmic stablecoin called USDM. Users can deposit multiple assets into the vault to best diversify the stability of their loan. USDM may be used to to earn passive income with a USDM savings account, utilized for yield farming, to leverage their positions, or send to any Tezos wallet.`,
   },
   savings: {
     title: 'Savings APY',
-    content: `A savings account mechanism will be offered in order to stabilize the peg of zUSD to the US dollar. This acts to offset the sell pressure on zUSD and incentivize the use of zUSD as a stable mechanism for utilization.
+    content: `A savings account mechanism will be offered in order to stabilize the peg of USDM to the US dollar. This acts to offset the sell pressure on USDM and incentivize the use of USDM as a stable mechanism for utilization.
     
 There are two main mechanisms that fund the DSR. At first, users will earn MVK as a reward for their deposits. Users will also earn shared rewards from the stability fees earned from the on-chain Mavryk treasury.
     
-The DSR allows any to participate in the Mavryk ecosystem by simply purchasing zUSD on the open market, without having to expose themselves to maintaining an open loan position.`,
+The DSR allows any to participate in the Mavryk ecosystem by simply purchasing USDM on the open market, without having to expose themselves to maintaining an open loan position.`,
   },
   oracle: {
     title: 'Price Oracle',
