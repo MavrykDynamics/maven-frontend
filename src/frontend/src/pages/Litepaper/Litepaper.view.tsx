@@ -7,7 +7,7 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { HashLink } from 'react-router-hash-link'
 
-import { LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperStyled } from './Litepaper.style'
+import { LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperMarkdown, LitepaperStyled } from './Litepaper.style'
 
 export const LitepaperView = () => {
   const [tops, setTops] = useState<any>({
@@ -27,7 +27,7 @@ export const LitepaperView = () => {
         'problem': document.getElementById('problem')?.getBoundingClientRect().top!,
         'solution': document.getElementById('solution')?.getBoundingClientRect().top!,
         'multi-asset-backed-loans': document.getElementById('multi-asset-backed-loans')?.getBoundingClientRect().top!,
-        'zusd-a-multi-collateral-soft-pegged-stablecoin': document.getElementById('zusd-a-multi-collateral-soft-pegged-stablecoin')?.getBoundingClientRect().top!,
+        'usdm-a-multi-collateral-soft-pegged-stablecoin': document.getElementById('usdm-a-multi-collateral-soft-pegged-stablecoin')?.getBoundingClientRect().top!,
         'instruments-for-maintaining-a-soft-peg-to-usd': document.getElementById('instruments-for-maintaining-a-soft-peg-to-usd')?.getBoundingClientRect().top!,
         'stability-fee': document.getElementById('stability-fee')?.getBoundingClientRect().top!,
         'dynamic-savings-rate-dsr': document.getElementById('dynamic-savings-rate-dsr')?.getBoundingClientRect().top!,
@@ -39,10 +39,10 @@ export const LitepaperView = () => {
         'governance': document.getElementById('governance')?.getBoundingClientRect().top!,
         'satellite-delegations': document.getElementById('satellite-delegations')?.getBoundingClientRect().top!,
         'the-decentralized-oracle': document.getElementById('the-decentralized-oracle')?.getBoundingClientRect().top!,
-        'mvk-and-vmvk-doorman-module': document.getElementById('mvk-and-vmvk-doorman-module')?.getBoundingClientRect().top!,
-        'what-is-mvk-and-how-does-it-differ-from-vmvk': document.getElementById('what-is-mvk-and-how-does-it-differ-from-vmvk')?.getBoundingClientRect().top!,
-        'obtaining-vmvk': document.getElementById('obtaining-vmvk')?.getBoundingClientRect().top!,
-        'converting-vmvk-back-to-mvk-exit-fees': document.getElementById('converting-vmvk-back-to-mvk-exit-fees')?.getBoundingClientRect().top!,
+        'mvk-and-smvk-doorman-module': document.getElementById('mvk-and-smvk-doorman-module')?.getBoundingClientRect().top!,
+        'what-is-mvk-and-how-does-it-differ-from-smvk': document.getElementById('what-is-mvk-and-how-does-it-differ-from-smvk')?.getBoundingClientRect().top!,
+        'obtaining-smvk': document.getElementById('obtaining-smvk')?.getBoundingClientRect().top!,
+        'converting-smvk-back-to-mvk-exit-fees': document.getElementById('converting-smvk-back-to-mvk-exit-fees')?.getBoundingClientRect().top!,
         'governance--treasury': document.getElementById('governance--treasury')?.getBoundingClientRect().top!,
         'decentralization': document.getElementById('decentralization')?.getBoundingClientRect().top!,
         'voting-power': document.getElementById('voting-power')?.getBoundingClientRect().top!,
@@ -117,7 +117,7 @@ export const LitepaperView = () => {
               <LitepaperLink
                 selected={
                   tops['multi-asset-backed-loans'] <= 110 &&
-                  tops['zusd-a-multi-collateral-soft-pegged-stablecoin'] > 110
+                  tops['usdm-a-multi-collateral-soft-pegged-stablecoin'] > 110
                 }
               >
                 <HashLink
@@ -136,12 +136,12 @@ export const LitepaperView = () => {
                 <li>
                   <LitepaperLink
                     selected={
-                      tops['zusd-a-multi-collateral-soft-pegged-stablecoin'] <= 110 &&
+                      tops['usdm-a-multi-collateral-soft-pegged-stablecoin'] <= 110 &&
                       tops['instruments-for-maintaining-a-soft-peg-to-usd'] > 110
                     }
                   >
                     <HashLink
-                      to="#zusd-a-multi-collateral-soft-pegged-stablecoin"
+                      to="#usdm-a-multi-collateral-soft-pegged-stablecoin"
                       scroll={(el) =>
                         window.scrollTo({
                           behavior: 'smooth',
@@ -149,7 +149,7 @@ export const LitepaperView = () => {
                         })
                       }
                     >
-                      zUSD: A Multi-Collateral Soft-Pegged Stablecoin
+                      USDM: A Multi-Collateral Soft-Pegged Stablecoin
                     </HashLink>
                   </LitepaperLink>
                 </li>
@@ -328,7 +328,7 @@ export const LitepaperView = () => {
                 </li>
                 <li>
                   <LitepaperLink
-                    selected={tops['the-decentralized-oracle'] <= 110 && tops['mvk-and-vmvk-doorman-module'] > 110}
+                    selected={tops['the-decentralized-oracle'] <= 110 && tops['mvk-and-smvk-doorman-module'] > 110}
                   >
                     <HashLink
                       to="#the-decentralized-oracle"
@@ -348,12 +348,12 @@ export const LitepaperView = () => {
             <li>
               <LitepaperLink
                 selected={
-                  tops['mvk-and-vmvk-doorman-module'] <= 110 &&
-                  tops['what-is-mvk-and-how-does-it-differ-from-vmvk'] > 110
+                  tops['mvk-and-smvk-doorman-module'] <= 110 &&
+                  tops['what-is-mvk-and-how-does-it-differ-from-smvk'] > 110
                 }
               >
                 <HashLink
-                  to="#mvk-and-vmvk-doorman-module"
+                  to="#mvk-and-smvk-doorman-module"
                   scroll={(el) =>
                     window.scrollTo({
                       behavior: 'smooth',
@@ -361,18 +361,18 @@ export const LitepaperView = () => {
                     })
                   }
                 >
-                  MVK and vMVK (Doorman Module)
+                  MVK and sMVK (Doorman Module)
                 </HashLink>
               </LitepaperLink>
               <ul className="nav">
                 <li>
                   <LitepaperLink
                     selected={
-                      tops['what-is-mvk-and-how-does-it-differ-from-vmvk'] <= 110 && tops['obtaining-vmvk'] > 110
+                      tops['what-is-mvk-and-how-does-it-differ-from-smvk'] <= 110 && tops['obtaining-smvk'] > 110
                     }
                   >
                     <HashLink
-                      to="#what-is-mvk-and-how-does-it-differ-from-vmvk"
+                      to="#what-is-mvk-and-how-does-it-differ-from-smvk"
                       scroll={(el) =>
                         window.scrollTo({
                           behavior: 'smooth',
@@ -380,16 +380,16 @@ export const LitepaperView = () => {
                         })
                       }
                     >
-                      What is MVK and how does it differ from vMVK?
+                      What is MVK and how does it differ from sMVK?
                     </HashLink>
                   </LitepaperLink>
                 </li>
                 <li>
                   <LitepaperLink
-                    selected={tops['obtaining-vmvk'] <= 110 && tops['converting-vmvk-back-to-mvk-exit-fees'] > 110}
+                    selected={tops['obtaining-smvk'] <= 110 && tops['converting-smvk-back-to-mvk-exit-fees'] > 110}
                   >
                     <HashLink
-                      to="#obtaining-vmvk"
+                      to="#obtaining-smvk"
                       scroll={(el) =>
                         window.scrollTo({
                           behavior: 'smooth',
@@ -397,18 +397,18 @@ export const LitepaperView = () => {
                         })
                       }
                     >
-                      Obtaining vMVK
+                      Obtaining sMVK
                     </HashLink>
                   </LitepaperLink>
                 </li>
                 <li>
                   <LitepaperLink
                     selected={
-                      tops['converting-vmvk-back-to-mvk-exit-fees'] <= 110 && tops['governance--treasury'] > 110
+                      tops['converting-smvk-back-to-mvk-exit-fees'] <= 110 && tops['governance--treasury'] > 110
                     }
                   >
                     <HashLink
-                      to="#converting-vmvk-back-to-mvk-exit-fees"
+                      to="#converting-smvk-back-to-mvk-exit-fees"
                       scroll={(el) =>
                         window.scrollTo({
                           behavior: 'smooth',
@@ -416,7 +416,7 @@ export const LitepaperView = () => {
                         })
                       }
                     >
-                      Converting vMVK back to MVK (exit fees)
+                      Converting sMVK back to MVK (exit fees)
                     </HashLink>
                   </LitepaperLink>
                 </li>
@@ -601,17 +601,11 @@ export const LitepaperView = () => {
             </li>
           </LitepaperIndex>
         </div>
-        <Markdown
-          children={litepaper}
-          // options={{
-          //   // disableParsingRawHTML: true,
-          //   overrides: {
-          //     h1: {
-          //       component: ChapterH1,
-          //     },
-          //   },
-          // }}
-        />
+        <LitepaperMarkdown>
+          <Markdown
+            children={litepaper}
+          />
+        </LitepaperMarkdown>
       </LitepaperGrid>
     </LitepaperStyled>
   )
