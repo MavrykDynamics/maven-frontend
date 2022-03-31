@@ -47,7 +47,7 @@ export const JumbotronView = () => {
                 <use xlinkHref="/icons/sprites.svg#linkedin" />
               </svg>
             </a>
-            <a href={process.env.REACT_APP_DISCORD_URL} target="_blank" rel="noreferrer">
+            <a href="https://discord.gg/K3G7WctHYk" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#discord" />
               </svg>
