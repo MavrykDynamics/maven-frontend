@@ -32,7 +32,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
     },
-  };
+  }
 
   return (
     <NewsletterStyled id="newsletter">
@@ -46,10 +46,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
       )}
       <NewsletterGrid>
         <NewsletterAnimation>
-          <Lottie
-            options={shipLoopOptions}
-            isClickToPauseDisabled={true}
-          />
+          <Lottie options={shipLoopOptions} isClickToPauseDisabled={true} />
         </NewsletterAnimation>
         <NewsletterForm
           onSubmit={(event) => {

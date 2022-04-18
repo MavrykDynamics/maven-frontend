@@ -2,25 +2,25 @@ import styled from 'styled-components/macro'
 import { secondaryColor, subTextColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
-export const HeaderStyled = styled.div<{ showBg: boolean, theme: MavrykTheme }>`
+export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 20;
 
-  background-color: ${(props) => (props.showBg ? ({theme}) => theme.containerColor : '#FFFFFF00')};
+  background-color: ${(props) => (props.showBg ? ({ theme }) => theme.containerColor : '#FFFFFF00')};
   will-change: background-color;
   transition: background-color 200ms ease-in-out;
 `
 
-export const HeaderGrid = styled.div<{showBg: boolean, theme: MavrykTheme}>`
+export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   margin: 0 auto;
   max-width: calc(100vw - 40px);
   width: 1280px;
-
+  margin-top: 30px;
   position: relative;
   text-align: center;
-  height: 80px;
+  height: 100px;
   z-index: 1;
   display: grid;
   grid-template-columns: 170px auto 100px 100px 100px 100px 100px 50px;
@@ -28,17 +28,20 @@ export const HeaderGrid = styled.div<{showBg: boolean, theme: MavrykTheme}>`
   font-weight: 500;
 
   > a {
-    color: ${({theme}) => theme.subTextColor};
+    color: ${({ theme }) => theme.navColor};
     transition: all 0.25s linear;
-    margin-top: 33px;
+    margin-top: 30px;
+    font-size: 17px;
+    font-weight: bold;
   }
 
   > a:hover {
-    color: ${({theme}) => theme.litepaperLinkColor};
+    color: ${({ theme }) => theme.litepaperLinkColor};
   }
 
   > label {
     margin: auto;
+    margin-top: 25px;
   }
 
   @media (max-width: 1000px) {
@@ -55,21 +58,21 @@ export const HeaderGrid = styled.div<{showBg: boolean, theme: MavrykTheme}>`
   }
 `
 
-export const HeaderLogo = styled.div<{src: string}>`
+export const HeaderLogo = styled.div<{ src: string }>`
   background: url(${(props) => props.src}) no-repeat;
   height: 100%;
-  margin-top: -16px;
+  margin-top: -8px;
   z-index: 1;
-  width: 170px;
+  width: 276px;
   transition: all 0.25s linear;
 `
 
-export const HeaderButton = styled.div<{theme: MavrykTheme}>`
+export const HeaderButton = styled.div<{ theme: MavrykTheme }>`
   cursor: pointer;
-  background: ${({theme}) => theme.textColor};
+  background: ${({ theme }) => theme.textColor};
   border-radius: 5px;
   padding: 10px;
-  color: ${({theme}) => theme.backgroundColor};
+  color: ${({ theme }) => theme.backgroundColor};
   text-align: center;
   font-weight: bold;
   margin-top: 10px;
