@@ -11,8 +11,7 @@ export const JumbotronView = () => {
       <Page>
         <JubontronContainer>
           <JubontronTitle>
-            <div>A Decentralized</div>
-            <div>Finance Ecosystem</div>
+            <div>A De-Fi Bank for the People</div>
           </JubontronTitle>
           <JubontronSubTitle>
             Mavryk is a decentralized finance ecosystem designed for community governance and allow users to borrow,
@@ -26,33 +25,7 @@ export const JumbotronView = () => {
               <JumbotronButton secondary>Litepaper</JumbotronButton>
             </Link>
           </JumbotronButtons>
-          <JumbotronSocials>
-            <a href="https://twitter.com/Mavryk_Finance" target="_blank" rel="noreferrer">
-              <svg>
-                <use xlinkHref="/icons/sprites.svg#twitter" />
-              </svg>
-            </a>
-            <a href="https://t.me/Mavryk_Finance" target="_blank" rel="noreferrer">
-              <svg>
-                <use xlinkHref="/icons/sprites.svg#telegram" />
-              </svg>
-            </a>
-            <a href="https://medium.com/@Mavryk_Finance" target="_blank" rel="noreferrer">
-              <svg>
-                <use xlinkHref="/icons/sprites.svg#medium" />
-              </svg>
-            </a>
-            <a href="https://www.linkedin.com/company/mavryk-finance/" target="_blank" rel="noreferrer">
-              <svg>
-                <use xlinkHref="/icons/sprites.svg#linkedin" />
-              </svg>
-            </a>
-            <a href="https://discord.gg/CGn69gDqtF" target="_blank" rel="noreferrer">
-              <svg>
-                <use xlinkHref="/icons/sprites.svg#discord" />
-              </svg>
-            </a>
-          </JumbotronSocials>
+          <JumbotronSocials />
         </JubontronContainer>
       </Page>
     </JumbotronStyled>

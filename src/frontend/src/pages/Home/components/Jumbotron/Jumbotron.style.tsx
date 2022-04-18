@@ -1,10 +1,9 @@
 import styled, { css } from 'styled-components/macro'
-import { primaryColor, secondaryColor, subTextColor } from 'styles'
+import { primaryColor, secondaryColor, subTextColor, btnLightColor, headerColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const JumbotronStyled = styled.div`
-  padding: 304px 0px 30px 0px;
-  //margin: 80px auto 0 auto;
+  padding: 266px 0px 30px 0px;
 
   @media (max-width: 1240px) {
     background-position: top 0 right -200px;
@@ -21,17 +20,13 @@ export const JumbotronStyled = styled.div`
   }
 `
 
-export const JubontronTitle = styled.div<{theme: MavrykTheme}>`
+export const JubontronTitle = styled.div<{ theme: MavrykTheme }>`
   > div {
     font-weight: bold;
     font-size: 64px;
     line-height: 110%;
     letter-spacing: -0.02em;
-    color: ${subTextColor};
-
-    &:nth-child(2) {
-      color: ${({theme}) => theme.litepaperLinkColor};
-    }
+    color: ${({ theme }) => theme.headerColor};
 
     @media (max-width: 1240px) {
       font-size: 48px;
@@ -48,8 +43,8 @@ export const JubontronTitle = styled.div<{theme: MavrykTheme}>`
 `
 
 export const JubontronSubTitle = styled.div`
-  margin: 20px 0 40px 0;
-  color: ${subTextColor};
+  margin: 20px 0 32px 0;
+  color: ${({ theme }) => theme.textColor};
   font-weight: 500;
   font-size: 16px;
   line-height: 160%;
@@ -66,9 +61,15 @@ export const JubontronSubTitle = styled.div`
 `
 
 export const JubontronContainer = styled.div`
-  margin: 0 45% 0 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  max-width: 480px;
 
-  @media (max-width: 1240px) {
+  /*@media (max-width: 1240px) {
     margin: 0 45% 0 0;
   }
 
@@ -78,34 +79,33 @@ export const JubontronContainer = styled.div`
 
   @media (max-width: 700px) {
     margin: 0 3 0% 0 0;
-  }
+  }*/
 `
 
 export const JumbotronButtons = styled.div`
-  display: grid;
-  grid-template-columns: 200px 200px;
-  grid-gap: 20px;
+  display: flex;
+  grid-gap: 40px;
 
-  @media (max-width: 700px) {
+  /*@media (max-width: 700px) {
     grid-template-columns: 150px 150px;
-  }
+  }*/
 `
 
 export const JumbotronButton = styled.div<{ secondary?: boolean }>`
-  height: 56px;
-  line-height: 56px;
+  line-height: 37px;
   font-size: 16px;
   font-weight: bold;
   color: ${subTextColor};
   text-align: center;
-  background: linear-gradient(to right, ${primaryColor}, ${primaryColor}, ${secondaryColor}, ${primaryColor});
+  background: ${headerColor};
   border-radius: 25px;
   max-width: 200px;
-  moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   background-size: 300% 100%;
+  padding: 0 32px;
 
   &:hover {
     background-position: -100% 0;
@@ -114,13 +114,12 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
   ${(props) =>
     props.secondary &&
     css`
-      color: ${primaryColor};
-      background: #fff;
-      /* border: 1px solid ${primaryColor}; */
+      color: ${headerColor};
+      background: ${btnLightColor};
     `}
 `
 
-export const JumbotronSocials = styled.div<{theme: MavrykTheme}>`
+export const JumbotronSocials = styled.div<{ theme: MavrykTheme }>`
   margin: 50px 0 150px 0;
   display: grid;
   grid-template-columns: 24px 24px 24px 24px 24px;

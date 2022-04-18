@@ -10,6 +10,8 @@ export const secondaryColor = '#73d7c3'
 export const upColor = '#00E205'
 export const downColor = '#F90021'
 export const selectedColor = '#aea3ff3d'
+export const btnLightColor = '#86D4C9'
+export const headerColor = '#38237C'
 
 export const darkMode = {
   backgroundColor: '#171735',
@@ -26,6 +28,7 @@ export const darkMode = {
   selectedColor: '#aea3ff3d',
   litepaperLinkColor: '#73d7c3',
   navColor: '#86D4C9',
+  headerColor: '#fff',
 }
 
 export const lightMode = {
@@ -43,4 +46,5 @@ export const lightMode = {
   selectedColor: '#aea3ff3d',
   litepaperLinkColor: '#7068AA',
   navColor: '#503EAA',
+  headerColor
 }
