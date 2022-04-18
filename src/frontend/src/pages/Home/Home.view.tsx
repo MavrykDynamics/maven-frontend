@@ -13,6 +13,7 @@ import { ParallaxView } from './components/Parallax/Parallax.view'
 import { PartnersView } from './components/Partners/Partners.view'
 import { SatellitesView } from './components/Satellites/Satellites.view'
 import { TokenomicsView } from './components/Tokenomics/Tokenomics.view'
+import { WhatMakes } from './components/WhatMakes/WhatMakes.view'
 import { HomeNoParallax, HomeStyled } from './Home.style'
 
 export const HomeView = () => {
@@ -30,13 +31,14 @@ export const HomeView = () => {
       <ParallaxView />
       <HomeNoParallax>
         <PartnersView />
+        <WhatMakes />
         <CalculatorView />
-        {/* <FeaturesView />
+        <FeaturesView />
         <SatellitesView />
         <HighligthsView />
         <GovernanceView />
         <TokenomicsView />
-        <NewsletterView /> */}
+        {/*<NewsletterView /> */}
       </HomeNoParallax>
       <Footer />
     </HomeStyled>

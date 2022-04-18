@@ -13,6 +13,8 @@ export const selectedColor = '#aea3ff3d'
 export const btnLightColor = '#86D4C9'
 export const headerColor = '#38237C'
 export const subHeaderColor = '#8D86EB'
+export const coralColor = '#FF8486'
+
 
 export const darkMode = {
   backgroundColor,
@@ -30,6 +32,7 @@ export const darkMode = {
   litepaperLinkColor: '#73d7c3',
   navColor: '#86D4C9',
   headerColor: '#fff',
+  whatMakesBackground: '/images/what-makes-dark.svg',
 }
 
 export const lightMode = {
@@ -47,5 +50,6 @@ export const lightMode = {
   selectedColor: '#aea3ff3d',
   litepaperLinkColor: '#7068AA',
   navColor: '#503EAA',
-  headerColor
+  headerColor,
+  whatMakesBackground: '/images/what-makes-light.svg',
 }
