@@ -5,6 +5,7 @@ import { PartnersGrid, PartnersStyled } from './Partners.style'
 export const PartnersView = () => {
   return (
     <PartnersStyled>
+      <h2>In partnership with:</h2>
       <PartnersGrid>
         <a href="https://drapergorenholm.com/" target="_blank" rel="noreferrer">
           <img alt="partner" src="/images/draper_goren_holm.png" />

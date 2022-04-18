@@ -1,4 +1,4 @@
-export const backgroundColor = '#171735'//'#FFFFFF'
+export const backgroundColor = '#140d3c'//'#FFFFFF'
 export const containerColor = '#1C1C3F' //'#F7F9FD'
 export const borderColor = '#4F457C'
 export const textColor = '#F7F9FD' //'#000000'
@@ -12,9 +12,10 @@ export const downColor = '#F90021'
 export const selectedColor = '#aea3ff3d'
 export const btnLightColor = '#86D4C9'
 export const headerColor = '#38237C'
+export const subHeaderColor = '#8D86EB'
 
 export const darkMode = {
-  backgroundColor: '#171735',
+  backgroundColor,
   containerColor: '#1C1C3F',
   borderColor: '#4F457C',
   textColor: '#F7F9FD',

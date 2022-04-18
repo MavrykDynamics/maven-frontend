@@ -1,9 +1,19 @@
 import styled from 'styled-components/macro'
 import { Page } from 'styles/components'
+import { subHeaderColor } from 'styles/colors'
 
 export const PartnersStyled = styled(Page)`
   margin-bottom: 150px;
-  margin-top: 150px;
+  margin-top: 120px;
+
+  h2 {
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 44px;
+    color: ${subHeaderColor};
+  }
+
   @media (max-width: 1000px) {
     margin-top: 0px;
     margin-bottom: 50px;
@@ -20,6 +30,7 @@ export const PartnersGrid = styled.div`
     z-index: 0;
     text-align: center;
     grid-column: span 5;
+    margin-bottom: 40px;
 
     > img {
       width: 100%;
@@ -29,7 +40,11 @@ export const PartnersGrid = styled.div`
     }
   }
 
-  > a:nth-child(5), a:nth-child(6), a:nth-child(7), a:nth-child(8), a:nth-child(9) {
+  > a:nth-child(5),
+  a:nth-child(6),
+  a:nth-child(7),
+  a:nth-child(8),
+  a:nth-child(9) {
     grid-column: span 4;
   }
 
@@ -57,10 +72,15 @@ export const PartnersGrid = styled.div`
     grid-template-columns: repeat(15, 1fr);
     grid-gap: 40px;
 
-    > a:nth-child(6), a:nth-child(7), a:nth-child(8) {
+    > a:nth-child(6),
+    a:nth-child(7),
+    a:nth-child(8) {
       grid-column: span 5;
     }
-    > a:nth-child(4), a:nth-child(5), a:nth-child(9), a:nth-child(10) {
+    > a:nth-child(4),
+    a:nth-child(5),
+    a:nth-child(9),
+    a:nth-child(10) {
       grid-column: span 7;
     }
 
@@ -73,13 +93,17 @@ export const PartnersGrid = styled.div`
     grid-gap: 20px;
 
     grid-template-columns: repeat(15, 1fr);
-    
-    > a:nth-child(6), a:nth-child(7), a:nth-child(8) {
+
+    > a:nth-child(6),
+    a:nth-child(7),
+    a:nth-child(8) {
       grid-column: span 5;
     }
-    > a:nth-child(4), a:nth-child(5), a:nth-child(9), a:nth-child(10) {
+    > a:nth-child(4),
+    a:nth-child(5),
+    a:nth-child(9),
+    a:nth-child(10) {
       grid-column: span 7;
     }
-
   }
 `
