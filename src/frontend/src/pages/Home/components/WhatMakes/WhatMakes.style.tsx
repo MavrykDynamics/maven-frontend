@@ -4,6 +4,11 @@ import { MavrykTheme } from 'utils/interfaces'
 
 export const WhatMakesStyled = styled.section<{ theme: MavrykTheme }>`
   background-image: url(${({ theme }) => theme.whatMakesBackground});
+  padding-top: 134px;
+  padding-bottom: 190px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   h2 {
     text-align: center;

@@ -1,9 +1,8 @@
 import styled from 'styled-components/macro'
-import { Page } from 'styles/components'
 import { subHeaderColor } from 'styles/colors'
+import { Page } from 'styles/components'
 
 export const PartnersStyled = styled(Page)`
-  margin-bottom: 150px;
   margin-top: 120px;
 
   h2 {
