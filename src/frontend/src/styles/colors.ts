@@ -50,7 +50,7 @@ export const lightMode = {
   calculatorBackground: '/images/calculator-bg-light.svg',
   featuresBackground: '/images/features-bg-light.svg',
   satellitesGradient: 'linear-gradient(180deg, #FFFFFF 48.18%, #86D4C9 103.84%)',
-  backgroundColor: '#F7F9FD',
+  backgroundColor: '#fff',
   containerColor: '#DEE7F7',
   borderColor: '#4F457C',
   textColor: '#2B2B60',

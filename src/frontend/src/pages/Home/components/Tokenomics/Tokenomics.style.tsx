@@ -1,28 +1,22 @@
 import styled from 'styled-components/macro'
-import { Page } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const TokenomicsStyled = styled(Page)`
+export const TokenomicsStyled = styled.section<{ theme: MavrykTheme }>`
   text-align: center;
-  margin-bottom: 150px;
+  padding-top: 64px;
 
-  > img {
-    margin-top: 20px;
-    margin: auto;
+  h2 {
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 50px;
+  }
+
+  img {
+    position: relative;
+    top: -25px;
   }
 
   @media (max-width: 700px) {
     max-width: 100vw;
-  }
-`
-
-export const TokenomicsImage = styled.div<{src: string, srcMobile: string}>`
-  background-image: url(${props => props.src || ""});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 520px;
-
-  @media (max-width: 500px) {
-    background-image: url(${props => props.srcMobile || ""});
   }
 `
