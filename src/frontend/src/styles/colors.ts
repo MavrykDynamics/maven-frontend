@@ -21,6 +21,7 @@ export const darkMode = {
   whatMakesBackground: '/images/what-makes-dark.svg',
   calculatorBackground: '/images/calculator-bg-dark.svg',
   featuresBackground: '/images/features-bg-dark.svg',
+  satellitesGradient: 'linear-gradient(180deg, #160E3F 3.55%, #321F71 103.84%);',
   backgroundColor,
   containerColor: '#1C1C3F',
   borderColor: '#4F457C',
@@ -40,7 +41,7 @@ export const darkMode = {
   darkestBackroundColor: '#080628',
   darkBackroundColor: '#160E3F',
   labelColor: '#77A4F2',
- headingColor: subHeaderColor,
+  headingColor: subHeaderColor,
   calculateBackroundColor: btnLightColor,
 }
 
@@ -48,6 +49,7 @@ export const lightMode = {
   whatMakesBackground: '/images/what-makes-light.svg',
   calculatorBackground: '/images/calculator-bg-light.svg',
   featuresBackground: '/images/features-bg-light.svg',
+  satellitesGradient: 'linear-gradient(180deg, #FFFFFF 48.18%, #86D4C9 103.84%)',
   backgroundColor: '#F7F9FD',
   containerColor: '#DEE7F7',
   borderColor: '#4F457C',

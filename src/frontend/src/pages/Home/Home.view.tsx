@@ -37,12 +37,11 @@ export const HomeView = () => {
         <CalculatorView />
         <FeaturesView />
         <AppFeaturesView />
-
         <SatellitesView />
-        <HighligthsView />
+        {/* <HighligthsView />
         <GovernanceView />
         <TokenomicsView />
-        {/* <IdeasView />
+         <IdeasView />
         <NewsletterView /> */}
       </HomeNoParallax>
       <Footer />
