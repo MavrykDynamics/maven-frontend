@@ -24,7 +24,6 @@ export const CalculatorCointainer = styled.div<{ theme: MavrykTheme }>`
   background-color: ${({ theme }) => theme.darkBackroundColor};
   display: grid;
   grid-template-columns: 60% 40%;
-  grid-gap: 10px;
   border-radius: 10px;
 
   @media (max-width: 1000px) {
@@ -111,7 +110,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean; theme: MavrykTheme 
       width: 20px;
       height: 20px;
       border-radius: 100%;
-      background: ${({ theme }) => theme.sliderThumbColor};
+      background: ${({ theme }) => theme.headingColor};
       cursor: pointer;
     }
   }

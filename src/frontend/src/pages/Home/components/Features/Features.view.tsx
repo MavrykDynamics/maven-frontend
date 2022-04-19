@@ -10,17 +10,23 @@ export const FeaturesView = () => {
           <FeaturesComponent>
             <img alt="feature" src="/images/money.svg" />
             <div>A Stablecoin You Control</div>
-            <p>zUSD is pegged to the dollar, giving you freedom from volatility.</p>
-          </FeaturesComponent>
-          <FeaturesComponent>
-            <img alt="feature" src="/images/piggy.svg" />
-            <div>zUSD Savings Rate</div>
-            <p>Lock your zUSD to earn the Dynamic Savings Rate.</p>
+            <p>Put up existing crypto-assets as equity for a USDM stablecoin loan, up to a 50% loan-to-value ratio.</p>
           </FeaturesComponent>
           <FeaturesComponent>
             <img alt="feature" src="/images/plant.svg" />
-            <div>Yield Farming</div>
-            <p>Stake your LP tokens to earn more MVK.</p>
+            <div>Earn With Your USDM</div>
+            <p>
+              Use your USDM to earn passive income through yield farming, position leveraging, a USDM savings account,
+              or by sending to any Tezos wallet.
+            </p>
+          </FeaturesComponent>
+          <FeaturesComponent>
+            <img alt="feature" src="/images/piggy.svg" />
+            <div>Dynamic Savings Rate</div>
+            <p>
+              Store your USDM in an interest-paying Dynamic Savings Rate (DSR) account and get paid from the on-chain
+              treasury.
+            </p>
           </FeaturesComponent>
         </FeaturesGrid>
       </FeaturesStyled>
