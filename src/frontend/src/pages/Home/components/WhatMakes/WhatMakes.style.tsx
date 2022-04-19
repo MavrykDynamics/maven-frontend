@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/macro'
 import { coralColor, subHeaderColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
+import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const WhatMakesStyled = styled.section<{ theme: MavrykTheme }>`
   background-image: url(${({ theme }) => theme.whatMakesBackground});
@@ -19,7 +20,7 @@ export const WhatMakesStyled = styled.section<{ theme: MavrykTheme }>`
   }
 `
 export const WhatMakesContainerStyled = styled.div`
-  width: 1480px;
+  width: ${CONTAINER_WIDTH};
   max-width: 100%;
   margin: 0 auto;
 `

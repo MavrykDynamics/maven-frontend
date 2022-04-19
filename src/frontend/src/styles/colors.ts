@@ -17,6 +17,9 @@ export const coralColor = '#FF8486'
 
 
 export const darkMode = {
+  whatMakesBackground: '/images/what-makes-dark.svg',
+  calculatorBackground: '/images/calculator-bg-dark.svg',
+  featuresBackground: '/images/features-bg-dark.svg',
   backgroundColor,
   containerColor: '#1C1C3F',
   borderColor: '#4F457C',
@@ -32,10 +35,14 @@ export const darkMode = {
   litepaperLinkColor: '#73d7c3',
   navColor: '#86D4C9',
   headerColor: '#fff',
-  whatMakesBackground: '/images/what-makes-dark.svg',
+  darkestBackroundColor: '#080628',
+  darkBackroundColor: '#160E3F',
 }
 
 export const lightMode = {
+  whatMakesBackground: '/images/what-makes-light.svg',
+  calculatorBackground: '/images/calculator-bg-light.svg',
+  featuresBackground: '/images/features-bg-light.svg',
   backgroundColor: '#F7F9FD',
   containerColor: '#DEE7F7',
   borderColor: '#4F457C',
@@ -51,5 +58,6 @@ export const lightMode = {
   litepaperLinkColor: '#7068AA',
   navColor: '#503EAA',
   headerColor,
-  whatMakesBackground: '/images/what-makes-light.svg',
+  darkestBackroundColor: '#ebf0ff',
+  darkBackroundColor: '#fff',
 }
