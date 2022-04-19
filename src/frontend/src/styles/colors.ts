@@ -14,6 +14,7 @@ export const btnLightColor = '#86D4C9'
 export const headerColor = '#38237C'
 export const subHeaderColor = '#8D86EB'
 export const coralColor = '#FF8486'
+export const royalColor = '#503EAA'
 
 
 export const darkMode = {
@@ -34,9 +35,13 @@ export const darkMode = {
   selectedColor: '#aea3ff3d',
   litepaperLinkColor: '#73d7c3',
   navColor: '#86D4C9',
+  inputBorderColor: royalColor,
   headerColor: '#fff',
   darkestBackroundColor: '#080628',
   darkBackroundColor: '#160E3F',
+  labelColor: '#77A4F2',
+  sliderThumbColor: subHeaderColor,
+  calculateBackroundColor: btnLightColor,
 }
 
 export const lightMode = {
@@ -57,7 +62,11 @@ export const lightMode = {
   selectedColor: '#aea3ff3d',
   litepaperLinkColor: '#7068AA',
   navColor: '#503EAA',
+  inputBorderColor: '#C0DBFF',
   headerColor,
   darkestBackroundColor: '#ebf0ff',
   darkBackroundColor: '#fff',
+  labelColor: headerColor,
+  sliderThumbColor: royalColor,
+  calculateBackroundColor: royalColor,
 }

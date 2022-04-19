@@ -115,7 +115,7 @@ export const CalculatorView = () => {
                 <p>%</p>
               </CalculatorInput>
               <CalculatorInput>
-                <div>Min 200%</div>
+                <small>Min 200%</small>
                 <input
                   type="range"
                   min="200"
@@ -126,7 +126,14 @@ export const CalculatorView = () => {
               </CalculatorInput>
             </CalculatorGrid2>
             <CalculatorGrid2>
-              <CalculatorButton onClick={() => calculate()}>Calculate</CalculatorButton>
+              <div>
+                <CalculatorButton onClick={() => calculate()}>
+                  <svg>
+                    <use xlinkHref="/icons/sprites.svg#calc" />
+                  </svg>
+                  Calculate
+                </CalculatorButton>
+              </div>
             </CalculatorGrid2>
           </div>
           <CalculatorResults>
@@ -137,8 +144,8 @@ export const CalculatorView = () => {
             <CalculatorResult>
               <div>Debt after 12 months</div>
               <p>{`$${values.debt}`}</p>
+              <CalculatorResultFee>Stability fee 2.0%</CalculatorResultFee>
             </CalculatorResult>
-            <CalculatorResultFee>Stability fee 2.0%</CalculatorResultFee>
           </CalculatorResults>
         </CalculatorCointainer>
       </CalculatorStyled>

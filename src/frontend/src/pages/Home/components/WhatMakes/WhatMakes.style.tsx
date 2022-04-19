@@ -21,6 +21,7 @@ export const WhatMakesStyled = styled.section<{ theme: MavrykTheme }>`
 `
 export const WhatMakesContainerStyled = styled.div`
   width: ${CONTAINER_WIDTH};
+  padding: 0 20px;
   max-width: 100%;
   margin: 0 auto;
 `
