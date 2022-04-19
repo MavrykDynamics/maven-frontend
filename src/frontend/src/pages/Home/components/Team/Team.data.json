@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "header": "Meet the Team",
+    "profiles": [
+      {
+        "id": 1,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      },
+      {
+        "id": 2,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      },
+      {
+        "id": 3,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      },
+      {
+        "id": 4,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      },
+      {
+        "id": 5,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      },
+      {
+        "id": 6,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      },
+      {
+        "id": 7,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      },
+      {
+        "id": 8,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "header": "Our Advisors",
+    "profiles": [
+      {
+        "id": 1,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      },
+      {
+        "id": 2,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      },
+      {
+        "id": 3,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      },
+      {
+        "id": 4,
+        "avatar": "images/team/person.jpeg",
+        "name": "Person",
+        "job": "Job"
+      }
+    ]
+  }
+]
