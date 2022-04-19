@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "img": "/images/app-features/own-loan.svg",
+    "header": "Mint Your Own Loan",
+    "text": "Mint your own loan in the form of an algorithmic stablecoin (USDM), backed against your crypto collateral. Loans can be issued against a single asset or multiple assets. No capital gains tax."
+  },
+  {
+    "id": 2,
+    "img": "/images/app-features/yield-farming.svg",
+    "header": "Yield Farming",
+    "text": "Stake your LP tokens (MVK/XTZ, MVK/USDM, and USDM/XTZ) within yield farms and earn vMVK in return."
+  },
+  {
+    "id": 3,
+    "img": "/images/app-features/staking.svg",
+    "header": "Staking",
+    "text": "Deposit liquid assets in a decentralized exchange and earn rewards for helping to promote price stability. Or, stake your MVK, delegate your votes, and earn rewards for helping to secure the network."
+  },
+  {
+    "id": 4,
+    "img": "/images/app-features/governance-delegation.svg",
+    "header": "Governance & Delegation",
+    "text": "Mavryk’s governance is completely controlled by the community through an on-chain DAO. Stake your MVK tokens and delegate to the Satellite of your choice, or run your own Satellite."
+  },
+  {
+    "id": 5,
+    "img": "/images/app-features/own-satellite.svg",
+    "header": "Run Your Own Satellite",
+    "text": "Operate a Satellite to play an active role in Mavryk’s governance and provide the platform with oracle pricing information. Get paid in vMVK and USDM."
+  },
+  {
+    "id": 6,
+    "img": "/images/app-features/decentralized-oracle.svg",
+    "header": "Decentralized Oracle",
+    "text": "Mavryk relies on Satellites to provide accurate and reliable pricing information, weighing the data with their respective stake in the system."
+  }
+]

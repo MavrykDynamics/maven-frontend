@@ -8,12 +8,14 @@ import { CalculatorView } from './components/Calculator/Calculator.view'
 import { FeaturesView } from './components/Features/Features.view'
 import { GovernanceView } from './components/Governance/Governance.view'
 import { HighligthsView } from './components/Highligths/Highligths.view'
+import { IdeasView } from './components/Ideas/Ideas.view'
 import { NewsletterView } from './components/Newsletter/Newsletter.view'
 import { ParallaxView } from './components/Parallax/Parallax.view'
 import { PartnersView } from './components/Partners/Partners.view'
 import { SatellitesView } from './components/Satellites/Satellites.view'
 import { TokenomicsView } from './components/Tokenomics/Tokenomics.view'
-import { WhatMakes } from './components/WhatMakes/WhatMakes.view'
+import { WhatMakesView } from './components/WhatMakes/WhatMakes.view'
+import { AppFeaturesView } from './components/AppFeatures/AppFeatures.view'
 import { HomeNoParallax, HomeStyled } from './Home.style'
 
 export const HomeView = () => {
@@ -31,14 +33,17 @@ export const HomeView = () => {
       <ParallaxView />
       <HomeNoParallax>
         <PartnersView />
-        <WhatMakes />
+        <WhatMakesView />
         <CalculatorView />
         <FeaturesView />
+        <AppFeaturesView />
+
         <SatellitesView />
         <HighligthsView />
         <GovernanceView />
         <TokenomicsView />
-        {/*<NewsletterView /> */}
+        {/* <IdeasView />
+        <NewsletterView /> */}
       </HomeNoParallax>
       <Footer />
     </HomeStyled>

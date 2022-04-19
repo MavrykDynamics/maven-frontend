@@ -1,13 +1,13 @@
 import * as React from 'react'
 
 import {
-  WhatMakesStyled,
-  WhatMakesArticleStyled,
   WhatMakesArticlesStyled,
+  WhatMakesArticleStyled,
   WhatMakesContainerStyled,
+  WhatMakesStyled,
 } from './WhatMakes.style'
 
-export const WhatMakes = () => {
+export const WhatMakesView = () => {
   return (
     <WhatMakesStyled>
       <WhatMakesContainerStyled>

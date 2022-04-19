@@ -6,8 +6,8 @@ import { CONTAINER_WIDTH } from '../../Home.style'
 export const FeaturesSection = styled.div<{ theme: MavrykTheme }>`
   background-color: ${({ theme }) => theme.darkestBackroundColor};
   background-image: url(${({ theme }) => theme.featuresBackground});
-  background-position: bottom center;
-  background-size: contain;
+  background-position: bottom;
+  background-size: 105%;
   background-repeat: no-repeat;
   padding-bottom: 175px;
 `
@@ -34,10 +34,7 @@ export const FeaturesComponent = styled.div<{ theme: MavrykTheme }>`
   border-radius: 10px;
   padding: 40px 30px;
 
-  > img {
-  }
-
-  > div {
+  > h3 {
     margin-top: 60px;
     font-size: 24px;
     font-weight: bold;
