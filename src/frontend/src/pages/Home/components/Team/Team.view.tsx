@@ -1,25 +1,28 @@
 import * as React from 'react'
 import { useSelector } from 'react-redux'
 
-import { TeamStyled, TeamFigure, TeamsGrid, TeamCityDecor } from './Team.style'
 import data from './Team.data.json'
+import { TeamCityDecor, TeamFigure, TeamsGrid, TeamStyled } from './Team.style'
 
 type Props = {
   name: string
   avatar: string
   job: string
+  link: string
 }
 
 const TeamFigureView = (props: Props) => {
-  const { name, avatar, job } = props
+  const { name, avatar, job, link } = props
   return (
     <TeamFigure>
-      <img src={avatar} alt={name} />
-      <h3>{name}</h3>
-      <figcaption>{job}</figcaption>
-      <svg>
-        <use xlinkHref="/icons/sprites.svg#linkedin-round" />
-      </svg>
+      <a href={link} target="_blank" rel="noreferrer">
+        <img src={avatar} alt={name} />
+        <h3>{name}</h3>
+        <figcaption>{job}</figcaption>
+        <svg>
+          <use xlinkHref="/icons/sprites.svg#linkedin-round" />
+        </svg>
+      </a>
       <TeamCityDecor />
     </TeamFigure>
   )
@@ -39,6 +42,7 @@ export const TeamView = () => {
                 name={profile.name}
                 avatar={profile.avatar}
                 job={profile.job}
+                link={profile.link}
               />
             ))}
           </TeamsGrid>

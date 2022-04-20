@@ -15,6 +15,7 @@ export const headerColor = '#38237C'
 export const subHeaderColor = '#8D86EB'
 export const coralColor = '#FF8486'
 export const titleColor = '#503EAA'
+export const labelColor = '#77A4F2'
 
 
 export const darkMode = {
@@ -41,9 +42,10 @@ export const darkMode = {
   headerColor: '#fff',
   darkestBackroundColor: '#080628',
   darkBackroundColor: '#160E3F',
-  labelColor: '#77A4F2',
+  labelColor,
   headingColor: subHeaderColor,
   calculateBackroundColor: btnLightColor,
+  linkedinLinkColor: labelColor,
 }
 
 export const lightMode = {
@@ -73,4 +75,5 @@ export const lightMode = {
   labelColor: headerColor,
   headingColor: titleColor,
   calculateBackroundColor: titleColor,
+  linkedinLinkColor: '#160E3F',
 }

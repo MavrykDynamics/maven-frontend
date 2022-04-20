@@ -7,48 +7,56 @@
         "id": 1,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       },
       {
         "id": 2,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       },
       {
         "id": 3,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       },
       {
         "id": 4,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       },
       {
         "id": 5,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       },
       {
         "id": 6,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       },
       {
         "id": 7,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       },
       {
         "id": 8,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       }
     ]
@@ -61,24 +69,28 @@
         "id": 1,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       },
       {
         "id": 2,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       },
       {
         "id": 3,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       },
       {
         "id": 4,
         "avatar": "images/team/person.jpeg",
         "name": "Person",
+        "link": "/",
         "job": "Job"
       }
     ]
