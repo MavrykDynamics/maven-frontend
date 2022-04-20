@@ -180,7 +180,7 @@ export const CalculatorButton = styled.button<{ theme: MavrykTheme }>`
   font-weight: bold;
   color: ${textColor};
   text-align: center;
-  background-color: ${({ theme }) => theme.calculateBackroundColor};
+  background-color: ${({ theme }) => theme.btnBackroundColor};
   border-radius: 10px;
   cursor: pointer;
   margin: 0;

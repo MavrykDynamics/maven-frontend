@@ -27,7 +27,10 @@ export const darkMode = {
   teamDecor2: '/images/team/team-decor-2-dark.svg',
   teamDecor3: '/images/team/team-decor-3-dark.svg',
   teamDecor4: '/images/team/team-decor-4-dark.svg',
+  subscribeBachground: '/images/subscribe-bg-dark.svg',
   satellitesGradient: 'linear-gradient(180deg, #160E3F 3.55%, #321F71 103.84%);',
+  subscribeGradient:
+    'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F 99.3%)',
   backgroundColor,
   containerColor: '#1C1C3F',
   borderColor: '#4F457C',
@@ -48,7 +51,7 @@ export const darkMode = {
   darkBackroundColor: '#160E3F',
   labelColor,
   headingColor: subHeaderColor,
-  calculateBackroundColor: btnLightColor,
+  btnBackroundColor: btnLightColor,
   linkedinLinkColor: labelColor,
 }
 
@@ -61,7 +64,9 @@ export const lightMode = {
   teamDecor2: '/images/team/team-decor-2-light.svg',
   teamDecor3: '/images/team/team-decor-3-light.svg',
   teamDecor4: '/images/team/team-decor-4-light.svg',
+  subscribeBachground: '/images/subscribe-bg-light.svg',
   satellitesGradient: 'linear-gradient(180deg, #FFFFFF 48.18%, #86D4C9 103.84%)',
+   subscribeGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
   backgroundColor: '#fff',
   containerColor: '#DEE7F7',
   borderColor: '#4F457C',
@@ -82,6 +87,6 @@ export const lightMode = {
   darkBackroundColor: '#fff',
   labelColor: headerColor,
   headingColor: titleColor,
-  calculateBackroundColor: titleColor,
+  btnBackroundColor: titleColor,
   linkedinLinkColor: '#160E3F',
 }

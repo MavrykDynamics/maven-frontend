@@ -30,6 +30,22 @@ export const PopupContainer = styled.div`
   left: 0;
   padding-top: 10px;
 `
+export const PopupNewsletter = styled.div`
+  width: 1232px;
+  height: 576px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin: auto;
+  position: relative;
+
+  h2 {
+    margin-bottom: 40px;
+  }
+
+  form {
+    margin-bottom: 170px;
+  }
+`
 
 export const PopupClose = styled.div`
   cursor: pointer;

@@ -1,10 +1,18 @@
 import * as React from 'react'
 import { useState } from 'react'
-import Lottie from 'react-lottie'
 import { useMailChimpForm } from 'use-mailchimp-form'
+import { useSelector } from 'react-redux'
 
 // prettier-ignore
-import { NewsletterAnimation, NewsletterButton, NewsletterClose, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
+import {
+  NewsletterFigure,
+  NewsletterButton,
+  NewsletterClose,
+  NewsletterForm,
+  NewsletterGrid,
+  NewsletterStatus,
+  NewsletterStyled,
+} from './Newsletter.style'
 import animationData from './ship-loop.json'
 
 type NewsLetterProps = {
@@ -12,6 +20,8 @@ type NewsLetterProps = {
 }
 
 export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
+  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
+  const frontImgUrl = darkThemeEnabled ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
   const url = 'https://Finance.us5.list-manage.com/subscribe/post?u=2c7f8eeb6244c13270dca7a76&amp;id=da98ceea07'
   const { loading, error, success, message, handleSubmit } = useMailChimpForm(url)
   //@ts-ignore
@@ -36,7 +46,6 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
 
   return (
     <NewsletterStyled id="newsletter">
-      <h1>Subscribe to Mavryk News</h1>
       {typeof closeCallback !== 'undefined' && (
         <NewsletterClose onClick={() => closeCallback()}>
           <svg>
@@ -44,10 +53,8 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
           </svg>
         </NewsletterClose>
       )}
+      <h2>Subscribe to Mavryk News</h2>
       <NewsletterGrid>
-        <NewsletterAnimation>
-          <Lottie options={shipLoopOptions} isClickToPauseDisabled={true} />
-        </NewsletterAnimation>
         <NewsletterForm
           onSubmit={(event) => {
             event.preventDefault()
@@ -90,15 +97,17 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
               })
             }
           />
-
           <NewsletterButton onClick={() => subscribe()}>Subscribe</NewsletterButton>
+          <NewsletterStatus>
+            {loading && <div className="loading">{`Submitting...`}</div>}
+            {error && <div className="error">{message}</div>}
+            {success && <div className="success">{message}</div>}
+          </NewsletterStatus>
         </NewsletterForm>
       </NewsletterGrid>
-      <NewsletterStatus>
-        {loading && <div className="loading">{`Submitting...`}</div>}
-        {error && <div className="error">{message}</div>}
-        {success && <div className="success">{message}</div>}
-      </NewsletterStatus>
+      <NewsletterFigure>
+        <img src={frontImgUrl} alt="Subscribe" />
+      </NewsletterFigure>
     </NewsletterStyled>
   )
 }

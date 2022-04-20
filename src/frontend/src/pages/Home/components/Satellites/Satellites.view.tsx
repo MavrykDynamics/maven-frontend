@@ -12,7 +12,7 @@ export const SatellitesView = () => {
   const satelliteMobileImgUrl = darkThemeEnabled
     ? '/images/satellites-mobile-dark.svg'
     : '/images/satellites-mobile-light.svg'
-  const satelliteFrontImgUrl = darkThemeEnabled ? '/images/satellites-bg-dark.svg' : '/images/satellites-bg-light.svg'
+  const satelliteFrontImgUrl = darkThemeEnabled ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
   return (
     <SatellitesStyled id="satellites">
       <h2>Satellites: The Key to Mavryk’s Governance Structure</h2>

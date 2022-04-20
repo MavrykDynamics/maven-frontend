@@ -2,132 +2,117 @@ import styled from 'styled-components/macro'
 import { Page, primaryColor, secondaryColor, textColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
-export const NewsletterStyled = styled(Page)<{theme: MavrykTheme}>`
-  background: url('./images/newsletter-bg.svg'), ${({theme}) => theme.containerColor}; //linear-gradient(0deg, ${({theme}) => theme.borderColor} 0%, ${({theme}) => theme.secondaryColor} 100%);
+export const NewsletterStyled = styled.section<{ theme: MavrykTheme }>`
+  background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.subscribeGradient};
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: fill;
-  border-radius: 10px;
-  padding: 60px;
   text-align: center;
-  margin: 0px auto 100px auto;
-  
-  @media (max-width: 700px) {
-    padding: 20px;
-    margin: 100px auto 100px auto;
-  }
+  position: relative;
 
-  > h1 {
-    color: ${({theme}) => theme.textColor};
-    margin: auto;
-
-    @media (max-width: 700px) {
-      font-size: 20px;
-    }
+  h2 {
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 50px;
+    padding-top: 80px;
+    margin-bottom: 60px;
   }
 `
 
 export const NewsletterGrid = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  grid-gap: 60px;
+  display: flex;
+  justify-content: center;
+`
 
-  > img {
+export const NewsletterFigure = styled.figure`
+  position: absolute;
+  margin: 0;
+  left: 0;
+  bottom: -8px;
+  z-index: 2;
+  width: 100%;
+
+  img {
     width: 100%;
-    padding: 30px;
-  }
-
-  @media (max-width: 700px) {
-    grid-template-columns: auto;
-    grid-gap: 0px;
+    transform: scaleX(-1);
   }
 `
 
-export const NewsletterForm = styled.form<{theme: MavrykTheme}>`
-  margin-top: 60px;
-
-  @media (max-width: 700px) {
-    margin-top: 40px;
-  }
+export const NewsletterForm = styled.form<{ theme: MavrykTheme }>`
+  width: 694px;
+  max-width: 100%;
+  margin-bottom: 250px;
+  position: relative;
+  z-index: 4;
 
   input {
-    background: ${({theme}) => theme.backgroundColor}75;
-    border-radius: 10px;
+    background: ${({ theme }) => theme.backgroundColor}75;
+    border-radius: 15px;
     border: none;
-    height: 50px;
-    line-height: 50px;
+    line-height: 60px;
     width: 100%;
     padding: 0 0 0 20px;
-    margin: 0 0 30px 0;
+    margin: 0 0 32px 0;
     box-sizing: border-box;
-    color: ${({theme}) => theme.textColor};
-    font-size: 16px;
-    font-weight: bold;
+    color: ${({ theme }) => theme.textColor};
+    font-weight: 400;
+    font-size: 14px;
 
     @media (max-width: 700px) {
       margin: 0 0 20px 0;
     }
 
     &::placeholder {
-      font-size: 16px;
-      color: ${({theme}) => theme.placeholderColor}80;
+      font-weight: 400;
+      font-size: 14px;
+      color: ${({ theme }) => theme.placeholderColor}80;
     }
   }
 `
 
-export const NewsletterButton = styled.button<{theme: MavrykTheme}>`
-  height: 50px;
-  line-height: 50px;
+export const NewsletterButton = styled.button<{ theme: MavrykTheme }>`
+  line-height: 32px;
   font-size: 16px;
   font-weight: bold;
   color: ${textColor};
   text-align: center;
-  background: linear-gradient(to right, ${primaryColor}, ${primaryColor}, ${secondaryColor}, ${primaryColor});
-  background-size: 300% 100%;
+  background: ${({ theme }) => theme.btnBackroundColor};
+  color: ${({ theme }) => theme.darkestBackroundColor};
   border-radius: 25px;
   cursor: pointer;
   width: 200px;
-  float: right;
+  display: inline-block;
+  margin-top: 14px;
   border: none;
-
-  &:hover {
-    background-position: -100% 0;
-  }
-  moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
 `
 
-export const NewsletterStatus = styled.div<{theme: MavrykTheme}>`
-  float: right;
-  line-height: 60px;
-  width: 50%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+export const NewsletterStatus = styled.div<{ theme: MavrykTheme }>`
+  position: relative;
+  top: 20px;
 
   .loading {
-    color: ${({theme}) => theme.backgroundColor};
+    color: ${({ theme }) => theme.backgroundColor};
   }
 
   .success {
-    color: ${({theme}) => theme.upColor};
+    color: ${({ theme }) => theme.upColor};
   }
 
   .error {
-    color: ${({theme}) => theme.downColor};
+    color: ${({ theme }) => theme.downColor};
   }
 `
 
 export const NewsletterClose = styled.div`
   cursor: pointer;
   float: right;
+  margin-top: 16px;
+  margin-right: 16px;
 
   svg {
     width: 24px;
     height: 24px;
-    stroke: ${({theme}) => theme.textColor};
+    stroke: ${({ theme }) => theme.textColor};
   }
 `
 
