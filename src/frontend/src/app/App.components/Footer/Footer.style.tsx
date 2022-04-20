@@ -73,9 +73,6 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
     @media (max-width: 700px) {
       margin-right: 5px;
       margin-left: 5px;
-    }
-
-    @media (max-width: 374px) {
       width: 50px;
       height: 50px;
     }
@@ -85,7 +82,7 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
     height: 30px;
     fill: ${({ theme }) => theme.socialColor};
 
-    @media (max-width: 374px) {
+    @media (max-width: 700px) {
       height: 25px;
     }
   }

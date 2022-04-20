@@ -33,6 +33,9 @@ export const PopupContainer = styled.div`
 export const PopupNewsletter = styled.div`
   width: 1232px;
   height: 576px;
+  margin: 16px;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 15px;
   overflow: hidden;
   margin: auto;

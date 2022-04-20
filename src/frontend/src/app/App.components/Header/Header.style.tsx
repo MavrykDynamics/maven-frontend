@@ -55,7 +55,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
     height: auto;
 
     a {
-      margin-top: 4px;
+      margin-top: -3px;
     }
 
     a:nth-of-type(1) {
@@ -71,16 +71,21 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
     label {
       margin: 0;
       margin-left: 8px;
+      margin-top: -7px;
     }
   }
 
   @media (max-width: 500px) {
     max-width: 100%;
-    margin-top: 16px;
+    margin-top: 24px;
 
     a {
       margin-top: 6px;
       font-size: 14px;
+    }
+
+    label {
+      margin-top: 0px;
     }
   }
 `
@@ -97,6 +102,7 @@ export const HeaderLogo = styled.div<{ theme: MavrykTheme; showBg: boolean; src:
     height: 40px;
     background-size: contain;
     width: 200px;
+    margin-top: -11px;
   }
 
   @media (max-width: 500px) {

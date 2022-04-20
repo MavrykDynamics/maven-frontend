@@ -6,9 +6,13 @@ export const NewsletterStyled = styled.section<{ theme: MavrykTheme }>`
   background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.subscribeGradient};
   background-repeat: no-repeat;
   background-position: bottom right;
-  background-size: fill;
+  background-size: contain;
   text-align: center;
   position: relative;
+
+  @media (max-width: 1000px) {
+    padding: 0 16px;
+  }
 
   h2 {
     font-weight: 700;
@@ -16,6 +20,17 @@ export const NewsletterStyled = styled.section<{ theme: MavrykTheme }>`
     line-height: 50px;
     padding-top: 80px;
     margin-bottom: 60px;
+
+    @media (max-width: 1000px) {
+      font-size: 36px;
+      line-height: 1.5;
+      margin-bottom: 32px;
+      padding-top: 40px;
+    }
+
+    @media (max-width: 700px) {
+      font-size: 24px;
+    }
   }
 `
 
@@ -45,6 +60,10 @@ export const NewsletterForm = styled.form<{ theme: MavrykTheme }>`
   position: relative;
   z-index: 4;
 
+  @media (max-width: 700px) {
+    margin-bottom: 150px;
+  }
+
   input {
     background: ${({ theme }) => theme.backgroundColor}75;
     border-radius: 15px;
@@ -60,6 +79,7 @@ export const NewsletterForm = styled.form<{ theme: MavrykTheme }>`
 
     @media (max-width: 700px) {
       margin: 0 0 20px 0;
+      line-height: 50px;
     }
 
     &::placeholder {
@@ -108,6 +128,10 @@ export const NewsletterClose = styled.div`
   float: right;
   margin-top: 16px;
   margin-right: 16px;
+
+  @media (max-width: 1000px) {
+    margin-right: 0;
+  }
 
   svg {
     width: 24px;

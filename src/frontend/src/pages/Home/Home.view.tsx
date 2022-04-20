@@ -30,18 +30,18 @@ export const HomeView = () => {
   return (
     <HomeStyled onScroll={onScroll}>
       <ParallaxView />
-      {/* <HomeNoParallax>
-        <PartnersView />
+      <HomeNoParallax>
+        {/* <PartnersView />
         <WhatMakesView />
         <CalculatorView />
         <FeaturesView />
         <AppFeaturesView />
         <SatellitesView />
         <TokenomicsView />
-        <TeamView />
+        <TeamView /> */}
         <NewsletterView />
         <IdeasView />
-      </HomeNoParallax> */}
+      </HomeNoParallax>
       <Footer />
     </HomeStyled>
   )
