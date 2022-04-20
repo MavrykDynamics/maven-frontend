@@ -53,6 +53,8 @@ export const darkMode = {
   headingColor: subHeaderColor,
   btnBackroundColor: btnLightColor,
   linkedinLinkColor: labelColor,
+  socialBackroundColor: '#503EAA',
+  socialColor: '#C0DBFF',
 }
 
 export const lightMode = {
@@ -66,7 +68,7 @@ export const lightMode = {
   teamDecor4: '/images/team/team-decor-4-light.svg',
   subscribeBachground: '/images/subscribe-bg-light.svg',
   satellitesGradient: 'linear-gradient(180deg, #FFFFFF 48.18%, #86D4C9 103.84%)',
-   subscribeGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
+  subscribeGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
   backgroundColor: '#fff',
   containerColor: '#DEE7F7',
   borderColor: '#4F457C',
@@ -89,4 +91,6 @@ export const lightMode = {
   headingColor: titleColor,
   btnBackroundColor: titleColor,
   linkedinLinkColor: '#160E3F',
+  socialBackroundColor: '#F7F9FD',
+  socialColor: headerColor,
 }

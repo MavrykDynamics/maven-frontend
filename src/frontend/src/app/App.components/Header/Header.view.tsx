@@ -42,7 +42,10 @@ export const HeaderView = () => {
     <HeaderStyled showBg={scrollPositionMobile > 800 || scrollPositionDesktop > 900 || isLitepaperPage}>
       <HeaderGrid showBg={scrollPositionMobile > 800 || scrollPositionDesktop > 900 || isLitepaperPage}>
         <Link to="/">
-          <HeaderLogo src={logoUrl} />
+          <HeaderLogo
+            showBg={scrollPositionMobile > 800 || scrollPositionDesktop > 900 || isLitepaperPage}
+            src={logoUrl}
+          />
         </Link>
 
         <div />
@@ -54,45 +57,37 @@ export const HeaderView = () => {
           scroll={(el) =>
             window.scrollTo({
               behavior: 'smooth',
-              top: el.getBoundingClientRect().top + window.pageYOffset - 100,
+              top: el.getBoundingClientRect().top + window.pageYOffset - 180,
             })
           }
         >
-          Calculator
+          Loan Calculator
         </HashLink>
         <HashLink
-          to="/#satellites"
+          to="/#features"
           scroll={(el) =>
             window.scrollTo({
               behavior: 'smooth',
-              top: el.getBoundingClientRect().top + window.pageYOffset,
+              top: el.getBoundingClientRect().top + window.pageYOffset - 140,
             })
           }
         >
-          Satellites
-        </HashLink>
-        <HashLink
-          to="/#highlights"
-          scroll={(el) =>
-            window.scrollTo({
-              behavior: 'smooth',
-              top: el.getBoundingClientRect().top + window.pageYOffset,
-            })
-          }
-        >
-          Highlights
+          Features
         </HashLink>
         <HashLink
           to="/#tokenomics"
           scroll={(el) =>
             window.scrollTo({
               behavior: 'smooth',
-              top: el.getBoundingClientRect().top + window.pageYOffset - 100,
+              top: el.getBoundingClientRect().top + window.pageYOffset - 120,
             })
           }
         >
           Tokenomics
         </HashLink>
+        <a href="https://blogs.mavryk.finance/" target="_blank" rel="noreferrer">
+          Blog
+        </a>
         <label>
           <Toggle
             //defaultChecked={themeMode}

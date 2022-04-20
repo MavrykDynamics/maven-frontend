@@ -6,7 +6,7 @@ export const AppFeaturesView = () => {
   if (!data.length) return null
 
   return (
-    <AppFeaturesSection>
+    <AppFeaturesSection id="features">
       <h2>App Features</h2>
       <AppFeaturesList>
         {data.map((item) => (

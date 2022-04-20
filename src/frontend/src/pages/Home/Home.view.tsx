@@ -1,13 +1,11 @@
-import { scroll } from 'actions'
-import { Footer } from 'app/App.components/Footer/Footer.controller'
 import * as React from 'react'
+import { scroll } from 'actions'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
+import { Footer } from 'app/App.components/Footer/Footer.controller'
 import { CalculatorView } from './components/Calculator/Calculator.view'
 import { FeaturesView } from './components/Features/Features.view'
-import { GovernanceView } from './components/Governance/Governance.view'
-import { HighligthsView } from './components/Highligths/Highligths.view'
 import { IdeasView } from './components/Ideas/Ideas.view'
 import { NewsletterView } from './components/Newsletter/Newsletter.view'
 import { ParallaxView } from './components/Parallax/Parallax.view'
@@ -42,8 +40,7 @@ export const HomeView = () => {
         <TokenomicsView />
         <TeamView />
         <NewsletterView />
-        {/* <HighligthsView />
-        <GovernanceView />
+        {/*
          <IdeasView />
          */}
       </HomeNoParallax>

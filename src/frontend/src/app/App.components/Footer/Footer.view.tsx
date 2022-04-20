@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux'
 import { FooterBottom, FooterContainer, FooterDescription, FooterLinks, FooterLogo, FooterSocials, FooterStyled, FooterTop } from "./Footer.style";
 
 export const FooterView = () => {
-  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled);
-  const logoUrl = darkThemeEnabled ? "/logo-dark.svg" : "/logo-light.svg";
+  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
+  const logoUrl = darkThemeEnabled ? '/logo-dark.svg' : '/logo-light.svg'
 
   return (
     <FooterStyled id="footer">
@@ -17,8 +17,8 @@ export const FooterView = () => {
               <FooterLogo alt="logo" src={logoUrl} />
             </Link>
             <FooterDescription>
-              Mavryk is a decentralized finance ecosystem designed to allow users to borrow and earn, to unlock the
-              world from legacy financial systems.
+              Mavryk Finance is a decentralized finance ecosystem designed to allow users to borrow and earn, to unlock
+              the world from legacy financial systems.
             </FooterDescription>
           </div>
 
@@ -51,7 +51,7 @@ export const FooterView = () => {
           </FooterSocials>
         </FooterTop>
         <FooterBottom>
-          <div>© Mavryk. 2021</div>
+          <div>© Mavryk. {new Date().getFullYear()}</div>
           <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
           </FooterLinks>
