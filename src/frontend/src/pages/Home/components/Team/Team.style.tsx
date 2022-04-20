@@ -28,11 +28,37 @@ export const TeamsGrid = styled.div<{ theme: MavrykTheme }>`
 
 export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
   margin: 0;
-  background: ${({ theme }) => theme.darkestBackroundColor};
+  background-color: ${({ theme }) => theme.darkestBackroundColor};
   min-height: 310px;
   position: relative;
   border-radius: 15px;
   overflow: hidden;
+  background-repeat: no-repeat;
+
+  &:nth-of-type(1),
+  &:nth-of-type(n + 4) {
+    background-image: url(${({ theme }) => theme.teamDecor1});
+    background-position-y: 16px;
+  }
+
+  &:nth-of-type(2),
+  &:nth-of-type(2n + 4) {
+    background-image: url(${({ theme }) => theme.teamDecor2});
+    background-position-y: 40px;
+    background-position-x: center;
+  }
+
+  &:nth-of-type(3),
+  &:nth-of-type(3n + 4) {
+    background-image: url(${({ theme }) => theme.teamDecor3});
+    background-position-y: bottom;
+    background-position-x: 9px;
+  }
+
+  &:nth-of-type(4n) {
+    background-image: url(${({ theme }) => theme.teamDecor4});
+    background-position-y: 16px;
+  }
 
   img {
     width: 150px;

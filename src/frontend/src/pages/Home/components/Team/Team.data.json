@@ -5,52 +5,52 @@
     "profiles": [
       {
         "id": 1,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Alex-Davis.jpeg",
+        "name": "Alex Davis",
+        "link": "https://www.linkedin.com/in/alex-davis-tezos/",
+        "job": "Founder"
       },
       {
         "id": 2,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Tim-Ong.jpeg",
+        "name": "Tim Ong",
+        "link": "https://www.linkedin.com/in/timothy-ong-ty/",
+        "job": "Senior Blockchain Developer"
       },
       {
         "id": 3,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Sam-Morrow.jpeg",
+        "name": "Sam Morrow",
+        "link": "https://www.linkedin.com/in/morrow-sam/",
+        "job": "Software Engineer"
       },
       {
         "id": 4,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Tristan-Allaire.jpeg",
+        "name": "Tristan Allaire",
+        "link": "https://www.linkedin.com/in/tristan-allaire-1239b3105/",
+        "job": "Blockchain Developer"
       },
       {
         "id": 5,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Adam-Shinder.jpeg",
+        "name": "Adam Shinder",
+        "link": "https://www.linkedin.com/in/adshinder/",
+        "job": "Content"
       },
       {
         "id": 6,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Sylvain-Bossut.jpeg",
+        "name": "Sylvain Bossut",
+        "link": "https://www.linkedin.com/in/sylvain-bossut-54a44b102/",
+        "job": "Senior Blockchain Developer - Neofacto"
       },
       {
         "id": 7,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Jacques-Weber.jpeg",
+        "name": "Jacques Weber",
+        "link": "https://www.linkedin.com/in/jacques-weber/",
+        "job": "Senior Blockchain Developer - Neofacto"
       },
       {
         "id": 8,
@@ -67,31 +67,31 @@
     "profiles": [
       {
         "id": 1,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Josef-Holm.jpeg",
+        "name": "Josef Holm",
+        "link": "https://www.linkedin.com/in/josefholm/",
+        "job": "Co-Founder Draper Goren Holm"
       },
       {
         "id": 2,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Alon-Goren.jpeg",
+        "name": "Alon Goren",
+        "link": "https://www.linkedin.com/in/alongoren/",
+        "job": "Co-Founder Draper Goren Holm"
       },
       {
         "id": 3,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Elie-Terdjman.jpeg",
+        "name": "Elie Terdjman",
+        "link": "https://www.linkedin.com/in/elie-terdjman-85242836/",
+        "job": "Founder Tezos Israel"
       },
       {
         "id": 4,
-        "avatar": "images/team/person.jpeg",
-        "name": "Person",
-        "link": "/",
-        "job": "Job"
+        "avatar": "images/team/Aylon-Morley.jpeg",
+        "name": "Aylon Morley",
+        "link": "https://www.linkedin.com/in/aylonmorley/",
+        "job": "Blockchain Alpha"
       }
     ]
   }
