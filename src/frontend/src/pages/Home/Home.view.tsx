@@ -30,7 +30,7 @@ export const HomeView = () => {
   return (
     <HomeStyled onScroll={onScroll}>
       <ParallaxView />
-      <HomeNoParallax>
+      {/* <HomeNoParallax>
         <PartnersView />
         <WhatMakesView />
         <CalculatorView />
@@ -40,10 +40,8 @@ export const HomeView = () => {
         <TokenomicsView />
         <TeamView />
         <NewsletterView />
-        {/*
-         <IdeasView />
-         */}
-      </HomeNoParallax>
+        <IdeasView />
+      </HomeNoParallax> */}
       <Footer />
     </HomeStyled>
   )

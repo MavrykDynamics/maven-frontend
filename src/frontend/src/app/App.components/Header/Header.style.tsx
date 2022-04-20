@@ -8,10 +8,13 @@ export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   position: fixed;
   top: 0;
   z-index: 20;
-
   background-color: ${(props) => (props.showBg ? ({ theme }) => theme.darkestBackroundColor : '#FFFFFF00')};
   will-change: background-color;
   transition: background-color 200ms ease-in-out;
+
+  @media (max-width: 1000px) {
+    height: 70px;
+  }
 `
 
 export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
@@ -48,13 +51,36 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   @media (max-width: 1000px) {
     padding: 0 10px;
     max-width: calc(100vw - 20px);
-    grid-template-columns: 170px auto 100px 50px;
+    display: flex;
+    height: auto;
+
+    a {
+      margin-top: 4px;
+    }
+
+    a:nth-of-type(1) {
+      margin-right: auto;
+    }
 
     a:nth-child(4),
     a:nth-child(5),
-    a:nth-child(6),
-    a:nth-child(7) {
+    a:nth-child(6) {
       display: none;
+    }
+
+    label {
+      margin: 0;
+      margin-left: 8px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    max-width: 100%;
+    margin-top: 16px;
+
+    a {
+      margin-top: 6px;
+      font-size: 14px;
     }
   }
 `
@@ -66,6 +92,23 @@ export const HeaderLogo = styled.div<{ theme: MavrykTheme; showBg: boolean; src:
   z-index: 1;
   width: 276px;
   transition: all 0.25s linear;
+
+  @media (max-width: 1000px) {
+    height: 40px;
+    background-size: contain;
+    width: 200px;
+  }
+
+  @media (max-width: 500px) {
+    height: 40px;
+    width: 160px;
+  }
+
+  @media (max-width: 374px) {
+    height: 23px;
+    width: 106px;
+    margin-top: -5px;
+  }
 `
 
 export const HeaderButton = styled.div<{ theme: MavrykTheme }>`

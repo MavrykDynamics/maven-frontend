@@ -19,5 +19,5 @@ export const IdeasView = () => {
   useEffect(() => {
     //handleFetchData()
   }, [])
-  return <IdeasSection>IdeasSection</IdeasSection>
+  return null
 }

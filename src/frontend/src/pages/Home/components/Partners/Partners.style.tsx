@@ -1,9 +1,13 @@
 import styled from 'styled-components/macro'
 import { subHeaderColor } from 'styles/colors'
-import { Page } from 'styles/components'
+import { CONTAINER_WIDTH } from '../../Home.style'
 
-export const PartnersStyled = styled(Page)`
+export const PartnersStyled = styled.section`
   margin-top: 120px;
+  width: ${CONTAINER_WIDTH};
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 
   h2 {
     text-align: center;

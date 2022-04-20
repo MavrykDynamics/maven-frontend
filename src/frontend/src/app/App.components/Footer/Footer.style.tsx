@@ -7,10 +7,20 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
   background-color: ${({ theme }) => theme.darkestBackroundColor};
   color: ${({ theme }) => theme.textColor};
   margin-top: 20px;
+  font-weight: 400;
+  font-size: 18px;
+
+  @media (max-width: 1000px) {
+    font-size: 16px;
+  }
 `
 
 export const FooterContainer = styled.div`
   padding: 50px 20px;
+
+  @media (max-width: 700px) {
+    padding: 32px 16px;
+  }
 `
 
 export const FooterTop = styled.div`
@@ -24,6 +34,7 @@ export const FooterTop = styled.div`
 
   @media (max-width: 700px) {
     flex-direction: column;
+    text-align: center;
   }
 `
 export const FooterBottom = styled.div`
@@ -33,8 +44,6 @@ export const FooterBottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 400;
-  font-size: 18px;
 
   @media (max-width: 700px) {
     justify-content: space-evenly;
@@ -47,9 +56,11 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
   margin-left: auto;
   margin-bottom: 16px;
 
+  @media (max-width: 700px) {
+    margin-right: auto;
+  }
+
   a {
-    width: 60px;
-    height: 60px;
     width: 60px;
     height: 60px;
     display: flex;
@@ -58,11 +69,25 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
     align-items: center;
     border-radius: 50%;
     background-color: ${({ theme }) => theme.socialBackroundColor};
+
+    @media (max-width: 700px) {
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+
+    @media (max-width: 374px) {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   svg {
     height: 30px;
     fill: ${({ theme }) => theme.socialColor};
+
+    @media (max-width: 374px) {
+      height: 25px;
+    }
   }
 `
 
@@ -70,6 +95,11 @@ export const FooterLogo = styled.img`
   margin-top: -3px;
   z-index: 1;
   width: 270px;
+
+  @media (max-width: 700px) {
+    margin-top: 0;
+    width: 200px;
+  }
 `
 
 export const FooterButton = styled.div<{ theme: MavrykTheme }>`
@@ -87,9 +117,14 @@ export const FooterDescription = styled.div`
   margin: 10px 0;
   max-width: 665px;
   font-weight: 400;
-  font-size: 18px;
   line-height: 20px;
   margin-top: 16px;
+  padding-right: 32px;
+
+  @media (max-width: 700px) {
+    margin-bottom: 20px;
+    padding-right: 0;
+  }
 `
 
 export const FooterLinks = styled.div<{ theme: MavrykTheme }>`

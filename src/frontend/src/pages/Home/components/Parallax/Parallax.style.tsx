@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 
 export const ParallaxStyled = styled.div`
+  overflow: hidden;
 `
 
 export const ParallaxDesktop = styled.div`
@@ -21,14 +22,14 @@ export const ParallaxGroup = styled.div`
   }
 `
 
-export const ParallaxLayer = styled.div<{ img: string, zIndex: number, translateZ: string, scale: number }>`
+export const ParallaxLayer = styled.div<{ img: string; zIndex: number; translateZ: string; scale: number }>`
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("${props => props.img || ""}") no-repeat center;
+  background: url('${(props) => props.img || ''}') no-repeat center;
   background-size: cover;
-  transform: translateZ(${props => props.translateZ || "0px"}) scale(${props => props.scale || "0"});
-  z-index: ${props => props.zIndex || "0"};
+  transform: translateZ(${(props) => props.translateZ || '0px'}) scale(${(props) => props.scale || '0'});
+  z-index: ${(props) => props.zIndex || '0'};
 `

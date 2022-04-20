@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/macro'
-import { primaryColor, secondaryColor, subTextColor, btnLightColor, headerColor } from 'styles'
+import { secondaryColor, subTextColor, btnLightColor, headerColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const JumbotronStyled = styled.div`
@@ -11,12 +11,16 @@ export const JumbotronStyled = styled.div`
 
   @media (max-width: 1000px) {
     background-position: top 0 right -300px;
-    padding: 104px 0px 30px 0px;
+    padding: 180px 0px 30px 0px;
   }
 
   @media (max-width: 700px) {
     background-position: top -10px right -80px;
     background-size: 90% auto;
+  }
+
+  @media (max-width: 500px) {
+    padding-top: 120px;
   }
 `
 
@@ -74,27 +78,15 @@ export const JubontronContainer = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 480px;
-
-  /*@media (max-width: 1240px) {
-    margin: 0 45% 0 0;
-  }
-
-  @media (max-width: 1000px) {
-    margin: 0 30% 0 0;
-  }
-
-  @media (max-width: 700px) {
-    margin: 0 3 0% 0 0;
-  }*/
 `
 
 export const JumbotronButtons = styled.div`
   display: flex;
   grid-gap: 40px;
 
-  /*@media (max-width: 700px) {
-    grid-template-columns: 150px 150px;
-  }*/
+  @media (max-width: 500px) {
+    grid-gap: 20px;
+  }
 `
 
 export const JumbotronButton = styled.div<{ secondary?: boolean }>`
@@ -113,6 +105,10 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
   background-size: 300% 100%;
   padding: 0 32px;
 
+  @media (max-width: 374px) {
+    padding: 0 20px;
+  }
+
   &:hover {
     background-position: -100% 0;
   }
@@ -127,13 +123,8 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
 
 export const JumbotronSocials = styled.div<{ theme: MavrykTheme }>`
   margin: 50px 0 150px 0;
-  display: grid;
-  grid-template-columns: 24px 24px 24px 24px 24px;
-  grid-gap: 40px;
 
-  svg {
-    width: 24px;
-    height: 24px;
-    fill: ${secondaryColor};
+  @media (max-width: 1000px) {
+    display: none;
   }
 `

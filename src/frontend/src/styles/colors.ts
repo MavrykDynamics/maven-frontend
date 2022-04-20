@@ -72,7 +72,7 @@ export const lightMode = {
   backgroundColor: '#fff',
   containerColor: '#DEE7F7',
   borderColor: '#4F457C',
-  textColor: '#2B2B60',
+  textColor: '#080628',
   subTextColor: '#29264C',
   backgroundTextColor: '#2B2B60',
   placeholderColor: '#7068AA',
