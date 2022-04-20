@@ -19,7 +19,11 @@ export const PartnersStyled = styled.section`
 
   @media (max-width: 1000px) {
     margin-top: 0px;
-    margin-bottom: 50px;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 700px) {
+    margin-bottom: 0;
   }
 `
 
@@ -73,7 +77,7 @@ export const PartnersGrid = styled.div`
 
   @media (max-width: 1240px) {
     grid-template-columns: repeat(15, 1fr);
-    grid-gap: 40px;
+    grid-gap: 16px;
 
     > a:nth-child(6),
     a:nth-child(7),
@@ -93,8 +97,6 @@ export const PartnersGrid = styled.div`
   }
 
   @media (max-width: 1000px) {
-    grid-gap: 20px;
-
     grid-template-columns: repeat(15, 1fr);
 
     > a:nth-child(6),
