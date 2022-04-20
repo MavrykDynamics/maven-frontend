@@ -17,6 +17,17 @@ export const CalculatorStyled = styled(Page)`
     font-size: 50px;
     line-height: 50px;
     margin-bottom: 60px;
+
+    @media (max-width: 1000px) {
+      font-size: 36px;
+      line-height: 1.5;
+      margin-bottom: 32px;
+      padding-top: 40px;
+    }
+
+    @media (max-width: 700px) {
+      font-size: 24px;
+    }
   }
 `
 
@@ -39,6 +50,7 @@ export const CalculatorGrid = styled.div`
 
   @media (max-width: 1000px) {
     grid-template-columns: auto;
+    padding-top: 50px;
   }
 `
 
@@ -137,7 +149,12 @@ export const CalculatorResults = styled.div<{ theme: MavrykTheme }>`
   flex-direction: column;
   justify-content: center;
 
+  @media (max-width: 1480px) {
+    background-size: cover;
+  }
+
   @media (max-width: 1000px) {
+    flex-direction: row;
     border-radius: 0 0 10px 10px;
     background: url('./images/parallax/layer2.svg'),
       linear-gradient(
@@ -146,12 +163,23 @@ export const CalculatorResults = styled.div<{ theme: MavrykTheme }>`
         ${({ theme }) => theme.backgroundColor} 100%
       );
   }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 `
 
 export const CalculatorResult = styled.div<{ theme: MavrykTheme }>`
   margin-top: 0;
   margin-bottom: 28px;
   color: ${({ theme }) => theme.headerColor};
+
+  @media (max-width: 1000px) {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    margin-top: 16px;
+  }
 
   > div {
     font-size: 11px;
