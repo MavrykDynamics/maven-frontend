@@ -1,8 +1,11 @@
 import * as React from 'react'
-import { useSelector } from 'react-redux'
 
+// hooks
+import useMediaQuery from '../../../../hooks/useMediaQuery'
+
+import Carousel from '../../../../app/App.components/Carousel/Carousel.view'
 import data from './Team.data.json'
-import { TeamCityDecor, TeamFigure, TeamsGrid, TeamStyled } from './Team.style'
+import { TeamCityDecor, TeamFigure, TeamsGrid, TeamStyled, TeamCarouselWrap } from './Team.style'
 
 type Props = {
   name: string
@@ -29,7 +32,34 @@ const TeamFigureView = (props: Props) => {
 }
 
 export const TeamView = () => {
+  const isMobile = useMediaQuery('(max-width: 700px)')
+
   if (!data.length) return null
+
+  if (isMobile)
+    return (
+      <TeamStyled>
+        {data.map((item) => (
+          <article key={item.id}>
+            <h2>{item.header}</h2>
+            <TeamCarouselWrap>
+              <Carousel>
+                {item.profiles.map((profile) => (
+                  <TeamFigureView
+                    key={`${item.id}-${profile.id}`}
+                    name={profile.name}
+                    avatar={profile.avatar}
+                    job={profile.job}
+                    link={profile.link}
+                  />
+                ))}
+              </Carousel>
+            </TeamCarouselWrap>
+          </article>
+        ))}
+      </TeamStyled>
+    )
+
   return (
     <TeamStyled>
       {data.map((item) => (

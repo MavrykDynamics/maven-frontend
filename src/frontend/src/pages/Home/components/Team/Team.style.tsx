@@ -4,17 +4,38 @@ import { MavrykTheme } from 'utils/interfaces'
 import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const TeamStyled = styled.section<{ theme: MavrykTheme }>`
+  --embla-button-bg: ${({ theme }) => theme.darkestBackroundColor}
   width: ${CONTAINER_WIDTH};
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
+
+  @media (max-width: 700px) {
+    --embla-button-size: 40px;
+    --embla-button-indent: -50px;
+  }
+
+  @media (max-width: 700px) {
+    --embla-button-indent: -40px;
+  }
 
   h2 {
     font-weight: 700;
     font-size: 50px;
     line-height: 50px;
     margin-bottom: 158px;
-    color: ${({ theme }) => theme.headerColor};
+    color: ${({ theme }) => theme.headerSectionsColor};
+
+    @media (max-width: 1000px) {
+      font-size: 36px;
+      line-height: 1.5;
+      margin-bottom: 32px;
+      padding-top: 40px;
+    }
+
+    @media (max-width: 700px) {
+      font-size: 24px;
+    }
   }
 `
 
@@ -24,6 +45,20 @@ export const TeamsGrid = styled.div<{ theme: MavrykTheme }>`
   justify-content: center;
   gap: 60px;
   margin-bottom: 145px;
+
+  @media (max-width: ${CONTAINER_WIDTH}) {
+    gap: 30px;
+  }
+
+  @media (max-width: 1250px) {
+    grid-template-columns: repeat(3, 280px);
+    gap: 60px;
+  }
+
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(2, 280px);
+    margin-bottom: 32px;
+  }
 `
 
 export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
@@ -34,6 +69,8 @@ export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
   border-radius: 15px;
   overflow: hidden;
   background-repeat: no-repeat;
+  min-width: 100%;
+  margin: 0 8px;
 
   &:nth-of-type(1),
   &:nth-of-type(n + 4) {
@@ -82,13 +119,22 @@ export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
     line-height: 30px;
     margin-bottom: 10px;
     color: ${({ theme }) => theme.headerColor};
+
+    @media (max-width: 500px) {
+      font-size: 24px;
+    }
   }
 
   figcaption {
     font-weight: 600;
     font-size: 20px;
     line-height: 20px;
+    padding: 0 16px;
     color: ${({ theme }) => theme.headerColor};
+
+    @media (max-width: 500px) {
+      font-size: 18px;
+    }
   }
 
   svg {
@@ -110,4 +156,10 @@ export const TeamCityDecor = styled.figure<{ theme: MavrykTheme }>`
   bottom: -88px;
   margin: 0;
   left: 0;
+`
+
+export const TeamCarouselWrap = styled.div<{ theme: MavrykTheme }>`
+  width: 80%;
+  margin: auto;
+  margin-bottom: 32px;
 `
