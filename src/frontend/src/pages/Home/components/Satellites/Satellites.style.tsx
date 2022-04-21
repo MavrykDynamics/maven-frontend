@@ -39,6 +39,7 @@ export const SatellitesStyled = styled.section<{ theme: MavrykTheme }>`
     @media (max-width: 1000px) {
       font-size: 15px;
       line-height: 1.5;
+      margin-bottom: 32px;
     }
   }
 `
@@ -78,6 +79,7 @@ export const SatellitesImage = styled.figure<{ src: string; srcMobile: string }>
     height: 300px;
     background-size: contain;
     margin-top: 64px;
+    margin-bottom: -32px;
   }
 
   @media (max-width: 374px) {
