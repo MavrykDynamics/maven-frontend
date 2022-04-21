@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 import { Page, textColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
+
 import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const CalculatorSection = styled.div<{ theme: MavrykTheme }>`
@@ -17,6 +18,7 @@ export const CalculatorStyled = styled(Page)`
     font-size: 50px;
     line-height: 50px;
     margin-bottom: 60px;
+    color: ${({ theme }) => theme.headingColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;
