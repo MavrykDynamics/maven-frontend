@@ -18,7 +18,7 @@ export const CalculatorStyled = styled(Page)`
     font-size: 50px;
     line-height: 50px;
     margin-bottom: 60px;
-    color: ${({ theme }) => theme.headingColor};
+    color: ${({ theme }) => theme.headerSectionsColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;

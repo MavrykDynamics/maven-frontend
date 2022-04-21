@@ -19,7 +19,7 @@ export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
     font-size: 50px;
     line-height: 50px;
     margin-bottom: 104px;
-    color: ${({ theme }) => theme.headingColor};
+    color: ${({ theme }) => theme.headerSectionsColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;

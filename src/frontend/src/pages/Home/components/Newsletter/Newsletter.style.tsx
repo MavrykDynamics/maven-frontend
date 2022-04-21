@@ -20,7 +20,7 @@ export const NewsletterStyled = styled.section<{ theme: MavrykTheme }>`
     line-height: 50px;
     padding-top: 80px;
     margin-bottom: 60px;
-    color: ${({ theme }) => theme.headingColor};
+    color: ${({ theme }) => theme.headerSectionsColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;

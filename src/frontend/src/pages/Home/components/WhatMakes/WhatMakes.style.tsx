@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/macro'
 import { coralColor, subHeaderColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
+
 import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const WhatMakesStyled = styled.section<{ theme: MavrykTheme }>`
@@ -26,7 +27,7 @@ export const WhatMakesStyled = styled.section<{ theme: MavrykTheme }>`
     font-size: 50px;
     line-height: 50px;
     margin-bottom: 93px;
-    color: ${({ theme }) => theme.headingColor};
+    color: ${({ theme }) => theme.headerSectionsColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;
