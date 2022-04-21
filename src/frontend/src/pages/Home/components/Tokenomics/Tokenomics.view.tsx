@@ -14,7 +14,7 @@ export const TokenomicsView = () => {
       <picture>
         <source srcSet={tokenomicsUrl} media="(min-width: 769px)" />
         <source srcSet={tokenomicsMobileUrl} media="(max-width: 768px)" />
-        <img src={tokenomicsUrl} alt="Tokenomics" />
+        <img loading="lazy" src={tokenomicsUrl} alt="Tokenomics" />
       </picture>
     </TokenomicsStyled>
   )

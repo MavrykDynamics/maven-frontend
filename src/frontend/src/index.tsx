@@ -16,7 +16,7 @@ export const Root = () => {
       <DarkThemeProvider>
         <ParallaxProvider>
           <GlobalStyle />
-          <App/>
+          <App />
         </ParallaxProvider>
       </DarkThemeProvider>
     </ReduxProvider>

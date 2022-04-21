@@ -19,7 +19,7 @@ const TeamFigureView = (props: Props) => {
   return (
     <TeamFigure>
       <a href={link} target="_blank" rel="noreferrer">
-        <img src={avatar} alt={name} />
+        <img loading="lazy" src={avatar} alt={name} />
         <h3>{name}</h3>
         <figcaption>{job}</figcaption>
         <svg>

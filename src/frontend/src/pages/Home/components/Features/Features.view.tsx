@@ -12,7 +12,7 @@ export const FeaturesView = () => {
         <FeaturesGrid>
           {data.map((item) => (
             <FeaturesComponent key={item.id}>
-              <img alt={item.header} src={item.img} />
+              <img loading="lazy" alt={item.header} src={item.img} />
               <h3>{item.header}</h3>
               <p>{item.text}</p>
             </FeaturesComponent>

@@ -106,7 +106,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
         </NewsletterForm>
       </NewsletterGrid>
       <NewsletterFigure>
-        <img src={frontImgUrl} alt="Subscribe" />
+        <img loading="lazy" src={frontImgUrl} alt="Subscribe" />
       </NewsletterFigure>
     </NewsletterStyled>
   )

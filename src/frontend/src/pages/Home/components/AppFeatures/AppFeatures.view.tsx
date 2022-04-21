@@ -11,7 +11,7 @@ export const AppFeaturesView = () => {
       <AppFeaturesList>
         {data.map((item) => (
           <AppFeaturesFigure key={item.id}>
-            <img src={item.img} alt={item.header} />
+            <img loading="lazy" src={item.img} alt={item.header} />
             <h3>{item.header}</h3>
             <figcaption>{item.text}</figcaption>
           </AppFeaturesFigure>
