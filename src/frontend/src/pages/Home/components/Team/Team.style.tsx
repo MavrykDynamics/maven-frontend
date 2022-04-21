@@ -4,19 +4,19 @@ import { MavrykTheme } from 'utils/interfaces'
 import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const TeamStyled = styled.section<{ theme: MavrykTheme }>`
-  --embla-button-bg: ${({ theme }) => theme.darkestBackroundColor}
+  --carousel-button-bg: ${({ theme }) => theme.darkestBackroundColor}
   width: ${CONTAINER_WIDTH};
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
 
   @media (max-width: 700px) {
-    --embla-button-size: 40px;
-    --embla-button-indent: -50px;
+    --carousel-button-size: 40px;
+    --carousel-button-indent: -50px;
   }
 
   @media (max-width: 700px) {
-    --embla-button-indent: -40px;
+    --carousel-button-indent: -40px;
   }
 
   h2 {

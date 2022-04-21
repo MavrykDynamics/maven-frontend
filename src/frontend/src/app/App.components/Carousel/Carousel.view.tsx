@@ -1,8 +1,7 @@
-// import { mediaByIndex } from '../media'
-// import { NextButton, PrevButton } from './EmblaCarouselButtons'
-import useEmblaCarousel from 'embla-carousel-react'
 import React, { useCallback, useEffect, useState } from 'react'
-import './embla.css'
+import useEmblaCarousel from 'embla-carousel-react'
+
+import { CarouselStyle, CarouselViewport, CarouselContainer, CarouselButton } from './Carousel.style'
 
 type Props = {
   children: React.ReactNode
@@ -34,17 +33,17 @@ const Carousel = (props: Props) => {
     </svg>
   )
   return (
-    <div className="embla">
-      <div className="embla__viewport" ref={viewportRef}>
-        <div className="embla__container">{children}</div>
-      </div>
-      <button className="embla__button embla__button--prev" onClick={scrollPrev} disabled={!prevBtnEnabled}>
+    <CarouselStyle>
+      <CarouselViewport ref={viewportRef}>
+        <CarouselContainer>{children}</CarouselContainer>
+      </CarouselViewport>
+      <CarouselButton className="button--prev" onClick={scrollPrev} disabled={!prevBtnEnabled}>
         {arrowIcon}
-      </button>
-      <button className="embla__button embla__button--next" onClick={scrollNext} disabled={!nextBtnEnabled}>
+      </CarouselButton>
+      <CarouselButton className="button--next" onClick={scrollNext} disabled={!nextBtnEnabled}>
         {arrowIcon}
-      </button>
-    </div>
+      </CarouselButton>
+    </CarouselStyle>
   )
 }
 

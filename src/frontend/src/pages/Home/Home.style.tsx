@@ -4,6 +4,10 @@ import { MavrykTheme } from 'utils/interfaces'
 export const CONTAINER_WIDTH = '1480px'
 
 export const HomeStyled = styled.div`
+  --carousel-button-size: 80px;
+  --carousel-button-indent: -120px;
+  --carousel-button-bg: transparent;
+
   margin-top: -100px;
 
   @media (max-width: 1000px) {
