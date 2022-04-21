@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import data from './WhatMakesView.data.json'
+import data from './WhatMakes.data.json'
 import {
   WhatMakesArticlesStyled,
   WhatMakesArticleStyled,

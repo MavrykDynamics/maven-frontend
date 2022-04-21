@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "img": "/images/money.svg",
+    "header": "A Stablecoin You Control",
+    "text": "Put up existing crypto-assets as equity for a USDM stablecoin loan, up to a 50% loan-to-value ratio."
+  },
+  {
+    "id": 2,
+    "img": "/images/plant.svg",
+    "header": "Earn With Your USDM",
+    "text": "Use your USDM to earn passive income through yield farming, position leveraging, a USDM savings account, or by sending to any Tezos wallet."
+  },
+  {
+    "id": 3,
+    "img": "/images/piggy.svg",
+    "header": "Dynamic Savings Rate",
+    "text": "Store your USDM in an interest-paying Dynamic Savings Rate (DSR) account and get paid from the on-chain treasury."
+  }
+]
