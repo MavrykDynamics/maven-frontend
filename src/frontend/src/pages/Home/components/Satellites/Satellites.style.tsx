@@ -53,6 +53,8 @@ export const SatellitesFrontFigure = styled.figure<{ theme: MavrykTheme }>`
 
   img {
     width: 100%;
+    display: block;
+    min-height: 50px;
   }
 `
 
