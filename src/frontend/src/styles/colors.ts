@@ -28,8 +28,9 @@ export const darkMode = {
   teamDecor3: '/images/team/team-decor-3-dark.svg',
   teamDecor4: '/images/team/team-decor-4-dark.svg',
   subscribeBachground: '/images/subscribe-bg-dark.svg',
+  starsBachground: '/images/stars-bg-dark.svg',
   satellitesGradient: 'linear-gradient(180deg, #160E3F 3.55%, #321F71 103.84%);',
-  subscribeGradient:
+  skyGradient:
     'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F 99.3%)',
   backgroundColor,
   containerColor: '#1C1C3F',
@@ -68,8 +69,9 @@ export const lightMode = {
   teamDecor3: '/images/team/team-decor-3-light.svg',
   teamDecor4: '/images/team/team-decor-4-light.svg',
   subscribeBachground: '/images/subscribe-bg-light.svg',
+  starsBachground: '/images/stars-bg-light.svg',
   satellitesGradient: 'linear-gradient(180deg, #FFFFFF 48.18%, #86D4C9 103.84%)',
-  subscribeGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
+  skyGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
   backgroundColor: '#fff',
   containerColor: '#DEE7F7',
   borderColor: '#4F457C',

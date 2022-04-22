@@ -3,7 +3,7 @@ import { Page, primaryColor, secondaryColor, textColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const NewsletterStyled = styled.section<{ theme: MavrykTheme }>`
-  background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.subscribeGradient};
+  background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradient};
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: contain;
