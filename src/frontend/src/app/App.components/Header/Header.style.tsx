@@ -28,7 +28,7 @@ export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
 
 export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   margin: 0 auto;
-  max-width: calc(100vw - 40px);
+  max-width: calc(100vw - 80px);
   width: ${CONTAINER_WIDTH};
   margin-top: ${(props) => (props.showBg ? ({ theme }) => '0' : '30px')};
   position: relative;
@@ -59,7 +59,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   }
 
   @media (max-width: 1000px) {
-    padding: 0 16px;
+    padding: 0;
     display: flex;
     height: auto;
 
@@ -84,10 +84,15 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
     }
   }
 
+  @media (max-width: 700px) {
+    max-width: calc(100vw - 40px);
+  }
+
   @media (max-width: 500px) {
     max-width: 100%;
     margin-top: 20px;
     padding-bottom: 8px;
+    max-width: calc(100vw - 40px);
 
     a {
       margin-top: 6px;

@@ -8,6 +8,7 @@ export const PartnersStyled = styled.section`
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+  max-width: calc(100vw - 40px);
 
   h2 {
     text-align: center;

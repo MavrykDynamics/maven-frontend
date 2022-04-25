@@ -43,13 +43,21 @@ export const WhatMakesStyled = styled.section<{ theme: MavrykTheme }>`
 `
 export const WhatMakesContainerStyled = styled.div`
   width: ${CONTAINER_WIDTH};
-  padding: 0 20px;
-  max-width: 100%;
+  max-width: calc(100vw - 260px);
   margin: 0 auto;
+
+  @media (max-width: 1000px) {
+    max-width: calc(100vw - 80px);
+  }
+
+  @media (max-width: 700px) {
+    max-width: calc(100vw - 40px);
+  }
 `
 export const WhatMakesArticlesStyled = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 40px;
 
   @media (max-width: 700px) {
     flex-direction: column;

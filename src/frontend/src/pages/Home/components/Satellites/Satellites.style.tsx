@@ -6,7 +6,14 @@ export const SatellitesStyled = styled.section<{ theme: MavrykTheme }>`
   position: relative;
   text-align: center;
   background: ${({ theme }) => theme.satellitesGradient};
-  padding: 0 20px;
+  padding: 0 120px;
+
+  @media (max-width: 1000px) {
+    padding: 0 40px;
+  }
+  @media (max-width: 700px) {
+    padding: 0 20px;
+  }
 
   h2 {
     font-weight: 700;

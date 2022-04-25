@@ -12,16 +12,6 @@ export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 1550px) {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-
-  @media (max-width: 1480px) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
   @media (max-width: 1000px) {
     padding-top: 0;
     padding-bottom: 50px;
@@ -51,15 +41,12 @@ export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
 export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
   width: ${CONTAINER_WIDTH};
   max-width: 100%;
-  margin: 0 20px;
+  margin: 0;
   display: grid;
   justify-content: space-between;
   row-gap: 70px;
   grid-template-columns: repeat(3, 300px);
-
-  @media (max-width: ${CONTAINER_WIDTH}) {
-    padding: 0 20px;
-  }
+  max-width: calc(100vw - 220px);
 
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, 300px);
@@ -67,6 +54,11 @@ export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
     column-gap: 80px;
     justify-content: center;
     padding-top: 32px;
+    max-width: calc(100vw - 80px);
+  }
+
+  @media (max-width: 700px) {
+    max-width: calc(100vw - 40px);
   }
 
   @media (max-width: 750px) {
@@ -82,6 +74,7 @@ export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
 export const AppFeaturesFigure = styled.figure<{ theme: MavrykTheme }>`
   margin: 0;
   max-width: 300px;
+  padding: 0 20px;
 
   @media (max-width: 700px) {
     max-width: 100%;
