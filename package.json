@@ -1,6 +1,7 @@
 {
   "name": "mavryk-frontend",
   "version": "2.0.0",
+  "type": "module",
   "scripts": {
     "start": "lerna exec -- yarn run --parallel start",
     "build": "lerna exec -- yarn run --parallel build",
@@ -50,7 +51,9 @@
   },
   "dependencies": {
     "@types/react-lottie": "^1.2.6",
+    "jsdom": "^19.0.0",
     "react-lottie": "^1.2.3",
-    "react-toggle": "^4.1.2"
+    "react-toggle": "^4.1.2",
+    "xml2js": "^0.4.23"
   }
 }
