@@ -51,6 +51,7 @@ export const NewsletterFigure = styled.figure`
   img {
     width: 100%;
     transform: scaleX(-1);
+    min-height: 50px;
   }
 `
 

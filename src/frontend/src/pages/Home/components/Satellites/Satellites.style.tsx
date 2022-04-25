@@ -66,6 +66,7 @@ export const SatellitesImage = styled.figure<{ src: string; srcMobile: string }>
   height: 900px;
   margin: 0;
   margin-top: 140px;
+  min-height: 50px;
 
   @media (max-width: 1000px) {
     height: 700px;

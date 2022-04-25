@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 import { Page } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
+
 import { CONTAINER_WIDTH } from '../../../pages/Home/Home.style'
 
 export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
@@ -18,8 +19,12 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
 export const FooterContainer = styled.div`
   padding: 50px 20px;
 
+  @media (max-width: 1500px) {
+    padding: 50px 40px;
+  }
+
   @media (max-width: 700px) {
-    padding: 32px 16px;
+    padding: 32px 20px;
   }
 `
 

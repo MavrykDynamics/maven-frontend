@@ -7,6 +7,20 @@ import { CONTAINER_WIDTH } from '../../Home.style'
 export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
   padding-top: 50px;
   padding-bottom: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 1550px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (max-width: 1480px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
   @media (max-width: 1000px) {
     padding-top: 0;
@@ -37,7 +51,7 @@ export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
 export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
   width: ${CONTAINER_WIDTH};
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0 20px;
   display: grid;
   justify-content: space-between;
   row-gap: 70px;
@@ -53,6 +67,10 @@ export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
     column-gap: 80px;
     justify-content: center;
     padding-top: 32px;
+  }
+
+  @media (max-width: 750px) {
+    column-gap: 40px;
   }
 
   @media (max-width: 700px) {

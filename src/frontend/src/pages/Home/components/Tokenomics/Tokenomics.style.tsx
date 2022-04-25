@@ -34,6 +34,7 @@ export const TokenomicsStyled = styled.section<{ theme: MavrykTheme }>`
     position: relative;
     top: -25px;
     max-width: 100%;
+    min-height: 50px;
 
     @media (max-width: 700px) {
       top: 0;

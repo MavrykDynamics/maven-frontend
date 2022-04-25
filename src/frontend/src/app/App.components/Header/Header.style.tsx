@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 import { secondaryColor, subTextColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
+
 import { CONTAINER_WIDTH } from '../../../pages/Home/Home.style'
 
 export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
@@ -21,15 +22,16 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   margin: 0 auto;
   max-width: calc(100vw - 40px);
   width: ${CONTAINER_WIDTH};
-  margin-top: 30px;
+  margin-top: ${(props) => (props.showBg ? ({ theme }) => '0' : '30px')};
   position: relative;
   text-align: center;
-  height: 100px;
+  height: 80px;
   z-index: 1;
   display: grid;
   grid-template-columns: 170px auto 100px 140px 100px 100px 70px 50px;
   grid-gap: 10px;
   font-weight: 500;
+  transition: 0.25s;
 
   > a {
     color: ${({ theme }) => theme.navColor};
@@ -93,7 +95,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
 export const HeaderLogo = styled.div<{ theme: MavrykTheme; showBg: boolean; src: string }>`
   background: url(${(props) => props.src}) no-repeat;
   height: 100%;
-  margin-top: ${(props) => (props.showBg ? ({ theme }) => '-24px' : '-8px')};
+  margin-top: ${(props) => (props.showBg ? ({ theme }) => '-16px' : '-8px')};
   z-index: 1;
   width: 276px;
   transition: all 0.25s linear;

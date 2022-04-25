@@ -32,4 +32,10 @@ export const ParallaxLayer = styled.div<{ img: string; zIndex: number; translate
   background-size: cover;
   transform: translateZ(${(props) => props.translateZ || '0px'}) scale(${(props) => props.scale || '0'});
   z-index: ${(props) => props.zIndex || '0'};
+
+  @media (max-width: 700px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `

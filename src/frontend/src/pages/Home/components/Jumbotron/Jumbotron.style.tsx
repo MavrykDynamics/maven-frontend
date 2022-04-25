@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/macro'
-import { secondaryColor, subTextColor, btnLightColor, headerColor } from 'styles'
+import { btnLightColor, headerColor, secondaryColor, subTextColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const JumbotronStyled = styled.div`
@@ -17,10 +17,7 @@ export const JumbotronStyled = styled.div`
   @media (max-width: 700px) {
     background-position: top -10px right -80px;
     background-size: 90% auto;
-  }
-
-  @media (max-width: 500px) {
-    padding-top: 120px;
+    padding-top: 30px;
   }
 `
 
