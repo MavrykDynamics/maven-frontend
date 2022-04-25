@@ -12,9 +12,17 @@ export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   background-color: ${(props) => (props.showBg ? ({ theme }) => theme.darkestBackroundColor : '#FFFFFF00')};
   will-change: background-color;
   transition: background-color 200ms ease-in-out;
+  align-items: center;
+  display: flex;
 
   @media (max-width: 1000px) {
     height: 70px;
+    padding-top: 16px;
+  }
+
+  @media (max-width: 500px) {
+    padding-top: 0;
+    height: auto;
   }
 `
 
@@ -78,7 +86,8 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
 
   @media (max-width: 500px) {
     max-width: 100%;
-    margin-top: 24px;
+    margin-top: 20px;
+    padding-bottom: 8px;
 
     a {
       margin-top: 6px;
@@ -88,6 +97,11 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
     label {
       margin-top: 0px;
     }
+  }
+
+  @media (max-width: 374px) {
+    margin-top: 12px;
+    padding-bottom: 8px;
   }
 `
 

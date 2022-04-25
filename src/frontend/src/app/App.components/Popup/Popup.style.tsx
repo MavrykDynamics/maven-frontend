@@ -65,7 +65,7 @@ export const PopupNewsletter = styled.div`
 
   section {
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 15px;
   }
 `
 

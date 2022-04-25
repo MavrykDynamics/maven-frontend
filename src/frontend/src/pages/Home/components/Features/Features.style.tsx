@@ -39,7 +39,7 @@ export const FeaturesGrid = styled.div`
 
 export const FeaturesComponent = styled.div<{ theme: MavrykTheme }>`
   background-color: ${({ theme }) => theme.darkBackroundColor};
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 40px 30px;
 
   h3 {

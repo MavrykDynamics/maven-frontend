@@ -117,7 +117,7 @@ export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
     font-weight: 700;
     font-size: 30px;
     line-height: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     color: ${({ theme }) => theme.headerColor};
 
     @media (max-width: 500px) {

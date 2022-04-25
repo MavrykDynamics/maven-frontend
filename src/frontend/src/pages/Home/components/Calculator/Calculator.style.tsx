@@ -7,6 +7,7 @@ import { CONTAINER_WIDTH } from '../../Home.style'
 export const CalculatorSection = styled.div<{ theme: MavrykTheme }>`
   background-color: ${({ theme }) => theme.darkestBackroundColor};
   padding-top: 16px;
+  margin-top: -1px;
 `
 
 export const CalculatorStyled = styled(Page)`
@@ -37,7 +38,7 @@ export const CalculatorCointainer = styled.div<{ theme: MavrykTheme }>`
   background-color: ${({ theme }) => theme.darkBackroundColor};
   display: grid;
   grid-template-columns: 60% 40%;
-  border-radius: 10px;
+  border-radius: 15px;
 
   @media (max-width: 1000px) {
     grid-template-columns: auto;
