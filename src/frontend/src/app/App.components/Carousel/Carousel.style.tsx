@@ -36,8 +36,9 @@ export const CarouselButton = styled.button`
   display: flex;
 
   svg {
-    width: 70%;
-    height: 70%;
+    width: 64%;
+    height: 64%;
+    margin-right: 8px;
   }
 
   &:disabled {
@@ -54,6 +55,8 @@ export const CarouselButton = styled.button`
 
     svg {
       transform: rotate(180deg);
+      margin-right: 0;
+      margin-left: 8px;
     }
   }
 `

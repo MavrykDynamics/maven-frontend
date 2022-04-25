@@ -31,7 +31,7 @@ export const darkMode = {
   starsBachground: '/images/stars-bg-dark.svg',
   satellitesGradient: 'linear-gradient(180deg, #160E3F 3.55%, #321F71 103.84%);',
   skyGradient:
-    'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F 99.3%)',
+    'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F00 99.3%)',
   backgroundColor,
   containerColor: '#1C1C3F',
   borderColor: '#4F457C',
