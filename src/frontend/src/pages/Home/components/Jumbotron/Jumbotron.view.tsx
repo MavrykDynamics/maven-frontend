@@ -11,7 +11,7 @@ export const JumbotronView = () => {
       <Page>
         <JubontronContainer>
           <JubontronTitle>
-            <h1>A Decentralized Finance Ecosystem</h1>
+            <h1>A DeFi Bank for the People</h1>
           </JubontronTitle>
           <JubontronSubTitle>
             Mavryk is a decentralized finance ecosystem designed for community governance and allow users to borrow,
