@@ -51,8 +51,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   }
 
   @media (max-width: 1000px) {
-    padding: 0 10px;
-    max-width: calc(100vw - 20px);
+    padding: 0 16px;
     display: flex;
     height: auto;
 
