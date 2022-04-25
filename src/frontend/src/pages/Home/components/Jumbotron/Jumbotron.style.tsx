@@ -74,7 +74,7 @@ export const JubontronContainer = styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
-  max-width: 480px;
+  max-width: 610px;
 `
 
 export const JumbotronButtons = styled.div`
