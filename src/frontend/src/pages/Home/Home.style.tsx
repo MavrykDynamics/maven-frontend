@@ -12,7 +12,6 @@ export const HomeStyled = styled.div`
 
   @media (max-width: 1000px) {
     margin-top: 0px;
-    height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
     overflow-anchor: auto;
@@ -28,5 +27,6 @@ export const HomeNoParallax = styled.div<{ theme: MavrykTheme }>`
     transform: translateZ(0) scale(1);
     z-index: 10;
     background-color: ${({ theme }) => theme.backgroundColor};
+    margin-top: -1px;
   }
 `

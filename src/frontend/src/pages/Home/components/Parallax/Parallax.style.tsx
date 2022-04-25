@@ -6,19 +6,19 @@ export const ParallaxStyled = styled.div`
 
 export const ParallaxDesktop = styled.div`
   display: block;
-  @media (max-width: 1000px) {
-    display: none;
-  }
-`
 
-export const ParallaxGroup = styled.div`
-  display: none;
-  @media (max-width: 1000px) {
-    display: block;
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    transform-style: preserve-3d;
+  > div {
+    width: 100%;
+    padding-bottom: 200px;
+
+    @media (max-width: 1000px) {
+      height: 100vh;
+      padding-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `
 
