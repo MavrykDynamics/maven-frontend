@@ -36,10 +36,16 @@ export const PopupNewsletter = styled.div`
   margin: 16px;
   max-width: 100%;
   max-height: 100%;
-  border-radius: 15px;
-  overflow: hidden;
   margin: auto;
   position: relative;
+
+  @media (max-width: 1290px) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 700px) {
+    padding: 100px 10px 0px 10px;
+  }
 
   h2 {
     margin-bottom: 40px;
@@ -47,6 +53,19 @@ export const PopupNewsletter = styled.div`
 
   form {
     margin-bottom: 170px;
+
+    @media (max-width: 1000px) {
+      margin-bottom: 128px;
+    }
+
+    @media (max-width: 700px) {
+      margin-bottom: 100px;
+    }
+  }
+
+  section {
+    overflow: hidden;
+    border-radius: 10px;
   }
 `
 
