@@ -16,8 +16,8 @@ export const IdeasSection = styled.section<{ theme: MavrykTheme }>`
     font-weight: 700;
     font-size: 50px;
     line-height: 50px;
-    margin-bottom: 45px;
-    color: ${({ theme }) => theme.headerSectionsColor};
+    margin-bottom: 60px;
+    color: ${({ theme }) => theme.headerDarkColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;
@@ -37,6 +37,7 @@ export const IdeasFigure = styled.figure<{ theme: MavrykTheme }>`
   display: flex;
   justify-content: center;
   margin: 0;
+  margin-top: -100px;
 
   img {
     min-height: 50px;
@@ -48,6 +49,7 @@ export const IdeasFigure = styled.figure<{ theme: MavrykTheme }>`
 export const IdeasCarouselWrap = styled.div<{ theme: MavrykTheme }>`
   width: 1140px;
   margin: auto;
+  min-height: 250px;
 `
 
 export const IdeasGroupSection = styled.div<{ theme: MavrykTheme }>`
@@ -59,6 +61,11 @@ export const IdeasGroupSection = styled.div<{ theme: MavrykTheme }>`
   justify-content: space-between;
 `
 
+export const IdeaLoading = styled.div<{ theme: MavrykTheme }>`
+  margin: 0;
+  padding-top: 64px;
+`
+
 export const IdeaLink = styled.a<{ theme: MavrykTheme }>`
   width: 329px;
   height: 305px;
@@ -66,7 +73,7 @@ export const IdeaLink = styled.a<{ theme: MavrykTheme }>`
   border-radius: 15px;
   overflow: hidden;
   position: relative;
-  margin: 25px;
+  margin: 12px 25px;
 
   &::after {
     content: '';
@@ -83,9 +90,28 @@ export const IdeaLink = styled.a<{ theme: MavrykTheme }>`
     inset: 0;
     padding: 18px;
     display: flex;
-    padding-bottom: 60px;
+    padding-bottom: 39px;
     flex-direction: column;
     justify-content: flex-end;
+    color: white;
+  }
+
+  h3 {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 24px;
+  }
+
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
   }
 
   img {

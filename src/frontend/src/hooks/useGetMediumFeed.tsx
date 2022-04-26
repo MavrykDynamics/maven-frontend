@@ -14,16 +14,16 @@ export default function useGetMediumFeed(): {
   loading: boolean
 } {
   const fetchUrl =
-    process.env.NODE_ENV === 'production' ? 'http://localhost:3002/medium-feed' : 'http://localhost:3002/medium-feed'
+    process?.env?.NODE_ENV === 'production' ? 'http://localhost:3002/medium-feed' : 'http://localhost:3002/medium-feed'
   const [mediumFeedData, setMediumFeedData] = useState<MediumFeedDataType[]>([])
   const [errorMessage, setErrorMessage] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const handleGetMediumFeed = async () => {
     try {
       setLoading(true)
       const response = await fetch(fetchUrl)
-      if (response.ok) {
+      if (response?.ok) {
         const data = await response.json()
         setMediumFeedData(data)
       } else {
@@ -36,8 +36,15 @@ export default function useGetMediumFeed(): {
     }
   }
 
+  const testPending = () => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+  }
+
   useEffect(() => {
-    handleGetMediumFeed()
+    // handleGetMediumFeed()
+    testPending()
   }, [])
 
   return {

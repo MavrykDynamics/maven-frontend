@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/macro'
+import { MavrykTheme } from 'utils/interfaces'
 
 export const CarouselStyle = styled.div`
   position: relative;
@@ -16,7 +17,7 @@ export const CarouselContainer = styled.div`
   user-select: none;
 `
 
-export const CarouselButton = styled.button`
+export const CarouselButton = styled.button<{ theme: MavrykTheme }>`
   outline: 0;
   cursor: pointer;
   background-color: var(--carousel-button-bg);
@@ -39,6 +40,7 @@ export const CarouselButton = styled.button`
     width: 64%;
     height: 64%;
     margin-right: 8px;
+    stroke: ${({ theme }) => theme.arrowStrokeColor};
   }
 
   &:disabled {
