@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux'
 // test data
 import data from './Ideas.data.json'
 
+// hooks
+import useMediaQuery from '../../../../hooks/useMediaQuery'
 import useGetMediumFeed from '../../../../hooks/useGetMediumFeed'
 
 import Carousel from '../../../../app/App.components/Carousel/Carousel.view'
@@ -26,12 +28,13 @@ export const IdeasView = () => {
   const loadingImgUrl = darkThemeEnabled ? '/icons/loading-white.svg' : '/icons/loading.svg'
 
   // console.log('%c ||||| data', 'color:yellowgreen', data)
-
+  const isMiddleScreen = useMediaQuery('(max-width: 1280px)')
+  const isPhone = useMediaQuery('(max-width: 850px)')
   const { loading, mediumFeedData } = useGetMediumFeed()
 
   console.log('%c ||||| mediumFeedData', 'color:yellowgreen', mediumFeedData)
-
-  const groupedData = chunkArrayInGroups(data, 6)
+  const chunkAmount = isPhone ? 1 : isMiddleScreen ? 4 : 6
+  const groupedData = chunkArrayInGroups(data, chunkAmount)
 
   // console.log('%c ||||| groupedData', 'color:yellowgreen', groupedData)
 

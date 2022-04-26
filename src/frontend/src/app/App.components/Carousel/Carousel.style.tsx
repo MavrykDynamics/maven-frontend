@@ -39,7 +39,7 @@ export const CarouselButton = styled.button<{ theme: MavrykTheme }>`
   svg {
     width: 64%;
     height: 64%;
-    margin-right: 8px;
+    margin-right: 0.5em;
     stroke: ${({ theme }) => theme.arrowStrokeColor};
   }
 
@@ -58,7 +58,7 @@ export const CarouselButton = styled.button<{ theme: MavrykTheme }>`
     svg {
       transform: rotate(180deg);
       margin-right: 0;
-      margin-left: 8px;
+      margin-left: 0.5em;
     }
   }
 `

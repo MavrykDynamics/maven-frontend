@@ -12,6 +12,20 @@ export const IdeasSection = styled.section<{ theme: MavrykTheme }>`
   text-align: center;
   position: relative;
 
+  @media (max-width: 1370px) {
+    --carousel-button-indent: -64px;
+  }
+
+  @media (max-width: 1280px) {
+    --carousel-button-indent: -100px;
+  }
+
+  @media (max-width: 1000px) {
+    --carousel-button-size: 40px;
+    --carousel-button-indent: -50px;
+    --carousel-button-indent: -32px;
+  }
+
   h2 {
     font-weight: 700;
     font-size: 50px;
@@ -50,6 +64,23 @@ export const IdeasCarouselWrap = styled.div<{ theme: MavrykTheme }>`
   width: 1140px;
   margin: auto;
   min-height: 250px;
+
+  @media (max-width: 1280px) {
+    width: 760px;
+  }
+
+  @media (max-width: 850px) {
+    width: 380px;
+  }
+
+  @media (max-width: 460px) {
+    width: 320px;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 400px) {
+    width: 260px;
+  }
 `
 
 export const IdeasGroupSection = styled.div<{ theme: MavrykTheme }>`
@@ -64,6 +95,11 @@ export const IdeasGroupSection = styled.div<{ theme: MavrykTheme }>`
 export const IdeaLoading = styled.div<{ theme: MavrykTheme }>`
   margin: 0;
   padding-top: 64px;
+
+  @media (max-width: 850px) {
+    padding-top: 0;
+    padding-bottom: 64px;
+  }
 `
 
 export const IdeaLink = styled.a<{ theme: MavrykTheme }>`
@@ -74,6 +110,14 @@ export const IdeaLink = styled.a<{ theme: MavrykTheme }>`
   overflow: hidden;
   position: relative;
   margin: 12px 25px;
+
+  @media (max-width: 460px) {
+    width: 320px;
+  }
+
+  @media (max-width: 400px) {
+    width: 260px;
+  }
 
   &::after {
     content: '';
