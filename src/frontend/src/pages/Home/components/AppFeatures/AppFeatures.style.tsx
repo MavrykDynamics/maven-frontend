@@ -23,7 +23,7 @@ export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
     font-size: 50px;
     line-height: 50px;
     margin-bottom: 104px;
-    color: ${({ theme }) => theme.headerSectionsColor};
+    color: ${({ theme }) => theme.headerDarkColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;
@@ -45,7 +45,7 @@ export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
   display: grid;
   justify-content: space-between;
   row-gap: 70px;
-  grid-template-columns: repeat(3, 300px);
+  grid-template-columns: repeat(3, 340px);
   max-width: calc(100vw - 220px);
 
   @media (max-width: 1000px) {
@@ -73,12 +73,15 @@ export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
 
 export const AppFeaturesFigure = styled.figure<{ theme: MavrykTheme }>`
   margin: 0;
-  max-width: 300px;
   padding: 0 20px;
 
   @media (max-width: 700px) {
     max-width: 100%;
     text-align: center;
+  }
+
+  img {
+    height: 128px;
   }
 
   h3 {
@@ -100,7 +103,7 @@ export const AppFeaturesFigure = styled.figure<{ theme: MavrykTheme }>`
     font-weight: 400;
     font-size: 17px;
     line-height: 25px;
-    color: ${({ theme }) => theme.subTextColor};
+    color: ${({ theme }) => theme.textColor};
 
     @media (max-width: 1000px) {
       font-size: 15px;

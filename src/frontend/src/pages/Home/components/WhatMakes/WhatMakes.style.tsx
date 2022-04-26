@@ -75,8 +75,8 @@ export const WhatMakesArticleStyled = styled.article<{ theme: MavrykTheme }>`
     font-weight: 700;
     font-size: 30px;
     line-height: 30px;
-    position: 'relative';
-    color: ${subHeaderColor};
+    position: relative;
+    color: ${({ theme }) => theme.headingColor};
 
     @media (max-width: 1000px) {
       font-size: 24px;

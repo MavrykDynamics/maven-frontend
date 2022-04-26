@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { MavrykTheme } from 'utils/interfaces'
 
 export const PopupStyled = styled.div`
   .popup-enter {
@@ -30,7 +31,7 @@ export const PopupContainer = styled.div`
   left: 0;
   padding-top: 10px;
 `
-export const PopupNewsletter = styled.div`
+export const PopupNewsletter = styled.div<{ theme: MavrykTheme }>`
   width: 1232px;
   height: 576px;
   margin: 16px;
@@ -66,6 +67,7 @@ export const PopupNewsletter = styled.div`
   section {
     overflow: hidden;
     border-radius: 15px;
+    background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradient};
   }
 `
 

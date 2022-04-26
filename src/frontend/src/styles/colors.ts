@@ -1,7 +1,7 @@
 export const backgroundColor = '#160E3F'//'#FFFFFF'
 export const containerColor = '#1C1C3F' //'#F7F9FD'
 export const borderColor = '#4F457C'
-export const textColor = '#F7F9FD' //'#000000'
+export const textColor = '#fff' //'#000000'
 export const subTextColor = '#fff' //'#29264C'
 export const backgroundTextColor = '#191919'
 export const placeholderColor = '#9090A0'
@@ -15,7 +15,7 @@ export const headerColor = '#38237C'
 export const subHeaderColor = '#8D86EB'
 export const coralColor = '#FF8486'
 export const titleColor = '#503EAA'
-export const labelColor = '#77A4F2'
+export const labelColor = '#77a4f2cc'
 
 
 export const darkMode = {
@@ -30,12 +30,14 @@ export const darkMode = {
   subscribeBachground: '/images/subscribe-bg-dark.svg',
   starsBachground: '/images/stars-bg-dark.svg',
   satellitesGradient: 'linear-gradient(180deg, #160E3F 3.55%, #321F71 103.84%);',
-  skyGradient:
+  skyGradientTransparent:
     'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F00 99.3%)',
+  skyGradient:
+    'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F 99.3%)',
   backgroundColor,
   containerColor: '#1C1C3F',
   borderColor: '#4F457C',
-  textColor: '#F7F9FD',
+  textColor,
   subTextColor: '#fff',
   backgroundTextColor: '#2B2B60',
   placeholderColor: '#F7F9FD',
@@ -47,16 +49,24 @@ export const darkMode = {
   litepaperLinkColor: '#73d7c3',
   navColor: '#86D4C9',
   inputBorderColor: titleColor,
+  headerTeam: '#fff',
   headerColor: '#fff',
   headerSectionsColor: '#fff',
+  headerDarkColor: '#fff',
   darkestBackroundColor: '#080628',
   darkBackroundColor: '#160E3F',
   labelColor,
   headingColor: subHeaderColor,
   btnBackroundColor: btnLightColor,
-  linkedinLinkColor: labelColor,
+  btnColor: backgroundColor,
+  linkedinLinkColor: '#77A4F2',
   socialBackroundColor: '#503EAA',
   socialColor: '#C0DBFF',
+  inputColor: subHeaderColor,
+  btnBackroundNewsColor: '#86D4C9',
+  btnNewsColor: '#38237C',
+  inputNewsBg: 'rgba(8, 6, 40, 0.5)',
+  inputNewsColor: '#77A4F2',
 }
 
 export const lightMode = {
@@ -71,7 +81,8 @@ export const lightMode = {
   subscribeBachground: '/images/subscribe-bg-light.svg',
   starsBachground: '/images/stars-bg-light.svg',
   satellitesGradient: 'linear-gradient(180deg, #FFFFFF 48.18%, #86D4C9 103.84%)',
-  skyGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
+  skyGradientTransparent: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
+  skyGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF00 99.3%)',
   backgroundColor: '#fff',
   containerColor: '#DEE7F7',
   borderColor: '#4F457C',
@@ -90,11 +101,19 @@ export const lightMode = {
   headerColor,
   darkestBackroundColor: '#ebf0ff',
   darkBackroundColor: '#fff',
-  labelColor: headerColor,
+  labelColor: titleColor,
   headingColor: titleColor,
   headerSectionsColor: titleColor,
   btnBackroundColor: titleColor,
+  btnBackroundNewsColor: '#38237C',
   linkedinLinkColor: '#160E3F',
   socialBackroundColor: '#F7F9FD',
   socialColor: headerColor,
+  inputColor: titleColor,
+  btnColor: '#F7F9FD',
+  headerDarkColor: headerColor,
+  headerTeam: '#27007A',
+  btnNewsColor: '#fff',
+  inputNewsBg: 'rgba(255, 255, 255, 0.5)',
+  inputNewsColor: '#080628',
 }

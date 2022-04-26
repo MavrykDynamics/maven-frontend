@@ -3,7 +3,7 @@ import { Page, primaryColor, secondaryColor, textColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const NewsletterStyled = styled.section<{ theme: MavrykTheme }>`
-  background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradient};
+  background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradientTransparent};
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: contain;
@@ -20,7 +20,7 @@ export const NewsletterStyled = styled.section<{ theme: MavrykTheme }>`
     line-height: 50px;
     padding-top: 80px;
     margin-bottom: 60px;
-    color: ${({ theme }) => theme.headerSectionsColor};
+    color: ${({ theme }) => theme.headerDarkColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;
@@ -67,7 +67,7 @@ export const NewsletterForm = styled.form<{ theme: MavrykTheme }>`
   }
 
   input {
-    background: ${({ theme }) => theme.backgroundColor}75;
+    background: ${({ theme }) => theme.inputNewsBg};
     border-radius: 15px;
     border: none;
     line-height: 60px;
@@ -75,7 +75,7 @@ export const NewsletterForm = styled.form<{ theme: MavrykTheme }>`
     padding: 0 0 0 20px;
     margin: 0 0 32px 0;
     box-sizing: border-box;
-    color: ${({ theme }) => theme.textColor};
+    color: ${({ theme }) => theme.inputNewsColor};
     font-weight: 400;
     font-size: 14px;
 
@@ -87,7 +87,7 @@ export const NewsletterForm = styled.form<{ theme: MavrykTheme }>`
     &::placeholder {
       font-weight: 400;
       font-size: 14px;
-      color: ${({ theme }) => theme.placeholderColor}80;
+      color: ${({ theme }) => theme.inputNewsColor}80;
     }
   }
 `
@@ -98,11 +98,11 @@ export const NewsletterButton = styled.button<{ theme: MavrykTheme }>`
   font-weight: bold;
   color: ${textColor};
   text-align: center;
-  background: ${({ theme }) => theme.btnBackroundColor};
-  color: ${({ theme }) => theme.darkestBackroundColor};
+  background: ${({ theme }) => theme.btnBackroundNewsColor};
+  color: ${({ theme }) => theme.btnNewsColor};
   border-radius: 25px;
   cursor: pointer;
-  width: 200px;
+  width: 132px;
   display: inline-block;
   margin-top: 14px;
   border: none;

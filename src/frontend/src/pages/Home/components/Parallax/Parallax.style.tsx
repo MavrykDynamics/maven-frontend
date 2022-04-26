@@ -10,6 +10,7 @@ export const ParallaxDesktop = styled.div`
   > div {
     width: 100%;
     padding-bottom: 200px;
+    margin-bottom: -2px;
 
     @media (max-width: 1000px) {
       height: 100vh;

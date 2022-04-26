@@ -13,6 +13,7 @@ export const TokenomicsStyled = styled.section<{ theme: MavrykTheme }>`
     font-weight: 700;
     font-size: 50px;
     line-height: 50px;
+    color: ${({ theme }) => theme.headerDarkColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;

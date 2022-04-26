@@ -12,6 +12,11 @@ export const CalculatorSection = styled.div<{ theme: MavrykTheme }>`
 
 export const CalculatorStyled = styled(Page)`
   width: ${CONTAINER_WIDTH};
+  max-width: calc(100vw - 220px);
+
+  @media (max-width: 1250px) {
+    max-width: calc(100vw - 40px);
+  }
 
   h2 {
     text-align: center;
@@ -36,12 +41,11 @@ export const CalculatorStyled = styled(Page)`
 
 export const CalculatorCointainer = styled.div<{ theme: MavrykTheme }>`
   background-color: ${({ theme }) => theme.darkBackroundColor};
-  display: grid;
-  grid-template-columns: 60% 40%;
+  display: flex;
   border-radius: 15px;
 
   @media (max-width: 1000px) {
-    grid-template-columns: auto;
+    flex-direction: column;
   }
 `
 
@@ -76,10 +80,11 @@ export const CalculatorInput = styled.div<{ shift?: boolean; theme: MavrykTheme 
     font-size: 20px;
     line-height: 20px;
     color: ${({ theme }) => theme.labelColor};
+    white-space: nowrap;
   }
 
   small {
-    color: ${({ theme }) => theme.labelColor};
+    color: ${({ theme }) => theme.inputColor};
     display: block;
     position: relative;
     bottom: -16px;
@@ -95,7 +100,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean; theme: MavrykTheme 
     padding: ${(props) => (props.shift ? '0 0 0 35px' : '0 0 0 20px')};
     margin: 8px 0;
     box-sizing: border-box;
-    color: ${({ theme }) => theme.primaryColor};
+    color: ${({ theme }) => theme.inputColor};
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
@@ -104,8 +109,8 @@ export const CalculatorInput = styled.div<{ shift?: boolean; theme: MavrykTheme 
 
   select {
     appearance: none;
-    background-image: linear-gradient(45deg, transparent 50%, ${({ theme }) => theme.primaryColor} 50%),
-      linear-gradient(135deg, ${({ theme }) => theme.primaryColor} 50%, transparent 50%);
+    background-image: linear-gradient(45deg, transparent 50%, ${({ theme }) => theme.inputColor} 50%),
+      linear-gradient(135deg, ${({ theme }) => theme.inputColor} 50%, transparent 50%);
     background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
     background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
     background-repeat: no-repeat;
@@ -116,7 +121,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean; theme: MavrykTheme 
     width: 100%;
     height: 8px;
     margin-top: 27px;
-    background: ${({ theme }) => theme.backgroundColor};
+
     outline: none;
 
     &::-webkit-slider-thumb {
@@ -135,7 +140,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean; theme: MavrykTheme 
     top: 30px;
     left: 17px;
     line-height: 42px;
-    color: ${({ theme }) => theme.primaryColor};
+    color: ${({ theme }) => theme.inputColor};
     font-size: 20px;
     font-weight: bold;
     margin: 0;
@@ -151,12 +156,14 @@ export const CalculatorResults = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 40%;
 
   @media (max-width: 1480px) {
     background-size: cover;
   }
 
   @media (max-width: 1000px) {
+    width: 100%;
     flex-direction: row;
     border-radius: 0 0 10px 10px;
     background: url('./images/parallax/layer2.svg'),
@@ -204,12 +211,21 @@ export const CalculatorResultFee = styled.div<{ theme: MavrykTheme }>`
   opacity: 0.8;
 `
 
+export const CalculatorControls = styled.div<{ theme: MavrykTheme }>`
+  flex-shrink: 0;
+  max-width: 77%;
+
+  @media (max-width: 1000px) {
+    max-width: 100%;
+  }
+`
+
 export const CalculatorButton = styled.button<{ theme: MavrykTheme }>`
   height: 50px;
   line-height: 50px;
   font-size: 16px;
   font-weight: bold;
-  color: ${textColor};
+  color: ${({ theme }) => theme.btnColor};
   text-align: center;
   background-color: ${({ theme }) => theme.btnBackroundColor};
   border-radius: 10px;
@@ -219,7 +235,6 @@ export const CalculatorButton = styled.button<{ theme: MavrykTheme }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${({ theme }) => theme.darkestBackroundColor};
   padding: 0 28px;
   margin-bottom: 25px;
 
@@ -227,6 +242,6 @@ export const CalculatorButton = styled.button<{ theme: MavrykTheme }>`
     width: 30px;
     height: 30px;
     margin-right: 10px;
-    fill: ${({ theme }) => theme.darkestBackroundColor};
+    fill: ${({ theme }) => theme.btnColor};
   }
 `

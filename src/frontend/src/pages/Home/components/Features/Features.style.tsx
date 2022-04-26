@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 import { Page } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
+
 import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const FeaturesSection = styled.div<{ theme: MavrykTheme }>`
@@ -10,6 +11,7 @@ export const FeaturesSection = styled.div<{ theme: MavrykTheme }>`
   background-size: 105%;
   background-repeat: no-repeat;
   padding-bottom: 175px;
+  background-position-y: 101%;
 
   @media (max-width: 1000px) {
     padding-bottom: 64px;
@@ -20,6 +22,11 @@ export const FeaturesStyled = styled(Page)`
   text-align: center;
   margin-bottom: 150px;
   width: ${CONTAINER_WIDTH};
+  max-width: calc(100vw - 220px);
+
+  @media (max-width: 1250px) {
+    max-width: calc(100vw - 40px);
+  }
 
   @media (max-width: 1000px) {
     margin-bottom: 32px;

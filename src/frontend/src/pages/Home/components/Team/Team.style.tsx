@@ -24,7 +24,7 @@ export const TeamStyled = styled.section<{ theme: MavrykTheme }>`
     font-size: 50px;
     line-height: 50px;
     margin-bottom: 158px;
-    color: ${({ theme }) => theme.headerSectionsColor};
+    color: ${({ theme }) => theme.headerDarkColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;
@@ -118,7 +118,7 @@ export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
     font-size: 30px;
     line-height: 30px;
     margin-bottom: 6px;
-    color: ${({ theme }) => theme.headerColor};
+    color: ${({ theme }) => theme.headerTeam};
 
     @media (max-width: 500px) {
       font-size: 24px;
@@ -129,8 +129,8 @@ export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
     font-weight: 600;
     font-size: 20px;
     line-height: 20px;
-    padding: 0 16px;
-    color: ${({ theme }) => theme.headerColor};
+    padding: 0 30px;
+    color: ${({ theme }) => theme.headerTeam};
 
     @media (max-width: 500px) {
       font-size: 18px;

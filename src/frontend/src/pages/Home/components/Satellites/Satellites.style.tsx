@@ -20,7 +20,7 @@ export const SatellitesStyled = styled.section<{ theme: MavrykTheme }>`
     font-size: 50px;
     line-height: 50px;
     margin-bottom: 30px;
-    color: ${({ theme }) => theme.headerSectionsColor};
+    color: ${({ theme }) => theme.headerDarkColor};
 
     @media (max-width: 1000px) {
       font-size: 36px;
