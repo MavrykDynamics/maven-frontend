@@ -1,0 +1,9 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "jsdom": "^19.0.0",
+    "xml2js": "^0.4.23"
+  }
+}
