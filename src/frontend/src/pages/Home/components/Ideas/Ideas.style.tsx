@@ -73,13 +73,11 @@ export const IdeasCarouselWrap = styled.div<{ theme: MavrykTheme }>`
     width: 380px;
   }
 
-  @media (max-width: 460px) {
-    width: 320px;
+  @media (max-width: 700px) {
+    width: 80%;
     margin-bottom: 32px;
-  }
-
-  @media (max-width: 400px) {
-    width: 260px;
+    --carousel-button-bg: transparent;
+    --carousel-button-indent: -40px;
   }
 `
 
@@ -111,12 +109,10 @@ export const IdeaLink = styled.a<{ theme: MavrykTheme }>`
   position: relative;
   margin: 12px 25px;
 
-  @media (max-width: 460px) {
-    width: 320px;
-  }
-
-  @media (max-width: 400px) {
-    width: 260px;
+  @media (max-width: 700px) {
+    width: 100%;
+    margin: 12px 8px;
+    height: 310px;
   }
 
   &::after {
