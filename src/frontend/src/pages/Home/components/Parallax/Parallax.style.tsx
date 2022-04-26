@@ -12,6 +12,10 @@ export const ParallaxDesktop = styled.div`
     padding-bottom: 200px;
     margin-bottom: -2px;
 
+    [data-testid='layer-8'] {
+      background-position: center bottom !important;
+    }
+
     @media (max-width: 1000px) {
       height: 100vh;
       padding-bottom: 0;
