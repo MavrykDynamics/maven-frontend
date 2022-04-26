@@ -53,7 +53,7 @@ export const PopupNewsletter = styled.div<{ theme: MavrykTheme }>`
   }
 
   form {
-    margin-bottom: 170px;
+    margin-bottom: 76px;
 
     @media (max-width: 1000px) {
       margin-bottom: 128px;
@@ -64,10 +64,51 @@ export const PopupNewsletter = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
+  figure {
+    position: absolute;
+    margin: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+      position: relative;
+      left: 85px;
+      width: auto;
+      min-width: 120%;
+      bottom: -132px;
+
+      @media (max-width: 1100px) {
+        bottom: -100px;
+      }
+
+      @media (max-width: 1000px) {
+        bottom: -90px;
+      }
+
+      @media (max-width: 700px) {
+        bottom: -60px;
+      }
+
+      @media (max-width: 500px) {
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
   section {
     overflow: hidden;
+    background-size: 133%;
+    background-position-y: 30%;
     border-radius: 15px;
     background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradient};
+
+    @media (max-width: 1232px) {
+      background-size: cover;
+    }
   }
 `
 

@@ -48,6 +48,10 @@ export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
   grid-template-columns: repeat(3, 340px);
   max-width: calc(100vw - 220px);
 
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 280px);
+  }
+
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, 300px);
     row-gap: 50px;

@@ -16,7 +16,7 @@ export const ParallaxView = () => {
           layers={[
             {
               image: folder + '/layer10.svg',
-              translateY: [-80, 80],
+              translateY: [0, 0],
               expanded: false,
             },
             {

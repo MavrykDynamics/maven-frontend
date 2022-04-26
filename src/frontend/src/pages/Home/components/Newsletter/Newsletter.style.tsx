@@ -6,7 +6,7 @@ export const NewsletterStyled = styled.section<{ theme: MavrykTheme }>`
   background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradientTransparent};
   background-repeat: no-repeat;
   background-position: bottom right;
-  background-size: contain;
+  background-size: cover;
   text-align: center;
   position: relative;
 

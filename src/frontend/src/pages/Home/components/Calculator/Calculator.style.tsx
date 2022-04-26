@@ -40,7 +40,6 @@ export const CalculatorStyled = styled(Page)`
 `
 
 export const CalculatorCointainer = styled.div<{ theme: MavrykTheme }>`
-  background-color: ${({ theme }) => theme.darkBackroundColor};
   display: flex;
   border-radius: 15px;
 
@@ -150,13 +149,14 @@ export const CalculatorInput = styled.div<{ shift?: boolean; theme: MavrykTheme 
 export const CalculatorResults = styled.div<{ theme: MavrykTheme }>`
   background: url(${({ theme }) => theme.calculatorBackground});
   background-repeat: no-repeat;
-  background-position: bottom right;
+  background-position: top right;
   border-radius: 0px 10px 10px 0px;
   padding: 15px 35px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 40%;
+  background-size: cover;
 
   @media (max-width: 1480px) {
     background-size: cover;
@@ -214,9 +214,15 @@ export const CalculatorResultFee = styled.div<{ theme: MavrykTheme }>`
 export const CalculatorControls = styled.div<{ theme: MavrykTheme }>`
   flex-shrink: 0;
   max-width: 77%;
+  background-color: ${({ theme }) => theme.darkBackroundColor};
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 
   @media (max-width: 1000px) {
     max-width: 100%;
+    border-radius: 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 `
 

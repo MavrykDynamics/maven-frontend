@@ -82,7 +82,7 @@ export const lightMode = {
   starsBachground: '/images/stars-bg-light.svg',
   satellitesGradient: 'linear-gradient(180deg, #FFFFFF 48.18%, #86D4C9 103.84%)',
   skyGradientTransparent: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
-  skyGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF00 99.3%)',
+  skyGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
   backgroundColor: '#fff',
   containerColor: '#DEE7F7',
   borderColor: '#4F457C',
