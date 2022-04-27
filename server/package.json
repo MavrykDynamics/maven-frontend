@@ -2,8 +2,12 @@
   "name": "server",
   "version": "0.1.0",
   "type": "module",
+  "scripts": {
+    "serve": "nodemon node-server.js"
+  },
   "dependencies": {
     "jsdom": "^19.0.0",
+    "nodemon": "^2.0.15",
     "xml2js": "^0.4.23"
   }
 }

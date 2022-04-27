@@ -4,8 +4,12 @@ COPY package.json .
 
 RUN npm install
 
+ENV PORT 3002
+
+ENV AMI_MEDIUM -----HERE API Key  --------
+
 COPY . .
 
-EXPOSE 3002
+EXPOSE $PORT
 
 CMD [ "node", "node-server.js"]

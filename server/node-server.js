@@ -4,10 +4,11 @@ import url from 'url'
 import { parseString } from 'xml2js'
 
 const port = process.env.PORT || 3002
+const apiMedium = process.env.AMI_MEDIUM || ''
 
 const server = http.createServer().listen(port)
 
-const headers = {
+const writeHeadHeaders = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
@@ -19,8 +20,32 @@ server.on('request', async (req, res) => {
     if (req.method === 'GET') {
 
       if(req.url === '/') {
-         res.writeHead(200, headers)
+         res.writeHead(200, writeHeadHeaders)
          res.end(JSON.stringify({api: '0.1.0'}))
+      }
+
+      if (req.url === '/medium-posts') {
+        const headers = {
+          Authorization: `Bearer ${apiMedium}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'Accept-Charset': 'utf-8',
+        }
+        // https://github.com/Medium/medium-api-docs#31-users
+        const resMe = await fetch('https://api.medium.com/v1/me', { headers })
+        const me = await resMe.json()
+        console.log('%c ||||| me', 'color:yellowgreen', me)
+
+        if (me?.data?.id) {
+          //https://github.com/Medium/medium-api-docs#32-publications
+          const resPublications = await fetch(`https://api.medium.com/v1/users/${me.data.id}/publications`, { headers })
+          const publications = await resPublications.json()
+          console.log('%c ||||| publications', 'color:yellowgreen', publications)
+          res.writeHead(200, writeHeadHeaders)
+          res.end(JSON.stringify(publications?.data))
+        } else {
+          throw Error('Can not get data')
+        }
       }
 
       if(req.url === '/medium-feed') {
@@ -45,7 +70,7 @@ server.on('request', async (req, res) => {
                       }
                     })
                   : []
-              res.writeHead(200, headers)
+              res.writeHead(200, writeHeadHeaders)
               res.end(JSON.stringify(data))
             } else {
               throw Error('Can not convert xml to json')
