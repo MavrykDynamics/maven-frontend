@@ -6,7 +6,7 @@ RUN npm install
 
 ENV PORT 3002
 
-ENV AMI_MEDIUM -----HERE API Key  --------
+ENV API_MEDIUM -----HERE API KEY ----
 
 COPY . .
 

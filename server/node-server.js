@@ -2,9 +2,12 @@ import http from 'http'
 import { JSDOM } from 'jsdom'
 import url from 'url'
 import { parseString } from 'xml2js'
+import dotenv from 'dotenv'
 
-const port = process.env.PORT || 3002
-const apiMedium = process.env.AMI_MEDIUM || ''
+dotenv.config()
+const port = process.env.PORT || 3003
+
+const apiMedium = process.env.API_MEDIUM || ''
 
 const server = http.createServer().listen(port)
 
@@ -13,6 +16,12 @@ const writeHeadHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
   'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Content-Type',
+}
+const headers = {
+  Authorization: `Bearer ${apiMedium}`,
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
+  'Accept-Charset': 'utf-8',
 }
 
 server.on('request', async (req, res) => {
@@ -25,14 +34,12 @@ server.on('request', async (req, res) => {
       }
 
       if (req.url === '/medium-posts') {
-        const headers = {
-          Authorization: `Bearer ${apiMedium}`,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          'Accept-Charset': 'utf-8',
-        }
+
+        console.log('%c ||||| headers', 'color:yellowgreen', headers);
         // https://github.com/Medium/medium-api-docs#31-users
         const resMe = await fetch('https://api.medium.com/v1/me', { headers })
+
+        // console.log('%c ||||| resMe', 'color:yellowgreen', resMe);
         const me = await resMe.json()
         console.log('%c ||||| me', 'color:yellowgreen', me)
 
