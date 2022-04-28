@@ -46,10 +46,10 @@ export const NewsletterFigure = styled.figure`
   left: 0;
   bottom: -8px;
   z-index: 2;
-  width: 100%;
+  width: 100vw;
 
   img {
-    width: 100%;
+    width: 100vw;
     transform: scaleX(-1);
     min-height: 50px;
   }

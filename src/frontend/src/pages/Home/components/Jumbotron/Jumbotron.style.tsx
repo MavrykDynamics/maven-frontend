@@ -79,10 +79,15 @@ export const JubontronContainer = styled.div`
 
 export const JumbotronButtons = styled.div`
   display: flex;
-  grid-gap: 40px;
 
-  @media (max-width: 500px) {
-    grid-gap: 20px;
+  a {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    @media (max-width: 500px) {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
   }
 `
 

@@ -112,11 +112,11 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
 
 export const HeaderLogo = styled.div<{ theme: MavrykTheme; showBg: boolean; src: string }>`
   background: url(${(props) => props.src}) no-repeat;
-  height: 100%;
+  height: 60px;
   margin-top: ${(props) => (props.showBg ? ({ theme }) => '-16px' : '-8px')};
   z-index: 1;
   width: 276px;
-  transition: all 0.25s linear;
+  transition: margin-top 0.25s linear;
 
   @media (max-width: 1000px) {
     height: 40px;
@@ -126,11 +126,6 @@ export const HeaderLogo = styled.div<{ theme: MavrykTheme; showBg: boolean; src:
   }
 
   @media (max-width: 500px) {
-    height: 40px;
-    width: 160px;
-  }
-
-  @media (max-width: 374px) {
     height: 23px;
     width: 106px;
     margin-top: -5px;
