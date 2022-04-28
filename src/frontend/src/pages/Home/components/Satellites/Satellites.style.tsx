@@ -55,13 +55,14 @@ export const SatellitesFrontFigure = styled.figure<{ theme: MavrykTheme }>`
   margin: 0;
   position: absolute;
   bottom: -10px;
-  width: 100vw;
+  width: 100%;
   left: 0;
 
   img {
     width: 100%;
     display: block;
     min-height: 50px;
+    object-fit: cover;
   }
 `
 

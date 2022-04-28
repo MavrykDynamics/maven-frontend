@@ -56,6 +56,7 @@ export const NewsletterFigure = styled.figure`
     width: 100%;
     transform: scaleX(-1);
     min-height: 50px;
+    object-fit: cover;
 
     @media (hover: none) {
       width: 100vw;
