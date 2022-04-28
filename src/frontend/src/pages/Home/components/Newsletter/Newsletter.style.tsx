@@ -11,7 +11,7 @@ export const NewsletterStyled = styled.section<{ theme: MavrykTheme }>`
   position: relative;
 
   @media (max-width: 1000px) {
-    padding: 0 16px;
+    padding: 0 30px;
   }
 
   h2 {

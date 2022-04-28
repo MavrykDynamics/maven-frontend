@@ -51,7 +51,7 @@ export const WhatMakesContainerStyled = styled.div`
   }
 
   @media (max-width: 700px) {
-    max-width: calc(100vw - 40px);
+    max-width: calc(100vw - 60px);
   }
 `
 export const WhatMakesArticlesStyled = styled.div`
