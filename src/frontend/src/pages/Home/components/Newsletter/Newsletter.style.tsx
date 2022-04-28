@@ -48,8 +48,8 @@ export const NewsletterFigure = styled.figure`
   z-index: 2;
   width: 100%;
 
-  @media (hover: none) {
-    width: 100vw;
+  @media (max-width: 700px) {
+    overflow: hidden;
   }
 
   img {
@@ -58,8 +58,9 @@ export const NewsletterFigure = styled.figure`
     min-height: 50px;
     object-fit: cover;
 
-    @media (hover: none) {
-      width: 100vw;
+    @media (max-width: 700px) {
+      margin-left: -2px;
+      width: 102%;
     }
   }
 `

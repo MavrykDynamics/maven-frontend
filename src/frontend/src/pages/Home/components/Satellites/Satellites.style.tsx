@@ -58,11 +58,20 @@ export const SatellitesFrontFigure = styled.figure<{ theme: MavrykTheme }>`
   width: 100%;
   left: 0;
 
+  @media (max-width: 700px) {
+    overflow: hidden;
+  }
+
   img {
     width: 100%;
     display: block;
     min-height: 50px;
     object-fit: cover;
+
+    @media (max-width: 700px) {
+      margin-left: -2px;
+      width: 102%;
+    }
   }
 `
 
