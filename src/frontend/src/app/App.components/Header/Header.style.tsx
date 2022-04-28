@@ -95,17 +95,19 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
     max-width: calc(100vw - 40px);
 
     a {
-      margin-top: 6px;
+      margin-top: 2px;
       font-size: 14px;
     }
 
     label {
       margin-top: 0px;
+      position: relative;
+      bottom: 4px;
     }
   }
 
   @media (max-width: 374px) {
-    margin-top: 12px;
+    margin-top: 19px;
     padding-bottom: 8px;
   }
 `
@@ -126,9 +128,15 @@ export const HeaderLogo = styled.div<{ theme: MavrykTheme; showBg: boolean; src:
   }
 
   @media (max-width: 500px) {
-    height: 23px;
-    width: 106px;
-    margin-top: -5px;
+    height: 28px;
+    width: 140px;
+    margin-top: -7px;
+  }
+
+  @media (max-width: 374px) {
+    height: 18px;
+    width: 100px;
+    margin-top: -2px;
   }
 `
 
