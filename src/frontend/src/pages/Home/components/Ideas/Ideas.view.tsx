@@ -1,18 +1,15 @@
+import { group } from 'console'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-// test data
-import data from './Ideas.data.json'
-
+import Carousel from '../../../../app/App.components/Carousel/Carousel.view'
+import useGetMediumFeed from '../../../../hooks/useGetMediumFeed'
 // hooks
 import useMediaQuery from '../../../../hooks/useMediaQuery'
-import useGetMediumFeed from '../../../../hooks/useGetMediumFeed'
-
-import Carousel from '../../../../app/App.components/Carousel/Carousel.view'
-
+// test data
+import data from './Ideas.data.json'
 // prettier-ignore
-import { IdeasFigure, IdeasSection, IdeasCarouselWrap, IdeasGroupSection, IdeaLink, IdeaLoading } from './Ideas.style'
-import { group } from 'console'
+import { IdeaLink, IdeaLoading, IdeasCarouselWrap, IdeasFigure, IdeasGroupSection, IdeasSection } from './Ideas.style'
 
 const chunkArrayInGroups = (arr: Record<string, string | number>[], size: number) => {
   var myArray = []
@@ -36,10 +33,6 @@ export const IdeasView = () => {
   const chunkAmount = isPhone ? 1 : isMiddleScreen ? 4 : 6
   const groupedData = chunkArrayInGroups(data, chunkAmount)
 
-  // console.log('%c ||||| groupedData', 'color:yellowgreen', groupedData)
-
-  console.log('%c ||||| loading', 'color:yellowgreen', loading)
-
   // will be Ideas
   return (
     <IdeasSection>
@@ -54,7 +47,11 @@ export const IdeasView = () => {
             {groupedData.map((group, i) => (
               <IdeasGroupSection key={i}>
                 {group.map((item) => (
-                  <IdeaLink key={item.id}>
+                  <IdeaLink
+                    href="https://blogs.mavryk.finance/welcome-to-mavryk-finance-54bbf7b101ed"
+                    target="_blank"
+                    key={item.id}
+                  >
                     <img src="https://miro.medium.com/max/700/1*PF-l6bSvZGdDA97dtpBbfA.png" alt="" />
                     <figcaption>
                       <h3>Title A</h3>

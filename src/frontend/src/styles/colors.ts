@@ -93,7 +93,7 @@ export const lightMode = {
   placeholderColor: '#7068AA',
   primaryColor: '#7068AA',
   secondaryColor: '#73d7c3',
-  upColor: '#00E205',
+  upColor: 'green',
   downColor: '#F90021',
   selectedColor: '#aea3ff3d',
   litepaperLinkColor: '#7068AA',

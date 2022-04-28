@@ -113,7 +113,7 @@ export const NewsletterStatus = styled.div<{ theme: MavrykTheme }>`
   top: 20px;
 
   .loading {
-    color: ${({ theme }) => theme.backgroundColor};
+    color: ${({ theme }) => theme.textColor};
   }
 
   .success {
