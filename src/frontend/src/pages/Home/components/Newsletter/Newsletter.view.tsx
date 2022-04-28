@@ -1,18 +1,10 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { useMailChimpForm } from 'use-mailchimp-form'
 import { useSelector } from 'react-redux'
+import { useMailChimpForm } from 'use-mailchimp-form'
 
 // prettier-ignore
-import {
-  NewsletterFigure,
-  NewsletterButton,
-  NewsletterClose,
-  NewsletterForm,
-  NewsletterGrid,
-  NewsletterStatus,
-  NewsletterStyled,
-} from './Newsletter.style'
+import { NewsletterButton, NewsletterClose, NewsletterFigure, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
 import animationData from './ship-loop.json'
 
 type NewsLetterProps = {
@@ -64,6 +56,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
         >
           <input
             id="name"
+            required
             placeholder="Name"
             type="text"
             value={values.NAME}
@@ -76,6 +69,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
           />
           <input
             id="company"
+            required
             placeholder="Organization"
             type="text"
             value={values.ORGANISATI}
@@ -88,6 +82,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
           />
           <input
             id="username"
+            required
             placeholder="Email*"
             type="email"
             value={values.EMAIL}
@@ -98,7 +93,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
               })
             }
           />
-          <NewsletterButton onClick={() => subscribe()}>Subscribe</NewsletterButton>
+          <NewsletterButton>Subscribe</NewsletterButton>
           <NewsletterStatus>
             {loading && <div className="loading">{`Submitting...`}</div>}
             {error && <div className="error">{message}</div>}
