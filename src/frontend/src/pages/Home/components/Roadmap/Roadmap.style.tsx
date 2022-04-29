@@ -48,6 +48,10 @@ export const RoadmapArticles = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   justify-content: center;
 
+  @media (max-width: 1300px) {
+    padding: 0 40px;
+  }
+
   &::after {
     content: '';
     background: linear-gradient(
@@ -61,11 +65,22 @@ export const RoadmapArticles = styled.div<{ theme: MavrykTheme }>`
     position: absolute;
     left: 0;
     top: calc(50% + 70px);
+
+    @media (max-width: 1190px) {
+      top: calc(50% + 65px);
+    }
+    @media (max-width: 1000px) {
+      top: calc(50% + 107px);
+    }
   }
 `
 export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
   display: grid;
   grid-template-rows: 202px 124px 1fr;
+
+  @media (max-width: 1190px) {
+    grid-template-rows: 222px 124px 1fr;
+  }
 
   &:nth-child(1) {
     blockquote {
@@ -77,6 +92,15 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
     blockquote {
       order: -1;
       padding-top: 0;
+      padding: 0 93px;
+
+      @media (max-width: 1450px) {
+        padding: 0 32px;
+      }
+
+      @media (max-width: 1300px) {
+        padding: 0;
+      }
     }
     div {
       order: 1;
@@ -91,6 +115,10 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
       border: 1px solid ${({ theme }) => theme.inputBorderColor};
       border-radius: 10px;
       padding: 30px;
+
+      @media (max-width: 1000px) {
+        padding: 20px;
+      }
     }
   }
 
@@ -101,6 +129,11 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
     text-align: left;
     margin-bottom: 10px;
     color: ${({ theme }) => theme.headingColor};
+
+    @media (max-width: 1000px) {
+      font-size: 24px;
+      line-height: 1.1;
+    }
   }
 
   ul {
@@ -116,6 +149,11 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
     font-size: 17px;
     line-height: 25px;
     color: ${({ theme }) => theme.headingColor};
+
+    @media (max-width: 1000px) {
+      font-size: 15px;
+      line-height: 1.2;
+    }
 
     &::before {
       content: '-';
