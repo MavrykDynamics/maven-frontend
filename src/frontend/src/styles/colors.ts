@@ -67,6 +67,7 @@ export const darkMode = {
   btnNewsColor: '#38237C',
   inputNewsBg: 'rgba(8, 6, 40, 0.5)',
   inputNewsColor: '#77A4F2',
+  roadmapValueColor: '#77A4F2',
   arrowStrokeColor: '#8D86EB',
 }
 
@@ -113,6 +114,7 @@ export const lightMode = {
   inputColor: titleColor,
   btnColor: '#F7F9FD',
   headerDarkColor: headerColor,
+  roadmapValueColor: headerColor,
   headerTeam: '#27007A',
   btnNewsColor: '#fff',
   inputNewsBg: 'rgba(255, 255, 255, 0.5)',

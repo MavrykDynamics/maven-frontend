@@ -11,6 +11,7 @@ import { IdeasView } from './components/Ideas/Ideas.view'
 import { NewsletterView } from './components/Newsletter/Newsletter.view'
 import { ParallaxView } from './components/Parallax/Parallax.view'
 import { PartnersView } from './components/Partners/Partners.view'
+import { RoadmapView } from './components/Roadmap/Roadmap.view'
 import { SatellitesView } from './components/Satellites/Satellites.view'
 import { TeamView } from './components/Team/Team.view'
 import { TokenomicsView } from './components/Tokenomics/Tokenomics.view'
@@ -40,6 +41,7 @@ export const HomeView = () => {
         <TokenomicsView />
         <TeamView />
         {/* <IdeasView /> */}
+        <RoadmapView />
         <NewsletterView />
       </HomeNoParallax>
       <Footer />
