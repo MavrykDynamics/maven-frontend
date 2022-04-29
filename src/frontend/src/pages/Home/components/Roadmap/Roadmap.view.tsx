@@ -12,7 +12,7 @@ export const RoadmapView = () => {
       <RoadmapArticles>
         {data.map((item) => (
           <RoadmapArticle key={item.value}>
-            <div />
+            <aside />
             <figure>
               <img src="/images/flag.svg" alt={item.header} />
               <figcaption>{item.value}</figcaption>

@@ -52,6 +52,12 @@ export const RoadmapArticles = styled.div<{ theme: MavrykTheme }>`
     padding: 0 40px;
   }
 
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    position: relative;
+    padding-top: 21px;
+  }
+
   &::after {
     content: '';
     background: linear-gradient(
@@ -69,8 +75,19 @@ export const RoadmapArticles = styled.div<{ theme: MavrykTheme }>`
     @media (max-width: 1190px) {
       top: calc(50% + 65px);
     }
+
     @media (max-width: 1000px) {
-      top: calc(50% + 107px);
+      top: 0;
+      height: 92%;
+      width: 15px;
+      background: linear-gradient(
+        178deg,
+        rgba(134, 212, 201, 1) 0%,
+        rgba(134, 212, 201, 1) 55%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 `
@@ -82,6 +99,12 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
     grid-template-rows: 222px 124px 1fr;
   }
 
+  @media (max-width: 1000px) {
+    width: calc(50% - 40px);
+    display: flex;
+    flex-direction: column;
+  }
+
   &:nth-child(1) {
     blockquote {
       max-width: 400px;
@@ -89,6 +112,17 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
   }
 
   &:nth-child(2) {
+    @media (max-width: 1000px) {
+      align-self: flex-end;
+      align-items: baseline;
+      margin-top: -46px;
+      margin-bottom: -40px;
+
+      figure {
+        align-items: baseline;
+      }
+    }
+
     blockquote {
       order: -1;
       padding-top: 0;
@@ -101,15 +135,28 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
       @media (max-width: 1300px) {
         padding: 0;
       }
+
+      @media (max-width: 1000px) {
+        order: 0;
+      }
     }
-    div {
+
+    aside {
       order: 1;
+
+      @media (max-width: 1000px) {
+        order: 0;
+      }
     }
   }
 
   blockquote {
     margin: 0;
     padding-top: 42px;
+
+    @media (max-width: 1000px) {
+      padding-top: 0;
+    }
 
     div {
       border: 1px solid ${({ theme }) => theme.inputBorderColor};
@@ -119,6 +166,12 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
       @media (max-width: 1000px) {
         padding: 20px;
       }
+    }
+  }
+
+  aside {
+    @media (max-width: 1000px) {
+      display: none;
     }
   }
 
@@ -166,6 +219,10 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
     margin: 0;
     justify-content: center;
     align-items: flex-end;
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+    }
   }
 
   figcaption {
@@ -174,5 +231,9 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
     line-height: 30px;
     padding-bottom: 10px;
     color: ${({ theme }) => theme.roadmapValueColor};
+
+      padding-top: 14px;
+      padding-bottom: 16px;
+    }
   }
 ` /*RoadmapArticle*/
