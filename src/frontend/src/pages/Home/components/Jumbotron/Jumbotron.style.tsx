@@ -77,7 +77,7 @@ export const JubontronContainer = styled.div`
   max-width: 475px;
 
   @media (max-width: 400px) {
-    padding-top: 32px;
+    padding-top: 50px;
   }
 `
 
