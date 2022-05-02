@@ -52,15 +52,15 @@ export const TeamsGrid = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 60px;
+  row-gap: 56px;
+  column-gap: 38px;
   margin-bottom: 145px;
 
   @media (max-width: ${CONTAINER_WIDTH}) {
-    gap: 30px;
-  }
-
-  @media (max-width: 1250px) {
-    gap: 60px;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
   }
 
   @media (max-width: 1000px) {
