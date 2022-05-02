@@ -48,8 +48,6 @@ export const HeaderView = () => {
           />
         </Link>
 
-        <div />
-
         <Link to="/litepaper">Litepaper</Link>
 
         <HashLink
@@ -57,18 +55,18 @@ export const HeaderView = () => {
           scroll={(el) =>
             window.scrollTo({
               behavior: 'smooth',
-              top: el.getBoundingClientRect().top + window.pageYOffset - 180,
+              top: el.getBoundingClientRect().top + window.pageYOffset - 124,
             })
           }
         >
-          Loan Calculator
+          Calculator
         </HashLink>
         <HashLink
           to="/#features"
           scroll={(el) =>
             window.scrollTo({
               behavior: 'smooth',
-              top: el.getBoundingClientRect().top + window.pageYOffset - 140,
+              top: el.getBoundingClientRect().top + window.pageYOffset - 74,
             })
           }
         >
@@ -79,11 +77,22 @@ export const HeaderView = () => {
           scroll={(el) =>
             window.scrollTo({
               behavior: 'smooth',
-              top: el.getBoundingClientRect().top + window.pageYOffset - 120,
+              top: el.getBoundingClientRect().top + window.pageYOffset - 60,
             })
           }
         >
           Tokenomics
+        </HashLink>
+        <HashLink
+          to="/#satellites"
+          scroll={(el) =>
+            window.scrollTo({
+              behavior: 'smooth',
+              top: el.getBoundingClientRect().top + window.pageYOffset - 124,
+            })
+          }
+        >
+          Satellites
         </HashLink>
         <a href="https://blogs.mavryk.finance/" target="_blank" rel="noreferrer">
           Blog

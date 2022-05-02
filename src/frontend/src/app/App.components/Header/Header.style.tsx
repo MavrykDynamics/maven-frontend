@@ -35,9 +35,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   text-align: center;
   height: 80px;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 170px auto 100px 140px 100px 100px 70px 50px;
-  grid-gap: 10px;
+  display: flex;
   font-weight: 500;
   transition: 0.25s;
 
@@ -47,6 +45,16 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
     margin-top: 30px;
     font-size: 17px;
     font-weight: bold;
+    margin-left: 30px;
+
+    @media (max-width: 1070px) {
+      margin-left: 16px;
+    }
+
+    &:nth-of-type(1) {
+      margin-right: auto;
+      margin-left: 0;
+    }
   }
 
   > a:hover {
@@ -54,8 +62,12 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   }
 
   > label {
-    margin: auto;
     margin-top: 25px;
+    margin-left: 30px;
+
+    @media (max-width: 1070px) {
+      margin-left: 16px;
+    }
   }
 
   @media (max-width: 1000px) {
@@ -71,6 +83,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
       margin-right: auto;
     }
 
+    a:nth-child(3),
     a:nth-child(4),
     a:nth-child(5),
     a:nth-child(6) {
