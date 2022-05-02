@@ -4,7 +4,7 @@ import { MavrykTheme } from 'utils/interfaces'
 import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const TeamStyled = styled.section<{ theme: MavrykTheme }>`
-  --carousel-button-bg: ${({ theme }) => theme.darkestBackroundColor}
+  --carousel-button-bg: ${({ theme }) => theme.darkestBackroundColor};
   width: ${CONTAINER_WIDTH};
   max-width: 100%;
   margin: 0 auto;
@@ -17,6 +17,15 @@ export const TeamStyled = styled.section<{ theme: MavrykTheme }>`
 
   @media (max-width: 700px) {
     --carousel-button-indent: -40px;
+  }
+
+  article {
+    &:nth-child(2) {
+      width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+    }
   }
 
   h2 {
@@ -40,8 +49,8 @@ export const TeamStyled = styled.section<{ theme: MavrykTheme }>`
 `
 
 export const TeamsGrid = styled.div<{ theme: MavrykTheme }>`
-  display: grid;
-  grid-template-columns: repeat(4, 280px);
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 60px;
   margin-bottom: 145px;
@@ -51,12 +60,10 @@ export const TeamsGrid = styled.div<{ theme: MavrykTheme }>`
   }
 
   @media (max-width: 1250px) {
-    grid-template-columns: repeat(3, 280px);
     gap: 60px;
   }
 
   @media (max-width: 1000px) {
-    grid-template-columns: repeat(2, 280px);
     margin-bottom: 32px;
   }
 `
@@ -69,8 +76,13 @@ export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
   border-radius: 15px;
   overflow: hidden;
   background-repeat: no-repeat;
-  min-width: 100%;
+  width: 280px;
   margin: 0 8px;
+
+  @media (max-width: 700px) {
+    min-width: 100%;
+    width: auto;
+  }
 
   &:nth-of-type(1),
   &:nth-of-type(n + 4) {
@@ -115,7 +127,7 @@ export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
 
   h3 {
     font-weight: 700;
-    font-size: 30px;
+    font-size: 28px;
     line-height: 30px;
     margin-bottom: 6px;
     color: ${({ theme }) => theme.headerTeam};

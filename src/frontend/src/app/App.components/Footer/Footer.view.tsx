@@ -17,8 +17,8 @@ export const FooterView = () => {
               <FooterLogo alt="logo" src={logoUrl} />
             </Link>
             <FooterDescription>
-              Mavryk Finance is a decentralized finance ecosystem designed to allow users to borrow and earn, to unlock
-              the world from legacy financial systems.
+              Mavryk is a cooperatively run financial ecosystem that lets users borrow and earn on their terms, while
+              participating in the governance of the platform.
             </FooterDescription>
           </div>
 
@@ -51,10 +51,10 @@ export const FooterView = () => {
           </FooterSocials>
         </FooterTop>
         <FooterBottom>
-          <div>© Mavryk. {new Date().getFullYear()}</div>
-          <FooterLinks>
+          <div>© Mavryk {new Date().getFullYear()}</div>
+          {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
-          </FooterLinks>
+          </FooterLinks> */}
         </FooterBottom>
       </FooterContainer>
     </FooterStyled>

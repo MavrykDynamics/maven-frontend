@@ -17,8 +17,8 @@ export const SatellitesView = () => {
     <SatellitesStyled id="satellites">
       <h2>Satellites: The Key to Mavryk’s Governance Structure</h2>
       <p>
-        Satellites are nodes that administer the Mavryk platform through governance voting and providing Oracle price
-        feed information.
+        Satellites are nodes that operate the Mavryk platform through governance voting and providing Oracle price feed
+        information.
       </p>
       <Parallax speed={-5}>
         <SatellitesImage src={satelliteImgUrl} srcMobile={satelliteMobileImgUrl} />
