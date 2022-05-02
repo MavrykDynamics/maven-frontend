@@ -75,8 +75,8 @@ export const CalculatorView = () => {
                   }
                 >
                   <option value="XTZ">XTZ</option>
-                  <option value="wWBTC">wWBTC</option>
-                  <option value="wWETH">wWETH</option>
+                  <option value="wWBTC">tzBTZ</option>
+                  <option value="wWETH">XTZ/tzBTC LB LP</option>
                 </select>
               </CalculatorInput>
               <CalculatorInput>
