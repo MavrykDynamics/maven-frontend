@@ -1,5 +1,7 @@
 import styled from 'styled-components/macro'
 import { subHeaderColor } from 'styles/colors'
+import { MavrykTheme } from 'utils/interfaces'
+
 import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const PartnersStyled = styled.section`
@@ -9,6 +11,7 @@ export const PartnersStyled = styled.section`
   margin-left: auto;
   margin-right: auto;
   max-width: calc(100vw - 40px);
+  margin-bottom: 112px;
 
   h2 {
     text-align: center;
@@ -28,7 +31,62 @@ export const PartnersStyled = styled.section`
   }
 `
 
-export const PartnersGrid = styled.div`
+export const PartnersGrid = styled.div<{ theme: MavrykTheme }>`
+  .partner-cluster {
+    width: 330px;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 1000px) {
+      width: 280px;
+    }
+
+    @media (max-width: 620px) {
+      width: 180px;
+    }
+
+    @media (max-width: 400px) {
+      width: 130px;
+      padding-left: 0 !important;
+    }
+
+    img {
+      width: 80%;
+    }
+
+    div {
+      height: 74px;
+      border-radius: 45px;
+      background-color: ${({ theme }) => theme.clusterBg};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      @media (max-width: 1000px) {
+        height: 64px;
+      }
+
+      @media (max-width: 620px) {
+        height: 50px;
+      }
+
+      @media (max-width: 400px) {
+        height: 42px;
+      }
+    }
+  }
+
+  .partner-neo-facto {
+    img {
+      height: 100px;
+
+      @media (max-width: 1000px) {
+        height: 70px;
+      }
+    }
+  }
+
   display: grid;
   grid-template-columns: repeat(20, 1fr);
   grid-gap: 40px;
@@ -56,27 +114,26 @@ export const PartnersGrid = styled.div`
     grid-column: span 4;
   }
 
-  > a:before {
-    width: 90px;
-    height: 90px;
-    left: calc(50% - 45px);
-    top: calc(50% - 45px);
-    content: '';
-    background: #9cb8e2;
-    opacity: 0.08;
-    position: absolute;
-    border-radius: 100%;
-    z-index: -1;
-
-    @media (max-width: 1000px) {
-      width: 48px;
-      height: 48px;
-      left: calc(50% - 24px);
-      top: calc(50% - 24px);
-    }
+  > a:nth-child(14),
+  a:nth-child(15),
+  a:nth-child(16),
+  a:nth-child(17) {
+    grid-column: span 4;
   }
 
   @media (max-width: 1240px) {
+    .empty {
+      display: none;
+    }
+
+    .partner-nomadic {
+      padding-right: 40px;
+    }
+
+    .partner-cluster {
+      padding-left: 40px;
+    }
+
     grid-template-columns: repeat(15, 1fr);
     grid-gap: 16px;
 
@@ -92,8 +149,11 @@ export const PartnersGrid = styled.div`
       grid-column: span 7;
     }
 
-    div {
-      display: none;
+    > a:nth-child(14),
+    a:nth-child(15),
+    a:nth-child(16),
+    a:nth-child(17) {
+      grid-column: span 5;
     }
   }
 
@@ -110,6 +170,28 @@ export const PartnersGrid = styled.div`
     a:nth-child(9),
     a:nth-child(10) {
       grid-column: span 7;
+    }
+  }
+
+  @media (max-width: 700px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    a {
+      width: 45%;
+    }
+  }
+
+  @media (max-width: 620px) {
+    a {
+      width: 45%;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .partner-nomadic {
+      padding-right: 20px !important;
     }
   }
 `

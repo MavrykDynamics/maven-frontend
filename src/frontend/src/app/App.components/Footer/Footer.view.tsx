@@ -43,7 +43,7 @@ export const FooterView = () => {
                 <use xlinkHref="/icons/sprites.svg#discord" />
               </svg>
             </a>
-            <a href="https://discord.com/invite/7VXPR4gkT6" target="_blank" rel="noreferrer">
+            <a href="https://github.com/mavrykfinance/" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#gitHub" />
               </svg>

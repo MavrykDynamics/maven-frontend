@@ -68,6 +68,7 @@ export const darkMode = {
   inputNewsBg: 'rgba(8, 6, 40, 0.5)',
   inputNewsColor: '#77A4F2',
   arrowStrokeColor: '#8D86EB',
+  clusterBg: 'transparent',
 }
 
 export const lightMode = {
@@ -118,4 +119,5 @@ export const lightMode = {
   inputNewsBg: 'rgba(255, 255, 255, 0.5)',
   inputNewsColor: '#080628',
   arrowStrokeColor: '#77A4F2',
+  clusterBg: '#9CB8E2',
 }

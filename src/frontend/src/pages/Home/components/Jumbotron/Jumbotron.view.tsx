@@ -41,7 +41,7 @@ export const JumbotronView = () => {
                 <use xlinkHref="/icons/sprites.svg#telegram" />
               </svg>
             </a>
-            <a href="https://www.linkedin.com/company/mavryk-finance/" target="_blank" rel="noreferrer">
+            <a href="https://github.com/mavrykfinance/" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#gitHub" />
               </svg>
