@@ -5,6 +5,7 @@ import { MavrykTheme } from 'utils/interfaces'
 import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const WhatMakesStyled = styled.section<{ theme: MavrykTheme }>`
+  --max-container: calc(100vw - 400px);
   background-image: url(${({ theme }) => theme.whatMakesBackground});
   padding-top: 134px;
   padding-bottom: 190px;
@@ -12,6 +13,9 @@ export const WhatMakesStyled = styled.section<{ theme: MavrykTheme }>`
   background-position: center;
   background-size: cover;
 
+  @media (max-width: 1200px) {
+    --max-container: calc(100vw - 200px);
+  }
   @media (max-width: 1000px) {
     padding-top: 16px;
     padding-bottom: 64px;
@@ -43,7 +47,7 @@ export const WhatMakesStyled = styled.section<{ theme: MavrykTheme }>`
 `
 export const WhatMakesContainerStyled = styled.div`
   width: ${CONTAINER_WIDTH};
-  max-width: calc(100vw - 260px);
+  max-width: var(--max-container);
   margin: 0 auto;
 
   @media (max-width: 1000px) {

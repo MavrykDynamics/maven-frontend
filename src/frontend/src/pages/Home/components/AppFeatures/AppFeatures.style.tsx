@@ -5,6 +5,7 @@ import { MavrykTheme } from 'utils/interfaces'
 import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
+  --max-container: calc(100vw - 400px);
   padding-top: 50px;
   padding-bottom: 190px;
   display: flex;
@@ -39,7 +40,7 @@ export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
 `
 
 export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
-  width: ${CONTAINER_WIDTH};
+  width: var(--max-container);
   max-width: 100%;
   margin: 0;
   display: grid;
@@ -47,6 +48,10 @@ export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
   row-gap: 70px;
   grid-template-columns: repeat(3, 340px);
   max-width: calc(100vw - 220px);
+
+  @media (max-width: 1420px) {
+    width: 1020px;
+  }
 
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 280px);

@@ -2,17 +2,21 @@ import styled from 'styled-components/macro'
 import { Page } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
-import { CONTAINER_WIDTH } from '../../../pages/Home/Home.style'
-
 export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
+  --max-container: calc(100vw - 490px);
   background-color: ${({ theme }) => theme.darkestBackroundColor};
   color: ${({ theme }) => theme.textColor};
   margin-top: 20px;
   font-weight: 400;
   font-size: 18px;
 
+  @media (max-width: 1200px) {
+    --max-container: calc(100vw - 300px);
+  }
+
   @media (max-width: 1000px) {
     font-size: 16px;
+    --max-container: calc(100vw - 80px);
   }
 `
 
@@ -31,7 +35,7 @@ export const FooterContainer = styled.div`
 export const FooterTop = styled.div`
   margin: 0 auto;
   width: 100%;
-  max-width: ${CONTAINER_WIDTH};
+  max-width: var(--max-container);
   display: flex;
   font-weight: 500;
   align-items: baseline;
@@ -45,7 +49,7 @@ export const FooterTop = styled.div`
 export const FooterBottom = styled.div`
   margin: 0 auto;
   width: 100%;
-  max-width: ${CONTAINER_WIDTH};
+  max-width: var(--max-container);
   display: flex;
   justify-content: space-between;
   align-items: center;
