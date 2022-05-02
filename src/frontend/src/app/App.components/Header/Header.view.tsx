@@ -40,8 +40,7 @@ export const HeaderView = () => {
   const showBg = scrollPositionMobile > 800 || scrollPositionDesktop > 900 || isLitepaperPage
 
   const logoUrl = darkThemeEnabled ? '/logo-dark.svg' : '/logo-light.svg'
-  const darkColor = darkThemeEnabled ? 'rgb(8, 6, 40)' : 'transparent'
-  const browserColor = showBg ? darkColor : 'transparent'
+  const browserColor = darkThemeEnabled ? 'rgb(22, 14, 63)' : 'rgb(235, 240, 255)'
 
   return (
     <HeaderStyled showBg={showBg}>
