@@ -25,7 +25,28 @@ export const JumbotronView = () => {
               <JumbotronButton secondary>Litepaper</JumbotronButton>
             </Link>
           </JumbotronButtons>
-          <JumbotronSocials />
+          <JumbotronSocials>
+            <a href="https://twitter.com/Mavryk_Finance" target="_blank" rel="noreferrer">
+              <svg>
+                <use xlinkHref="/icons/sprites.svg#twitter" />
+              </svg>
+            </a>
+            <a href="https://discord.com/invite/7VXPR4gkT6" target="_blank" rel="noreferrer">
+              <svg>
+                <use xlinkHref="/icons/sprites.svg#discord" />
+              </svg>
+            </a>
+            <a href="https://t.me/Mavryk_Finance" target="_blank" rel="noreferrer">
+              <svg>
+                <use xlinkHref="/icons/sprites.svg#telegram" />
+              </svg>
+            </a>
+            <a href="https://github.com/mavrykfinance/" target="_blank" rel="noreferrer">
+              <svg>
+                <use xlinkHref="/icons/sprites.svg#gitHub" />
+              </svg>
+            </a>
+          </JumbotronSocials>
         </JubontronContainer>
       </Page>
     </JumbotronStyled>

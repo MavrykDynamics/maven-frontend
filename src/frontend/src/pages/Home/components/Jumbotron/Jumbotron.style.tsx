@@ -25,11 +25,11 @@ export const JubontronTitle = styled.div<{ theme: MavrykTheme }>`
   > h1 {
     font-weight: bold;
     font-size: 64px;
-    line-height: 110%;
     letter-spacing: -0.02em;
     color: ${({ theme }) => theme.headerColor};
     margin-top: 0;
     margin-block: 0;
+    padding-top: 10px;
 
     &:after {
       display: none;
@@ -74,15 +74,15 @@ export const JubontronContainer = styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
-  max-width: 481px;
+  max-width: 475px;
 `
 
 export const JumbotronButtons = styled.div`
   display: flex;
 
   a {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 16px;
+    margin-right: 16px;
 
     @media (max-width: 500px) {
       margin-left: 10px;
@@ -92,7 +92,7 @@ export const JumbotronButtons = styled.div`
 `
 
 export const JumbotronButton = styled.div<{ secondary?: boolean }>`
-  line-height: 37px;
+  line-height: 38px;
   font-size: 16px;
   font-weight: bold;
   color: ${subTextColor};
@@ -124,9 +124,20 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
 `
 
 export const JumbotronSocials = styled.div<{ theme: MavrykTheme }>`
-  margin: 50px 0 150px 0;
+  margin: 24px 0 269px 0;
+  display: flex;
+
+  a {
+    margin-right: 12px;
+    margin-left: 12px;
+
+    svg {
+      height: 30px;
+      width: 40px;
+      fill: ${headerColor};
+    }
+  }
 
   @media (max-width: 1000px) {
-    display: none;
   }
 `

@@ -4,9 +4,15 @@ import { MavrykTheme } from 'utils/interfaces'
 export const TokenomicsStyled = styled.section<{ theme: MavrykTheme }>`
   text-align: center;
   padding-top: 64px;
+  padding-bottom: 120px;
 
   @media (max-width: 1000px) {
     padding-top: 16px;
+    padding-bottom: 32px;
+  }
+
+  @media (max-width: 700px) {
+    padding-bottom: 0;
   }
 
   h2 {
@@ -33,7 +39,7 @@ export const TokenomicsStyled = styled.section<{ theme: MavrykTheme }>`
 
   img {
     position: relative;
-    top: -25px;
+    margin-top: 50px;
     max-width: 100%;
     min-height: 50px;
 

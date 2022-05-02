@@ -69,6 +69,7 @@ export const darkMode = {
   inputNewsColor: '#77A4F2',
   roadmapValueColor: '#77A4F2',
   arrowStrokeColor: '#8D86EB',
+  clusterBg: 'transparent',
 }
 
 export const lightMode = {
@@ -120,4 +121,5 @@ export const lightMode = {
   inputNewsBg: 'rgba(255, 255, 255, 0.5)',
   inputNewsColor: '#080628',
   arrowStrokeColor: '#77A4F2',
+  clusterBg: '#9CB8E2',
 }

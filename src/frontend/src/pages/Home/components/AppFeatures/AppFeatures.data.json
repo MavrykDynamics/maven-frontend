@@ -9,13 +9,13 @@
     "id": 2,
     "img": "/images/app-features/yield-farming.svg",
     "header": "Yield Farming",
-    "text": "Stake your LP tokens (MVK/XTZ, MVK/USDM, and USDM/XTZ) within yield farms and earn vMVK in return."
+    "text": "Stake your LP tokens (MVK/XTZ, MVK/USDM, and USDM/XTZ) within yield farms and earn staked MVK in return."
   },
   {
     "id": 3,
     "img": "/images/app-features/staking.svg",
     "header": "Staking",
-    "text": "Deposit liquid assets in a decentralized exchange and earn rewards for helping to promote price stability. Or, stake your MVK, delegate your votes, and earn rewards for helping to secure the network."
+    "text": "Stake your MVK, delegate your votes, and earn rewards for participating in and securing the network."
   },
   {
     "id": 4,
@@ -27,12 +27,12 @@
     "id": 5,
     "img": "/images/app-features/own-satellite.svg",
     "header": "Run Your Own Satellite",
-    "text": "Operate a Satellite to play an active role in Mavryk’s governance and provide the platform with oracle pricing information. Get paid in vMVK and USDM."
+    "text": "Operate a Satellite to play an active role in Mavryk’s governance, control the Treasury, and provide the network with on-chain data via the oracle. Get paid in staked MVK and USDM."
   },
   {
     "id": 6,
     "img": "/images/app-features/decentralized-oracle.svg",
     "header": "Decentralized Oracle",
-    "text": "Mavryk relies on Satellites to provide accurate and reliable pricing information, weighing the data with their respective stake in the system."
+    "text": "Mavryk relies on Satellites to provide accurate and reliable on-chain real-world data, and get rewarded according their respective stake and delegations."
   }
 ]

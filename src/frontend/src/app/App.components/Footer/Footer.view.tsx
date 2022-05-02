@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 // prettier-ignore
 import { FooterBottom, FooterContainer, FooterDescription, FooterLinks, FooterLogo, FooterSocials, FooterStyled, FooterTop } from "./Footer.style";
@@ -17,8 +17,8 @@ export const FooterView = () => {
               <FooterLogo alt="logo" src={logoUrl} />
             </Link>
             <FooterDescription>
-              Mavryk Finance is a decentralized finance ecosystem designed to allow users to borrow and earn, to unlock
-              the world from legacy financial systems.
+              Mavryk is a cooperatively run financial ecosystem that lets users borrow and earn on their terms, while
+              participating in the governance of the platform.
             </FooterDescription>
           </div>
 
@@ -38,23 +38,23 @@ export const FooterView = () => {
                 <use xlinkHref="/icons/sprites.svg#medium" />
               </svg>
             </a>
-            <a href="https://www.linkedin.com/company/mavryk-finance/" target="_blank" rel="noreferrer">
-              <svg>
-                <use xlinkHref="/icons/sprites.svg#linkedin" />
-              </svg>
-            </a>
-            <a href="https://discord.gg/CGn69gDqtF" target="_blank" rel="noreferrer">
+            <a href="https://discord.com/invite/7VXPR4gkT6" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#discord" />
+              </svg>
+            </a>
+            <a href="https://github.com/mavrykfinance/" target="_blank" rel="noreferrer">
+              <svg>
+                <use xlinkHref="/icons/sprites.svg#gitHub" />
               </svg>
             </a>
           </FooterSocials>
         </FooterTop>
         <FooterBottom>
-          <div>© Mavryk. {new Date().getFullYear()}</div>
-          <FooterLinks>
+          <div>© Mavryk {new Date().getFullYear()}</div>
+          {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
-          </FooterLinks>
+          </FooterLinks> */}
         </FooterBottom>
       </FooterContainer>
     </FooterStyled>
