@@ -5,7 +5,7 @@ import { MavrykTheme } from 'utils/interfaces'
 import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
-  --max-container: calc(100vw - 400px);
+  --max-container: calc(100vw - 360px);
   padding-top: 50px;
   padding-bottom: 190px;
   display: flex;

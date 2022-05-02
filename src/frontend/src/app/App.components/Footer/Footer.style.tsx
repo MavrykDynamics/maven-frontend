@@ -3,7 +3,7 @@ import { Page } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
-  --max-container: calc(100vw - 490px);
+  --max-container: calc(100vw - 550px);
   background-color: ${({ theme }) => theme.darkestBackroundColor};
   color: ${({ theme }) => theme.textColor};
   margin-top: 20px;

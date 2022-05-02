@@ -32,6 +32,11 @@ export const PartnersStyled = styled.section`
 `
 
 export const PartnersGrid = styled.div<{ theme: MavrykTheme }>`
+  .partner-nomadic {
+    display: flex;
+    align-items: center;
+  }
+
   .partner-cluster {
     width: 330px;
     display: flex;
