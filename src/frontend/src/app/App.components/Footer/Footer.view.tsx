@@ -51,7 +51,7 @@ export const FooterView = () => {
           </FooterSocials>
         </FooterTop>
         <FooterBottom>
-          <div>© Mavryk {new Date().getFullYear()}</div>
+          <div>© Mavryk Finance {new Date().getFullYear()}</div>
           {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
           </FooterLinks> */}

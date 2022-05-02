@@ -1,5 +1,6 @@
 import { TOGGLE_DARKTHEME } from 'actions'
 import { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
@@ -36,16 +37,20 @@ export const HeaderView = () => {
   const scrollPositionMobile = useSelector((state: any) => state.preferences.scrollPosition)
 
   // const logoUrl = darkThemeEnabled || (!darkThemeEnabled && !isLitepaperPage && scrollPositionMobile < 800 && scrollPositionDesktop < 900) ? "/logo-dark.svg" : "/logo-light.svg";
+  const showBg = scrollPositionMobile > 800 || scrollPositionDesktop > 900 || isLitepaperPage
+
   const logoUrl = darkThemeEnabled ? '/logo-dark.svg' : '/logo-light.svg'
+  const darkColor = darkThemeEnabled ? 'rgb(8, 6, 40)' : 'transparent'
+  const browserColor = showBg ? darkColor : 'transparent'
 
   return (
-    <HeaderStyled showBg={scrollPositionMobile > 800 || scrollPositionDesktop > 900 || isLitepaperPage}>
-      <HeaderGrid showBg={scrollPositionMobile > 800 || scrollPositionDesktop > 900 || isLitepaperPage}>
+    <HeaderStyled showBg={showBg}>
+      <Helmet>
+        <meta name="theme-color" content={browserColor} />
+      </Helmet>
+      <HeaderGrid showBg={showBg}>
         <Link to="/">
-          <HeaderLogo
-            showBg={scrollPositionMobile > 800 || scrollPositionDesktop > 900 || isLitepaperPage}
-            src={logoUrl}
-          />
+          <HeaderLogo showBg={showBg} src={logoUrl} />
         </Link>
 
         <Link to="/litepaper">Litepaper</Link>
