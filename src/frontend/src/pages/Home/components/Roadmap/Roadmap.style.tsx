@@ -105,6 +105,10 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
     flex-direction: column;
   }
 
+  @media (max-width: 500px) {
+    width: calc(50% - 20px);
+  }
+
   &:nth-child(1) {
     blockquote {
       max-width: 400px;
@@ -166,6 +170,10 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
       @media (max-width: 1000px) {
         padding: 20px;
       }
+
+      @media (max-width: 500px) {
+        padding: 12px;
+      }
     }
   }
 
@@ -186,6 +194,11 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
     @media (max-width: 1000px) {
       font-size: 24px;
       line-height: 1.1;
+    }
+
+    @media (max-width: 500px) {
+      font-size: 15px;
+      line-height: 15px;
     }
   }
 
@@ -208,6 +221,11 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
       line-height: 1.2;
     }
 
+    @media (max-width: 500px) {
+      font-size: 10px;
+      line-height: 15px;
+    }
+
     &::before {
       content: '-';
       margin-right: 6px;
@@ -223,6 +241,12 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
     @media (max-width: 1000px) {
       flex-direction: column;
     }
+
+    @media (max-width: 500px) {
+      img {
+        width: 30px;
+      }
+    }
   }
 
   figcaption {
@@ -230,10 +254,15 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
     font-size: 30px;
     line-height: 30px;
     padding-bottom: 10px;
+    padding-top: 14px;
+    padding-bottom: 16px;
     color: ${({ theme }) => theme.roadmapValueColor};
 
-      padding-top: 14px;
-      padding-bottom: 16px;
+    @media (max-width: 500px) {
+      font-size: 14px;
+      padding-top: 8px;
+      line-height: 14px;
+      padding-bottom: 8px;
     }
   }
 ` /*RoadmapArticle*/
