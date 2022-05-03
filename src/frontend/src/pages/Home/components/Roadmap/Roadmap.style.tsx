@@ -79,7 +79,7 @@ export const RoadmapArticles = styled.div<{ theme: MavrykTheme }>`
     @media (max-width: 1000px) {
       top: 0;
       height: 92%;
-      width: 15px;
+      width: 10px;
       background: linear-gradient(
         178deg,
         rgba(134, 212, 201, 1) 0%,
@@ -106,7 +106,7 @@ export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
   }
 
   @media (max-width: 500px) {
-    width: calc(50% - 20px);
+    width: calc(50% - 14px);
   }
 
   &:nth-child(1) {

@@ -29,7 +29,7 @@ export const PopupContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 10px;
+  display: flex;
 `
 export const PopupNewsletter = styled.div<{ theme: MavrykTheme }>`
   width: 1232px;
@@ -45,7 +45,7 @@ export const PopupNewsletter = styled.div<{ theme: MavrykTheme }>`
   }
 
   @media (max-width: 700px) {
-    padding: 100px 10px 0px 10px;
+    padding: 10px;
   }
 
   h2 {

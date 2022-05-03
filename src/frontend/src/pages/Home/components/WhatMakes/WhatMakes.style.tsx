@@ -68,7 +68,7 @@ export const WhatMakesArticlesStyled = styled.div`
   }
 `
 export const WhatMakesArticleStyled = styled.article<{ theme: MavrykTheme }>`
-  max-width: 295px;
+  max-width: 290px;
 
   @media (max-width: 700px) {
     max-width: 100%;
