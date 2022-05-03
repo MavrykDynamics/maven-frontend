@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 import { Page } from 'styles/components'
 
 // prettier-ignore
@@ -18,9 +19,17 @@ export const JumbotronView = () => {
             participating in the governance of the platform.
           </JubontronSubTitle>
           <JumbotronButtons>
-            <Link to="/#newsletter" onClick={() => document.getElementById('newsletter')!.scrollIntoView()}>
+            <HashLink
+              scroll={(el) =>
+                window.scrollTo({
+                  behavior: 'smooth',
+                  top: el.getBoundingClientRect().top + window.pageYOffset - 80,
+                })
+              }
+              to="#newsletter"
+            >
               <JumbotronButton>Sign Up</JumbotronButton>
-            </Link>
+            </HashLink>
             <Link to="/litepaper">
               <JumbotronButton secondary>Litepaper</JumbotronButton>
             </Link>
