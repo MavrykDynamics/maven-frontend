@@ -38,7 +38,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
   }
 
   return (
-    <NewsletterStyled id="newsletter">
+    <NewsletterStyled>
       {typeof closeCallback !== 'undefined' && (
         <NewsletterClose onClick={() => closeCallback()}>
           <svg>

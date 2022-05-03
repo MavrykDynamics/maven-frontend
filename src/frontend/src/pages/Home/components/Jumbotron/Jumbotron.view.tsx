@@ -20,13 +20,14 @@ export const JumbotronView = () => {
           </JubontronSubTitle>
           <JumbotronButtons>
             <HashLink
+              to="#newsletter"
+              smooth
               scroll={(el) =>
                 window.scrollTo({
                   behavior: 'smooth',
                   top: el.getBoundingClientRect().top + window.pageYOffset - 80,
                 })
               }
-              to="#newsletter"
             >
               <JumbotronButton>Sign Up</JumbotronButton>
             </HashLink>

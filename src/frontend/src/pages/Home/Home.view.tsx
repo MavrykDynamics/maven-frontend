@@ -42,7 +42,9 @@ export const HomeView = () => {
         <TeamView />
         {/* <IdeasView /> */}
         <RoadmapView />
-        <NewsletterView />
+        <div id="newsletter">
+          <NewsletterView />
+        </div>
       </HomeNoParallax>
       <Footer />
     </HomeStyled>
