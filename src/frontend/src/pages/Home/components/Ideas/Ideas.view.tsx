@@ -71,7 +71,7 @@ export const IdeasView = () => {
       )}
 
       <IdeasFigure>
-        <img loading="lazy" src={frontImgUrl} alt="Subscribe" />
+        <img src={frontImgUrl} alt="Subscribe" />
       </IdeasFigure>
     </IdeasSection>
   )

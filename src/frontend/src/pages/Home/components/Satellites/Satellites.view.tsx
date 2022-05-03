@@ -24,7 +24,7 @@ export const SatellitesView = () => {
         <SatellitesImage src={satelliteImgUrl} srcMobile={satelliteMobileImgUrl} />
       </Parallax>
       <SatellitesFrontFigure>
-        <img loading="lazy" src={satelliteFrontImgUrl} alt="Satellites" />
+        <img src={satelliteFrontImgUrl} alt="Satellites" />
       </SatellitesFrontFigure>
     </SatellitesStyled>
   )
