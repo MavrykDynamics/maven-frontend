@@ -17,7 +17,7 @@ export const FooterView = () => {
               <FooterLogo alt="logo" src={logoUrl} />
             </Link>
             <FooterDescription>
-              Mavryk is a cooperatively run financial ecosystem that lets users borrow and earn on their terms, while
+              Mavryk is a DAO operated financial ecosystem that lets users borrow and earn on their terms, while
               participating in the governance of the platform.
             </FooterDescription>
           </div>
