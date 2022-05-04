@@ -30,9 +30,9 @@ export const PopupView = () => {
 
   const handleCloseModal = (e: React.MouseEvent<HTMLElement>) => {
     // close modal when click on close button or modal backdrop
-    // if (e.target === e.currentTarget) {
-    //   handleClosePopup()
-    // }
+    if (e.target === e.currentTarget) {
+      handleClosePopup()
+    }
   }
 
   const handleEsc = (event: React.KeyboardEvent<object>): void => {
