@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useMailChimpForm } from 'use-mailchimp-form'
+import Cookie from 'js-cookie'
 
 // prettier-ignore
 import { NewsletterButton, NewsletterClose, NewsletterFigure, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
@@ -25,6 +26,13 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
   })
 
   const subscribe = () => {}
+
+  React.useEffect(() => {
+    if (success) {
+      console.log('%c ||||| success set IS_SUBSCRIBE', 'color:yellowgreen', success)
+      Cookie.set('IS_SUBSCRIBE', 'true', { expires: 365, path: '/' })
+    }
+  }, [success])
 
   const animation = JSON.parse(JSON.stringify(animationData))
 
