@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components/macro'
-import { Page, secondaryColor, subTextColor } from 'styles'
+import { Page } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const LitepaperStyled = styled(Page)`
+export const LitepaperStyled = styled(Page)<{theme: MavrykTheme}>`
   font-size: 16px;
-  color: ${subTextColor};
+  color: ${({theme}) => theme.subTextColor};
   margin: 0 auto;
   margin-top: 100px;
 
@@ -24,7 +25,7 @@ export const LitepaperStyled = styled(Page)`
   }
 
   a {
-    color: ${secondaryColor};
+    color: ${({theme}) => theme.secondaryColor};
     /* text-decoration: underline; */
   }
 
@@ -40,7 +41,7 @@ export const LitepaperStyled = styled(Page)`
       display: block;
       width: 60px;
       height: 3px;
-      background-color: #7068aa;
+      background-color: ${({theme}) => theme.primaryColor};
       margin: 7px 0 10px 1px;
     }
   }
@@ -57,7 +58,7 @@ export const LitepaperStyled = styled(Page)`
       display: block;
       width: 60px;
       height: 3px;
-      background-color: #7068aa;
+      background-color: ${({theme}) => theme.primaryColor};
       margin: 7px 0 10px 1px;
     }
   }
@@ -134,7 +135,7 @@ export const LitepaperIndex = styled.ul`
 
   li a {
     font-size: 12px;
-    color: #7068aa;
+    color: ${({theme}) => theme.litepaperLinkColor  };
     text-decoration: none;
   }
 
@@ -150,7 +151,7 @@ export const LitepaperRef = styled.a<{ selected?: boolean }>`
     props.selected &&
     css`
       font-weight: bold;
-      border-left: 2px solid ${subTextColor};
+      border-left: 2px solid ${({theme}) => theme.subTextColor};
     `}
 `
 
@@ -162,6 +163,6 @@ export const LitepaperLink = styled.div<{ selected?: boolean }>`
     props.selected &&
     css`
       font-weight: bold;
-      border-left: 2px solid ${subTextColor};
+      border-left: 2px solid ${({theme}) => theme.subTextColor};
     `}
 `

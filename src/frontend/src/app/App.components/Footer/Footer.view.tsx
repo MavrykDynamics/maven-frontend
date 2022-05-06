@@ -1,20 +1,24 @@
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 // prettier-ignore
 import { FooterBottom, FooterContainer, FooterDescription, FooterLinks, FooterLogo, FooterSocials, FooterStyled, FooterTop } from "./Footer.style";
 
 export const FooterView = () => {
+  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
+  const logoUrl = darkThemeEnabled ? '/logo-dark.svg' : '/logo-light.svg'
+
   return (
     <FooterStyled id="footer">
       <FooterContainer>
         <FooterTop>
           <div>
             <Link to="/">
-              <FooterLogo alt="logo" src="/images/logo-white.svg" />
+              <FooterLogo alt="logo" src={logoUrl} />
             </Link>
             <FooterDescription>
-              Mavryk is a decentralized finance ecosystem designed to allow users to borrow and earn, to unlock the
-              world from legacy financial systems.
+              Mavryk is a DAO operated financial ecosystem that lets users borrow and earn on their terms, while
+              participating in the governance of the platform.
             </FooterDescription>
           </div>
 
@@ -34,23 +38,23 @@ export const FooterView = () => {
                 <use xlinkHref="/icons/sprites.svg#medium" />
               </svg>
             </a>
-            <a href="https://www.linkedin.com/company/mavryk-finance/" target="_blank" rel="noreferrer">
-              <svg>
-                <use xlinkHref="/icons/sprites.svg#linkedin" />
-              </svg>
-            </a>
-            <a href="https://discord.gg/CGn69gDqtF" target="_blank" rel="noreferrer">
+            <a href="https://discord.com/invite/7VXPR4gkT6" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#discord" />
+              </svg>
+            </a>
+            <a href="https://github.com/mavrykfinance/" target="_blank" rel="noreferrer">
+              <svg>
+                <use xlinkHref="/icons/sprites.svg#gitHub" />
               </svg>
             </a>
           </FooterSocials>
         </FooterTop>
         <FooterBottom>
-          <div>© Mavryk. 2021</div>
-          <FooterLinks>
+          <div>© Mavryk Finance {new Date().getFullYear()}</div>
+          {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
-          </FooterLinks>
+          </FooterLinks> */}
         </FooterBottom>
       </FooterContainer>
     </FooterStyled>

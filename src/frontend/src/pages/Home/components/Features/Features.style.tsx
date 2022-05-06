@@ -1,13 +1,40 @@
 import styled from 'styled-components/macro'
-import { containerColor, Page, primaryColor, subTextColor } from 'styles'
+import { Page } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
+
+import { CONTAINER_WIDTH } from '../../Home.style'
+
+export const FeaturesSection = styled.div<{ theme: MavrykTheme }>`
+  background-color: ${({ theme }) => theme.darkestBackroundColor};
+  background-image: url(${({ theme }) => theme.featuresBackground});
+  background-position: bottom;
+  background-size: 105%;
+  background-repeat: no-repeat;
+  padding-bottom: 175px;
+  background-position-y: 101%;
+
+  @media (max-width: 1000px) {
+    padding-bottom: 64px;
+  }
+`
 
 export const FeaturesStyled = styled(Page)`
   text-align: center;
-  margin-bottom: 200px;
+  margin-bottom: 150px;
+  width: ${CONTAINER_WIDTH};
+  max-width: calc(100vw - 220px);
+
+  @media (max-width: 1250px) {
+    max-width: calc(100vw - 40px);
+  }
+
+  @media (max-width: 1000px) {
+    margin-bottom: 32px;
+  }
 `
 
 export const FeaturesGrid = styled.div`
-  margin-top: 30px;
+  padding-top: 30px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
@@ -17,24 +44,37 @@ export const FeaturesGrid = styled.div`
   }
 `
 
-export const FeaturesComponent = styled.div`
-  background-color: ${containerColor};
-  border-radius: 10px;
-  padding: 60px 30px;
+export const FeaturesComponent = styled.div<{ theme: MavrykTheme }>`
+  background-color: ${({ theme }) => theme.darkBackroundColor};
+  border-radius: 15px;
+  padding: 40px 30px;
 
-  > img {
-  }
-
-  > div {
-    margin-top: 30px;
+  h3 {
+    margin-top: 60px;
     font-size: 24px;
     font-weight: bold;
-    color: ${primaryColor};
+    color: ${({ theme }) => theme.headingColor};
+
+    @media (max-width: 1000px) {
+      margin-top: 40px;
+      font-size: 18px;
+    }
   }
 
-  > p {
-    margin-top: 20px;
-    font-size: 16px;
-    color: ${subTextColor};
+  img {
+    max-width: 100%;
+  }
+
+  p {
+    margin-top: 24px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 25px;
+    color: ${({ theme }) => theme.subTextColor};
+
+    @media (max-width: 1000px) {
+      font-size: 15px;
+      line-height: 1.5;
+    }
   }
 `

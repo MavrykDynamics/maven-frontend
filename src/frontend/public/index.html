@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="black" />
+    <!-- <meta name="theme-color" content="black" /> -->
     <meta name="description" content="Decentralized Finance Ecosystem"/>
     <!-- <script src="./node_modules/reflect-metadata/Reflect.js"></script> -->
     <link rel="apple-touch-icon" href="logo192.png" />
@@ -13,6 +13,18 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <img src="%PUBLIC_URL%/icons/loading.svg" id="pre-loading" alt="Loading..." style="position: fixed; inset: 50%; transform: translate(-50%, -50%);">
+    </div>
   </body>
+  <!-- Twitter universal website tag code -->
+  <script>
+  !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+  },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+  a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+  // Insert Twitter Pixel ID and Standard Event data below
+  twq('init','o8ait');
+  twq('track','PageView');
+  </script>
+  <!-- End Twitter universal website tag code -->
 </html>

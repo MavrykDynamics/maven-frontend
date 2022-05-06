@@ -1,0 +1,105 @@
+[
+  {
+    "id": 1,
+    "header": "Meet the Team",
+    "profiles": [
+      {
+        "id": 1,
+        "avatar": "images/team/Alex-Davis.jpeg",
+        "name": "Alex Davis",
+        "link": "https://www.linkedin.com/in/alex-davis-tezos/",
+        "job": "Founder"
+      },
+      {
+        "id": 2,
+        "avatar": "images/team/Tim-Ong.jpeg",
+        "name": "Tim Ong",
+        "link": "https://www.linkedin.com/in/timothy-ong-ty/",
+        "job": "Senior Blockchain Developer"
+      },
+      {
+        "id": 3,
+        "avatar": "images/team/Sam-Morrow.jpeg",
+        "name": "Sam Morrow",
+        "link": "https://www.linkedin.com/in/morrow-sam/",
+        "job": "Software Engineer"
+      },
+      {
+        "id": 4,
+        "avatar": "images/team/Tristan-Allaire.jpeg",
+        "name": "Tristan Allaire",
+        "link": "https://www.linkedin.com/in/tristan-allaire-1239b3105/",
+        "job": "Dev   Ops   & Blockchain Developer"
+      },
+      {
+        "id": 5,
+        "avatar": "images/team/Adam-Shinder.jpeg",
+        "name": "Adam Shinder",
+        "link": "https://www.linkedin.com/in/adshinder/",
+        "job": "Content"
+      },
+      {
+        "id": 6,
+        "avatar": "images/team/Sylvain-Bossut.jpeg",
+        "name": "Sylvain Bossut",
+        "link": "https://www.linkedin.com/in/sylvain-bossut-54a44b102/",
+        "job": "Senior Blockchain Developer - Neofacto"
+      },
+      {
+        "id": 7,
+        "avatar": "images/team/Jacques-Weber.jpeg",
+        "name": "Jacques Weber",
+        "link": "https://www.linkedin.com/in/jacques-weber/",
+        "job": "Senior Blockchain Developer - Neofacto"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "header": "Our Advisors",
+    "profiles": [
+      {
+        "id": 1,
+        "avatar": "images/team/Josef-Holm.jpeg",
+        "name": "Josef Holm",
+        "link": "https://www.linkedin.com/in/josefholm/",
+        "job": "Co-Founder Draper Goren Holm"
+      },
+      {
+        "id": 2,
+        "avatar": "images/team/Alon-Goren.jpeg",
+        "name": "Alon Goren",
+        "link": "https://www.linkedin.com/in/alongoren/",
+        "job": "Co-Founder Draper Goren Holm"
+      },
+      {
+        "id": 3,
+        "avatar": "images/team/Elie-Terdjman.jpeg",
+        "name": "Elie Terdjman",
+        "link": "https://www.linkedin.com/in/elie-terdjman-85242836/",
+        "job": "Founder Tezos Israel"
+      },
+      {
+        "id": 4,
+        "avatar": "images/team/Aylon-Morley.jpeg",
+        "name": "Aylon Morley",
+        "link": "https://www.linkedin.com/in/aylonmorley/",
+        "job": "Blockchain Alpha"
+      },
+      {
+        "id": 5,
+        "avatar": "images/team/Noam-Danenberg.jpeg",
+        "name": "Noam Danenberg",
+        "link": "https://www.linkedin.com/in/noam-danenberg-93a80761/",
+        "job": "Director Blockchain Alpha"
+      },
+      {
+        "id": 6,
+        "avatar": "images/team/Anthony-Provasoli.jpeg",
+        "name": "Anthony Provasoli",
+        "link": "https://www.linkedin.com/in/anthony-provasoli-389a9939/",
+        "job": "Regulatory Partner Fintech & DLT Lawyer"
+      }
+    ]
+  }
+]

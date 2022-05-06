@@ -1,33 +1,55 @@
 import styled from 'styled-components/macro'
-import { backgroundColor, borderColor, Page, textColor } from 'styles'
+import { Page } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const FooterStyled = styled.div`
-  background-color: ${borderColor};
-  color: ${backgroundColor};
+export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
+  --max-container: calc(100vw - 550px);
+  background-color: ${({ theme }) => theme.darkestBackroundColor};
+  color: ${({ theme }) => theme.textColor};
   margin-top: 20px;
+  font-weight: 400;
+  font-size: 18px;
+
+  @media (max-width: 1200px) {
+    --max-container: calc(100vw - 300px);
+  }
+
+  @media (max-width: 1000px) {
+    font-size: 16px;
+    --max-container: calc(100vw - 80px);
+  }
 `
 
-export const FooterContainer = styled(Page)`
+export const FooterContainer = styled.div`
   padding: 50px 20px;
+
+  @media (max-width: 1500px) {
+    padding: 50px 40px;
+  }
+
+  @media (max-width: 700px) {
+    padding: 32px 20px;
+  }
 `
 
 export const FooterTop = styled.div`
   margin: 0 auto;
   width: 100%;
-  max-width: 1270px;
+  max-width: var(--max-container);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   font-weight: 500;
+  align-items: baseline;
+  margin-bottom: 15px;
 
   @media (max-width: 700px) {
     flex-direction: column;
+    text-align: center;
   }
 `
 export const FooterBottom = styled.div`
   margin: 0 auto;
   width: 100%;
-  max-width: 1270px;
+  max-width: var(--max-container);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,58 +59,61 @@ export const FooterBottom = styled.div`
     margin-top: 20px;
   }
 `
-export const FooterSocials = styled.div`
-  display: grid;
-  grid-template-columns: 48px 48px 48px 48px 48px;
-  grid-gap: 10px;
+export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-bottom: 16px;
 
-  > a {
-    width: 48px;
-    height: 48px;
-    position: relative;
-    z-index: 1;
+  @media (max-width: 700px) {
+    margin-right: auto;
   }
 
-  > a:before {
-    width: 48px;
-    height: 48px;
-    left: calc(50% - 36px);
-    top: calc(50% - 36px);
-    content: '';
-    background: ${backgroundColor};
-    opacity: 0.08;
-    position: absolute;
-    border-radius: 100%;
-    z-index: -1;
+  a {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.socialBackroundColor};
+
+    @media (max-width: 700px) {
+      margin-right: 5px;
+      margin-left: 5px;
+      width: 50px;
+      height: 50px;
+    }
   }
 
   svg {
-    width: 24px;
-    height: 24px;
-    fill: ${backgroundColor};
-  }
+    height: 30px;
+    fill: ${({ theme }) => theme.socialColor};
 
-  @media (max-width: 700px) {
-    margin-top: 20px;
-    align-self: center;
-  }
-  @media (max-width: 400px) {
-    align-self: end;
+    @media (max-width: 700px) {
+      height: 25px;
+    }
   }
 `
 
 export const FooterLogo = styled.img`
-  margin-top: -10px;
+  margin-top: -3px;
   z-index: 1;
-  width: 170px;
+  width: 270px;
+
+  @media (max-width: 700px) {
+    margin-top: 0;
+    width: 200px;
+  }
 `
 
-export const FooterButton = styled.div`
+export const FooterButton = styled.div<{ theme: MavrykTheme }>`
   cursor: pointer;
-  background: ${textColor};
+  background: ${({ theme }) => theme.textColor};
   border-radius: 5px;
   padding: 10px;
-  color: ${backgroundColor};
+  color: ${({ theme }) => theme.backgroundColor};
   text-align: center;
   font-weight: bold;
   margin-top: 10px;
@@ -96,10 +121,19 @@ export const FooterButton = styled.div`
 
 export const FooterDescription = styled.div`
   margin: 10px 0;
-  max-width: 400px;
+  max-width: 665px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 16px;
+  padding-right: 32px;
+
+  @media (max-width: 700px) {
+    margin-bottom: 20px;
+    padding-right: 0;
+  }
 `
 
-export const FooterLinks = styled.div`
+export const FooterLinks = styled.div<{ theme: MavrykTheme }>`
   float: right;
   text-align: center;
   margin-right: 10px;
@@ -108,6 +142,6 @@ export const FooterLinks = styled.div`
   a {
     font-size: 14px;
     font-weight: 500;
-    color: ${backgroundColor};
+    color: ${({ theme }) => theme.textColor};
   }
 `

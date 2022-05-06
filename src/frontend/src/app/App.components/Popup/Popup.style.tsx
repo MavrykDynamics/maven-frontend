@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { MavrykTheme } from 'utils/interfaces'
 
 export const PopupStyled = styled.div`
   .popup-enter {
@@ -28,7 +29,87 @@ export const PopupContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 10px;
+  display: flex;
+`
+export const PopupNewsletter = styled.div<{ theme: MavrykTheme }>`
+  width: 1232px;
+  height: 576px;
+  margin: 16px;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  position: relative;
+
+  @media (max-width: 1290px) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 700px) {
+    padding: 10px;
+  }
+
+  h2 {
+    margin-bottom: 40px;
+  }
+
+  form {
+    margin-bottom: 76px;
+
+    @media (max-width: 1000px) {
+      margin-bottom: 128px;
+    }
+
+    @media (max-width: 700px) {
+      margin-bottom: 100px;
+    }
+  }
+
+  figure {
+    position: absolute;
+    margin: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+      position: relative;
+      left: 85px;
+      width: auto;
+      min-width: 120%;
+      bottom: -132px;
+
+      @media (max-width: 1100px) {
+        bottom: -100px;
+      }
+
+      @media (max-width: 1000px) {
+        bottom: -90px;
+      }
+
+      @media (max-width: 700px) {
+        bottom: -60px;
+      }
+
+      @media (max-width: 500px) {
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  section {
+    overflow: hidden;
+    background-size: 133%;
+    background-position-y: 30%;
+    border-radius: 15px;
+    background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradient};
+
+    @media (max-width: 1232px) {
+      background-size: cover;
+    }
+  }
 `
 
 export const PopupClose = styled.div`

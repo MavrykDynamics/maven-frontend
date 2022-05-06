@@ -1,0 +1,34 @@
+[
+  {
+    "value": "Q2 - 2022",
+    "header": "Genesis- Core Protocol Launch & Public Sale",
+    "list": [
+      "DAO core protocol launch",
+      "Satellite v1 launch",
+      "Public Treasury sale",
+      "MVK token listing",
+      "USDM lending",
+      "Mavryk & DAO Bakery launch"
+    ]
+  },
+  {
+    "value": "Q3 - 2022",
+    "header": "Satellite Oracle Launch",
+    "list": [
+      "Satellite v2 oracle launch",
+      "Oracle feed rewards",
+      "Custom oracle data API calls",
+      "OTC trading integration"
+    ]
+  },
+  {
+    "value": "Q4 - 2022",
+    "header": "The Expanse",
+    "list": [
+      "Satellite “array” v3 launch",
+      "P2P oracle communications",
+      "Oracle/USDM Integration",
+      "Additional supported assets"
+    ]
+  }
+]
