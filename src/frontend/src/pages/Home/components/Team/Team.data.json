@@ -84,21 +84,21 @@
         "avatar": "images/team/Aylon-Morley.jpeg",
         "name": "Aylon Morley",
         "link": "https://www.linkedin.com/in/aylonmorley/",
-        "job": "Blockchain Alpha"
+        "job": "Co-Founder Blockchain Alpha"
       },
       {
         "id": 5,
         "avatar": "images/team/Noam-Danenberg.jpeg",
         "name": "Noam Danenberg",
         "link": "https://www.linkedin.com/in/noam-danenberg-93a80761/",
-        "job": "Director Blockchain Alpha"
+        "job": "Co-Founder & Director Blockchain Alpha"
       },
       {
         "id": 6,
         "avatar": "images/team/Anthony-Provasoli.jpeg",
         "name": "Anthony Provasoli",
         "link": "https://www.linkedin.com/in/anthony-provasoli-389a9939/",
-        "job": "Regulatory Partner Fintech & DLT Lawyer"
+        "job": "Fintech & DLT Lawyer"
       }
     ]
   }
