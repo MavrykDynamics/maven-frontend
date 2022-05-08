@@ -12,15 +12,18 @@ type Props = {
   avatar: string
   job: string
   link: string
+  title?: string | undefined
 }
 
 const TeamFigureView = (props: Props) => {
-  const { name, avatar, job, link } = props
+  const { name, avatar, job, link, title } = props
+  console.log(title)
   return (
     <TeamFigure>
       <a href={link} target="_blank" rel="noreferrer">
         <img src={avatar} alt={name} />
         <h3>{name}</h3>
+        {title !== undefined && <figcaption>{title}</figcaption>}
         <figcaption>{job}</figcaption>
         <svg>
           <use xlinkHref="/icons/sprites.svg#linkedin-round" />
@@ -51,6 +54,7 @@ export const TeamView = () => {
                     avatar={profile.avatar}
                     job={profile.job}
                     link={profile.link}
+                    title={profile.title ? profile.title : undefined}
                   />
                 ))}
               </Carousel>
@@ -73,6 +77,7 @@ export const TeamView = () => {
                 avatar={profile.avatar}
                 job={profile.job}
                 link={profile.link}
+                title={profile.title ? profile.title : undefined}
               />
             ))}
           </TeamsGrid>

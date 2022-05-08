@@ -63,35 +63,40 @@
         "avatar": "images/team/Josef-Holm.jpeg",
         "name": "Josef Holm",
         "link": "https://www.linkedin.com/in/josefholm/",
-        "job": "Co-Founder Draper Goren Holm"
+        "title": "Co-Founder",
+        "job": "Draper Goren Holm"
       },
       {
         "id": 2,
         "avatar": "images/team/Alon-Goren.jpeg",
         "name": "Alon Goren",
         "link": "https://www.linkedin.com/in/alongoren/",
-        "job": "Co-Founder Draper Goren Holm"
+        "title": "Co-Founder",
+        "job": "Draper Goren Holm"
       },
       {
         "id": 3,
         "avatar": "images/team/Elie-Terdjman.jpeg",
         "name": "Elie Terdjman",
         "link": "https://www.linkedin.com/in/elie-terdjman-85242836/",
-        "job": "Founder Tezos Israel"
+        "title": "Founder",
+        "job": "Tezos Israel"
       },
       {
         "id": 4,
         "avatar": "images/team/Aylon-Morley.jpeg",
         "name": "Aylon Morley",
         "link": "https://www.linkedin.com/in/aylonmorley/",
-        "job": "Co-Founder Blockchain Alpha"
+        "title": "Co-Founder",
+        "job": "Blockchain Alpha"
       },
       {
         "id": 5,
         "avatar": "images/team/Noam-Danenberg.jpeg",
         "name": "Noam Danenberg",
         "link": "https://www.linkedin.com/in/noam-danenberg-93a80761/",
-        "job": "Co-Founder & Director Blockchain Alpha"
+        "title": "Co-Founder & Director",
+        "job": "Blockchain Alpha"
       },
       {
         "id": 6,

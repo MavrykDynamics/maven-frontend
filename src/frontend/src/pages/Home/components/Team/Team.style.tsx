@@ -139,7 +139,7 @@ export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
 
   figcaption {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 20px;
     padding: 0 30px;
     color: ${({ theme }) => theme.headerTeam};
