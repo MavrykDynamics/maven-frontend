@@ -12,7 +12,7 @@ type Props = {
   avatar: string
   job: string
   link: string
-  title?: string | undefined
+  title: string | undefined
 }
 
 const TeamFigureView = (props: Props) => {
