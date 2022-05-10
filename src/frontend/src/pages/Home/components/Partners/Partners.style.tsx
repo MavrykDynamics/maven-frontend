@@ -62,7 +62,6 @@ export const PartnersGrid = styled.div<{ theme: MavrykTheme }>`
     div {
       height: 74px;
       border-radius: 45px;
-      background-color: ${({ theme }) => theme.clusterBg};
       display: flex;
       justify-content: center;
       align-items: center;
