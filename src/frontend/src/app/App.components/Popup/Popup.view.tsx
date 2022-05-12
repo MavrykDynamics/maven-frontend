@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group'
 import Cookie from 'js-cookie'
 
 import { PopupContainer, PopupStyled, PopupNewsletter } from './Popup.style'
+import {DiscordPopupView} from "../../../pages/Home/components/DiscordPopup/DiscordPopup.view";
 
 export const PopupView = () => {
   const [show, setShow] = useState(false)
@@ -55,7 +56,8 @@ export const PopupView = () => {
       <CSSTransition in={show} timeout={300} classNames="popup" unmountOnExit>
         <PopupContainer onClick={handleCloseModal}>
           <PopupNewsletter>
-            <NewsletterView closeCallback={handleClosePopup} />
+            {/*<NewsletterView closeCallback={handleClosePopup} />*/}
+            <DiscordPopupView closeCallback={handleClosePopup} />
           </PopupNewsletter>
         </PopupContainer>
       </CSSTransition>
