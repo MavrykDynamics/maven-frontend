@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { Page, primaryColor, secondaryColor, textColor } from 'styles'
+import {headerColor, Page, primaryColor, secondaryColor, textColor} from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const DiscordPopupStyled = styled.section<{ theme: MavrykTheme }>`
@@ -45,7 +45,8 @@ export const DiscordPopupGrid = styled.div`
   > h4 {
     max-width:40%;
     font-weight: 600;
-    
+
+    color: ${({ theme }) => theme.headerColor};
     @media (max-width: 1000px) {
       max-width: 95%;
       font-weight: 500;
