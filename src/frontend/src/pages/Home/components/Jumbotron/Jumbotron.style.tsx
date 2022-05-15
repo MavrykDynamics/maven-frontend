@@ -138,7 +138,7 @@ export const JumbotronSocials = styled.div<{ theme: MavrykTheme }>`
     svg {
       height: 30px;
       width: 40px;
-      fill: ${headerColor};
+      fill: ${({theme}) => theme.socialsColor};
     }
   }
 

@@ -162,7 +162,7 @@ export const DiscordPopupSocials = styled.div<{ theme: MavrykTheme }>`
 
   svg {
     height: 44px;
-    fill: ${({ theme }) => theme.arrowStrokeColor};
+    fill: ${({theme}) => theme.socialsColor};
     
     @media (max-width: 700px) {
       height: 25px;

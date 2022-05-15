@@ -19,17 +19,20 @@ export const JumbotronView = () => {
             participating in the governance of the platform.
           </JubontronSubTitle>
           <JumbotronButtons>
-            <HashLink
-              to="/#newsletter"
-              scroll={(el) =>
-                window.scrollTo({
-                  behavior: 'smooth',
-                  top: el.getBoundingClientRect().top + window.pageYOffset - 80,
-                })
-              }
-            >
-              <JumbotronButton>Sign Up</JumbotronButton>
-            </HashLink>
+            <a href="https://discord.com/invite/7VXPR4gkT6" target="_blank" rel="noreferrer">
+              <JumbotronButton>Join Us</JumbotronButton>
+            </a>
+            {/*<HashLink*/}
+            {/*  to="/#newsletter"*/}
+            {/*  scroll={(el) =>*/}
+            {/*    window.scrollTo({*/}
+            {/*      behavior: 'smooth',*/}
+            {/*      top: el.getBoundingClientRect().top + window.pageYOffset - 80,*/}
+            {/*    })*/}
+            {/*  }*/}
+            {/*>*/}
+            {/*  <JumbotronButton>Sign Up</JumbotronButton>*/}
+            {/*</HashLink>*/}
             <Link to="/litepaper">
               <JumbotronButton secondary>Litepaper</JumbotronButton>
             </Link>

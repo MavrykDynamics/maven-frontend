@@ -70,6 +70,7 @@ export const darkMode = {
   roadmapValueColor: '#77A4F2',
   arrowStrokeColor: '#8D86EB',
   clusterBg: 'transparent',
+  socialsColor: '#EBF0FF'
 }
 
 export const lightMode = {
@@ -122,4 +123,5 @@ export const lightMode = {
   inputNewsColor: '#080628',
   arrowStrokeColor: '#77A4F2',
   clusterBg: '#9CB8E2',
+  socialsColor: headerColor
 }
