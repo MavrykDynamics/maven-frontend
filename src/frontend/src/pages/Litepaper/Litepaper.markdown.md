@@ -33,7 +33,7 @@ While the applications for such a system are nearly infinite, we _start_ in prac
 
 To this end, Mavryk introduces a soft-pegged stablecoin: **USDM**, which is algorithmically pegged to the U.S. dollar, and which can be borrowed against assets held as collateral in a multi-asset Mavryk **vault**.
 
-Notably :
+Notably:
 
 - _Mavryk is trustless and decentralized_: A USDM loan against assets held in a vault is issued, maintained, and repaid using transparent, trustless, and decentralized smart contracts running on [the Tezos blockchain](https://tezos.com/).
 
@@ -90,11 +90,11 @@ USDM’s ecosystem health is determined by its ability to maintain a soft-peg be
 
 The _stability fee_ is compound interest on loans, levied by the system on borrowers. It is calculated per block and set at an annualized rate of 2% (which can be adjusted, as explained below). It equation is:
 
-<img src="/images/eq-fee.png" width="440" />
+<img src="/images/eq-fee.png" width="440" id="eq-exitFee-img"/>
 
 where
 
-<img src="/images/eq-k.png" width="300" />
+<img src="/images/eq-k.png" width="300" id="eq-k-img" />
 
 [The example below](#stability-fee-calculation-example) illustrates that if you borrow 500 USDM (at 2% interest) then you would owe 510.10 USDM after 12 months.
 
@@ -301,13 +301,13 @@ To redeem sMVK back to MVK, users need to pay an exit fee in sMVK tokens, which 
 
 The fee is dynamically computed based on the **MVK Loyalty Index (MLI)**, which is calculated as a percentage
 
-<img src="/images/eq-mli.png" width="330" />
+<img src="/images/eq-mli.png" width="330" id="eq-mli-img"/>
 
 Example: if the sMVK<>MVK ratio is 9:1 then the MLI = 90%; if the sMVK<>MVK ratio is 6:4 then the MLI = 60%. When sMVK is minted, the total supply of sMVK increases, and the MLI increases. However, as users redeem sMVK for MVK, the MLI decreases.
 
 **The exit fee is structured so that a higher MLI means a lower exit fee rate**, by the following equation:
 
-<img src="/images/eq-mli-fee.png" width="150" />
+<img src="/images/eq-mli-fee.png" width="150" id="eq-mliFee-img"/>
 
 ![](https://ipfs.infura.io/ipfs/QmR9a1UAJqjscrZYtrgFehFPKmUqkjrhfC6b6UzHNHCJj4)
 
@@ -428,20 +428,21 @@ USDM/XTZ
 
 **MVK Max Supply (100%): 1,000,000,000 tokens ($10^9$ MVK tokens).**
 
-- 40% Incentives
-  - 38% Yield Farming
+- 32% Incentives
+  - 30% Oracle Rewards & Yield Farming
   - 2% Initial Liquidity Pool
-- 24% Team & Advisors
-  - 19% Founders and dev team
-  - 5% Advisors
-- 18% Ecosystem
-  - 8% DAO Treasury (on-chain community vote for use of funds)
+- 25% Team & Advisors
+  - 19% Founders & Dev team
+  - 6% Advisors
+- 25% Ecosystem
+  - 10% DAO Treasury (on-chain community vote for use of funds)
   - 10% Council Treasury (vested over 5 years)
+  - 5% Marketing & Promotions
 - 18% Contributors
   - 16% Private Contributors
   - 2% Public Liquidity Sale
 
-![](https://ipfs.infura.io/ipfs/QmTufZ8XcPygZpCahCwGCnMZDVpQ5GC6ojaURhsbKYiWPJ)
+![](https://ipfs.infura.io/ipfs/QmPP5fEWU1zwSns8s3svvpiSdsAGRYnvVQEk47N3rE8524)
 
 The team and advisors tokens have a 6 months cliff with a 24 months vesting schedule at genesis. During the first 6 months, the team and advisors tokens are not transferable but can be used for voting. Private contributor tokens follow a 16-24 month vesting schedule from genesis.
 
