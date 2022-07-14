@@ -45,6 +45,14 @@
       },
       {
         "id": 6,
+        "avatar": "images/team/Simon-Thomas.jpg",
+        "name": "Simon Thomas",
+        "link": "https://www.linkedin.com/in/simon-thomas-381245137/",
+        "title": "Product Manager",
+        "job": "Neofacto"
+      },
+      {
+        "id": 7,
         "avatar": "images/team/Sylvain-Bossut.jpeg",
         "name": "Sylvain Bossut",
         "link": "https://www.linkedin.com/in/sylvain-bossut-54a44b102/",
@@ -52,7 +60,7 @@
         "job": "Senior Blockchain Developer - Neofacto"
       },
       {
-        "id": 7,
+        "id": 8,
         "avatar": "images/team/Jacques-Weber.jpeg",
         "name": "Jacques Weber",
         "link": "https://www.linkedin.com/in/jacques-weber/",
@@ -104,6 +112,14 @@
         "link": "https://www.linkedin.com/in/noam-danenberg-93a80761/",
         "title": "Co-Founder & Director",
         "job": "Blockchain Alpha"
+      },
+      {
+        "id": 6,
+        "avatar": "images/team/Matisse-Eykelberg.jpeg",
+        "name": "Matisse Eykelberg",
+        "link": "https://www.linkedin.com/in/matisse-eykelberg-08470b162/",
+        "title": null,
+        "job": "Kryptonite Agency"
       }
     ]
   }
