@@ -7,7 +7,7 @@
       "Satellite v1 launch",
       "Public Treasury sale",
       "MVK token listing",
-      "USDM lending",
+      "Lending begins",
       "Mavryk & DAO Bakery launch"
     ]
   },
@@ -26,9 +26,9 @@
     "header": "The Expanse",
     "list": [
       "Satellite “array” v3 launch",
-      "P2P oracle communications",
-      "Oracle/USDM Integration",
-      "Additional supported assets"
+      "3rd Party Oracle Integration",
+      "New borrowable assets",
+      "Increased collateral tokens"
     ]
   }
 ]
