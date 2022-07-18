@@ -110,6 +110,7 @@ export const TeamFigure = styled.figure<{ theme: MavrykTheme }>`
   }
 
   img {
+    object-fit: cover;
     width: 150px;
     height: 150px;
     border-radius: 50%;
