@@ -35,11 +35,36 @@ export const InputStyled = styled.div`
 export const InputComponentContainer = styled.div<{ theme: MavrykTheme }>`
   display: block;
   position: relative;
+
+  .LB-coin-info {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 17px;
+
+    svg {
+      width: 36px;
+      height: 36px;
+      margin-right: 10px;
+    }
+  }
+
+  .transfer_result {
+    position: absolute;
+    left: 14px;
+    bottom: 2px;
+
+    p {
+      margin: 0;
+    }
+  }
 `
 
 export const InputComponent = styled.input<{ theme: MavrykTheme }>`
   width: 100%;
-  height: 40px;
+  height: 54px;
   background-color: ${({ theme }) => theme.backgroundColor};
   font-weight: 500;
   border: 1px solid ${({ theme }) => theme.cardBorderColor};
@@ -58,6 +83,22 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
   &.search {
     color: ${({ theme }) => theme.headerColor};
   }
+
+  &.LB {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    padding-top: 0;
+    padding-left: 10px;
+    color: #C0DBFF;
+
+    &::placeholder{
+      font-size: 16px;
+      padding-top: 0;
+      color: #C0DBFF;
+    }
+  }
+
   &::placeholder:not(.search) {
     color: ${({ theme }) => theme.inputPlaceholder};
   }

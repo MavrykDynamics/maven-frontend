@@ -37,7 +37,7 @@ export const LBAction = () => {
         {sTogglerValues.length ? <ToggleButton values={sTogglerValues} selected={sBtnSelected} handleSetSelectedToggler={setSBtnSelected} /> : null}
       </ToggleButtonsWrapper>
 
-      <Input placeholder={'placeholder'} onChange={() => {}} type={'primary'} icon='copyToClipboard' pinnedText='copyToClipboard' useMaxHandler={() => {}} userBalance={4535} />
+      <Input placeholder={'placeholder'} onChange={() => {}} type={'primary'} icon='LBT_transfer' pinnedText='LBT' useMaxHandler={() => {}} userBalance={4535} kind='LB' />
 
       {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap /> : null}
       {fBtnSelected === 'stats' && sBtnSelected === 'personal' ? <LBPersonalStats /> : null}

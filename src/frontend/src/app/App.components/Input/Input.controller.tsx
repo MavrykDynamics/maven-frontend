@@ -1,10 +1,9 @@
-import * as PropTypes from 'prop-types'
 import * as React from 'react'
 
 import { InputView } from './Input.view'
 
 export type InputStatusType = 'success' | 'error' | '' | undefined
-export type InputKind = 'primary' | 'search'
+export type InputKind = 'primary' | 'search' | 'LB'
 
 type InputProps = {
   icon?: string
@@ -43,7 +42,7 @@ export const Input = ({
   kind,
   required,
   useMaxHandler,
-  userBalance
+  userBalance,
 }: InputProps) => {
   return (
     <InputView

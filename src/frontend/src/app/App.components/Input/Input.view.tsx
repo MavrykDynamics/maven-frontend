@@ -1,5 +1,4 @@
 import { CustomizedText } from 'pages/LiquidityBaking/components/LBHeader/LBHeader.style'
-import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 
@@ -34,8 +33,6 @@ type InputViewProps = {
   userBalance?: number
 }
 
-// TODO: add input icon and coin name, add label for dynamic calculation
-
 export const InputView = ({
   icon,
   placeholder,
@@ -53,17 +50,17 @@ export const InputView = ({
   kind,
   required,
   useMaxHandler,
-  userBalance
+  userBalance,
 }: InputViewProps) => {
-  let classNames = kind
-  let status = inputStatus !== undefined ? inputStatus : 'none'
-  classNames += ` ${status}`
+  const isLB = kind === 'LB'
+  const status = inputStatus !== undefined ? inputStatus : 'none'
+  const classNames = `${kind} ${status} ${isLB ? 'LB' : ''}`
 
   return (
     <InputStyled id={'inputStyled'}>
       {useMaxHandler ? <CustomizedText className='useMax' onClick={useMaxHandler} fontSize={14} fontWidth={600}>Use Max</CustomizedText> : null}
       {userBalance ? <CustomizedText className='balance' fontSize={14} fontWidth={600}><CommaNumber beginningText='Balance:' value={userBalance} endingText='XTZ'/></CustomizedText> : null}
-      
+      {icon && !isLB && (<InputIcon><use xlinkHref={`/icons/sprites.svg#${icon}`} /></InputIcon>)}
       <InputComponentContainer>
         <InputComponent
           id={'inputComponent'}
@@ -81,14 +78,26 @@ export const InputView = ({
           disabled={disabled}
         />
         <InputStatus className={`${classNames} ${pinnedText ? 'with-text' : ''}`} />
-        {pinnedText && icon && (
-            <>
-              <InputIcon>
+        {pinnedText && !isLB && <InputLabel className={`${classNames} pinned-text`}>{pinnedText}</InputLabel>}
+        
+        {
+          isLB && pinnedText && icon ? (
+            <div className='LB-coin-info'>
+              <svg>
                 <use xlinkHref={`/icons/sprites.svg#${icon}`} />
-              </InputIcon>
-              <InputLabel className={`${classNames} pinned-text`}>{pinnedText}</InputLabel>
-            </>
-        )}
+              </svg>
+              <CustomizedText color='#C0DBFF' fontSize={22} fontWidth={600} >{pinnedText}</CustomizedText>
+            </div>
+          ) : null
+        }
+
+        {
+          isLB && (
+            <div className="transfer_result">
+              <CustomizedText color='#C0DBFF' fontSize={12} fontWidth={500} ><CommaNumber beginningText='= $' value={124}/></CustomizedText>
+            </div>
+          )
+        }
       </InputComponentContainer>
       {errorMessage && <InputErrorMessage>{errorMessage}</InputErrorMessage>}
     </InputStyled>
