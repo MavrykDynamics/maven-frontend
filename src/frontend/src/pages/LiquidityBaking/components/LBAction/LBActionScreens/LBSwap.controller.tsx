@@ -6,7 +6,7 @@ import { cyanColor } from 'styles'
 import { CustomizedText, HorisontalInfo, VertInfo } from '../../LBHeader/LBHeader.style'
 import { ActionScreenWrapper, PriceChange } from '../LBAction.style'
 
-const slippageToleranceToggleValues = ['0.5%', '1%', '3%', 'custom%']
+export const slippageToleranceToggleValues = ['0.5%', '1%', '3%', 'custom%']
 const defaultInputState = {
   XTZ_input: 0,
   tz_BTC_input: 0

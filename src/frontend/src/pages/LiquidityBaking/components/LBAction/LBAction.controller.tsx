@@ -24,8 +24,6 @@ export const LBAction = () => {
   useEffect(() => {
     setSBtnSelected(sTogglerValues[0] || '')
   }, [fBtnSelected])
-
-  // styled hr add in screens <hr />
   
   return (
     <LBActionStyled>

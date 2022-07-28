@@ -5,7 +5,7 @@ import { CommaNumber } from '../CommaNumber/CommaNumber.controller';
 import { CoinSwapCoinWrapper, CoinSwapStyled } from './CoinSwap.style'
 
 type CoinSwapProps = {
-  icon: string
+  icon: {name: string, width: number, height: number}
   coin1Icon: string;
   coin1Name: string;
   coin2Icon: string;
@@ -21,7 +21,7 @@ export const CoinSwap = ({icon, coin1Icon, coin1Name, coin2Icon, coin2Name}: Coi
       </CoinSwapCoinWrapper>
 
       <div className="svg-wrapper">
-        <svg><use xlinkHref={`/icons/sprites.svg#${icon}`} /></svg>
+        <svg style={{width: `${icon.width}px`, height: `${icon.height}px`}}><use xlinkHref={`/icons/sprites.svg#${icon.name}`} /></svg>
       </div>
 
       <CoinSwapCoinWrapper>

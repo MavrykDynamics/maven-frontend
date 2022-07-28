@@ -19,6 +19,7 @@ export const LBActionStyled = styled.div`
     color: transparent;
     margin: 0;
     border: none;
+    margin: 22px 0;
   }
 `
 
@@ -64,6 +65,9 @@ export const ActionScreenWrapper = styled.div`
 
     .bottom-wrapper {
       margin-top: 40px;
+      row-gap: 15px;
+      display: flex;
+      flex-direction: column;
     }
   }
 `

@@ -70,6 +70,11 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     background-color: transparent;
     border: 2px solid ${({ theme }) => theme.actionPrimaryBtnColor};
   }
+
+  &.removeLiquidity_btn {
+    max-width: 220px;
+    margin: 20px auto 0 auto;
+  }
 `
 
 export const ButtonText = styled.div<{ theme: MavrykTheme }>`
