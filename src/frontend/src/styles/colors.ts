@@ -16,6 +16,9 @@ export const subHeaderColor = '#8D86EB'
 export const coralColor = '#FF8486'
 export const titleColor = '#503EAA'
 export const labelColor = '#77a4f2cc'
+export const darkColor = '#080628'
+export const skyColor = '#77A4F2'
+export const cyanColor = '#86D4C9'
 
 
 export const darkMode = {

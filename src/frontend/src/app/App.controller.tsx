@@ -1,4 +1,5 @@
 import { Home } from 'pages/Home/Home.controller'
+import LiquidityBaking from 'pages/LiquidityBaking/LiquidityBaking.controller'
 import { Litepaper } from 'pages/Litepaper/Litepaper.controller'
 import { Privacy } from 'pages/Privacy/Privacy.controller'
 import { useState } from 'react'
@@ -39,6 +40,15 @@ export const App = () => {
               return <Privacy />
             }}
           />
+          <Route
+            exact
+            path="/liquidity-baking"
+            component={() => {
+              setCurrentPage('/liquidity-baking')
+              return <LiquidityBaking />
+            }}
+          />
+
         </Switch>
         {/* {currentPage !== '/litepaper' && <Footer />} */}
       </Router>

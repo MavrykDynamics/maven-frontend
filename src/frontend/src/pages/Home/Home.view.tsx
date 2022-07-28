@@ -8,6 +8,7 @@ import { AppFeaturesView } from './components/AppFeatures/AppFeatures.view'
 import { CalculatorView } from './components/Calculator/Calculator.view'
 import { FeaturesView } from './components/Features/Features.view'
 import { IdeasView } from './components/Ideas/Ideas.view'
+import { JumbotronView } from './components/Jumbotron/Jumbotron.view'
 import { NewsletterView } from './components/Newsletter/Newsletter.view'
 import { ParallaxView } from './components/Parallax/Parallax.view'
 import { PartnersView } from './components/Partners/Partners.view'
@@ -30,7 +31,7 @@ export const HomeView = () => {
 
   return (
     <HomeStyled onScroll={onScroll}>
-      <ParallaxView />
+      <ParallaxView><JumbotronView /></ParallaxView>
       <HomeNoParallax>
         <PartnersView />
         <WhatMakesView />

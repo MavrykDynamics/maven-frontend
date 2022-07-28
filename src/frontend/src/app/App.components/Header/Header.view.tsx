@@ -1,3 +1,5 @@
+// prettier-ignore
+import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from "./Header.style";
 import { TOGGLE_DARKTHEME } from 'actions'
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
@@ -5,9 +7,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 import Toggle from 'react-toggle'
-
-// prettier-ignore
-import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from "./Header.style";
 
 export const HeaderView = () => {
   const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
@@ -55,6 +54,7 @@ export const HeaderView = () => {
         </Link>
 
         <Link to="/litepaper">Litepaper</Link>
+        <Link to="/liquidity-baking">/liquidity-baking</Link>
 
         <HashLink
           to="/#calculator"
