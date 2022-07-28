@@ -39,6 +39,7 @@ export const VertInfo = styled.div`
 export const HorisontalInfo = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `
 
 export const CustomizedText = styled.div<{fontSize?: number; fontWidth?: number; color?: string; link?: boolean, lineHeight?: number}>`
@@ -46,6 +47,10 @@ export const CustomizedText = styled.div<{fontSize?: number; fontWidth?: number;
   font-size: ${({fontSize}) => fontSize ? `${fontSize}px` : '18px'};
   line-height: ${({lineHeight}) => lineHeight ? `${lineHeight}px` : '18px'};
   color: ${({color}) => color ? color : '#77A4F2'};
-
+  display: flex;
   ${({link}) => link ? css`text-decoration: underline;` : ''}
+
+  p {
+    margin: 0;
+  }
 `

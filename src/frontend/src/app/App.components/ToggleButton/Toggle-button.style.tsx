@@ -10,6 +10,14 @@ export const ToggleButtonWrapper = styled.div`
   font-size: 16px;
   color: #8D86EB;
   max-height: 40px;
+
+  &.swap-toggler {
+    margin: 0;
+    div {
+      padding: 8px 7px;
+      font-size: 14px;
+    }
+  }
 `;
 
 export const ToggleButtonItem = styled.div`

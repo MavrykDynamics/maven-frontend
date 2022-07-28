@@ -1,3 +1,4 @@
+import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { TzAddress } from 'app/App.components/TzAddress/TzAddress.view'
 import React from 'react'
 
@@ -13,23 +14,23 @@ export const LBPersonalStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color='#8D86EB' fontWidth={600}>Your LB tokens</CustomizedText>
-        <CustomizedText color='#86D4C9' fontWidth={500}>7,097</CustomizedText>
+        <CustomizedText color='#86D4C9' fontWidth={500}><CommaNumber value={7097}/></CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color='#8D86EB' fontWidth={600}>Total LB Tokens</CustomizedText>
-        <CustomizedText color='#86D4C9' fontWidth={500}>14,125,501</CustomizedText>
+        <CustomizedText color='#86D4C9' fontWidth={500}><CommaNumber value={14125501}/></CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color='#8D86EB' fontWidth={600}>Pool Share</CustomizedText>
-        <CustomizedText color='#86D4C9' fontWidth={500}>0.0153 %</CustomizedText>
+        <CustomizedText color='#86D4C9' fontWidth={500}><CommaNumber value={0.0153} endingText='%' /></CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color='#8D86EB' fontWidth={600}>Realized PL</CustomizedText>
-        <CustomizedText color='#86D4C9' fontWidth={500}>234.98 XTZ</CustomizedText>
+        <CustomizedText color='#86D4C9' fontWidth={500}><CommaNumber value={234.98} endingText='XTZ'/></CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color='#8D86EB' fontWidth={600}>Unrealized PL</CustomizedText>
-        <CustomizedText color='#86D4C9' fontWidth={500}>13.234 XTZ</CustomizedText>
+        <CustomizedText color='#86D4C9' fontWidth={500}><CommaNumber value={13.234} endingText='XTZ'/></CustomizedText>
       </HorisontalInfo>
     </ActionScreenWrapper>
   )

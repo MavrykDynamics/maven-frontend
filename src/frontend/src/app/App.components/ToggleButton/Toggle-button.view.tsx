@@ -6,11 +6,12 @@ type ToggleButtonViewProps = {
   values: string[]
   selected: string
   handleSetSelectedToggler: (arg0: string) => void
+  className?: string
 }
 
-export const ToggleButton = ({ values, selected, handleSetSelectedToggler }: ToggleButtonViewProps) => {
+export const ToggleButton = ({ values, selected, handleSetSelectedToggler, className }: ToggleButtonViewProps) => {
   return (
-    <ToggleButtonWrapper>
+    <ToggleButtonWrapper className={className}>
       {values.map((item) => (
         <ToggleButtonItem
           key={item}

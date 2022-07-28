@@ -36,6 +36,36 @@ export const ActionScreenWrapper = styled.div`
   &.stats {
     row-gap: 20px;
   }
+
+  &.swap {
+
+    .exchange-block {
+      display: flex;
+      column-gap: 10px;
+      margin: 0 auto;
+      svg {
+        width: 24px;
+        height: 18px;
+        transform: rotate(90deg);
+      }
+    }
+
+    .input-wrapper {
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      svg {
+        width: 24px;
+        height: 18px;
+      }
+    }
+
+    .bottom-wrapper {
+      margin-top: 40px;
+    }
+  }
 `
 
 export const PriceChange = styled.div<{up?: boolean}>`

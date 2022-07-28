@@ -1,6 +1,3 @@
-import { BUTTON, PRIMARY, SECONDARY } from 'app/App.components/Button/Button.constants'
-import { Button } from 'app/App.components/Button/Button.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
 import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
 import React, { useEffect, useMemo, useState } from 'react'
 
@@ -36,8 +33,6 @@ export const LBAction = () => {
         <ToggleButton values={fTogglerValues} selected={fBtnSelected} handleSetSelectedToggler={(value: string) => setFBtnSelected(value as 'swap' | 'stats' | 'liquidity')} />
         {sTogglerValues.length ? <ToggleButton values={sTogglerValues} selected={sBtnSelected} handleSetSelectedToggler={setSBtnSelected} /> : null}
       </ToggleButtonsWrapper>
-
-      <Input placeholder={'placeholder'} onChange={() => {}} type={'primary'} icon='LBT_transfer' pinnedText='LBT' useMaxHandler={() => {}} userBalance={4535} kind='LB' />
 
       {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap /> : null}
       {fBtnSelected === 'stats' && sBtnSelected === 'personal' ? <LBPersonalStats /> : null}

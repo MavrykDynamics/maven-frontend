@@ -92,6 +92,18 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
     padding-left: 10px;
     color: #C0DBFF;
 
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+
     &::placeholder{
       font-size: 16px;
       padding-top: 0;
