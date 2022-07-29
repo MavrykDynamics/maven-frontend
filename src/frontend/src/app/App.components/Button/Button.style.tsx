@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components/macro'
 import { MavrykTheme } from 'utils/interfaces'
 
-import { primaryColor, darkColor, skyColor } from '../../../styles'
+import { darkColor, primaryColor, skyColor } from '../../../styles'
 import { BUTTON_RADIUS } from '../../../styles/constants'
 
 export const clickWave = keyframes`
@@ -74,6 +74,11 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
   &.removeLiquidity_btn {
     max-width: 220px;
     margin: 20px auto 0 auto;
+  }
+
+  &.addLiquidity_btn {
+    max-width: 220px;
+    margin: 40px auto 0 auto;
   }
 `
 

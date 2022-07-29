@@ -1,14 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CoinSwapStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: fit-content;
-  margin-top: 20px;
 
   .svg-wrapper {
     margin: 0 20px;
+
+    svg {
+      stroke: #77a4f2;
+      transform: rotate(90deg);
+    }
   }
 `
 

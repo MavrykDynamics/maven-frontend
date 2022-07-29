@@ -18,12 +18,12 @@ const LiquidityBakingView = () => {
   const onScroll = (e: any) => {
     dispatch(scroll(e.target.scrollTop))
   }
-  
+
   return (
     <LBStyled onScroll={onScroll}>
       <ParallaxView>
-        <div className='content-wrapper'>
-          <LBHeader/>
+        <div className="content-wrapper">
+          <LBHeader />
           <LBAction />
           <LBFAQ />
         </div>
