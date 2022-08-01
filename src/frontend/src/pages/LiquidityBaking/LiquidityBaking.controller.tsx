@@ -1,10 +1,8 @@
-import React from 'react'
 import LiquidityBakingView from './LiquidityBaking.view'
+import React from 'react'
 
 const LiquidityBaking = () => {
-  return (
-    <LiquidityBakingView></LiquidityBakingView>
-  )
+  return <LiquidityBakingView />
 }
 
 export default LiquidityBaking

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components'
 
 export const LBFAQStyled = styled.div`
   grid-column-end: 3;
@@ -7,8 +7,8 @@ export const LBFAQStyled = styled.div`
   grid-row-end: 4;
   z-index: 1;
 
-  background: #160E3F;
-  border: 1px solid #503EAA;
+  background: #160e3f;
+  border: 1px solid #503eaa;
   border-radius: 10px;
   padding: 50px 40px 80px 40px;
 
@@ -17,20 +17,66 @@ export const LBFAQStyled = styled.div`
   justify-content: space-between;
 `
 
-export const FaqItem = styled.div<{last?: boolean;}>`
+const FAQ_ITEM_SMALLER_TEXT = (last?: boolean) => css`
+  margin-bottom: ${last ? '0' : '35px'};
+  div {
+    font-size: 16px;
+
+    &.title {
+      font-size: 20px;
+      line-height: 22px;
+    }
+  }
+`
+
+export const FaqItem = styled.div<{ last?: boolean }>`
   display: flex;
   flex-direction: column;
   row-gap: 15px;
   position: relative;
+  margin-bottom: 45px;
 
-  ${({last}) => last ? '' : css`
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -32px;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    background: #503EAA;
-  }`}
+  ${({ last }) =>
+    last
+      ? css`
+          margin-bottom: 0;
+        `
+      : css`
+          &::before {
+            content: '';
+            position: absolute;
+            bottom: -32px;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background: #503eaa;
+          }
+        `}
+
+  @media screen and (max-width: 1280px) and (max-width: 1024px) {
+    &::before {
+      bottom: -20px;
+    }
+    margin-bottom: ${({ last }) => (last ? '0' : '35px')};
+  }
+
+  @media screen and (max-width: 1165px), screen and (max-width: 600px) {
+    ${({ last }) => FAQ_ITEM_SMALLER_TEXT(last)}
+  }
+
+  @media screen and (max-width: 1024px) {
+    margin-bottom: ${({ last }) => (last ? '0' : '45px')};
+    div {
+      font-size: 18px;
+
+      &.title {
+        font-size: 25px;
+        line-height: 30px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    ${({ last }) => FAQ_ITEM_SMALLER_TEXT(last)}
+  }
 `

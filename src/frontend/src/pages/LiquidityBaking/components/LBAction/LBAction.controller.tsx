@@ -9,9 +9,9 @@ import { LBRemoveLiquidity } from './LBActionScreens/LBRemoveLiquidity.controlle
 import { LBSwap } from './LBActionScreens/LBSwap.controller'
 
 const TOGGLERS_VALUES = {
-  'swap': [],
-  'liquidity': ['add liquidity', 'remove liquidity'],
-  'stats': ['personal', 'general'],
+  swap: [],
+  liquidity: ['add liquidity', 'remove liquidity'],
+  stats: ['personal', 'general'],
 }
 
 export const LBAction = () => {
@@ -24,12 +24,18 @@ export const LBAction = () => {
   useEffect(() => {
     setSBtnSelected(sTogglerValues[0] || '')
   }, [fBtnSelected])
-  
+
   return (
     <LBActionStyled>
-      <ToggleButtonsWrapper>
-        <ToggleButton values={fTogglerValues} selected={fBtnSelected} handleSetSelectedToggler={(value: string) => setFBtnSelected(value as 'swap' | 'stats' | 'liquidity')} />
-        {sTogglerValues.length ? <ToggleButton values={sTogglerValues} selected={sBtnSelected} handleSetSelectedToggler={setSBtnSelected} /> : null}
+      <ToggleButtonsWrapper className="action-toggle-header">
+        <ToggleButton
+          values={fTogglerValues}
+          selected={fBtnSelected}
+          handleSetSelectedToggler={(value: string) => setFBtnSelected(value as 'swap' | 'stats' | 'liquidity')}
+        />
+        {sTogglerValues.length ? (
+          <ToggleButton values={sTogglerValues} selected={sBtnSelected} handleSetSelectedToggler={setSBtnSelected} />
+        ) : null}
       </ToggleButtonsWrapper>
 
       {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap /> : null}

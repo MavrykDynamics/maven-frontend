@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 
 import LBFAQ from './components/FAQ/FAQ.controller'
 import { LBAction } from './components/LBAction/LBAction.controller'
+import { LBChart } from './components/LBChart/LBChart.controller'
 import LBHeader from './components/LBHeader/LBHeader.controller'
 import { LBStyled } from './LiquidityBaking.styles'
 
@@ -21,10 +22,11 @@ const LiquidityBakingView = () => {
 
   return (
     <LBStyled onScroll={onScroll}>
-      <ParallaxView>
+      <ParallaxView className="lb">
         <div className="content-wrapper">
           <LBHeader />
           <LBAction />
+          <LBChart />
           <LBFAQ />
         </div>
       </ParallaxView>

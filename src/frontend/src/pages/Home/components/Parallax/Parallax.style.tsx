@@ -25,6 +25,14 @@ export const ParallaxDesktop = styled.div`
       align-items: center;
     }
   }
+
+  &.lb {
+    > div {
+      @media (max-width: 1000px) {
+        height: fit-content;
+      }
+    }
+  }
 `
 
 export const ParallaxLayer = styled.div<{ img: string; zIndex: number; translateZ: string; scale: number }>`

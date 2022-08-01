@@ -21,6 +21,16 @@ export const LBActionStyled = styled.div`
     border: none;
     margin: 22px 0;
   }
+
+  @media screen and (max-width: 1340px) {
+    padding: 20px 15px 50px 15px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: calc(100vw - 5%);
+    max-width: 400px;
+    margin: 0 auto;
+  }
 `
 
 export const ToggleButtonsWrapper = styled.div`
@@ -28,6 +38,12 @@ export const ToggleButtonsWrapper = styled.div`
   flex-direction: column;
   row-gap: 30px;
   margin-bottom: 42px;
+
+  @media screen and (max-width: 1340px) {
+    div {
+      font-size: 14px;
+    }
+  }
 `
 
 export const ActionScreenWrapper = styled.div`
@@ -83,6 +99,12 @@ export const ActionScreenWrapper = styled.div`
       row-gap: 15px;
       display: flex;
       flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: 1340px) {
+    div {
+      font-size: 16px;
     }
   }
 `

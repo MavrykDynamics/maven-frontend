@@ -1,18 +1,20 @@
-import { JumbotronView } from '../Jumbotron/Jumbotron.view'
-import { ParallaxDesktop, ParallaxLayer, ParallaxStyled } from './Parallax.style'
 import * as React from 'react'
 import { useSelector } from 'react-redux'
 import { ParallaxBanner } from 'react-scroll-parallax'
 import { JsxAttribute } from 'typescript'
 
-export const ParallaxView = ({children}: {children?: JSX.Element}) => {
+import { JumbotronView } from '../Jumbotron/Jumbotron.view'
+import { ParallaxDesktop, ParallaxLayer, ParallaxStyled } from './Parallax.style'
+
+export const ParallaxView = ({children, className}: {children?: JSX.Element,className ?: string}) => {
   const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
   const folder = '/images/parallax/' + (darkThemeEnabled ? 'dark' : 'light')
 
   return (
     <ParallaxStyled>
-      <ParallaxDesktop>
+      <ParallaxDesktop className={className}>
         <ParallaxBanner
+        
           layers={[
             {
               image: folder + '/layer10.svg',

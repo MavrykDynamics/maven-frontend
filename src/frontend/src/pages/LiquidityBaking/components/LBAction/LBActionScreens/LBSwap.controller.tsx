@@ -79,7 +79,7 @@ export const LBSwap = () => {
 
       <div className="bottom-wrapper">
         <HorisontalInfo>
-          <CustomizedText color={'#8D86EB'} fontWidth={500}>
+          <CustomizedText color={'#8D86EB'} fontWidth={500} className="name">
             Price Impact
           </CustomizedText>
 
@@ -91,7 +91,7 @@ export const LBSwap = () => {
         </HorisontalInfo>
 
         <HorisontalInfo>
-          <CustomizedText color={'#8D86EB'} fontWidth={500}>
+          <CustomizedText color={'#8D86EB'} fontWidth={500} className="name">
             Minimum Received
           </CustomizedText>
 
@@ -100,7 +100,7 @@ export const LBSwap = () => {
           </CustomizedText>
         </HorisontalInfo>
         <HorisontalInfo>
-          <CustomizedText color={'#8D86EB'} fontWidth={500}>
+          <CustomizedText color={'#8D86EB'} fontWidth={500} className="name">
             Slippage Tolerance
           </CustomizedText>
 
