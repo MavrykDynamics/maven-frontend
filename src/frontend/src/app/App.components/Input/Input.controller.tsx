@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { InputView } from './Input.view'
 
 export type InputStatusType = 'success' | 'error' | '' | undefined

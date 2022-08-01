@@ -69,6 +69,7 @@ export const darkMode = {
   inputColor: subHeaderColor,
   btnBackroundNewsColor: '#86D4C9',
   btnNewsColor: '#38237C',
+  darkPurple: headerColor,
   inputNewsBg: 'rgba(8, 6, 40, 0.5)',
   inputNewsColor: '#77A4F2',
   roadmapValueColor: '#77A4F2',

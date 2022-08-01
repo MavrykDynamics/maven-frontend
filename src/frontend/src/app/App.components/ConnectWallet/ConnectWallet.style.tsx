@@ -2,6 +2,7 @@ import styled from 'styled-components/macro'
 
 import { connectWalletSecondary, cyanColor, headerColor, skyColor } from 'styles'
 import { BUTTON_RADIUS } from 'styles/constants'
+import { MavrykTheme } from 'utils/interfaces'
 
 export const ConnectWalletStyled = styled.div`
   text-align: center;
@@ -17,7 +18,7 @@ export const ConnectWalletStyled = styled.div`
   }
 `
 
-export const WalletConnectedButton = styled.div`
+export const WalletConnectedButton = styled.div<{ theme: MavrykTheme }>`
   font-weight: 600;
   align-items: center;
   display: flex;
@@ -28,10 +29,10 @@ export const WalletConnectedButton = styled.div`
     font-size: 16px;
     line-height: 16px;
     font-style: normal;
-    color: ${skyColor};
+    color: ${({ theme }) => theme.inputNewsColor};
     > div {
       svg {
-        stroke: ${skyColor};
+        stroke: ${({ theme }) => theme.inputNewsColor};
         width: 18px;
         height: 18px;
         margin-left: 6px;
@@ -43,7 +44,7 @@ export const WalletConnectedButton = styled.div`
     font-weight: 400;
     font-size: 16px;
     line-height: 16px;
-    color: ${cyanColor};
+    color: ${({ theme }) => theme.navColor};
     margin-top: 4px;
     margin-bottom: 0;
     overflow-wrap: break-word;
@@ -57,17 +58,17 @@ export const WalletConnectedButton = styled.div`
     svg {
       width: 24px;
       height: 18px;
-      fill: ${headerColor};
+      fill: ${({ theme }) => theme.darkPurple};
       transform: rotate(90deg);
     }
   }
 `
-export const WalletNotConnectedButton = styled.button`
+export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   margin: 0 auto;
   height: 50px;
   cursor: pointer;
-  color: ${skyColor};
-  border: 2px solid ${skyColor};
+  color: ${({ theme }) => theme.inputNewsColor};
+  border: 2px solid ${({ theme }) => theme.inputNewsColor};
   border-radius: ${BUTTON_RADIUS};
   text-align: center;
   font-weight: bold;
@@ -86,7 +87,7 @@ export const WalletNotConnectedButton = styled.button`
   svg {
     width: 25px;
     height: 30px;
-    stroke: ${skyColor};
+    stroke: ${({ theme }) => theme.inputNewsColor};
     fill: transparent;
     margin-right: 16px;
   }

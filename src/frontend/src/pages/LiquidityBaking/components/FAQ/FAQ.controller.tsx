@@ -1,7 +1,6 @@
 import { FaqItem, LBFAQStyled } from './FAQ.style'
-import React from 'react'
 
-import { CustomizedText } from '../LBHeader/LBHeader.style'
+import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 const LBFAQ = () => {
   return (

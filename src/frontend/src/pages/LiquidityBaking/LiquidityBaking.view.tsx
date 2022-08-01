@@ -1,13 +1,15 @@
-import { scroll } from 'actions'
-import { Footer } from 'app/App.components/Footer/Footer.controller'
-import { ParallaxView } from 'pages/Home/components/Parallax/Parallax.view'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
+import { scroll } from 'actions'
+
+import { Footer } from 'app/App.components/Footer/Footer.controller'
+import { ParallaxView } from 'pages/Home/components/Parallax/Parallax.view'
 import LBFAQ from './components/FAQ/FAQ.controller'
 import { LBAction } from './components/LBAction/LBAction.controller'
 import { LBChart } from './components/LBChart/LBChart.controller'
 import LBHeader from './components/LBHeader/LBHeader.controller'
+
 import { LBStyled } from './LiquidityBaking.styles'
 
 const LiquidityBakingView = () => {

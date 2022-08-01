@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const CoinSwapStyled = styled.div`
+export const CoinSwapStyled = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,7 +11,7 @@ export const CoinSwapStyled = styled.div`
     margin: 0 20px;
 
     svg {
-      stroke: #77a4f2;
+      stroke: ${({ theme }) => theme.labelColor};
       transform: rotate(90deg);
     }
   }

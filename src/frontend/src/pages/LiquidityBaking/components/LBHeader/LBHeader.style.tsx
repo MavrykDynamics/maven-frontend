@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components'
+import { skyColor, titleColor } from 'styles'
 
 export const LBHeaderStyled = styled.div`
   background: #160e3f;
-  border: 1px solid #503eaa;
+  border: 1px solid ${titleColor};
   border-radius: 10px;
   grid-column-end: 3;
   grid-column-start: 1;
@@ -88,41 +89,5 @@ export const LBHeaderStyled = styled.div`
         height: 55px;
       }
     }
-  }
-`
-
-export const VertInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-`
-
-export const HorisontalInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-
-export const CustomizedText = styled.div<{
-  fontSize?: number
-  fontWidth?: number
-  color?: string
-  link?: boolean
-  lineHeight?: number
-}>`
-  font-weight: ${({ fontWidth }) => (fontWidth ? fontWidth : 400)};
-  font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : '18px')};
-  line-height: ${({ lineHeight }) => (lineHeight ? `${lineHeight}px` : '18px')};
-  color: ${({ color }) => (color ? color : '#77A4F2')};
-  display: flex;
-  ${({ link }) =>
-    link
-      ? css`
-          text-decoration: underline;
-        `
-      : ''}
-
-  p {
-    margin: 0;
   }
 `

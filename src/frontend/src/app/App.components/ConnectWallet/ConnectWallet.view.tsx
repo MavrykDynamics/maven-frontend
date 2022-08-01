@@ -3,7 +3,6 @@ import * as React from 'react'
 import { TzAddress } from '../TzAddress/TzAddress.view'
 import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 // components
-import Icon from '../Icon/Icon.view'
 import {
   ConnectWalletStyled,
   SimpleConnectedButton,
@@ -66,7 +65,9 @@ export const ConnectWalletView = ({
 export const NoWalletConnectedButton = ({ handleConnect }: { handleConnect: () => void }) => {
   return (
     <WalletNotConnectedButton onClick={handleConnect}>
-      <Icon id="wallet" />
+      <svg>
+        <use xlinkHref="/icons/sprites.svg#wallet" />
+      </svg>
       <span>Connect Wallet</span>
     </WalletNotConnectedButton>
   )

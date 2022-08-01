@@ -1,8 +1,8 @@
-import { CustomizedText } from 'pages/LiquidityBaking/components/LBHeader/LBHeader.style'
-import React from 'react'
+import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { cyanColor } from 'styles'
-import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import { CoinSwapCoinWrapper, CoinSwapStyled } from './CoinSwap.style'
+
+import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 
 type CoinSwapProps = {
   icon: { name: string; width: number; height: number }

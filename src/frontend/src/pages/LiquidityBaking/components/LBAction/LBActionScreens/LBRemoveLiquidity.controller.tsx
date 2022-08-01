@@ -1,18 +1,21 @@
-import { CustomizedText, HorisontalInfo } from '../../LBHeader/LBHeader.style'
-import { ActionScreenWrapper, PriceChange } from '../LBAction.style'
-import { slippageToleranceToggleValues } from './LBSwap.controller'
+import React, { useState } from 'react'
+
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
-import { Button } from 'app/App.components/Button/Button.controller'
+import { cyanColor, subHeaderColor } from 'styles'
+import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
+
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
+import { Button } from 'app/App.components/Button/Button.controller'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { Input } from 'app/App.components/Input/Input.controller'
 import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
-import React, { useState } from 'react'
-import { cyanColor } from 'styles'
+import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+
+import { ActionScreenWrapper, PriceChange } from '../LBAction.style'
 
 export const LBRemoveLiquidity = () => {
   const [inputValues, setInputValues] = useState({ XTZ_input: 0 })
-  const [selectedToogle, setSeletedToggle] = useState(slippageToleranceToggleValues[0])
+  const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0])
 
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -61,7 +64,7 @@ export const LBRemoveLiquidity = () => {
 
       <div className="bottom-wrapper">
         <HorisontalInfo>
-          <CustomizedText color={'#8D86EB'} fontWidth={500}>
+          <CustomizedText color={subHeaderColor} fontWidth={500}>
             Price Impact
           </CustomizedText>
 
@@ -73,7 +76,7 @@ export const LBRemoveLiquidity = () => {
         </HorisontalInfo>
 
         <HorisontalInfo>
-          <CustomizedText color={'#8D86EB'} fontWidth={500}>
+          <CustomizedText color={subHeaderColor} fontWidth={500}>
             Minimum Received
           </CustomizedText>
 
@@ -83,12 +86,12 @@ export const LBRemoveLiquidity = () => {
         </HorisontalInfo>
 
         <HorisontalInfo>
-          <CustomizedText color={'#8D86EB'} fontWidth={500}>
+          <CustomizedText color={subHeaderColor} fontWidth={500}>
             Slippage Tolerance
           </CustomizedText>
 
           <ToggleButton
-            values={slippageToleranceToggleValues}
+            values={SLIPPAGE_TOGGLE_VALUES}
             selected={selectedToogle}
             handleSetSelectedToggler={(value: string) => setSeletedToggle(value)}
             className="swap-toggler"

@@ -1,13 +1,17 @@
+import React, { useState } from 'react'
+
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
+import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
+import { cyanColor, subHeaderColor } from 'styles'
+
 import { Button } from 'app/App.components/Button/Button.controller'
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { Input } from 'app/App.components/Input/Input.controller'
 import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
-import React, { useState } from 'react'
-import { cyanColor } from 'styles'
 
-import { CustomizedText, HorisontalInfo } from '../../LBHeader/LBHeader.style'
+import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+
 import {
   ActionScreenWrapper,
   CheckBox,
@@ -16,7 +20,6 @@ import {
   PriceChange,
   StepBlock,
 } from '../LBAction.style'
-import { slippageToleranceToggleValues } from './LBSwap.controller'
 
 const defaultInputState = {
   XTZ_input: 0,
@@ -25,7 +28,7 @@ const defaultInputState = {
 
 export const LBAddLiquidity = () => {
   const [inputValues, setInputValues] = useState(defaultInputState)
-  const [selectedToogle, setSeletedToggle] = useState(slippageToleranceToggleValues[0])
+  const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0])
   const [switchValue, setSwitchValue] = useState(false)
 
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +43,7 @@ export const LBAddLiquidity = () => {
       <hr />
       <div className="switch-wrapper">
         <div className="top">
-          <CustomizedText fontSize={16} color={'#8D86EB'} fontWidth={500}>
+          <CustomizedText fontSize={16} color={subHeaderColor} fontWidth={500}>
             Provide only XTZ
           </CustomizedText>
 
@@ -162,7 +165,7 @@ export const LBAddLiquidity = () => {
 
       <div className="bottom-wrapper">
         <HorisontalInfo>
-          <CustomizedText color={'#8D86EB'} fontWidth={500}>
+          <CustomizedText color={subHeaderColor} fontWidth={500}>
             Price Impact
           </CustomizedText>
 
@@ -174,7 +177,7 @@ export const LBAddLiquidity = () => {
         </HorisontalInfo>
 
         <HorisontalInfo>
-          <CustomizedText color={'#8D86EB'} fontWidth={500}>
+          <CustomizedText color={subHeaderColor} fontWidth={500}>
             Minimum Received
           </CustomizedText>
 
@@ -184,12 +187,12 @@ export const LBAddLiquidity = () => {
         </HorisontalInfo>
 
         <HorisontalInfo>
-          <CustomizedText color={'#8D86EB'} fontWidth={500}>
+          <CustomizedText color={subHeaderColor} fontWidth={500}>
             Slippage Tolerance
           </CustomizedText>
 
           <ToggleButton
-            values={slippageToleranceToggleValues}
+            values={SLIPPAGE_TOGGLE_VALUES}
             selected={selectedToogle}
             handleSetSelectedToggler={(value: string) => setSeletedToggle(value)}
             className="swap-toggler"
