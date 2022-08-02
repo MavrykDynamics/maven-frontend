@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 
-import { cyanColor, subHeaderColor } from 'styles'
+import { cyanColor } from 'styles'
 import { SWAP_DEFAULT_INPUT_STATE, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { Input } from 'app/App.components/Input/Input.controller'
-import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
 
-import { CustomizedText, VertInfo, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { ActionScreenWrapper, PriceChange } from '../LBAction.style'
+import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { ActionScreenWrapper } from '../LBAction.style'
 import { Button } from 'app/App.components/Button/Button.controller'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
+import { LBActionBottomWrapper } from 'app/App.components/LBActionBottomWrapper/LBActionBottomWrapper.controller'
 
 export const LBSwap = ({ ready }: { ready: boolean }) => {
   const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0])
@@ -83,41 +83,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
         </CustomizedText>
       </VertInfo>
 
-      <div className="bottom-wrapper">
-        <HorisontalInfo>
-          <CustomizedText color={subHeaderColor} fontWidth={500} className="name">
-            Price Impact
-          </CustomizedText>
-
-          <CustomizedText fontWidth={500}>
-            <PriceChange up>
-              <CommaNumber beginningText="+" value={0.0732} showDecimal endingText="%" />
-            </PriceChange>
-          </CustomizedText>
-        </HorisontalInfo>
-
-        <HorisontalInfo>
-          <CustomizedText color={subHeaderColor} fontWidth={500} className="name">
-            Minimum Received
-          </CustomizedText>
-
-          <CustomizedText color={cyanColor} fontWidth={500}>
-            <CommaNumber value={0.00614124} endingText="LBT" />
-          </CustomizedText>
-        </HorisontalInfo>
-        <HorisontalInfo>
-          <CustomizedText color={subHeaderColor} fontWidth={500} className="name">
-            Slippage Tolerance
-          </CustomizedText>
-
-          <ToggleButton
-            values={SLIPPAGE_TOGGLE_VALUES}
-            selected={selectedToogle}
-            handleSetSelectedToggler={(value: string) => setSeletedToggle(value)}
-            className="swap-toggler"
-          />
-        </HorisontalInfo>
-      </div>
+      <LBActionBottomWrapper onClickHandler={setSeletedToggle} selectedToogle={selectedToogle} />
     </ActionScreenWrapper>
   )
 }

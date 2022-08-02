@@ -8,18 +8,11 @@ import { Button } from 'app/App.components/Button/Button.controller'
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { Input } from 'app/App.components/Input/Input.controller'
-import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
 
 import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
-import {
-  ActionScreenWrapper,
-  CheckBox,
-  CheckBoxLabel,
-  CheckBoxWrapper,
-  PriceChange,
-  StepBlock,
-} from '../LBAction.style'
+import { ActionScreenWrapper, CheckBox, CheckBoxLabel, CheckBoxWrapper, StepBlock } from '../LBAction.style'
+import { LBActionBottomWrapper } from 'app/App.components/LBActionBottomWrapper/LBActionBottomWrapper.controller'
 
 export const LBAddLiquidity = () => {
   const [inputValues, setInputValues] = useState(SWAP_DEFAULT_INPUT_STATE)
@@ -156,42 +149,7 @@ export const LBAddLiquidity = () => {
 
       <Button text={'Add Liquidity'} icon={'plusDark'} onClick={() => {}} className="addLiquidity_btn" kind={PRIMARY} />
 
-      <div className="bottom-wrapper">
-        <HorisontalInfo>
-          <CustomizedText color={subHeaderColor} fontWidth={500}>
-            Price Impact
-          </CustomizedText>
-
-          <CustomizedText fontWidth={500}>
-            <PriceChange up>
-              <CommaNumber beginningText="+" value={0.0732} showDecimal endingText="%" />
-            </PriceChange>
-          </CustomizedText>
-        </HorisontalInfo>
-
-        <HorisontalInfo>
-          <CustomizedText color={subHeaderColor} fontWidth={500}>
-            Minimum Received
-          </CustomizedText>
-
-          <CustomizedText color={cyanColor} fontWidth={500}>
-            <CommaNumber value={0.00614124} endingText="LBT" />
-          </CustomizedText>
-        </HorisontalInfo>
-
-        <HorisontalInfo>
-          <CustomizedText color={subHeaderColor} fontWidth={500}>
-            Slippage Tolerance
-          </CustomizedText>
-
-          <ToggleButton
-            values={SLIPPAGE_TOGGLE_VALUES}
-            selected={selectedToogle}
-            handleSetSelectedToggler={(value: string) => setSeletedToggle(value)}
-            className="swap-toggler"
-          />
-        </HorisontalInfo>
-      </div>
+      <LBActionBottomWrapper onClickHandler={setSeletedToggle} selectedToogle={selectedToogle} />
     </ActionScreenWrapper>
   )
 }
