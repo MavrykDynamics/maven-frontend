@@ -66,6 +66,7 @@ export const ActionScreenWrapper = styled.div`
       .top {
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
     }
   }
@@ -90,7 +91,13 @@ export const ActionScreenWrapper = styled.div`
 
       svg {
         width: 24px;
-        height: 18px;
+        height: 24px;
+      }
+
+      span {
+        font-size: 45px;
+        font-weight: 300;
+        color: ${({ theme }) => theme.headingColor};
       }
     }
 
@@ -176,6 +183,7 @@ export const CheckBox = styled.input`
   border-radius: 15px;
   width: 35px;
   height: 19px;
+  margin: 0;
   &:checked + ${CheckBoxLabel} {
     background: #503eaa;
     &::after {

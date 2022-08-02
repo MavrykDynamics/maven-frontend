@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
-import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
+import { SLIPPAGE_TOGGLE_VALUES, SWAP_DEFAULT_INPUT_STATE } from '../helpers/const'
 import { cyanColor, subHeaderColor } from 'styles'
 
 import { Button } from 'app/App.components/Button/Button.controller'
@@ -21,13 +21,8 @@ import {
   StepBlock,
 } from '../LBAction.style'
 
-const defaultInputState = {
-  XTZ_input: 0,
-  tz_BTC_input: 0,
-}
-
 export const LBAddLiquidity = () => {
-  const [inputValues, setInputValues] = useState(defaultInputState)
+  const [inputValues, setInputValues] = useState(SWAP_DEFAULT_INPUT_STATE)
   const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0])
   const [switchValue, setSwitchValue] = useState(false)
 
@@ -134,9 +129,7 @@ export const LBAddLiquidity = () => {
               useMaxHandler={() => {}}
               userBalance={87}
             />
-            <svg>
-              <use xlinkHref="/icons/sprites.svg#exchange" />
-            </svg>
+            <span>+</span>
             <Input
               placeholder={'tzBTC'}
               name="tz_BTC_input"

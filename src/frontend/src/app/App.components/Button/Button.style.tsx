@@ -80,6 +80,11 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     max-width: 220px;
     margin: 40px auto 0 auto;
   }
+
+  &.swap_btn {
+    max-width: 220px;
+    margin: 0 auto 25px auto;
+  }
 `
 
 export const ButtonText = styled.div<{ theme: MavrykTheme }>`

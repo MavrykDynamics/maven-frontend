@@ -1,5 +1,7 @@
 import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
 import React, { useEffect, useMemo, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { State } from 'utils/interfaces'
 
 import { LBActionStyled, ToggleButtonsWrapper } from './LBAction.style'
 import { LBAddLiquidity } from './LBActionScreens/LBAddLiquidity.controller'
@@ -21,6 +23,8 @@ export const LBAction = () => {
   const sTogglerValues = useMemo(() => TOGGLERS_VALUES[fBtnSelected] as Array<string>, [fBtnSelected])
   const [sBtnSelected, setSBtnSelected] = useState(sTogglerValues[0])
 
+  const { ready } = useSelector((state: State) => state.wallet)
+
   useEffect(() => {
     setSBtnSelected(sTogglerValues[0] || '')
   }, [fBtnSelected])
@@ -38,7 +42,7 @@ export const LBAction = () => {
         ) : null}
       </ToggleButtonsWrapper>
 
-      {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap /> : null}
+      {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap ready={ready} /> : null}
       {fBtnSelected === 'stats' && sBtnSelected === 'personal' ? <LBPersonalStats /> : null}
       {fBtnSelected === 'stats' && sBtnSelected === 'general' ? <LBGeneralStats /> : null}
       {fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' ? <LBAddLiquidity /> : null}

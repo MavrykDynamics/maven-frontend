@@ -14,18 +14,14 @@ const preferences = (state = {darkThemeEnabled: true, scrollPosition: 0}, action
   }
 };
 
-const walletData = (state = {wallet: walletDefaultState, user: defaultUser}, action: any) => {
-  console.log('action', action)
+const wallet = (state = walletDefaultState, action: any) => {
   switch (action.type) {
     case actions.CONNECT:
       return {
         ...state,
-        wallet: {
-          ...state.wallet,
-          tezos: action.tezos,
-          ready: action.ready,
-          accountPkh: action.accountPkh,
-        },
+        tezos: action.tezos,
+        ready: action.ready,
+        accountPkh: action.accountPkh,
       }
     case actions.SET_WALLET:
         return { ...state, wallet: action.wallet }
@@ -34,4 +30,24 @@ const walletData = (state = {wallet: walletDefaultState, user: defaultUser}, act
   }
 };
 
-export default combineReducers({preferences, walletData});
+const user = (state = defaultUser, action: any) => {
+  switch (action.type) {
+    case actions.GET_USER_DATA:
+      return {
+        ...state,
+        ...action.userData,
+      }
+    // case UPDATE_USER_DATA:
+    //   const userState = state.user
+    //   // @ts-ignore
+    //   userState[action.userKey] = action.userValue
+    //   return {
+    //     type: UPDATE_USER_DATA,
+    //     user: userState,
+    //   }
+    default:
+      return state
+  }
+};
+
+export default combineReducers({preferences, wallet, user});

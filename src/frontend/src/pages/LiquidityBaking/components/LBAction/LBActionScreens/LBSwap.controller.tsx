@@ -9,8 +9,11 @@ import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view
 
 import { CustomizedText, VertInfo, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { ActionScreenWrapper, PriceChange } from '../LBAction.style'
+import { Button } from 'app/App.components/Button/Button.controller'
+import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
+import { PRIMARY } from 'app/App.components/Button/Button.constants'
 
-export const LBSwap = () => {
+export const LBSwap = ({ ready }: { ready: boolean }) => {
   const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0])
   const [inputValues, setInputValues] = useState(SWAP_DEFAULT_INPUT_STATE)
 
@@ -64,6 +67,12 @@ export const LBSwap = () => {
           userBalance={87}
         />
       </div>
+
+      {ready ? (
+        <Button text={'Swap'} icon={'swapBtnIcon'} onClick={() => {}} className="swap_btn" kind={PRIMARY} />
+      ) : (
+        <ConnectWallet className="swap-action" />
+      )}
 
       <VertInfo>
         <CustomizedText fontWidth={500}>Exchange Rate</CustomizedText>

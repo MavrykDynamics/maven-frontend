@@ -77,10 +77,8 @@ export interface UserData {
 }
 
 export interface State {
-  walletData: {
-    wallet: WalletState,
-    user: UserData,
-  },
+  wallet: WalletState
+  user: UserData
   preferences: {
     darkThemeEnabled: boolean, 
     scrollPosition: number

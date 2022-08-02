@@ -16,6 +16,11 @@ export const ConnectWalletStyled = styled.div`
   @media (max-width: 1024px) {
     margin: 0 auto;
   }
+
+  &.swap-action {
+    margin: 0 auto;
+    margin-bottom: 25px;
+  }
 `
 
 export const WalletConnectedButton = styled.div<{ theme: MavrykTheme }>`
@@ -23,16 +28,17 @@ export const WalletConnectedButton = styled.div<{ theme: MavrykTheme }>`
   align-items: center;
   display: flex;
   flex-direction: row;
+  border: none;
 
   var {
     font-weight: 400;
     font-size: 16px;
     line-height: 16px;
     font-style: normal;
-    color: ${({ theme }) => theme.inputNewsColor};
+    color: ${({ theme }) => theme.labelColor};
     > div {
       svg {
-        stroke: ${({ theme }) => theme.inputNewsColor};
+        stroke: ${({ theme }) => theme.labelColor};
         width: 18px;
         height: 18px;
         margin-left: 6px;
@@ -52,13 +58,13 @@ export const WalletConnectedButton = styled.div<{ theme: MavrykTheme }>`
   }
 
   button {
-    background: transparent;
     border: none;
+    background: transparent;
     margin: 0 7px;
     svg {
       width: 24px;
       height: 18px;
-      fill: ${({ theme }) => theme.darkPurple};
+      fill: ${({ theme }) => theme.darkBackroundColor};
       transform: rotate(90deg);
     }
   }
@@ -67,8 +73,8 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   margin: 0 auto;
   height: 50px;
   cursor: pointer;
-  color: ${({ theme }) => theme.inputNewsColor};
-  border: 2px solid ${({ theme }) => theme.inputNewsColor};
+  background: ${cyanColor};
+  color: ${({ theme }) => theme.darkBackroundColor};
   border-radius: ${BUTTON_RADIUS};
   text-align: center;
   font-weight: bold;
@@ -78,7 +84,7 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   align-items: center;
   justify-content: center;
   width: 220px;
-  background: none;
+  border: none;
 
   &:hover {
     opacity: 0.8;
@@ -87,7 +93,7 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   svg {
     width: 25px;
     height: 30px;
-    stroke: ${({ theme }) => theme.inputNewsColor};
+    stroke: ${({ theme }) => theme.darkBackroundColor};
     fill: transparent;
     margin-right: 16px;
   }
@@ -123,8 +129,8 @@ export const SimpleConnectedButton = styled.div`
   margin: 0 auto;
   height: 50px;
   cursor: pointer;
-  color: ${connectWalletSecondary};
-  border: 2px solid ${connectWalletSecondary};
+  background: ${cyanColor};
+  color: ${({ theme }) => theme.darkBackroundColor};
   border-radius: ${BUTTON_RADIUS};
   text-align: center;
   font-weight: bold;
@@ -136,7 +142,7 @@ export const SimpleConnectedButton = styled.div`
     width: 24px;
     height: 24px;
     margin: 14px 9px 13px 8px;
-    stroke: ${connectWalletSecondary};
+    stroke: ${({ theme }) => theme.darkBackroundColor};
     vertical-align: top;
   }
 
@@ -144,6 +150,6 @@ export const SimpleConnectedButton = styled.div`
     display: inline-block;
     margin-right: 9px;
     font-weight: 600;
-    color: ${connectWalletSecondary};
+    color: ${({ theme }) => theme.darkBackroundColor};
   }
 `

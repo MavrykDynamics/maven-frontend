@@ -226,7 +226,7 @@
       fill="#160E3F"
     />
     </symbol>
-    <svg id='plusDark' viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id='plusDark' viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
       fill-rule="evenodd"
       clip-rule="evenodd"
@@ -239,5 +239,54 @@
       d="M2.25 12C2.25 11.3096 2.80964 10.75 3.5 10.75H22.25C22.9404 10.75 23.5 11.3096 23.5 12C23.5 12.6904 22.9404 13.25 22.25 13.25H3.5C2.80964 13.25 2.25 12.6904 2.25 12Z"
       fill="#160E3F"
     />
-    </svg>
+    </symbol>
+    <symbol id='swapBtnIcon' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_9699_14945)">
+      <path
+        d="M12.75 15.75L23.25 5.25"
+        stroke="#160E3F"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M23.25 9.75V5.25H18.75"
+        stroke="#160E3F"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M11.25 8.25L0.75 18.75"
+        stroke="#160E3F"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M0.75 14.25V18.75H5.25"
+        stroke="#160E3F"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      </g>
+      <defs>
+      <clipPath id="clip0_9699_14945">
+      <rect width="24" height="24" fill="white" />
+      </clipPath>
+      </defs>
+    </symbol>
+    <symbol id="wallet" viewBox="0 0 25 24">
+        <path
+      d="M2.08398 8C2.08398 6.34315 3.42713 5 5.08398 5H18.8757C20.5325 5 21.8757 6.34315 21.8757 8V17C21.8757 18.6569 20.5325 20 18.8757 20H5.08398C3.42713 20 2.08398 18.6569 2.08398 17V8Z"
+      stroke-width="2"
+    />
+        <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M23.2008 10H18.375C16.8562 10 15.625 11.2312 15.625 12.75C15.625 14.2688 16.8562 15.5 18.375 15.5H23.2008C23.6192 15.5 23.9583 15.1608 23.9583 14.7424V10.7576C23.9583 10.3392 23.6192 10 23.2008 10ZM19.0104 14C19.7295 14 20.3125 13.4404 20.3125 12.75C20.3125 12.0596 19.7295 11.5 19.0104 11.5C18.2913 11.5 17.7083 12.0596 17.7083 12.75C17.7083 13.4404 18.2913 14 19.0104 14Z"
+      fill="none"
+    />
+    </symbol>
 </svg>
