@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { getTokensData } from 'utils/actions/swap.action'
-import { fetchFromIndexer } from 'utils/gql.heplers'
+import { getTokensData } from 'redux/actions/swap.action'
+import { fetchFromIndexer } from 'gql/gql.heplers'
 import LiquidityBakingView from './LiquidityBaking.view'
 
 const LiquidityBaking = () => {

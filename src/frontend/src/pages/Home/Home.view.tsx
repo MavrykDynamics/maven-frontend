@@ -1,4 +1,4 @@
-import { scroll } from 'actions'
+import { scroll } from 'redux/actions/preferences.action'
 import { Footer } from 'app/App.components/Footer/Footer.controller'
 import * as React from 'react'
 import { useEffect } from 'react'
@@ -31,7 +31,9 @@ export const HomeView = () => {
 
   return (
     <HomeStyled onScroll={onScroll}>
-      <ParallaxView><JumbotronView /></ParallaxView>
+      <ParallaxView>
+        <JumbotronView />
+      </ParallaxView>
       <HomeNoParallax>
         <PartnersView />
         <WhatMakesView />

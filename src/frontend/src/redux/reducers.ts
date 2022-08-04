@@ -1,7 +1,7 @@
-import {  walletDefaultState, defaultUser, defaultTokens } from './utils/consts';
+import {  walletDefaultState, defaultUser, defaultTokens } from '../utils/consts';
 import { combineReducers } from "redux";
 
-import * as actions from "./actions";
+import * as actions from "./action.types";
 
 const preferences = (state = {darkThemeEnabled: true, scrollPosition: 0}, action: any) => {
   switch (action.type) {

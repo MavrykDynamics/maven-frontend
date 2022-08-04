@@ -1,8 +1,8 @@
 import { applyMiddleware, compose, createStore, Store } from 'redux'
 import thunk from 'redux-thunk'
 
-import reducers from '../reducers'
-import { State } from './interfaces'
+import reducers from './reducers'
+import { State } from '../utils/interfaces'
 
 declare global {
   interface Window {

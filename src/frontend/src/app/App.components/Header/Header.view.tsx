@@ -1,6 +1,5 @@
-// prettier-ignore
-import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from "./Header.style";
-import { TOGGLE_DARKTHEME } from 'actions'
+import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from './Header.style'
+import { TOGGLE_DARKTHEME } from 'redux/action.types'
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useDispatch, useSelector } from 'react-redux'

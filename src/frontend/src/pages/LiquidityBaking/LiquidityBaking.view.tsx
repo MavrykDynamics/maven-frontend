@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { scroll } from 'actions'
+import { scroll } from 'redux/actions/preferences.action'
 
 import { Footer } from 'app/App.components/Footer/Footer.controller'
 import { ParallaxView } from 'pages/Home/components/Parallax/Parallax.view'

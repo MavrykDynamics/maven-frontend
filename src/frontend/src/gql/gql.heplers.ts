@@ -1,4 +1,4 @@
-import { ENVIRONMENT } from "./consts"
+import { ENVIRONMENT } from "../utils/consts"
 
 async function fetchGraphQL(operationsDoc: string, operationName: string, variables: Record<string, any>) {
   const developmentAPI = ENVIRONMENT.gqlLink

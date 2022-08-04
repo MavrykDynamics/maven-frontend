@@ -1,6 +1,6 @@
-import { GET_TOKENS_DATA } from "actions"
-import { fetchFromIndexer } from "utils/gql.heplers"
-import { TOKEN_QUERY, TOKEN_QUERY_NAME } from "utils/queries/token.query"
+import { fetchFromIndexer } from "gql/gql.heplers"
+import { TOKEN_QUERY, TOKEN_QUERY_NAME } from "gql/queries/token.query"
+import { GET_TOKENS_DATA } from "redux/action.types"
 
 
 export const getTokensData = () => async (dispatch: any, getState: any) => {
