@@ -20,29 +20,19 @@ export const defaultUser: UserData = {
   satelliteMvkIsDelegatedTo: '',
 }
 
-export const BE_MAVRYK_BUY_TOKENS_POPUP = 'beMavrykBuyTokens'
-export const BUY_MVK_VIA_CURRENCY_POPUP = 'buyMVKViaCurrency'
-export const BUY_MVK_VIA_XTZ_POPUP = 'buyMVKViaXTZ'
-export const START_VERIFICATION_POPUP = 'startVerification'
-export const WERT_IO_POPUP_WRAPPER = 'wertIoPopup'
+export const defaultTokens = {
+  lqt_address: "",
+  lqt_total: 0,
+  token_address: "",
+  token_decimals: 0,
+  token_pool: 0,
+  xtz_decimals: 0,
+  xtz_pool: 0
+}
 
 export const NUMBER_FORMATTER = new Intl.NumberFormat('en')
 
-export const VERIFICATION_GRID_ITEMS = [
-  {
-    icon: 'creditCardIcon',
-    text: 'Your bank card details',
-  },
-  {
-    icon: 'selfieIcon',
-    text: 'Your selfie with an ID',
-  },
-  {
-    icon: 'photoIdIcon',
-    text: 'A photo of your ID Document',
-  },
-  {
-    icon: 'documentIcon',
-    text: 'Address Document',
-  },
-]
+export const ENVIRONMENT = {
+  // gqlLink: 'https://dex.dipdup.net/v1/graphql'
+  gqlLink: 'https://api.mavryk.finance/v1/graphql'
+}

@@ -1,4 +1,4 @@
-import {  walletDefaultState, defaultUser } from './utils/consts';
+import {  walletDefaultState, defaultUser, defaultTokens } from './utils/consts';
 import { combineReducers } from "redux";
 
 import * as actions from "./actions";
@@ -50,4 +50,16 @@ const user = (state = defaultUser, action: any) => {
   }
 };
 
-export default combineReducers({preferences, wallet, user});
+const tokens = (state = defaultTokens, action: any) => {
+  switch (action.type) {
+    case actions.GET_TOKENS_DATA:
+      return {
+        ...state,
+        ...action.tokensData,
+      }
+    default:
+      return state
+  }
+};
+
+export default combineReducers({preferences, wallet, user, tokens});

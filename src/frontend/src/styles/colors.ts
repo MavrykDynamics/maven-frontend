@@ -39,8 +39,7 @@ export const darkMode = {
   skyGradient:
     'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F 99.3%)',
   backgroundColor,
-  containerColor: '#1C1C3F',
-  borderColor: '#4F457C',
+  containerColor,
   textColor,
   subTextColor: '#fff',
   backgroundTextColor: '#2B2B60',

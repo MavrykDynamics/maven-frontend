@@ -175,3 +175,4 @@ export const checkIfElementVisible = (
 }
 
 export const inputNumberValidation = (value: number | string): any => value >= 0 || value === ''
+

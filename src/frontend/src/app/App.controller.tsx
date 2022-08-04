@@ -9,6 +9,9 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import { TempleWallet } from '@temple-wallet/dapp'
 import { useDispatch } from 'react-redux'
 import { setWalletAction } from 'actions'
+import { configureStore } from 'utils/storeConfigurator'
+
+export const store = configureStore({})
 
 export const App = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

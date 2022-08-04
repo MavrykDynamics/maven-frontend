@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
-import { cyanColor, subHeaderColor } from 'styles'
 import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'

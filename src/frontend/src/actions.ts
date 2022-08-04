@@ -4,18 +4,21 @@ import { fetchFromIndexer } from "utils/gql.heplers";
 import { State, UserData } from "utils/interfaces";
 import { calcWithoutPrecision } from "utils/utils";
 
-export const TOGGLE_DARKTHEME = "TOGGLE_DARKTHEME";
+export const GET_TOKENS_DATA = 'GET_TOKENS_DATA'
 
+
+export const TOGGLE_DARKTHEME = "TOGGLE_DARKTHEME";
 export const toggleDarkTheme = () => ({
   type: TOGGLE_DARKTHEME,
 });
 
-export const SCROLL = "SCROLL";
 
+export const SCROLL = "SCROLL";
 export const scroll = (scrollPosition: number) => ({
   type: SCROLL,
   scrollPosition
 });
+
 
 export const CONNECT = 'CONNECT'
 export const connectWalletAction = (tzs: TezosToolkit | undefined, accountPkh?: string) => ({
@@ -25,12 +28,15 @@ export const connectWalletAction = (tzs: TezosToolkit | undefined, accountPkh?: 
   accountPkh: accountPkh,
 })
 
+
 export const SET_WALLET = 'SET_WALLET'
 export const setWalletAction = (wallet: TempleWallet) => ({
   type: SET_WALLET,
   wallet,
 })
 
+
+// TODO: extract it later
 export const USER_INFO_QUERY = `
 query GetUserInfo ($_eq: String = "") {
   mavryk_user(where: {address: {_eq: $_eq}}) {
@@ -47,10 +53,7 @@ query GetUserInfo ($_eq: String = "") {
 `
 
 export const USER_INFO_QUERY_NAME = 'GetUserInfo'
-export function USER_INFO_QUERY_VARIABLES(address: string): Record<string, any> {
-  /* prettier-ignore */
-  return { _eq: address }
-}
+export const  USER_INFO_QUERY_VARIABLES = (address: string): Record<string, any> => ({ _eq: address })
 
 
 export const GET_USER_DATA = 'GET_USER_DATA'
@@ -85,3 +88,4 @@ export const getUserData = async (accountPkh: string) => {
     }
   }
 }
+// END OF TODO
