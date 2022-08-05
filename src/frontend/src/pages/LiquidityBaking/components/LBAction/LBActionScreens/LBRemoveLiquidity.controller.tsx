@@ -110,7 +110,12 @@ export const LBRemoveLiquidity = () => {
         kind={PRIMARY}
       />
 
-      <LBActionBottomWrapper onClickHandler={setSeletedToggle} selectedToogle={selectedToogle} />
+      <LBActionBottomWrapper
+        onClickHandler={setSeletedToggle}
+        selectedToogle={selectedToogle}
+        priceImpact={0}
+        minimumLBTRecived={0}
+      />
     </ActionScreenWrapper>
   )
 }

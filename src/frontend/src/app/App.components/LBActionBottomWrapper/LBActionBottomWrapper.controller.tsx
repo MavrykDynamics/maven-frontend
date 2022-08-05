@@ -10,9 +10,16 @@ import { LBActionBottomWrapperStyled } from './LBActionBottomWrapper.style'
 type LBActionBottomWrapperProps = {
   onClickHandler: (value: string) => void
   selectedToogle: string
+  priceImpact: number
+  minimumLBTRecived: number
 }
 
-export const LBActionBottomWrapper = ({ onClickHandler, selectedToogle }: LBActionBottomWrapperProps) => {
+export const LBActionBottomWrapper = ({
+  onClickHandler,
+  selectedToogle,
+  priceImpact,
+  minimumLBTRecived,
+}: LBActionBottomWrapperProps) => {
   return (
     <LBActionBottomWrapperStyled>
       <HorisontalInfo>
@@ -21,8 +28,8 @@ export const LBActionBottomWrapper = ({ onClickHandler, selectedToogle }: LBActi
         </CustomizedText>
 
         <CustomizedText fontWidth={500}>
-          <PriceChange up>
-            <CommaNumber beginningText="+" value={0.0732} showDecimal endingText="%" />
+          <PriceChange up={priceImpact >= 0}>
+            <CommaNumber beginningText={priceImpact > 0 ? '+' : '-'} value={priceImpact} showDecimal endingText="%" />
           </PriceChange>
         </CustomizedText>
       </HorisontalInfo>
@@ -33,7 +40,7 @@ export const LBActionBottomWrapper = ({ onClickHandler, selectedToogle }: LBActi
         </CustomizedText>
 
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={0.00614124} endingText="LBT" />
+          <CommaNumber value={minimumLBTRecived} endingText="LBT" />
         </CustomizedText>
       </HorisontalInfo>
 

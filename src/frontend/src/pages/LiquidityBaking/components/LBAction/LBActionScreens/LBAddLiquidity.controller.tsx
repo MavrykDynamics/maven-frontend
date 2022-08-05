@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { TezosToolkit, OpKind } from '@taquito/taquito'
+import { useSelector } from 'react-redux'
 
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
-import { SLIPPAGE_TOGGLE_VALUES, SWAP_DEFAULT_INPUT_STATE } from '../helpers/const'
+import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { cyanColor, subHeaderColor } from 'styles'
 
 import { Button } from 'app/App.components/Button/Button.controller'
@@ -13,19 +15,67 @@ import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityB
 
 import { ActionScreenWrapper, CheckBox, CheckBoxLabel, CheckBoxWrapper, StepBlock } from '../LBAction.style'
 import { LBActionBottomWrapper } from 'app/App.components/LBActionBottomWrapper/LBActionBottomWrapper.controller'
+import { State } from 'utils/interfaces'
+import { ENVIRONMENT } from 'utils/consts'
 
 export const LBAddLiquidity = () => {
-  const [inputValues, setInputValues] = useState(SWAP_DEFAULT_INPUT_STATE)
+  const {
+    lbData: { xtz_pool, token_pool, lqt_address, token_address, lqt_total },
+    coinPrices,
+  } = useSelector((state: State) => state.tokens)
+  const { accountPkh } = useSelector((state: State) => state.wallet)
+
+  const [inputValues, setInputValues] = useState({
+    XTZ: 0,
+    tzBTC: 0,
+  })
   const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0])
   const [switchValue, setSwitchValue] = useState(false)
+  const [minimumLBTRecived, setMinimumLBTRecived] = useState(0)
 
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
+    if (name === 'XTZ') setMinimumLBTRecived(Math.floor((Number(value) * lqt_total) / xtz_pool))
+
     setInputValues({
       ...inputValues,
       [name]: value,
     })
   }
+
+  const addLiquidityHandler = async () => {
+    const Tezos = new TezosToolkit(ENVIRONMENT.rpcLink)
+    const lbContract = await Tezos.wallet.at(lqt_address)
+    const tzBtcContract = await Tezos.wallet.at(token_address)
+    const maxTokensSold = Math.floor(inputValues.tzBTC + (inputValues.tzBTC * Number(selectedToogle)) / 100)
+    const minLqtMinted = Math.floor((inputValues.XTZ * lqt_total) / xtz_pool)
+    const deadline = new Date(Date.now() + 60000).toISOString()
+
+    const batchOp = await Tezos.wallet
+      .batch([
+        {
+          kind: OpKind.TRANSACTION,
+          ...tzBtcContract.methods.approve(lqt_address, 0).toTransferParams(),
+        },
+        {
+          kind: OpKind.TRANSACTION,
+          ...tzBtcContract.methods.approve(lqt_address, maxTokensSold).toTransferParams(),
+        },
+        {
+          kind: OpKind.TRANSACTION,
+          ...lbContract.methods.addLiquidity(accountPkh, minLqtMinted - 3, maxTokensSold, deadline).toTransferParams(),
+          amount: inputValues.XTZ,
+          mutez: true,
+        },
+        {
+          kind: OpKind.TRANSACTION,
+          ...tzBtcContract.methods.approve(lqt_address, 0).toTransferParams(),
+        },
+      ])
+      .send()
+    await batchOp.confirmation()
+  }
+
   return (
     <ActionScreenWrapper className="liquidity swap">
       <hr />
@@ -37,7 +87,16 @@ export const LBAddLiquidity = () => {
 
           <CheckBoxWrapper>
             <CheckBox id="checkbox" type="checkbox" checked={switchValue} />
-            <CheckBoxLabel htmlFor="checkbox" onClick={() => setSwitchValue(!switchValue)} />
+            <CheckBoxLabel
+              htmlFor="checkbox"
+              onClick={() => {
+                setInputValues({
+                  XTZ: 0,
+                  tzBTC: 0,
+                })
+                setSwitchValue(!switchValue)
+              }}
+            />
           </CheckBoxWrapper>
         </div>
         {switchValue && (
@@ -46,16 +105,19 @@ export const LBAddLiquidity = () => {
           </CustomizedText>
         )}
       </div>
+
       <hr />
+
       {switchValue ? (
         <>
           <Input
             placeholder={'XTZ'}
-            name="XTZ_input"
+            name="XTZ"
             onChange={inputChangeHandler}
             type={'number'}
             kind={'LB'}
-            value={inputValues.XTZ_input}
+            value={inputValues.XTZ}
+            convertedValue={inputValues.XTZ * coinPrices.tezos.usd}
             icon={'XTZ_tezos'}
             pinnedText={'XTZ'}
             useMaxHandler={() => {}}
@@ -72,11 +134,11 @@ export const LBAddLiquidity = () => {
               icon={{ name: 'exchange', width: 22, height: 15 }}
               XTZCoinData={{
                 icon: 'XTZ_tezos',
-                amount: 0,
+                amount: Number(inputValues.XTZ),
               }}
               tzBTCCoinData={{
                 icon: 'tzBTC',
-                amount: 0,
+                amount: coinPrices.tezos.usd / coinPrices.tzbtc.usd,
               }}
             />
             <HorisontalInfo>
@@ -99,18 +161,18 @@ export const LBAddLiquidity = () => {
               icon={{ name: 'plus', width: 8, height: 14 }}
               XTZCoinData={{
                 icon: 'XTZ_tezos',
-                amount: 0,
+                amount: Number(inputValues.XTZ),
               }}
               tzBTCCoinData={{
                 icon: 'tzBTC',
-                amount: 0,
+                amount: (coinPrices.tezos.usd * Number(inputValues.XTZ)) / coinPrices.tzbtc.usd,
               }}
             />
             <HorisontalInfo>
               <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
 
               <CustomizedText fontWidth={500} color={cyanColor}>
-                <CommaNumber value={0} showDecimal endingText="LBT" />
+                <CommaNumber value={minimumLBTRecived} showDecimal endingText="LBT" />
               </CustomizedText>
             </HorisontalInfo>
           </div>
@@ -120,11 +182,12 @@ export const LBAddLiquidity = () => {
           <div className="input-wrapper">
             <Input
               placeholder={'XTZ'}
-              name="XTZ_input"
+              name="XTZ"
               onChange={inputChangeHandler}
               type={'number'}
               kind={'LB'}
-              value={inputValues.XTZ_input}
+              value={inputValues.XTZ}
+              convertedValue={inputValues.XTZ * coinPrices.tezos.usd}
               icon={'XTZ_tezos'}
               pinnedText={'XTZ'}
               useMaxHandler={() => {}}
@@ -133,11 +196,12 @@ export const LBAddLiquidity = () => {
             <span>+</span>
             <Input
               placeholder={'tzBTC'}
-              name="tz_BTC_input"
+              name="tzBTC"
               onChange={inputChangeHandler}
               type={'number'}
               kind={'LB'}
-              value={inputValues.tz_BTC_input}
+              value={inputValues.tzBTC}
+              convertedValue={inputValues.tzBTC * coinPrices.tzbtc.usd}
               icon={'tzBTC'}
               pinnedText={'tzBTC'}
               useMaxHandler={() => {}}
@@ -149,15 +213,26 @@ export const LBAddLiquidity = () => {
             <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
 
             <CustomizedText fontWidth={500} color={cyanColor}>
-              <CommaNumber value={0} showDecimal endingText="LBT" />
+              <CommaNumber value={minimumLBTRecived} showDecimal endingText="LBT" />
             </CustomizedText>
           </HorisontalInfo>
         </>
       )}
 
-      <Button text={'Add Liquidity'} icon={'plusDark'} onClick={() => {}} className="addLiquidity_btn" kind={PRIMARY} />
+      <Button
+        text={'Add Liquidity'}
+        icon={'plusDark'}
+        onClick={addLiquidityHandler}
+        className="addLiquidity_btn"
+        kind={PRIMARY}
+      />
 
-      <LBActionBottomWrapper onClickHandler={setSeletedToggle} selectedToogle={selectedToogle} />
+      <LBActionBottomWrapper
+        onClickHandler={setSeletedToggle}
+        selectedToogle={selectedToogle}
+        priceImpact={0.1}
+        minimumLBTRecived={minimumLBTRecived}
+      />
     </ActionScreenWrapper>
   )
 }

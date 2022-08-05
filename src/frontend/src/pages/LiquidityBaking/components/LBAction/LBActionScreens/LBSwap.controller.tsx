@@ -178,7 +178,12 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
         </CustomizedText>
       </VertInfo>
 
-      <LBActionBottomWrapper onClickHandler={setSeletedToggle} selectedToogle={selectedToogle} />
+      <LBActionBottomWrapper
+        onClickHandler={setSeletedToggle}
+        selectedToogle={selectedToogle}
+        priceImpact={0}
+        minimumLBTRecived={0}
+      />
     </ActionScreenWrapper>
   )
 }
