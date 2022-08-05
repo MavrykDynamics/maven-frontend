@@ -1,5 +1,6 @@
 
 export const GET_TOKENS_DATA = 'GET_TOKENS_DATA'
+export const GET_TOKENS_PRICES = 'GET_TOKENS_PRICES'
 export const TOGGLE_DARKTHEME = "TOGGLE_DARKTHEME";
 export const SCROLL = "SCROLL";
 export const CONNECT = 'CONNECT'

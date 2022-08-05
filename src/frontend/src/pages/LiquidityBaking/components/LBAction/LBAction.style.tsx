@@ -74,12 +74,18 @@ export const ActionScreenWrapper = styled.div`
   &.swap {
     .exchange-block {
       display: flex;
-      column-gap: 10px;
+      column-gap: 15px;
       margin: 0 auto;
+      transition: 0.5s all;
       svg {
         width: 24px;
         height: 18px;
         transform: rotate(90deg);
+        cursor: pointer;
+      }
+
+      &.reverted {
+        flex-direction: row-reverse;
       }
     }
 
@@ -92,12 +98,17 @@ export const ActionScreenWrapper = styled.div`
       svg {
         width: 24px;
         height: 24px;
+        cursor: pointer;
       }
 
       span {
         font-size: 45px;
         font-weight: 300;
         color: ${({ theme }) => theme.headingColor};
+      }
+
+      &.reverted {
+        flex-direction: column-reverse;
       }
     }
 

@@ -17,6 +17,7 @@ type InputViewProps = {
   placeholder: string
   name?: string
   value?: string | number
+  convertedValue?: number
   onChange: any
   onBlur: any
   onKeyDown: any
@@ -37,6 +38,7 @@ export const InputView = ({
   placeholder,
   name,
   value,
+  convertedValue,
   onChange,
   onBlur,
   onKeyDown,
@@ -105,7 +107,7 @@ export const InputView = ({
         {isLB && (
           <div className="transfer_result">
             <CustomizedText color="#C0DBFF" fontSize={12} fontWidth={500}>
-              <CommaNumber beginningText="= $" value={124} />
+              <CommaNumber beginningText="= $" value={convertedValue || 0} />
             </CustomizedText>
           </div>
         )}

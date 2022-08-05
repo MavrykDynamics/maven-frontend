@@ -1,3 +1,5 @@
+// TODO: extract reducers to different files
+
 import {  walletDefaultState, defaultUser, defaultTokens } from '../utils/consts';
 import { combineReducers } from "redux";
 
@@ -37,14 +39,6 @@ const user = (state = defaultUser, action: any) => {
         ...state,
         ...action.userData,
       }
-    // case UPDATE_USER_DATA:
-    //   const userState = state.user
-    //   // @ts-ignore
-    //   userState[action.userKey] = action.userValue
-    //   return {
-    //     type: UPDATE_USER_DATA,
-    //     user: userState,
-    //   }
     default:
       return state
   }
@@ -55,7 +49,12 @@ const tokens = (state = defaultTokens, action: any) => {
     case actions.GET_TOKENS_DATA:
       return {
         ...state,
-        ...action.tokensData,
+        lbData: action.tokensData
+      }
+      case actions.GET_TOKENS_PRICES: 
+      return {
+        ...state,
+        coinPrices: action.tokensPrices
       }
     default:
       return state

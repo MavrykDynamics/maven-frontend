@@ -8,6 +8,7 @@ type InputProps = {
   placeholder: string
   name?: string
   value?: string | number
+  convertedValue?: number
   onChange: any
   onBlur?: any
   onFocus?: any
@@ -28,6 +29,7 @@ export const Input = ({
   placeholder,
   name,
   value,
+  convertedValue,
   onChange,
   onBlur,
   onFocus,
@@ -50,6 +52,7 @@ export const Input = ({
       required={required}
       placeholder={placeholder}
       value={value}
+      convertedValue={convertedValue}
       onChange={onChange}
       onBlur={onBlur}
       onKeyDown={onKeyDown}

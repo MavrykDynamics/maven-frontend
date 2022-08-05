@@ -11,15 +11,17 @@ export const CommaNumber = ({
   beginningText,
   className = '',
   showDecimal = true,
+  decimalsToShow = DECIMALS_TO_SHOW,
 }: {
   value: number
+  decimalsToShow?: number
   loading?: boolean
   endingText?: string
   beginningText?: string
   className?: string
   showDecimal?: boolean
 }) => {
-  const numberWithCommas = value.toLocaleString('en-US', { maximumFractionDigits: showDecimal ? DECIMALS_TO_SHOW : 0 })
+  const numberWithCommas = value.toLocaleString('en-US', { maximumFractionDigits: showDecimal ? decimalsToShow : 0 })
   return (
     <>
       {loading ? (

@@ -76,6 +76,19 @@ export interface UserData {
   myDelegationHistory?: any[]
 }
 
+export interface TokenInfo {
+  lbData: {
+    lqt_address: string
+    lqt_total: number
+    token_address: string
+    token_decimals: number
+    token_pool: number
+    xtz_decimals: number
+    xtz_pool: number
+  },
+  coinPrices: Record<string, Record<string, number>>
+}
+
 export interface State {
   wallet: WalletState
   user: UserData
@@ -83,6 +96,7 @@ export interface State {
     darkThemeEnabled: boolean, 
     scrollPosition: number
   }
+  tokens: TokenInfo
 }
 
 export interface MVKStatsInterface {

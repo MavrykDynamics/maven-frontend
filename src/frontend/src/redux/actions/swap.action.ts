@@ -12,6 +12,8 @@ export const getTokensData = () => async (dispatch: any, getState: any) => {
     )
 
     const parsedTokensData = tokensInfoFromIndexer.liquidity_baking[0]
+    parsedTokensData['token_pool'] = parsedTokensData['token_pool'] / (10**parsedTokensData['token_decimals'])
+    parsedTokensData['xtz_pool'] = parsedTokensData['xtz_pool'] / (10**parsedTokensData['xtz_decimals'])
 
     dispatch({
       type: GET_TOKENS_DATA,
