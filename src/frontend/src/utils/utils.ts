@@ -87,3 +87,16 @@ export const updateItemInStorage = (item: string, updateValue: any) => {
 
 export const inputNumberValidation = (value: number | string): any => value >= 0 || value === ''
 
+export const calculateAPY = (rewardRate: number, lpTokenBalance: number): number => {
+  const blocksPerYear = 2 * 60 * 24 * 365
+  return lpTokenBalance ? ((rewardRate * blocksPerYear) / lpTokenBalance) * 100 : 0
+
+  // return ((1 + 1 / blocksPerYear)**blocksPerYear) - 1
+}
+
+export const diffBetweenCoinsInPersent = (coin1Price : number, coin2Price : number): number => {
+  const coinsAverage = (coin1Price + coin2Price) / 2
+  const coinDiff = coin1Price - coin2Price
+
+  return coinDiff / 2 / coinsAverage * 100
+}
