@@ -70,10 +70,14 @@ export const LBAddLiquidity = () => {
 
             <CoinSwap
               icon={{ name: 'exchange', width: 22, height: 15 }}
-              coin1Icon={'XTZ_tezos'}
-              coin1Name={'XTZ'}
-              coin2Icon={'tzBTC'}
-              coin2Name={'tzBTC'}
+              XTZCoinData={{
+                icon: 'XTZ_tezos',
+                amount: 0,
+              }}
+              tzBTCCoinData={{
+                icon: 'tzBTC',
+                amount: 0,
+              }}
             />
             <HorisontalInfo>
               <CustomizedText fontWidth={500}>Minimum tzBTC Received</CustomizedText>
@@ -93,10 +97,14 @@ export const LBAddLiquidity = () => {
 
             <CoinSwap
               icon={{ name: 'plus', width: 8, height: 14 }}
-              coin1Icon={'XTZ_tezos'}
-              coin1Name={'XTZ'}
-              coin2Icon={'tzBTC'}
-              coin2Name={'tzBTC'}
+              XTZCoinData={{
+                icon: 'XTZ_tezos',
+                amount: 0,
+              }}
+              tzBTCCoinData={{
+                icon: 'tzBTC',
+                amount: 0,
+              }}
             />
             <HorisontalInfo>
               <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
