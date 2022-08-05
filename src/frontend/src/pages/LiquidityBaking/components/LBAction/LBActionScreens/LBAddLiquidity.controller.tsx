@@ -20,7 +20,7 @@ import { ENVIRONMENT } from 'utils/consts'
 
 export const LBAddLiquidity = () => {
   const {
-    lbData: { xtz_pool, token_pool, lqt_address, token_address, lqt_total },
+    lbData: { xtz_pool, lqt_address, token_address, lqt_total },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
   const { accountPkh } = useSelector((state: State) => state.wallet)

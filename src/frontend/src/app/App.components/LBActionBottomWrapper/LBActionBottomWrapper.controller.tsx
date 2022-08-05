@@ -29,7 +29,12 @@ export const LBActionBottomWrapper = ({
 
         <CustomizedText fontWidth={500}>
           <PriceChange up={priceImpact >= 0}>
-            <CommaNumber beginningText={priceImpact > 0 ? '+' : '-'} value={priceImpact} showDecimal endingText="%" />
+            <CommaNumber
+              beginningText={priceImpact === 0 ? '' : priceImpact > 0 ? '+' : '-'}
+              value={priceImpact}
+              showDecimal
+              endingText="%"
+            />
           </PriceChange>
         </CustomizedText>
       </HorisontalInfo>
