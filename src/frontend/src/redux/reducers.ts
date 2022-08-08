@@ -1,6 +1,6 @@
 // TODO: extract reducers to different files
 
-import {  walletDefaultState, defaultUser, defaultTokens } from '../utils/consts';
+import {  walletDefaultState, defaultUser, defaultTokens, defaultChart } from '../utils/consts';
 import { combineReducers } from "redux";
 
 import * as actions from "./action.types";
@@ -61,4 +61,21 @@ const tokens = (state = defaultTokens, action: any) => {
   }
 };
 
-export default combineReducers({preferences, wallet, user, tokens});
+const chart = (state = defaultChart, action: any) => {
+  switch (action.type) {
+    case actions.GET_CHART_DATA:
+      return {
+        ...state,
+        chartData: action.chartData
+      }
+      case actions.TOOGLE_CHART_INTERVAL:
+        return {
+          ...state,
+          chartInterval: action.chartInterval
+        }
+    default:
+      return state
+  }
+};
+
+export default combineReducers({preferences, wallet, user, tokens, chart});

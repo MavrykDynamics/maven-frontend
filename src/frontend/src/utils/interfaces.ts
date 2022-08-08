@@ -1,3 +1,4 @@
+import { IntervalType } from 'gql/queries/chart.query';
 import { TezosToolkit } from '@taquito/taquito'
 import { TempleWallet } from '@temple-wallet/dapp'
 
@@ -63,7 +64,7 @@ export interface WalletState {
   accountPkh?: string
   ready: boolean
   error?: any
-  connect?: any //() => void
+  connect?: any
   toTezos?: () => number | any
 }
 
@@ -89,6 +90,15 @@ export interface TokenInfo {
   coinPrices: Record<string, Record<string, number>>
 }
 
+export interface ChartType {
+  chartData: Array<{
+  bucket: string
+  close: string
+  high: string
+  low: string
+  open: string
+}>, chartInterval: IntervalType}
+
 export interface State {
   wallet: WalletState
   user: UserData
@@ -97,6 +107,7 @@ export interface State {
     scrollPosition: number
   }
   tokens: TokenInfo
+  chart: ChartType
 }
 
 export interface MVKStatsInterface {

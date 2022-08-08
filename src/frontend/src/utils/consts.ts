@@ -1,4 +1,4 @@
-import { TokenInfo, UserData, WalletState } from './interfaces';
+import { ChartType, TokenInfo, UserData, WalletState } from './interfaces';
 
 export const PRECISION_NUMBER = 1000000000
 
@@ -35,6 +35,11 @@ export const defaultTokens: TokenInfo = {
     tezos:  {usd: 0, eur: 0},
     tzbtc: {usd: 0, eur: 0},
   }
+}
+
+export const defaultChart: ChartType = {
+  chartData: [],
+  chartInterval: 'quotes1dNogaps'
 }
 
 export const NUMBER_FORMATTER = new Intl.NumberFormat('en')

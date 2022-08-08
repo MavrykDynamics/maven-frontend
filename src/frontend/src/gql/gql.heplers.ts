@@ -1,8 +1,8 @@
 import { ENVIRONMENT } from "../utils/consts"
 
-async function fetchGraphQL(operationsDoc: string, operationName: string, variables: Record<string, any>) {
-  const developmentAPI = ENVIRONMENT.gqlLink
-  const prodictionAPI = ENVIRONMENT.gqlLink
+async function fetchGraphQL(operationsDoc: string, operationName: string, variables: Record<string, any>, gqlNetwork?: string) {
+  const developmentAPI = gqlNetwork || ENVIRONMENT.gqlLink
+  const prodictionAPI = gqlNetwork || ENVIRONMENT.gqlLink
   const gqlAPINetwork = process.env.NODE_ENV === 'development' ? developmentAPI : prodictionAPI
 
   return new Promise<any>((resolve, reject) => {
@@ -23,8 +23,8 @@ async function fetchGraphQL(operationsDoc: string, operationName: string, variab
   })
 }
 
-export async function fetchFromIndexer(operationsDoc: string, operationName: string, variables: Record<string, any>) {
-  return await fetchGraphQL(operationsDoc, operationName, variables)
+export async function fetchFromIndexer(operationsDoc: string, operationName: string, variables: Record<string, any>, gqlNetwork?: string) {
+  return await fetchGraphQL(operationsDoc, operationName, variables, gqlNetwork)
     .then(({ data, errors }: any) => {
       if (errors) {
         console.error(errors)
