@@ -11,13 +11,6 @@ const GRID_SETTING = {
   show: false,
 }
 
-const TOOLTIP_SETTING = {
-  custom: function ({ dataPointIndex, w }: any) {
-    const dataForToltip = w.config.series[0].data[dataPointIndex]
-    return getTooltipMarkup(dataForToltip.y[3], dataForToltip.x)
-  },
-}
-
 const YAXIS_SETTING = {
   position: 'left',
   show: true,
@@ -92,7 +85,12 @@ export const CANDLESTICK_CHART_OPTIONS = {
   xaxis: XAXIS_SETTING,
   yaxis: YAXIS_SETTING,
   grid: GRID_SETTING,
-  tooltip: TOOLTIP_SETTING,
+  tooltip: {
+    custom: function ({ dataPointIndex, w }: any) {
+      const dataForToltip = w.config.series[0].data[dataPointIndex]
+      return getTooltipMarkup(dataForToltip.y[3], dataForToltip.x)
+    },
+  },
   plotOptions: {
     candlestick: {
       colors: {
@@ -106,7 +104,12 @@ export const CANDLESTICK_CHART_OPTIONS = {
 export const AREA_CHART_OPTIONS = {
   chart: CHART_SETTING,
   xaxis: XAXIS_SETTING,
-  tooltip: TOOLTIP_SETTING,
+  tooltip: {
+    custom: function ({ dataPointIndex, w }: any) {
+      const dataForToltip = w.config.series[0].data[dataPointIndex]
+      return getTooltipMarkup(dataForToltip.y, dataForToltip.x)
+    },
+  },
   yaxis: YAXIS_SETTING,
   grid: GRID_SETTING,
   dataLabels: {
