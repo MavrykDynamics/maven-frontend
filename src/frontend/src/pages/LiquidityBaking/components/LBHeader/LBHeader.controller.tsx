@@ -8,13 +8,12 @@ import { calculateAPY, diffBetweenCoinsInPersent } from 'utils/utils'
 
 const LBHeader = () => {
   const {
-    lbData: { token_pool, lqt_total },
+    lbData: { xtz_pool, lqt_total },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
   const tzbtcBitcoinPriceDiff = diffBetweenCoinsInPersent(coinPrices.tzbtc.usd, coinPrices.bitcoin.usd)
 
-  // TODO: fix this calculation with correct args
-  const APY = calculateAPY(coinPrices.tezos.usd, lqt_total)
+  const APY = calculateAPY(xtz_pool)
   return (
     <LBHeaderStyled>
       <div className="title">

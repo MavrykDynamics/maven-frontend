@@ -25,7 +25,7 @@ type CoinsOrderType = {
 
 export const LBSwap = ({ ready }: { ready: boolean }) => {
   const {
-    lbData: { xtz_pool, token_pool, lqt_address, token_address },
+    lbData: { xtz_pool, token_pool, address, token_address },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
   const { accountPkh } = useSelector((state: State) => state.wallet)
@@ -58,7 +58,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
   const swapBtnHandler = async () => {
     // init data we need to perform swap
     const Tezos = new TezosToolkit(ENVIRONMENT.rpcLink)
-    const lbContract = await Tezos.wallet.at(lqt_address)
+    const lbContract = await Tezos.wallet.at(address)
     const deadline = new Date(Date.now() + 60000).toISOString()
     const dataObject = {
       xtzPool: xtz_pool,
@@ -85,8 +85,8 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
 
       const batch = Tezos.wallet
         .batch()
-        .withContractCall(tzBtcContract.methods.approve(lqt_address, 0))
-        .withContractCall(tzBtcContract.methods.approve(lqt_address, inputValues.tzBTC))
+        .withContractCall(tzBtcContract.methods.approve(address, 0))
+        .withContractCall(tzBtcContract.methods.approve(address, inputValues.tzBTC))
         .withContractCall(lbContract.methods.tokenToXtz(accountPkh, inputValues.tzBTC, minXtzBought, deadline))
       const batchOp = await batch.send()
       await batchOp.confirmation()

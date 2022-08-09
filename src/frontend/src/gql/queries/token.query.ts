@@ -16,6 +16,7 @@
 export const TOKEN_QUERY = `
 query TokensDataQuery {
   liquidity_baking {
+    address
     lqt_address
     lqt_total
     token_address

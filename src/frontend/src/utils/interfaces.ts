@@ -81,6 +81,7 @@ export interface UserData {
 
 export interface TokenInfo {
   lbData: {
+    address: string,
     lqt_address: string
     lqt_total: number
     token_address: string

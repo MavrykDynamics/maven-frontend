@@ -1,4 +1,3 @@
-import React from 'react'
 import { ChartStyled } from './LBChart.style'
 import CandlestickChart from 'app/App.components/Charts/CandlestickChart.controller'
 import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'

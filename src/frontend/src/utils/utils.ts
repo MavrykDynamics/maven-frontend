@@ -1,4 +1,5 @@
-import { PRECISION_NUMBER } from './consts'
+import { PRECISION_NUMBER } from './consts';
+import BigNumber from "bignumber.js";
 
 export function calcWithoutPrecision(amount: string): number {
   const numberMu = parseFloat(amount) || 0
@@ -29,69 +30,12 @@ export const updateItemInStorage = (item: string, updateValue: any) => {
   return setItemInStorage(item, updatedItem)
 }
 
-// export const checkIfTargetBoundsToOtherTarget = (
-//   target: Element | null,
-//   target2: Element | null,
-//   checkPositionTarget1: 'top' | 'bottom',
-//   checkPositionTarget2: 'top' | 'bottom',
-//   handleVisible: () => void,
-//   handleUnvisible: () => void,
-// ) => {
-//   if (target && target2) {
-//     const firstTargetPosition = {
-//       top: window.pageYOffset + target.getBoundingClientRect().top,
-//       bottom: window.pageYOffset + target.getBoundingClientRect().bottom,
-//     }
-//     const secondTargetPosition = {
-//       top: window.pageYOffset + target2.getBoundingClientRect().top,
-//       bottom: window.pageYOffset + target2.getBoundingClientRect().bottom,
-//     }
-
-//     if (firstTargetPosition[checkPositionTarget2] < secondTargetPosition[checkPositionTarget1]) {
-//       handleUnvisible()
-//     } else {
-//       handleVisible()
-//     }
-//   } else {
-//     return
-//   }
-// }
-
-// export const checkIfElementVisible = (
-//   target: Element | null,
-//   checkPositionTarget: 'top' | 'bottom',
-//   checkPositionWindow: 'top' | 'bottom',
-//   handleVisible: () => void,
-//   handleUnvisible: () => void,
-// ) => {
-//   if (target) {
-//     const targetPosition = {
-//       top: window.pageYOffset + target.getBoundingClientRect().top,
-//       bottom: window.pageYOffset + target.getBoundingClientRect().bottom,
-//     }
-//     const windowPosition = {
-//       top: window.pageYOffset,
-//       bottom: window.pageYOffset + document.documentElement.clientHeight,
-//     }
-
-//     if (targetPosition[checkPositionTarget] < windowPosition[checkPositionWindow]) {
-//       handleUnvisible()
-//     } else {
-//       handleVisible()
-//     }
-//   } else {
-//     return
-//   }
-// }
-
-
 export const inputNumberValidation = (value: number | string): any => value >= 0 || value === ''
 
-export const calculateAPY = (rewardRate: number, lpTokenBalance: number): number => {
-  const blocksPerYear = 2 * 60 * 24 * 365
-  return lpTokenBalance ? ((rewardRate * blocksPerYear) / lpTokenBalance) * 100 : 0
-
-  // return ((1 + 1 / blocksPerYear)**blocksPerYear) - 1
+export const calculateAPY = (xtzPool: number): number => {
+  const annualSubsidy =  new BigNumber( (2.5 * 2 * 60 * 24 * 365) * 1000000 )
+  const bigIntXTZPool = new BigNumber(xtzPool)
+  return bigIntXTZPool.plus(annualSubsidy).dividedBy(bigIntXTZPool).minus(1).dividedBy(2).multipliedBy(100).toNumber()
 }
 
 export const diffBetweenCoinsInPersent = (coin1Price : number, coin2Price : number): number => {

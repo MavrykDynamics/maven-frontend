@@ -23,6 +23,7 @@ export const defaultUser: UserData = {
 export const defaultTokens: TokenInfo = {
   lbData: {
     lqt_address: "",
+    address: "",
     lqt_total: 0,
     token_address: "",
     token_decimals: 0,
