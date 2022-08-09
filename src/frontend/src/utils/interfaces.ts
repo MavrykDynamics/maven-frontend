@@ -1,6 +1,8 @@
-import { IntervalType } from 'gql/queries/chart.query';
 import { TezosToolkit } from '@taquito/taquito'
 import { TempleWallet } from '@temple-wallet/dapp'
+
+export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1mo' | 'quotes1w' | 'quotesTotal' | 'quotes15mNogaps'
+export type ChartTypeType = 'area' | 'candlestick'
 
 export interface MavrykTheme {  
   whatMakesBackground: string,
@@ -99,11 +101,16 @@ export interface ChartPoint {
 }
 
 export interface ChartType {
-  chartData: Array<{
+  chartDataCandlestick: Array<{
     x: string,
     y: [number, number, number, number]
   }>, 
+  chartDataArea: Array<{
+    x: string,
+    y: number
+  }>,
   chartInterval: IntervalType
+  chartType: ChartTypeType
 }
 
 export interface State {

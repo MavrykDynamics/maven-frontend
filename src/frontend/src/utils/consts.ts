@@ -38,8 +38,10 @@ export const defaultTokens: TokenInfo = {
 }
 
 export const defaultChart: ChartType = {
-  chartData: [],
-  chartInterval: 'quotes1dNogaps'
+  chartDataCandlestick: [],
+  chartDataArea: [],
+  chartInterval: 'quotes1dNogaps',
+  chartType: 'candlestick'
 }
 
 export const NUMBER_FORMATTER = new Intl.NumberFormat('en')

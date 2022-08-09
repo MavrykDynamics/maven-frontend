@@ -94,10 +94,17 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     justify-content: center;
     align-items: center;
     border: 1px solid ${({ theme }) => theme.primaryColor};
+    transition: 0.5s all;
     svg {
       width: 24px;
       height: 24px;
       margin: 0;
+    }
+
+    &.area {
+      border: 1px solid ${({ theme }) => theme.litepaperLinkColor};
+      background: ${({ theme }) => theme.litepaperLinkColor};
+      opacity: 0.7;
     }
   }
 `

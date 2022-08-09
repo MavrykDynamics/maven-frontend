@@ -1,5 +1,5 @@
 import Chart from 'react-apexcharts'
-import { CANDLESTICK_CHART_OPTIONS } from 'app/App.components/CandlestickChart/chart.consts'
+import { CANDLESTICK_CHART_OPTIONS } from 'app/App.components/Charts/chart.consts'
 
 const CandlestickChart = ({ chartData }: { chartData: any }) => {
   return (

@@ -66,12 +66,18 @@ const chart = (state = defaultChart, action: any) => {
     case actions.GET_CHART_DATA:
       return {
         ...state,
-        chartData: action.chartData
+        chartDataCandlestick: action.chartData.candlestick,
+        chartDataArea: action.chartData.area,
       }
       case actions.TOOGLE_CHART_INTERVAL:
         return {
           ...state,
           chartInterval: action.chartInterval
+        }
+        case actions.TOOGLE_CHART_TYPE:
+        return {
+          ...state,
+          chartType: action.chartType
         }
     default:
       return state

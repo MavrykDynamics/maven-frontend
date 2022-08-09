@@ -1,4 +1,4 @@
-export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1mo' | 'quotes1w' | 'quotesTotal' | 'quotes15mNogaps'
+import { IntervalType } from "utils/interfaces"
 
 export const getChartQuery = (interval: IntervalType) => {
   return `

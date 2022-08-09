@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ChartStyled } from './LBChart.style'
-import { useSelector } from 'react-redux'
-import { State } from 'utils/interfaces'
-import CandlestickChart from 'app/App.components/CandlestickChart/CandlestickChart.controller'
+import CandlestickChart from 'app/App.components/Charts/CandlestickChart.controller'
 import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
-import { IntervalType } from 'gql/queries/chart.query'
 import { Button } from 'app/App.components/Button/Button.controller'
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { cyanColor } from 'styles'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
+import { ChartTypeType, IntervalType } from 'utils/interfaces'
+import AreaChart from 'app/App.components/Charts/AreaChart.controller'
 
 const intervalData = [
   {
@@ -35,12 +34,21 @@ const intervalData = [
 
 type LBChartViewProps = {
   selectedInterval: IntervalType
+  selectedChartType: ChartTypeType
   changeSelectedInterval: (newInterval: IntervalType) => void
+  changeSelectedChartType: () => void
   chartData: any
   tztzBTC: number
 }
 
-export const LBChartView = ({ selectedInterval, changeSelectedInterval, tztzBTC, chartData }: LBChartViewProps) => {
+export const LBChartView = ({
+  selectedInterval,
+  changeSelectedInterval,
+  changeSelectedChartType,
+  tztzBTC,
+  chartData,
+  selectedChartType,
+}: LBChartViewProps) => {
   return (
     <ChartStyled>
       <div className="chart-controlls">
@@ -54,7 +62,7 @@ export const LBChartView = ({ selectedInterval, changeSelectedInterval, tztzBTC,
               TZ/tzBTC (Sirius)
             </CustomizedText>
             <CustomizedText color={cyanColor} fontSize={14} fontWidth={600}>
-              <CommaNumber value={tztzBTC} endingText="tz" />
+              <CommaNumber value={tztzBTC} endingText="ꜩ" />
             </CustomizedText>
           </div>
         </div>
@@ -64,12 +72,24 @@ export const LBChartView = ({ selectedInterval, changeSelectedInterval, tztzBTC,
             selected={selectedInterval}
             handleSetSelectedToggler={(value: unknown) => changeSelectedInterval(value as IntervalType)}
           />
-          <Button text={''} icon="toggleChartType" className="toggleChart" kind="transparent" />
+          <Button
+            text={''}
+            icon="toggleChartType"
+            className={`toggleChart ${selectedChartType}`}
+            kind="transparent"
+            onClick={changeSelectedChartType}
+          />
         </div>
       </div>
-      <div className="chart-wrapper">
-        <CandlestickChart chartData={chartData} />
-      </div>
+      {chartData.length ? (
+        <div className="chart-wrapper">
+          {selectedChartType === 'area' ? (
+            <AreaChart chartData={chartData} />
+          ) : (
+            <CandlestickChart chartData={chartData} />
+          )}
+        </div>
+      ) : null}
     </ChartStyled>
   )
 }
