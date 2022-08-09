@@ -90,14 +90,21 @@ export interface TokenInfo {
   coinPrices: Record<string, Record<string, number>>
 }
 
-export interface ChartType {
-  chartData: Array<{
+export interface ChartPoint {
   bucket: string
   close: string
   high: string
   low: string
   open: string
-}>, chartInterval: IntervalType}
+}
+
+export interface ChartType {
+  chartData: Array<{
+    x: string,
+    y: [number, number, number, number]
+  }>, 
+  chartInterval: IntervalType
+}
 
 export interface State {
   wallet: WalletState

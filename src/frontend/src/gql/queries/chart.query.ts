@@ -1,18 +1,17 @@
-export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1mo' | 'quotes1w' | 'quotesTotal'
+export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1mo' | 'quotes1w' | 'quotesTotal' | 'quotes15mNogaps'
 
 export const getChartQuery = (interval: IntervalType) => {
   return `
   query GetChartData {
-    ${interval} {
-      close
+    ${interval}(limit: 75) {
+      bucket
+      open
       high
       low
-      open
-      bucket
+      close
     }
   }
   `  
 }
 
 export const CHART_QUERY_NAME = 'GetChartData'
-export const  CHART_QUERY_VARIABLES = {}

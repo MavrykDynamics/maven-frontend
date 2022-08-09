@@ -1,12 +1,5 @@
-import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
-
-import { ChartStyled } from './LBChart.style'
+import { LBChartView } from './LBChart.view'
 
 export const LBChart = () => {
-  return (
-    <ChartStyled>
-      LBChart
-      <ConnectWallet />
-    </ChartStyled>
-  )
+  return <LBChartView />
 }
