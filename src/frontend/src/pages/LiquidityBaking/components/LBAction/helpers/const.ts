@@ -1,5 +1,1 @@
-export const SLIPPAGE_TOGGLE_VALUES = ['0.5%', '1%', '3%', 'custom%']
-export const SWAP_DEFAULT_INPUT_STATE = {
-  XTZ_input: 0,
-  tz_BTC_input: 0,
-}
+export const SLIPPAGE_TOGGLE_VALUES = [{title: '0.5%', value: 0.5}, {title: '1%', value: 1}, {title: '3%', value: 3}, {title: 'custom%', value: -1}]

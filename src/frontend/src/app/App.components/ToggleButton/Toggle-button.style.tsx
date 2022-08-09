@@ -1,14 +1,14 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 export const ToggleButtonWrapper = styled.div`
   display: flex;
   margin: 0 auto;
   width: fit-content;
   justify-content: center;
-  border: 2px solid #503EAA;
+  border: 2px solid #503eaa;
   border-radius: 20px;
   font-size: 16px;
-  color: #8D86EB;
+  color: #8d86eb;
   max-height: 40px;
 
   &.swap-toggler {
@@ -18,11 +18,11 @@ export const ToggleButtonWrapper = styled.div`
       font-size: 14px;
     }
   }
-`;
+`
 
 export const ToggleButtonItem = styled.div`
   padding: 15px 30px;
-  height: 31px;
+  height: inherit;
   width: fit-content;
   display: flex;
   justify-content: center;
@@ -34,9 +34,9 @@ export const ToggleButtonItem = styled.div`
   font-size: 16px;
 
   &.selected {
-    background: #8D86EB;
+    background: #8d86eb;
     border-radius: 17.5px;
-    color: #160E3F;
+    color: #160e3f;
     transition: 0.4s all ease-in-out;
   }
-`;
+`

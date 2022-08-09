@@ -24,7 +24,7 @@ export const LBRemoveLiquidity = () => {
   const { accountPkh } = useSelector((state: State) => state.wallet)
 
   const [inputValues, setInputValues] = useState({ XTZ: 0 })
-  const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0])
+  const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [receivedAmount, setReceivedAmount] = useState({
     xtz: 0,
     tzbtc: 0,
@@ -111,7 +111,7 @@ export const LBRemoveLiquidity = () => {
       />
 
       <LBActionBottomWrapper
-        onClickHandler={setSeletedToggle}
+        onClickHandler={(value: unknown) => setSeletedToggle(value as number)}
         selectedToogle={selectedToogle}
         priceImpact={0}
         minimumLBTRecived={0}

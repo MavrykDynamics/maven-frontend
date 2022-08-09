@@ -10,35 +10,69 @@ import { LBPersonalStats } from './LBActionScreens/LBPersonalStats.controller'
 import { LBRemoveLiquidity } from './LBActionScreens/LBRemoveLiquidity.controller'
 import { LBSwap } from './LBActionScreens/LBSwap.controller'
 
-const TOGGLERS_VALUES = {
-  swap: [],
-  liquidity: ['add liquidity', 'remove liquidity'],
-  stats: ['personal', 'general'],
-}
+const FIRST_TOGGLER_VALUES = [
+  {
+    title: 'swap',
+    value: 'swap',
+  },
+  {
+    title: 'liquidity',
+    value: 'liquidity',
+    subToggler: [
+      {
+        title: 'remove liquidity',
+        value: 'remove_liquidity',
+      },
+      {
+        title: 'add liquidity',
+        value: 'add_liquidity',
+      },
+    ],
+  },
+  {
+    title: 'stats',
+    value: 'stats',
+    subToggler: [
+      {
+        title: 'general',
+        value: 'stats_general',
+      },
+      {
+        title: 'personal',
+        value: 'stats_personal',
+      },
+    ],
+  },
+]
 
 export const LBAction = () => {
-  const fTogglerValues = useMemo(() => Object.keys(TOGGLERS_VALUES), [])
-  const [fBtnSelected, setFBtnSelected] = useState(fTogglerValues[0] as 'swap' | 'stats' | 'liquidity')
+  const [fBtnSelected, setFBtnSelected] = useState(FIRST_TOGGLER_VALUES[0].value as 'swap' | 'stats' | 'liquidity')
 
-  const sTogglerValues = useMemo(() => TOGGLERS_VALUES[fBtnSelected] as Array<string>, [fBtnSelected])
-  const [sBtnSelected, setSBtnSelected] = useState(sTogglerValues[0])
+  const sTogglerValues = useMemo(() => FIRST_TOGGLER_VALUES.find(({ value }) => value === fBtnSelected)?.subToggler, [
+    fBtnSelected,
+  ])
+  const [sBtnSelected, setSBtnSelected] = useState(sTogglerValues?.[0].value || '')
 
   const { ready } = useSelector((state: State) => state.wallet)
 
   useEffect(() => {
-    setSBtnSelected(sTogglerValues[0] || '')
+    setSBtnSelected(sTogglerValues?.[0].value || '')
   }, [fBtnSelected])
 
   return (
     <LBActionStyled>
       <ToggleButtonsWrapper className="action-toggle-header">
         <ToggleButton
-          values={fTogglerValues}
+          values={FIRST_TOGGLER_VALUES}
           selected={fBtnSelected}
-          handleSetSelectedToggler={(value: string) => setFBtnSelected(value as 'swap' | 'stats' | 'liquidity')}
+          handleSetSelectedToggler={(value: unknown) => setFBtnSelected(value as 'swap' | 'stats' | 'liquidity')}
         />
-        {sTogglerValues.length ? (
-          <ToggleButton values={sTogglerValues} selected={sBtnSelected} handleSetSelectedToggler={setSBtnSelected} />
+        {sTogglerValues && sTogglerValues.length ? (
+          <ToggleButton
+            values={sTogglerValues}
+            selected={sBtnSelected}
+            handleSetSelectedToggler={(value: unknown) => setSBtnSelected(value as string)}
+          />
         ) : null}
       </ToggleButtonsWrapper>
 

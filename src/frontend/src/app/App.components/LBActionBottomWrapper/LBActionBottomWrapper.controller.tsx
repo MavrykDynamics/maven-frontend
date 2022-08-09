@@ -8,8 +8,8 @@ import { ToggleButton } from '../ToggleButton/Toggle-button.view'
 import { LBActionBottomWrapperStyled } from './LBActionBottomWrapper.style'
 
 type LBActionBottomWrapperProps = {
-  onClickHandler: (value: string) => void
-  selectedToogle: string
+  onClickHandler: (value: unknown) => void
+  selectedToogle: string | number
   priceImpact: number
   minimumLBTRecived: number
 }
@@ -57,7 +57,7 @@ export const LBActionBottomWrapper = ({
         <ToggleButton
           values={SLIPPAGE_TOGGLE_VALUES}
           selected={selectedToogle}
-          handleSetSelectedToggler={(value: string) => onClickHandler(value)}
+          handleSetSelectedToggler={(value: unknown) => onClickHandler(value)}
           className="swap-toggler"
         />
       </HorisontalInfo>

@@ -3,7 +3,7 @@ export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1mo' | '
 export const getChartQuery = (interval: IntervalType) => {
   return `
   query GetChartData {
-    ${interval}(limit: 75) {
+    ${interval}(limit: 50) {
       bucket
       open
       high

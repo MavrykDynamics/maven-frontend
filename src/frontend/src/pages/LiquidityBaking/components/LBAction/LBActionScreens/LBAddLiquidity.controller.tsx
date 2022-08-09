@@ -29,7 +29,7 @@ export const LBAddLiquidity = () => {
     XTZ: 0,
     tzBTC: 0,
   })
-  const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0])
+  const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [switchValue, setSwitchValue] = useState(false)
   const [minimumLBTRecived, setMinimumLBTRecived] = useState(0)
 
@@ -228,7 +228,7 @@ export const LBAddLiquidity = () => {
       />
 
       <LBActionBottomWrapper
-        onClickHandler={setSeletedToggle}
+        onClickHandler={(value: unknown) => setSeletedToggle(value as number)}
         selectedToogle={selectedToogle}
         priceImpact={0.1}
         minimumLBTRecived={minimumLBTRecived}

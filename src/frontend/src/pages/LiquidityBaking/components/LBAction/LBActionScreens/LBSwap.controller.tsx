@@ -30,7 +30,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
   } = useSelector((state: State) => state.tokens)
   const { accountPkh } = useSelector((state: State) => state.wallet)
 
-  const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0])
+  const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [isRevertedCoins, setIsRevertedCoins] = useState<CoinsOrderType>({
     from: 'XTZ',
     to: 'tzBTC',
@@ -179,7 +179,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       </VertInfo>
 
       <LBActionBottomWrapper
-        onClickHandler={setSeletedToggle}
+        onClickHandler={(value: unknown) => setSeletedToggle(value as number)}
         selectedToogle={selectedToogle}
         priceImpact={0}
         minimumLBTRecived={0}

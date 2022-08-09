@@ -85,6 +85,21 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     max-width: 220px;
     margin: 0 auto 25px auto;
   }
+
+  &.toggleChart {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid ${({ theme }) => theme.primaryColor};
+    svg {
+      width: 24px;
+      height: 24px;
+      margin: 0;
+    }
+  }
 `
 
 export const ButtonText = styled.div<{ theme: MavrykTheme }>`

@@ -18,6 +18,35 @@ export const ChartStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+
+  .chart-controlls {
+    padding: 0 20px 0 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .right-wrapper {
+      display: flex;
+      column-gap: 15px;
+    }
+
+    .chart-info {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      svg {
+        transform: rotate(90deg);
+        width: 21px;
+        height: 21px;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 
   .chart-wrapper {
     height: 420px;

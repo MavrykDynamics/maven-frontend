@@ -3,22 +3,22 @@ import * as React from 'react'
 import { ToggleButtonItem, ToggleButtonWrapper } from './Toggle-button.style'
 
 type ToggleButtonViewProps = {
-  values: string[]
-  selected: string
-  handleSetSelectedToggler: (arg0: string) => void
+  values: { title: string; value: string | number }[]
+  selected: string | number
+  handleSetSelectedToggler: (arg0: string | number) => void
   className?: string
 }
 
 export const ToggleButton = ({ values, selected, handleSetSelectedToggler, className }: ToggleButtonViewProps) => {
   return (
     <ToggleButtonWrapper className={className}>
-      {values.map((item) => (
+      {values.map(({ title, value }) => (
         <ToggleButtonItem
-          key={item}
-          className={`${selected === item ? 'selected' : ''} toggle-btn`}
-          onClick={() => handleSetSelectedToggler(item)}
+          key={value}
+          className={`${selected === value ? 'selected' : ''} toggle-btn`}
+          onClick={() => handleSetSelectedToggler(value)}
         >
-          {item}
+          {title}
         </ToggleButtonItem>
       ))}
     </ToggleButtonWrapper>
