@@ -5,8 +5,11 @@ import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityB
 import { ActionScreenWrapper } from '../LBAction.style'
 
 import { cyanColor, subHeaderColor } from 'styles'
+import { useSelector } from 'react-redux'
+import { State } from 'utils/interfaces'
 
 export const LBGeneralStats = () => {
+  const { address, lqt_total } = useSelector((state: State) => state.tokens.lbData)
   return (
     <ActionScreenWrapper className="stats">
       <HorisontalInfo>
@@ -14,7 +17,7 @@ export const LBGeneralStats = () => {
           Address
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <TzAddress type="primary" tzAddress={'tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb'} hasIcon />
+          <TzAddress type="primary" tzAddress={address} hasIcon />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
@@ -54,7 +57,7 @@ export const LBGeneralStats = () => {
           TVL in USD
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={14125501} />
+          <CommaNumber value={lqt_total} />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>

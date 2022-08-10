@@ -16,6 +16,7 @@ export const LBHeaderStyled = styled.div`
   .title {
     display: flex;
     align-items: center;
+    column-gap: 25px;
 
     div {
       &::after {
@@ -24,10 +25,9 @@ export const LBHeaderStyled = styled.div`
       font-size: 35px;
     }
 
-    svg {
-      margin-right: 25px;
-      width: 90px;
-      height: 55px;
+    img {
+      width: 60px;
+      height: 60px;
     }
   }
 

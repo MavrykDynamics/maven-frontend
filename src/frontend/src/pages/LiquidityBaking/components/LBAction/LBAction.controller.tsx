@@ -35,11 +35,11 @@ const FIRST_TOGGLER_VALUES = [
     subToggler: [
       {
         title: 'general',
-        value: 'stats_general',
+        value: 'general',
       },
       {
         title: 'personal',
-        value: 'stats_personal',
+        value: 'personal',
       },
     ],
   },

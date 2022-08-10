@@ -33,7 +33,8 @@ export const updateItemInStorage = (item: string, updateValue: any) => {
 export const inputNumberValidation = (value: number | string): any => value >= 0 || value === ''
 
 export const calculateAPY = (xtzPool: number): number => {
-  const annualSubsidy =  new BigNumber( (2.5 * 2 * 60 * 24 * 365) * 1000000 )
+  // const annualSubsidy =  new BigNumber( (2.5 * 2 * 60 * 24 * 365) * 1000000) it was like this
+  const annualSubsidy =  new BigNumber( (2.5 * 2 * 60 * 24 * 365))
   const bigIntXTZPool = new BigNumber(xtzPool)
   return bigIntXTZPool.plus(annualSubsidy).dividedBy(bigIntXTZPool).minus(1).dividedBy(2).multipliedBy(100).toNumber()
 }

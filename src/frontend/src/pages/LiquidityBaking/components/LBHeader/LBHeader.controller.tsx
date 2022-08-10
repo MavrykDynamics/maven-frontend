@@ -8,7 +8,7 @@ import { calculateAPY, diffBetweenCoinsInPersent } from 'utils/utils'
 
 const LBHeader = () => {
   const {
-    lbData: { xtz_pool, lqt_total },
+    lbData: { xtz_pool },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
   const tzbtcBitcoinPriceDiff = diffBetweenCoinsInPersent(coinPrices.tzbtc.usd, coinPrices.bitcoin.usd)
@@ -17,11 +17,9 @@ const LBHeader = () => {
   return (
     <LBHeaderStyled>
       <div className="title">
-        <svg>
-          <use xlinkHref="/icons/sprites.svg#LBLogo" />
-        </svg>
-        <CustomizedText fontWidth={700} fontSize={35}>
-          Liquidity Baking
+        <img src="/images/sirius-icon.png" alt="" />
+        <CustomizedText fontWidth={700} fontSize={35} color={'#fff'}>
+          Liquidity Baking (Sirius)
         </CustomizedText>
       </div>
 
@@ -31,7 +29,7 @@ const LBHeader = () => {
             Total Value Locked
           </CustomizedText>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber beginningText="$" value={lqt_total} />
+            <CommaNumber beginningText="$" value={xtz_pool * 2 * coinPrices.tezos.usd} />
           </CustomizedText>
         </VertInfo>
 
