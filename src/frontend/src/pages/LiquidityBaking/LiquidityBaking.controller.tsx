@@ -14,7 +14,7 @@ const LiquidityBaking = () => {
     dispatch(getTokensData())
     dispatch(getTokensPrices())
     dispatch(getChartData(chartInterval))
-  }, [])
+  }, [chartInterval, dispatch])
 
   return <LiquidityBakingView />
 }

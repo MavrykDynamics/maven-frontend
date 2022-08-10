@@ -10,27 +10,27 @@ import AreaChart from 'app/App.components/Charts/AreaChart.controller'
 
 const intervalData = [
   {
-    title: '5M',
+    title: '5m',
     value: 'quotes5mNogaps',
   },
   {
-    title: '15M',
+    title: '15m',
     value: 'quotes15mNogaps',
   },
   {
-    title: '1H',
+    title: '1h',
     value: 'quotes1hNogaps',
   },
   {
-    title: '1D',
+    title: '1d',
     value: 'quotes1dNogaps',
   },
   {
-    title: '1W',
-    value: 'quotes1wNogaps',
+    title: '1w',
+    value: 'quotes1w',
   },
   {
-    title: '1MO',
+    title: '1mo',
     value: 'quotes1mo',
   },
 ]
@@ -42,6 +42,8 @@ type LBChartViewProps = {
   changeSelectedChartType: () => void
   chartData: any
   tztzBTC: number
+  chartMinYValue: number
+  chartMaxYValue: number
 }
 
 export const LBChartView = ({
@@ -51,6 +53,8 @@ export const LBChartView = ({
   tztzBTC,
   chartData,
   selectedChartType,
+  chartMinYValue,
+  chartMaxYValue,
 }: LBChartViewProps) => {
   return (
     <ChartStyled>
@@ -62,7 +66,7 @@ export const LBChartView = ({
           </svg>
           <div className="info">
             <CustomizedText color="#8D86EB" fontSize={14} fontWidth={600}>
-              TZ/tzBTC (Sirius)
+              XTZ/tzBTC (Sirius)
             </CustomizedText>
             <CustomizedText color={cyanColor} fontSize={14} fontWidth={600}>
               <CommaNumber value={tztzBTC} endingText="ꜩ" />
@@ -89,7 +93,7 @@ export const LBChartView = ({
           {selectedChartType === 'area' ? (
             <AreaChart chartData={chartData} />
           ) : (
-            <CandlestickChart chartData={chartData} />
+            <CandlestickChart chartData={chartData} chartMinYValue={chartMinYValue} chartMaxYValue={chartMaxYValue} />
           )}
         </div>
       ) : null}

@@ -12,13 +12,13 @@ const GRID_SETTING = {
 }
 
 const YAXIS_SETTING = {
-  position: 'left',
+  opposite: true,
   show: true,
   showAlways: true,
   showForNullSeries: true,
-  tickAmount: 14,
-  min: (min: number) => min - (min / 100) * 50,
-  max: (max: number) => max + (max / 100) * 10,
+  tickAmount: 5,
+  min: 0,
+  max: 0,
   labels: {
     show: true,
     style: {
@@ -32,7 +32,7 @@ const YAXIS_SETTING = {
 }
 
 const XAXIS_SETTING = {
-  type: 'category' as "category",
+  type: 'category' as 'category',
   position: 'bottom',
   labels: {
     show: true,
@@ -75,6 +75,9 @@ const CHART_SETTING = {
       customIcons: [],
     },
   },
+  dataLabels: {
+    enabled: false,
+  },
   sparkline: {
     enabled: false,
   },
@@ -116,39 +119,39 @@ export const AREA_CHART_OPTIONS = {
     enabled: false,
   },
   fill: {
-    type: "gradient",
+    type: 'gradient',
     gradient: {
       shadeIntensity: 1,
       opacityFrom: 1,
       opacityTo: 0.3,
       stops: [0, 50, 100],
-      colorStops: [ 
+      colorStops: [
         [
           {
             offset: 0,
             color: '#AEEDE1',
-            opacity: 0.85
+            opacity: 0.85,
           },
           {
             offset: 35,
             color: '#AEEDE1',
-            opacity: 0.7
+            opacity: 0.7,
           },
           {
             offset: 65,
             color: '#AEEDE1',
-            opacity: 0.4
+            opacity: 0.4,
           },
           {
             offset: 100,
             color: '#160E3F',
-            opacity: 0
+            opacity: 0,
           },
         ],
-      ]
-    }
+      ],
+    },
   },
   stroke: {
-    show: false
-  }
+    show: false,
+  },
 }

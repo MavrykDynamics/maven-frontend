@@ -41,8 +41,10 @@ export const defaultTokens: TokenInfo = {
 export const defaultChart: ChartType = {
   chartDataCandlestick: [],
   chartDataArea: [],
-  chartInterval: 'quotes1dNogaps',
-  chartType: 'candlestick'
+  chartInterval: 'quotes5mNogaps',
+  chartType: 'candlestick',
+  chartMinYValue: 0,
+  chartMaxYValue:10000
 }
 
 export const NUMBER_FORMATTER = new Intl.NumberFormat('en')

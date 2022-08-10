@@ -1,63 +1,68 @@
 import { TezosToolkit } from '@taquito/taquito'
 import { TempleWallet } from '@temple-wallet/dapp'
 
-export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1mo' | 'quotes1w' | 'quotesTotal' | 'quotes15mNogaps'
+export type IntervalType =
+  | 'quotes1dNogaps'
+  | 'quotes1hNogaps'
+  | 'quotes1mo'
+  | 'quotes1w'
+  | 'quotesTotal'
+  | 'quotes15mNogaps'
+  | 'quotes5mNogaps'
 export type ChartTypeType = 'area' | 'candlestick'
 
-export interface MavrykTheme {  
-  whatMakesBackground: string,
-  calculatorBackground: string,
-  featuresBackground: string,
-  teamCityDecor: string,
-  teamDecor1: string,
-  teamDecor2: string,
-  teamDecor3: string,
-  teamDecor4: string,
-  subscribeBachground: string,
-  starsBachground: string,
-  satellitesGradient: string,
-  skyGradientTransparent:
-  string,
-  skyGradient:
-  string,
-  backgroundColor: string,
-  containerColor: string,
-  borderColor: string,
-  textColor: string,
-  subTextColor: string,
-  backgroundTextColor: string,
-  placeholderColor: string,
-  primaryColor: string,
-  secondaryColor: string,
-  upColor: string,
-  downColor: string,
-  selectedColor: string,
-  litepaperLinkColor: string,
-  navColor:string,
-  inputBorderColor: string,
-  headerTeam: string,
-  headerColor: string,
-  headerSectionsColor: string,
-  headerDarkColor: string,
-  darkestBackroundColor: string,
-  darkBackroundColor: string,
-  labelColor: string,
-  darkPurple: string,
-  headingColor: string,
-  btnBackroundColor: string,
-  btnColor: string,
-  linkedinLinkColor: string,
-  socialBackroundColor: string,
-  socialColor: string,
-  inputColor: string,
-  btnBackroundNewsColor: string,
-  btnNewsColor: string,
-  inputNewsBg: string,
-  inputNewsColor: string,
-  roadmapValueColor: string,
-  arrowStrokeColor: string,
-  clusterBg: string,
-  socialsColor: string,
+export interface MavrykTheme {
+  whatMakesBackground: string
+  calculatorBackground: string
+  featuresBackground: string
+  teamCityDecor: string
+  teamDecor1: string
+  teamDecor2: string
+  teamDecor3: string
+  teamDecor4: string
+  subscribeBachground: string
+  starsBachground: string
+  satellitesGradient: string
+  skyGradientTransparent: string
+  skyGradient: string
+  backgroundColor: string
+  containerColor: string
+  borderColor: string
+  textColor: string
+  subTextColor: string
+  backgroundTextColor: string
+  placeholderColor: string
+  primaryColor: string
+  secondaryColor: string
+  upColor: string
+  downColor: string
+  selectedColor: string
+  litepaperLinkColor: string
+  navColor: string
+  inputBorderColor: string
+  headerTeam: string
+  headerColor: string
+  headerSectionsColor: string
+  headerDarkColor: string
+  darkestBackroundColor: string
+  darkBackroundColor: string
+  labelColor: string
+  darkPurple: string
+  headingColor: string
+  btnBackroundColor: string
+  btnColor: string
+  linkedinLinkColor: string
+  socialBackroundColor: string
+  socialColor: string
+  inputColor: string
+  btnBackroundNewsColor: string
+  btnNewsColor: string
+  inputNewsBg: string
+  inputNewsColor: string
+  roadmapValueColor: string
+  arrowStrokeColor: string
+  clusterBg: string
+  socialsColor: string
 }
 
 export interface WalletState {
@@ -81,7 +86,7 @@ export interface UserData {
 
 export interface TokenInfo {
   lbData: {
-    address: string,
+    address: string
     lqt_address: string
     lqt_total: number
     token_address: string
@@ -89,7 +94,7 @@ export interface TokenInfo {
     token_pool: number
     xtz_decimals: number
     xtz_pool: number
-  },
+  }
   coinPrices: Record<string, Record<string, number>>
 }
 
@@ -103,22 +108,24 @@ export interface ChartPoint {
 
 export interface ChartType {
   chartDataCandlestick: Array<{
-    x: string,
+    x: string
     y: [number, number, number, number]
-  }>, 
+  }>
   chartDataArea: Array<{
-    x: string,
+    x: string
     y: number
-  }>,
+  }>
   chartInterval: IntervalType
   chartType: ChartTypeType
+  chartMinYValue: number
+  chartMaxYValue: number
 }
 
 export interface State {
   wallet: WalletState
   user: UserData
   preferences: {
-    darkThemeEnabled: boolean, 
+    darkThemeEnabled: boolean
     scrollPosition: number
   }
   tokens: TokenInfo

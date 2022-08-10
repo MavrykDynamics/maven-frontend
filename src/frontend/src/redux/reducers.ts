@@ -1,20 +1,20 @@
 // TODO: extract reducers to different files
 
-import {  walletDefaultState, defaultUser, defaultTokens, defaultChart } from '../utils/consts';
-import { combineReducers } from "redux";
+import { walletDefaultState, defaultUser, defaultTokens, defaultChart } from '../utils/consts'
+import { combineReducers } from 'redux'
 
-import * as actions from "./action.types";
+import * as actions from './action.types'
 
-const preferences = (state = {darkThemeEnabled: true, scrollPosition: 0}, action: any) => {
+const preferences = (state = { darkThemeEnabled: true, scrollPosition: 0 }, action: any) => {
   switch (action.type) {
     case actions.TOGGLE_DARKTHEME:
-      return { ...state, darkThemeEnabled: !state.darkThemeEnabled };
+      return { ...state, darkThemeEnabled: !state.darkThemeEnabled }
     case actions.SCROLL:
-      return { ...state, scrollPosition: action.scrollPosition };
+      return { ...state, scrollPosition: action.scrollPosition }
     default:
-      return state;
+      return state
   }
-};
+}
 
 const wallet = (state = walletDefaultState, action: any) => {
   switch (action.type) {
@@ -26,11 +26,11 @@ const wallet = (state = walletDefaultState, action: any) => {
         accountPkh: action.accountPkh,
       }
     case actions.SET_WALLET:
-        return { ...state, wallet: action.wallet }
+      return { ...state, wallet: action.wallet }
     default:
-      return state;
+      return state
   }
-};
+}
 
 const user = (state = defaultUser, action: any) => {
   switch (action.type) {
@@ -42,24 +42,24 @@ const user = (state = defaultUser, action: any) => {
     default:
       return state
   }
-};
+}
 
 const tokens = (state = defaultTokens, action: any) => {
   switch (action.type) {
     case actions.GET_TOKENS_DATA:
       return {
         ...state,
-        lbData: action.tokensData
+        lbData: action.tokensData,
       }
-      case actions.GET_TOKENS_PRICES: 
+    case actions.GET_TOKENS_PRICES:
       return {
         ...state,
-        coinPrices: action.tokensPrices
+        coinPrices: action.tokensPrices,
       }
     default:
       return state
   }
-};
+}
 
 const chart = (state = defaultChart, action: any) => {
   switch (action.type) {
@@ -68,20 +68,22 @@ const chart = (state = defaultChart, action: any) => {
         ...state,
         chartDataCandlestick: action.chartData.candlestick,
         chartDataArea: action.chartData.area,
+        chartMinYValue: action.chartMinYValue,
+        chartMaxYValue: action.chartMaxYValue,
       }
-      case actions.TOOGLE_CHART_INTERVAL:
-        return {
-          ...state,
-          chartInterval: action.chartInterval
-        }
-        case actions.TOOGLE_CHART_TYPE:
-        return {
-          ...state,
-          chartType: action.chartType
-        }
+    case actions.TOOGLE_CHART_INTERVAL:
+      return {
+        ...state,
+        chartInterval: action.chartInterval,
+      }
+    case actions.TOOGLE_CHART_TYPE:
+      return {
+        ...state,
+        chartType: action.chartType,
+      }
     default:
       return state
   }
-};
+}
 
-export default combineReducers({preferences, wallet, user, tokens, chart});
+export default combineReducers({ preferences, wallet, user, tokens, chart })
