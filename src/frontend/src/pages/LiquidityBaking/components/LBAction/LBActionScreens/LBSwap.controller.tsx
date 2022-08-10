@@ -74,6 +74,8 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       const minTokensBought = xtzToTokenTokenOutput(dataObject)?.toNumber()
 
       const op = await lbContract.methods.xtzToToken(accountPkh, minTokensBought, deadline)
+      console.log('op', op)
+
       // @ts-ignore
       await op.confirmation()
     }
@@ -178,12 +180,12 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
         </CustomizedText>
       </VertInfo>
 
-      <LBActionBottomWrapper
+      {/* <LBActionBottomWrapper
         onClickHandler={(value: unknown) => setSeletedToggle(value as number)}
         selectedToogle={selectedToogle}
         priceImpact={0}
         minimumLBTRecived={0}
-      />
+      /> */}
     </ActionScreenWrapper>
   )
 }

@@ -50,6 +50,6 @@ export const NUMBER_FORMATTER = new Intl.NumberFormat('en')
 export const ENVIRONMENT = {
   // gqlLink: 'https://dex.dipdup.net/v1/graphql'
   gqlLink: 'https://api.mavryk.finance/v1/graphql',
-  // rpcLink: 'https://ghostnet.tezos.marigold.dev/',
-  rpcLink: 'https://mainnet.tezos.marigold.dev/',
+  rpcLink: 'https://ghostnet.tezos.marigold.dev/',
+  // rpcLink: 'https://mainnet.tezos.marigold.dev/',
 }
