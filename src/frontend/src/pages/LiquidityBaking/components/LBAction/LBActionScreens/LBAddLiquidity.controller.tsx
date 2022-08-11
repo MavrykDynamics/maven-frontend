@@ -14,9 +14,12 @@ import { Input } from 'app/App.components/Input/Input.controller'
 import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { ActionScreenWrapper, CheckBox, CheckBoxLabel, CheckBoxWrapper, StepBlock } from '../LBAction.style'
-import { LBActionBottomWrapper } from 'app/App.components/LBActionBottomWrapper/LBActionBottomWrapper.controller'
 import { State } from 'utils/interfaces'
 import { ENVIRONMENT } from 'utils/consts'
+import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
+import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
+import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
+import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
 
 export const LBAddLiquidity = () => {
   const {
@@ -227,12 +230,14 @@ export const LBAddLiquidity = () => {
         kind={PRIMARY}
       />
 
-      <LBActionBottomWrapper
-        onClickHandler={(value: unknown) => setSeletedToggle(value as number)}
-        selectedToogle={selectedToogle}
-        priceImpact={0.1}
-        minimumLBTRecived={minimumLBTRecived}
-      />
+      <LBActionBottomWrapperStyled>
+        <PriceImpact priceImpact={0} />
+        <MinimumReceived minimumRecived={[{ value: 0, tokenName: 'LBT' }]} />
+        <Slippage
+          onClickHandler={(value: unknown) => setSeletedToggle(value as number)}
+          selectedToogle={selectedToogle}
+        />
+      </LBActionBottomWrapperStyled>
     </ActionScreenWrapper>
   )
 }

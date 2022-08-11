@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
-import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
 import { Button } from 'app/App.components/Button/Button.controller'
@@ -9,12 +8,14 @@ import { Input } from 'app/App.components/Input/Input.controller'
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { ActionScreenWrapper } from '../LBAction.style'
-import { LBActionBottomWrapper } from 'app/App.components/LBActionBottomWrapper/LBActionBottomWrapper.controller'
 import { calculateLqtOutput } from 'utils/liquidityUtils'
 import { useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
 import { TezosToolkit } from '@taquito/taquito'
 import { ENVIRONMENT } from 'utils/consts'
+import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
+import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
+import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
 
 export const LBRemoveLiquidity = () => {
   const {
@@ -24,7 +25,6 @@ export const LBRemoveLiquidity = () => {
   const { accountPkh } = useSelector((state: State) => state.wallet)
 
   const [inputValues, setInputValues] = useState({ XTZ: 0 })
-  const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [receivedAmount, setReceivedAmount] = useState({
     xtz: 0,
     tzbtc: 0,
@@ -110,12 +110,15 @@ export const LBRemoveLiquidity = () => {
         kind={PRIMARY}
       />
 
-      <LBActionBottomWrapper
-        onClickHandler={(value: unknown) => setSeletedToggle(value as number)}
-        selectedToogle={selectedToogle}
-        priceImpact={0}
-        minimumLBTRecived={0}
-      />
+      <LBActionBottomWrapperStyled>
+        <PriceImpact priceImpact={0} />
+        <MinimumReceived
+          minimumRecived={[
+            { value: 0, tokenName: 'XTZ' },
+            { value: 0, tokenName: 'tzBTC' },
+          ]}
+        />
+      </LBActionBottomWrapperStyled>
     </ActionScreenWrapper>
   )
 }

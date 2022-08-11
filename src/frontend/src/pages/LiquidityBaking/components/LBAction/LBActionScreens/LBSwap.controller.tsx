@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import { cyanColor } from 'styles'
-import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { Input } from 'app/App.components/Input/Input.controller'
@@ -11,12 +10,14 @@ import { ActionScreenWrapper } from '../LBAction.style'
 import { Button } from 'app/App.components/Button/Button.controller'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
-import { LBActionBottomWrapper } from 'app/App.components/LBActionBottomWrapper/LBActionBottomWrapper.controller'
 import { useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
 import { xtzToTokenTokenOutput, swapCalculateCoinReceive, tokenToXtzXtzOutput } from 'utils/swapUtils'
 import { TezosToolkit } from '@taquito/taquito'
 import { ENVIRONMENT } from 'utils/consts'
+import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
+import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
+import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -30,7 +31,6 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
   } = useSelector((state: State) => state.tokens)
   const { accountPkh } = useSelector((state: State) => state.wallet)
 
-  const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [isRevertedCoins, setIsRevertedCoins] = useState<CoinsOrderType>({
     from: 'XTZ',
     to: 'tzBTC',
@@ -67,16 +67,12 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       tokenIn: inputValues.tzBTC,
     }
 
-    console.log('lbContract', lbContract, Tezos)
-
     // if XTZ => tzBTC perform %xtzToToken
     if (isRevertedCoins.from === 'XTZ' && isRevertedCoins.to === 'tzBTC') {
       const minTokensBought = xtzToTokenTokenOutput(dataObject)?.toNumber()
 
-      const op = await lbContract.methods.xtzToToken(accountPkh, minTokensBought, deadline)
-      console.log('op', op)
+      const op = await lbContract.methods.xtzToToken(accountPkh, minTokensBought, deadline).send()
 
-      // @ts-ignore
       await op.confirmation()
     }
 
@@ -180,12 +176,10 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
         </CustomizedText>
       </VertInfo>
 
-      {/* <LBActionBottomWrapper
-        onClickHandler={(value: unknown) => setSeletedToggle(value as number)}
-        selectedToogle={selectedToogle}
-        priceImpact={0}
-        minimumLBTRecived={0}
-      /> */}
+      <LBActionBottomWrapperStyled>
+        <PriceImpact priceImpact={0} />
+        <MinimumReceived minimumRecived={[{ value: inputValues[isRevertedCoins.to], tokenName: isRevertedCoins.to }]} />
+      </LBActionBottomWrapperStyled>
     </ActionScreenWrapper>
   )
 }
