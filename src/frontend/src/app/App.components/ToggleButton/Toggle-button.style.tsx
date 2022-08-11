@@ -33,6 +33,11 @@ export const ToggleButtonItem = styled.div`
   text-transform: capitalize;
   font-size: 16px;
 
+  &.chart-toggler {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
   &.selected {
     background: #8d86eb;
     border-radius: 17.5px;

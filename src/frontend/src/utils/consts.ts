@@ -43,8 +43,6 @@ export const defaultChart: ChartType = {
   chartDataArea: [],
   chartInterval: 'quotes5mNogaps',
   chartType: 'candlestick',
-  chartMinYValue: 0,
-  chartMaxYValue:10000
 }
 
 export const NUMBER_FORMATTER = new Intl.NumberFormat('en')
@@ -54,4 +52,14 @@ export const ENVIRONMENT = {
   gqlLink: 'https://api.mavryk.finance/v1/graphql',
   rpcLink: 'https://ghostnet.tezos.marigold.dev/',
   // rpcLink: 'https://mainnet.tezos.marigold.dev/',
+}
+
+export const INTERVAL_PRICE_CUSHION = {
+  quotes5mNogaps: 500,
+  quotes15mNogaps: 1000,
+  quotes1hNogaps: 2500,
+  quotes1dNogaps: 400,
+  quotes1w: 3000,
+  quotes1mo: 3000,
+  quotesTotal: 3000,
 }

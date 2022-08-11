@@ -1,22 +1,12 @@
 import Chart from 'react-apexcharts'
 import { CANDLESTICK_CHART_OPTIONS } from 'app/App.components/Charts/chart.consts'
+import { IntervalType } from 'utils/interfaces'
 
-const CandlestickChart = ({
-  chartData,
-  chartMinYValue,
-  chartMaxYValue,
-}: {
-  chartData: any
-  chartMinYValue: number
-  chartMaxYValue: number
-}) => {
-  const candleStickOptions = CANDLESTICK_CHART_OPTIONS
-  candleStickOptions.yaxis.min = chartMinYValue
-  candleStickOptions.yaxis.max = chartMaxYValue
+const CandlestickChart = ({ chartData, interval }: { chartData: any; interval: IntervalType }) => {
   return (
     <Chart
       series={[{ data: chartData }]}
-      options={candleStickOptions}
+      options={CANDLESTICK_CHART_OPTIONS(interval)}
       type="candlestick"
       height={'420px'}
       width={'100%'}

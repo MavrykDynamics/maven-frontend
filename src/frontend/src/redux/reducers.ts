@@ -68,8 +68,6 @@ const chart = (state = defaultChart, action: any) => {
         ...state,
         chartDataCandlestick: action.chartData.candlestick,
         chartDataArea: action.chartData.area,
-        chartMinYValue: action.chartMinYValue,
-        chartMaxYValue: action.chartMaxYValue,
       }
     case actions.TOOGLE_CHART_INTERVAL:
       return {

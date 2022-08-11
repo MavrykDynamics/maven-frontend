@@ -1,4 +1,6 @@
+import { IntervalType } from 'utils/interfaces';
 import dayjs from 'dayjs'
+import { INTERVAL_PRICE_CUSHION } from 'utils/consts';
 
 export const getTooltipMarkup = (price: number, date: Date) => `
 <div style='color: #86d4c9'>
@@ -11,14 +13,14 @@ const GRID_SETTING = {
   show: false,
 }
 
-const YAXIS_SETTING = {
+const YAXIS_SETTING =  (interval: IntervalType) =>  ({
   opposite: true,
   show: true,
   showAlways: true,
   showForNullSeries: true,
   tickAmount: 8,
-  min: 0,
-  max: 0,
+  min: (min: number) => min - INTERVAL_PRICE_CUSHION[interval] >= 0 ? min - INTERVAL_PRICE_CUSHION[interval] : min,
+  max: (max: number) => max + INTERVAL_PRICE_CUSHION[interval],
   labels: {
     show: true,
     formatter: (value: any) => parseInt(value).toFixed(4),
@@ -30,7 +32,7 @@ const YAXIS_SETTING = {
     show: true,
     color: '#8D86EB',
   },
-}
+})
 
 const XAXIS_SETTING = {
   type: 'category' as 'category',
@@ -85,10 +87,10 @@ const CHART_SETTING = {
   },
 }
 
-export const CANDLESTICK_CHART_OPTIONS = {
+export const CANDLESTICK_CHART_OPTIONS =  (interval: IntervalType) =>  ({
   chart: CHART_SETTING,
   xaxis: XAXIS_SETTING,
-  yaxis: YAXIS_SETTING,
+  yaxis: YAXIS_SETTING(interval),
   grid: GRID_SETTING,
   tooltip: {
     custom: function ({ dataPointIndex, w }: any) {
@@ -104,9 +106,9 @@ export const CANDLESTICK_CHART_OPTIONS = {
       },
     },
   },
-}
+})
 
-export const AREA_CHART_OPTIONS = {
+export const AREA_CHART_OPTIONS = (interval: IntervalType) =>  ({
   chart: CHART_SETTING,
   xaxis: XAXIS_SETTING,
   tooltip: {
@@ -115,7 +117,7 @@ export const AREA_CHART_OPTIONS = {
       return getTooltipMarkup(dataForToltip.y, dataForToltip.x)
     },
   },
-  yaxis: YAXIS_SETTING,
+  yaxis: YAXIS_SETTING(interval),
   grid: GRID_SETTING,
   dataLabels: {
     enabled: false,
@@ -146,4 +148,4 @@ export const AREA_CHART_OPTIONS = {
   stroke: {
     show: false,
   },
-}
+})

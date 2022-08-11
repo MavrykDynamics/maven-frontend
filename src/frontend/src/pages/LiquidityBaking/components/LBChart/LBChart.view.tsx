@@ -42,8 +42,6 @@ type LBChartViewProps = {
   changeSelectedChartType: () => void
   chartData: any
   tztzBTC: number
-  chartMinYValue: number
-  chartMaxYValue: number
 }
 
 export const LBChartView = ({
@@ -53,8 +51,6 @@ export const LBChartView = ({
   tztzBTC,
   chartData,
   selectedChartType,
-  chartMinYValue,
-  chartMaxYValue,
 }: LBChartViewProps) => {
   return (
     <ChartStyled>
@@ -78,6 +74,7 @@ export const LBChartView = ({
             values={intervalData}
             selected={selectedInterval}
             handleSetSelectedToggler={(value: unknown) => changeSelectedInterval(value as IntervalType)}
+            className="chart-toggler"
           />
           <Button
             text={''}
@@ -91,9 +88,9 @@ export const LBChartView = ({
       {chartData.length ? (
         <div className="chart-wrapper">
           {selectedChartType === 'area' ? (
-            <AreaChart chartData={chartData} />
+            <AreaChart chartData={chartData} interval={selectedInterval} />
           ) : (
-            <CandlestickChart chartData={chartData} chartMinYValue={chartMinYValue} chartMaxYValue={chartMaxYValue} />
+            <CandlestickChart chartData={chartData} interval={selectedInterval} />
           )}
         </div>
       ) : null}

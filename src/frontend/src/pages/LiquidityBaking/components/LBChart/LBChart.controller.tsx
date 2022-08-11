@@ -4,9 +4,7 @@ import { IntervalType, State } from 'utils/interfaces'
 import { LBChartView } from './LBChart.view'
 
 export const LBChart = () => {
-  const { chartDataCandlestick, chartDataArea, chartInterval, chartType, chartMinYValue, chartMaxYValue } = useSelector(
-    (state: State) => state.chart,
-  )
+  const { chartDataCandlestick, chartDataArea, chartInterval, chartType } = useSelector((state: State) => state.chart)
   const dispatch = useDispatch()
 
   const changeIntervalHanler = async (newInterval: IntervalType) => {
@@ -25,8 +23,6 @@ export const LBChart = () => {
       tztzBTC={235254}
       selectedChartType={chartType}
       changeSelectedChartType={changeChartTypeHanler}
-      chartMinYValue={chartMinYValue}
-      chartMaxYValue={chartMaxYValue}
     />
   )
 }

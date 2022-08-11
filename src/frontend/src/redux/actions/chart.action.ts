@@ -30,13 +30,10 @@ export const getChartData = (interval: IntervalType) => async (dispatch: any, ge
       }))
       .sort((first: any, second: any) => first.x.getTime() - second.x.getTime())
 
-    const minMaxYValues = getChartsMinMaxYValues(parsedChartDataToCandlestick, interval)
 
     dispatch({
       type: GET_CHART_DATA,
       chartData: { candlestick: parsedChartDataToCandlestick, area: parsedChartDataToArea },
-      chartMinYValue: minMaxYValues.minY,
-      chartMaxYValue: minMaxYValues.maxY,
     })
   } catch (error: any) {
     console.error(error)
@@ -65,23 +62,4 @@ export const toogleChartType = (newType: ChartTypeType) => async (dispatch: any,
   } catch (error: any) {
     console.error(error)
   }
-}
-
-export const getChartsMinMaxYValues = (chartData: any, newInterval: IntervalType) => {
-  let minY = Math.min(...chartData.map((o: any) => o.y[2])),
-    maxY = Math.max(...chartData.map((o: any) => o.y[1]))
-
-  const intervalPriceCushion = {
-    quotes5mNogaps: 500,
-    quotes15mNogaps: 1000,
-    quotes1hNogaps: 2500,
-    quotes1dNogaps: 400,
-    quotes1w: 3000,
-    quotes1mo: 3000,
-    quotesTotal: 3000,
-  }
-  minY = minY - intervalPriceCushion[newInterval] >= 0 ? minY - intervalPriceCushion[newInterval] : minY
-  maxY = maxY + intervalPriceCushion[newInterval]
-
-  return { minY, maxY }
 }

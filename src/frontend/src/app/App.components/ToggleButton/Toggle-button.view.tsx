@@ -15,7 +15,7 @@ export const ToggleButton = ({ values, selected, handleSetSelectedToggler, class
       {values.map(({ title, value }) => (
         <ToggleButtonItem
           key={value}
-          className={`${selected === value ? 'selected' : ''} toggle-btn`}
+          className={`${selected === value ? 'selected' : ''} toggle-btn, ${className}`}
           onClick={() => handleSetSelectedToggler(value)}
         >
           {title}

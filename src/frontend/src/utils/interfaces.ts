@@ -6,7 +6,6 @@ export type IntervalType =
   | 'quotes1hNogaps'
   | 'quotes1mo'
   | 'quotes1w'
-  | 'quotesTotal'
   | 'quotes15mNogaps'
   | 'quotes5mNogaps'
 export type ChartTypeType = 'area' | 'candlestick'
@@ -117,8 +116,6 @@ export interface ChartType {
   }>
   chartInterval: IntervalType
   chartType: ChartTypeType
-  chartMinYValue: number
-  chartMaxYValue: number
 }
 
 export interface State {
