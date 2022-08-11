@@ -10,10 +10,12 @@ export const ChartStyled = styled.div`
   border-radius: ${BLOCK_RADIUS};
   grid-row-start: 2;
   grid-row-end: 3;
+  padding-top: 10px;
   z-index: 1;
 
   height: 502px;
   width: 100%;
+  row-gap: 10px;
 
   display: flex;
   justify-content: center;
@@ -53,8 +55,8 @@ export const ChartStyled = styled.div`
     width: 100%;
 
     > div {
-      height: 450px !important;
-      min-height: 450px !important;
+      height: 420px !important;
+      min-height: 420px !important;
 
       .apexcharts-tooltip {
         background: #160e3f;
@@ -64,6 +66,10 @@ export const ChartStyled = styled.div`
         display: flex;
         flex-direction: column;
         row-gap: 5px;
+      }
+
+      .apexcharts-toolbar {
+        top: -8px !important;
       }
     }
 

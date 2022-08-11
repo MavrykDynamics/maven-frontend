@@ -10,27 +10,27 @@ import AreaChart from 'app/App.components/Charts/AreaChart.controller'
 
 const intervalData = [
   {
-    title: '5m',
+    title: '5M',
     value: 'quotes5mNogaps',
   },
   {
-    title: '15m',
+    title: '15M',
     value: 'quotes15mNogaps',
   },
   {
-    title: '1h',
+    title: '1H',
     value: 'quotes1hNogaps',
   },
   {
-    title: '1d',
+    title: '1D',
     value: 'quotes1dNogaps',
   },
   {
-    title: '1w',
+    title: '1W',
     value: 'quotes1w',
   },
   {
-    title: '1mo',
+    title: '1MO',
     value: 'quotes1mo',
   },
 ]

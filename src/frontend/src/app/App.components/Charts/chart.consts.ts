@@ -16,11 +16,12 @@ const YAXIS_SETTING = {
   show: true,
   showAlways: true,
   showForNullSeries: true,
-  tickAmount: 5,
+  tickAmount: 8,
   min: 0,
   max: 0,
   labels: {
     show: true,
+    formatter: (value: any) => parseInt(value).toFixed(4),
     style: {
       colors: '#8D86EB',
     },
@@ -33,15 +34,16 @@ const YAXIS_SETTING = {
 
 const XAXIS_SETTING = {
   type: 'category' as 'category',
-  position: 'bottom',
+  tickAmount: 6,
   labels: {
     show: true,
     formatter: (date: string) => dayjs(date).format('MMM DD, HH:mm'),
     hideOverlappingLabels: true,
     showDuplicates: false,
-    rotate: -10,
-    rotateAlways: true,
-    offsetY: 10,
+    rotate: 0,
+    rotateAlways: false,
+    offsetX: 10,
+    offsetY: -2,
     style: {
       colors: '#8D86EB',
     },
@@ -53,7 +55,7 @@ const XAXIS_SETTING = {
     offsetY: 1,
   },
   axisTicks: {
-    show: true,
+    show: false,
     color: '#8D86EB',
   },
   tooltip: {
@@ -122,30 +124,20 @@ export const AREA_CHART_OPTIONS = {
     type: 'gradient',
     gradient: {
       shadeIntensity: 1,
-      opacityFrom: 1,
-      opacityTo: 0.3,
-      stops: [0, 50, 100],
+      opacityFrom: 0.7,
+      opacityTo: 0.9,
+      stops: [0, 90, 100],
       colorStops: [
         [
           {
             offset: 0,
             color: '#AEEDE1',
-            opacity: 0.85,
-          },
-          {
-            offset: 35,
-            color: '#AEEDE1',
-            opacity: 0.7,
-          },
-          {
-            offset: 65,
-            color: '#AEEDE1',
-            opacity: 0.4,
+            opacity: 1,
           },
           {
             offset: 100,
             color: '#160E3F',
-            opacity: 0,
+            opacity: 1,
           },
         ],
       ],

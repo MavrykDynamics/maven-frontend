@@ -21,14 +21,14 @@ export const getChartData = (interval: IntervalType) => async (dispatch: any, ge
           parseFloat(chartPoint.close),
         ],
       }))
-      .sort((first: any, second: any) => second.x.getTime() - first.x.getTime())
+      .sort((first: any, second: any) => first.x.getTime() - second.x.getTime())
 
     const parsedChartDataToArea = chartData?.[interval]
       .map((chartPoint: ChartPoint) => ({
         x: new Date(chartPoint.bucket),
         y: parseFloat(chartPoint.close),
       }))
-      .sort((first: any, second: any) => second.x.getTime() - first.x.getTime())
+      .sort((first: any, second: any) => first.x.getTime() - second.x.getTime())
 
     const minMaxYValues = getChartsMinMaxYValues(parsedChartDataToCandlestick, interval)
 

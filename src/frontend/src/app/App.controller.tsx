@@ -26,7 +26,7 @@ export const App = () => {
 
   return (
     <Router>
-      <Popup />
+      {/* <Popup /> */}
       {/* <Header /> */}
       <Switch>
         <Route

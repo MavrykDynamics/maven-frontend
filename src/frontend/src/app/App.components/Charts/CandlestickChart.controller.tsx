@@ -19,7 +19,7 @@ const CandlestickChart = ({
       options={candleStickOptions}
       type="candlestick"
       height={'420px'}
-      width={'95%'}
+      width={'100%'}
     />
   )
 }
