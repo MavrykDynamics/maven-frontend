@@ -6,7 +6,12 @@ import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { ENVIRONMENT } from 'utils/consts'
 import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { swapCalculateCoinReceive } from 'pages/LiquidityBaking/components/LBAction/helpers/swapUtils'
-import { tokenToXtzMinimumXtzOutput, tokenToXtzXtzOutput, xtzToTokenMinimumTokenOutput, xtzToTokenTokenOutput } from 'utils/DexSwapCalcs'
+import {
+  tokenToXtzMinimumXtzOutput,
+  tokenToXtzXtzOutput,
+  xtzToTokenMinimumTokenOutput,
+  xtzToTokenTokenOutput,
+} from 'utils/DexSwapCalcs'
 
 import { State } from 'utils/interfaces'
 
@@ -44,7 +49,10 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
   const [minReceived, setMinReceived] = useState(0)
   const [priceImpact, setPriceImpact] = useState(0)
 
-  const [isRevertedCoins, setIsRevertedCoins] = useState<CoinsOrderType>({ from: 'XTZ', to: 'tzBTC' })
+  const [isRevertedCoins, setIsRevertedCoins] = useState<CoinsOrderType>({
+    from: 'XTZ',
+    to: 'tzBTC',
+  })
   const [inputValues, setInputValues] = useState({ XTZ: 0, tzBTC: 0 })
 
   const BALANCE_BY_COIN = useMemo(
@@ -56,10 +64,10 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
   )
 
   // handling dynamic filling second input on input change
-  const inputChangeHandler = (
-    e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: number | string } },
-  ) => {
-    const { name, value = 0 } = e.target;
+  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => {
+    let { name, value } = e.target
+    if (!value) value = '0'
+    if (parseFloat(value) < 0) return
 
     // old calculations
     // const receiveInputValue = swapCalculateCoinReceive(isRevertedCoins.from, isRevertedCoins.to, Number(value), {
@@ -70,7 +78,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     const { expected, priceImpact, minimum } = swapCalculateCoinReceive(
       isRevertedCoins.from,
       isRevertedCoins.to,
-      Number(value),
+      parseFloat(value),
       xtz_pool,
       token_pool,
       +slippageValue,
@@ -79,8 +87,8 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
 
     setInputValues({
       ...inputValues,
-      [isRevertedCoins.to]: expected.toFixed(5),
-      [name]: value,
+      [isRevertedCoins.to]: parseFloat(expected.toFixed(5)),
+      [name]: parseFloat(value),
     })
     setMinReceived(minimum)
     setPriceImpact(priceImpact)
@@ -169,7 +177,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       setMinReceived(minimum)
       setPriceImpact(priceImpact)
     },
-    [BALANCE_BY_COIN, dex, inputValues, slippageValue, token_pool, xtz_pool],
+    [BALANCE_BY_COIN, inputValues, slippageValue, token_pool, xtz_pool],
   )
 
   return (
@@ -195,7 +203,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
           placeholder={''}
           name="XTZ"
           onChange={inputChangeHandler}
-          type={'number'}
+          type={'tel'}
           kind={'LB'}
           value={inputValues.XTZ}
           convertedValue={inputValues.XTZ * coinPrices.tezos.usd}
@@ -220,7 +228,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
           placeholder={''}
           name="tzBTC"
           onChange={inputChangeHandler}
-          type={'number'}
+          type={'tel'}
           kind={'LB'}
           value={inputValues.tzBTC}
           convertedValue={inputValues.tzBTC * coinPrices.tzbtc.usd}
@@ -254,24 +262,28 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       <LBActionBottomWrapperStyled>
         <PriceImpact priceImpact={priceImpact} />
         <MinimumReceived minimumRecived={[{ value: minReceived, tokenName: isRevertedCoins.to }]} />
-        <Slippage onClickHandler={(value: number) => {
-          setSelectedSlippage(value)
-          setSlippageValue(value === -1 ? 0 : value)
-        }} selectedToogle={selectedSlippage} />
-        {selectedSlippage === -1 ? 
-        <Input
-          placeholder={'Slippage'}
-          name="slippageInput"
-          kind='primary'
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const { value } = e.target
-            if((+value >= 0 && +value <= 100) || value === ''){
-              setSlippageValue(value)
-            }
+        <Slippage
+          onClickHandler={(value: number) => {
+            setSelectedSlippage(value)
+            setSlippageValue(value === -1 ? 0 : value)
           }}
-          type={'number'}
-          value={slippageValue}
-        /> : null}
+          selectedToogle={selectedSlippage}
+        />
+        {selectedSlippage === -1 ? (
+          <Input
+            placeholder={'Slippage'}
+            name="slippageInput"
+            kind="primary"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const { value } = e.target
+              if ((+value >= 0 && +value <= 100) || value === '') {
+                setSlippageValue(value)
+              }
+            }}
+            type={'number'}
+            value={slippageValue}
+          />
+        ) : null}
       </LBActionBottomWrapperStyled>
     </ActionScreenWrapper>
   )
