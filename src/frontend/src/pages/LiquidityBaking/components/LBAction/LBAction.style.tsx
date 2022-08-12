@@ -26,7 +26,7 @@ export const LBActionStyled = styled.div`
     padding: 20px 15px 50px 15px;
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1070px) {
     width: calc(100vw - 5%);
     max-width: 400px;
     margin: 0 auto;

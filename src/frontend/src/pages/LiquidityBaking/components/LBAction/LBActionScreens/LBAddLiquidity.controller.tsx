@@ -27,6 +27,7 @@ export const LBAddLiquidity = () => {
     coinPrices,
   } = useSelector((state: State) => state.tokens)
   const { accountPkh } = useSelector((state: State) => state.wallet)
+  const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
   const [inputValues, setInputValues] = useState({
     XTZ: 0,
@@ -34,11 +35,20 @@ export const LBAddLiquidity = () => {
   })
   const [selectedToogle, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [switchValue, setSwitchValue] = useState(false)
-  const [minimumLBTRecived, setMinimumLBTRecived] = useState(0)
+  const [minLqtMinted, setMinLqtMinted] = useState(0)
 
-  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const inputChangeHandler = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | {
+          target: {
+            name: string
+            value: number
+          }
+        },
+  ) => {
     const { name, value } = e.target
-    if (name === 'XTZ') setMinimumLBTRecived(Math.floor((Number(value) * lqt_total) / xtz_pool))
+    if (name === 'XTZ') setMinLqtMinted(Math.floor((Number(value) * lqt_total) / xtz_pool))
 
     setInputValues({
       ...inputValues,
@@ -51,7 +61,6 @@ export const LBAddLiquidity = () => {
     const lbContract = await Tezos.wallet.at(lqt_address)
     const tzBtcContract = await Tezos.wallet.at(token_address)
     const maxTokensSold = Math.floor(inputValues.tzBTC + (inputValues.tzBTC * Number(selectedToogle)) / 100)
-    const minLqtMinted = Math.floor((inputValues.XTZ * lqt_total) / xtz_pool)
     const deadline = new Date(Date.now() + 60000).toISOString()
 
     const batchOp = await Tezos.wallet
@@ -123,8 +132,15 @@ export const LBAddLiquidity = () => {
             convertedValue={inputValues.XTZ * coinPrices.tezos.usd}
             icon={'XTZ_tezos'}
             pinnedText={'XTZ'}
-            useMaxHandler={() => {}}
-            userBalance={87}
+            useMaxHandler={() => {
+              inputChangeHandler({
+                target: {
+                  name: 'XTZ',
+                  value: xtzBalance,
+                },
+              })
+            }}
+            userBalance={xtzBalance}
           />
 
           <div className="step-wrapper">
@@ -175,7 +191,7 @@ export const LBAddLiquidity = () => {
               <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
 
               <CustomizedText fontWidth={500} color={cyanColor}>
-                <CommaNumber value={minimumLBTRecived} showDecimal endingText="LBT" />
+                <CommaNumber value={minLqtMinted} showDecimal endingText="LBT" />
               </CustomizedText>
             </HorisontalInfo>
           </div>
@@ -193,8 +209,15 @@ export const LBAddLiquidity = () => {
               convertedValue={inputValues.XTZ * coinPrices.tezos.usd}
               icon={'XTZ_tezos'}
               pinnedText={'XTZ'}
-              useMaxHandler={() => {}}
-              userBalance={87}
+              useMaxHandler={() => {
+                inputChangeHandler({
+                  target: {
+                    name: 'XTZ',
+                    value: xtzBalance,
+                  },
+                })
+              }}
+              userBalance={xtzBalance}
             />
             <span>+</span>
             <Input
@@ -207,8 +230,15 @@ export const LBAddLiquidity = () => {
               convertedValue={inputValues.tzBTC * coinPrices.tzbtc.usd}
               icon={'tzBTC'}
               pinnedText={'tzBTC'}
-              useMaxHandler={() => {}}
-              userBalance={87}
+              useMaxHandler={() => {
+                inputChangeHandler({
+                  target: {
+                    name: 'tzBTC',
+                    value: tzBTCBalance,
+                  },
+                })
+              }}
+              userBalance={tzBTCBalance}
             />
           </div>
 
@@ -216,7 +246,7 @@ export const LBAddLiquidity = () => {
             <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
 
             <CustomizedText fontWidth={500} color={cyanColor}>
-              <CommaNumber value={minimumLBTRecived} showDecimal endingText="LBT" />
+              <CommaNumber value={minLqtMinted} showDecimal endingText="LBT" />
             </CustomizedText>
           </HorisontalInfo>
         </>

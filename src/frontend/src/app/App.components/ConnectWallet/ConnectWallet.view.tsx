@@ -16,7 +16,7 @@ type ConnectWalletViewProps = {
   wallet: any
   ready: boolean
   accountPkh?: string
-  myMvkTokenBalance: string | number | undefined
+  xtzBalance: string | number | undefined
   handleConnect: () => void
   handleNewConnect: () => void
   className?: string
@@ -28,7 +28,7 @@ export const ConnectWalletView = ({
   wallet,
   ready,
   accountPkh,
-  myMvkTokenBalance,
+  xtzBalance,
   handleConnect,
   handleNewConnect,
   className,
@@ -47,7 +47,7 @@ export const ConnectWalletView = ({
                   <use xlinkHref="/icons/sprites.svg#exchange" />
                 </svg>
               </button>
-              <CommaNumber value={Number(myMvkTokenBalance || 0)} loading={loading} endingText={'MVK'} />
+              <CommaNumber value={Number(xtzBalance)} loading={loading} endingText={'MVK'} />
             </WalletConnectedButton>
           ) : null}
           {type === 'simpleButton' && <SimpleConnectButtonNoAddress handleConnect={handleConnect} />}

@@ -14,7 +14,7 @@ export const LBStyled = styled.div`
     margin: 0 auto;
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1070px) {
     .content-wrapper {
       display: flex;
       row-gap: 20px;

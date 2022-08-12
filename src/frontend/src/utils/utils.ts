@@ -1,9 +1,9 @@
-import { PRECISION_NUMBER } from './consts';
+import { PRECISION_NUMBER_NINE_ZEROES } from './consts';
 import BigNumber from "bignumber.js";
 
 export function calcWithoutPrecision(amount: string): number {
   const numberMu = parseFloat(amount) || 0
-  return numberMu > 0 ? numberMu / PRECISION_NUMBER : 0
+  return numberMu > 0 ? numberMu / PRECISION_NUMBER_NINE_ZEROES : 0
 }
 
 export const getItemFromStorage = (item: string) => {

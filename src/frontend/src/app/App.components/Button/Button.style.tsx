@@ -106,6 +106,16 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
       background: ${({ theme }) => theme.litepaperLinkColor};
       opacity: 0.7;
     }
+
+    @media screen and (max-width: 1200px) and (min-width: 1070px) and (max-width: 490px) {
+      width: 30px;
+      height: 30px;
+    }
+
+    @media screen and (max-width: 490px) {
+      width: 30px;
+      height: 30px;
+    }
   }
 `
 

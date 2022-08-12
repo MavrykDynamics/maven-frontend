@@ -64,9 +64,9 @@ export const InputView = ({
           Use Max
         </CustomizedText>
       ) : null}
-      {userBalance ? (
+      {userBalance !== undefined && pinnedText ? (
         <CustomizedText className="balance" fontSize={14} fontWidth={600}>
-          <CommaNumber beginningText="Balance:" value={userBalance} endingText="XTZ" />
+          <CommaNumber beginningText="Balance:" value={userBalance} endingText={pinnedText} />
         </CustomizedText>
       ) : null}
       {icon && !isLB && (

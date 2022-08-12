@@ -1,29 +1,22 @@
-import { fetchFromIndexer } from "gql/gql.heplers"
-import { USER_INFO_QUERY, USER_INFO_QUERY_NAME, USER_INFO_QUERY_VARIABLES } from "gql/queries/user.query"
 import { GET_USER_DATA } from "redux/action.types"
-import { UserData } from "utils/interfaces"
-import { calcWithoutPrecision } from "utils/utils"
+import { PRECISION_NUMBER_SIX_ZEROES } from "utils/consts"
+import { State, UserData } from "utils/interfaces"
 
 
 
-export const getUserData = (accountPkh: string) => async (dispatch: any, getState: any) => {
+export const getUserData = (accountPkh: string) => async (dispatch: any, getState: () => State) => {
   try {
-    const userInfoFromIndexer = await fetchFromIndexer(
-      USER_INFO_QUERY,
-      USER_INFO_QUERY_NAME,
-      USER_INFO_QUERY_VARIABLES(accountPkh),
-    )
-    
-    const userInfoData = userInfoFromIndexer?.mavryk_user[0]
-    const userIsDelegatedToSatellite = userInfoData?.delegation_records.length > 0
+    const {tokens: {lbData : {token_address, lqt_address}}} = getState()
+
+    // account that has tokens tz1QhxptJuMYyNAouTdjWsYFcPKknuL92YkJ
+    const xtzBalance = await (await fetch(`https://api.tzkt.io/v1/accounts/${'tz1QhxptJuMYyNAouTdjWsYFcPKknuL92YkJ'}/balance`)).json()
+    const [firstToken, secondToken] = await (await fetch(`https://api.tzkt.io/v1/tokens/balances?account.eq=${'tz1QhxptJuMYyNAouTdjWsYFcPKknuL92YkJ'}&token.contract.in=${lqt_address},${token_address}`)).json()
+
     const userInfo: UserData = {
-      myAddress: userInfoData?.address,
-      myMvkTokenBalance: calcWithoutPrecision(userInfoData?.mvk_balance),
-      mySMvkTokenBalance: calcWithoutPrecision(userInfoData?.smvk_balance),
-      participationFeesPerShare: calcWithoutPrecision(userInfoData?.participation_fees_per_share),
-      satelliteMvkIsDelegatedTo: userIsDelegatedToSatellite
-        ? userInfoData?.delegation_records[0].satellite_record?.user_id
-        : '',
+      xtzBalance: (xtzBalance / PRECISION_NUMBER_SIX_ZEROES) || 0,
+      tzBTCBalance: (firstToken.token.metadata.name === 'tzBTC' ? parseFloat(firstToken.balance) : parseFloat(secondToken.balance)) || 0,
+      LBTBalance: (firstToken.token.metadata.name === 'Sirius' ? parseFloat(firstToken.balance) : parseFloat(secondToken.balance)) || 0,
+      userAddress: accountPkh
     }
 
     dispatch({

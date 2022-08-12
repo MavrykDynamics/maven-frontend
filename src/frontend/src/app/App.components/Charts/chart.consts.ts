@@ -37,6 +37,7 @@ const YAXIS_SETTING =  (interval: IntervalType) =>  ({
 const XAXIS_SETTING = {
   type: 'category' as 'category',
   tickAmount: 6,
+  tickPlacement: 'on',
   labels: {
     show: true,
     formatter: (date: string) => dayjs(date).format('MMM DD, HH:mm'),
@@ -57,7 +58,7 @@ const XAXIS_SETTING = {
     offsetY: 1,
   },
   axisTicks: {
-    show: false,
+    show: true,
     color: '#8D86EB',
   },
   tooltip: {
@@ -87,10 +88,72 @@ const CHART_SETTING = {
   },
 }
 
+const RESPONSIVE_SETTING = [
+  {
+    breakpoint: 1450,
+    options: {
+      xaxis: {
+        labels: {
+          offsetX: 7,
+        },
+      }
+    },
+  },
+  {
+    breakpoint: 1400,
+    options: {
+      xaxis: {
+        tickAmount: 5,
+      }
+    },
+  },
+  {
+    breakpoint: 1070,
+    options: {
+      xaxis: {
+        tickAmount: 7,
+      }
+    },
+  },
+  {
+    breakpoint: 800,
+    options: {
+      xaxis: {
+        tickAmount: 5,
+      }
+    },
+  },
+  {
+    breakpoint: 600,
+    options: {
+      xaxis: {
+        tickAmount: 4,
+      }
+    },
+  },
+  {
+    breakpoint: 530,
+    options: {
+      xaxis: {
+        tickAmount: 3,
+      }
+    },
+  },
+  {
+    breakpoint: 470,
+    options: {
+      xaxis: {
+        tickAmount: 2,
+      }
+    },
+  },
+]
+
 export const CANDLESTICK_CHART_OPTIONS =  (interval: IntervalType) =>  ({
   chart: CHART_SETTING,
   xaxis: XAXIS_SETTING,
   yaxis: YAXIS_SETTING(interval),
+  responsive: RESPONSIVE_SETTING,
   grid: GRID_SETTING,
   tooltip: {
     custom: function ({ dataPointIndex, w }: any) {
@@ -111,6 +174,7 @@ export const CANDLESTICK_CHART_OPTIONS =  (interval: IntervalType) =>  ({
 export const AREA_CHART_OPTIONS = (interval: IntervalType) =>  ({
   chart: CHART_SETTING,
   xaxis: XAXIS_SETTING,
+  responsive: RESPONSIVE_SETTING,
   tooltip: {
     custom: function ({ dataPointIndex, w }: any) {
       const dataForToltip = w.config.series[0].data[dataPointIndex]

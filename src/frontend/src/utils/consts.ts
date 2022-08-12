@@ -1,6 +1,7 @@
 import { ChartType, TokenInfo, UserData, WalletState } from './interfaces';
 
-export const PRECISION_NUMBER = 1000000000
+export const PRECISION_NUMBER_NINE_ZEROES = 1000000000
+export const PRECISION_NUMBER_SIX_ZEROES = 1000000
 
 export const MVK_USD_PRICE = 0.25
 
@@ -12,12 +13,10 @@ export const walletDefaultState: WalletState = {
 }
 
 export const defaultUser: UserData = {
-  myAddress: '',
-  myDelegationHistory: [],
-  myMvkTokenBalance: 0,
-  mySMvkTokenBalance: 0,
-  participationFeesPerShare: 0,
-  satelliteMvkIsDelegatedTo: '',
+  xtzBalance: 0,
+  tzBTCBalance: 0,
+  LBTBalance: 0,
+  userAddress: ''
 }
 
 export const defaultTokens: TokenInfo = {

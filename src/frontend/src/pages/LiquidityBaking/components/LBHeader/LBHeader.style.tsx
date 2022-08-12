@@ -53,7 +53,7 @@ export const LBHeaderStyled = styled.div`
     }
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1070px) {
     flex-direction: column;
     row-gap: 30px;
     padding: 20px;
@@ -78,15 +78,17 @@ export const LBHeaderStyled = styled.div`
   }
 
   @media screen and (max-width: 480px) {
+    padding: 15px;
     .title {
+      column-gap: 10px;
       div {
-        font-size: 28px;
+        font-size: 24px;
+        line-height: 100%;
       }
 
-      svg {
-        margin-right: 15px;
-        width: 60px;
-        height: 55px;
+      img {
+        width: 50px;
+        height: 50px;
       }
     }
   }

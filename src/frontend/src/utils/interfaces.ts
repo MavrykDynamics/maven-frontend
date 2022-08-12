@@ -74,13 +74,12 @@ export interface WalletState {
   toTezos?: () => number | any
 }
 
+
 export interface UserData {
-  myAddress: string
-  myMvkTokenBalance: number
-  mySMvkTokenBalance: number
-  participationFeesPerShare: number
-  satelliteMvkIsDelegatedTo: string
-  myDelegationHistory?: any[]
+  xtzBalance: number
+  tzBTCBalance: number
+  LBTBalance: number
+  userAddress: string
 }
 
 export interface TokenInfo {

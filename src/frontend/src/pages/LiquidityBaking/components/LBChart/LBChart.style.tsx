@@ -83,4 +83,30 @@ export const ChartStyled = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 1200px) and (min-width: 1070px) {
+    .chart-controlls {
+      .right-wrapper {
+        align-items: center;
+      }
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    height: fit-content;
+    .chart-controlls {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 20px;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media screen and (max-width: 490px) {
+    .chart-controlls {
+      .right-wrapper {
+        align-items: center;
+      }
+    }
+  }
 `

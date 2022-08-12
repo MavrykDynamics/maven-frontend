@@ -18,6 +18,18 @@ export const ToggleButtonWrapper = styled.div`
       font-size: 14px;
     }
   }
+
+  @media screen and (max-width: 1200px) and (min-width: 1070px) {
+    &.chart-toggler {
+      max-height: 30px;
+    }
+  }
+
+  @media screen and (max-width: 490px) {
+    &.chart-toggler {
+      max-height: 30px;
+    }
+  }
 `
 
 export const ToggleButtonItem = styled.div`
@@ -43,5 +55,23 @@ export const ToggleButtonItem = styled.div`
     border-radius: 17.5px;
     color: #160e3f;
     transition: 0.4s all ease-in-out;
+  }
+
+  @media screen and (max-width: 425px) {
+    padding: 15px 25px;
+  }
+
+  @media screen and (max-width: 1200px) and (min-width: 1070px) {
+    &.chart-toggler {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (max-width: 490px) {
+    &.chart-toggler {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
   }
 `

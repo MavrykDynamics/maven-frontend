@@ -8,7 +8,7 @@ import { Input } from 'app/App.components/Input/Input.controller'
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { ActionScreenWrapper } from '../LBAction.style'
-import { calculateLqtOutput } from 'utils/liquidityUtils'
+import { calculateLqtOutput } from 'pages/LiquidityBaking/components/LBAction/helpers/liquidityUtils'
 import { useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
 import { TezosToolkit } from '@taquito/taquito'
@@ -23,13 +23,23 @@ export const LBRemoveLiquidity = () => {
     coinPrices,
   } = useSelector((state: State) => state.tokens)
   const { accountPkh } = useSelector((state: State) => state.wallet)
+  const { LBTBalance } = useSelector((state: State) => state.user)
 
-  const [inputValues, setInputValues] = useState({ XTZ: 0 })
+  const [inputValues, setInputValues] = useState({ Sir: 0 })
   const [receivedAmount, setReceivedAmount] = useState({
     xtz: 0,
     tzbtc: 0,
   })
-  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const inputChangeHandler = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | {
+          target: {
+            name: string
+            value: number
+          }
+        },
+  ) => {
     const { name, value } = e.target
 
     const { xtz, tzbtc } = calculateLqtOutput({
@@ -56,14 +66,14 @@ export const LBRemoveLiquidity = () => {
     const lbContract = await Tezos.wallet.at(lqt_address)
     const deadline = new Date(Date.now() + 60000).toISOString()
     const { xtz, tzbtc } = calculateLqtOutput({
-      lqTokens: Number(inputValues.XTZ),
+      lqTokens: Number(inputValues.Sir),
       xtzPool: xtz_pool,
       tzbtcPool: token_pool,
       lqtTotal: lqt_total,
     })
 
     const op = await lbContract.methods
-      .removeLiquidity(accountPkh, Number(inputValues.XTZ), xtz, tzbtc, deadline)
+      .removeLiquidity(accountPkh, Number(inputValues.Sir), xtz, tzbtc, deadline)
       .send()
     await op.confirmation()
   }
@@ -71,17 +81,24 @@ export const LBRemoveLiquidity = () => {
   return (
     <ActionScreenWrapper className="removeLiqidity swap">
       <Input
-        placeholder={'XTZ'}
-        name="XTZ"
+        placeholder={'Sir'}
+        name="Sir"
         onChange={inputChangeHandler}
         type={'number'}
         kind={'LB'}
-        value={inputValues.XTZ}
-        convertedValue={inputValues.XTZ * coinPrices.tezos.usd}
+        value={inputValues.Sir}
+        convertedValue={inputValues.Sir * coinPrices.tezos.usd}
         icon={'XTZ_tezos'}
-        pinnedText={'XTZ'}
-        useMaxHandler={() => {}}
-        userBalance={87}
+        pinnedText={'Sir'}
+        useMaxHandler={() => {
+          inputChangeHandler({
+            target: {
+              name: 'Sir',
+              value: LBTBalance,
+            },
+          })
+        }}
+        userBalance={LBTBalance}
       />
 
       <hr />

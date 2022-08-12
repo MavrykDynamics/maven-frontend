@@ -1,15 +1,8 @@
 import * as React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { State, UserData } from 'utils/interfaces'
+import { State } from 'utils/interfaces'
 
 import { ConnectWalletView } from './ConnectWallet.view'
-import { TempleDAppNetwork } from '@temple-wallet/dapp'
-import { fetchFromIndexer } from 'gql/gql.heplers'
-import { calcWithoutPrecision } from 'utils/utils'
-import { USER_INFO_QUERY, USER_INFO_QUERY_NAME, USER_INFO_QUERY_VARIABLES } from 'gql/queries/user.query'
-import { GET_USER_DATA } from 'redux/action.types'
-import { connectWalletAction } from 'redux/actions/wallet.action'
-import { getUserData } from 'redux/actions/user.action'
 import { connect } from 'redux/actions/ConnectWallet.actions'
 
 type ConnectWalletProps = {
@@ -21,7 +14,7 @@ export const ConnectWallet = ({ type, className }: ConnectWalletProps) => {
   const dispatch = useDispatch()
 
   const { wallet, ready, accountPkh } = useSelector((state: State) => state.wallet)
-  const { myMvkTokenBalance } = useSelector((state: State) => state.user)
+  const { xtzBalance } = useSelector((state: State) => state.user)
 
   const handleConnect = async () => {
     try {
@@ -53,7 +46,7 @@ export const ConnectWallet = ({ type, className }: ConnectWalletProps) => {
       wallet={wallet}
       ready={ready}
       accountPkh={accountPkh}
-      myMvkTokenBalance={myMvkTokenBalance}
+      xtzBalance={xtzBalance}
       handleConnect={handleConnect}
       handleNewConnect={handleNewConnect}
       className={className}

@@ -12,7 +12,11 @@ import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.co
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
-import { xtzToTokenTokenOutput, swapCalculateCoinReceive, tokenToXtzXtzOutput } from 'utils/swapUtils'
+import {
+  xtzToTokenTokenOutput,
+  swapCalculateCoinReceive,
+  tokenToXtzXtzOutput,
+} from 'pages/LiquidityBaking/components/LBAction/helpers/swapUtils'
 import { TezosToolkit } from '@taquito/taquito'
 import { ENVIRONMENT } from 'utils/consts'
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
@@ -30,6 +34,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     coinPrices,
   } = useSelector((state: State) => state.tokens)
   const { accountPkh } = useSelector((state: State) => state.wallet)
+  const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
   const [isRevertedCoins, setIsRevertedCoins] = useState<CoinsOrderType>({
     from: 'XTZ',
@@ -40,8 +45,10 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     tzBTC: 0,
   })
 
-  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+  const inputChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: number | string } },
+  ) => {
+    const { name, value = 0 } = e.target
 
     const receiveInputValue = swapCalculateCoinReceive(isRevertedCoins.from, isRevertedCoins.to, Number(value), {
       xtzPool: xtz_pool,
@@ -50,7 +57,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
 
     setInputValues({
       ...inputValues,
-      [isRevertedCoins.to]: receiveInputValue?.toFixed(5),
+      [isRevertedCoins.to]: receiveInputValue?.toFixed(5) || 0,
       [name]: value,
     })
   }
@@ -111,7 +118,6 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
         >
           <use xlinkHref="/icons/sprites.svg#exchange" />
         </svg>
-
         <CustomizedText>tzBTC</CustomizedText>
       </div>
 
@@ -126,8 +132,24 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
           convertedValue={inputValues.XTZ * coinPrices.tezos.usd}
           icon={'XTZ_tezos'}
           pinnedText={'XTZ'}
-          useMaxHandler={() => {}}
-          userBalance={87}
+          useMaxHandler={() => {
+            setIsRevertedCoins({
+              from: 'XTZ',
+              to: 'tzBTC',
+            })
+
+            const receiveInputValue = swapCalculateCoinReceive('XTZ', 'tzBTC', Number(xtzBalance), {
+              xtzPool: xtz_pool,
+              tokenPool: token_pool,
+            })?.toFixed(5)
+
+            setInputValues({
+              ...inputValues,
+              tzBTC: parseFloat(receiveInputValue || '') || 0,
+              XTZ: xtzBalance,
+            })
+          }}
+          userBalance={xtzBalance}
         />
 
         <svg
@@ -151,8 +173,24 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
           convertedValue={inputValues.tzBTC * coinPrices.tzbtc.usd}
           icon={'tzBTC'}
           pinnedText={'tzBTC'}
-          useMaxHandler={() => {}}
-          userBalance={87}
+          useMaxHandler={() => {
+            setIsRevertedCoins({
+              from: 'tzBTC',
+              to: 'XTZ',
+            })
+
+            const receiveInputValue = swapCalculateCoinReceive('tzBTC', 'XTZ', Number(tzBTCBalance), {
+              xtzPool: xtz_pool,
+              tokenPool: token_pool,
+            })
+
+            setInputValues({
+              ...inputValues,
+              XTZ: parseFloat(receiveInputValue?.toFixed(5) || '') || 0,
+              tzBTC: tzBTCBalance,
+            })
+          }}
+          userBalance={tzBTCBalance}
         />
       </div>
 

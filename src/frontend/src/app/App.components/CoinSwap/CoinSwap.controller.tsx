@@ -23,7 +23,7 @@ export const CoinSwap = ({ icon, XTZCoinData, tzBTCCoinData }: CoinSwapProps) =>
           <use xlinkHref={`/icons/sprites.svg#${XTZCoinData.icon}`} />
         </svg>
         <CustomizedText fontWidth={500} color={cyanColor}>
-          <CommaNumber value={XTZCoinData.amount} showDecimal decimalsToShow={8} endingText={'XTZ'} />
+          <CommaNumber value={XTZCoinData.amount} showDecimal decimalsToShow={5} endingText={'XTZ'} />
         </CustomizedText>
       </CoinSwapCoinWrapper>
 
@@ -38,7 +38,7 @@ export const CoinSwap = ({ icon, XTZCoinData, tzBTCCoinData }: CoinSwapProps) =>
           <use xlinkHref={`/icons/sprites.svg#${tzBTCCoinData.icon}`} />
         </svg>
         <CustomizedText fontWidth={500} color={cyanColor}>
-          <CommaNumber value={tzBTCCoinData.amount} showDecimal decimalsToShow={8} endingText={'tzBTC'} />
+          <CommaNumber value={tzBTCCoinData.amount} showDecimal decimalsToShow={5} endingText={'tzBTC'} />
         </CustomizedText>
       </CoinSwapCoinWrapper>
     </CoinSwapStyled>
