@@ -9,4 +9,10 @@ export const LBActionBottomWrapperStyled = styled.div`
   > div {
     height: 25px;
   }
+
+  #inputStyled {
+    height: fit-content;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
 `

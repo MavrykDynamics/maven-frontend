@@ -80,20 +80,8 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
   will-change: border-color, box-shadow;
   font-size: 14px;
 
-  &.search {
-    color: ${({ theme }) => theme.headerColor};
-  }
-
-  &.LB {
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 22px;
-    padding-top: 0;
-    padding-left: 10px;
-    color: #C0DBFF;
-
-    /* Chrome, Safari, Edge, Opera */
-    &::-webkit-outer-spin-button,
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
@@ -108,7 +96,20 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
       font-size: 16px;
       padding-top: 0;
       color: #C0DBFF;
+      opacity: 0.6;
     }
+
+  &.search {
+    color: ${({ theme }) => theme.headerColor};
+  }
+
+  &.LB {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    padding-top: 0;
+    padding-left: 10px;
+    color: #C0DBFF;
   }
 
   &::placeholder:not(.search) {
