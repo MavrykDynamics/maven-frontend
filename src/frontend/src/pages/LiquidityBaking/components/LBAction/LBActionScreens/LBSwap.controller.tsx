@@ -1,5 +1,5 @@
 import { TezosToolkit } from '@taquito/taquito'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
@@ -27,10 +27,16 @@ import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
 import { cyanColor } from 'styles'
 import { ActionScreenWrapper } from '../LBAction.style'
+import { parseSrtToNum } from 'utils/utils'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
   to: 'tzBTC' | 'XTZ'
+}
+
+type CoinsInputsValues = {
+  XTZ: string | number
+  tzBTC: string | number
 }
 
 const dex = getSettings('liquidity')
@@ -44,7 +50,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
   const [selectedSlippage, setSelectedSlippage] = useState<number>(SLIPPAGE_TOGGLE_VALUES[0].value)
-  const [slippageValue, setSlippageValue] = useState<number | string>(SLIPPAGE_TOGGLE_VALUES[0].value)
+  const [slippageValue, setSlippageValue] = useState<string>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
 
   const [minReceived, setMinReceived] = useState(0)
   const [priceImpact, setPriceImpact] = useState(0)
@@ -53,7 +59,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     from: 'XTZ',
     to: 'tzBTC',
   })
-  const [inputValues, setInputValues] = useState({ XTZ: 0, tzBTC: 0 })
+  const [inputValues, setInputValues] = useState<CoinsInputsValues>({ XTZ: 0, tzBTC: 0 })
 
   const BALANCE_BY_COIN = useMemo(
     () => ({
@@ -63,11 +69,46 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     [tzBTCBalance, xtzBalance],
   )
 
+  const slippageChangeHandler = (value: string, isInput?: boolean) => {
+    if (+value >= 0 && +value <= 100) {
+      setSlippageValue(value)
+    }
+
+    if (!isInput) {
+      setSelectedSlippage(parseSrtToNum(value))
+    }
+
+    const { expected, priceImpact, minimum } = swapCalculateCoinReceive(
+      isRevertedCoins.from,
+      isRevertedCoins.to,
+      parseSrtToNum(inputValues[isRevertedCoins.from]),
+      xtz_pool,
+      token_pool,
+      parseSrtToNum(slippageValue),
+      dex,
+    )
+
+    setInputValues({
+      ...inputValues,
+      [isRevertedCoins.to]: parseSrtToNum(expected.toFixed(5)),
+    })
+    setMinReceived(minimum)
+    setPriceImpact(priceImpact)
+  }
+
   // handling dynamic filling second input on input change
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => {
     let { name, value } = e.target
-    if (!value) value = '0'
-    if (parseFloat(value) < 0) return
+    if (+value < 0) return
+
+    const isTypingBottomInput = name === isRevertedCoins.to
+
+    if (isTypingBottomInput) {
+      setIsRevertedCoins({
+        from: isRevertedCoins.to,
+        to: isRevertedCoins.from,
+      })
+    }
 
     // old calculations
     // const receiveInputValue = swapCalculateCoinReceive(isRevertedCoins.from, isRevertedCoins.to, Number(value), {
@@ -76,19 +117,19 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     // })
 
     const { expected, priceImpact, minimum } = swapCalculateCoinReceive(
-      isRevertedCoins.from,
-      isRevertedCoins.to,
-      parseFloat(value),
+      isTypingBottomInput ? isRevertedCoins.to : isRevertedCoins.from,
+      isTypingBottomInput ? isRevertedCoins.from : isRevertedCoins.to,
+      parseSrtToNum(value),
       xtz_pool,
       token_pool,
-      +slippageValue,
+      parseSrtToNum(slippageValue),
       dex,
     )
 
     setInputValues({
       ...inputValues,
-      [isRevertedCoins.to]: parseFloat(expected.toFixed(5)),
-      [name]: parseFloat(value),
+      [isTypingBottomInput ? isRevertedCoins.from : isRevertedCoins.to]: parseSrtToNum(expected.toFixed(5)),
+      [name]: value,
     })
     setMinReceived(minimum)
     setPriceImpact(priceImpact)
@@ -104,7 +145,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     // if XTZ => tzBTC perform %xtzToToken
     if (isRevertedCoins.from === 'XTZ' && isRevertedCoins.to === 'tzBTC') {
       const expected = xtzToTokenTokenOutput(
-        inputValues.XTZ,
+        parseSrtToNum(inputValues.XTZ),
         xtz_pool,
         token_pool,
         dex.fee,
@@ -113,7 +154,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       )
 
       if (expected) {
-        const minTokensBought = xtzToTokenMinimumTokenOutput(expected, +slippageValue)
+        const minTokensBought = xtzToTokenMinimumTokenOutput(expected, parseFloat(slippageValue))
         const op = await lbContract.methods.xtzToToken(accountPkh, minTokensBought, deadline).send()
         await op.confirmation()
       }
@@ -124,7 +165,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       const tzBtcContract = await Tezos.wallet.at(token_address)
 
       const expected = tokenToXtzXtzOutput(
-        inputValues.tzBTC,
+        parseSrtToNum(inputValues.tzBTC),
         xtz_pool,
         token_pool,
         dex.fee,
@@ -133,13 +174,15 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       )
 
       if (expected) {
-        const minXtzBought = tokenToXtzMinimumXtzOutput(expected, +slippageValue)
+        const minXtzBought = tokenToXtzMinimumXtzOutput(expected, parseSrtToNum(slippageValue))
 
         const batch = Tezos.wallet
           .batch()
           .withContractCall(tzBtcContract.methods.approve(address, 0))
-          .withContractCall(tzBtcContract.methods.approve(address, inputValues.tzBTC))
-          .withContractCall(lbContract.methods.tokenToXtz(accountPkh, inputValues.tzBTC, minXtzBought, deadline))
+          .withContractCall(tzBtcContract.methods.approve(address, parseSrtToNum(inputValues.tzBTC)))
+          .withContractCall(
+            lbContract.methods.tokenToXtz(accountPkh, parseSrtToNum(inputValues.tzBTC), minXtzBought, deadline),
+          )
         const batchOp = await batch.send()
         await batchOp.confirmation()
       }
@@ -150,6 +193,8 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       tzBTC: 0,
     })
   }
+
+  console.log(inputValues)
 
   // handling use max button
   const maxHandler = useCallback(
@@ -165,7 +210,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
         BALANCE_BY_COIN[from],
         xtz_pool,
         token_pool,
-        +slippageValue,
+        parseFloat(slippageValue),
         dex,
       )
 
@@ -203,14 +248,30 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
           placeholder={''}
           name="XTZ"
           onChange={inputChangeHandler}
-          type={'tel'}
+          type={'number'}
           kind={'LB'}
           value={inputValues.XTZ}
-          convertedValue={inputValues.XTZ * coinPrices.tezos.usd}
+          convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
           icon={'XTZ_tezos'}
           pinnedText={'XTZ'}
           useMaxHandler={() => maxHandler('XTZ', 'tzBTC')}
           userBalance={xtzBalance}
+          onBlur={() => {
+            if (inputValues.XTZ === '') {
+              setInputValues({
+                ...inputValues,
+                XTZ: 0,
+              })
+            }
+          }}
+          onFocus={() => {
+            if (parseSrtToNum(inputValues.XTZ) === 0) {
+              setInputValues({
+                ...inputValues,
+                XTZ: '',
+              })
+            }
+          }}
         />
 
         <svg
@@ -231,11 +292,27 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
           type={'tel'}
           kind={'LB'}
           value={inputValues.tzBTC}
-          convertedValue={inputValues.tzBTC * coinPrices.tzbtc.usd}
+          convertedValue={parseSrtToNum(inputValues.tzBTC) * coinPrices.tzbtc.usd}
           icon={'tzBTC'}
           pinnedText={'tzBTC'}
           useMaxHandler={() => maxHandler('tzBTC', 'XTZ')}
           userBalance={tzBTCBalance}
+          onBlur={() => {
+            if (inputValues.tzBTC === '') {
+              setInputValues({
+                ...inputValues,
+                tzBTC: 0,
+              })
+            }
+          }}
+          onFocus={() => {
+            if (parseSrtToNum(inputValues.tzBTC) === 0) {
+              setInputValues({
+                ...inputValues,
+                tzBTC: '',
+              })
+            }
+          }}
         />
       </div>
 
@@ -263,10 +340,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
         <PriceImpact priceImpact={priceImpact} />
         <MinimumReceived minimumRecived={[{ value: minReceived, tokenName: isRevertedCoins.to }]} />
         <Slippage
-          onClickHandler={(value: number) => {
-            setSelectedSlippage(value)
-            setSlippageValue(value === -1 ? 0 : value)
-          }}
+          onClickHandler={(value: number) => slippageChangeHandler(value.toString(), false)}
           selectedToogle={selectedSlippage}
         />
         {selectedSlippage === -1 ? (
@@ -274,14 +348,17 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
             placeholder={'Slippage'}
             name="slippageInput"
             kind="primary"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const { value } = e.target
-              if ((+value >= 0 && +value <= 100) || value === '') {
-                setSlippageValue(value)
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => slippageChangeHandler(e.target.value, true)}
+            type={'tel'}
+            value={slippageValue}
+            onBlur={() => {
+              if (slippageValue === '') setSlippageValue('0')
+            }}
+            onFocus={() => {
+              if (parseSrtToNum(slippageValue) === 0) {
+                setSlippageValue('')
               }
             }}
-            type={'number'}
-            value={slippageValue}
           />
         ) : null}
       </LBActionBottomWrapperStyled>

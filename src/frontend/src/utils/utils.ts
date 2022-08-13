@@ -30,6 +30,14 @@ export const updateItemInStorage = (item: string, updateValue: any) => {
   return setItemInStorage(item, updatedItem)
 }
 
+export const parseSrtToNum = (arg: string | number): number => {
+  if(typeof arg === 'number') return arg
+
+  if(arg) return parseFloat(arg)
+
+  return 0
+}
+
 export const inputNumberValidation = (value: number | string): any => value >= 0 || value === ''
 
 export const calculateAPY = (xtzPool: number): number => {
