@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const LBActionStyled = styled.div`
+export const LBActionStyled = styled.div<{ theme: MavrykTheme }>`
   z-index: 1;
   grid-row-start: 2;
   grid-column-start: 1;
@@ -8,8 +9,9 @@ export const LBActionStyled = styled.div`
   grid-row-end: 4;
   padding: 20px 25px 50px 25px;
   height: fit-content;
-  background: #160e3f;
-  border: 1px solid #503eaa;
+  background: ${({ theme }) => theme.darkBackroundColor};
+  border: 1px solid ${({ theme }) => theme.lbBorder};
+  /* background: #160e3f; */
   border-radius: 10px;
 
   hr {

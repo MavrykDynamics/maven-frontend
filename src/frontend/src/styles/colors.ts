@@ -1,3 +1,5 @@
+import { MavrykTheme } from "utils/interfaces"
+
 export const backgroundColor = '#160E3F'//'#FFFFFF'
 export const containerColor = '#1C1C3F' //'#F7F9FD'
 export const borderColor = '#4F457C'
@@ -22,7 +24,7 @@ export const cyanColor = '#86D4C9'
 export const connectWalletSecondary = '#EEEAF4'
 
 
-export const darkMode = {
+export const darkMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-dark.svg',
   calculatorBackground: '/images/calculator-bg-dark.svg',
   featuresBackground: '/images/features-bg-dark.svg',
@@ -74,10 +76,12 @@ export const darkMode = {
   roadmapValueColor: '#77A4F2',
   arrowStrokeColor: '#8D86EB',
   clusterBg: 'transparent',
-  socialsColor: '#EBF0FF'
+  socialsColor: '#EBF0FF',
+  lbBorder: '#503EAA',
+  borderColor: '',
 }
 
-export const lightMode = {
+export const lightMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-light.svg',
   calculatorBackground: '/images/calculator-bg-light.svg',
   featuresBackground: '/images/features-bg-light.svg',
@@ -127,5 +131,7 @@ export const lightMode = {
   inputNewsColor: '#080628',
   arrowStrokeColor: '#77A4F2',
   clusterBg: '#9CB8E2',
-  socialsColor: headerColor
+  socialsColor: headerColor,
+  lbBorder: '#77A4F2',
+  darkPurple: headerColor
 }

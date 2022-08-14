@@ -4,7 +4,7 @@ import { MavrykTheme } from 'utils/interfaces'
 
 export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
   --max-container: calc(100vw - 550px);
-  background-color: ${({ theme }) => theme.darkestBackroundColor};
+  background-color: ${({ theme }) => theme.darkBackroundColor};
   color: ${({ theme }) => theme.textColor};
   font-weight: 400;
   font-size: 18px;

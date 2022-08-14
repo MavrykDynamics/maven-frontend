@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 import { titleColor } from 'styles'
 import { BLOCK_RADIUS } from 'styles/constants'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const ChartStyled = styled.div`
+export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
   grid-column-start: 2;
   grid-column-end: 3;
-  background: #160e3f;
-  border: 1px solid ${titleColor};
+  background: ${({ theme }) => theme.darkBackroundColor};
+  border: 1px solid ${({ theme }) => theme.lbBorder};
+  /* background: #160e3f; */
+  /* border: 1px solid ${titleColor}; */
   border-radius: ${BLOCK_RADIUS};
   grid-row-start: 2;
   grid-row-end: 3;

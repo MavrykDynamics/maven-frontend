@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components'
-import { skyColor, titleColor } from 'styles'
+import { titleColor } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const LBHeaderStyled = styled.div`
-  background: #160e3f;
-  border: 1px solid ${titleColor};
+export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
+  background: ${({ theme }) => theme.darkBackroundColor};
+  border: 1px solid ${({ theme }) => theme.lbBorder};
   border-radius: 10px;
   grid-column-end: 3;
   grid-column-start: 1;

@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { skyColor } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
 export const LBStyled = styled.div`
   .content-wrapper {
@@ -42,11 +43,13 @@ export const CustomizedText = styled.div<{
   color?: string
   link?: boolean
   lineHeight?: number
+  isDarkTheme?: boolean
+  theme: MavrykTheme
 }>`
   font-weight: ${({ fontWidth }) => (fontWidth ? fontWidth : 400)};
   font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : '18px')};
   line-height: ${({ lineHeight }) => (lineHeight ? `${lineHeight}px` : '18px')};
-  color: ${({ color }) => (color ? color : skyColor)};
+  color: ${({ color, theme }) => (theme.isDarkTheme ? (color ? color : skyColor) : theme.headerTeam)};
   display: flex;
   ${({ link }) =>
     link

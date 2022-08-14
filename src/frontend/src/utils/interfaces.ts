@@ -62,6 +62,8 @@ export interface MavrykTheme {
   arrowStrokeColor: string
   clusterBg: string
   socialsColor: string
+  lbBorder: string
+  
 }
 
 export interface WalletState {

@@ -98,9 +98,10 @@ export const LBAddLiquidity = () => {
           </CustomizedText>
 
           <CheckBoxWrapper>
-            <CheckBox id="checkbox" type="checkbox" checked={switchValue} />
-            <CheckBoxLabel
-              htmlFor="checkbox"
+            <CheckBox
+              id="checkbox"
+              type="checkbox"
+              checked={switchValue}
               onChange={() => {
                 setInputValues({
                   XTZ: 0,
@@ -109,6 +110,7 @@ export const LBAddLiquidity = () => {
                 setSwitchValue(!switchValue)
               }}
             />
+            <CheckBoxLabel htmlFor="checkbox" />
           </CheckBoxWrapper>
         </div>
         {switchValue && (

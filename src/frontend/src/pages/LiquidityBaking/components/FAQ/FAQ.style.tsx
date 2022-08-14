@@ -1,14 +1,17 @@
 import styled, { css } from 'styled-components'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const LBFAQStyled = styled.div`
+export const LBFAQStyled = styled.div<{ theme: MavrykTheme }>`
   grid-column-end: 3;
   grid-column-start: 2;
   grid-row-start: 3;
   grid-row-end: 4;
   z-index: 1;
-
+  /* 
   background: #160e3f;
-  border: 1px solid #503eaa;
+  border: 1px solid #503eaa; */
+  background: ${({ theme }) => theme.darkBackroundColor};
+  border: 1px solid ${({ theme }) => theme.lbBorder};
   border-radius: 10px;
   padding: 50px 40px 80px 40px;
 
