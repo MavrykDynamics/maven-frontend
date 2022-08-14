@@ -1,3 +1,4 @@
+import { GET_GENERAL_STATS } from './action.types';
 // TODO: extract reducers to different files
 
 import { walletDefaultState, defaultUser, defaultTokens, defaultChart } from '../utils/consts'
@@ -55,6 +56,14 @@ const tokens = (state = defaultTokens, action: any) => {
       return {
         ...state,
         coinPrices: action.tokensPrices,
+      }
+    case actions.GET_GENERAL_STATS:
+      return {
+        ...state,
+        stats: {
+          ...state.stats,
+          ...action.generalStats
+        }
       }
     default:
       return state

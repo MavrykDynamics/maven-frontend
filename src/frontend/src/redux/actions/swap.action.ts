@@ -1,13 +1,13 @@
 import { fetchFromIndexer } from "gql/gql.heplers"
-import { TOKEN_QUERY, TOKEN_QUERY_NAME } from "gql/queries/token.query"
+import { LB_DATA_QUERY, LB_DATA_QUERY_NAME } from "gql/queries/lbData.query"
 import { GET_TOKENS_DATA } from "redux/action.types"
 
 
 export const getTokensData = () => async (dispatch: any, getState: any) => {
   try {
     const tokensInfoFromIndexer = await fetchFromIndexer(
-      TOKEN_QUERY,
-      TOKEN_QUERY_NAME,
+      LB_DATA_QUERY,
+      LB_DATA_QUERY_NAME,
       {}
     )
 

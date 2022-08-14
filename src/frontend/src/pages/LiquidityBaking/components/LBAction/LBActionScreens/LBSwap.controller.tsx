@@ -194,8 +194,6 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     })
   }
 
-  console.log(inputValues)
-
   // handling use max button
   const maxHandler = useCallback(
     (from: 'XTZ' | 'tzBTC', to: 'tzBTC' | 'XTZ') => {
@@ -229,7 +227,6 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     <ActionScreenWrapper className="swap">
       <div className={`exchange-block ${isRevertedCoins.from !== 'XTZ' ? 'reverted' : ''}`}>
         <CustomizedText>XTZ</CustomizedText>
-
         <svg
           onClick={() =>
             setIsRevertedCoins({

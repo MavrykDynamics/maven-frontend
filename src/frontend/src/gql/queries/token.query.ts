@@ -1,31 +1,27 @@
-// export const tokenQuery = `
-// query TokensDataQuery($symbols: [String!]) {
-//   token(where: {symbol: {_in: $symbols}}) {
-//     symbol
-//     exchanges {
-//       tokenPool
-//     }
-//   }
-// }
-// `
-
-// export const queryName = 'TokensDataQuery'
-
-// export const generateVariables = ([...tokens]) => tokens
-
 export const TOKEN_QUERY = `
-query TokensDataQuery {
-  liquidity_baking {
-    address
-    lqt_address
-    lqt_total
-    token_address
-    token_decimals
-    xtz_decimals
-    token_pool
-    xtz_pool
+query TokenDataQuery {
+  token(where: {symbol: {_eq: "tzBTC"}}) {
+    exchanges(where: {name: {_eq: "lb"}}) {
+      activities(order_by: {timestamp: desc}, limit: 1) {
+        tvlUsd
+        timestamp
+      }
+      name
+      tradeVolume
+    }
+    trades {
+      tezQty
+    }
+  }
+  stats1d(
+    order_by: {bucket: desc}
+    where: {users: {_is_null: false}, interactions: {_is_null: false}}
+  ) {
+    users
+    interactions
+    bucket
   }
 }
 `
 
-export const TOKEN_QUERY_NAME = 'TokensDataQuery'
+export const TOKEN_QUERY_NAME = 'TokenDataQuery'

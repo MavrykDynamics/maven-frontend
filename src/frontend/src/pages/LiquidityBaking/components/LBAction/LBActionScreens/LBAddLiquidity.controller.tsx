@@ -101,7 +101,7 @@ export const LBAddLiquidity = () => {
             <CheckBox id="checkbox" type="checkbox" checked={switchValue} />
             <CheckBoxLabel
               htmlFor="checkbox"
-              onClick={() => {
+              onChange={() => {
                 setInputValues({
                   XTZ: 0,
                   tzBTC: 0,

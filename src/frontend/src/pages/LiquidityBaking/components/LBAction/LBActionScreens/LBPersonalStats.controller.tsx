@@ -9,7 +9,8 @@ import { useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
 
 export const LBPersonalStats = () => {
-  const { address, lqt_total } = useSelector((state: State) => state.tokens.lbData)
+  const { lqt_total } = useSelector((state: State) => state.tokens.lbData)
+  const { LBTBalance, userAddress } = useSelector((state: State) => state.user)
   return (
     <ActionScreenWrapper className="stats">
       <HorisontalInfo>
@@ -17,7 +18,7 @@ export const LBPersonalStats = () => {
           Address
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <TzAddress type="primary" tzAddress={address} hasIcon />
+          {userAddress ? <TzAddress type="primary" tzAddress={userAddress} hasIcon /> : 'Wallet is not connected'}
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
@@ -25,7 +26,7 @@ export const LBPersonalStats = () => {
           Your LB tokens
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={7097} />
+          <CommaNumber value={LBTBalance} />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
@@ -38,7 +39,7 @@ export const LBPersonalStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Pool Share
+          Pool Share (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
           <CommaNumber value={0.0153} endingText="%" />
@@ -46,7 +47,7 @@ export const LBPersonalStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Realized PL
+          Realized PL (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
           <CommaNumber value={234.98} endingText="XTZ" />
@@ -54,7 +55,7 @@ export const LBPersonalStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Unrealized PL
+          Unrealized PL (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
           <CommaNumber value={13.234} endingText="XTZ" />

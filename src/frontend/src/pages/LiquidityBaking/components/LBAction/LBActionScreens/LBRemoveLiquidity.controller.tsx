@@ -16,6 +16,7 @@ import { ENVIRONMENT } from 'utils/consts'
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
 import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
+import { parseSrtToNum } from 'utils/utils'
 
 export const LBRemoveLiquidity = () => {
   const {
@@ -25,7 +26,7 @@ export const LBRemoveLiquidity = () => {
   const { accountPkh } = useSelector((state: State) => state.wallet)
   const { LBTBalance } = useSelector((state: State) => state.user)
 
-  const [inputValues, setInputValues] = useState({ Sir: 0 })
+  const [inputValues, setInputValues] = useState({ Sir: '0' })
   const [receivedAmount, setReceivedAmount] = useState({
     xtz: 0,
     tzbtc: 0,
@@ -41,9 +42,10 @@ export const LBRemoveLiquidity = () => {
         },
   ) => {
     const { name, value } = e.target
+    if (+value < 0) return
 
     const { xtz, tzbtc } = calculateLqtOutput({
-      lqTokens: Number(value),
+      lqTokens: parseSrtToNum(value),
       xtzPool: xtz_pool,
       tzbtcPool: token_pool,
       lqtTotal: lqt_total,
@@ -66,14 +68,14 @@ export const LBRemoveLiquidity = () => {
     const lbContract = await Tezos.wallet.at(lqt_address)
     const deadline = new Date(Date.now() + 60000).toISOString()
     const { xtz, tzbtc } = calculateLqtOutput({
-      lqTokens: Number(inputValues.Sir),
+      lqTokens: parseSrtToNum(inputValues.Sir),
       xtzPool: xtz_pool,
       tzbtcPool: token_pool,
       lqtTotal: lqt_total,
     })
 
     const op = await lbContract.methods
-      .removeLiquidity(accountPkh, Number(inputValues.Sir), xtz, tzbtc, deadline)
+      .removeLiquidity(accountPkh, parseSrtToNum(inputValues.Sir), xtz, tzbtc, deadline)
       .send()
     await op.confirmation()
   }
@@ -81,13 +83,13 @@ export const LBRemoveLiquidity = () => {
   return (
     <ActionScreenWrapper className="removeLiqidity swap">
       <Input
-        placeholder={'Sir'}
+        placeholder={''}
         name="Sir"
         onChange={inputChangeHandler}
         type={'number'}
         kind={'LB'}
         value={inputValues.Sir}
-        convertedValue={inputValues.Sir * coinPrices.tezos.usd}
+        convertedValue={parseSrtToNum(inputValues.Sir) * coinPrices.tezos.usd}
         icon={'XTZ_tezos'}
         pinnedText={'Sir'}
         useMaxHandler={() => {
@@ -99,6 +101,22 @@ export const LBRemoveLiquidity = () => {
           })
         }}
         userBalance={LBTBalance}
+        onBlur={() => {
+          if (inputValues.Sir === '') {
+            setInputValues({
+              ...inputValues,
+              Sir: '0',
+            })
+          }
+        }}
+        onFocus={() => {
+          if (parseSrtToNum(inputValues.Sir) === 0) {
+            setInputValues({
+              ...inputValues,
+              Sir: '',
+            })
+          }
+        }}
       />
 
       <hr />

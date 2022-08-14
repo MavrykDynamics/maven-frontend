@@ -94,6 +94,13 @@ export interface TokenInfo {
     xtz_pool: number
   }
   coinPrices: Record<string, Record<string, number>>
+  stats: {
+    tvlUSD: number
+    tradeVolume: number
+    avgTradingSize: number
+    users: number
+    interactions: number
+  }
 }
 
 export interface ChartPoint {

@@ -9,7 +9,10 @@ import { useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
 
 export const LBGeneralStats = () => {
-  const { address, lqt_total } = useSelector((state: State) => state.tokens.lbData)
+  const {
+    lbData: { address },
+    stats: { tradeVolume, tvlUSD, avgTradingSize, users, interactions },
+  } = useSelector((state: State) => state.tokens)
   return (
     <ActionScreenWrapper className="stats">
       <HorisontalInfo>
@@ -22,7 +25,7 @@ export const LBGeneralStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Latest Price
+          Latest Price (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
           <CommaNumber value={0.00007554} endingText="tzBTC" />
@@ -33,7 +36,7 @@ export const LBGeneralStats = () => {
           Trade volume
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={0.5301872} endingText="tzBTC" />
+          <CommaNumber value={tradeVolume} endingText="tzBTC" />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
@@ -41,12 +44,12 @@ export const LBGeneralStats = () => {
           Average trade size
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={0.5301872} endingText="tzBTC" />
+          <CommaNumber value={avgTradingSize} endingText="tzBTC" />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          YTVL in XTZ/tzBTC
+          YTVL in XTZ/tzBTC (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
           <CommaNumber value={9018659} />/<CommaNumber value={8789} />
@@ -57,7 +60,7 @@ export const LBGeneralStats = () => {
           TVL in USD
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={lqt_total} />
+          <CommaNumber beginningText="$" value={tvlUSD} />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
@@ -65,7 +68,7 @@ export const LBGeneralStats = () => {
           Interactions
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={29} />
+          <CommaNumber value={interactions} />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
@@ -73,7 +76,7 @@ export const LBGeneralStats = () => {
           Unique Users
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={13} />
+          <CommaNumber value={users} />
         </CustomizedText>
       </HorisontalInfo>
     </ActionScreenWrapper>

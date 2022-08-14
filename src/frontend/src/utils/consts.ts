@@ -34,6 +34,13 @@ export const defaultTokens: TokenInfo = {
     bitcoin: {usd: 0, eur: 0},
     tezos:  {usd: 0, eur: 0},
     tzbtc: {usd: 0, eur: 0},
+  },
+  stats: {
+    tvlUSD: 0,
+    tradeVolume: 0,
+    avgTradingSize: 0,
+    users: 0,
+    interactions: 0
   }
 }
 
