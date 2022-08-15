@@ -316,7 +316,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       </div>
 
       {ready ? (
-        <Button text={'Swap'} icon={'swapBtnIcon'} onClick={swapBtnHandler} className="swap_btn" kind={PRIMARY} />
+        <Button text={'Swap'} icon={'swapBtnIcon'} onClick={swapBtnHandler} className="swap_btn LB" kind={PRIMARY} />
       ) : (
         <ConnectWallet className="swap-action" />
       )}

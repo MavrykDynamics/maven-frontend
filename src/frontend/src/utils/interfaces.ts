@@ -57,6 +57,11 @@ export interface MavrykTheme {
   arrowStrokeColor: string
   socialsColor: string
   lbBorder: string
+  toggleButtonBg: string
+  toggleButtonColor: string
+  toggleButtonColorSelected: string
+  toggleButtonBgSelected: string
+  inputTextColor: string
 }
 
 export interface WalletState {

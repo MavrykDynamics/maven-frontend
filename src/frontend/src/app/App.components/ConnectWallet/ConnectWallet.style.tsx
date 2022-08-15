@@ -73,8 +73,8 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   margin: 0 auto;
   height: 50px;
   cursor: pointer;
-  background: ${cyanColor};
-  color: ${({ theme }) => theme.darkBackroundColor};
+  color: ${({ theme }) => theme.toggleButtonColorSelected};
+  background-color: ${({ theme }) => theme.btnBackroundColor};
   border-radius: ${BUTTON_RADIUS};
   text-align: center;
   font-weight: bold;
@@ -93,7 +93,7 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   svg {
     width: 25px;
     height: 30px;
-    stroke: ${({ theme }) => theme.darkBackroundColor};
+    stroke: ${({ theme }) => theme.toggleButtonColorSelected};
     fill: transparent;
     margin-right: 16px;
   }

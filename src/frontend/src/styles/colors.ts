@@ -73,6 +73,11 @@ export const darkMode: MavrykTheme = {
   arrowStrokeColor: '#8D86EB',
   socialsColor: '#EBF0FF',
   lbBorder: '#503EAA',
+  toggleButtonBg: 'transparent',
+  toggleButtonColor: '#8D86EB',
+  toggleButtonColorSelected: '#160E3F',
+  toggleButtonBgSelected: '#8D86EB',
+  inputTextColor: '#c0dbff'
 }
 
 export const lightMode: MavrykTheme = {
@@ -122,4 +127,9 @@ export const lightMode: MavrykTheme = {
   arrowStrokeColor: '#77A4F2',
   socialsColor: headerColor,
   lbBorder: '#77A4F2',
+  toggleButtonBg: '#EBF0FF',
+  toggleButtonColor: '#27007A',
+  toggleButtonColorSelected: '#FFFFFF  ',
+  toggleButtonBgSelected: '#503EAA',
+  inputTextColor: '#503EAA'
 }

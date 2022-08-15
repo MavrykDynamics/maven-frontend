@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components/macro'
 import { cyanColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
-export const InputStyled = styled.div`
+export const InputStyled = styled.div<{ theme: MavrykTheme }>`
   position: relative;
   width: 100%;
   margin: 25px 0;
@@ -108,7 +108,8 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
     line-height: 22px;
     padding-top: 0;
     padding-left: 10px;
-    color: #c0dbff;
+    color: ${({ theme }) => theme.headerColor};
+    background-color: ${({ theme }) => theme.toggleButtonBg};
   }
 
   &::placeholder:not(.search) {
@@ -173,7 +174,7 @@ const zoomIn = keyframes`
   }
 `
 
-export const InputStatus = styled.div`
+export const InputStatus = styled.div<{ theme: MavrykTheme }>`
   display: block;
   position: absolute;
   top: 14px;

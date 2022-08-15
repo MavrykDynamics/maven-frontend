@@ -360,7 +360,7 @@ export const LBAddLiquidity = () => {
         text={'Add Liquidity'}
         icon={'plusDark'}
         onClick={addLiquidityHandler}
-        className="addLiquidity_btn"
+        className="addLiquidity_btn LB"
         kind={PRIMARY}
       />
 

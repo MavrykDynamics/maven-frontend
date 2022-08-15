@@ -361,74 +361,74 @@ var dexterCalculations = (function (undefined) {
   //         return null;
   //     }
   // }
-  function addLiquidityLiquidityCreated(xtzIn, xtzPool, totalLiquidity, includeSubsidy) {
-      var xtzPool = xtzPool;
-      if (includeSubsidy) {
-          xtzPool = creditSubsidy(xtzPool);
-      }
-      var xtzIn_ = bigInt.zero;
-      var xtzPool_ = bigInt.zero;
-      var totalLiquidity_ = bigInt.zero;
-      try {
-          xtzIn_ = bigInt(xtzIn);
-          xtzPool_ = bigInt(xtzPool);
-          totalLiquidity_ = bigInt(totalLiquidity);
-      } catch (err) {
-          return null;
-      }
-      if (gtZero(xtzIn_) > 0 && gtZero(xtzPool_)) {
-          if (eqZero(totalLiquidity_)) {
-              return bigInt(xtzIn).times(bigInt(totalLiquidity)).divide(bigInt(xtzPool));
-          } else if (gtZero(totalLiquidity_)) {
-              return bigInt(xtzIn).times(bigInt(totalLiquidity)).divide(bigInt(xtzPool));
-          }
-          return null;
-      } else {
-          return null;
-      }
-  }
-  function addLiquidityTokenIn(xtzIn, xtzPool, tokenPool, includeSubsidy) {
-      var xtzPool = xtzPool;
-      if (includeSubsidy) {
-          xtzPool = creditSubsidy(xtzPool);
-      }
-      var xtzIn_ = bigInt.zero;
-      var xtzPool_ = bigInt.zero;
-      var tokenPool_ = bigInt.zero;
-      try {
-          xtzIn_ = bigInt(xtzIn);
-          xtzPool_ = bigInt(xtzPool);
-          tokenPool_ = bigInt(tokenPool);
-      } catch (err) {
-          return null;
-      }
-      if (gtZero(xtzIn_) > 0 && gtZero(xtzPool_) && gtZero(tokenPool_)) {
-          return ceilingDiv(xtzIn_.times(tokenPool_), xtzPool_);
-      } else {
-          return null;
-      }
-  }
-  function addLiquidityXtzIn(tokenIn, xtzPool, tokenPool, includeSubsidy) {
-      var xtzPool = xtzPool;
-      if (includeSubsidy) {
-          xtzPool = creditSubsidy(xtzPool);
-      }
-      var tokenIn_ = bigInt.zero;
-      var xtzPool_ = bigInt.zero;
-      var tokenPool_ = bigInt.zero;
-      try {
-          tokenIn_ = bigInt(tokenIn);
-          xtzPool_ = bigInt(xtzPool);
-          tokenPool_ = bigInt(tokenPool);
-      } catch (err) {
-          return null;
-      }
-      if (gtZero(tokenIn_) > 0 && gtZero(xtzPool_) && gtZero(tokenPool_)) {
-          return tokenIn_.times(xtzPool_).divide(tokenPool_);
-      } else {
-          return null;
-      }
-  }
+//   function addLiquidityLiquidityCreated(xtzIn, xtzPool, totalLiquidity, includeSubsidy) {
+//       var xtzPool = xtzPool;
+//       if (includeSubsidy) {
+//           xtzPool = creditSubsidy(xtzPool);
+//       }
+//       var xtzIn_ = bigInt.zero;
+//       var xtzPool_ = bigInt.zero;
+//       var totalLiquidity_ = bigInt.zero;
+//       try {
+//           xtzIn_ = bigInt(xtzIn);
+//           xtzPool_ = bigInt(xtzPool);
+//           totalLiquidity_ = bigInt(totalLiquidity);
+//       } catch (err) {
+//           return null;
+//       }
+//       if (gtZero(xtzIn_) > 0 && gtZero(xtzPool_)) {
+//           if (eqZero(totalLiquidity_)) {
+//               return bigInt(xtzIn).times(bigInt(totalLiquidity)).divide(bigInt(xtzPool));
+//           } else if (gtZero(totalLiquidity_)) {
+//               return bigInt(xtzIn).times(bigInt(totalLiquidity)).divide(bigInt(xtzPool));
+//           }
+//           return null;
+//       } else {
+//           return null;
+//       }
+//   }
+//   function addLiquidityTokenIn(xtzIn, xtzPool, tokenPool, includeSubsidy) {
+//       var xtzPool = xtzPool;
+//       if (includeSubsidy) {
+//           xtzPool = creditSubsidy(xtzPool);
+//       }
+//       var xtzIn_ = bigInt.zero;
+//       var xtzPool_ = bigInt.zero;
+//       var tokenPool_ = bigInt.zero;
+//       try {
+//           xtzIn_ = bigInt(xtzIn);
+//           xtzPool_ = bigInt(xtzPool);
+//           tokenPool_ = bigInt(tokenPool);
+//       } catch (err) {
+//           return null;
+//       }
+//       if (gtZero(xtzIn_) > 0 && gtZero(xtzPool_) && gtZero(tokenPool_)) {
+//           return ceilingDiv(xtzIn_.times(tokenPool_), xtzPool_);
+//       } else {
+//           return null;
+//       }
+//   }
+//   function addLiquidityXtzIn(tokenIn, xtzPool, tokenPool, includeSubsidy) {
+//       var xtzPool = xtzPool;
+//       if (includeSubsidy) {
+//           xtzPool = creditSubsidy(xtzPool);
+//       }
+//       var tokenIn_ = bigInt.zero;
+//       var xtzPool_ = bigInt.zero;
+//       var tokenPool_ = bigInt.zero;
+//       try {
+//           tokenIn_ = bigInt(tokenIn);
+//           xtzPool_ = bigInt(xtzPool);
+//           tokenPool_ = bigInt(tokenPool);
+//       } catch (err) {
+//           return null;
+//       }
+//       if (gtZero(tokenIn_) > 0 && gtZero(xtzPool_) && gtZero(tokenPool_)) {
+//           return tokenIn_.times(xtzPool_).divide(tokenPool_);
+//       } else {
+//           return null;
+//       }
+//   }
 //   function removeLiquidityTokenOut(liquidityBurned, totalLiquidity, tokenPool) {
 //       var liquidityBurned_ = bigInt.zero;
 //       var totalLiquidity_ = bigInt.zero;

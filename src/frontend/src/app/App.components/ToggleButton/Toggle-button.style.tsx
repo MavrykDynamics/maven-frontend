@@ -1,14 +1,15 @@
 import styled from 'styled-components/macro'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const ToggleButtonWrapper = styled.div`
+export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   margin: 0 auto;
   width: fit-content;
   justify-content: center;
-  border: 2px solid #503eaa;
+  border: 1px solid #503eaa;
+  background: ${({ theme }) => theme.toggleButtonBg};
   border-radius: 20px;
   font-size: 16px;
-  color: #8d86eb;
   max-height: 40px;
 
   &.swap-toggler {
@@ -32,7 +33,7 @@ export const ToggleButtonWrapper = styled.div`
   }
 `
 
-export const ToggleButtonItem = styled.div`
+export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`
   padding: 15px 30px;
   height: inherit;
   width: fit-content;
@@ -40,6 +41,7 @@ export const ToggleButtonItem = styled.div`
   justify-content: center;
   align-items: center;
   transition: 0.4s all ease-in-out;
+  color: ${({ theme }) => theme.toggleButtonColor};
   font-weight: 600;
   cursor: pointer;
   text-transform: capitalize;
@@ -51,9 +53,9 @@ export const ToggleButtonItem = styled.div`
   }
 
   &.selected {
-    background: #8d86eb;
+    color: ${({ theme }) => theme.toggleButtonColorSelected};
+    background: ${({ theme }) => theme.toggleButtonBgSelected};
     border-radius: 17.5px;
-    color: #160e3f;
     transition: 0.4s all ease-in-out;
   }
 

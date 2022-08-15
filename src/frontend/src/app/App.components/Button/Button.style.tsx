@@ -71,6 +71,15 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     border: 2px solid ${({ theme }) => theme.actionPrimaryBtnColor};
   }
 
+  &.LB {
+    color: ${({ theme }) => theme.toggleButtonColorSelected};
+
+    svg {
+      stroke: ${({ theme }) => theme.toggleButtonColorSelected};
+      fill: ${({ theme }) => theme.toggleButtonColorSelected};
+    }
+  }
+
   &.removeLiquidity_btn {
     max-width: 220px;
     margin: 20px auto 0 auto;

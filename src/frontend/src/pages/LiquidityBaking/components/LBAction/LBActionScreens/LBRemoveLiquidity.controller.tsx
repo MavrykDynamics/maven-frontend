@@ -209,7 +209,7 @@ export const LBRemoveLiquidity = () => {
         text={'Remove Liquidity'}
         icon={'minus'}
         onClick={removeLiquidityHandler}
-        className="removeLiquidity_btn"
+        className="removeLiquidity_btn LB"
         kind={PRIMARY}
       />
 

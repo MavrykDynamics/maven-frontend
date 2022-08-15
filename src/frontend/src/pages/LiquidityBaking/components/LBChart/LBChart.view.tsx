@@ -81,7 +81,7 @@ export const LBChartView = ({
           <Button
             text={''}
             icon="toggleChartType"
-            className={`toggleChart ${selectedChartType}`}
+            className={`toggleChart ${selectedChartType} LB`}
             kind="transparent"
             onClick={changeSelectedChartType}
           />

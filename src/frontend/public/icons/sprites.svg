@@ -7,7 +7,7 @@
       />
         </g>
         <g id="Invisible_Shape">
-            <rect fill="none" stroke="none" width="32" height="32" />
+            <rect  stroke="none" width="32" height="32" />
         </g>
     </symbol>
     <symbol id="linkedin" viewBox="0 0 32 32">
@@ -17,7 +17,7 @@
       />
         </g>
         <g id="Invisible_Shape">
-            <rect fill="none" stroke="none" width="32" height="32" />
+            <rect  stroke="none" width="32" height="32" />
         </g>
     </symbol>
     <symbol id="telegram" viewBox="0 0 32 32">
@@ -27,7 +27,7 @@
       />
         </g>
         <g id="Invisible_Shape">
-            <rect fill="none" stroke="none" width="32" height="32" />
+            <rect  stroke="none" width="32" height="32" />
         </g>
     </symbol>
     <symbol id="medium" viewBox="0 0 32 32">
@@ -37,7 +37,7 @@
       />
         </g>
         <g id="Invisible_Shape">
-            <rect fill="none" stroke="none" width="32" height="32" />
+            <rect  stroke="none" width="32" height="32" />
         </g>
     </symbol>
     <symbol id="close" viewBox="0 0 24 24">
@@ -46,7 +46,7 @@
             <line class="a" x1="23.25" y1="23.249" x2="0.75" y2="0.749" />
         </g>
         <g id="Invisible_Shape">
-            <rect fill="none" stroke="none" width="24" height="24" />
+            <rect  stroke="none" width="24" height="24" />
         </g>
     </symbol>
     <symbol id="discord" viewBox="0 0 27 27">
@@ -56,7 +56,7 @@
       />
         </g>
         <g id="Invisible_Shape">
-            <rect fill="none" stroke="none" width="27" height="27" />
+            <rect  stroke="none" width="27" height="27" />
         </g>
     </symbol>
     <symbol id="xxx" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@
 
         </g>
         <g id="Invisible_Shape">
-            <rect fill="none" stroke="none" width="24" height="24" />
+            <rect  stroke="none" width="24" height="24" />
         </g>
     </symbol>
     <symbol id="calc" viewBox="0 0 30 30">
@@ -89,7 +89,7 @@
       d="M16 0C7.164 0 0 7.21746 0 16.1194C0 23.6727 5.16267 29.9928 12.1227 31.7418C12.048 31.5242 12 31.2716 12 30.9587V28.2036C11.3507 28.2036 10.2627 28.2036 9.98933 28.2036C8.89467 28.2036 7.92133 27.7294 7.44933 26.8482C6.92533 25.869 6.83467 24.3712 5.536 23.4551C5.15067 23.1502 5.444 22.8022 5.888 22.8493C6.708 23.083 7.388 23.6499 8.028 24.4907C8.66533 25.333 8.96533 25.5237 10.156 25.5237C10.7333 25.5237 11.5973 25.4901 12.4107 25.3612C12.848 24.2422 13.604 23.2119 14.528 22.7257C9.2 22.1736 6.65733 19.5031 6.65733 15.8776C6.65733 14.3167 7.31733 12.8069 8.43867 11.5348C8.07067 10.2721 7.608 7.69702 8.58 6.71642C10.9773 6.71642 12.4267 8.28269 12.7747 8.70582C13.9693 8.29343 15.2813 8.0597 16.66 8.0597C18.0413 8.0597 19.3587 8.29343 20.556 8.70851C20.9 8.28806 22.3507 6.71642 24.7533 6.71642C25.7293 7.69836 25.2613 10.2842 24.8893 11.5442C26.004 12.8136 26.66 14.3194 26.66 15.8776C26.66 19.5004 24.1213 22.1696 18.8013 22.7243C20.2653 23.494 21.3333 25.6567 21.3333 27.2861V30.9587C21.3333 31.0984 21.3027 31.1991 21.2867 31.3187C27.5213 29.117 32 23.1528 32 16.1194C32 7.21746 24.836 0 16 0Z"
     />
     </symbol>
-    <symbol id="LBLogo" viewBox="0 0 88 50" fill="none">
+    <symbol id="LBLogo" viewBox="0 0 88 50" >
         <path
       fill-rule="evenodd"
       clip-rule="evenodd"
@@ -134,12 +134,12 @@
     />
     </symbol>
     <symbol id="copyToClipboard" viewBox="0 0 15 15">
-        <g fill="none">
+        <g >
             <rect width="7" height="7" x="4.5" y="4.5" rx=".5" ry=".5" />
             <path stroke-linecap="round" d="M2.5 7.5H1A.5.5 0 01.5 7V1A.5.5 0 011 .5h6a.5.5 0 01.5.5v1.5" />
         </g>
     </symbol>
-    <symbol id='LBT_transfer' viewBox="0 0 36 36" fill="none">
+    <symbol id='LBT_transfer' viewBox="0 0 36 36" >
         <circle cx="18" cy="18" r="17.5" fill="#C0DBFF" stroke="#003EE0" />
         <path
       d="M15.9537 18.7253V19.2H14.0903V18.7253H15.9537ZM14.3016 16V19.2H13.6016V17.6V16H14.3016Z"
@@ -181,14 +181,14 @@
       fill="#003EE0"
     />
     </symbol>
-    <symbol id='XTZ_tezos' viewBox="0 0 36 36" fill="none">
+    <symbol id='XTZ_tezos' viewBox="0 0 36 36" >
         <circle cx="18" cy="18" r="18" fill="#0D61FF" />
         <path
       d="M25.601 23.7197C25.3574 19.4084 19.9339 17.4487 19.4148 17.2475C19.3936 17.2369 19.3936 17.2157 19.4042 17.1945L24.9972 11.5803V10.9765C24.9972 10.8812 24.9125 10.7964 24.8172 10.7964H14.5103V6.40039L10.7075 7.19485V7.76687H10.9194C10.9194 7.76687 11.8515 7.76687 11.8515 8.69904V10.7858H8.90671C8.85375 10.7858 8.80078 10.8388 8.80078 10.8918V12.2159H11.8621C11.8621 12.2159 11.8621 13.6247 11.8621 15.2666V19.4084C11.8621 21.6647 13.3133 23.2324 15.8556 23.0206C16.3959 22.9782 16.8937 22.7663 17.3174 22.4909C17.5081 22.3638 17.6246 22.1625 17.6246 21.9295V21.2198C16.7984 21.7706 16.0993 21.7388 16.0993 21.7388C14.4891 21.7388 14.5209 19.6944 14.5209 19.6944V12.2159H21.9359L16.5971 17.597C16.5865 18.3068 16.5759 18.8576 16.5759 18.8682C16.5759 18.8894 16.5865 18.8999 16.6077 18.8999C21.5016 19.7262 22.8257 22.8935 22.8257 23.815C22.8257 23.815 23.3554 28.2958 18.8746 28.603C18.8746 28.603 15.9404 28.7301 15.4213 27.5543C15.4001 27.5119 15.4213 27.4696 15.4637 27.4484C15.951 27.2259 16.2793 26.7916 16.2793 26.209C16.2793 25.3404 15.7497 24.6307 14.6374 24.6307C13.737 24.6307 12.9956 25.3404 12.9956 26.209C12.9956 26.209 12.5718 29.9801 18.864 29.8741C26.0459 29.747 25.601 23.7197 25.601 23.7197Z"
       fill="white"
     />
     </symbol>
-    <symbol id='tzBTC' viewBox="0 0 36 36" fill="none">
+    <symbol id='tzBTC' viewBox="0 0 36 36" >
         <circle cx="18" cy="18" r="17.25" stroke="#0D61FF" stroke-width="1.5" />
         <path
       fill-rule="evenodd"
@@ -209,38 +209,35 @@
       fill="#0D61FF"
     />
     </symbol>
-    <symbol id='exchange' viewBox="0 0 24 24" fill="none">
+    <symbol id='exchange' viewBox="0 0 24 24" >
         <path
       d="M8.64771 0.164766L12.9602 4.5C13.1799 4.7197 13.1799 5.07581 12.9602 5.29547L12.6288 5.62692C12.4092 5.84662 12.053 5.84662 11.8333 5.62692L8.99998 2.77064V23.4375C8.99998 23.7481 8.74812 24 8.43748 24H8.06248C7.75184 24 7.49998 23.7481 7.49998 23.4375L7.49998 2.77008L4.66666 5.62692C4.44701 5.84662 4.09085 5.84662 3.87115 5.62692L3.53974 5.29552C3.32009 5.07581 3.32009 4.7197 3.53974 4.5L7.85224 0.164766C8.0719 -0.0549374 8.42806 -0.0548897 8.64771 0.164766ZM16.1477 23.8352L20.4602 19.5C20.6799 19.2803 20.6799 18.9242 20.4602 18.7045L20.1288 18.3731C19.9092 18.1534 19.553 18.1534 19.3333 18.3731L16.5 21.2299V0.5625C16.5 0.25186 16.2481 0 15.9375 0H15.5625C15.2518 0 15 0.25186 15 0.5625L15 21.2294L12.1667 18.3731C11.947 18.1534 11.5909 18.1534 11.3712 18.3731L11.0397 18.7045C10.8201 18.9242 10.82 19.2803 11.0397 19.5L15.3522 23.8352C15.5719 24.0549 15.9281 24.0549 16.1477 23.8352Z"
       fill="#8D86EB"
     />
     </symbol>
-    <symbol id='plus' viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id='plus' viewBox="0 0 9 10"  xmlns="http://www.w3.org/2000/svg">
         <path d="M8.666 4.052H5.372V0.704H3.41V4.052H0.116V5.924H3.41V9.254H5.372V5.924H8.666V4.052Z" fill="#77A4F2" />
     </symbol>
-    <symbol id='minus' viewBox="0 0 22 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id='minus' viewBox="0 0 22 4"  xmlns="http://www.w3.org/2000/svg">
         <path
       fill-rule="evenodd"
       clip-rule="evenodd"
       d="M0.25 2C0.25 1.30964 0.809644 0.75 1.5 0.75H20.25C20.9404 0.75 21.5 1.30964 21.5 2C21.5 2.69036 20.9404 3.25 20.25 3.25H1.5C0.809644 3.25 0.25 2.69036 0.25 2Z"
-      fill="#160E3F"
     />
     </symbol>
-    <symbol id='plusDark' viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id='plusDark' viewBox="0 0 25 24" xmlns="http://www.w3.org/2000/svg">
         <path
       fill-rule="evenodd"
       clip-rule="evenodd"
       d="M12.5 1C13.1904 1 13.75 1.55964 13.75 2.25L13.75 21.75C13.75 22.4404 13.1904 23 12.5 23C11.8096 23 11.25 22.4404 11.25 21.75L11.25 2.25C11.25 1.55964 11.8096 1 12.5 1Z"
-      fill="#160E3F"
     />
         <path
       fill-rule="evenodd"
       clip-rule="evenodd"
       d="M2.25 12C2.25 11.3096 2.80964 10.75 3.5 10.75H22.25C22.9404 10.75 23.5 11.3096 23.5 12C23.5 12.6904 22.9404 13.25 22.25 13.25H3.5C2.80964 13.25 2.25 12.6904 2.25 12Z"
-      fill="#160E3F"
     />
     </symbol>
-    <symbol id='toggleChartType' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id='toggleChartType' viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
       <path
       d="M6 14.5L10 10L13.5 13L18.5 6"
       stroke="#8D86EB"
@@ -250,32 +247,28 @@
     />
       <line x1="5.75" y1="19.25" x2="18.25" y2="19.25" stroke="#8D86EB" stroke-width="1.5" stroke-linecap="round" />
     </symbol>
-    <symbol id='swapBtnIcon' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id='swapBtnIcon' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_9699_14945)">
       <path
         d="M12.75 15.75L23.25 5.25"
-        stroke="#160E3F"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M23.25 9.75V5.25H18.75"
-        stroke="#160E3F"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M11.25 8.25L0.75 18.75"
-        stroke="#160E3F"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M0.75 14.25V18.75H5.25"
-        stroke="#160E3F"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -296,7 +289,7 @@
       fill-rule="evenodd"
       clip-rule="evenodd"
       d="M23.2008 10H18.375C16.8562 10 15.625 11.2312 15.625 12.75C15.625 14.2688 16.8562 15.5 18.375 15.5H23.2008C23.6192 15.5 23.9583 15.1608 23.9583 14.7424V10.7576C23.9583 10.3392 23.6192 10 23.2008 10ZM19.0104 14C19.7295 14 20.3125 13.4404 20.3125 12.75C20.3125 12.0596 19.7295 11.5 19.0104 11.5C18.2913 11.5 17.7083 12.0596 17.7083 12.75C17.7083 13.4404 18.2913 14 19.0104 14Z"
-      fill="none"
+      
     />
     </symbol>
 </svg>

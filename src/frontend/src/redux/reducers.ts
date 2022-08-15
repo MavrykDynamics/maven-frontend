@@ -5,7 +5,7 @@ import { combineReducers } from 'redux'
 
 import * as actions from './action.types'
 
-const preferences = (state = { darkThemeEnabled: true, scrollPosition: 0 }, action: any) => {
+const preferences = (state = { darkThemeEnabled: false, scrollPosition: 0 }, action: any) => {
   switch (action.type) {
     case actions.TOGGLE_DARKTHEME:
       return { ...state, darkThemeEnabled: !state.darkThemeEnabled }
