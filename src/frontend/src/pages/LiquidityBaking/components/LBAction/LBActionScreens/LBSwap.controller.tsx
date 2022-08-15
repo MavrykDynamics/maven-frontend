@@ -3,15 +3,17 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
-import { ENVIRONMENT } from 'utils/consts'
-import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
-import { swapCalculateCoinReceive } from 'pages/LiquidityBaking/components/LBAction/helpers/swapUtils'
+import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
+import { swapCalculateCoinReceive } from 'utils/DEX/swapUtils'
+import env from 'utils/env'
+
 import {
+  getSettings,
   tokenToXtzMinimumXtzOutput,
   tokenToXtzXtzOutput,
   xtzToTokenMinimumTokenOutput,
   xtzToTokenTokenOutput,
-} from 'utils/DexSwapCalcs'
+} from 'utils/DEX/DexCalcs'
 
 import { State } from 'utils/interfaces'
 
@@ -69,6 +71,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     [tzBTCBalance, xtzBalance],
   )
 
+  // handle slippage value changing
   const slippageChangeHandler = (value: string, isInput?: boolean) => {
     if (+value >= 0 && +value <= 100) {
       setSlippageValue(value)
@@ -137,8 +140,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
 
   // performing swap for xtz=>tzBTC & tzBTC=>xtz
   const swapBtnHandler = async () => {
-    // init data we need to perform swap
-    const Tezos = new TezosToolkit(ENVIRONMENT.rpcLink)
+    const Tezos = new TezosToolkit(env.rpcLink)
     const lbContract = await Tezos.wallet.at(address)
     const deadline = new Date(Date.now() + 60000).toISOString()
 

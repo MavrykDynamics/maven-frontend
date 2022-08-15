@@ -2,11 +2,19 @@ import Chart from 'react-apexcharts'
 import { AREA_CHART_OPTIONS } from 'app/App.components/Charts/chart.consts'
 import { IntervalType } from 'utils/interfaces'
 
-const AreaChart = ({ chartData, interval }: { chartData: any; interval: IntervalType }) => {
+const AreaChart = ({
+  chartData,
+  interval,
+  moveHandler,
+}: {
+  chartData: any
+  interval: IntervalType
+  moveHandler: (value: number, isOut?: boolean) => void
+}) => {
   return (
     <Chart
       series={[{ data: chartData }]}
-      options={AREA_CHART_OPTIONS(interval)}
+      options={AREA_CHART_OPTIONS(interval, moveHandler)}
       type="area"
       height={'420px'}
       width={'100%'}

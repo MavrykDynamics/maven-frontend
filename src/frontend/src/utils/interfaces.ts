@@ -26,16 +26,12 @@ export interface MavrykTheme {
   skyGradient: string
   backgroundColor: string
   containerColor: string
-  borderColor: string
   textColor: string
   subTextColor: string
-  backgroundTextColor: string
   placeholderColor: string
   primaryColor: string
-  secondaryColor: string
   upColor: string
   downColor: string
-  selectedColor: string
   litepaperLinkColor: string
   navColor: string
   inputBorderColor: string
@@ -46,7 +42,6 @@ export interface MavrykTheme {
   darkestBackroundColor: string
   darkBackroundColor: string
   labelColor: string
-  darkPurple: string
   headingColor: string
   btnBackroundColor: string
   btnColor: string
@@ -60,10 +55,8 @@ export interface MavrykTheme {
   inputNewsColor: string
   roadmapValueColor: string
   arrowStrokeColor: string
-  clusterBg: string
   socialsColor: string
   lbBorder: string
-  
 }
 
 export interface WalletState {
@@ -157,3 +150,4 @@ export interface PurschasedStatsTable {
   amount: number
   usdPrice: number
 }
+

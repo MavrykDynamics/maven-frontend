@@ -15,7 +15,7 @@ import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityB
 
 import { ActionScreenWrapper, CheckBox, CheckBoxLabel, CheckBoxWrapper, StepBlock } from '../LBAction.style'
 import { State } from 'utils/interfaces'
-import { ENVIRONMENT } from 'utils/consts'
+import env from 'utils/env'
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
 import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
@@ -57,7 +57,7 @@ export const LBAddLiquidity = () => {
   }
 
   const addLiquidityHandler = async () => {
-    const Tezos = new TezosToolkit(ENVIRONMENT.rpcLink)
+    const Tezos = new TezosToolkit(env.rpcLink)
     const lbContract = await Tezos.wallet.at(lqt_address)
     const tzBtcContract = await Tezos.wallet.at(token_address)
     const maxTokensSold = Math.floor(inputValues.tzBTC + (inputValues.tzBTC * Number(selectedToogle)) / 100)

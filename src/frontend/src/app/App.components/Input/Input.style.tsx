@@ -2,11 +2,10 @@ import styled, { keyframes } from 'styled-components/macro'
 import { cyanColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
-
 export const InputStyled = styled.div`
   position: relative;
   width: 100%;
-  margin: 25px 0 ;
+  margin: 25px 0;
 
   .useMax {
     position: absolute;
@@ -16,7 +15,7 @@ export const InputStyled = styled.div`
     transition: 0.25s all;
 
     &:hover {
-      color: ${cyanColor}
+      color: ${cyanColor};
     }
   }
 
@@ -82,22 +81,22 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
 
   /* Chrome, Safari, Edge, Opera */
   &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-    /* Firefox */
-    &[type=number] {
-      -moz-appearance: textfield;
-    }
+  /* Firefox */
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
 
-    &::placeholder{
-      font-size: 16px;
-      padding-top: 0;
-      color: #C0DBFF;
-      opacity: 0.6;
-    }
+  &::placeholder {
+    font-size: 16px;
+    padding-top: 0;
+    color: #c0dbff;
+    opacity: 0.6;
+  }
 
   &.search {
     color: ${({ theme }) => theme.headerColor};
@@ -109,7 +108,7 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
     line-height: 22px;
     padding-top: 0;
     padding-left: 10px;
-    color: #C0DBFF;
+    color: #c0dbff;
   }
 
   &::placeholder:not(.search) {
@@ -219,7 +218,6 @@ export const InputIcon = styled.svg<{ theme: MavrykTheme }>`
   text-align: center;
   visibility: visible;
   pointer-events: none;
-  stroke: ${({ theme }) => theme.backgroundTextColor};
 `
 
 const slideDown = keyframes`

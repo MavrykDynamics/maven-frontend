@@ -1,6 +1,3 @@
-import { TezosToolkit } from '@taquito/taquito'
-import BigNumber from 'bignumber.js'
-import { ENVIRONMENT } from 'utils/consts'
 import {
   tokenToXtzMinimumXtzOutput,
   tokenToXtzPriceImpact,
@@ -8,8 +5,8 @@ import {
   xtzToTokenMinimumTokenOutput,
   xtzToTokenPriceImpact,
   xtzToTokenTokenOutput,
-} from 'utils/DexSwapCalcs'
-import { DEXType } from './const'
+} from 'utils/DEX/DexCalcs'
+import { DEXType } from './Dex.types';
 
 // const creditSubsidy = (xtzPool: BigNumber | number): BigNumber => {
 //   const LIQUIDITY_BAKING_SUBSIDY = 2500000;

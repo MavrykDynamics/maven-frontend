@@ -1,4 +1,16 @@
 import BigNumber from 'bignumber.js'
+import { DEXType } from './Dex.types'
+
+export const getSettings = (dex: string): DEXType => {
+  switch (dex) {
+    case 'liquidity':
+      return { fee: 0.1, burn: 0.1, includeSubsidy: false }
+    case 'swap':
+      return { fee: 0.3, burn: 0, includeSubsidy: false }
+    default:
+      return { fee: 0.3, burn: 0, includeSubsidy: false }
+  }
+}
 
 export const creditSubsidy = (xtzPool: number): BigNumber => new BigNumber(xtzPool).plus(new BigNumber(25e5))
 
@@ -155,4 +167,34 @@ export const tokenToXtzMinimumXtzOutput = (xtzOut: number, allowedSlippage: numb
   }
 
   return null
+}
+
+// Remove liquidity handlers
+export const removeLiquidityTokenOut = (liquidityBurned: number, totalLiquidity: number, tokenPool: number): number | null => {
+  const BNLiquidityBurned = new BigNumber(liquidityBurned)
+  const BNTotalLiquidity = new BigNumber(totalLiquidity)
+  const BNtokenPool = new BigNumber(tokenPool)
+
+  if (BNLiquidityBurned.comparedTo(0) === 1 && BNTotalLiquidity.comparedTo(0) === 1 && BNtokenPool.comparedTo(0) === 1) {
+    return BNtokenPool.times(BNLiquidityBurned).dividedBy(BNTotalLiquidity).toNumber();
+  } 
+
+  return null;
+}
+
+export const removeLiquidityXtzOut = (liquidityBurned: number, totalLiquidity: number, xtzPool: number, includeSubsidy: boolean): number | null => {
+  let _xtzPool = xtzPool
+  if (includeSubsidy) {
+    _xtzPool = creditSubsidy(_xtzPool).toNumber()
+  }
+
+  const BNLiquidityBurned = new BigNumber(liquidityBurned)
+  const BNTotalLiquidity = new BigNumber(totalLiquidity)
+  const BNXtzPool = new BigNumber(_xtzPool)
+
+  if (BNLiquidityBurned.comparedTo(0) === 1 && BNTotalLiquidity.comparedTo(0) === 1 && BNXtzPool.comparedTo(0) === 1) {
+    return BNXtzPool.times(BNLiquidityBurned).dividedBy(BNTotalLiquidity).toNumber();
+  } 
+
+  return null;
 }

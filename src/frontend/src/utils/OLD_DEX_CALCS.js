@@ -429,44 +429,44 @@ var dexterCalculations = (function (undefined) {
           return null;
       }
   }
-  function removeLiquidityTokenOut(liquidityBurned, totalLiquidity, tokenPool) {
-      var liquidityBurned_ = bigInt.zero;
-      var totalLiquidity_ = bigInt.zero;
-      var tokenPool_ = bigInt.zero;
-      try {
-          liquidityBurned_ = bigInt(liquidityBurned);
-          totalLiquidity_ = bigInt(totalLiquidity);
-          tokenPool_ = bigInt(tokenPool);
-      } catch (err) {
-          return null;
-      }
-      if (gtZero(liquidityBurned_) && gtZero(totalLiquidity_) && gtZero(tokenPool_)) {
-          return tokenPool_.times(liquidityBurned_).divide(totalLiquidity_);
-      } else {
-          return null;
-      }
-  }
-  function removeLiquidityXtzOut(liquidityBurned, totalLiquidity, xtzPool, includeSubsidy) {
-      var xtzPool = xtzPool;
-      if (includeSubsidy) {
-          xtzPool = creditSubsidy(xtzPool);
-      }
-      var liquidityBurned_ = bigInt.zero;
-      var totalLiquidity_ = bigInt.zero;
-      var xtzPool_ = bigInt.zero;
-      try {
-          liquidityBurned_ = bigInt(liquidityBurned);
-          totalLiquidity_ = bigInt(totalLiquidity);
-          xtzPool_ = bigInt(xtzPool);
-      } catch (err) {
-          return null;
-      }
-      if (gtZero(liquidityBurned_) && gtZero(totalLiquidity_) && gtZero(xtzPool_)) {
-          return xtzPool_.times(liquidityBurned_).divide(totalLiquidity_);
-      } else {
-          return null;
-      }
-  }
+//   function removeLiquidityTokenOut(liquidityBurned, totalLiquidity, tokenPool) {
+//       var liquidityBurned_ = bigInt.zero;
+//       var totalLiquidity_ = bigInt.zero;
+//       var tokenPool_ = bigInt.zero;
+//       try {
+//           liquidityBurned_ = bigInt(liquidityBurned);
+//           totalLiquidity_ = bigInt(totalLiquidity);
+//           tokenPool_ = bigInt(tokenPool);
+//       } catch (err) {
+//           return null;
+//       }
+//       if (gtZero(liquidityBurned_) && gtZero(totalLiquidity_) && gtZero(tokenPool_)) {
+//           return tokenPool_.times(liquidityBurned_).divide(totalLiquidity_);
+//       } else {
+//           return null;
+//       }
+//   }
+//   function removeLiquidityXtzOut(liquidityBurned, totalLiquidity, xtzPool, includeSubsidy) {
+//       var xtzPool = xtzPool;
+//       if (includeSubsidy) {
+//           xtzPool = creditSubsidy(xtzPool);
+//       }
+//       var liquidityBurned_ = bigInt.zero;
+//       var totalLiquidity_ = bigInt.zero;
+//       var xtzPool_ = bigInt.zero;
+//       try {
+//           liquidityBurned_ = bigInt(liquidityBurned);
+//           totalLiquidity_ = bigInt(totalLiquidity);
+//           xtzPool_ = bigInt(xtzPool);
+//       } catch (err) {
+//           return null;
+//       }
+//       if (gtZero(liquidityBurned_) && gtZero(totalLiquidity_) && gtZero(xtzPool_)) {
+//           return xtzPool_.times(liquidityBurned_).divide(totalLiquidity_);
+//       } else {
+//           return null;
+//       }
+//   }
   function estimateLiquidityBakingAPY(xtzPool) {
       var xtzPool_ = bigInt.zero;
       try {

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toogleChartInterval, toogleChartType } from 'redux/actions/chart.action'
 import { IntervalType, State } from 'utils/interfaces'
@@ -5,6 +6,12 @@ import { LBChartView } from './LBChart.view'
 
 export const LBChart = () => {
   const { chartDataCandlestick, chartDataArea, chartInterval, chartType } = useSelector((state: State) => state.chart)
+  const [moveValue, setMoveValue] = useState(chartDataArea.at(-1)?.y || 0)
+  const chartHoverHandler = (value: number, isOut?: boolean) => {
+    if (isOut) setMoveValue(chartDataArea.at(-1)?.y || 0)
+    else setMoveValue(value)
+  }
+
   const dispatch = useDispatch()
 
   const changeIntervalHanler = async (newInterval: IntervalType) => {
@@ -20,7 +27,8 @@ export const LBChart = () => {
       selectedInterval={chartInterval}
       changeSelectedInterval={changeIntervalHanler}
       chartData={chartType === 'area' ? chartDataArea : chartDataCandlestick}
-      tztzBTC={235254}
+      xtztzBTC={moveValue}
+      chartMouseMoveHandler={chartHoverHandler}
       selectedChartType={chartType}
       changeSelectedChartType={changeChartTypeHanler}
     />

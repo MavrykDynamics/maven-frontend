@@ -66,7 +66,7 @@ const XAXIS_SETTING = {
   },
 }
 
-const CHART_SETTING = {
+const CHART_SETTING = (moveHandler: (candleValue: number, isOut?: boolean) => void) => ({
   toolbar: {
     show: true,
     tools: {
@@ -86,7 +86,18 @@ const CHART_SETTING = {
   sparkline: {
     enabled: false,
   },
-}
+  events: {
+    mouseMove: function(_: any, __: any, config: any) {
+      const candleData = config.config.series?.[config.seriesIndex]?.data[config.dataPointIndex] || config.config.series?.[0]?.data.at(-1)
+      if(candleData){
+        moveHandler(Array.isArray(candleData.y) ? candleData.y[3] : candleData.y)
+      }
+    },
+    mouseLeave: function() {
+      moveHandler(0, true)
+    }
+  }
+})
 
 const RESPONSIVE_SETTING = [
   {
@@ -149,8 +160,8 @@ const RESPONSIVE_SETTING = [
   },
 ]
 
-export const CANDLESTICK_CHART_OPTIONS =  (interval: IntervalType) =>  ({
-  chart: CHART_SETTING,
+export const CANDLESTICK_CHART_OPTIONS =  (interval: IntervalType, moveHandler: (candleValue: number, isOut?: boolean) => void) =>  ({
+  chart: CHART_SETTING(moveHandler),
   xaxis: XAXIS_SETTING,
   yaxis: YAXIS_SETTING(interval),
   responsive: RESPONSIVE_SETTING,
@@ -171,8 +182,8 @@ export const CANDLESTICK_CHART_OPTIONS =  (interval: IntervalType) =>  ({
   },
 })
 
-export const AREA_CHART_OPTIONS = (interval: IntervalType) =>  ({
-  chart: CHART_SETTING,
+export const AREA_CHART_OPTIONS = (interval: IntervalType, moveHandler: (candleValue: number, isOut?: boolean) => void) =>  ({
+  chart: CHART_SETTING(moveHandler),
   xaxis: XAXIS_SETTING,
   responsive: RESPONSIVE_SETTING,
   tooltip: {
@@ -197,13 +208,13 @@ export const AREA_CHART_OPTIONS = (interval: IntervalType) =>  ({
         [
           {
             offset: 0,
-            color: '#AEEDE1',
+            color: '#03D563',
             opacity: 1,
           },
           {
             offset: 100,
-            color: '#160E3F',
-            opacity: 1,
+            color: '#03D563',
+            opacity: 0.1,
           },
         ],
       ],

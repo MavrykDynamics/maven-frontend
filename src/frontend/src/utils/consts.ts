@@ -3,8 +3,6 @@ import { ChartType, TokenInfo, UserData, WalletState } from './interfaces';
 export const PRECISION_NUMBER_NINE_ZEROES = 1000000000
 export const PRECISION_NUMBER_SIX_ZEROES = 1000000
 
-export const MVK_USD_PRICE = 0.25
-
 export const walletDefaultState: WalletState = {
   wallet: undefined,
   tezos: undefined,
@@ -49,15 +47,6 @@ export const defaultChart: ChartType = {
   chartDataArea: [],
   chartInterval: 'quotes5mNogaps',
   chartType: 'candlestick',
-}
-
-export const NUMBER_FORMATTER = new Intl.NumberFormat('en')
-
-export const ENVIRONMENT = {
-  // gqlLink: 'https://dex.dipdup.net/v1/graphql'
-  gqlLink: 'https://api.mavryk.finance/v1/graphql',
-  rpcLink: 'https://ghostnet.tezos.marigold.dev/',
-  // rpcLink: 'https://mainnet.tezos.marigold.dev/',
 }
 
 export const INTERVAL_PRICE_CUSHION = {

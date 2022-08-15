@@ -40,15 +40,17 @@ type LBChartViewProps = {
   selectedChartType: ChartTypeType
   changeSelectedInterval: (newInterval: IntervalType) => void
   changeSelectedChartType: () => void
+  chartMouseMoveHandler: (value: number, isOut?: boolean) => void
   chartData: any
-  tztzBTC: number
+  xtztzBTC: number
 }
 
 export const LBChartView = ({
   selectedInterval,
   changeSelectedInterval,
   changeSelectedChartType,
-  tztzBTC,
+  chartMouseMoveHandler,
+  xtztzBTC,
   chartData,
   selectedChartType,
 }: LBChartViewProps) => {
@@ -65,7 +67,7 @@ export const LBChartView = ({
               XTZ/tzBTC (Sirius)
             </CustomizedText>
             <CustomizedText color={cyanColor} fontSize={14} fontWidth={600}>
-              <CommaNumber value={tztzBTC} endingText="ꜩ" />
+              <CommaNumber value={xtztzBTC} endingText="ꜩ" />
             </CustomizedText>
           </div>
         </div>
@@ -88,9 +90,9 @@ export const LBChartView = ({
       {chartData.length ? (
         <div className="chart-wrapper">
           {selectedChartType === 'area' ? (
-            <AreaChart chartData={chartData} interval={selectedInterval} />
+            <AreaChart chartData={chartData} interval={selectedInterval} moveHandler={chartMouseMoveHandler} />
           ) : (
-            <CandlestickChart chartData={chartData} interval={selectedInterval} />
+            <CandlestickChart chartData={chartData} interval={selectedInterval} moveHandler={chartMouseMoveHandler} />
           )}
         </div>
       ) : null}

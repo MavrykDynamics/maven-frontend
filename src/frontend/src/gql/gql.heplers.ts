@@ -1,9 +1,9 @@
-import { ENVIRONMENT } from "../utils/consts"
+import env from "utils/env"
 
 async function fetchGraphQL(operationsDoc: string, operationName: string, variables: Record<string, any>, gqlNetwork?: string) {
-  const developmentAPI = gqlNetwork || ENVIRONMENT.gqlLink
-  const prodictionAPI = gqlNetwork || ENVIRONMENT.gqlLink
-  const gqlAPINetwork = process.env.NODE_ENV === 'development' ? developmentAPI : prodictionAPI
+  const developmentAPI = gqlNetwork || env.gqlLink
+  const prodictionAPI = gqlNetwork || env.gqlLink
+  const gqlAPINetwork = env.NODE_ENV === 'development' ? developmentAPI : prodictionAPI
 
   return new Promise<any>((resolve, reject) => {
     fetch(gqlAPINetwork, {

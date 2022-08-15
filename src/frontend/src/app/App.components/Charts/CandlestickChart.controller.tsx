@@ -2,11 +2,19 @@ import Chart from 'react-apexcharts'
 import { CANDLESTICK_CHART_OPTIONS } from 'app/App.components/Charts/chart.consts'
 import { IntervalType } from 'utils/interfaces'
 
-const CandlestickChart = ({ chartData, interval }: { chartData: any; interval: IntervalType }) => {
+const CandlestickChart = ({
+  chartData,
+  interval,
+  moveHandler,
+}: {
+  chartData: any
+  interval: IntervalType
+  moveHandler: (value: number, isOut?: boolean) => void
+}) => {
   return (
     <Chart
       series={[{ data: chartData }]}
-      options={CANDLESTICK_CHART_OPTIONS(interval)}
+      options={CANDLESTICK_CHART_OPTIONS(interval, moveHandler)}
       type="candlestick"
       height={'420px'}
       width={'100%'}
