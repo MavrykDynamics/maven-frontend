@@ -38,7 +38,6 @@ export const LBRemoveLiquidity = () => {
     xtz: 0,
     tzbtc: 0,
   })
-
   const [minimumReceived, setMinimumReceived] = useState({
     xtz: 0,
     tzbtc: 0,
