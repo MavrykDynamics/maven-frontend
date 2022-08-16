@@ -1,25 +1,28 @@
+import { useSelector } from 'react-redux'
+import { TezosToolkit } from '@taquito/taquito'
 import React, { useState } from 'react'
 
-import { PRIMARY } from 'app/App.components/Button/Button.constants'
-
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
+import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
 import { Button } from 'app/App.components/Button/Button.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
-import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-
-import { ActionScreenWrapper } from '../LBAction.style'
-import { calculateLqtOutput, removeLiquidityTokenReceived, removeLiquidityXtzReceived } from 'utils/DEX/liquidityUtils'
-import { useSelector } from 'react-redux'
-import { State } from 'utils/interfaces'
-import { TezosToolkit } from '@taquito/taquito'
-import env from 'utils/env'
-import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
 import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
-import { parseSrtToNum } from 'utils/utils'
+import { Input } from 'app/App.components/Input/Input.controller'
+
+import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
+import { ActionScreenWrapper } from '../LBAction.style'
+import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+
+import { State } from 'utils/interfaces'
+
+import { removeLiquidityTokenReceived, removeLiquidityXtzReceived } from 'utils/DEX/liquidityUtils'
+import env from 'utils/env'
+import { parseSrtToNum, slippagePersentToValue } from 'utils/utils'
 import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
-import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
 import { getSettings } from 'utils/DEX/DexCalcs'
+import { PRIMARY } from 'app/App.components/Button/Button.constants'
+import { removeLiquidityHandler } from '../helpers/addAndRemoveLiquidity.utils'
+import { AddLiquidutityInputChangeEventType } from '../helpers/actionsScreen.types'
 
 const dex = getSettings('liquidity')
 
@@ -33,7 +36,7 @@ export const LBRemoveLiquidity = () => {
 
   const [inputValues, setInputValues] = useState({ Sir: '0' })
   const [selectedSlippage, setSelectedSlippage] = useState<number>(SLIPPAGE_TOGGLE_VALUES[0].value)
-  const [slippageValue, setSlippageValue] = useState<string>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
+  const [slippagePersent, setSlippagePersent] = useState<string | number>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
   const [receivedAmount, setReceivedAmount] = useState({
     xtz: 0,
     tzbtc: 0,
@@ -43,87 +46,59 @@ export const LBRemoveLiquidity = () => {
     tzbtc: 0,
   })
 
-  const slippageChangeHandler = (value: string, isInput?: boolean) => {
-    if (+value >= 0 && +value <= 100) {
-      setSlippageValue(value)
-    }
-
-    if (!isInput) {
-      setSelectedSlippage(parseSrtToNum(value))
-    }
+  const tzbtcAndXtzAmountCalculation = ({
+    newSlippageValue,
+    newSirBurnedValue,
+  }: {
+    newSlippageValue?: string | number
+    newSirBurnedValue?: string | number
+  }) => {
+    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippageValue || slippagePersent)
 
     const { expected: expectedXtz, minimum: minimumXtz } = removeLiquidityXtzReceived(
-      parseSrtToNum(value),
+      parseSrtToNum(newSirBurnedValue || inputValues.Sir),
       lqt_total,
       xtz_pool,
-      parseSrtToNum(slippageValue),
+      convertedSlippagePersentToValue,
       dex,
     )
+
     const { expected: expectedToken, minimum: minimumToken } = removeLiquidityTokenReceived(
-      parseSrtToNum(value),
+      parseSrtToNum(newSirBurnedValue || inputValues.Sir),
       lqt_total,
       token_pool,
-      parseSrtToNum(slippageValue),
+      convertedSlippagePersentToValue,
     )
 
     setReceivedAmount({
-      ...receivedAmount,
       xtz: expectedXtz.value,
       tzbtc: expectedToken.value,
     })
 
     setMinimumReceived({
-      ...minimumReceived,
       xtz: minimumXtz.value,
       tzbtc: minimumToken.value,
     })
   }
 
-  const inputChangeHandler = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | {
-          target: {
-            name: string
-            value: number
-          }
-        },
-  ) => {
+  // change slippage value handler
+  const slippageChangeHandler = (value: string, isInput?: boolean) => {
+    const newSlippageValue = parseSrtToNum(value) < 0 ? 0 : value
+    if (+newSlippageValue >= 0 && +newSlippageValue <= 100) {
+      setSlippagePersent(newSlippageValue)
+      tzbtcAndXtzAmountCalculation({ newSlippageValue })
+    }
+
+    if (!isInput) {
+      setSelectedSlippage(parseSrtToNum(value))
+    }
+  }
+
+  // change input value handler
+  const inputChangeHandler = (e: AddLiquidutityInputChangeEventType) => {
     const { name, value } = e.target
     if (+value < 0) return
-
-    // const { xtz, tzbtc } = calculateLqtOutput({
-    //   lqTokens: parseSrtToNum(value),
-    //   xtzPool: xtz_pool,
-    //   tzbtcPool: token_pool,
-    //   lqtTotal: lqt_total,
-    // })
-
-    const { expected: expectedXtz, minimum: minimumXtz } = removeLiquidityXtzReceived(
-      parseSrtToNum(value),
-      lqt_total,
-      xtz_pool,
-      parseSrtToNum(slippageValue),
-      dex,
-    )
-    const { expected: expectedToken, minimum: minimumToken } = removeLiquidityTokenReceived(
-      parseSrtToNum(value),
-      lqt_total,
-      token_pool,
-      parseSrtToNum(slippageValue),
-    )
-
-    setReceivedAmount({
-      ...receivedAmount,
-      xtz: expectedXtz.value,
-      tzbtc: expectedToken.value,
-    })
-
-    setMinimumReceived({
-      ...minimumReceived,
-      xtz: minimumXtz.value,
-      tzbtc: minimumToken.value,
-    })
+    tzbtcAndXtzAmountCalculation({ newSirBurnedValue: value })
 
     setInputValues({
       ...inputValues,
@@ -131,21 +106,29 @@ export const LBRemoveLiquidity = () => {
     })
   }
 
-  const removeLiquidityHandler = async () => {
-    const Tezos = new TezosToolkit(env.rpcLink)
-    const lbContract = await Tezos.wallet.at(lqt_address)
-    const deadline = new Date(Date.now() + 60000).toISOString()
-    const { xtz, tzbtc } = calculateLqtOutput({
-      lqTokens: parseSrtToNum(inputValues.Sir),
-      xtzPool: xtz_pool,
-      tzbtcPool: token_pool,
-      lqtTotal: lqt_total,
-    })
+  const removeLiquidityBtnHandler = async () => {
+    try {
+      if (!accountPkh) return
+      const Tezos = new TezosToolkit(env.rpcLink)
+      const lbContract = await Tezos.wallet.at(lqt_address)
+      const deadline = new Date(Date.now() + 60000).toISOString()
 
-    const op = await lbContract.methods
-      .removeLiquidity(accountPkh, parseSrtToNum(inputValues.Sir), xtz, tzbtc, deadline)
-      .send()
-    await op.confirmation()
+      try {
+        await removeLiquidityHandler({
+          sirAmount: inputValues.Sir,
+          lbContract,
+          accountAddress: accountPkh,
+          deadline,
+          xtz_pool,
+          token_pool,
+          lqt_total,
+        })
+      } catch (e: any) {
+        console.error('remove liquidity error', e.message)
+      }
+    } catch (e: any) {
+      console.error('removeLiquidityBtnHandler initializing params error', e.message)
+    }
   }
 
   return (
@@ -208,7 +191,7 @@ export const LBRemoveLiquidity = () => {
       <Button
         text={'Remove Liquidity'}
         icon={'minus'}
-        onClick={removeLiquidityHandler}
+        onClick={removeLiquidityBtnHandler}
         className="removeLiquidity_btn LB"
         kind={PRIMARY}
       />
@@ -232,13 +215,13 @@ export const LBRemoveLiquidity = () => {
             kind="primary"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => slippageChangeHandler(e.target.value, true)}
             type={'tel'}
-            value={slippageValue}
+            value={slippagePersent}
             onBlur={() => {
-              if (slippageValue === '') setSlippageValue('0')
+              if (slippagePersent === '') setSlippagePersent(0)
             }}
             onFocus={() => {
-              if (parseSrtToNum(slippageValue) === 0) {
-                setSlippageValue('')
+              if (parseSrtToNum(slippagePersent) === 0) {
+                setSlippagePersent('')
               }
             }}
           />

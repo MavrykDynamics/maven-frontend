@@ -170,19 +170,32 @@ export const tokenToXtzMinimumXtzOutput = (xtzOut: number, allowedSlippage: numb
 }
 
 // Remove liquidity handlers
-export const removeLiquidityTokenOut = (liquidityBurned: number, totalLiquidity: number, tokenPool: number): number | null => {
+export const removeLiquidityTokenOut = (
+  liquidityBurned: number,
+  totalLiquidity: number,
+  tokenPool: number,
+): number | null => {
   const BNLiquidityBurned = new BigNumber(liquidityBurned)
   const BNTotalLiquidity = new BigNumber(totalLiquidity)
   const BNtokenPool = new BigNumber(tokenPool)
 
-  if (BNLiquidityBurned.comparedTo(0) === 1 && BNTotalLiquidity.comparedTo(0) === 1 && BNtokenPool.comparedTo(0) === 1) {
-    return BNtokenPool.times(BNLiquidityBurned).dividedBy(BNTotalLiquidity).toNumber();
-  } 
+  if (
+    BNLiquidityBurned.comparedTo(0) === 1 &&
+    BNTotalLiquidity.comparedTo(0) === 1 &&
+    BNtokenPool.comparedTo(0) === 1
+  ) {
+    return BNtokenPool.times(BNLiquidityBurned).dividedBy(BNTotalLiquidity).toNumber()
+  }
 
-  return null;
+  return null
 }
 
-export const removeLiquidityXtzOut = (liquidityBurned: number, totalLiquidity: number, xtzPool: number, includeSubsidy: boolean): number | null => {
+export const removeLiquidityXtzOut = (
+  liquidityBurned: number,
+  totalLiquidity: number,
+  xtzPool: number,
+  includeSubsidy: boolean,
+): number | null => {
   let _xtzPool = xtzPool
   if (includeSubsidy) {
     _xtzPool = creditSubsidy(_xtzPool).toNumber()
@@ -193,15 +206,20 @@ export const removeLiquidityXtzOut = (liquidityBurned: number, totalLiquidity: n
   const BNXtzPool = new BigNumber(_xtzPool)
 
   if (BNLiquidityBurned.comparedTo(0) === 1 && BNTotalLiquidity.comparedTo(0) === 1 && BNXtzPool.comparedTo(0) === 1) {
-    return BNXtzPool.times(BNLiquidityBurned).dividedBy(BNTotalLiquidity).toNumber();
-  } 
+    return BNXtzPool.times(BNLiquidityBurned).dividedBy(BNTotalLiquidity).toNumber()
+  }
 
-  return null;
+  return null
 }
 
 // Add liquidity handlers
 
-export const addLiquidityLiquidityCreated = (xtzIn: number, xtzPool: number, totalLiquidity: number, includeSubsidy: boolean): number | null => {
+export const addLiquidityLiquidityCreated = (
+  xtzIn: number,
+  xtzPool: number,
+  totalLiquidity: number,
+  includeSubsidy: boolean,
+): number | null => {
   let _xtzPool = xtzPool
   if (includeSubsidy) {
     _xtzPool = creditSubsidy(_xtzPool).toNumber()
@@ -212,16 +230,20 @@ export const addLiquidityLiquidityCreated = (xtzIn: number, xtzPool: number, tot
   const BNxtzPool = new BigNumber(_xtzPool)
 
   if (BNxtzIn.comparedTo(0) === 1 && BNxtzPool.comparedTo(0) === 1) {
-
-    if(BNtotalLiquidity.comparedTo(0) === 0 || BNtotalLiquidity.comparedTo(0) === 1){
+    if (BNtotalLiquidity.comparedTo(0) === 0 || BNtotalLiquidity.comparedTo(0) === 1) {
       return BNxtzIn.times(BNtotalLiquidity).dividedBy(BNxtzPool).toNumber()
     }
-  } 
+  }
 
-  return null;
+  return null
 }
 
-export const addLiquidityTokenIn = (xtzIn: number, xtzPool: number, tokenPool: number, includeSubsidy: boolean): number | null => {
+export const addLiquidityTokenIn = (
+  xtzIn: number,
+  xtzPool: number,
+  tokenPool: number,
+  includeSubsidy: boolean,
+): number | null => {
   let _xtzPool = xtzPool
   if (includeSubsidy) {
     _xtzPool = creditSubsidy(_xtzPool).toNumber()
@@ -234,14 +256,19 @@ export const addLiquidityTokenIn = (xtzIn: number, xtzPool: number, tokenPool: n
   if (BNxtzIn.comparedTo(0) === 1 && BNxtzPool.comparedTo(0) === 1 && BNtokenPool.comparedTo(0) === 1) {
     const canDivide = BNxtzIn.times(BNtokenPool).mod(BNtokenPool).toNumber()
 
-    if(canDivide >= 0) return BNxtzIn.times(BNtokenPool).dividedBy(BNtokenPool).plus(1).toNumber()
+    if (canDivide >= 0) return BNxtzIn.times(BNtokenPool).dividedBy(BNtokenPool).plus(1).toNumber()
     return BNxtzIn.times(BNtokenPool).dividedBy(BNtokenPool).toNumber()
-  } 
+  }
 
-  return null;
+  return null
 }
 
-export const addLiquidityXtzIn = (tokenIn: number, xtzPool: number, tokenPool: number, includeSubsidy: boolean): number | null => {
+export const addLiquidityXtzIn = (
+  tokenIn: number,
+  xtzPool: number,
+  tokenPool: number,
+  includeSubsidy: boolean,
+): number | null => {
   let _xtzPool = xtzPool
   if (includeSubsidy) {
     _xtzPool = creditSubsidy(_xtzPool).toNumber()
@@ -253,7 +280,7 @@ export const addLiquidityXtzIn = (tokenIn: number, xtzPool: number, tokenPool: n
 
   if (BNtokenIn.comparedTo(0) === 1 && BNxtzPool.comparedTo(0) === 1 && BNtokenPool.comparedTo(0) === 1) {
     return BNtokenIn.times(BNxtzPool).dividedBy(BNtokenPool).toNumber()
-  } 
+  }
 
-  return null;
+  return null
 }

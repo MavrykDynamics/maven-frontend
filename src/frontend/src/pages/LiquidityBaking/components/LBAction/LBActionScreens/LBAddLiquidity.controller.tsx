@@ -1,61 +1,126 @@
 import React, { useState } from 'react'
-import { TezosToolkit, OpKind } from '@taquito/taquito'
+import { TezosToolkit } from '@taquito/taquito'
 import { useSelector } from 'react-redux'
 
-import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { dex, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
-import { cyanColor, subHeaderColor } from 'styles'
-
-import { Button } from 'app/App.components/Button/Button.controller'
-import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
-import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
+import { subHeaderColor } from 'styles'
 import { Input } from 'app/App.components/Input/Input.controller'
 
-import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
-import { ActionScreenWrapper, CheckBox, CheckBoxLabel, CheckBoxWrapper, StepBlock } from '../LBAction.style'
+import { ActionScreenWrapper, CheckBox, CheckBoxLabel, CheckBoxWrapper } from '../LBAction.style'
 import { State } from 'utils/interfaces'
 import env from 'utils/env'
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
 import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
 import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
-import { addLiquidityCalculationsHandler } from 'utils/DEX/liquidityUtils'
-import { parseSrtToNum } from 'utils/utils'
+import { addLiquidityCalculationsHandler, addLiquidityReturn } from 'utils/DEX/liquidityUtils'
+import { parseSrtToNum, slippagePersentToValue } from 'utils/utils'
 import { CoinsInputsValues, AddLiquidutityInputChangeEventType } from '../helpers/actionsScreen.types'
+import { AddLiquidityDefault } from './AddLiquidityDefault.controller'
+import { AddLiquidityOnlyXTZ } from './AddLiquidityOnlyXTZ.controller'
+import { xtzToTzBTCSwap } from '../helpers/swap.utils'
+import { addLiquidityHandler } from '../helpers/addAndRemoveLiquidity.utils'
+import { swapCalculateCoinReceive } from 'utils/DEX/swapUtils'
+import { Button } from 'app/App.components/Button/Button.controller'
+import { PRIMARY } from 'app/App.components/Button/Button.constants'
+
+const DEFAULT_COINS_AMOUNT = {
+  XTZ: 0,
+  tzBTC: 0,
+}
 
 export const LBAddLiquidity = () => {
   const {
-    lbData: { xtz_pool, token_pool, lqt_address, token_address, lqt_total },
-    coinPrices,
+    lbData: { xtz_pool, token_pool, address, token_address, lqt_total },
   } = useSelector((state: State) => state.tokens)
   const { accountPkh } = useSelector((state: State) => state.wallet)
-  const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
-  const [inputValues, setInputValues] = useState<CoinsInputsValues>({
-    XTZ: 0,
-    tzBTC: 0,
-  })
-
+  const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
+  const [onlyXtzSwapData, setOnlyXtzSwapData] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
   const [selectedSlippage, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0].value)
-  const [slippageValue, setSlippageValue] = useState<string>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
-
+  const [slippagePersent, setSlippagePersent] = useState<string | number>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
   const [switchValue, setSwitchValue] = useState(false)
-
+  const [lastCoinUpdated, setLastCoinUpdated] = useState<null | 'XTZ' | 'tzBTC'>(null)
   const [lqtReceived, setLqtReceived] = useState(0)
   const [minlqtReceived, setMinLqtReceived] = useState(0)
 
-  // handle slippage value changing
-  const slippageChangeHandler = (value: string, isInput?: boolean) => {
-    if (+value >= 0 && +value <= 100) {
-      setSlippageValue(value)
-    }
+  // Dynamic calculations for only XTZ block
+  const onlyXTZCalculations = (
+    coinName: 'XTZ' | 'tzBTC',
+    coinAmount: number | string,
+    newSlippagePersent?: number | string,
+  ) => {
+    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent || slippagePersent)
+    setInputValues({
+      ...inputValues,
+      [coinName]: coinAmount,
+    })
 
-    if (!isInput) {
-      setSeletedToggle(parseSrtToNum(value))
-    }
+    const tokemAmoutReceive = swapCalculateCoinReceive(
+      'XTZ',
+      'tzBTC',
+      parseSrtToNum(coinAmount),
+      xtz_pool,
+      token_pool,
+      convertedSlippagePersentToValue,
+      dex,
+    )
 
-    // TODO: add recalculation on slipage change
+    setOnlyXtzSwapData({
+      ...onlyXtzSwapData,
+      XTZ: parseSrtToNum(coinAmount) / 2,
+      tzBTC: tokemAmoutReceive.expected,
+    })
+
+    const { expected, minimum } = addLiquidityReturn(
+      parseSrtToNum(onlyXtzSwapData.XTZ),
+      xtz_pool,
+      lqt_total,
+      convertedSlippagePersentToValue,
+      dex,
+    )
+
+    setLqtReceived(expected.value)
+    setMinLqtReceived(minimum.value)
+  }
+
+  // Dynamic calculations for XTZ&tzBTC block
+  const xtzTzbtcCalculations = (
+    coinName: 'XTZ' | 'tzBTC',
+    coinAmount: number | string,
+    newSlippagePersent?: number | string,
+  ) => {
+    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent || slippagePersent)
+    const { liquidityExpected, liquidityMinimum, tokenRequired, xtzRequired } = addLiquidityCalculationsHandler(
+      coinName,
+      parseSrtToNum(coinAmount),
+      xtz_pool,
+      token_pool,
+      lqt_total,
+      convertedSlippagePersentToValue,
+      dex,
+    )
+
+    setLqtReceived(liquidityExpected.value)
+    setMinLqtReceived(liquidityMinimum.value)
+    setLastCoinUpdated(coinName)
+    setInputValues({
+      ...inputValues,
+      ...(coinName === 'XTZ' && tokenRequired
+        ? {
+            tzBTC: tokenRequired.value,
+            XTZ: coinAmount,
+          }
+        : {}),
+      ...(coinName === 'tzBTC' && xtzRequired
+        ? {
+            XTZ: xtzRequired.value,
+            tzBTC: coinAmount,
+          }
+        : {}),
+    })
   }
 
   // input hanlder
@@ -63,262 +128,99 @@ export const LBAddLiquidity = () => {
     const { name, value } = e.target
     if (+value < 0) return
 
-    if (name === 'XTZ') setLqtReceived(Math.floor((Number(value) * lqt_total) / xtz_pool))
-
     if (switchValue) {
-      setInputValues({
-        ...inputValues,
-        [name]: value,
-      })
+      // Only XTZ input
+      onlyXTZCalculations(name as 'XTZ' | 'tzBTC', value)
     } else {
-      const { liquidityExpected, liquidityMinimum, tokenRequired, xtzRequired } = addLiquidityCalculationsHandler(
-        name as 'XTZ' | 'tzBTC',
-        parseSrtToNum(value),
-        xtz_pool,
-        token_pool,
-        lqt_total,
-        parseSrtToNum(slippageValue),
-        dex,
-      )
-
-      setLqtReceived(liquidityExpected.value)
-      setMinLqtReceived(liquidityMinimum.value)
-      setInputValues({
-        ...inputValues,
-        ...(name === 'XTZ' && tokenRequired
-          ? {
-              tzBTC: tokenRequired.value,
-              XTZ: value,
-            }
-          : {}),
-        ...(name === 'tzBTC' && xtzRequired
-          ? {
-              XTZ: xtzRequired.value,
-              tzBTC: value,
-            }
-          : {}),
-      })
+      // XTZ & tzBTC inputs
+      xtzTzbtcCalculations(name as 'XTZ' | 'tzBTC', value)
     }
   }
 
-  // handle add liquidity button TODO: extract it
-  const addLiquidityHandler = async () => {
-    const Tezos = new TezosToolkit(env.rpcLink)
-    const lbContract = await Tezos.wallet.at(lqt_address)
-    const tzBtcContract = await Tezos.wallet.at(token_address)
-    const maxTokensSold = Math.floor(
-      parseSrtToNum(inputValues.tzBTC) + (parseSrtToNum(inputValues.tzBTC) * parseSrtToNum(slippageValue)) / 100,
-    )
-    const deadline = new Date(Date.now() + 60000).toISOString()
+  // slippage value changing handler
+  const slippageChangeHandler = (value: string, isInput?: boolean) => {
+    const newSlippageValue = parseSrtToNum(value) < 0 ? 0 : value
+    if (+newSlippageValue >= 0 && +newSlippageValue <= 100) {
+      setSlippagePersent(newSlippageValue)
 
-    const batchOp = await Tezos.wallet
-      .batch([
-        {
-          kind: OpKind.TRANSACTION,
-          ...tzBtcContract.methods.approve(lqt_address, 0).toTransferParams(),
-        },
-        {
-          kind: OpKind.TRANSACTION,
-          ...tzBtcContract.methods.approve(lqt_address, maxTokensSold).toTransferParams(),
-        },
-        {
-          kind: OpKind.TRANSACTION,
-          ...lbContract.methods.addLiquidity(accountPkh, lqtReceived - 3, maxTokensSold, deadline).toTransferParams(),
-          amount: parseSrtToNum(inputValues.XTZ),
-          mutez: true,
-        },
-        {
-          kind: OpKind.TRANSACTION,
-          ...tzBtcContract.methods.approve(lqt_address, 0).toTransferParams(),
-        },
-      ])
-      .send()
-    await batchOp.confirmation()
+      if (switchValue) {
+        // Only XTZ input
+        onlyXTZCalculations('XTZ', inputValues.XTZ, newSlippageValue)
+      } else if (!switchValue && lastCoinUpdated) {
+        // XTZ & tzBTC inputs
+        xtzTzbtcCalculations(lastCoinUpdated, inputValues[lastCoinUpdated], newSlippageValue)
+      }
+    }
+
+    if (!isInput) setSeletedToggle(parseSrtToNum(value))
   }
 
-  // If switch is enabled
-  const OnlyXTZ = () => (
-    <>
-      <Input
-        placeholder={'XTZ'}
-        name="XTZ"
-        onChange={inputChangeHandler}
-        type={'number'}
-        kind={'LB'}
-        value={inputValues.XTZ}
-        convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
-        icon={'XTZ_tezos'}
-        pinnedText={'XTZ'}
-        useMaxHandler={() => {
-          inputChangeHandler({
-            target: {
-              name: 'XTZ',
-              value: xtzBalance,
-            },
+  // handle add liquidity button with xtz and tzbtc
+  const addLiquidityBtnHandler = async () => {
+    try {
+      if (!accountPkh) return
+      const Tezos = new TezosToolkit(env.rpcLink)
+      const lbContract = await Tezos.wallet.at(address)
+      const tzBtcContract = await Tezos.wallet.at(token_address)
+      const deadline = new Date(Date.now() + 60000).toISOString()
+      const convertedSlippagePersentToValue = slippagePersentToValue(slippagePersent)
+
+      if (switchValue) {
+        try {
+          await addLiquidityHandler({
+            tzBTCAmount: inputValues.tzBTC,
+            xtzAmount: inputValues.XTZ,
+            lbContract,
+            accountAddress: accountPkh,
+            slippage: convertedSlippagePersentToValue,
+            tzBtcContract,
+            deadline,
+            Tezos,
+            lbAddress: address,
+            lqtReceived,
           })
-        }}
-        userBalance={xtzBalance}
-        onBlur={() => {
-          if (inputValues.XTZ === '') {
-            setInputValues({
-              ...inputValues,
-              XTZ: 0,
-            })
-          }
-        }}
-        onFocus={() => {
-          if (parseSrtToNum(inputValues.XTZ) === 0) {
-            setInputValues({
-              ...inputValues,
-              XTZ: '',
-            })
-          }
-        }}
-      />
+        } catch (e: any) {
+          console.error('add liquidity xtz&tzBTC error', e.message)
+        }
+      } else {
+        // Performing swap
+        try {
+          await xtzToTzBTCSwap({
+            dex,
+            token_pool,
+            xtz_pool,
+            deadline,
+            lbContract,
+            xtzAmount: parseSrtToNum(inputValues.XTZ) / 2,
+            slippage: convertedSlippagePersentToValue,
+            accountAddress: accountPkh,
+          })
+        } catch (e: any) {
+          console.error('add liquidity only xtz swap error', e.message)
+        }
 
-      <div className="step-wrapper">
-        <StepBlock style={{ marginTop: '20px' }}>
-          <div className="step">1</div>
-          Swap
-        </StepBlock>
-
-        <CoinSwap
-          icon={{ name: 'exchange', width: 22, height: 15 }}
-          XTZCoinData={{
-            icon: 'XTZ_tezos',
-            amount: Number(inputValues.XTZ),
-          }}
-          tzBTCCoinData={{
-            icon: 'tzBTC',
-            amount: coinPrices.tezos.usd / coinPrices.tzbtc.usd,
-          }}
-        />
-        <HorisontalInfo>
-          <CustomizedText fontWidth={500}>Minimum tzBTC Received</CustomizedText>
-
-          <CustomizedText fontWidth={500} color={cyanColor}>
-            <CommaNumber value={0} showDecimal endingText="tzBTC" />
-          </CustomizedText>
-        </HorisontalInfo>
-      </div>
-
-      <hr />
-
-      <div className="step-wrapper">
-        <StepBlock>
-          <div className="step">2</div>Add Liquidity
-        </StepBlock>
-
-        <CoinSwap
-          icon={{ name: 'plus', width: 8, height: 14 }}
-          XTZCoinData={{
-            icon: 'XTZ_tezos',
-            amount: Number(inputValues.XTZ),
-          }}
-          tzBTCCoinData={{
-            icon: 'tzBTC',
-            amount: (coinPrices.tezos.usd * Number(inputValues.XTZ)) / coinPrices.tzbtc.usd,
-          }}
-        />
-        <HorisontalInfo>
-          <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
-
-          <CustomizedText fontWidth={500} color={cyanColor}>
-            <CommaNumber value={lqtReceived} showDecimal endingText="LBT" />
-          </CustomizedText>
-        </HorisontalInfo>
-      </div>
-    </>
-  )
-
-  // If switch is disabled
-  const XtzAndTzBTC = () => (
-    <>
-      <div className="input-wrapper">
-        <Input
-          placeholder={'XTZ'}
-          name="XTZ"
-          onChange={inputChangeHandler}
-          type={'number'}
-          kind={'LB'}
-          value={inputValues.XTZ}
-          convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
-          icon={'XTZ_tezos'}
-          pinnedText={'XTZ'}
-          useMaxHandler={() => {
-            inputChangeHandler({
-              target: {
-                name: 'XTZ',
-                value: xtzBalance,
-              },
-            })
-          }}
-          userBalance={xtzBalance}
-          onBlur={() => {
-            if (inputValues.XTZ === '') {
-              setInputValues({
-                ...inputValues,
-                XTZ: 0,
-              })
-            }
-          }}
-          onFocus={() => {
-            if (parseSrtToNum(inputValues.XTZ) === 0) {
-              setInputValues({
-                ...inputValues,
-                XTZ: '',
-              })
-            }
-          }}
-        />
-        <span>+</span>
-        <Input
-          placeholder={'tzBTC'}
-          name="tzBTC"
-          onChange={inputChangeHandler}
-          type={'number'}
-          kind={'LB'}
-          value={inputValues.tzBTC}
-          convertedValue={parseSrtToNum(inputValues.tzBTC) * coinPrices.tzbtc.usd}
-          icon={'tzBTC'}
-          pinnedText={'tzBTC'}
-          useMaxHandler={() => {
-            inputChangeHandler({
-              target: {
-                name: 'tzBTC',
-                value: tzBTCBalance,
-              },
-            })
-          }}
-          userBalance={tzBTCBalance}
-          onBlur={() => {
-            if (inputValues.tzBTC === '') {
-              setInputValues({
-                ...inputValues,
-                tzBTC: 0,
-              })
-            }
-          }}
-          onFocus={() => {
-            if (parseSrtToNum(inputValues.tzBTC) === 0) {
-              setInputValues({
-                ...inputValues,
-                tzBTC: '',
-              })
-            }
-          }}
-        />
-      </div>
-
-      <HorisontalInfo>
-        <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
-
-        <CustomizedText fontWidth={500} color={cyanColor}>
-          <CommaNumber value={lqtReceived} showDecimal endingText="LBT" />
-        </CustomizedText>
-      </HorisontalInfo>
-    </>
-  )
+        // Performing add Liquidity
+        try {
+          await addLiquidityHandler({
+            tzBTCAmount: onlyXtzSwapData.tzBTC,
+            xtzAmount: onlyXtzSwapData.XTZ,
+            lbContract,
+            accountAddress: accountPkh,
+            slippage: convertedSlippagePersentToValue,
+            tzBtcContract,
+            deadline,
+            Tezos,
+            lbAddress: address,
+            lqtReceived,
+          })
+        } catch (e: any) {
+          console.error('add liquidity only xtz add liquidity error', e.message)
+        }
+      }
+    } catch (e: any) {
+      console.error('addLiquidityBtnHandler initializing params error', e.message)
+    }
+  }
 
   return (
     <ActionScreenWrapper className="liquidity swap">
@@ -335,10 +237,7 @@ export const LBAddLiquidity = () => {
               type="checkbox"
               checked={switchValue}
               onChange={() => {
-                setInputValues({
-                  XTZ: 0,
-                  tzBTC: 0,
-                })
+                setInputValues(DEFAULT_COINS_AMOUNT)
                 setSwitchValue(!switchValue)
               }}
             />
@@ -354,12 +253,27 @@ export const LBAddLiquidity = () => {
 
       <hr />
 
-      {switchValue ? <OnlyXTZ /> : <XtzAndTzBTC />}
+      {switchValue ? (
+        <AddLiquidityOnlyXTZ
+          inputValues={inputValues}
+          inputChangeHandler={inputChangeHandler}
+          lqtReceived={lqtReceived}
+          setInputValues={setInputValues}
+          swapData={onlyXtzSwapData}
+        />
+      ) : (
+        <AddLiquidityDefault
+          inputValues={inputValues}
+          inputChangeHandler={inputChangeHandler}
+          lqtReceived={lqtReceived}
+          setInputValues={setInputValues}
+        />
+      )}
 
       <Button
         text={'Add Liquidity'}
         icon={'plusDark'}
-        onClick={addLiquidityHandler}
+        onClick={addLiquidityBtnHandler}
         className="addLiquidity_btn LB"
         kind={PRIMARY}
       />
@@ -378,13 +292,13 @@ export const LBAddLiquidity = () => {
             kind="primary"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => slippageChangeHandler(e.target.value, true)}
             type={'tel'}
-            value={slippageValue}
+            value={slippagePersent}
             onBlur={() => {
-              if (slippageValue === '') setSlippageValue('0')
+              if (slippagePersent === '') setSlippagePersent('0')
             }}
             onFocus={() => {
-              if (parseSrtToNum(slippageValue) === 0) {
-                setSlippageValue('')
+              if (parseSrtToNum(slippagePersent) === 0) {
+                setSlippagePersent('')
               }
             }}
           />

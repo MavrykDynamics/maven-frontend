@@ -38,6 +38,11 @@ export const parseSrtToNum = (arg: string | number): number => {
   return 0
 }
 
+export const slippagePersentToValue = (slippagePersent: string | number): number => {
+  const convertedPersent = parseSrtToNum(slippagePersent)
+  return 1 / 100 * convertedPersent
+}
+
 export const inputNumberValidation = (value: number | string): any => value >= 0 || value === ''
 
 export const calculateAPY = (xtzPool: number): number => {

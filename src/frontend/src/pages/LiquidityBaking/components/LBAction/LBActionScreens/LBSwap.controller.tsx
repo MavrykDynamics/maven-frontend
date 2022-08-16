@@ -1,19 +1,14 @@
 import { TezosToolkit } from '@taquito/taquito'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { swapCalculateCoinReceive } from 'utils/DEX/swapUtils'
 import env from 'utils/env'
-
-import {
-  getSettings,
-  tokenToXtzMinimumXtzOutput,
-  tokenToXtzXtzOutput,
-  xtzToTokenMinimumTokenOutput,
-  xtzToTokenTokenOutput,
-} from 'utils/DEX/DexCalcs'
+import { getSettings } from 'utils/DEX/DexCalcs'
+import { parseSrtToNum, slippagePersentToValue } from 'utils/utils'
+import { xtzToTzBTCSwap, tzbtcToXtzSwap } from '../helpers/swap.utils'
 
 import { State } from 'utils/interfaces'
 
@@ -29,7 +24,6 @@ import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
 import { cyanColor } from 'styles'
 import { ActionScreenWrapper } from '../LBAction.style'
-import { parseSrtToNum } from 'utils/utils'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -39,6 +33,15 @@ type CoinsOrderType = {
 type CoinsInputsValues = {
   XTZ: string | number
   tzBTC: string | number
+}
+const DEFAULT_COINS_ORDER: CoinsOrderType = {
+  from: 'XTZ',
+  to: 'tzBTC',
+}
+
+const DEFAULT_COINS_AMOUNT = {
+  XTZ: 0,
+  tzBTC: 0,
 }
 
 const dex = getSettings('liquidity')
@@ -52,16 +55,11 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
   const [selectedSlippage, setSelectedSlippage] = useState<number>(SLIPPAGE_TOGGLE_VALUES[0].value)
-  const [slippageValue, setSlippageValue] = useState<string>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
-
+  const [slippagePersent, setSlippagePersent] = useState<string | number>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
   const [minReceived, setMinReceived] = useState(0)
   const [priceImpact, setPriceImpact] = useState(0)
-
-  const [isRevertedCoins, setIsRevertedCoins] = useState<CoinsOrderType>({
-    from: 'XTZ',
-    to: 'tzBTC',
-  })
-  const [inputValues, setInputValues] = useState<CoinsInputsValues>({ XTZ: 0, tzBTC: 0 })
+  const [isRevertedCoins, setIsRevertedCoins] = useState<CoinsOrderType>(DEFAULT_COINS_ORDER)
+  const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
 
   const BALANCE_BY_COIN = useMemo(
     () => ({
@@ -71,23 +69,25 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     [tzBTCBalance, xtzBalance],
   )
 
-  // handle slippage value changing
-  const slippageChangeHandler = (value: string, isInput?: boolean) => {
-    if (+value >= 0 && +value <= 100) {
-      setSlippageValue(value)
-    }
-
-    if (!isInput) {
-      setSelectedSlippage(parseSrtToNum(value))
-    }
-
+  const dynamicSwapCalculations = ({
+    newSlippageValue,
+    newCoinAmountValue,
+    newFromValue,
+    newToValue,
+  }: {
+    newSlippageValue?: string | number
+    newCoinAmountValue?: string | number
+    newFromValue?: 'XTZ' | 'tzBTC'
+    newToValue?: 'XTZ' | 'tzBTC'
+  }) => {
+    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippageValue || slippagePersent)
     const { expected, priceImpact, minimum } = swapCalculateCoinReceive(
-      isRevertedCoins.from,
-      isRevertedCoins.to,
-      parseSrtToNum(inputValues[isRevertedCoins.from]),
+      newFromValue || isRevertedCoins.from,
+      newToValue || isRevertedCoins.to,
+      parseSrtToNum(newCoinAmountValue || inputValues[isRevertedCoins.from]),
       xtz_pool,
       token_pool,
-      parseSrtToNum(slippageValue),
+      convertedSlippagePersentToValue,
       dex,
     )
 
@@ -97,6 +97,19 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     })
     setMinReceived(minimum)
     setPriceImpact(priceImpact)
+  }
+
+  // handle slippage value changing
+  const slippageChangeHandler = (value: string, isInput?: boolean) => {
+    const newSlippageValue = parseSrtToNum(value) < 0 ? 0 : value
+    if (+newSlippageValue >= 0 && +newSlippageValue <= 100) {
+      setSlippagePersent(newSlippageValue)
+      dynamicSwapCalculations({ newSlippageValue })
+    }
+
+    if (!isInput) {
+      setSelectedSlippage(parseSrtToNum(value))
+    }
   }
 
   // handling dynamic filling second input on input change
@@ -113,87 +126,67 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
       })
     }
 
-    // old calculations
-    // const receiveInputValue = swapCalculateCoinReceive(isRevertedCoins.from, isRevertedCoins.to, Number(value), {
-    //   xtzPool: xtz_pool,
-    //   tokenPool: token_pool,
-    // })
-
-    const { expected, priceImpact, minimum } = swapCalculateCoinReceive(
-      isTypingBottomInput ? isRevertedCoins.to : isRevertedCoins.from,
-      isTypingBottomInput ? isRevertedCoins.from : isRevertedCoins.to,
-      parseSrtToNum(value),
-      xtz_pool,
-      token_pool,
-      parseSrtToNum(slippageValue),
-      dex,
-    )
-
-    setInputValues({
-      ...inputValues,
-      [isTypingBottomInput ? isRevertedCoins.from : isRevertedCoins.to]: parseSrtToNum(expected.toFixed(5)),
-      [name]: value,
+    dynamicSwapCalculations({
+      newCoinAmountValue: value,
+      newFromValue: isTypingBottomInput ? isRevertedCoins.to : isRevertedCoins.from,
+      newToValue: isTypingBottomInput ? isRevertedCoins.from : isRevertedCoins.to,
     })
-    setMinReceived(minimum)
-    setPriceImpact(priceImpact)
   }
 
   // performing swap for xtz=>tzBTC & tzBTC=>xtz
   const swapBtnHandler = async () => {
-    const Tezos = new TezosToolkit(env.rpcLink)
-    const lbContract = await Tezos.wallet.at(address)
-    const deadline = new Date(Date.now() + 60000).toISOString()
+    if (!accountPkh) return
+    try {
+      const Tezos = new TezosToolkit(env.rpcLink)
+      const lbContract = await Tezos.wallet.at(address)
+      const deadline = new Date(Date.now() + 60000).toISOString()
 
-    // if XTZ => tzBTC perform %xtzToToken
-    if (isRevertedCoins.from === 'XTZ' && isRevertedCoins.to === 'tzBTC') {
-      const expected = xtzToTokenTokenOutput(
-        parseSrtToNum(inputValues.XTZ),
-        xtz_pool,
-        token_pool,
-        dex.fee,
-        dex.burn,
-        dex.includeSubsidy,
-      )
-
-      if (expected) {
-        const minTokensBought = xtzToTokenMinimumTokenOutput(expected, parseFloat(slippageValue))
-        const op = await lbContract.methods.xtzToToken(accountPkh, minTokensBought, deadline).send()
-        await op.confirmation()
+      // if XTZ => tzBTC perform %xtzToToken
+      if (isRevertedCoins.from === 'XTZ' && isRevertedCoins.to === 'tzBTC') {
+        try {
+          await xtzToTzBTCSwap({
+            dex,
+            token_pool,
+            xtz_pool,
+            deadline,
+            lbContract,
+            xtzAmount: inputValues.XTZ,
+            slippage: slippagePersent,
+            accountAddress: accountPkh,
+          })
+        } catch (e: any) {
+          console.error('swap XTZ => tzBTC error', e.message)
+        }
       }
-    }
 
-    // if tzBTC => XTZ perform %tokenToXtz
-    if (isRevertedCoins.from === 'tzBTC' && isRevertedCoins.to === 'XTZ') {
-      const tzBtcContract = await Tezos.wallet.at(token_address)
-
-      const expected = tokenToXtzXtzOutput(
-        parseSrtToNum(inputValues.tzBTC),
-        xtz_pool,
-        token_pool,
-        dex.fee,
-        dex.burn,
-        dex.includeSubsidy,
-      )
-
-      if (expected) {
-        const minXtzBought = tokenToXtzMinimumXtzOutput(expected, parseSrtToNum(slippageValue))
-
-        const batch = Tezos.wallet
-          .batch()
-          .withContractCall(tzBtcContract.methods.approve(address, 0))
-          .withContractCall(tzBtcContract.methods.approve(address, parseSrtToNum(inputValues.tzBTC)))
-          .withContractCall(
-            lbContract.methods.tokenToXtz(accountPkh, parseSrtToNum(inputValues.tzBTC), minXtzBought, deadline),
-          )
-        const batchOp = await batch.send()
-        await batchOp.confirmation()
+      // if tzBTC => XTZ perform %tokenToXtz
+      if (isRevertedCoins.from === 'tzBTC' && isRevertedCoins.to === 'XTZ') {
+        try {
+          const tzBtcContract = await Tezos.wallet.at(token_address)
+          await tzbtcToXtzSwap({
+            dex,
+            token_pool,
+            xtz_pool,
+            deadline,
+            lbContract,
+            Tezos,
+            tzBtcContract,
+            tzBTCAmount: inputValues.XTZ,
+            slippage: slippagePersent,
+            accountAddress: accountPkh,
+          })
+        } catch (e: any) {
+          console.error('swap tzBTC => XTZ error', e.message)
+        }
       }
-    }
 
-    setInputValues({
-      XTZ: 0,
-      tzBTC: 0,
-    })
+      setInputValues({
+        XTZ: 0,
+        tzBTC: 0,
+      })
+    } catch (e: any) {
+      console.error('swapBtnHandler initializing params error', e.message)
+    }
   }
 
   // handling use max button
@@ -204,25 +197,13 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
         to,
       })
 
-      const { expected, priceImpact, minimum } = swapCalculateCoinReceive(
-        from,
-        to,
-        BALANCE_BY_COIN[from],
-        xtz_pool,
-        token_pool,
-        parseFloat(slippageValue),
-        dex,
-      )
-
-      setInputValues({
-        ...inputValues,
-        [to]: expected,
-        [from]: BALANCE_BY_COIN[from],
+      dynamicSwapCalculations({
+        newCoinAmountValue: BALANCE_BY_COIN[from],
+        newFromValue: from,
+        newToValue: to,
       })
-      setMinReceived(minimum)
-      setPriceImpact(priceImpact)
     },
-    [BALANCE_BY_COIN, inputValues, slippageValue, token_pool, xtz_pool],
+    [BALANCE_BY_COIN, inputValues, slippagePersent, token_pool, xtz_pool],
   )
 
   return (
@@ -349,13 +330,13 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
             kind="primary"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => slippageChangeHandler(e.target.value, true)}
             type={'tel'}
-            value={slippageValue}
+            value={slippagePersent}
             onBlur={() => {
-              if (slippageValue === '') setSlippageValue('0')
+              if (slippagePersent === '') setSlippagePersent('0')
             }}
             onFocus={() => {
-              if (parseSrtToNum(slippageValue) === 0) {
-                setSlippageValue('')
+              if (parseSrtToNum(slippagePersent) === 0) {
+                setSlippagePersent('')
               }
             }}
           />
