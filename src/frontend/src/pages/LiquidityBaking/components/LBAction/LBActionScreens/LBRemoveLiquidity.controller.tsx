@@ -28,7 +28,7 @@ const dex = getSettings('liquidity')
 
 export const LBRemoveLiquidity = () => {
   const {
-    lbData: { xtz_pool, token_pool, lqt_address, lqt_total },
+    lbData: { xtz_pool, token_pool, address, lqt_total },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
   const { accountPkh } = useSelector((state: State) => state.wallet)
@@ -110,7 +110,7 @@ export const LBRemoveLiquidity = () => {
     try {
       if (!accountPkh) return
       const Tezos = new TezosToolkit(env.rpcLink)
-      const lbContract = await Tezos.wallet.at(lqt_address)
+      const lbContract = await Tezos.wallet.at(address)
       const deadline = new Date(Date.now() + 60000).toISOString()
 
       try {
