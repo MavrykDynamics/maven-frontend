@@ -17,7 +17,7 @@ export const CoinSwapStyled = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const CoinSwapCoinWrapper = styled.div`
+export const CoinSwapCoinWrapper = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   align-items: center;
 
@@ -25,5 +25,6 @@ export const CoinSwapCoinWrapper = styled.div`
     width: 36px;
     height: 36px;
     margin-right: 15px;
+    fill: ${({ theme }) => theme.darkBackroundColor};
   }
 `

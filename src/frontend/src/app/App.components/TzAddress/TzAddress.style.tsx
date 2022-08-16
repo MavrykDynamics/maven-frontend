@@ -9,7 +9,7 @@ export const TzAddressContainer = styled.div`
 `
 export const TzAddressStyled = styled.div<{ theme: MavrykTheme }>`
   &.primary {
-    color: #86D4C9;
+    color: #86d4c9;
   }
 
   &.secondary {
@@ -36,7 +36,8 @@ export const TzAddressIcon = styled.svg<{ theme: MavrykTheme }>`
   margin-left: 8px;
 
   &.primary {
-    stroke: #86D4C9;
+    stroke: #86d4c9;
+    fill: transparent;
   }
 
   &.secondary {

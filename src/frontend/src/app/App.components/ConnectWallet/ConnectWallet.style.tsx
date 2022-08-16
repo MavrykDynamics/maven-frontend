@@ -39,6 +39,7 @@ export const WalletConnectedButton = styled.div<{ theme: MavrykTheme }>`
     > div {
       svg {
         stroke: ${({ theme }) => theme.labelColor};
+        fill: transparent;
         width: 18px;
         height: 18px;
         margin-left: 6px;

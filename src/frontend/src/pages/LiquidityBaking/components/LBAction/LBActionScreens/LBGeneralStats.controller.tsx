@@ -13,6 +13,8 @@ export const LBGeneralStats = () => {
     lbData: { address },
     stats: { tradeVolume, tvlUSD, avgTradingSize, users, interactions },
   } = useSelector((state: State) => state.tokens)
+  const { chartDataArea } = useSelector((state: State) => state.chart)
+
   return (
     <ActionScreenWrapper className="stats">
       <HorisontalInfo>
@@ -25,10 +27,10 @@ export const LBGeneralStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Latest Price (fix)
+          Latest Price
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={0.00007554} endingText="tzBTC" />
+          <CommaNumber value={chartDataArea.at(-1)?.y || 0} endingText="tzBTC" />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>

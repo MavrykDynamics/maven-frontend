@@ -11,6 +11,7 @@ query TokenDataQuery {
     }
     trades {
       tezQty
+      timestamp
     }
   }
   stats1d(

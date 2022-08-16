@@ -47,6 +47,7 @@ export const InputComponentContainer = styled.div<{ theme: MavrykTheme }>`
       width: 36px;
       height: 36px;
       margin-right: 10px;
+      fill: ${({ theme }) => theme.darkBackroundColor};
     }
   }
 
