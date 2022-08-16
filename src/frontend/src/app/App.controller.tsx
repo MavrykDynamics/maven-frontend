@@ -27,7 +27,7 @@ export const App = () => {
   return (
     <Router>
       {/* <Popup /> */}
-      {/* <Header /> */}
+      <Header />
       <Switch>
         <Route
           exact
