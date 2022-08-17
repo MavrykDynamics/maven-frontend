@@ -84,7 +84,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     const { expected, priceImpact, minimum } = swapCalculateCoinReceive(
       newFromValue || isRevertedCoins.from,
       newToValue || isRevertedCoins.to,
-      parseSrtToNum(newCoinAmountValue || inputValues[isRevertedCoins.from]),
+      parseSrtToNum(newCoinAmountValue ?? inputValues[isRevertedCoins.from]),
       xtz_pool,
       token_pool,
       convertedSlippagePersentToValue,
@@ -93,7 +93,8 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
 
     setInputValues({
       ...inputValues,
-      [isRevertedCoins.to]: parseSrtToNum(expected.toFixed(5)),
+      [newFromValue || isRevertedCoins.from]: newCoinAmountValue ?? inputValues[isRevertedCoins.from],
+      [newToValue || isRevertedCoins.to]: parseSrtToNum(expected.toFixed(5)),
     })
     setMinReceived(minimum)
     setPriceImpact(priceImpact)
