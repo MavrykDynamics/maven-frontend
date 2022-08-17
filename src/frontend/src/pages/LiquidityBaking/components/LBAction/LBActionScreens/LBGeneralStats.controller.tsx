@@ -10,7 +10,7 @@ import { State } from 'utils/interfaces'
 
 export const LBGeneralStats = () => {
   const {
-    lbData: { address },
+    lbData: { address, xtz_pool, token_pool },
     stats: { tradeVolume, tvlUSD, avgTradingSize, users, interactions },
   } = useSelector((state: State) => state.tokens)
   const { chartDataArea } = useSelector((state: State) => state.chart)
@@ -35,7 +35,7 @@ export const LBGeneralStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Trade volume
+          Trade volume (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
           <CommaNumber value={tradeVolume} endingText="tzBTC" />
@@ -43,7 +43,7 @@ export const LBGeneralStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Average trade size
+          Average trade size (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
           <CommaNumber value={avgTradingSize} endingText="tzBTC" />
@@ -51,10 +51,10 @@ export const LBGeneralStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          YTVL in XTZ/tzBTC (fix)
+          YTVL in XTZ/tzBTC
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={9018659} />/<CommaNumber value={8789} />
+          <CommaNumber value={xtz_pool} />/<CommaNumber value={token_pool} />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
@@ -67,7 +67,7 @@ export const LBGeneralStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Interactions
+          Interactions (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
           <CommaNumber value={interactions} />
@@ -75,7 +75,7 @@ export const LBGeneralStats = () => {
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Unique Users
+          Unique Users (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
           <CommaNumber value={users} />
