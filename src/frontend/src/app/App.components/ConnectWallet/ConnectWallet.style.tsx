@@ -21,6 +21,10 @@ export const ConnectWalletStyled = styled.div`
     margin: 0 auto;
     margin-bottom: 25px;
   }
+
+  &.addLiq-action {
+    margin-top: 15px;
+  }
 `
 
 export const WalletConnectedButton = styled.div<{ theme: MavrykTheme }>`

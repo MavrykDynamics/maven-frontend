@@ -17,6 +17,7 @@ export const PriceImpact = ({ priceImpact }: { priceImpact: number }) => {
             beginningText={priceImpact === 0 ? '' : priceImpact > 0 ? '+' : '-'}
             value={priceImpact}
             showDecimal
+            decimalsToShow={5}
             endingText="%"
           />
         </PriceChange>

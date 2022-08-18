@@ -23,10 +23,11 @@ import { getSettings } from 'utils/DEX/DexCalcs'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { removeLiquidityHandler } from '../helpers/addAndRemoveLiquidity.utils'
 import { AddLiquidutityInputChangeEventType } from '../helpers/actionsScreen.types'
+import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 
 const dex = getSettings('liquidity')
 
-export const LBRemoveLiquidity = () => {
+export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
   const {
     lbData: { xtz_pool, token_pool, address, lqt_total },
     coinPrices,
@@ -188,13 +189,17 @@ export const LBRemoveLiquidity = () => {
 
       <hr />
 
-      <Button
-        text={'Remove Liquidity'}
-        icon={'minus'}
-        onClick={removeLiquidityBtnHandler}
-        className="removeLiquidity_btn LB"
-        kind={PRIMARY}
-      />
+      {ready ? (
+        <Button
+          text={'Remove Liquidity'}
+          icon={'minus'}
+          onClick={removeLiquidityBtnHandler}
+          className="removeLiquidity_btn LB"
+          kind={PRIMARY}
+        />
+      ) : (
+        <ConnectWallet className="swap-action" />
+      )}
 
       <LBActionBottomWrapperStyled>
         <PriceImpact priceImpact={0} />

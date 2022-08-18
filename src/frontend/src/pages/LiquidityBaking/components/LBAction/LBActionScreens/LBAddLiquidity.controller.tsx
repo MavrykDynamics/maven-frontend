@@ -25,13 +25,14 @@ import { addLiquidityHandler } from '../helpers/addAndRemoveLiquidity.utils'
 import { swapCalculateCoinReceive } from 'utils/DEX/swapUtils'
 import { Button } from 'app/App.components/Button/Button.controller'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
+import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 
 const DEFAULT_COINS_AMOUNT = {
   XTZ: 0,
   tzBTC: 0,
 }
 
-export const LBAddLiquidity = () => {
+export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
   const {
     lbData: { xtz_pool, token_pool, address, token_address, lqt_total },
   } = useSelector((state: State) => state.tokens)
@@ -270,13 +271,17 @@ export const LBAddLiquidity = () => {
         />
       )}
 
-      <Button
-        text={'Add Liquidity'}
-        icon={'plusDark'}
-        onClick={addLiquidityBtnHandler}
-        className="addLiquidity_btn LB"
-        kind={PRIMARY}
-      />
+      {ready ? (
+        <Button
+          text={'Add Liquidity'}
+          icon={'plusDark'}
+          onClick={addLiquidityBtnHandler}
+          className="addLiquidity_btn LB"
+          kind={PRIMARY}
+        />
+      ) : (
+        <ConnectWallet className="swap-action addLiq-action" />
+      )}
 
       <LBActionBottomWrapperStyled>
         <PriceImpact priceImpact={0} />

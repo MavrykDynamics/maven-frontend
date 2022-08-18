@@ -43,7 +43,6 @@ export const xtzToTokenTokenOutput = (
 }
 
 export const xtzToTokenMinimumTokenOutput = (tokenOut: number, allowedSlippage: number) => {
-  //TODO: check this fn why slippage is in a range from 0 to 1?
   if (tokenOut > 0 && allowedSlippage >= 0 && allowedSlippage <= 1) {
     const _tokenOut = new BigNumber(tokenOut).times(1e3)
     const _slippage = new BigNumber(Math.floor(allowedSlippage * 1e3 * 100))
@@ -105,14 +104,17 @@ export const tokenToXtzXtzOutput = (
   if (includeSubsidy) {
     _xtzPool = creditSubsidy(_xtzPool).toNumber()
   }
-
+  
   const BNtokenIn = new BigNumber(tokenIn)
   const BNxtzPool = new BigNumber(_xtzPool)
   const BNtokenPool = new BigNumber(tokenPool)
-  const feeMultiplier = new BigNumber((1e3 - Math.floor(feePercent * 10)) * 1e3 - Math.floor(burnPercent * 10))
+  const fee = new BigNumber(1e3).minus(Math.floor(feePercent * 10))
+  const burn = new BigNumber(1e3).minus(Math.floor(burnPercent * 10))
+  const feeAndBurnMultiplier = fee.times(burn)
+  const feeMultiplier = fee.times(1e3)
 
   if (BNtokenIn.comparedTo(0) === 1 && BNxtzPool.comparedTo(0) === 1 && BNtokenPool.comparedTo(0) === 1) {
-    const numerator = BNtokenIn.times(BNxtzPool).times(feeMultiplier)
+    const numerator = BNtokenIn.times(BNxtzPool).times(feeAndBurnMultiplier)
     const denominator = BNtokenPool.times(1e6).plus(BNtokenIn).times(feeMultiplier)
 
     return numerator.dividedBy(denominator).toNumber()
@@ -157,7 +159,6 @@ export const tokenToXtzPriceImpact = (
   return null
 }
 
-//TODO: check this fn why slippage is in a range from 0 to 1?
 export const tokenToXtzMinimumXtzOutput = (xtzOut: number, allowedSlippage: number) => {
   if (xtzOut > 0 && allowedSlippage >= 0 && allowedSlippage <= 1) {
     const _xtzOut = new BigNumber(xtzOut).times(1e3)

@@ -48,9 +48,10 @@ const FIRST_TOGGLER_VALUES = [
 export const LBAction = () => {
   const [fBtnSelected, setFBtnSelected] = useState(FIRST_TOGGLER_VALUES[0].value as 'swap' | 'stats' | 'liquidity')
 
-  const sTogglerValues = useMemo(() => FIRST_TOGGLER_VALUES.find(({ value }) => value === fBtnSelected)?.subToggler, [
-    fBtnSelected,
-  ])
+  const sTogglerValues = useMemo(
+    () => FIRST_TOGGLER_VALUES.find(({ value }) => value === fBtnSelected)?.subToggler,
+    [fBtnSelected],
+  )
   const [sBtnSelected, setSBtnSelected] = useState(sTogglerValues?.[0].value || '')
 
   const { ready } = useSelector((state: State) => state.wallet)
@@ -79,8 +80,8 @@ export const LBAction = () => {
       {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap ready={ready} /> : null}
       {fBtnSelected === 'stats' && sBtnSelected === 'personal' ? <LBPersonalStats /> : null}
       {fBtnSelected === 'stats' && sBtnSelected === 'general' ? <LBGeneralStats /> : null}
-      {fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' ? <LBAddLiquidity /> : null}
-      {fBtnSelected === 'liquidity' && sBtnSelected === 'remove liquidity' ? <LBRemoveLiquidity /> : null}
+      {fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' ? <LBAddLiquidity ready={ready} /> : null}
+      {fBtnSelected === 'liquidity' && sBtnSelected === 'remove liquidity' ? <LBRemoveLiquidity ready={ready} /> : null}
     </LBActionStyled>
   )
 }
