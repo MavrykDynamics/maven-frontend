@@ -53,6 +53,10 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
+  .right-wrapper-mobile {
+    display: none;
+  }
+
   .chart-wrapper {
     height: 420px;
     width: 100%;
@@ -105,10 +109,23 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
-  @media screen and (max-width: 490px) {
+  @media screen and (max-width: 550px) {
     .chart-controlls {
       .right-wrapper {
-        align-items: center;
+        display: none;
+      }
+    }
+
+    .right-wrapper-mobile {
+      width: 100%;
+      margin-left: 0;
+      justify-content: center;
+      column-gap: 15px;
+      display: flex;
+      margin-bottom: 10px;
+
+      > div {
+        margin: 0;
       }
     }
   }

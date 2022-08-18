@@ -54,6 +54,24 @@ export const LBChartView = ({
   chartData,
   selectedChartType,
 }: LBChartViewProps) => {
+  const ChartControllsButtons = ({ className }: { className?: string }) => (
+    <div className={className}>
+      <ToggleButton
+        values={intervalData}
+        selected={selectedInterval}
+        handleSetSelectedToggler={(value: unknown) => changeSelectedInterval(value as IntervalType)}
+        className="chart-toggler"
+      />
+      <Button
+        text={''}
+        icon="toggleChartType"
+        className={`toggleChart ${selectedChartType} LB`}
+        kind="transparent"
+        onClick={changeSelectedChartType}
+      />
+    </div>
+  )
+
   return (
     <ChartStyled>
       <div className="chart-controlls">
@@ -71,21 +89,7 @@ export const LBChartView = ({
             </CustomizedText>
           </div>
         </div>
-        <div className="right-wrapper">
-          <ToggleButton
-            values={intervalData}
-            selected={selectedInterval}
-            handleSetSelectedToggler={(value: unknown) => changeSelectedInterval(value as IntervalType)}
-            className="chart-toggler"
-          />
-          <Button
-            text={''}
-            icon="toggleChartType"
-            className={`toggleChart ${selectedChartType} LB`}
-            kind="transparent"
-            onClick={changeSelectedChartType}
-          />
-        </div>
+        <ChartControllsButtons className="right-wrapper" />
       </div>
       {chartData.length ? (
         <div className="chart-wrapper">
@@ -96,6 +100,8 @@ export const LBChartView = ({
           )}
         </div>
       ) : null}
+
+      <ChartControllsButtons className="right-wrapper-mobile" />
     </ChartStyled>
   )
 }
