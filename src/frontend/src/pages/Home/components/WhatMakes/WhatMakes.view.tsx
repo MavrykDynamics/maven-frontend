@@ -12,7 +12,7 @@ export const WhatMakesView = () => {
   if (!data.length) return null
 
   return (
-    <WhatMakesStyled>
+    <WhatMakesStyled id="whatMakes">
       <WhatMakesContainerStyled>
         <h2>What Makes Mavryk Unique</h2>
         <WhatMakesArticlesStyled>

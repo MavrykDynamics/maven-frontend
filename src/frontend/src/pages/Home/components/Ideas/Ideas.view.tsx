@@ -1,5 +1,3 @@
-import { group } from 'console'
-import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import Carousel from '../../../../app/App.components/Carousel/Carousel.view'
@@ -35,7 +33,7 @@ export const IdeasView = () => {
 
   // will be Ideas
   return (
-    <IdeasSection>
+    <IdeasSection id="ideasSection">
       <h2>Ideas</h2>
       {loading ? (
         <IdeaLoading>

@@ -7,7 +7,7 @@ export const RoadmapView = () => {
   if (!data.length) return null
 
   return (
-    <RoadmapStyled>
+    <RoadmapStyled id="roadmap">
       <h2>Roadmap</h2>
       <RoadmapArticles>
         {data.map((item) => (

@@ -41,7 +41,7 @@ export const TeamView = () => {
 
   if (isMobile)
     return (
-      <TeamStyled>
+      <TeamStyled id="team">
         {data.map((item) => (
           <article key={item.id}>
             <h2>{item.header}</h2>
@@ -65,7 +65,7 @@ export const TeamView = () => {
     )
 
   return (
-    <TeamStyled>
+    <TeamStyled id="team">
       {data.map((item) => (
         <article key={item.id}>
           <h2>{item.header}</h2>
