@@ -16,7 +16,7 @@ const AreaChart = ({
       series={[{ data: chartData }]}
       options={AREA_CHART_OPTIONS(interval, moveHandler)}
       type="area"
-      height={'420px'}
+      height={'550px'}
       width={'100%'}
     />
   )

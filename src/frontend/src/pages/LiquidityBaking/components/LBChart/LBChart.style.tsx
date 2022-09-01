@@ -4,19 +4,19 @@ import { BLOCK_RADIUS } from 'styles/constants'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
-  grid-column-start: 2;
+  grid-column-start: 1;
   grid-column-end: 3;
   background: ${({ theme }) => theme.darkBackroundColor};
   border: 1px solid ${({ theme }) => theme.lbBorder};
   /* background: #160e3f; */
   /* border: 1px solid ${titleColor}; */
   border-radius: ${BLOCK_RADIUS};
-  grid-row-start: 2;
-  grid-row-end: 3;
-  padding-top: 10px;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  padding-top: 25px;
   z-index: 1;
 
-  height: 502px;
+  height: 100%;
   width: 100%;
   row-gap: 10px;
 
@@ -58,12 +58,12 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   .chart-wrapper {
-    height: 420px;
-    width: 100%;
+    height: 560px;
+    width: 97%;
 
     > div {
-      height: 420px !important;
-      min-height: 420px !important;
+      height: 550px !important;
+      min-height: 550px !important;
 
       .apexcharts-tooltip {
         background: #160e3f;

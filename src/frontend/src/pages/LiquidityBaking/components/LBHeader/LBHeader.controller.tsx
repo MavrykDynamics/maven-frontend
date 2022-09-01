@@ -50,6 +50,14 @@ const LBHeader = () => {
             <CommaNumber endingText="%" value={tzbtcBitcoinPriceDiff} />
           </CustomizedText>
         </VertInfo>
+        <VertInfo>
+          <CustomizedText fontWidth={500} className="block-name">
+            Total Sirius Tokens
+          </CustomizedText>
+          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+            <CommaNumber endingText="%" value={313353.831} />
+          </CustomizedText>
+        </VertInfo>
       </div>
     </LBHeaderStyled>
   )

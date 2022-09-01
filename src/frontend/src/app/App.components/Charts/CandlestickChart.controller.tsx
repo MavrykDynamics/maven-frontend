@@ -16,7 +16,7 @@ const CandlestickChart = ({
       series={[{ data: chartData }]}
       options={CANDLESTICK_CHART_OPTIONS(interval, moveHandler)}
       type="candlestick"
-      height={'420px'}
+      height={'550px'}
       width={'100%'}
     />
   )

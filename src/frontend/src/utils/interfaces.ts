@@ -4,7 +4,6 @@ import { TempleWallet } from '@temple-wallet/dapp'
 export type IntervalType =
   | 'quotes1dNogaps'
   | 'quotes1hNogaps'
-  | 'quotes1mo'
   | 'quotes1w'
   | 'quotes15mNogaps'
   | 'quotes5mNogaps'

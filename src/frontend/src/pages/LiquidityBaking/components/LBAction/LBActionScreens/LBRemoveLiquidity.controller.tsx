@@ -201,7 +201,7 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
         <ConnectWallet className="swap-action" />
       )}
 
-      <LBActionBottomWrapperStyled>
+      <LBActionBottomWrapperStyled className="liquidity">
         <PriceImpact priceImpact={0} />
         <MinimumReceived
           minimumRecived={[

@@ -5,8 +5,6 @@ import { State } from 'utils/interfaces'
 
 import { LBActionStyled, ToggleButtonsWrapper } from './LBAction.style'
 import { LBAddLiquidity } from './LBActionScreens/LBAddLiquidity.controller'
-import { LBGeneralStats } from './LBActionScreens/LBGeneralStats.controller'
-import { LBPersonalStats } from './LBActionScreens/LBPersonalStats.controller'
 import { LBRemoveLiquidity } from './LBActionScreens/LBRemoveLiquidity.controller'
 import { LBSwap } from './LBActionScreens/LBSwap.controller'
 
@@ -29,24 +27,10 @@ const FIRST_TOGGLER_VALUES = [
       },
     ],
   },
-  {
-    title: 'stats',
-    value: 'stats',
-    subToggler: [
-      {
-        title: 'general',
-        value: 'general',
-      },
-      {
-        title: 'personal',
-        value: 'personal',
-      },
-    ],
-  },
 ]
 
 export const LBAction = () => {
-  const [fBtnSelected, setFBtnSelected] = useState(FIRST_TOGGLER_VALUES[0].value as 'swap' | 'stats' | 'liquidity')
+  const [fBtnSelected, setFBtnSelected] = useState(FIRST_TOGGLER_VALUES[0].value as 'swap' | 'liquidity')
 
   const sTogglerValues = useMemo(
     () => FIRST_TOGGLER_VALUES.find(({ value }) => value === fBtnSelected)?.subToggler,
@@ -64,12 +48,14 @@ export const LBAction = () => {
     <LBActionStyled>
       <ToggleButtonsWrapper className="action-toggle-header">
         <ToggleButton
+          className="action-toggler"
           values={FIRST_TOGGLER_VALUES}
           selected={fBtnSelected}
-          handleSetSelectedToggler={(value: unknown) => setFBtnSelected(value as 'swap' | 'stats' | 'liquidity')}
+          handleSetSelectedToggler={(value: unknown) => setFBtnSelected(value as 'swap' | 'liquidity')}
         />
         {sTogglerValues && sTogglerValues.length ? (
           <ToggleButton
+            className="action-toggler"
             values={sTogglerValues}
             selected={sBtnSelected}
             handleSetSelectedToggler={(value: unknown) => setSBtnSelected(value as string)}
@@ -78,8 +64,6 @@ export const LBAction = () => {
       </ToggleButtonsWrapper>
 
       {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap ready={ready} /> : null}
-      {fBtnSelected === 'stats' && sBtnSelected === 'personal' ? <LBPersonalStats /> : null}
-      {fBtnSelected === 'stats' && sBtnSelected === 'general' ? <LBGeneralStats /> : null}
       {fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' ? <LBAddLiquidity ready={ready} /> : null}
       {fBtnSelected === 'liquidity' && sBtnSelected === 'remove liquidity' ? <LBRemoveLiquidity ready={ready} /> : null}
     </LBActionStyled>

@@ -20,6 +20,12 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
+  &.action-toggler {
+    div {
+      width: 200px;
+    }
+  }
+
   @media screen and (max-width: 1200px) and (min-width: 1070px) {
     &.chart-toggler {
       max-height: 30px;

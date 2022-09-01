@@ -2,15 +2,19 @@ import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controll
 import { TzAddress } from 'app/App.components/TzAddress/TzAddress.view'
 
 import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { ActionScreenWrapper } from '../LBAction.style'
+import { ActionScreenWrapper } from '../../LBAction/LBAction.style'
 
-import { subHeaderColor, cyanColor } from 'styles'
+import { cyanColor, subHeaderColor } from 'styles'
 import { useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
 
-export const LBPersonalStats = () => {
-  const { lqt_total } = useSelector((state: State) => state.tokens.lbData)
-  const { LBTBalance, userAddress } = useSelector((state: State) => state.user)
+export const LBGeneralStats = () => {
+  const {
+    lbData: { address, xtz_pool, token_pool },
+    stats: { tradeVolume, tvlUSD, avgTradingSize, users, interactions },
+  } = useSelector((state: State) => state.tokens)
+  const { chartDataArea } = useSelector((state: State) => state.chart)
+
   return (
     <ActionScreenWrapper className="stats">
       <HorisontalInfo>
@@ -18,47 +22,63 @@ export const LBPersonalStats = () => {
           Address
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          {userAddress ? <TzAddress type="primary" tzAddress={userAddress} hasIcon /> : 'Wallet is not connected'}
+          <TzAddress type="primary" tzAddress={address} hasIcon />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Your LB tokens
+          Latest Price
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={LBTBalance} />
+          <CommaNumber value={chartDataArea.at(-1)?.y || 0} endingText="tzBTC" />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Total LB Tokens
+          Trade volume (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={lqt_total} />
+          <CommaNumber value={tradeVolume} endingText="tzBTC" />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Pool Share (fix)
+          Average trade size (fix)
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={0.0153} endingText="%" />
+          <CommaNumber value={avgTradingSize} endingText="tzBTC" />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Realized PL (fix)
+          YTVL in XTZ/tzBTC
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={234.98} endingText="XTZ" />
+          <CommaNumber value={xtz_pool} />/<CommaNumber value={token_pool} />
         </CustomizedText>
       </HorisontalInfo>
       <HorisontalInfo>
         <CustomizedText color={subHeaderColor} fontWidth={600}>
-          Unrealized PL (fix)
+          TVL in USD
         </CustomizedText>
         <CustomizedText color={cyanColor} fontWidth={500}>
-          <CommaNumber value={13.234} endingText="XTZ" />
+          <CommaNumber beginningText="$" value={tvlUSD} />
+        </CustomizedText>
+      </HorisontalInfo>
+      <HorisontalInfo>
+        <CustomizedText color={subHeaderColor} fontWidth={600}>
+          Interactions (fix)
+        </CustomizedText>
+        <CustomizedText color={cyanColor} fontWidth={500}>
+          <CommaNumber value={interactions} />
+        </CustomizedText>
+      </HorisontalInfo>
+      <HorisontalInfo>
+        <CustomizedText color={subHeaderColor} fontWidth={600}>
+          Unique Users (fix)
+        </CustomizedText>
+        <CustomizedText color={cyanColor} fontWidth={500}>
+          <CommaNumber value={users} />
         </CustomizedText>
       </HorisontalInfo>
     </ActionScreenWrapper>

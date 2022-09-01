@@ -17,6 +17,12 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
     font-size: 16px;
     --max-container: calc(100vw - 80px);
   }
+
+  &.lb {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
 `
 
 export const FooterContainer = styled.div`

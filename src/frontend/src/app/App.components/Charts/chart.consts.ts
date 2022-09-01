@@ -1,6 +1,6 @@
-import { IntervalType } from 'utils/interfaces';
+import { IntervalType } from 'utils/interfaces'
 import dayjs from 'dayjs'
-import { INTERVAL_PRICE_CUSHION } from 'utils/consts';
+import { INTERVAL_PRICE_CUSHION } from 'utils/consts'
 
 export const getTooltipMarkup = (price: number, date: Date) => `
 <div style='color: #86d4c9'>
@@ -13,13 +13,13 @@ const GRID_SETTING = {
   show: false,
 }
 
-const YAXIS_SETTING =  (interval: IntervalType) =>  ({
+const YAXIS_SETTING = (interval: IntervalType) => ({
   opposite: true,
   show: true,
   showAlways: true,
   showForNullSeries: true,
   tickAmount: 8,
-  min: (min: number) => min - INTERVAL_PRICE_CUSHION[interval] >= 0 ? min - INTERVAL_PRICE_CUSHION[interval] : min,
+  min: (min: number) => (min - INTERVAL_PRICE_CUSHION[interval] >= 0 ? min - INTERVAL_PRICE_CUSHION[interval] : min),
   max: (max: number) => max + INTERVAL_PRICE_CUSHION[interval],
   labels: {
     show: true,
@@ -68,17 +68,7 @@ const XAXIS_SETTING = {
 
 const CHART_SETTING = (moveHandler: (candleValue: number, isOut?: boolean) => void) => ({
   toolbar: {
-    show: true,
-    tools: {
-      zoomin: true,
-      zoomout: true,
-      download: false,
-      selection: false,
-      zoom: false,
-      pan: true,
-      reset: false,
-      customIcons: [],
-    },
+    show: false,
   },
   dataLabels: {
     enabled: false,
@@ -87,16 +77,18 @@ const CHART_SETTING = (moveHandler: (candleValue: number, isOut?: boolean) => vo
     enabled: false,
   },
   events: {
-    mouseMove: function(_: any, __: any, config: any) {
-      const candleData = config.config.series?.[config.seriesIndex]?.data[config.dataPointIndex] || config.config.series?.[0]?.data.at(-1)
-      if(candleData){
+    mouseMove: function (_: any, __: any, config: any) {
+      const candleData =
+        config.config.series?.[config.seriesIndex]?.data[config.dataPointIndex] ||
+        config.config.series?.[0]?.data.at(-1)
+      if (candleData) {
         moveHandler(Array.isArray(candleData.y) ? candleData.y[3] : candleData.y)
       }
     },
-    mouseLeave: function() {
+    mouseLeave: function () {
       moveHandler(0, true)
-    }
-  }
+    },
+  },
 })
 
 const RESPONSIVE_SETTING = [
@@ -107,7 +99,7 @@ const RESPONSIVE_SETTING = [
         labels: {
           offsetX: 7,
         },
-      }
+      },
     },
   },
   {
@@ -115,7 +107,7 @@ const RESPONSIVE_SETTING = [
     options: {
       xaxis: {
         tickAmount: 5,
-      }
+      },
     },
   },
   {
@@ -123,7 +115,7 @@ const RESPONSIVE_SETTING = [
     options: {
       xaxis: {
         tickAmount: 7,
-      }
+      },
     },
   },
   {
@@ -131,7 +123,7 @@ const RESPONSIVE_SETTING = [
     options: {
       xaxis: {
         tickAmount: 5,
-      }
+      },
     },
   },
   {
@@ -139,7 +131,7 @@ const RESPONSIVE_SETTING = [
     options: {
       xaxis: {
         tickAmount: 4,
-      }
+      },
     },
   },
   {
@@ -147,7 +139,7 @@ const RESPONSIVE_SETTING = [
     options: {
       xaxis: {
         tickAmount: 3,
-      }
+      },
     },
   },
   {
@@ -155,12 +147,15 @@ const RESPONSIVE_SETTING = [
     options: {
       xaxis: {
         tickAmount: 2,
-      }
+      },
     },
   },
 ]
 
-export const CANDLESTICK_CHART_OPTIONS =  (interval: IntervalType, moveHandler: (candleValue: number, isOut?: boolean) => void) =>  ({
+export const CANDLESTICK_CHART_OPTIONS = (
+  interval: IntervalType,
+  moveHandler: (candleValue: number, isOut?: boolean) => void,
+) => ({
   chart: CHART_SETTING(moveHandler),
   xaxis: XAXIS_SETTING,
   yaxis: YAXIS_SETTING(interval),
@@ -182,7 +177,10 @@ export const CANDLESTICK_CHART_OPTIONS =  (interval: IntervalType, moveHandler: 
   },
 })
 
-export const AREA_CHART_OPTIONS = (interval: IntervalType, moveHandler: (candleValue: number, isOut?: boolean) => void) =>  ({
+export const AREA_CHART_OPTIONS = (
+  interval: IntervalType,
+  moveHandler: (candleValue: number, isOut?: boolean) => void,
+) => ({
   chart: CHART_SETTING(moveHandler),
   xaxis: XAXIS_SETTING,
   responsive: RESPONSIVE_SETTING,

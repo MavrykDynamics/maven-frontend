@@ -82,7 +82,7 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
 
   &.removeLiquidity_btn {
     max-width: 220px;
-    margin: 20px auto 0 auto;
+    margin: 10px auto 0 auto;
   }
 
   &.addLiquidity_btn {

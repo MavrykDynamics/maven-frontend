@@ -4,8 +4,8 @@ import { MavrykTheme } from 'utils/interfaces'
 export const LBActionStyled = styled.div<{ theme: MavrykTheme }>`
   z-index: 1;
   grid-row-start: 2;
-  grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
   grid-row-end: 4;
   padding: 20px 25px 50px 25px;
   height: fit-content;
@@ -13,6 +13,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme }>`
   border: 1px solid ${({ theme }) => theme.lbBorder};
   /* background: #160e3f; */
   border-radius: 10px;
+  height: 670px;
 
   hr {
     height: 2px;
@@ -39,7 +40,9 @@ export const ToggleButtonsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
-  margin-bottom: 42px;
+  margin: 0 auto 30px auto;
+  margin-bottom: 30px;
+  width: fit-content;
 
   @media screen and (max-width: 1340px) {
     div {
@@ -51,10 +54,6 @@ export const ToggleButtonsWrapper = styled.div`
 export const ActionScreenWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
-  &.stats {
-    row-gap: 20px;
-  }
 
   &.liquidity {
     .step-wrapper {
@@ -92,7 +91,7 @@ export const ActionScreenWrapper = styled.div`
     }
 
     .input-wrapper {
-      margin: 24px 0;
+      margin: 15px 0;
       display: flex;
       flex-direction: column;
       align-items: center;

@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components'
-import { titleColor } from 'styles'
+import styled from 'styled-components'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
@@ -36,7 +35,7 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 55%;
+    width: 60%;
   }
 
   @media screen and (max-width: 1200px) {

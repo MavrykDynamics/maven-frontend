@@ -15,4 +15,8 @@ export const LBActionBottomWrapperStyled = styled.div`
     margin-top: 10px;
     margin-bottom: 0;
   }
+
+  &.liquidity {
+    margin-top: 30px;
+  }
 `

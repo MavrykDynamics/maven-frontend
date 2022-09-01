@@ -29,10 +29,6 @@ const intervalData = [
     title: '1W',
     value: 'quotes1w',
   },
-  {
-    title: '1MO',
-    value: 'quotes1mo',
-  },
 ]
 
 type LBChartViewProps = {
