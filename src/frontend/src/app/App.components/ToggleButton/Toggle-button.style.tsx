@@ -54,7 +54,7 @@ export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`
   font-size: 16px;
 
   &.chart-toggler {
-    padding: 10px 15px;
+    padding: 10px 25px;
     font-size: 16px;
   }
 
