@@ -13,9 +13,6 @@ import WertIoPopup from './Wert/WertIoPopup'
 import { State } from 'utils/interfaces'
 import { showToaster } from '../Toaster/Toaster.actions'
 import { ERROR } from '../Toaster/Toaster.constants'
-// import { toggleSidebarCollapsing } from '../Menu/Menu.actions'
-// import { showToaster } from '../Toaster/Toaster.actions'
-// import { ERROR } from '../Toaster/Toaster.constants'
 
 type ConnectWalletProps = {
   className?: string

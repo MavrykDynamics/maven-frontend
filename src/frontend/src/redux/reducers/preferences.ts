@@ -5,6 +5,7 @@ import { DARK_THEME } from '../actions/preferences.action'
 const preferences = (
   state = {
     themeSelected: getItemFromStorage('theme') || DARK_THEME,
+    changeNodePopupOpen: false,
     scrollPosition: 0,
     RPC_NODES: [
       { title: 'MARIGOLD', url: 'https://jakartanet.tezos.marigold.dev/', nodeLogoUrl: 'marigold_logo.png' },
