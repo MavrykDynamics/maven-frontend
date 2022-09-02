@@ -1,64 +1,64 @@
 import { TezosToolkit } from '@taquito/taquito'
 import { TempleWallet } from '@temple-wallet/dapp'
 import { ThemeType } from 'redux/actions/preferences.action'
-import { RPCNodeType } from 'redux/reducers'
 
 export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1w' | 'quotes15mNogaps' | 'quotes5mNogaps'
 export type ChartTypeType = 'area' | 'candlestick'
 
-export interface MavrykTheme {
-  whatMakesBackground: string
-  calculatorBackground: string
-  featuresBackground: string
-  teamCityDecor: string
-  teamDecor1: string
-  teamDecor2: string
-  teamDecor3: string
-  teamDecor4: string
-  subscribeBachground: string
-  starsBachground: string
-  satellitesGradient: string
-  skyGradientTransparent: string
-  skyGradient: string
-  backgroundColor: string
-  containerColor: string
-  textColor: string
-  subTextColor: string
-  placeholderColor: string
-  primaryColor: string
-  upColor: string
-  downColor: string
-  litepaperLinkColor: string
-  navColor: string
-  inputBorderColor: string
-  headerTeam: string
-  headerColor: string
-  headerSectionsColor: string
-  headerDarkColor: string
-  darkestBackroundColor: string
-  darkBackroundColor: string
-  labelColor: string
-  headingColor: string
-  btnBackroundColor: string
-  btnColor: string
-  linkedinLinkColor: string
-  socialBackroundColor: string
-  socialColor: string
-  inputColor: string
-  btnBackroundNewsColor: string
-  btnNewsColor: string
-  inputNewsBg: string
-  inputNewsColor: string
-  roadmapValueColor: string
-  arrowStrokeColor: string
-  socialsColor: string
-  lbBorder: string
-  toggleButtonBg: string
-  toggleButtonColor: string
-  toggleButtonColorSelected: string
-  toggleButtonBgSelected: string
-  inputTextColor: string
-}
+export type MavrykTheme = Record<string, string>
+// {
+//   whatMakesBackground: string
+//   calculatorBackground: string
+//   featuresBackground: string
+//   teamCityDecor: string
+//   teamDecor1: string
+//   teamDecor2: string
+//   teamDecor3: string
+//   teamDecor4: string
+//   subscribeBachground: string
+//   starsBachground: string
+//   satellitesGradient: string
+//   skyGradientTransparent: string
+//   skyGradient: string
+//   backgroundColor: string
+//   containerColor: string
+//   textColor: string
+//   subTextColor: string
+//   placeholderColor: string
+//   primaryColor: string
+//   upColor: string
+//   downColor: string
+//   litepaperLinkColor: string
+//   navColor: string
+//   inputBorderColor: string
+//   headerTeam: string
+//   headerColor: string
+//   headerSectionsColor: string
+//   headerDarkColor: string
+//   darkestBackroundColor: string
+//   darkBackroundColor: string
+//   labelColor: string
+//   headingColor: string
+//   btnBackroundColor: string
+//   btnColor: string
+//   linkedinLinkColor: string
+//   socialBackroundColor: string
+//   socialColor: string
+//   inputColor: string
+//   btnBackroundNewsColor: string
+//   btnNewsColor: string
+//   inputNewsBg: string
+//   inputNewsColor: string
+//   roadmapValueColor: string
+//   arrowStrokeColor: string
+//   socialsColor: string
+//   lbBorder: string
+//   toggleButtonBg: string
+//   toggleButtonColor: string
+//   toggleButtonColorSelected: string
+//   toggleButtonBgSelected: string
+//   inputTextColor: string
+// }
 
 export interface WalletState {
   wallet?: TempleWallet
@@ -126,16 +126,25 @@ export interface ToasterState {
   message?: string
 }
 
+export type RPCNodeType = {
+  url: string
+  title: string
+  nodeLogoUrl?: string
+  isUser?: boolean
+}
+
+export type PreferencesType = {
+  themeSelected: ThemeType
+  scrollPosition: number
+  changeNodePopupOpen: boolean
+  RPC_NODES: Array<RPCNodeType>
+  REACT_APP_RPC_PROVIDER: string
+}
+
 export interface State {
   wallet: WalletState
   user: UserData
-  preferences: {
-    themeSelected: ThemeType
-    scrollPosition: number
-    changeNodePopupOpen: boolean
-    RPC_NODES: Array<RPCNodeType>
-    REACT_APP_RPC_PROVIDER: string
-  }
+  preferences: PreferencesType
   tokens: TokenInfo
   chart: ChartType
   toaster: ToasterState

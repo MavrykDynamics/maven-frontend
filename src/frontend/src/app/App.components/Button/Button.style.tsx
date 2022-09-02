@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components/macro'
 import { MavrykTheme } from 'utils/interfaces'
 
-import { darkColor, primaryColor, skyColor } from '../../../styles'
+import { backgroundColor, cyanColor, darkColor, headerColor, primaryColor, skyColor, titleColor } from '../../../styles'
 import { BUTTON_RADIUS } from '../../../styles/constants'
 
 export const clickWave = keyframes`
@@ -119,6 +119,58 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     @media screen and (max-width: 490px) {
       width: 30px;
       height: 30px;
+    }
+  }
+
+  &.connect-wallet-details {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 15px;
+    color: ${cyanColor};
+    opacity: 0.8;
+    background-color: transparent;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &.theme-btn {
+    height: 38px;
+    width: 31%;
+    border: 1px solid ${({ theme }) => theme.toggleButtonBgSelected};
+    color: ${({ theme }) => theme.toggleButtonBgSelected};
+    border-radius: 8px;
+    transition: 0.4s all;
+    background-color: transparent;
+
+    &:hover,
+    &.selected {
+      border: 1px solid ${cyanColor};
+      color: ${cyanColor};
+    }
+  }
+
+  &.change-wallet {
+    width: 185px;
+
+    svg {
+      stroke: unset;
+      stroke-width: 0.3;
+      transform: rotate(90deg);
+    }
+  }
+
+  &.start_verification {
+    border: 1px solid ${cyanColor};
+    color: ${headerColor};
+    background: ${({ theme }) => theme.settingsConfigmBG};
+
+    svg {
+      stroke: ${headerColor};
+      fill: ${headerColor};
+      stroke-width: 0.3;
     }
   }
 `

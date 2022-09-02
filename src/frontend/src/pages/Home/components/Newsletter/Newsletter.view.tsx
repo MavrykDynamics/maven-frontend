@@ -7,15 +7,18 @@ import Cookie from 'js-cookie'
 // prettier-ignore
 import { NewsletterButton, NewsletterClose, NewsletterFigure, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
 import animationData from './ship-loop.json'
+import { State } from 'utils/interfaces'
+import { DARK_THEME } from 'redux/actions/preferences.action'
 
 type NewsLetterProps = {
   closeCallback?: () => void
 }
 
 export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
-  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
-  const frontImgUrl = darkThemeEnabled ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
-  const frontImgUrlPopup = darkThemeEnabled ? '/images/city-bg-popup-dark.svg' : '/images/city-bg-popup-light.svg'
+  const { themeSelected } = useSelector((state: State) => state.preferences)
+  const frontImgUrl = themeSelected === DARK_THEME ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
+  const frontImgUrlPopup =
+    themeSelected === DARK_THEME ? '/images/city-bg-popup-dark.svg' : '/images/city-bg-popup-light.svg'
   const url = 'https://Finance.us5.list-manage.com/subscribe/post?u=2c7f8eeb6244c13270dca7a76&amp;id=da98ceea07'
   const { loading, error, success, message, handleSubmit } = useMailChimpForm(url)
   //@ts-ignore

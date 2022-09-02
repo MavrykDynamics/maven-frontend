@@ -1,18 +1,19 @@
-import { Header } from './App.components/Header/Header.controller'
-import { Popup } from './App.components/Popup/Popup.controller'
 import { Home } from 'pages/Home/Home.controller'
 import LiquidityBaking from 'pages/LiquidityBaking/LiquidityBaking.controller'
 import { Litepaper } from 'pages/Litepaper/Litepaper.controller'
 import { Privacy } from 'pages/Privacy/Privacy.controller'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import { TempleWallet } from '@temple-wallet/dapp'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { configureStore } from 'redux/storeConfigurator'
 import { setWalletAction } from 'redux/actions/wallet.action'
 import { AnyAction } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
 import { State } from 'utils/interfaces'
+import { PopupChangeNode } from './App.components/SettingsPopup/SettingsPopup.controller'
+import { Toaster } from './App.components/Toaster/Toaster.controller'
+import { toggleRPCNodePopup } from './App.components/SettingsPopup/SettingsPopup.actions'
 
 export const store = configureStore({})
 
@@ -22,6 +23,10 @@ export type GetState = typeof store.getState
 export const App = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentPage, setCurrentPage] = useState('/')
+
+  const { changeNodePopupOpen } = useSelector((state: State) => state.preferences)
+  const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [])
+
   const dispatch = useDispatch()
   useEffect(() => {
     return TempleWallet.onAvailabilityChange((available) => {
@@ -67,7 +72,8 @@ export const App = () => {
           }}
         />
       </Switch>
-      {/* {currentPage !== '/litepaper' && <Footer />} */}
+      <PopupChangeNode isModalOpened={changeNodePopupOpen} closeModal={closeModalHandler} />
+      <Toaster />
     </Router>
   )
 }

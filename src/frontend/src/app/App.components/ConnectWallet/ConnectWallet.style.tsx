@@ -16,6 +16,10 @@ const VISIBLE_PART_CONNECTED_WALLET = (theme: MavrykTheme, isMobileDetails?: boo
     font-size: 14px;
     color: ${theme.linkedinLinkColor};
     transition: 0.6s all;
+
+    div {
+      font-style: normal;
+    }
   }
 
   .end-icon {
@@ -88,6 +92,23 @@ export const ConnectWalletStyled = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   align-items: center;
   column-gap: 20px;
+
+  @media (max-width: 1024px) {
+    margin: 0 auto;
+  }
+
+  &.swap-action {
+    margin: 0 auto;
+    margin-bottom: 25px;
+  }
+
+  &.addLiq-action {
+    margin-top: 40px;
+  }
+
+  &.removeLiq-action {
+    margin-top: 15px;
+  }
 `
 
 export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
@@ -115,7 +136,7 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
     right: 15px;
     transition: 0.6s all;
     width: 375px;
-    background: #160e3f;
+    background: ${({ theme }) => theme.darkBackroundColor};
     border: 1px solid #86d4c9;
     border-radius: 10px;
 

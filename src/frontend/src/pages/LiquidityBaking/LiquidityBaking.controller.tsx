@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTokensData } from 'redux/actions/swap.action'
 import LiquidityBakingView from './LiquidityBaking.view'
@@ -6,10 +6,15 @@ import { getTokensPrices } from 'redux/actions/tokenPrices.action'
 import { getChartData } from 'redux/actions/chart.action'
 import { State } from 'utils/interfaces'
 import { getGeneralStats } from 'redux/actions/stats.action'
+import { toggleRPCNodePopup } from 'app/App.components/SettingsPopup/SettingsPopup.actions'
+import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
+import { Footer } from 'app/App.components/Footer/Footer.controller'
+import { LBStyled } from './LiquidityBaking.styles'
 
 const LiquidityBaking = () => {
   const dispatch = useDispatch()
   const { chartInterval } = useSelector((state: State) => state.chart)
+  const openChangeNodePopup = useCallback(() => dispatch(toggleRPCNodePopup(true)), [])
 
   useEffect(() => {
     dispatch(getTokensData())
@@ -18,7 +23,13 @@ const LiquidityBaking = () => {
     dispatch(getGeneralStats())
   }, [chartInterval, dispatch])
 
-  return <LiquidityBakingView />
+  return (
+    <LBStyled>
+      <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
+      <LiquidityBakingView />
+      <Footer />
+    </LBStyled>
+  )
 }
 
 export default LiquidityBaking

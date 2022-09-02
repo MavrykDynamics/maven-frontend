@@ -1,6 +1,6 @@
-import { MavrykTheme } from "utils/interfaces"
+import { MavrykTheme } from 'utils/interfaces'
 
-export const backgroundColor = '#160E3F'//'#FFFFFF'
+export const backgroundColor = '#160E3F' //'#FFFFFF'
 export const containerColor = '#1C1C3F' //'#F7F9FD'
 export const borderColor = '#4F457C'
 export const textColor = '#fff' //'#000000'
@@ -23,9 +23,7 @@ export const skyColor = '#77A4F2'
 export const cyanColor = '#86D4C9'
 export const connectWalletSecondary = '#EEEAF4'
 
-
 export const silverColor = '#C0DBFF'
-
 
 export const darkMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-dark.svg',
@@ -80,7 +78,9 @@ export const darkMode: MavrykTheme = {
   toggleButtonColor: '#8D86EB',
   toggleButtonColorSelected: '#160E3F',
   toggleButtonBgSelected: '#8D86EB',
-  inputTextColor: '#c0dbff'
+  inputTextColor: '#c0dbff',
+  settingsConfigmBG: cyanColor,
+  topBarLinkColor: silverColor
 }
 
 export const lightMode: MavrykTheme = {
@@ -134,7 +134,9 @@ export const lightMode: MavrykTheme = {
   toggleButtonColor: '#27007A',
   toggleButtonColorSelected: '#FFFFFF  ',
   toggleButtonBgSelected: '#503EAA',
-  inputTextColor: '#503EAA'
+  inputTextColor: '#503EAA',
+  settingsConfigmBG: 'transparent',
+  topBarLinkColor: '#27007A'
 }
 
 export const spaceMode: MavrykTheme = {
@@ -188,5 +190,7 @@ export const spaceMode: MavrykTheme = {
   toggleButtonColor: '#27007A',
   toggleButtonColorSelected: '#FFFFFF  ',
   toggleButtonBgSelected: '#503EAA',
-  inputTextColor: '#503EAA'
+  inputTextColor: '#503EAA',
+  settingsConfigmBG: 'transparent',
+  topBarLinkColor: '#27007A'
 }

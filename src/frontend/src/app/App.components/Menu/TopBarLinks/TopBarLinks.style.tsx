@@ -17,7 +17,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
     line-height: 0;
     transition: 0.35s all;
     cursor: pointer;
-    color: ${silverColor};
+    color: ${({ theme }) => theme.topBarLinkColor};
     display: flex;
     align-items: center;
 
@@ -28,11 +28,11 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
       transform: rotate(-90deg);
       transition: 0.6s all;
       display: block;
-      stroke: ${silverColor};
+      stroke: ${({ theme }) => theme.topBarLinkColor};
     }
 
     a {
-      color: ${silverColor};
+      color: ${({ theme }) => theme.topBarLinkColor};
       transition: 0.35s all;
     }
 
@@ -57,7 +57,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
   .group-links {
     display: flex;
     padding: 20px 45px 20px 15px;
-    background-color: #160e3f;
+    background: ${({ theme }) => theme.darkBackroundColor};
     transition: 0.6s all;
     flex-direction: column;
     row-gap: 15px;
@@ -71,7 +71,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
       padding: 6px 0;
       padding-left: 10px;
       border-radius: 5px;
-      color: ${silverColor};
+      color: ${({ theme }) => theme.topBarLinkColor};
       &:hover {
         color: ${cyanColor};
         background: ${headerColor};

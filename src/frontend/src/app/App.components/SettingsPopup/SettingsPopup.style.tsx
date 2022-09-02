@@ -1,7 +1,8 @@
 import styled from 'styled-components/macro'
 import { cyanColor, titleColor } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const PopupContainerWrapper = styled.div`
+export const PopupContainerWrapper = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   flex-direction: column;
   padding: 40px;
@@ -35,6 +36,7 @@ export const PopupContainerWrapper = styled.div`
   }
 
   &.settings {
+    background: ${({ theme }) => theme.darkBackroundColor};
     .theme-switcher-block {
       display: flex;
       flex-direction: column;
@@ -110,8 +112,14 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
       }
     }
 
+    #inputStyled {
+      margin: 0;
+    }
+
     input {
+      height: 35px;
       width: 100%;
+      margin: 0;
       border: none;
       padding: 0;
       padding-left: 7px;

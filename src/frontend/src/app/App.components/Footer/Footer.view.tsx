@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { DARK_THEME } from 'redux/actions/preferences.action'
+import { State } from 'utils/interfaces'
 
 // prettier-ignore
-import { FooterBottom, FooterContainer, FooterDescription, FooterLinks, FooterLogo, FooterSocials, FooterStyled, FooterTop } from "./Footer.style";
+import { FooterBottom, FooterContainer, FooterDescription, FooterLogo, FooterSocials, FooterStyled, FooterTop } from "./Footer.style";
 
 export const FooterView = () => {
-  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
-  const logoUrl = darkThemeEnabled ? '/logo-dark.svg' : '/logo-light.svg'
+  const { themeSelected } = useSelector((state: State) => state.preferences)
+  const logoUrl = themeSelected === DARK_THEME ? '/logo-dark.svg' : '/logo-light.svg'
 
   return (
     <FooterStyled id="footer">

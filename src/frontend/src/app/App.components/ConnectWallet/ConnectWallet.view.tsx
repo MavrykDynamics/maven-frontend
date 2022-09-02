@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { ACTION_PRIMARY, TRANSPARENT } from '../Button/Button.constants'
+import { ACTION_PRIMARY, PRIMARY, TRANSPARENT } from '../Button/Button.constants'
 import { Button } from '../Button/Button.controller'
 import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import Icon from '../Icon/Icon.view'
@@ -167,9 +167,9 @@ export const ConnectedWalletBlock = ({
           <Button
             text="Change Wallet"
             onClick={changeWalletHandler}
-            kind={ACTION_PRIMARY}
+            kind={PRIMARY}
             icon="exchange"
-            className="change-wallet"
+            className="change-wallet LB"
           />
         </div>
       </div>

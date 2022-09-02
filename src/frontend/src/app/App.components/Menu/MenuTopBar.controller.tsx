@@ -1,4 +1,4 @@
-import { ConnectWallet } from 'app/App.components/ConnectWallet_old/ConnectWallet.controller'
+import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import Icon from 'app/App.components/Icon/Icon.view'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'

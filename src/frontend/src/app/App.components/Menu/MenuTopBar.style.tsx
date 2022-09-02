@@ -11,7 +11,7 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
   max-width: 100vw;
   height: 80px;
   z-index: 11;
-  background: #160e3f;
+  background: ${({ theme }) => theme.darkBackroundColor};
   display: flex;
   align-items: center;
   padding: 0 22px 0 34px;
@@ -60,8 +60,9 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
       }
 
       svg {
-        width: 30px;
-        height: 30px;
+        fill: ${({ theme }) => theme.socialColor};
+        width: 33px;
+        height: 33px;
       }
     }
   }

@@ -1,6 +1,8 @@
 import { group } from 'console'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { DARK_THEME } from 'redux/actions/preferences.action'
+import { State } from 'utils/interfaces'
 
 import Carousel from '../../../../app/App.components/Carousel/Carousel.view'
 import useGetMediumFeed from '../../../../hooks/useGetMediumFeed'
@@ -20,9 +22,9 @@ const chunkArrayInGroups = (arr: Record<string, string | number>[], size: number
 }
 
 export const IdeasView = () => {
-  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
-  const frontImgUrl = darkThemeEnabled ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
-  const loadingImgUrl = darkThemeEnabled ? '/icons/loading-white.svg' : '/icons/loading.svg'
+  const { themeSelected } = useSelector((state: State) => state.preferences)
+  const frontImgUrl = themeSelected === DARK_THEME ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
+  const loadingImgUrl = themeSelected === DARK_THEME ? '/icons/loading-white.svg' : '/icons/loading.svg'
 
   // console.log('%c ||||| data', 'color:yellowgreen', data)
   const isMiddleScreen = useMediaQuery('(max-width: 1280px)')

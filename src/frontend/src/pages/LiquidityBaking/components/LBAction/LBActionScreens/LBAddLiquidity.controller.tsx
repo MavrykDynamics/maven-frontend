@@ -24,7 +24,7 @@ import { addLiquidityHandler } from '../helpers/addAndRemoveLiquidity.utils'
 import { swapCalculateCoinReceive } from 'utils/DEX/swapUtils'
 import { Button } from 'app/App.components/Button/Button.controller'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
-import { ConnectWallet } from 'app/App.components/ConnectWallet_old/ConnectWallet.controller'
+import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 
 const DEFAULT_COINS_AMOUNT = {
   XTZ: 0,

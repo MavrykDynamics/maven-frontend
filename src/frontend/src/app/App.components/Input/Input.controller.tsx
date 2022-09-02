@@ -19,6 +19,7 @@ type InputProps = {
   disabled?: boolean
   required?: boolean
   pinnedText?: string
+  className?: string
   kind?: InputKind
   useMaxHandler?: () => void
   userBalance?: number
@@ -39,6 +40,7 @@ export const Input = ({
   errorMessage,
   disabled,
   pinnedText,
+  className,
   kind,
   required,
   useMaxHandler,
@@ -52,6 +54,7 @@ export const Input = ({
       required={required}
       placeholder={placeholder}
       value={value}
+      className={className}
       convertedValue={convertedValue}
       onChange={onChange}
       onBlur={onBlur}

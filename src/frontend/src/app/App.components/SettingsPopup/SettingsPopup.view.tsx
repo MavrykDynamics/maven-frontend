@@ -2,8 +2,7 @@ import { Input } from 'app/App.components/Input/Input.controller'
 import React, { useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ThemeType, themeSetterAction, SPACE_THEME, DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
-import { RPCNodeType } from 'redux/reducers'
-import { State } from 'utils/interfaces'
+import { RPCNodeType, State } from 'utils/interfaces'
 import { ACTION_PRIMARY, TRANSPARENT } from '../Button/Button.constants'
 import { Button } from '../Button/Button.controller'
 import { selectNewRPCNode, setNewRPCNodes } from './SettingsPopup.actions'
@@ -64,6 +63,7 @@ export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) 
           <Input
             placeholder="https://..."
             name="add_new_node_input"
+            className="LB"
             value={inputData}
             type="text"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputData(e.target.value)}

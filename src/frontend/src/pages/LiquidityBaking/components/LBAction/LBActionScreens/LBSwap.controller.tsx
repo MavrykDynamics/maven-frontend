@@ -14,7 +14,7 @@ import { State } from 'utils/interfaces'
 
 import { Button } from 'app/App.components/Button/Button.controller'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
-import { ConnectWallet } from 'app/App.components/ConnectWallet_old/ConnectWallet.controller'
+import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import { Input } from 'app/App.components/Input/Input.controller'
 import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'

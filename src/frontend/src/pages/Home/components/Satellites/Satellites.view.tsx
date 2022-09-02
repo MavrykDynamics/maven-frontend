@@ -3,9 +3,12 @@ import * as React from 'react'
 import { SatellitesImage, SatellitesStyled, SatellitesFrontFigure } from './Satellites.style'
 import { Parallax } from 'react-scroll-parallax'
 import { useSelector } from 'react-redux'
+import { DARK_THEME } from 'redux/actions/preferences.action'
+import { State } from 'utils/interfaces'
 
 export const SatellitesView = () => {
-  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
+  const { themeSelected } = useSelector((state: State) => state.preferences)
+  const darkThemeEnabled = themeSelected === DARK_THEME
   const satelliteImgUrl = darkThemeEnabled
     ? '/images/satellites-columns-dark.svg'
     : '/images/satellites-columns-light.svg'

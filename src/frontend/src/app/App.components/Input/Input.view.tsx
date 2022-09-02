@@ -27,6 +27,7 @@ type InputViewProps = {
   errorMessage?: string
   disabled?: boolean
   pinnedText?: string
+  className?: string
   required?: boolean
   kind?: InputKind
   useMaxHandler?: () => void
@@ -48,6 +49,7 @@ export const InputView = ({
   errorMessage,
   disabled,
   pinnedText,
+  className,
   kind,
   required,
   useMaxHandler,
@@ -55,7 +57,7 @@ export const InputView = ({
 }: InputViewProps) => {
   const isLB = kind === 'LB'
   const status = inputStatus !== undefined ? inputStatus : 'none'
-  const classNames = `${kind} ${status} ${isLB ? 'LB' : ''}`
+  const classNames = `${kind} ${className || ''} ${status} ${isLB ? 'LB' : ''}`
 
   return (
     <InputStyled id={'inputStyled'}>
