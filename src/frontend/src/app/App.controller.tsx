@@ -10,8 +10,14 @@ import { TempleWallet } from '@temple-wallet/dapp'
 import { useDispatch } from 'react-redux'
 import { configureStore } from 'redux/storeConfigurator'
 import { setWalletAction } from 'redux/actions/wallet.action'
+import { AnyAction } from 'redux'
+import { ThunkDispatch } from 'redux-thunk'
+import { State } from 'utils/interfaces'
 
 export const store = configureStore({})
+
+export type AppDispatch = ThunkDispatch<State, unknown, AnyAction>
+export type GetState = typeof store.getState
 
 export const App = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -27,7 +33,6 @@ export const App = () => {
   return (
     <Router>
       {/* <Popup /> */}
-      <Header />
       <Switch>
         <Route
           exact

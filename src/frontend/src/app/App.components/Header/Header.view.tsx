@@ -1,14 +1,16 @@
 import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from './Header.style'
-import { TOGGLE_DARKTHEME } from 'redux/action.types'
+import { TOGGLE_DARK_THEME } from 'redux/action.types'
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 import Toggle from 'react-toggle'
+import { State } from 'utils/interfaces'
+import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
 
 export const HeaderView = () => {
-  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
+  const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected === DARK_THEME)
   const dispatch = useDispatch()
 
   const isLitepaperPage = window.location.pathname === '/litepaper'
@@ -111,7 +113,9 @@ export const HeaderView = () => {
               unchecked: <HeaderIcon src="/images/sun.svg" />,
             }}
             aria-label="Dark mode toggle"
-            onChange={() => dispatch({ type: TOGGLE_DARKTHEME })}
+            onChange={() =>
+              dispatch({ type: TOGGLE_DARK_THEME, newThemeSelected: darkThemeEnabled ? LIGHT_THEME : DARK_THEME })
+            }
           />
         </label>
       </HeaderGrid>

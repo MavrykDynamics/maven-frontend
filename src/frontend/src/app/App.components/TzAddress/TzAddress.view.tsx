@@ -9,18 +9,21 @@ type TzAddressProps = {
   hasIcon: boolean
   iconToLeft?: boolean | undefined
   isBold?: boolean
+  shouldCopy?: boolean
 }
 
 export const getShortTzAddress = (tzAddress: string): string =>
   `${tzAddress.slice(0, 7)}...${tzAddress.slice(tzAddress.length - 4, tzAddress.length)}`
 
-export const TzAddress = ({ tzAddress = '', type, hasIcon, iconToLeft, isBold }: TzAddressProps) => {
+export const TzAddress = ({ tzAddress = '', type, hasIcon, iconToLeft, isBold, shouldCopy = true }: TzAddressProps) => {
   let addrClasses = type
   if (isBold) addrClasses += ' bold'
   const dispatch = useDispatch()
 
   const _handleCopyToClipboard = (address: string) => {
-    navigator.clipboard.writeText(address)
+    if (shouldCopy) {
+      navigator.clipboard.writeText(tzAddress)
+    }
     // dispatch(showToaster('SUCCESS', 'Copied to Clipboard', `${address}`))
   }
 

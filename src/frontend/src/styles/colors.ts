@@ -24,6 +24,9 @@ export const cyanColor = '#86D4C9'
 export const connectWalletSecondary = '#EEEAF4'
 
 
+export const silverColor = '#C0DBFF'
+
+
 export const darkMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-dark.svg',
   calculatorBackground: '/images/calculator-bg-dark.svg',
@@ -81,6 +84,60 @@ export const darkMode: MavrykTheme = {
 }
 
 export const lightMode: MavrykTheme = {
+  whatMakesBackground: '/images/what-makes-light.svg',
+  calculatorBackground: '/images/calculator-bg-light.svg',
+  featuresBackground: '/images/features-bg-light.svg',
+  teamCityDecor: '/images/team/team-city-light.svg',
+  teamDecor1: '/images/team/team-decor-1-light.svg',
+  teamDecor2: '/images/team/team-decor-2-light.svg',
+  teamDecor3: '/images/team/team-decor-3-light.svg',
+  teamDecor4: '/images/team/team-decor-4-light.svg',
+  subscribeBachground: '/images/subscribe-bg-light.svg',
+  starsBachground: '/images/stars-bg-light.svg',
+  satellitesGradient: 'linear-gradient(180deg, #FFFFFF 48.18%, #86D4C9 103.84%)',
+  skyGradientTransparent: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
+  skyGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
+  backgroundColor: '#fff',
+  containerColor: '#DEE7F7',
+  textColor: '#080628',
+  subTextColor: '#29264C',
+  placeholderColor: '#7068AA',
+  primaryColor: '#7068AA',
+  upColor: 'green',
+  downColor: '#F90021',
+  litepaperLinkColor: '#7068AA',
+  navColor: titleColor,
+  inputBorderColor: '#C0DBFF',
+  headerColor,
+  darkestBackroundColor: '#ebf0ff',
+  darkBackroundColor: '#fff',
+  labelColor: titleColor,
+  headingColor: titleColor,
+  headerSectionsColor: titleColor,
+  btnBackroundColor: titleColor,
+  btnBackroundNewsColor: '#38237C',
+  linkedinLinkColor: '#160E3F',
+  socialBackroundColor: '#F7F9FD',
+  socialColor: headerColor,
+  inputColor: titleColor,
+  btnColor: '#F7F9FD',
+  headerDarkColor: headerColor,
+  roadmapValueColor: headerColor,
+  headerTeam: '#27007A',
+  btnNewsColor: '#fff',
+  inputNewsBg: 'rgba(255, 255, 255, 0.5)',
+  inputNewsColor: '#080628',
+  arrowStrokeColor: '#77A4F2',
+  socialsColor: headerColor,
+  lbBorder: '#77A4F2',
+  toggleButtonBg: '#EBF0FF',
+  toggleButtonColor: '#27007A',
+  toggleButtonColorSelected: '#FFFFFF  ',
+  toggleButtonBgSelected: '#503EAA',
+  inputTextColor: '#503EAA'
+}
+
+export const spaceMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-light.svg',
   calculatorBackground: '/images/calculator-bg-light.svg',
   featuresBackground: '/images/features-bg-light.svg',

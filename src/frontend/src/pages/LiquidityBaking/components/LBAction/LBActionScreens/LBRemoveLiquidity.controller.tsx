@@ -23,7 +23,7 @@ import { getSettings } from 'utils/DEX/DexCalcs'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { removeLiquidityHandler } from '../helpers/addAndRemoveLiquidity.utils'
 import { AddLiquidutityInputChangeEventType } from '../helpers/actionsScreen.types'
-import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
+import { ConnectWallet } from 'app/App.components/ConnectWallet_old/ConnectWallet.controller'
 
 const dex = getSettings('liquidity')
 

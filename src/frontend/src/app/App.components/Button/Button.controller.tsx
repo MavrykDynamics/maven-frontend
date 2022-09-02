@@ -1,4 +1,3 @@
-import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import { useState } from 'react'
 
@@ -10,7 +9,7 @@ type ButtonProps = {
   icon?: string
   className?: string
   kind?: ButtonStyle
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void
   type?: ButtonTypes
   loading?: boolean
   disabled?: boolean
@@ -37,4 +36,3 @@ export const Button = ({ text, icon, kind, onClick, type, loading, disabled, cla
     />
   )
 }
-

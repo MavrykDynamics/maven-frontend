@@ -1,12 +1,9 @@
 import { TezosToolkit } from '@taquito/taquito'
 import { TempleWallet } from '@temple-wallet/dapp'
+import { ThemeType } from 'redux/actions/preferences.action'
+import { RPCNodeType } from 'redux/reducers'
 
-export type IntervalType =
-  | 'quotes1dNogaps'
-  | 'quotes1hNogaps'
-  | 'quotes1w'
-  | 'quotes15mNogaps'
-  | 'quotes5mNogaps'
+export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1w' | 'quotes15mNogaps' | 'quotes5mNogaps'
 export type ChartTypeType = 'area' | 'candlestick'
 
 export interface MavrykTheme {
@@ -73,7 +70,6 @@ export interface WalletState {
   toTezos?: () => number | any
 }
 
-
 export interface UserData {
   xtzBalance: number
   tzBTCBalance: number
@@ -123,15 +119,26 @@ export interface ChartType {
   chartType: ChartTypeType
 }
 
+export interface ToasterState {
+  showing: boolean
+  status?: string
+  title?: string
+  message?: string
+}
+
 export interface State {
   wallet: WalletState
   user: UserData
   preferences: {
-    darkThemeEnabled: boolean
+    themeSelected: ThemeType
     scrollPosition: number
+    changeNodePopupOpen: boolean
+    RPC_NODES: Array<RPCNodeType>
+    REACT_APP_RPC_PROVIDER: string
   }
   tokens: TokenInfo
   chart: ChartType
+  toaster: ToasterState
 }
 
 export interface MVKStatsInterface {
@@ -154,4 +161,3 @@ export interface PurschasedStatsTable {
   amount: number
   usdPrice: number
 }
-
