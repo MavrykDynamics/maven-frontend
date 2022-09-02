@@ -8,7 +8,7 @@ import { calculateAPY, diffBetweenCoinsInPersent } from 'utils/utils'
 
 const LBHeader = () => {
   const {
-    lbData: { xtz_pool },
+    lbData: { xtz_pool, lqt_total },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
   const tzbtcBitcoinPriceDiff = diffBetweenCoinsInPersent(coinPrices.tzbtc.usd, coinPrices.bitcoin.usd)
@@ -55,7 +55,7 @@ const LBHeader = () => {
             Total Sirius Tokens
           </CustomizedText>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber endingText="%" value={313353.831} />
+            <CommaNumber value={lqt_total} />
           </CustomizedText>
         </VertInfo>
       </div>

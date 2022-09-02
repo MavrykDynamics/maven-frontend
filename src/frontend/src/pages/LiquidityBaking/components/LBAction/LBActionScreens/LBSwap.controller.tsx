@@ -70,17 +70,17 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
   )
 
   const dynamicSwapCalculations = ({
-    newSlippageValue,
+    newSlippagePersent,
     newCoinAmountValue,
     newFromValue,
     newToValue,
   }: {
-    newSlippageValue?: string | number
+    newSlippagePersent?: string | number
     newCoinAmountValue?: string | number
     newFromValue?: 'XTZ' | 'tzBTC'
     newToValue?: 'XTZ' | 'tzBTC'
   }) => {
-    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippageValue || slippagePersent)
+    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent ?? slippagePersent)
     const { expected, priceImpact, minimum } = swapCalculateCoinReceive(
       newFromValue || isRevertedCoins.from,
       newToValue || isRevertedCoins.to,
@@ -101,11 +101,11 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
   }
 
   // handle slippage value changing
-  const slippageChangeHandler = (value: string, isInput?: boolean) => {
-    const newSlippageValue = parseSrtToNum(value) < 0 ? 0 : value
-    if (+newSlippageValue >= 0 && +newSlippageValue <= 100) {
-      setSlippagePersent(newSlippageValue)
-      dynamicSwapCalculations({ newSlippageValue })
+  const slippageChangeHandler = (value: string | number, isInput?: boolean) => {
+    const newSlippagePersent = Number(parseSrtToNum(value) < 0 ? 0 : value)
+    if (newSlippagePersent >= 0 && newSlippagePersent <= 100) {
+      setSlippagePersent(value)
+      dynamicSwapCalculations({ newSlippagePersent })
     }
 
     if (!isInput) {
@@ -321,27 +321,11 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
         <PriceImpact priceImpact={priceImpact} />
         <MinimumReceived minimumRecived={[{ value: minReceived, tokenName: isRevertedCoins.to }]} />
         <Slippage
-          onClickHandler={(value: number) => slippageChangeHandler(value.toString(), false)}
+          onClickHandler={(value) => slippageChangeHandler(value, false)}
           selectedToogle={selectedSlippage}
+          setSlippagePersent={setSlippagePersent}
+          slippagePersent={slippagePersent}
         />
-        {selectedSlippage === -1 ? (
-          <Input
-            placeholder={'Slippage'}
-            name="slippageInput"
-            kind="primary"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => slippageChangeHandler(e.target.value, true)}
-            type={'tel'}
-            value={slippagePersent}
-            onBlur={() => {
-              if (slippagePersent === '') setSlippagePersent('0')
-            }}
-            onFocus={() => {
-              if (parseSrtToNum(slippagePersent) === 0) {
-                setSlippagePersent('')
-              }
-            }}
-          />
-        ) : null}
       </LBActionBottomWrapperStyled>
     </ActionScreenWrapper>
   )

@@ -48,13 +48,13 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
   })
 
   const tzbtcAndXtzAmountCalculation = ({
-    newSlippageValue,
+    newSlippagePersent,
     newSirBurnedValue,
   }: {
-    newSlippageValue?: string | number
+    newSlippagePersent?: string | number
     newSirBurnedValue?: string | number
   }) => {
-    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippageValue || slippagePersent)
+    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent ?? slippagePersent)
 
     const { expected: expectedXtz, minimum: minimumXtz } = removeLiquidityXtzReceived(
       parseSrtToNum(newSirBurnedValue || inputValues.Sir),
@@ -83,11 +83,11 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
   }
 
   // change slippage value handler
-  const slippageChangeHandler = (value: string, isInput?: boolean) => {
-    const newSlippageValue = parseSrtToNum(value) < 0 ? 0 : value
-    if (+newSlippageValue >= 0 && +newSlippageValue <= 100) {
-      setSlippagePersent(newSlippageValue)
-      tzbtcAndXtzAmountCalculation({ newSlippageValue })
+  const slippageChangeHandler = (value: string | number, isInput?: boolean) => {
+    const newSlippagePersent = Number(parseSrtToNum(value) < 0 ? 0 : value)
+    if (newSlippagePersent >= 0 && newSlippagePersent <= 100) {
+      setSlippagePersent(value)
+      tzbtcAndXtzAmountCalculation({ newSlippagePersent })
     }
 
     if (!isInput) {
@@ -210,27 +210,11 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
           ]}
         />
         <Slippage
-          onClickHandler={(value: number) => slippageChangeHandler(value.toString(), false)}
+          onClickHandler={(value) => slippageChangeHandler(value, false)}
           selectedToogle={selectedSlippage}
+          setSlippagePersent={setSlippagePersent}
+          slippagePersent={slippagePersent}
         />
-        {selectedSlippage === -1 ? (
-          <Input
-            placeholder={'Slippage'}
-            name="slippageInput"
-            kind="primary"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => slippageChangeHandler(e.target.value, true)}
-            type={'tel'}
-            value={slippagePersent}
-            onBlur={() => {
-              if (slippagePersent === '') setSlippagePersent(0)
-            }}
-            onFocus={() => {
-              if (parseSrtToNum(slippagePersent) === 0) {
-                setSlippagePersent('')
-              }
-            }}
-          />
-        ) : null}
       </LBActionBottomWrapperStyled>
     </ActionScreenWrapper>
   )

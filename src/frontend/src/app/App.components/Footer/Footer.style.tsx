@@ -26,10 +26,10 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
 `
 
 export const FooterContainer = styled.div`
-  padding: 50px 20px;
+  padding: 60px 20px;
 
   @media (max-width: 1500px) {
-    padding: 50px 40px;
+    padding: 60px 40px;
   }
 
   @media (max-width: 700px) {

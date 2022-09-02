@@ -33,7 +33,7 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 60%;
+    width: 58%;
   }
 
   @media screen and (max-width: 1200px) {

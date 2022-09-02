@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 
 import { dex, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { subHeaderColor } from 'styles'
-import { Input } from 'app/App.components/Input/Input.controller'
 
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
@@ -53,7 +52,7 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
     coinAmount: number | string,
     newSlippagePersent?: number | string,
   ) => {
-    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent || slippagePersent)
+    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent ?? slippagePersent)
     setInputValues({
       ...inputValues,
       [coinName]: coinAmount,
@@ -93,7 +92,7 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
     coinAmount: number | string,
     newSlippagePersent?: number | string,
   ) => {
-    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent || slippagePersent)
+    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent ?? slippagePersent)
     const { liquidityExpected, liquidityMinimum, tokenRequired, xtzRequired } = addLiquidityCalculationsHandler(
       coinName,
       parseSrtToNum(coinAmount),
@@ -139,17 +138,17 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
   }
 
   // slippage value changing handler
-  const slippageChangeHandler = (value: string, isInput?: boolean) => {
-    const newSlippageValue = parseSrtToNum(value) < 0 ? 0 : value
-    if (+newSlippageValue >= 0 && +newSlippageValue <= 100) {
-      setSlippagePersent(newSlippageValue)
+  const slippageChangeHandler = (value: string | number, isInput?: boolean) => {
+    const newSlippagePersent = Number(parseSrtToNum(value) < 0 ? 0 : value)
+    if (newSlippagePersent >= 0 && newSlippagePersent <= 100) {
+      setSlippagePersent(value)
 
       if (switchValue) {
         // Only XTZ input
-        onlyXTZCalculations('XTZ', inputValues.XTZ, newSlippageValue)
+        onlyXTZCalculations('XTZ', inputValues.XTZ, newSlippagePersent)
       } else if (!switchValue && lastCoinUpdated) {
         // XTZ & tzBTC inputs
-        xtzTzbtcCalculations(lastCoinUpdated, inputValues[lastCoinUpdated], newSlippageValue)
+        xtzTzbtcCalculations(lastCoinUpdated, inputValues[lastCoinUpdated], newSlippagePersent)
       }
     }
 
@@ -287,27 +286,11 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
         <PriceImpact priceImpact={0} />
         <MinimumReceived minimumRecived={[{ value: minlqtReceived, tokenName: 'LBT' }]} />
         <Slippage
-          onClickHandler={(value: number) => slippageChangeHandler(value.toString(), false)}
+          onClickHandler={(value) => slippageChangeHandler(value, false)}
           selectedToogle={selectedSlippage}
+          setSlippagePersent={setSlippagePersent}
+          slippagePersent={slippagePersent}
         />
-        {selectedSlippage === -1 ? (
-          <Input
-            placeholder={'Slippage'}
-            name="slippageInput"
-            kind="primary"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => slippageChangeHandler(e.target.value, true)}
-            type={'tel'}
-            value={slippagePersent}
-            onBlur={() => {
-              if (slippagePersent === '') setSlippagePersent('0')
-            }}
-            onFocus={() => {
-              if (parseSrtToNum(slippagePersent) === 0) {
-                setSlippagePersent('')
-              }
-            }}
-          />
-        ) : null}
       </LBActionBottomWrapperStyled>
     </ActionScreenWrapper>
   )
