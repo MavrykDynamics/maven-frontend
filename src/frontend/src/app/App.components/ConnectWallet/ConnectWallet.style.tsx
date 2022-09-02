@@ -122,6 +122,12 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
     `}
 
   &:hover {
+    var,
+    .wallet,
+    .end-icon {
+      color: ${cyanColor};
+      stroke: ${cyanColor};
+    }
     .end-icon {
       transform: rotate(90deg);
     }
