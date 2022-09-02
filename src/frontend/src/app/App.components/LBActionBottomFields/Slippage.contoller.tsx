@@ -2,7 +2,7 @@ import { SLIPPAGE_TOGGLE_VALUES } from 'pages/LiquidityBaking/components/LBActio
 import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import React from 'react'
 import { subHeaderColor } from 'styles'
-import { parseSrtToNum } from 'utils/utils'
+import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 import { Input } from '../Input/Input.controller'
 import { ToggleButton } from '../ToggleButton/Toggle-button.view'
 
@@ -47,6 +47,8 @@ export const Slippage = ({
               setSlippagePersent('')
             }
           }}
+          onKeyDown={nonNumberSymbolsValidation}
+          onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
         />
       </div>
     </HorisontalInfo>

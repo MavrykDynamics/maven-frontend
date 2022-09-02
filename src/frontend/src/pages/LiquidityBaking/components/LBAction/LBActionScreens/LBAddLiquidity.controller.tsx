@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TezosToolkit } from '@taquito/taquito'
 import { useSelector } from 'react-redux'
 
@@ -36,6 +36,7 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
     lbData: { xtz_pool, token_pool, address, token_address, lqt_total },
   } = useSelector((state: State) => state.tokens)
   const { accountPkh } = useSelector((state: State) => state.wallet)
+  const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
   const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
   const [onlyXtzSwapData, setOnlyXtzSwapData] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
@@ -45,6 +46,11 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
   const [lastCoinUpdated, setLastCoinUpdated] = useState<null | 'XTZ' | 'tzBTC'>(null)
   const [lqtReceived, setLqtReceived] = useState(0)
   const [minlqtReceived, setMinLqtReceived] = useState(0)
+
+  useEffect(() => {
+    setInputValues(DEFAULT_COINS_AMOUNT)
+    setOnlyXtzSwapData(DEFAULT_COINS_AMOUNT)
+  }, [ready])
 
   // Dynamic calculations for only XTZ block
   const onlyXTZCalculations = (
@@ -126,7 +132,7 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
   // input hanlder
   const inputChangeHandler = (e: AddLiquidutityInputChangeEventType) => {
     const { name, value } = e.target
-    if (+value < 0) return
+    if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) return
 
     if (switchValue) {
       // Only XTZ input

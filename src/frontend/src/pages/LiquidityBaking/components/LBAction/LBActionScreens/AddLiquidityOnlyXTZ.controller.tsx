@@ -7,7 +7,7 @@ import { Input } from 'app/App.components/Input/Input.controller'
 import { AddLiquidutityInputChangeEventType, CoinsInputsValues } from '../helpers/actionsScreen.types'
 import { State } from 'utils/interfaces'
 
-import { parseSrtToNum } from 'utils/utils'
+import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 
 import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { cyanColor } from 'styles'
@@ -41,6 +41,8 @@ export const AddLiquidityOnlyXTZ = ({
         convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
         icon={'XTZ_tezos'}
         pinnedText={'XTZ'}
+        onKeyDown={nonNumberSymbolsValidation}
+        onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
         useMaxHandler={() => {
           inputChangeHandler({
             target: {

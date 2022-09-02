@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { TezosToolkit } from '@taquito/taquito'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
 import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
@@ -17,7 +17,7 @@ import { State } from 'utils/interfaces'
 
 import { removeLiquidityTokenReceived, removeLiquidityXtzReceived } from 'utils/DEX/liquidityUtils'
 import env from 'utils/env'
-import { parseSrtToNum, slippagePersentToValue } from 'utils/utils'
+import { nonNumberSymbolsValidation, parseSrtToNum, slippagePersentToValue } from 'utils/utils'
 import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { getSettings } from 'utils/DEX/DexCalcs'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
@@ -46,6 +46,10 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
     xtz: 0,
     tzbtc: 0,
   })
+
+  useEffect(() => {
+    setInputValues({ Sir: '0' })
+  }, [ready])
 
   const tzbtcAndXtzAmountCalculation = ({
     newSlippagePersent,
@@ -98,7 +102,8 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
   // change input value handler
   const inputChangeHandler = (e: AddLiquidutityInputChangeEventType) => {
     const { name, value } = e.target
-    if (+value < 0) return
+    if (+value < 0 || (ready && +value > LBTBalance)) return
+
     tzbtcAndXtzAmountCalculation({ newSirBurnedValue: value })
 
     setInputValues({
@@ -144,6 +149,8 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
         convertedValue={parseSrtToNum(inputValues.Sir) * coinPrices.tezos.usd}
         icon={'XTZ_tezos'}
         pinnedText={'Sir'}
+        onKeyDown={nonNumberSymbolsValidation}
+        onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
         useMaxHandler={() => {
           inputChangeHandler({
             target: {

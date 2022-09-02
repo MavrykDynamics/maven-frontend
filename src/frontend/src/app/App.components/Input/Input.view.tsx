@@ -21,6 +21,7 @@ type InputViewProps = {
   onChange: any
   onBlur: any
   onKeyDown: any
+  onWheel: any
   onFocus: any
   inputStatus?: InputStatusType
   type: string
@@ -45,6 +46,7 @@ export const InputView = ({
   onKeyDown,
   onFocus,
   inputStatus,
+  onWheel,
   type,
   errorMessage,
   disabled,
@@ -84,6 +86,7 @@ export const InputView = ({
           required={required}
           className={classNames}
           placeholder={placeholder}
+          onWheel={onWheel}
           value={value}
           onChange={onChange}
           onBlur={onBlur}

@@ -6,7 +6,7 @@ import { Input } from 'app/App.components/Input/Input.controller'
 import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { cyanColor } from 'styles'
 
-import { parseSrtToNum } from 'utils/utils'
+import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 
 import { AddLiquidutityInputChangeEventType, CoinsInputsValues } from '../helpers/actionsScreen.types'
 import { State } from 'utils/interfaces'
@@ -38,6 +38,8 @@ export const AddLiquidityDefault = ({
           convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
           icon={'XTZ_tezos'}
           pinnedText={'XTZ'}
+          onKeyDown={nonNumberSymbolsValidation}
+          onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
           useMaxHandler={() => {
             inputChangeHandler({
               target: {
@@ -71,6 +73,8 @@ export const AddLiquidityDefault = ({
           onChange={inputChangeHandler}
           type={'number'}
           kind={'LB'}
+          onKeyDown={nonNumberSymbolsValidation}
+          onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
           value={inputValues.tzBTC}
           convertedValue={parseSrtToNum(inputValues.tzBTC) * coinPrices.tzbtc.usd}
           icon={'tzBTC'}

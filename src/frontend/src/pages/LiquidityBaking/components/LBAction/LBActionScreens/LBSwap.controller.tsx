@@ -1,5 +1,5 @@
 import { TezosToolkit } from '@taquito/taquito'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
@@ -7,7 +7,7 @@ import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { swapCalculateCoinReceive } from 'utils/DEX/swapUtils'
 import env from 'utils/env'
 import { getSettings } from 'utils/DEX/DexCalcs'
-import { parseSrtToNum, slippagePersentToValue } from 'utils/utils'
+import { nonNumberSymbolsValidation, parseSrtToNum, slippagePersentToValue } from 'utils/utils'
 import { xtzToTzBTCSwap, tzbtcToXtzSwap } from '../helpers/swap.utils'
 
 import { State } from 'utils/interfaces'
@@ -69,6 +69,10 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
     [tzBTCBalance, xtzBalance],
   )
 
+  useEffect(() => {
+    setInputValues(DEFAULT_COINS_AMOUNT)
+  }, [ready])
+
   const dynamicSwapCalculations = ({
     newSlippagePersent,
     newCoinAmountValue,
@@ -116,7 +120,7 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
   // handling dynamic filling second input on input change
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => {
     let { name, value } = e.target
-    if (+value < 0) return
+    if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) return
 
     const isTypingBottomInput = name === isRevertedCoins.to
 
@@ -237,6 +241,8 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
           pinnedText={'XTZ'}
           useMaxHandler={() => maxHandler('XTZ', 'tzBTC')}
           userBalance={xtzBalance}
+          onKeyDown={nonNumberSymbolsValidation}
+          onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
           onBlur={() => {
             if (inputValues.XTZ === '') {
               setInputValues({
@@ -278,6 +284,8 @@ export const LBSwap = ({ ready }: { ready: boolean }) => {
           pinnedText={'tzBTC'}
           useMaxHandler={() => maxHandler('tzBTC', 'XTZ')}
           userBalance={tzBTCBalance}
+          onKeyDown={nonNumberSymbolsValidation}
+          onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
           onBlur={() => {
             if (inputValues.tzBTC === '') {
               setInputValues({
