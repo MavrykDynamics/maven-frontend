@@ -280,7 +280,7 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
           kind={PRIMARY}
         />
       ) : (
-        <ConnectWallet className="swap-action addLiq-action" />
+        <ConnectWallet className="swap-action addLiq-action addLiquidity_btn" />
       )}
 
       <LBActionBottomWrapperStyled>

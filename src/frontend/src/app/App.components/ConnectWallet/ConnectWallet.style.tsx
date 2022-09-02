@@ -23,6 +23,10 @@ export const ConnectWalletStyled = styled.div`
   }
 
   &.addLiq-action {
+    margin-top: 40px;
+  }
+
+  &.removeLiq-action {
     margin-top: 15px;
   }
 `

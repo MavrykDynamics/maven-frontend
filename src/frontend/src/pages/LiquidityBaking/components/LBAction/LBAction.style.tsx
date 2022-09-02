@@ -3,17 +3,11 @@ import { MavrykTheme } from 'utils/interfaces'
 
 export const LBActionStyled = styled.div<{ theme: MavrykTheme }>`
   z-index: 1;
-  grid-row-start: 2;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-end: 4;
-  padding: 20px 25px 50px 25px;
-  height: fit-content;
+  padding: 20px 40px 50px 40px;
   background: ${({ theme }) => theme.darkBackroundColor};
   border: 1px solid ${({ theme }) => theme.lbBorder};
-  /* background: #160e3f; */
   border-radius: 10px;
-  height: 670px;
+  width: calc(50% - 15px);
 
   hr {
     height: 2px;

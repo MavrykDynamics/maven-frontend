@@ -198,7 +198,7 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
           kind={PRIMARY}
         />
       ) : (
-        <ConnectWallet className="swap-action" />
+        <ConnectWallet className="swap-action removeLiq-action" />
       )}
 
       <LBActionBottomWrapperStyled className="liquidity">

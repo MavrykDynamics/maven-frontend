@@ -1,18 +1,11 @@
 import styled from 'styled-components'
-import { titleColor } from 'styles'
 import { BLOCK_RADIUS } from 'styles/constants'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
-  grid-column-start: 1;
-  grid-column-end: 3;
   background: ${({ theme }) => theme.darkBackroundColor};
   border: 1px solid ${({ theme }) => theme.lbBorder};
-  /* background: #160e3f; */
-  /* border: 1px solid ${titleColor}; */
   border-radius: ${BLOCK_RADIUS};
-  grid-row-start: 3;
-  grid-row-end: 4;
   padding-top: 25px;
   z-index: 1;
 

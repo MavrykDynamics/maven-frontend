@@ -5,8 +5,6 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
   background: ${({ theme }) => theme.darkBackroundColor};
   border: 1px solid ${({ theme }) => theme.lbBorder};
   border-radius: 10px;
-  grid-column-end: 3;
-  grid-column-start: 1;
   min-height: 112px;
   z-index: 1;
   display: flex;

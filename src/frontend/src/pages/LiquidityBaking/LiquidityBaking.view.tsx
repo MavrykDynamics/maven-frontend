@@ -12,8 +12,10 @@ const LiquidityBakingView = () => {
     <LBStyled>
       <div className="content-wrapper">
         <LBHeader />
-        <LBPersonalStats />
-        <LBAction />
+        <div className="middle-block">
+          <LBPersonalStats />
+          <LBAction />
+        </div>
         <LBChart />
         <LBFAQ />
       </div>

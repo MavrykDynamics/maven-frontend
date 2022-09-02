@@ -11,13 +11,16 @@ export const LBStyled = styled.div`
 
   .content-wrapper {
     padding-top: 150px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 112px 670px 650px 645px;
-    column-gap: 20px;
+    display: flex;
+    flex-direction: column;
     row-gap: 30px;
     max-width: 1440px;
     margin: 0 auto;
+  }
+
+  .middle-block {
+    display: flex;
+    justify-content: space-between;
   }
 
   @media screen and (max-width: 1070px) {
