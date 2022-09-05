@@ -91,7 +91,7 @@ export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) 
       </div>
 
       <div className="theme-switcher-block">
-        <PopupTitle className="change_node">Choose The Theme</PopupTitle>
+        <PopupTitle className="change_node">Choose the theme</PopupTitle>
 
         <div className="buttons-wrapper">
           <Button
