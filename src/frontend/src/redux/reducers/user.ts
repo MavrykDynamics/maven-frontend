@@ -6,6 +6,8 @@ export const defaultUser: UserData = {
   tzBTCBalance: 0,
   LBTBalance: 0,
   userAddress: '',
+  mvkBalance: 0,
+  smvkBalance: 0
 }
 
 const user = (state = defaultUser, action: any) => {

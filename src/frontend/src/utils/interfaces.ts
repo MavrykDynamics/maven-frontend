@@ -74,6 +74,8 @@ export interface UserData {
   xtzBalance: number
   tzBTCBalance: number
   LBTBalance: number
+  mvkBalance: number
+  smvkBalance: number
   userAddress: string
 }
 

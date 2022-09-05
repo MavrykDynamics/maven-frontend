@@ -6,9 +6,11 @@ import { LBChartView } from './LBChart.view'
 
 export const LBChart = () => {
   const { chartDataCandlestick, chartDataArea, chartInterval, chartType } = useSelector((state: State) => state.chart)
-  const [moveValue, setMoveValue] = useState(chartDataArea.at(-1)?.y || 0)
+  const DEFAULT_CHART_COMPARE_VALUE = chartDataArea.at(-1)?.y || chartDataCandlestick.at(-1)?.y[3] || 0
+  const [moveValue, setMoveValue] = useState(DEFAULT_CHART_COMPARE_VALUE)
+
   const chartHoverHandler = (value: number, isOut?: boolean) => {
-    if (isOut) setMoveValue(chartDataArea.at(-1)?.y || 0)
+    if (isOut) setMoveValue(DEFAULT_CHART_COMPARE_VALUE)
     else setMoveValue(value)
   }
 

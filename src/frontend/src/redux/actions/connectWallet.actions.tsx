@@ -1,15 +1,16 @@
 import { TempleDAppNetwork, TempleWallet } from '@temple-wallet/dapp'
 
 // import { getUserData } from '../../../pages/Doorman/Doorman.actions'
-import { showToaster } from '../Toaster/Toaster.actions'
-import { ERROR } from '../Toaster/Toaster.constants'
-import type { AppDispatch, GetState } from '../../App.controller'
+import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
+import { ERROR } from '../../app/App.components/Toaster/Toaster.constants'
+import type { AppDispatch, GetState } from '../../app/App.controller'
 import { State } from 'utils/interfaces'
+import { getUserData } from 'redux/actions/user.action'
+import { SET_WALLET, CONNECT, DISCONNECT } from 'redux/action.types'
 
 // const network = process.env.REACT_APP_API_NETWORK
 const network = 'ghostnet'
 
-export const SET_WALLET = 'SET_WALLET'
 export const setWallet = (wallet: TempleWallet) => (dispatch: AppDispatch) => {
   dispatch({
     type: SET_WALLET,
@@ -17,7 +18,6 @@ export const setWallet = (wallet: TempleWallet) => (dispatch: AppDispatch) => {
   })
 }
 
-export const CONNECT = 'CONNECT'
 export const connect =
   ({ forcePermission = false }: { forcePermission?: boolean }) =>
   async (dispatch: AppDispatch, getState: GetState) => {
@@ -38,7 +38,7 @@ export const connect =
           ready: Boolean(tzs),
           accountPkh: accountPkh,
         })
-        // if (accountPkh) dispatch(getUserData(accountPkh))
+        if (accountPkh) dispatch(getUserData(accountPkh))
       }
     } catch (err) {
       if (err instanceof Error) {
@@ -48,7 +48,6 @@ export const connect =
     }
   }
 
-export const DISCONNECT = 'DISCONNECT'
 export const disconnect = () => async (dispatch: AppDispatch) => {
   try {
     // clearing wallet data

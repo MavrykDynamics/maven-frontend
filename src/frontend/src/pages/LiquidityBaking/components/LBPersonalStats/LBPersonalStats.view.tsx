@@ -3,17 +3,16 @@ import { VertInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.
 import { cyanColor, subHeaderColor } from 'styles'
 import { LBPersonalStatsStyled } from './LBPersonalStats.style'
 
-export const LBPersonalStatsView = ({
-  showNone,
-  balances,
-}: {
+type PersonalStatsProps = {
   showNone: boolean
   balances: {
     siriusBalance: number
     xtzBalance: number
     tzBTCBalance: number
   }
-}) => {
+}
+
+export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) => {
   return (
     <LBPersonalStatsStyled>
       <div className="title">My Stats</div>

@@ -17,8 +17,8 @@ const LBHeader = () => {
   return (
     <LBHeaderStyled>
       <div className="title">
-        <img src="/images/sirius-icon.png" alt="" />
-        <CustomizedText fontWidth={700} fontSize={35} color={'#fff'}>
+        <img src="/images/sirius-icon.png" alt="sirius logo" />
+        <CustomizedText fontWidth={700} fontSize={35}>
           Liquidity Baking (Sirius)
         </CustomizedText>
       </div>

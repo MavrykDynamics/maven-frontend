@@ -1,7 +1,6 @@
 import { ChartType } from 'utils/interfaces'
 import * as actions from '../action.types'
 
-
 export const defaultChart: ChartType = {
   chartDataCandlestick: [],
   chartDataArea: [],

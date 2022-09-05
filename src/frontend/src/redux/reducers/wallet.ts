@@ -19,6 +19,11 @@ const wallet = (state = walletDefaultState, action: any) => {
       }
     case actions.SET_WALLET:
       return { ...state, wallet: action.wallet }
+    case actions.DISCONNECT:
+      return {
+        ...state,
+        ...walletDefaultState,
+      }
     default:
       return state
   }

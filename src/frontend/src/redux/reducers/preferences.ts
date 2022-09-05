@@ -1,19 +1,20 @@
+import { PreferencesType } from 'utils/interfaces'
 import { getItemFromStorage } from 'utils/utils'
 import * as actions from '../action.types'
 import { DARK_THEME } from '../actions/preferences.action'
 
-const preferences = (
-  state = {
-    themeSelected: getItemFromStorage('theme') || DARK_THEME,
-    changeNodePopupOpen: false,
-    scrollPosition: 0,
-    RPC_NODES: [
-      { title: 'MARIGOLD', url: 'https://jakartanet.tezos.marigold.dev/', nodeLogoUrl: 'marigold_logo.png' },
-      { title: 'ECADLABS', url: 'https://jakartanet.ecadinfra.com', nodeLogoUrl: 'ECAD_logo.png' },
-    ],
-  },
-  action: any,
-) => {
+const defaultPreferences: PreferencesType = {
+  themeSelected: getItemFromStorage('theme') || DARK_THEME,
+  REACT_APP_RPC_PROVIDER: 'https://jakartanet.tezos.marigold.dev/',
+  changeNodePopupOpen: false,
+  scrollPosition: 0,
+  RPC_NODES: [
+    { title: 'MARIGOLD', url: 'https://jakartanet.tezos.marigold.dev/', nodeLogoUrl: 'marigold_logo.png' },
+    { title: 'ECADLABS', url: 'https://jakartanet.ecadinfra.com', nodeLogoUrl: 'ECAD_logo.png' },
+  ],
+}
+
+const preferences = (state = defaultPreferences, action: any) => {
   switch (action.type) {
     case actions.TOGGLE_DARK_THEME:
       return { ...state, themeSelected: action.newThemeSelected }

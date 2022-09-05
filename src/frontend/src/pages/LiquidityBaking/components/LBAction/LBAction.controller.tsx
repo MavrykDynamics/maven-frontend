@@ -1,5 +1,5 @@
 import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
-import React, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
 
