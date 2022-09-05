@@ -44,18 +44,19 @@ const LBHeader = () => {
 
         <VertInfo>
           <CustomizedText fontWidth={500} className="block-name">
-            tzBTC/BTC Price Difference
-          </CustomizedText>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber endingText="%" value={tzbtcBitcoinPriceDiff} />
-          </CustomizedText>
-        </VertInfo>
-        <VertInfo>
-          <CustomizedText fontWidth={500} className="block-name">
             Total Sirius Tokens
           </CustomizedText>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
             <CommaNumber value={lqt_total} />
+          </CustomizedText>
+        </VertInfo>
+
+        <VertInfo>
+          <CustomizedText fontWidth={500} className="block-name">
+            tzBTC/BTC Price Difference
+          </CustomizedText>
+          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+            <CommaNumber endingText="%" value={tzbtcBitcoinPriceDiff} />
           </CustomizedText>
         </VertInfo>
       </div>
