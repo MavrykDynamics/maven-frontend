@@ -24,11 +24,13 @@ const LiquidityBaking = () => {
   }, [chartInterval, dispatch])
 
   return (
-    <LBStyled>
-      <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
-      <LiquidityBakingView />
+    <>
+      <LBStyled>
+        <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
+        <LiquidityBakingView />
+      </LBStyled>
       <Footer />
-    </LBStyled>
+    </>
   )
 }
 

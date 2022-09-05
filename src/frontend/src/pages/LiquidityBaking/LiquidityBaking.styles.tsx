@@ -6,8 +6,8 @@ export const LBStyled = styled.div`
   background-image: url('images/lb_bg.png');
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 580px;
   position: relative;
+  padding-bottom: 100px;
 
   .content-wrapper {
     padding-top: 150px;
@@ -34,12 +34,8 @@ export const LBStyled = styled.div`
       flex-direction: column;
       row-gap: 30px;
     }
-  }
 
-  #footer {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+    padding-bottom: 0px;
   }
 `
 
