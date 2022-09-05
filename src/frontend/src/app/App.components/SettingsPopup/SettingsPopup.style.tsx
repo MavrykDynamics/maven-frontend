@@ -120,7 +120,6 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
       height: 35px;
       width: 100%;
       margin: 0;
-      border: none;
       padding: 0;
       padding-left: 7px;
       color: #6a6a9b;

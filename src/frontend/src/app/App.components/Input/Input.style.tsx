@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components/macro'
-import { cyanColor } from 'styles'
+import { cyanColor, titleColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const InputStyled = styled.div<{ theme: MavrykTheme }>`
@@ -111,6 +111,7 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
     padding-left: 10px;
     color: ${({ theme }) => theme.headerColor};
     background-color: ${({ theme }) => theme.toggleButtonBg};
+    border: 1px solid ${titleColor};
   }
 
   &::placeholder:not(.search) {
