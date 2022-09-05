@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { cyanColor, titleColor } from 'styles'
+import { cyanColor, silverColor, titleColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const PopupContainerWrapper = styled.div<{ theme: MavrykTheme }>`
@@ -95,6 +95,7 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
     margin-top: 25px;
     justify-content: space-between;
     cursor: default;
+    position: relative;
 
     .add-new-node-handler {
       width: 100%;
@@ -102,14 +103,8 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
       font-size: 18px;
       line-height: 18px;
       color: #8d86eb;
-      cursor: pointer;
-      transition: 0.5s all;
       white-space: nowrap;
       margin-right: 10px;
-
-      &:hover {
-        color: ${cyanColor};
-      }
     }
 
     #inputStyled {
@@ -122,11 +117,18 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
       margin: 0;
       padding: 0;
       padding-left: 7px;
-      color: #6a6a9b;
+      color: ${silverColor};
       font-size: 16px;
       text-overflow: ellipsis;
+      transition: 0.5s all;
       overflow: hidden;
       white-space: nowrap;
+    }
+
+    &.expanded {
+      .add-new-node-handler {
+        display: none;
+      }
     }
   }
 
