@@ -9,6 +9,11 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
 
   > div {
     height: 25px;
+
+    @media screen and (max-width: 490px) {
+      height: fit-content;
+      align-items: flex-start;
+    }
   }
 
   &.liquidity {
@@ -41,6 +46,17 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
         font-size: 16px;
         transform: translateY(-50%);
         color: ${({ theme }) => theme.toggleButtonColor};
+      }
+    }
+
+    @media screen and (max-width: 490px) {
+      flex-direction: column;
+      align-items: flex-end;
+      row-gap: 10px;
+      height: fit-content;
+
+      #inputStyled {
+        width: fit-content;
       }
     }
   }

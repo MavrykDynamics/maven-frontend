@@ -37,6 +37,14 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
       max-height: 30px;
     }
   }
+
+  @media screen and (max-width: 540px) {
+    &.action-toggler {
+      div {
+        width: fit-content;
+      }
+    }
+  }
 `
 
 export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`

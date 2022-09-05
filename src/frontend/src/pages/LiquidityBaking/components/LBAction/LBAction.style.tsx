@@ -23,10 +23,15 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme }>`
     padding: 20px 15px 50px 15px;
   }
 
-  @media screen and (max-width: 1070px) {
-    width: calc(100vw - 5%);
-    max-width: 400px;
+  @media screen and (max-width: 960px) {
+    width: calc(100% - 30px);
+    max-width: 769px;
+    padding: 20px 40px 50px 40px;
     margin: 0 auto;
+  }
+
+  @media screen and (max-width: 540px) {
+    padding: 20px 15px 20px 15px;
   }
 `
 

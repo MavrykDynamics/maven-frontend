@@ -29,14 +29,12 @@ export const LBStyled = styled.div`
     }
   }
 
-  /* @media screen and (max-width: 1070px) {
-    .content-wrapper {
-      display: flex;
-      row-gap: 20px;
+  @media screen and (max-width: 960px) {
+    .middle-block {
       flex-direction: column;
-      padding-bottom: 70px;
+      row-gap: 30px;
     }
-  } */
+  }
 
   #footer {
     position: absolute;

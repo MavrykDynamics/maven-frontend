@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/macro'
-import { cyanColor } from 'styles/colors'
+import { cyanColor, silverColor } from 'styles/colors'
 import { MENU_Z_INDEX, Z_INDEX_DEFAULT } from 'styles/constants'
 import { MavrykTheme } from 'utils/interfaces'
 
@@ -60,7 +60,7 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
       }
 
       svg {
-        fill: ${({ theme }) => theme.socialColor};
+        fill: ${silverColor};
         width: 33px;
         height: 33px;
       }
@@ -195,6 +195,7 @@ export const MobileTopBarStyled = styled.div<{ show: boolean }>`
       margin-top: auto;
 
       svg {
+        fill: ${silverColor};
         width: 35px;
         height: 35px;
       }

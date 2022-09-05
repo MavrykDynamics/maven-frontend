@@ -27,4 +27,27 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)`
       row-gap: 20px;
     }
   }
+
+  @media screen and (max-width: 1160px) {
+    .stats-grid {
+      div {
+        div {
+          font-size: 22px;
+        }
+
+        .block-name {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    height: 600px;
+  }
+
+  @media screen and (max-width: 480px) {
+    column-gap: 10px;
+    background-size: contain;
+  }
 `
