@@ -6,10 +6,10 @@ import { getTokensPrices } from 'redux/actions/tokenPrices.action'
 import { getChartData } from 'redux/actions/chart.action'
 import { State } from 'utils/interfaces'
 import { getGeneralStats } from 'redux/actions/stats.action'
-import { toggleRPCNodePopup } from 'app/App.components/SettingsPopup/SettingsPopup.actions'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { Footer } from 'app/App.components/Footer/Footer.controller'
 import { LBStyled } from './LiquidityBaking.styles'
+import { toggleRPCNodePopup } from 'redux/actions/preferences.action'
 
 const LiquidityBaking = () => {
   const dispatch = useDispatch()

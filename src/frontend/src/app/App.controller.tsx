@@ -13,7 +13,7 @@ import { ThunkDispatch } from 'redux-thunk'
 import { State } from 'utils/interfaces'
 import { PopupChangeNode } from './App.components/SettingsPopup/SettingsPopup.controller'
 import { Toaster } from './App.components/Toaster/Toaster.controller'
-import { toggleRPCNodePopup } from './App.components/SettingsPopup/SettingsPopup.actions'
+import { toggleRPCNodePopup } from 'redux/actions/preferences.action'
 
 export const store = configureStore({})
 

@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components/macro'
-import { backgroundColor, secondaryColor } from './colors'
+import { backgroundColor, cyanColor, headerColor, secondaryColor, titleColor } from './colors'
 import { MavrykTheme } from 'utils/interfaces'
 
-export const GlobalStyle = createGlobalStyle<{theme: MavrykTheme}>`
+export const GlobalStyle = createGlobalStyle<{ theme: MavrykTheme }>`
 * {
   box-sizing: border-box;
 }
@@ -12,8 +12,8 @@ body {
   font-display: optional;
   margin: 0;
   padding: 0;
-  background-color: ${({theme}) => theme.backgroundColor};
-  color: ${({theme}) => theme.textColor};
+  background-color: ${({ theme }) => theme.backgroundColor};
+  color: ${({ theme }) => theme.textColor};
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -24,7 +24,7 @@ h1 {
   font-weight: bold;
   display: inline-block;
   margin: 30px auto;
-  color: ${({theme}) => theme.subTextColor};
+  color: ${({ theme }) => theme.subTextColor};
 
   @media (max-width: 700px) {   
     font-size: 30px;
@@ -36,7 +36,7 @@ h1 {
     display: block;
     width: 80px;
     height: 5px;
-    background-color: ${({theme}) => theme.primaryColor};
+    background-color: ${({ theme }) => theme.primaryColor};
     margin: 7px 0 10px 1px;
   }
 }
@@ -64,12 +64,12 @@ h4 {
 }
 
 input {
-  color: ${({theme}) => theme.textColor};
+  color: ${({ theme }) => theme.textColor};
   font-size: 14px;
 }
 
 ::placeholder {
-  color: ${({theme}) => theme.placeholderColor};
+  color: ${({ theme }) => theme.placeholderColor};
   font-size: 14px;
 }
 
@@ -78,7 +78,7 @@ input {
 }
 
 a {
-  color: ${({theme}) => theme.textColor};
+  color: ${({ theme }) => theme.textColor};
   text-decoration: none;
   opacity: 1;
   transition: opacity 0.15s ease-in-out-out;
@@ -240,4 +240,45 @@ p {
   -moz-box-shadow: 0px 0px 5px 5px ${secondaryColor};
   box-shadow: 0px 0px 5px 5px ${secondaryColor};
 }
+
+.scroll-block::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: ${titleColor}4d;
+  }
+.scroll-block::-webkit-scrollbar
+  {
+    width: 5px;
+    background-color: transparent;
+  }
+.scroll-block::-webkit-scrollbar-thumb
+  {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: ${titleColor};
+  }
+
+  .info-link {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      svg {
+        fill: ${cyanColor};
+      }
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: ${headerColor};
+    }
+  }
 `

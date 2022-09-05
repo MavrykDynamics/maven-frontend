@@ -1,11 +1,18 @@
 import { Input } from 'app/App.components/Input/Input.controller'
 import React, { useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ThemeType, themeSetterAction, SPACE_THEME, DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
+import {
+  ThemeType,
+  themeSetterAction,
+  SPACE_THEME,
+  DARK_THEME,
+  LIGHT_THEME,
+  selectNewRPCNode,
+  setNewRPCNodes,
+} from 'redux/actions/preferences.action'
 import { RPCNodeType, State } from 'utils/interfaces'
 import { ACTION_PRIMARY, TRANSPARENT } from '../Button/Button.constants'
 import { Button } from '../Button/Button.controller'
-import { selectNewRPCNode, setNewRPCNodes } from './SettingsPopup.actions'
 
 import {
   ChangeNodeNodesList,
@@ -28,7 +35,7 @@ export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) 
     setInputData('')
   }, [inputData, RPC_NODES])
 
-  const confirmNodeSelecting = useCallback(() => dispatch(selectNewRPCNode(selectedNodeByClick)), [])
+  const confirmNodeSelecting = useCallback(() => dispatch(selectNewRPCNode(selectedNodeByClick)), [selectedNodeByClick])
   const setNewThemeHandler = useCallback((newTheme: ThemeType) => dispatch(themeSetterAction(newTheme)), [])
 
   return (

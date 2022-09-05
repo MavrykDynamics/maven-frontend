@@ -8,9 +8,8 @@ import { HashLink } from 'react-router-hash-link'
 import { LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperMarkdown, LitepaperStyled } from './Litepaper.style'
 import { useDispatch, useSelector } from 'react-redux'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
-import { toggleRPCNodePopup } from 'app/App.components/SettingsPopup/SettingsPopup.actions'
 import { State } from 'utils/interfaces'
-import { DARK_THEME } from 'redux/actions/preferences.action'
+import { DARK_THEME, toggleRPCNodePopup } from 'redux/actions/preferences.action'
 
 export const LitepaperView = () => {
   const themeSelected = useSelector((state: State) => state.preferences.themeSelected)
