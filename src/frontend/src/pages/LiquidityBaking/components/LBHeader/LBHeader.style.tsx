@@ -36,22 +36,27 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     width: 58%;
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1400px) {
+    .title {
+      div {
+        &::after {
+          display: none;
+        }
+        font-size: 28px;
+      }
+    }
+
     .block-name {
-      font-size: 15px;
+      font-size: 17px;
     }
 
     div {
       line-height: 10px;
-      font-size: 16px;
-    }
-
-    .info-wrapper {
-      width: 50%;
+      font-size: 17px;
     }
   }
 
-  @media screen and (max-width: 1070px) {
+  @media screen and (max-width: 1260px) {
     flex-direction: column;
     row-gap: 30px;
     padding: 20px;
@@ -64,19 +69,19 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       justify-content: center;
 
       .block-name {
-        font-size: 18px;
+        font-size: 20px;
       }
 
       div {
-        line-height: 18px;
-        font-size: 18px;
+        line-height: 20px;
+        font-size: 20px;
         align-items: center;
       }
     }
   }
 
-  @media screen and (max-width: 480px) {
-    padding: 15px;
+  @media screen and (max-width: 510px) {
+    padding: 15px 10px;
     .title {
       column-gap: 10px;
       div {
@@ -87,6 +92,19 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       img {
         width: 50px;
         height: 50px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .title {
+      div {
+        font-size: 20px;
+      }
+
+      img {
+        width: 45px;
+        height: 45px;
       }
     }
   }

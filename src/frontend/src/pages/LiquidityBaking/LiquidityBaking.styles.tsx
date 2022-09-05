@@ -23,14 +23,20 @@ export const LBStyled = styled.div`
     justify-content: space-between;
   }
 
-  @media screen and (max-width: 1070px) {
+  @media screen and (max-width: 1500px) {
+    .content-wrapper {
+      padding: 150px 25px 70px 25px;
+    }
+  }
+
+  /* @media screen and (max-width: 1070px) {
     .content-wrapper {
       display: flex;
       row-gap: 20px;
       flex-direction: column;
       padding-bottom: 70px;
     }
-  }
+  } */
 
   #footer {
     position: absolute;
