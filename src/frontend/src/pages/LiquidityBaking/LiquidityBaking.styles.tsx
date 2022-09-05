@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { skyColor } from 'styles'
+import { cyanColor, headerColor, skyColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const LBStyled = styled.div`
@@ -65,12 +65,55 @@ export const CustomizedText = styled.div<{
   line-height: ${({ lineHeight }) => (lineHeight ? `${lineHeight}px` : '18px')};
   color: ${({ color, theme }) => (theme.isDarkTheme ? (color ? color : skyColor) : theme.headerTeam)};
   display: flex;
+  position: relative;
+  width: fit-content;
+
   ${({ link }) =>
     link
       ? css`
           text-decoration: underline;
         `
       : ''}
+
+  .info {
+    margin-left: 5px;
+    cursor: pointer;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: #8d86eb;
+    }
+
+    .text {
+      font-size: 12px;
+      position: absolute;
+      bottom: 130%;
+      right: 0;
+      display: block;
+      white-space: pre-line;
+      padding: 3px 5px;
+      border-radius: 7px;
+      line-height: 15px;
+      background: #160e3f;
+      border: 1px solid #503eaa;
+      color: #8d86eb;
+      opacity: 0;
+      transition: 0.3s all;
+      visibility: hidden;
+    }
+
+    &:hover {
+      .text {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      svg {
+        fill: ${cyanColor};
+      }
+    }
+  }
 
   p {
     margin: 0;

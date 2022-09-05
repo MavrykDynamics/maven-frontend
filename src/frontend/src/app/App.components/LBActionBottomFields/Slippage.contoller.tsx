@@ -3,6 +3,7 @@ import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityB
 import React from 'react'
 import { subHeaderColor } from 'styles'
 import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
+import Icon from '../Icon/Icon.view'
 import { Input } from '../Input/Input.controller'
 import { ToggleButton } from '../ToggleButton/Toggle-button.view'
 
@@ -21,6 +22,14 @@ export const Slippage = ({
     <HorisontalInfo>
       <CustomizedText color={subHeaderColor} fontWidth={500}>
         Slippage Tolerance
+        <div className="info">
+          <Icon id="infoIcon" />
+          <div className="text">
+            Your transaction will not complete if the exchange rate changes unfavorably by more than this slippage
+            percentage. The slippage does not include the Price Impact, when swapping you are accepting both the Price
+            Impact % and the Slippage %.
+          </div>
+        </div>
       </CustomizedText>
 
       <div className="controls-wrapper">

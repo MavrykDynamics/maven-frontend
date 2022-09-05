@@ -2,6 +2,7 @@ import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controll
 import { VertInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { cyanColor, subHeaderColor } from 'styles'
 import { LBPersonalStatsStyled } from './LBPersonalStats.style'
+import Icon from 'app/App.components/Icon/Icon.view'
 
 type PersonalStatsProps = {
   showNone: boolean
@@ -24,6 +25,10 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Unrealized PL (fix)
+            <div className="info">
+              <Icon id="infoIcon" />
+              <div className="text">test text</div>
+            </div>
           </CustomizedText>
         </VertInfo>
 
@@ -33,6 +38,10 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Realized PL (fix)
+            <div className="info">
+              <Icon id="infoIcon" />
+              <div className="text">test text</div>
+            </div>
           </CustomizedText>
         </VertInfo>
 
@@ -42,6 +51,10 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Pool Share (fix)
+            <div className="info">
+              <Icon id="infoIcon" />
+              <div className="text">test text</div>
+            </div>
           </CustomizedText>
         </VertInfo>
 
@@ -60,6 +73,10 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Estimated XTZ owned
+            <div className="info">
+              <Icon id="infoIcon" />
+              <div className="text">test text</div>
+            </div>
           </CustomizedText>
         </VertInfo>
 
@@ -69,6 +86,10 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Estimated tzBTC owned
+            <div className="info">
+              <Icon id="infoIcon" />
+              <div className="text">test text</div>
+            </div>
           </CustomizedText>
         </VertInfo>
       </div>
