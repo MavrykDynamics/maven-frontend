@@ -65,7 +65,6 @@ export const CustomizedText = styled.div<{
   line-height: ${({ lineHeight }) => (lineHeight ? `${lineHeight}px` : '18px')};
   color: ${({ color, theme }) => (theme.isDarkTheme ? (color ? color : skyColor) : theme.headerTeam)};
   display: flex;
-  position: relative;
   width: fit-content;
 
   ${({ link }) =>
@@ -78,6 +77,7 @@ export const CustomizedText = styled.div<{
   .info {
     margin-left: 5px;
     cursor: pointer;
+    position: relative;
 
     svg {
       width: 16px;
@@ -88,19 +88,32 @@ export const CustomizedText = styled.div<{
     .text {
       font-size: 12px;
       position: absolute;
-      bottom: 130%;
-      right: 0;
+      bottom: 150%;
+      left: 50%;
+      transform: translateX(-50%);
       display: block;
       white-space: pre-line;
       padding: 3px 5px;
-      border-radius: 7px;
+      border-radius: 3px;
       line-height: 15px;
-      background: #160e3f;
-      border: 1px solid #503eaa;
-      color: #8d86eb;
+      background: #503eaa;
+      color: #9ea9e8;
       opacity: 0;
       transition: 0.3s all;
       visibility: hidden;
+      width: max-content;
+      max-width: 330px;
+    }
+
+    .text::after {
+      content: ' ';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #503eaa transparent transparent transparent;
     }
 
     &:hover {
