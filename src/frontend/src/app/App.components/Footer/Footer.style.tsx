@@ -82,7 +82,6 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.socialBackroundColor};
 
     @media (max-width: 700px) {
       margin-right: 5px;
