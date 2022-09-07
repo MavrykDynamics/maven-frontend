@@ -20,9 +20,6 @@
 
 # Temp
 ./src/contracts
-/.idea/inspectionProfiles/Project_Default.xml
-/.idea/.gitignore
-/.idea/.name
-/.idea/Mavryk Frontend.iml
-/.idea/modules.xml
-/.idea/vcs.xml
+
+# Webstorm IDE
+/.idea/**
