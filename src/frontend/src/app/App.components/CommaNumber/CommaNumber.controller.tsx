@@ -21,7 +21,11 @@ export const CommaNumber = ({
   showDecimal?: boolean
   showNone?: boolean
 }) => {
-  const numberWithCommas = value.toLocaleString('en-US', { maximumFractionDigits: showDecimal ? decimalsToShow : 0 })
+  let decimalMagnitude = value !== 0 && value < 1 ? -Math.floor(Math.log10(value) + 1) + 2 : 0
+  if (decimalMagnitude > 8) decimalMagnitude = 8
+  const numberWithCommas = value.toLocaleString('en-US', {
+    maximumFractionDigits: showDecimal ? decimalsToShow + decimalMagnitude : 0,
+  })
   return (
     <>
       {loading ? (

@@ -1,5 +1,5 @@
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
-import { VertInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { cyanColor, subHeaderColor } from 'styles'
 import { LBPersonalStatsStyled } from './LBPersonalStats.style'
 import Icon from 'app/App.components/Icon/Icon.view'
@@ -10,10 +10,25 @@ type PersonalStatsProps = {
     siriusBalance: number
     xtzBalance: number
     tzBTCBalance: number
+    realizedPl: number
+    unrealizedPL: number
+    xtzPool: number
+    tzBTCPool: number
+    siriusPool: number
+  }
+  userPoolShare: number
+  estimatedAssetsOwned: {
+    estimatedPoolXtzOwned: number
+    estimatedPoolTzBTCOwned: number
   }
 }
 
-export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) => {
+export const LBPersonalStatsView = ({
+  showNone,
+  balances,
+  userPoolShare,
+  estimatedAssetsOwned,
+}: PersonalStatsProps) => {
   return (
     <LBPersonalStatsStyled>
       <div className="title">My Stats</div>
@@ -21,36 +36,43 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
       <div className="stats-grid">
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={0} endingText="ꜩ" showNone={showNone} />
+            <CommaNumber value={balances.unrealizedPL} endingText="ꜩ" showNone={showNone} />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Unrealized PL (fix)
             <div className="info">
               <Icon id="infoIcon" />
-              <div className="text">Potential gains converted into tea, calculated as current LP token balance multiplied by the difference between current LP token price and weighted average LP token price over all your liquidity investments</div>
+              <div className="text">
+                Potential gains converted into tez, calculated as current LP token balance multiplied by the difference
+                between current LP token price and weighted average LP token price over all your liquidity investments
+              </div>
             </div>
           </CustomizedText>
         </VertInfo>
 
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={0} endingText="ꜩ" showNone={showNone} />
+            <CommaNumber value={balances.realizedPl} endingText="ꜩ" showNone={showNone} />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
-            Realized PL (fix)
+            Realized PL
             <div className="info">
               <Icon id="infoIcon" />
-              <div className="text">Gains converted into tea, calculated as sold LP token amount multiplied by the difference between close LP token price and weighted average LP token price over all your liquidity investments.</div>
+              <div className="text">
+                Realized potential gains converted into tez, calculated as sold LP token amount multiplied by the
+                difference between close LP token price and weighted average LP token price over all your liquidity
+                investments.
+              </div>
             </div>
           </CustomizedText>
         </VertInfo>
 
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={0} endingText="%" showNone={showNone} />
+            <CommaNumber value={userPoolShare} endingText="%" showNone={showNone} />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
-            Pool Share (fix)
+            Pool Share
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">Your percentage share of the pool</div>
@@ -69,7 +91,12 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
 
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={balances.xtzBalance} endingText="ꜩ" showNone={showNone} />
+            <CommaNumber
+              value={estimatedAssetsOwned.estimatedPoolXtzOwned}
+              endingText="ꜩ"
+              showNone={showNone}
+              decimalsToShow={6}
+            />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Estimated XTZ owned
@@ -82,7 +109,7 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
 
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={balances.tzBTCBalance} endingText="tzBTC" showNone={showNone} />
+            <CommaNumber value={estimatedAssetsOwned.estimatedPoolTzBTCOwned} endingText="tzBTC" showNone={showNone} />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Estimated tzBTC owned

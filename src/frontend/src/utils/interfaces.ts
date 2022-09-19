@@ -77,6 +77,10 @@ export interface UserData {
   mvkBalance: number
   smvkBalance: number
   userAddress: string
+  realizedPl: number
+  unrealizedPL: number
+  estimatedPoolTzBTCOwned: number
+  estimatedPoolXtzOwned: number
 }
 
 export interface TokenInfo {

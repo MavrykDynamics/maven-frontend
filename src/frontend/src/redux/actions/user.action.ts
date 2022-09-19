@@ -1,5 +1,3 @@
-import { fetchFromIndexer } from 'gql/gql.heplers'
-import { USER_INFO_QUERY, USER_INFO_QUERY_NAME, USER_INFO_QUERY_VARIABLES } from 'gql/queries/userInfo'
 import { GET_USER_DATA } from 'redux/action.types'
 import { PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
 import { State, UserData } from 'utils/interfaces'
@@ -58,6 +56,10 @@ export const getUserData = (accountPkh: string) => async (dispatch: any, getStat
       mvkBalance: 0,
       smvkBalance: 0,
       userAddress: accountPkh,
+      realizedPl: 0,
+      unrealizedPL: 0,
+      estimatedPoolTzBTCOwned: 0,
+      estimatedPoolXtzOwned: 0,
     }
 
     console.log('Printing out User Info: ', userInfo)

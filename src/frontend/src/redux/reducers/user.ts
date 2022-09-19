@@ -7,7 +7,11 @@ export const defaultUser: UserData = {
   LBTBalance: 0,
   userAddress: '',
   mvkBalance: 0,
-  smvkBalance: 0
+  smvkBalance: 0,
+  realizedPl: 0,
+  unrealizedPL: 0,
+  estimatedPoolTzBTCOwned: 0,
+  estimatedPoolXtzOwned: 0,
 }
 
 const user = (state = defaultUser, action: any) => {
@@ -16,6 +20,14 @@ const user = (state = defaultUser, action: any) => {
       return {
         ...state,
         ...action.userData,
+      }
+    case actions.GET_PERSONAL_STATS:
+      return {
+        ...state,
+        realizedPl: action.personalStats.realizedPl,
+        unrealizedPL: action.personalStats.unrealizedPL,
+        estimatedPoolTzBTCOwned: action.personalStats.estimatedPoolTzBTCOwned,
+        estimatedPoolXtzOwned: action.personalStats.estimatedPoolXtzOwned,
       }
     default:
       return state

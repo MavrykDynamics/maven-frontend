@@ -1,8 +1,7 @@
-
 export const GET_TOKENS_DATA = 'GET_TOKENS_DATA'
 export const GET_TOKENS_PRICES = 'GET_TOKENS_PRICES'
-export const TOGGLE_DARK_THEME = "TOGGLE_DARK_THEME";
-export const SCROLL = "SCROLL";
+export const TOGGLE_DARK_THEME = 'TOGGLE_DARK_THEME'
+export const SCROLL = 'SCROLL'
 export const CONNECT = 'CONNECT'
 export const SET_WALLET = 'SET_WALLET'
 export const GET_USER_DATA = 'GET_USER_DATA'
@@ -17,3 +16,4 @@ export const HIDE_TOASTER = 'HIDE_TOASTER'
 export const SET_RPC_NODES = 'SET_RPC_NODES'
 export const SELECT_NEW_RPC_APP_NODE = 'SET_NEW_RPC_APP_NODE'
 export const DISCONNECT = 'DISCONNECT'
+export const GET_PERSONAL_STATS = 'GET_PERSONAL_STATS'
