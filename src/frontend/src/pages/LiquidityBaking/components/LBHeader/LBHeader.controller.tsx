@@ -4,14 +4,20 @@ import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.
 import { useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
-import { calculateAPY, diffBetweenCoinsInPersent } from 'utils/utils'
+import { calculateAPY, diffBetweenCoinsInPercent } from 'utils/utils'
+import {useEffect, useState} from "react";
 
 const LBHeader = () => {
   const {
     lbData: { xtz_pool, lqt_total },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
-  const tzbtcBitcoinPriceDiff = diffBetweenCoinsInPersent(coinPrices.tzbtc.usd, coinPrices.bitcoin.usd)
+  const [priceDifference, setPriceDifference] = useState<number>(0);
+
+  useEffect(() => {
+    setPriceDifference(diffBetweenCoinsInPercent(Number(coinPrices.tzbtc.usd), coinPrices.bitcoin.usd))
+
+  }, [coinPrices.bitcoin.usd, coinPrices.tzbtc.usd, priceDifference])
 
   const APY = calculateAPY(xtz_pool)
   return (
@@ -56,7 +62,7 @@ const LBHeader = () => {
             tzBTC/BTC Price Difference
           </CustomizedText>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber endingText="%" value={tzbtcBitcoinPriceDiff} />
+            <CommaNumber endingText="%" value={priceDifference} />
           </CustomizedText>
         </VertInfo>
       </div>

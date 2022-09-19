@@ -27,7 +27,7 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
             Unrealized PL (fix)
             <div className="info">
               <Icon id="infoIcon" />
-              <div className="text">test text</div>
+              <div className="text">Potential gains converted into tea, calculated as current LP token balance multiplied by the difference between current LP token price and weighted average LP token price over all your liquidity investments</div>
             </div>
           </CustomizedText>
         </VertInfo>
@@ -40,7 +40,7 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
             Realized PL (fix)
             <div className="info">
               <Icon id="infoIcon" />
-              <div className="text">test text</div>
+              <div className="text">Gains converted into tea, calculated as sold LP token amount multiplied by the difference between close LP token price and weighted average LP token price over all your liquidity investments.</div>
             </div>
           </CustomizedText>
         </VertInfo>
@@ -53,7 +53,7 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
             Pool Share (fix)
             <div className="info">
               <Icon id="infoIcon" />
-              <div className="text">test text</div>
+              <div className="text">Your percentage share of the pool</div>
             </div>
           </CustomizedText>
         </VertInfo>
@@ -75,7 +75,7 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
             Estimated XTZ owned
             <div className="info">
               <Icon id="infoIcon" />
-              <div className="text">test text</div>
+              <div className="text">To fill in</div>
             </div>
           </CustomizedText>
         </VertInfo>
@@ -88,7 +88,7 @@ export const LBPersonalStatsView = ({ showNone, balances }: PersonalStatsProps) 
             Estimated tzBTC owned
             <div className="info">
               <Icon id="infoIcon" />
-              <div className="text">test text</div>
+              <div className="text">To fill in</div>
             </div>
           </CustomizedText>
         </VertInfo>

@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { TezosToolkit } from '@taquito/taquito'
 import React, { useEffect, useState } from 'react'
 
@@ -17,7 +17,7 @@ import { State } from 'utils/interfaces'
 
 import { removeLiquidityTokenReceived, removeLiquidityXtzReceived } from 'utils/DEX/liquidityUtils'
 import env from 'utils/env'
-import { nonNumberSymbolsValidation, parseSrtToNum, slippagePersentToValue } from 'utils/utils'
+import { nonNumberSymbolsValidation, parseSrtToNum, slippagePercentToValue } from 'utils/utils'
 import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { getSettings } from 'utils/DEX/DexCalcs'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
@@ -32,12 +32,13 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
     lbData: { xtz_pool, token_pool, address, lqt_total },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
+  const dispatch = useDispatch()
   const { accountPkh } = useSelector((state: State) => state.wallet)
   const { LBTBalance } = useSelector((state: State) => state.user)
 
-  const [inputValues, setInputValues] = useState({ Sir: '0' })
+  const [inputValues, setInputValues] = useState({ SIR: '0' })
   const [selectedSlippage, setSelectedSlippage] = useState<number>(SLIPPAGE_TOGGLE_VALUES[0].value)
-  const [slippagePersent, setSlippagePersent] = useState<string | number>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
+  const [slippagePercent, setSlippagePercent] = useState<string | number>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
   const [receivedAmount, setReceivedAmount] = useState({
     xtz: 0,
     tzbtc: 0,
@@ -48,7 +49,7 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
   })
 
   useEffect(() => {
-    setInputValues({ Sir: '0' })
+    setInputValues({ SIR: '0' })
   }, [ready])
 
   const tzbtcAndXtzAmountCalculation = ({
@@ -58,10 +59,10 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
     newSlippagePersent?: string | number
     newSirBurnedValue?: string | number
   }) => {
-    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent ?? slippagePersent)
+    const convertedSlippagePersentToValue = slippagePercentToValue(newSlippagePersent ?? slippagePercent)
 
     const { expected: expectedXtz, minimum: minimumXtz } = removeLiquidityXtzReceived(
-      parseSrtToNum(newSirBurnedValue || inputValues.Sir),
+      parseSrtToNum(newSirBurnedValue || inputValues.SIR),
       lqt_total,
       xtz_pool,
       convertedSlippagePersentToValue,
@@ -69,7 +70,7 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
     )
 
     const { expected: expectedToken, minimum: minimumToken } = removeLiquidityTokenReceived(
-      parseSrtToNum(newSirBurnedValue || inputValues.Sir),
+      parseSrtToNum(newSirBurnedValue || inputValues.SIR),
       lqt_total,
       token_pool,
       convertedSlippagePersentToValue,
@@ -90,7 +91,7 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
   const slippageChangeHandler = (value: string | number, isInput?: boolean) => {
     const newSlippagePersent = Number(parseSrtToNum(value) < 0 ? 0 : value)
     if (newSlippagePersent >= 0 && newSlippagePersent <= 100) {
-      setSlippagePersent(value)
+      setSlippagePercent(value)
       tzbtcAndXtzAmountCalculation({ newSlippagePersent })
     }
 
@@ -121,7 +122,7 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
 
       try {
         await removeLiquidityHandler({
-          sirAmount: inputValues.Sir,
+          sirAmount: inputValues.SIR,
           lbContract,
           accountAddress: accountPkh,
           deadline,
@@ -145,34 +146,34 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
         onChange={inputChangeHandler}
         type={'number'}
         kind={'LB'}
-        value={inputValues.Sir}
-        convertedValue={parseSrtToNum(inputValues.Sir) * coinPrices.tezos.usd}
+        value={inputValues.SIR}
+        convertedValue={parseSrtToNum(inputValues.SIR) * coinPrices.tezos.usd}
         icon={'XTZ_tezos'}
-        pinnedText={'Sir'}
+        pinnedText={'SIR'}
         onKeyDown={nonNumberSymbolsValidation}
         onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
         useMaxHandler={() => {
           inputChangeHandler({
             target: {
-              name: 'Sir',
+              name: 'SIR',
               value: LBTBalance,
             },
           })
         }}
         userBalance={LBTBalance}
         onBlur={() => {
-          if (inputValues.Sir === '') {
+          if (inputValues.SIR === '') {
             setInputValues({
               ...inputValues,
-              Sir: '0',
+              SIR: '0',
             })
           }
         }}
         onFocus={() => {
-          if (parseSrtToNum(inputValues.Sir) === 0) {
+          if (parseSrtToNum(inputValues.SIR) === 0) {
             setInputValues({
               ...inputValues,
-              Sir: '',
+              SIR: '',
             })
           }
         }}
@@ -211,7 +212,7 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
       <LBActionBottomWrapperStyled className="liquidity">
         <PriceImpact priceImpact={0} />
         <MinimumReceived
-          minimumRecived={[
+          minimumReceived={[
             { value: minimumReceived.xtz, tokenName: 'XTZ' },
             { value: minimumReceived.tzbtc, tokenName: 'tzBTC' },
           ]}
@@ -219,8 +220,8 @@ export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
         <Slippage
           onClickHandler={(value) => slippageChangeHandler(value, false)}
           selectedToogle={selectedSlippage}
-          setSlippagePersent={setSlippagePersent}
-          slippagePersent={slippagePersent}
+          setSlippagePersent={setSlippagePercent}
+          slippagePersent={slippagePercent}
         />
       </LBActionBottomWrapperStyled>
     </ActionScreenWrapper>

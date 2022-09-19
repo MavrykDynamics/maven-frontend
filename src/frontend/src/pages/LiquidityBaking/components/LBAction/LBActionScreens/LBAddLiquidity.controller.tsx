@@ -15,7 +15,7 @@ import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact
 import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
 import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
 import { addLiquidityCalculationsHandler, addLiquidityReturn } from 'utils/DEX/liquidityUtils'
-import { parseSrtToNum, slippagePersentToValue } from 'utils/utils'
+import { parseSrtToNum, slippagePercentToValue } from 'utils/utils'
 import { CoinsInputsValues, AddLiquidutityInputChangeEventType } from '../helpers/actionsScreen.types'
 import { AddLiquidityDefault } from './AddLiquidityDefault.controller'
 import { AddLiquidityOnlyXTZ } from './AddLiquidityOnlyXTZ.controller'
@@ -58,7 +58,7 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
     coinAmount: number | string,
     newSlippagePersent?: number | string,
   ) => {
-    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent ?? slippagePersent)
+    const convertedSlippagePersentToValue = slippagePercentToValue(newSlippagePersent ?? slippagePersent)
     setInputValues({
       ...inputValues,
       [coinName]: coinAmount,
@@ -87,7 +87,6 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
       convertedSlippagePersentToValue,
       dex,
     )
-
     setLqtReceived(expected.value)
     setMinLqtReceived(minimum.value)
   }
@@ -98,7 +97,7 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
     coinAmount: number | string,
     newSlippagePersent?: number | string,
   ) => {
-    const convertedSlippagePersentToValue = slippagePersentToValue(newSlippagePersent ?? slippagePersent)
+    const convertedSlippagePersentToValue = slippagePercentToValue(newSlippagePersent ?? slippagePersent)
     const { liquidityExpected, liquidityMinimum, tokenRequired, xtzRequired } = addLiquidityCalculationsHandler(
       coinName,
       parseSrtToNum(coinAmount),
@@ -169,7 +168,7 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
       const lbContract = await Tezos.wallet.at(address)
       const tzBtcContract = await Tezos.wallet.at(token_address)
       const deadline = new Date(Date.now() + 60000).toISOString()
-      const convertedSlippagePersentToValue = slippagePersentToValue(slippagePersent)
+      const convertedSlippagePersentToValue = slippagePercentToValue(slippagePersent)
 
       if (switchValue) {
         try {
@@ -290,7 +289,7 @@ export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
 
       <LBActionBottomWrapperStyled>
         <PriceImpact priceImpact={0} />
-        <MinimumReceived minimumRecived={[{ value: minlqtReceived, tokenName: 'LBT' }]} />
+        <MinimumReceived minimumReceived={[{ value: minlqtReceived, tokenName: 'LBT' }]} />
         <Slippage
           onClickHandler={(value) => slippageChangeHandler(value, false)}
           selectedToogle={selectedSlippage}

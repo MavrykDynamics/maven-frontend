@@ -7,6 +7,7 @@ import { LBActionStyled, ToggleButtonsWrapper } from './LBAction.style'
 import { LBAddLiquidity } from './LBActionScreens/LBAddLiquidity.controller'
 import { LBRemoveLiquidity } from './LBActionScreens/LBRemoveLiquidity.controller'
 import { LBSwap } from './LBActionScreens/LBSwap.controller'
+import { Dex } from '../../../../utils/DEX/Dex'
 
 const FIRST_TOGGLER_VALUES = [
   {
@@ -31,7 +32,7 @@ const FIRST_TOGGLER_VALUES = [
 
 export const LBAction = () => {
   const [fBtnSelected, setFBtnSelected] = useState(FIRST_TOGGLER_VALUES[0].value as 'swap' | 'liquidity')
-
+  const dex = new Dex()
   const sTogglerValues = useMemo(
     () => FIRST_TOGGLER_VALUES.find(({ value }) => value === fBtnSelected)?.subToggler,
     [fBtnSelected],
@@ -42,7 +43,12 @@ export const LBAction = () => {
 
   useEffect(() => {
     setSBtnSelected(sTogglerValues?.[0].value || '')
-  }, [fBtnSelected])
+    const fetchData = async () => {
+      await dex.fetchStorage(dex.lqdContract)
+    }
+
+    fetchData()
+  }, [dex, fBtnSelected])
 
   return (
     <LBActionStyled>
@@ -63,7 +69,7 @@ export const LBAction = () => {
         ) : null}
       </ToggleButtonsWrapper>
 
-      {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap ready={ready} /> : null}
+      {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap ready={ready} dex={dex} /> : null}
       {fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' ? <LBAddLiquidity ready={ready} /> : null}
       {fBtnSelected === 'liquidity' && sBtnSelected === 'remove liquidity' ? <LBRemoveLiquidity ready={ready} /> : null}
     </LBActionStyled>

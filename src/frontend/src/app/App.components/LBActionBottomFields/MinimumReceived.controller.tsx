@@ -5,13 +5,25 @@ import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import Icon from '../Icon/Icon.view'
 
 export const MinimumReceived = ({
-  minimumRecived,
+  minimumReceived,
 }: {
-  minimumRecived: Array<{
+  minimumReceived: Array<{
     value: number
     tokenName: string
   }>
 }) => {
+  let decimals = 0
+  switch (minimumReceived?.[0].tokenName) {
+    case 'tzBTC':
+      decimals = 8
+      break;
+    case 'lqt':
+      decimals = 9
+      break;
+    default:
+      decimals = 6
+      break;
+  }
   return (
     <HorisontalInfo>
       <CustomizedText color={subHeaderColor} fontWidth={500}>
@@ -26,10 +38,10 @@ export const MinimumReceived = ({
       </CustomizedText>
 
       <CustomizedText color={cyanColor} fontWidth={500} style={{ columnGap: '7px' }}>
-        {minimumRecived.map(({ value, tokenName }, idx) => (
+        {minimumReceived.map(({ value, tokenName }, idx) => (
           <div style={{ display: 'contents' }} key={value + tokenName}>
-            <CommaNumber value={value} endingText={tokenName} />
-            {minimumRecived.length > 1 && idx < minimumRecived.length - 1 ? ' + ' : ''}
+            <CommaNumber value={value} endingText={tokenName} decimalsToShow={decimals}/>
+            {minimumReceived.length > 1 && idx < minimumReceived.length - 1 ? ' + ' : ''}
           </div>
         ))}
       </CustomizedText>

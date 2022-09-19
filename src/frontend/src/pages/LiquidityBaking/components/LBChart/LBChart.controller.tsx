@@ -16,23 +16,23 @@ export const LBChart = () => {
 
   const dispatch = useDispatch()
 
-  const changeIntervalHanler = async (newInterval: IntervalType) => {
+  const changeIntervalHandler = async (newInterval: IntervalType) => {
     await dispatch(toogleChartInterval(newInterval))
   }
 
-  const changeChartTypeHanler = async () => {
+  const changeChartTypeHandler = async () => {
     await dispatch(toogleChartType(chartType === 'candlestick' ? 'area' : 'candlestick'))
   }
 
   return (
     <LBChartView
       selectedInterval={chartInterval}
-      changeSelectedInterval={changeIntervalHanler}
+      changeSelectedInterval={changeIntervalHandler}
       chartData={chartType === 'area' ? chartDataArea : chartDataCandlestick}
       xtztzBTC={moveValue}
       chartMouseMoveHandler={chartHoverHandler}
       selectedChartType={chartType}
-      changeSelectedChartType={changeChartTypeHanler}
+      changeSelectedChartType={changeChartTypeHandler}
     />
   )
 }

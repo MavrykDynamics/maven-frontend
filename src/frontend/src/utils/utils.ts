@@ -38,9 +38,9 @@ export const parseSrtToNum = (arg: string | number): number => {
   return 0
 }
 
-export const slippagePersentToValue = (slippagePersent: string | number): number => {
-  const convertedPersent = parseSrtToNum(slippagePersent)
-  return (1 / 100) * convertedPersent
+export const slippagePercentToValue = (slippagePercent: string | number): number => {
+  const convertedPercent = parseSrtToNum(slippagePercent)
+  return (1 / 100) * convertedPercent
 }
 
 export const inputNumberValidation = (value: number | string): any => value >= 0 || value === ''
@@ -52,10 +52,9 @@ export const calculateAPY = (xtzPool: number): number => {
   return bigIntXTZPool.plus(annualSubsidy).dividedBy(bigIntXTZPool).minus(1).dividedBy(2).multipliedBy(100).toNumber()
 }
 
-export const diffBetweenCoinsInPersent = (coin1Price: number, coin2Price: number): number => {
-  const coinsAverage = (coin1Price + coin2Price) / 2
-  const coinDiff = coin1Price - coin2Price
-
+export const diffBetweenCoinsInPercent = (coin1Price: number, coin2Price: number): number => {
+  const coinsAverage = coin1Price + coin2Price
+  const coinDiff = Math.abs(coin1Price - coin2Price)
   return (coinDiff / 2 / coinsAverage) * 100
 }
 

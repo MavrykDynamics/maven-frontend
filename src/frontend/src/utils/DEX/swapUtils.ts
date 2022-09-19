@@ -6,7 +6,7 @@ import {
   xtzToTokenPriceImpact,
   xtzToTokenTokenOutput,
 } from 'utils/DEX/DexCalcs'
-import { DEXType } from './Dex.types';
+import { DEXType } from './Dex.types'
 
 // kukai actions
 export const swapCalculateCoinReceive = (
@@ -18,31 +18,31 @@ export const swapCalculateCoinReceive = (
   maxSlippage: number,
   dex: DEXType,
 ): { expected: number; minimum: number; priceImpact: number } => {
-  if (fromCoin === 'XTZ' && toCoin === 'tzBTC') {
-    const expected = xtzToTokenTokenOutput(coinIn, xtzPool, tokenPool, dex.fee, dex.burn, dex.includeSubsidy)
-
-    if (!expected) return { expected: 0, minimum: 0, priceImpact: 0 }
-
-    const minimum = xtzToTokenMinimumTokenOutput(expected, maxSlippage)
-    const priceImpact = xtzToTokenPriceImpact(coinIn, xtzPool, tokenPool, dex.fee, dex.burn, dex.includeSubsidy)
-
-    console.info('output xtz=>tzbtc (expected, minimum, priceImpact)', expected, minimum, priceImpact)
-
-    return { expected, minimum: minimum || 0, priceImpact: priceImpact || 0 }
-  }
-
-  if (fromCoin === 'tzBTC' && toCoin === 'XTZ') {
-    const expected = tokenToXtzXtzOutput(coinIn, xtzPool, tokenPool, dex.fee, dex.burn, dex.includeSubsidy)
-
-    if (!expected) return { expected: 0, minimum: 0, priceImpact: 0 }
-
-    const minimum = tokenToXtzMinimumXtzOutput(expected, maxSlippage)
-    const priceImpact = tokenToXtzPriceImpact(coinIn, xtzPool, tokenPool, dex.fee, dex.burn, dex.includeSubsidy)
-
-    console.info('output tzbtc=>xtz (expected, minimum, priceImpact)', expected, minimum, priceImpact)
-
-    return { expected, minimum: minimum || 0, priceImpact: priceImpact || 0 }
-  }
+  // if (fromCoin === 'XTZ' && toCoin === 'tzBTC') {
+  //   const expected = xtzToTokenTokenOutput(coinIn, xtzPool, tokenPool, dex.fee, dex.burn, dex.includeSubsidy)
+  //
+  //   if (!expected) return { expected: 0, minimum: 0, priceImpact: 0 }
+  //
+  //   const minimum = xtzToTokenMinimumTokenOutput(expected, maxSlippage)
+  //   const priceImpact = xtzToTokenPriceImpact(coinIn, xtzPool, tokenPool, dex.fee, dex.burn, dex.includeSubsidy)
+  //
+  //   console.info('output xtz=>tzbtc (expected, minimum, priceImpact)', expected, minimum, priceImpact)
+  //
+  //   return { expected, minimum: minimum || 0, priceImpact: priceImpact || 0 }
+  // }
+  //
+  // if (fromCoin === 'tzBTC' && toCoin === 'XTZ') {
+  //   const expected = tokenToXtzXtzOutput(coinIn, xtzPool, tokenPool, dex.fee, dex.burn)
+  //
+  //   if (!expected) return { expected: 0, minimum: 0, priceImpact: 0 }
+  //
+  //   const minimum = tokenToXtzMinimumXtzOutput(expected, maxSlippage)
+  //   const priceImpact = tokenToXtzPriceImpact(coinIn, xtzPool, tokenPool, dex.fee, dex.burn, dex.includeSubsidy)
+  //
+  //   console.info('output tzbtc=>xtz (expected, minimum, priceImpact)', expected, minimum, priceImpact)
+  //
+  //   return { expected, minimum: minimum || 0, priceImpact: priceImpact || 0 }
+  // }
 
   return { expected: 0, minimum: 0, priceImpact: 0 }
 }

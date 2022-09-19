@@ -1,4 +1,4 @@
-import { DEXType } from './../../../../../utils/DEX/Dex.types'
+import { DEXType } from 'utils/DEX/Dex.types'
 import {
   tokenToXtzMinimumXtzOutput,
   tokenToXtzXtzOutput,
@@ -65,26 +65,19 @@ export const tzbtcToXtzSwap = async ({
   slippage: number | string
   accountAddress: string
 }) => {
-  const expected = tokenToXtzXtzOutput(
-    parseSrtToNum(tzBTCAmount),
-    xtz_pool,
-    token_pool,
-    dex.fee,
-    dex.burn,
-    dex.includeSubsidy,
-  )
-
-  if (expected) {
-    const minXtzBought = tokenToXtzMinimumXtzOutput(expected, parseSrtToNum(slippage))
-
-    const batch = Tezos.wallet
-      .batch()
-      .withContractCall(tzBtcContract.methods.approve(accountAddress, 0))
-      .withContractCall(tzBtcContract.methods.approve(accountAddress, parseSrtToNum(tzBTCAmount)))
-      .withContractCall(
-        lbContract.methods.tokenToXtz(accountAddress, parseSrtToNum(tzBTCAmount), minXtzBought, deadline),
-      )
-    const batchOp = await batch.send()
-    await batchOp.confirmation()
-  }
+  // const expected = tokenToXtzXtzOutput(parseSrtToNum(tzBTCAmount), xtz_pool, token_pool, dex.fee, dex.burn)
+  //
+  // if (expected) {
+  //   const minXtzBought = tokenToXtzMinimumXtzOutput(expected, parseSrtToNum(slippage))
+  //
+  //   const batch = Tezos.wallet
+  //     .batch()
+  //     .withContractCall(tzBtcContract.methods.approve(accountAddress, 0))
+  //     .withContractCall(tzBtcContract.methods.approve(accountAddress, parseSrtToNum(tzBTCAmount)))
+  //     .withContractCall(
+  //       lbContract.methods.tokenToXtz(accountAddress, parseSrtToNum(tzBTCAmount), minXtzBought, deadline),
+  //     )
+  //   const batchOp = await batch.send()
+  //   await batchOp.confirmation()
+  // }
 }

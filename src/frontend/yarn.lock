@@ -3156,6 +3156,11 @@ bfj@^7.0.2:
     hoopy "^0.1.4"
     tryer "^1.0.1"
 
+big-integer@^1.6.48:
+  version "1.6.51"
+  resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.51.tgz#0df92a5d9880560d3ff2d5fd20245c889d130686"
+  integrity sha512-GPEid2Y9QU1Exl1rpO9B2IPJGHPSupF5GnVIP0blYvNOMer2bTvSWs1jGOUg04hTmu67nmLsQ9TBo1puaotBHg==
+
 big.js@^5.2.2:
   version "5.2.2"
   resolved "https://registry.npmjs.org/big.js/-/big.js-5.2.2.tgz"
@@ -4578,6 +4583,12 @@ detect-port-alt@1.1.6:
   dependencies:
     address "^1.0.1"
     debug "^2.6.0"
+
+"dexCalcs@git+https://github.com/mavrykfinance/mavryk-dex-calculations#27e9f5a112f0bac5e3000a13fb7ba002e8761071":
+  version "1.2.0"
+  resolved "git+https://github.com/mavrykfinance/mavryk-dex-calculations#27e9f5a112f0bac5e3000a13fb7ba002e8761071"
+  dependencies:
+    big-integer "^1.6.48"
 
 diff-sequences@^26.6.2:
   version "26.6.2"

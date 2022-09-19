@@ -24,6 +24,7 @@
 		"coingecko-api": "^1.0.10",
 		"connected-react-router": "^6.9.1",
 		"dayjs": "^1.11.4",
+		"dexCalcs": "git+https://github.com/mavrykfinance/mavryk-dex-calculations#27e9f5a112f0bac5e3000a13fb7ba002e8761071",
 		"embla-carousel": "^6.2.0",
 		"embla-carousel-react": "^6.2.0",
 		"eslint": "^7.32.0",

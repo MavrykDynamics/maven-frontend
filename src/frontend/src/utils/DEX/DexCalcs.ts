@@ -12,7 +12,14 @@ export const getSettings = (dex: string): DEXType => {
   }
 }
 
-export const creditSubsidy = (xtzPool: number): BigNumber => new BigNumber(xtzPool).plus(new BigNumber(25e5))
+export const creditSubsidy = (xtzPool: BigNumber | number): BigNumber => {
+  const LIQUIDITY_BAKING_SUBSIDY = 2500000
+  if (BigNumber.isBigNumber(xtzPool)) {
+    return xtzPool.plus(new BigNumber(LIQUIDITY_BAKING_SUBSIDY))
+  } else {
+    return new BigNumber(xtzPool).plus(new BigNumber(LIQUIDITY_BAKING_SUBSIDY))
+  }
+}
 
 // XTZ => tzBTC swap
 export const xtzToTokenTokenOutput = (
@@ -93,34 +100,54 @@ export const xtzToTokenPriceImpact = (
 
 // tzBTC => XTZ swap
 export const tokenToXtzXtzOutput = (
-  tokenIn: number,
-  xtzPool: number,
-  tokenPool: number,
+  tokenIn: BigNumber | number,
+  xtzPool: BigNumber | number,
+  tokenPool: BigNumber | number,
   feePercent: number,
   burnPercent: number,
-  includeSubsidy: boolean,
-): number | null => {
-  let _xtzPool = xtzPool
-  if (includeSubsidy) {
-    _xtzPool = creditSubsidy(_xtzPool).toNumber()
+  // includeSubsidy: boolean,
+): BigNumber | null => {
+  let _xtzPool = creditSubsidy(xtzPool)
+  // if (includeSubsidy) {
+  //   _xtzPool = creditSubsidy(_xtzPool).toNumber()
+  // }
+
+  let tokenIn_ = new BigNumber(0)
+  let xtzPool_ = new BigNumber(0)
+  let tokenPool_ = new BigNumber(0)
+
+  try {
+    tokenIn_ = new BigNumber(tokenIn)
+    xtzPool_ = new BigNumber(xtzPool)
+    tokenPool_ = new BigNumber(tokenPool)
+  } catch (err) {
+    return null
   }
-  
-  const BNtokenIn = new BigNumber(tokenIn)
-  const BNxtzPool = new BigNumber(_xtzPool)
-  const BNtokenPool = new BigNumber(tokenPool)
-  const fee = new BigNumber(1e3).minus(Math.floor(feePercent * 10))
-  const burn = new BigNumber(1e3).minus(Math.floor(burnPercent * 10))
-  const feeAndBurnMultiplier = fee.times(burn)
-  const feeMultiplier = fee.times(1e3)
-
-  if (BNtokenIn.comparedTo(0) === 1 && BNxtzPool.comparedTo(0) === 1 && BNtokenPool.comparedTo(0) === 1) {
-    const numerator = BNtokenIn.times(BNxtzPool).times(feeAndBurnMultiplier)
-    const denominator = BNtokenPool.times(1e6).plus(BNtokenIn).times(feeMultiplier)
-
-    return numerator.dividedBy(denominator).toNumber()
+  if (tokenIn_.isGreaterThan(0) && xtzPool_.isGreaterThan(0) && tokenPool_.isGreaterThan(0)) {
+    // Includes 0.1% fee and 0.1% burn calculated separately:
+    // 999/1000 * 999/1000 = 998001/1000000
+    let numerator = new BigNumber(tokenIn).times(new BigNumber(xtzPool)).times(new BigNumber(998001))
+    let denominator = new BigNumber(tokenPool)
+      .times(new BigNumber(1000000))
+      .plus(new BigNumber(tokenIn).times(new BigNumber(999000)))
+    return numerator.dividedBy(denominator)
+  } else {
+    return null
   }
 
-  return null
+  // const fee = new BigNumber(1e3).minus(Math.floor(feePercent * 10))
+  // const burn = new BigNumber(1e3).minus(Math.floor(burnPercent * 10))
+  // const feeAndBurnMultiplier = fee.times(burn)
+  // const feeMultiplier = fee.times(1e3)
+  //
+  // if (tokenIn_.comparedTo(0) === 1 && xtzPool_.comparedTo(0) === 1 && tokenPool_.comparedTo(0) === 1) {
+  //   const numerator = tokenIn_.times(xtzPool_).times(feeAndBurnMultiplier)
+  //   const denominator = tokenPool_.times(1e6).plus(tokenIn_).times(feeMultiplier)
+  //
+  //   return numerator.dividedBy(denominator).toNumber()
+  // }
+  //
+  // return null
 }
 
 export const tokenToXtzPriceImpact = (
@@ -131,7 +158,7 @@ export const tokenToXtzPriceImpact = (
   burnPercent: number,
   includeSubsidy: boolean,
 ) => {
-  const expectedXTZPayout = tokenToXtzXtzOutput(tokenIn, xtzPool, tokenPool, feePercent, burnPercent, includeSubsidy)
+  const expectedXTZPayout = tokenToXtzXtzOutput(tokenIn, xtzPool, tokenPool, feePercent, burnPercent)
 
   if (!expectedXTZPayout) return null
 

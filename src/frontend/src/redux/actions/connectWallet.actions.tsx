@@ -27,7 +27,7 @@ export const connect =
         dispatch(showToaster(ERROR, 'Temple Wallet not available', ''))
         throw new Error('Temple Wallet not available')
       } else {
-        await state.wallet.wallet?.connect((network || 'hangzhounet') as TempleDAppNetwork, {
+        await state.wallet.wallet?.connect(("mainnet" || network) as TempleDAppNetwork, {
           forcePermission,
         })
         const tzs = state.wallet.wallet?.toTezos()
