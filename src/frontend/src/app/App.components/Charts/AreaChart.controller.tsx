@@ -12,6 +12,7 @@ const AreaChart = ({
   moveHandler: (value: number, isOut?: boolean) => void
 }) => {
   return (
+    // @ts-ignore
     <Chart
       series={[{ data: chartData }]}
       options={AREA_CHART_OPTIONS(interval, moveHandler)}

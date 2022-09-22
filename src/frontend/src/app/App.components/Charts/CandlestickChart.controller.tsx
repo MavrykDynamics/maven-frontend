@@ -12,6 +12,7 @@ const CandlestickChart = ({
   moveHandler: (value: number, isOut?: boolean) => void
 }) => {
   return (
+    // @ts-ignore
     <Chart
       series={[{ data: chartData }]}
       options={CANDLESTICK_CHART_OPTIONS(interval, moveHandler)}
