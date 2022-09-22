@@ -34,7 +34,6 @@ export const LBPersonalStatsView = ({
   estimatedAssetsOwned,
   pnLStats,
 }: PersonalStatsProps) => {
-  console.log(pnLStats)
   return (
     <LBPersonalStatsStyled>
       <div className="title">My Stats</div>
@@ -115,7 +114,12 @@ export const LBPersonalStatsView = ({
 
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={estimatedAssetsOwned.estimatedPoolTzBTCOwned} endingText="tzBTC" showNone={showNone} />
+            <CommaNumber
+              value={estimatedAssetsOwned.estimatedPoolTzBTCOwned}
+              endingText="tzBTC"
+              showNone={showNone}
+              decimalsToShow={8}
+            />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Estimated tzBTC owned

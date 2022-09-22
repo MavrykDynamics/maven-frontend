@@ -22,8 +22,9 @@ export const darkColor = '#080628'
 export const skyColor = '#77A4F2'
 export const cyanColor = '#86D4C9'
 export const connectWalletSecondary = '#EEEAF4'
-
+export const infoColor = '#00C2FF'
 export const silverColor = '#C0DBFF'
+export const warningColor = '#FF7A00'
 
 export const darkMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-dark.svg',
@@ -80,7 +81,9 @@ export const darkMode: MavrykTheme = {
   toggleButtonBgSelected: '#8D86EB',
   inputTextColor: '#c0dbff',
   settingsConfigmBG: cyanColor,
-  topBarLinkColor: silverColor
+  topBarLinkColor: silverColor,
+  infoColor: '#00C2FF',
+  warningColor: '#FF7A00',
 }
 
 export const lightMode: MavrykTheme = {
@@ -136,7 +139,9 @@ export const lightMode: MavrykTheme = {
   toggleButtonBgSelected: '#503EAA',
   inputTextColor: '#503EAA',
   settingsConfigmBG: 'transparent',
-  topBarLinkColor: '#27007A'
+  topBarLinkColor: '#27007A',
+  infoColor: '#00C2FF',
+  warningColor: '#FF7A00',
 }
 
 export const spaceMode: MavrykTheme = {
@@ -192,5 +197,7 @@ export const spaceMode: MavrykTheme = {
   toggleButtonBgSelected: '#503EAA',
   inputTextColor: '#503EAA',
   settingsConfigmBG: 'transparent',
-  topBarLinkColor: '#27007A'
+  topBarLinkColor: '#27007A',
+  infoColor: '#00C2FF',
+  warningColor: '#FF7A00',
 }

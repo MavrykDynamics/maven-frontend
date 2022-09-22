@@ -2,6 +2,8 @@ import { fetchFromIndexer } from 'gql/gql.helpers'
 import { LB_DATA_QUERY, LB_DATA_QUERY_NAME } from 'gql/queries/lbData.query'
 import { GET_TOKENS_DATA } from 'redux/action.types'
 import { State } from '../../utils/interfaces'
+import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
+import { ERROR, INFO, SUCCESS } from 'app/App.components/Toaster/Toaster.constants'
 
 const TZBTC_CONTRACT = 'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
   LB_DEX_CONTRACT = 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5',
@@ -57,23 +59,23 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
   const state: State = getState()
 
   if (!state.wallet.ready) {
-    // dispatch(showToaster(ERROR, 'Please connect your wallet', 'Click Connect in the left menu'))
+    dispatch(showToaster(ERROR, 'Please connect your wallet', 'Click Connect in the left menu'))
     return
   }
 
   if (!(tokensSold > 0)) {
-    // dispatch(showToaster(ERROR, 'Incorrect amount', 'Please enter an amount superior to zero'))
+    dispatch(showToaster(ERROR, 'Incorrect amount', 'Please enter an amount superior to zero'))
     return
   }
 
-  // if (state.loading) {
-  //   dispatch(showToaster(ERROR, 'Cannot send transaction', 'Previous transaction still pending...'))
-  //   return
-  // }
+  if (state.loading) {
+    dispatch(showToaster(ERROR, 'Cannot send transaction', 'Previous transaction still pending...'))
+    return
+  }
 
   try {
     const lqdContract = await state.wallet.tezos?.wallet.at(LB_DEX_CONTRACT),
-      tzBTCContract = await state.wallet.tezos?.wallet.at(TZBTC_CONTRACT)
+        tzBTCContract = await state.wallet.tezos?.wallet.at(TZBTC_CONTRACT)
     console.log('Liquidity Baking DEX contract', lqdContract)
     const deadline = new Date(Date.now() + 60000).toISOString()
 
@@ -84,10 +86,10 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
     // dispatch(showToaster(INFO, 'Staking...', 'Please wait 30s'))
     if (tzBTCContract && lqdContract) {
       let batch = await state.wallet.tezos?.wallet
-        .batch()
-        .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0))
-        .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, tokensSold))
-        .withContractCall(lqdContract.methods.tokenToXtz(state.user.userAddress, tokensSold, minXTZBought, deadline))
+          .batch()
+          .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0))
+          .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, tokensSold))
+          .withContractCall(lqdContract.methods.tokenToXtz(state.user.userAddress, tokensSold, minXTZBought, deadline))
       const batchOp = await batch?.send()
       await batchOp?.confirmation()
       console.log('done', batchOp)
@@ -110,44 +112,42 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
 export const SWAP_XTZ_TO_TOKEN_REQUEST = 'SWAP_XTZ_TO_TOKEN_REQUEST'
 export const SWAP_XTZ_TO_TOKEN_RESULT = 'SWAP_XTZ_TO_TOKEN_RESULT'
 export const SWAP_XTZ_TO_TOKEN_ERROR = 'SWAP_XTZ_TO_TOKEN_ERROR'
-export const swapXtzToToken = (minTokensBought: number) => async (dispatch: any, getState: any) => {
+export const swapXtzToToken = (amount: number, minTokensBought: number) => async (dispatch: any, getState: any) => {
   const state: State = getState()
-  console.log(minTokensBought)
+
   if (!state.wallet.ready) {
-    // dispatch(showToaster(ERROR, 'Please connect your wallet', 'Click Connect in the left menu'))
+    dispatch(showToaster(ERROR, 'Please connect your wallet', 'Click Connect in the left menu'))
     return
   }
 
   if (!(minTokensBought > 0)) {
     console.log('Here in !(minTokensBought > 0) - caught error: ', minTokensBought)
-    // dispatch(showToaster(ERROR, 'Incorrect amount', 'Please enter an amount superior to zero'))
+    dispatch(showToaster(ERROR, 'Incorrect amount', 'Please enter an amount superior to zero'))
     return
   }
 
-  // if (state.loading) {
-  //   dispatch(showToaster(ERROR, 'Cannot send transaction', 'Previous transaction still pending...'))
-  //   return
-  // }
+  if (state.loading) {
+    dispatch(showToaster(ERROR, 'Cannot send transaction', 'Previous transaction still pending...'))
+    return
+  }
 
   try {
     const minTokensToBuy = minTokensBought
-    const lqdContract = await state.wallet.tezos?.wallet.at(LB_DEX_CONTRACT),
-      tzBTCContract = await state.wallet.tezos?.wallet.at(TZBTC_CONTRACT)
-    console.log('Liquidity Baking DEX contract', lqdContract)
-
-    dispatch({
-      type: SWAP_XTZ_TO_TOKEN_REQUEST,
-      minTokensBought,
-    })
-    // dispatch(showToaster(INFO, 'Staking...', 'Please wait 30s'))
-    console.log('Logging minTokensBought', minTokensBought)
+    const lqdContract = await state.wallet.tezos?.wallet.at(LB_DEX_CONTRACT)
     if (lqdContract) {
       const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
+
       const op = await lqdContract.methods
-        .xtzToToken(state.user.userAddress, minTokensToBuy.toString(), deadline)
-        .send()
+          .xtzToToken(state.user.userAddress, minTokensToBuy.toString(), deadline)
+          .send({amount})
+      dispatch({
+        type: SWAP_XTZ_TO_TOKEN_REQUEST,
+        minTokensBought,
+      })
+      dispatch(showToaster(INFO, 'Swapping XTZ -> tzBTC', 'Please wait 30s...'))
+
       await op.confirmation()
-      // dispatch(showToaster(SUCCESS, 'Staking done', 'All good :)'))
+      dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
 
       dispatch({
         type: SWAP_XTZ_TO_TOKEN_RESULT,
@@ -155,7 +155,7 @@ export const swapXtzToToken = (minTokensBought: number) => async (dispatch: any,
     }
   } catch (error: any) {
     console.error(error)
-    // dispatch(showToaster(ERROR, 'Error', error.message))
+    dispatch(showToaster(ERROR, 'Error', error.message))
     dispatch({
       type: SWAP_XTZ_TO_TOKEN_ERROR,
       error,

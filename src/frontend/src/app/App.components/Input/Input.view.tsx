@@ -70,7 +70,12 @@ export const InputView = ({
       ) : null}
       {userBalance !== undefined && pinnedText ? (
         <CustomizedText className="balance" fontSize={14} fontWidth={600}>
-          <CommaNumber beginningText="Balance:" value={userBalance} endingText={pinnedText} />
+          <CommaNumber
+            beginningText="Balance:"
+            value={userBalance}
+            endingText={pinnedText}
+            decimalsToShow={pinnedText === 'tzBTC' ? 8 : 6}
+          />
         </CustomizedText>
       ) : null}
       {icon && !isLB && (

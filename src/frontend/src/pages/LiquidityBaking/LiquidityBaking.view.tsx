@@ -7,8 +7,25 @@ import { useEffect, useState } from 'react'
 import { GET_GENERAL_STATS_QUERY, GET_GENERAL_STATS_VARIABLES } from '../../gql/queries/generalStats.query'
 import useSWR from 'swr'
 
+export interface LBGeneralStats {
+  address: string
+  midPrice: number
+  name: string
+  originatedAt: string
+  sharePx: number
+  sharePxBtc: number
+  sharePxUsd: number
+  sharesTotal: number
+  standard: string
+  tezPool: number
+  tokenId: string
+  tokenPool: number
+  tradeVolume: number
+  typeHash: number
+}
+
 const LiquidityBakingView = () => {
-  const [generalDexStats, setGeneralDexStats] = useState({
+  const [generalDexStats, setGeneralDexStats] = useState<LBGeneralStats>({
     address: '',
     midPrice: 0,
     name: '',
@@ -29,9 +46,8 @@ const LiquidityBakingView = () => {
   const { data: generalStats, error: generalStatsError } = useSWR([GET_GENERAL_STATS_QUERY, generalStatsQueryVars])
 
   const checkGeneralStatsLoading = !generalStatsError && !generalStats
-  console.log(generalStatsError, generalStats)
+
   useEffect(() => {
-    console.log(generalStats)
     if (!checkGeneralStatsLoading && generalStats?.exchange) {
       setGeneralDexStats({
         address: generalStats.exchange[0].address,
@@ -56,8 +72,8 @@ const LiquidityBakingView = () => {
     <div className="content-wrapper">
       <LBHeader />
       <div className="middle-block">
-        <LBPersonalStats />
-        <LBAction />
+        <LBPersonalStats generalStats={generalDexStats} />
+        <LBAction generalDexStats={generalDexStats} />
       </div>
       <LBChart />
       <LBFAQ />

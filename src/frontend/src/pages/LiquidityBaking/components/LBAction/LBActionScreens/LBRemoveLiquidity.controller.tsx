@@ -27,7 +27,7 @@ import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.co
 
 const dex = getSettings('liquidity')
 
-export const LBRemoveLiquidity = ({ ready }: { ready: boolean }) => {
+export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
   const {
     lbData: { xtz_pool, token_pool, address, lqt_total },
     coinPrices,

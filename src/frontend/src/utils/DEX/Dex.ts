@@ -1,5 +1,5 @@
 // @ts-ignore
-import dexterCalculations from 'dexCalcs/dist/index-mobile.min'
+import dexterCalculations from 'dex-calcs/dist/index-mobile.min'
 import { DexCalcOutput } from './DexCalcOutput'
 import BigNumber from 'bignumber.js'
 import env from '../env'

@@ -1,6 +1,7 @@
 import { TezosToolkit } from '@taquito/taquito'
 import { TempleWallet } from '@temple-wallet/dapp'
 import { ThemeType } from 'redux/actions/preferences.action'
+import { LoadingState } from '../redux/reducers/loading'
 
 export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1w' | 'quotes15mNogaps' | 'quotes5mNogaps'
 export type ChartTypeType = 'area' | 'candlestick'
@@ -154,6 +155,7 @@ export interface State {
   tokens: TokenInfo
   chart: ChartType
   toaster: ToasterState
+  loading: LoadingState
 }
 
 export interface MVKStatsInterface {

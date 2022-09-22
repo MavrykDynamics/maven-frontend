@@ -1,14 +1,10 @@
-import { TezosToolkit } from '@taquito/taquito'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
-import { swapCalculateCoinReceive } from 'utils/DEX/swapUtils'
-import env from 'utils/env'
-import { getSettings, tokenToXtzXtzOutput, xtzToTokenTokenOutput } from 'utils/DEX/DexCalcs'
+import { getSettings } from 'utils/DEX/DexCalcs'
 import { nonNumberSymbolsValidation, parseSrtToNum, slippagePercentToValue } from 'utils/utils'
-import { xtzToTzBTCSwap, tzbtcToXtzSwap } from '../helpers/swap.utils'
 // @ts-ignore
 import dexterCalculations from 'dexCalcs/dist/index-mobile.min'
 import { State } from 'utils/interfaces'
@@ -26,11 +22,12 @@ import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFi
 import { cyanColor } from 'styles'
 import { ActionScreenWrapper } from '../LBAction.style'
 import { Dex } from '../../../../../utils/DEX/Dex'
-import { DexCalcOutput } from '../../../../../utils/DEX/DexCalcOutput'
 import { swapTokenToXtz, swapXtzToToken } from '../../../../../redux/actions/swap.action'
 import BigNumber from 'bignumber.js'
 
-import * as dexter_xtz_to_token_values from '../helpers/xtz_to_token.json'
+import { calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
+import { LBGeneralStats } from '../../../LiquidityBaking.view'
+import { PRECISION_NUMBER_EIGHT_ZEROES } from 'utils/consts'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -50,22 +47,23 @@ const DEFAULT_COINS_AMOUNT = {
   XTZ: 0,
   tzBTC: 0,
 }
-type DexterXtzToTokenTestValue = {
-  xtz_pool: string
-  token_pool: string
-  xtz_in: string
-  token_out: string
-  price_impact: string
-}
 const dexType = getSettings('liquidity')
 
-export const LBSwap = ({ ready, dex }: { ready: boolean; dex: Dex }) => {
+export const LBSwap = ({
+  ready,
+  dex,
+  generalDexStats,
+}: {
+  ready: boolean
+  dex: Dex
+  generalDexStats: LBGeneralStats
+}) => {
   const dispatch = useDispatch()
   const {
-    lbData: { address, token_address },
+    lbData: { token_address },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
-  const { accountPkh, tezos } = useSelector((state: State) => state.wallet)
+  const { tezos } = useSelector((state: State) => state.wallet)
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
   const dexSettings = dex.settings('liquidityBaking')
@@ -75,10 +73,9 @@ export const LBSwap = ({ ready, dex }: { ready: boolean; dex: Dex }) => {
   const [priceImpact, setPriceImpact] = useState(0)
   const [isRevertedCoins, setIsRevertedCoins] = useState<CoinsOrderType>(DEFAULT_COINS_ORDER)
   const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
-  const [exchangeRate, setExchangeRate] = useState<string>('0')
+  const [exchangeRate, setExchangeRate] = useState<number>(0)
   const [amountToSwap, setAmountToSwap] = useState(0)
-  const dexterXtzToTokenTestValues = Object.values(dexter_xtz_to_token_values)[0]
-  console.log(dexterXtzToTokenTestValues)
+
   const BALANCE_BY_COIN = useMemo(
     () => ({
       XTZ: xtzBalance,
@@ -94,141 +91,41 @@ export const LBSwap = ({ ready, dex }: { ready: boolean; dex: Dex }) => {
   const calculateTokenToXtz = (amount: number) => {
     console.log('logging input of calculateTokenToXTZ', amount)
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
-    // const xtzPool = new DexCalcOutput(xtz_pool), tzBTCPool = new DexCalcOutput(token_pool)
-    const amountToSwap = new DexCalcOutput({
-      rpcAmount: (amount * 10 ** 8).toString() || '0',
-      decimalPlaces: 8,
-    })
 
-    const { xtzPool, tokenPool } = dex.createPoolAmounts()
-    console.log('logging xtz, token pools of calculateTokenToXTZ', xtzPool, tokenPool)
-
-    const result = dex.calculateTokenToXTZ(
-      amountToSwap,
-      xtzPool,
-      tokenPool,
+    const { expected, minimum, rate, priceImpact } = CalcXtzToToken(
+      amount,
+      generalDexStats.tezPool,
+      generalDexStats.tokenPool,
       convertedSlippagePercentToValue,
-      dexSettings,
+      dexType,
     )
-    console.log('logging result of calculateTokenToXTZ', result)
-
-    const minimumXTZ = result.minimum
-    const impactDouble = result.impactDouble
-    const expected = result.expected
-    const expectedRaw = result.expected?.internalNormalised.toFixed(result.expected?.decimalPlaces).toString()
-
+    console.log('logging result of calculateTokenToXTZ', expected, minimum, rate, priceImpact)
     setInputValues({
       ...inputValues,
       tzBTC: amount,
-      XTZ: parseSrtToNum(expectedRaw),
+      XTZ: expected,
     })
-    setMinReceived(minimumXTZ.internalNormalised)
-    setPriceImpact(impactDouble * 100)
+    setMinReceived(minimum)
+    setPriceImpact(priceImpact)
   }
 
   const calculateXtzToToken = (amount: number) => {
-    console.log('logging input of calculateXtzToToken', amount)
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
-    // const xtzPool = new DexCalcOutput(xtz_pool), tzBTCPool = new DexCalcOutput(token_pool)
-    const amountToSwap = new DexCalcOutput({
-      rpcAmount: (amount * 10 ** 6).toString() || '0',
-      decimalPlaces: 6,
-    })
-    // @ts-ignore
-    let chosenDexterXtzToTokenTestValues = dexterXtzToTokenTestValues.filter((a: any) => {
-      console.log(a, a.xtz_in, String(amount * 10 ** 6), a.xtz_in === String(amount * 10 ** 6))
-      return a.xtz_in === String(amount * 10 ** 6)
-    })[0]
-    console.log('Logging dexterXtzToTokenTestValues: ', chosenDexterXtzToTokenTestValues)
-    const { xtzPool, tokenPool } = dex.createPoolAmounts()
-    console.log('logging xtz, token pools of calculateXtzToToken', xtzPool, tokenPool)
-    console.log(amount, xtzPool.internalBigInt.toNumber(), tokenPool.internalBigInt.toNumber())
-    // @ts-ignore
-    // const xtzPool = chosenDexterXtzToTokenTestValues.xtz_pool,
-    //   tokenPool = chosenDexterXtzToTokenTestValues.token_pool
-    // const xtzPoolDexCalcOutput = new DexCalcOutput({
-    //     rpcAmount: chosenDexterXtzToTokenTestValues.xtz_pool,
-    //     decimalPlaces: 6,
-    //   }),
-    //   tokenPoolDexCalcOutput = new DexCalcOutput({
-    //     rpcAmount: chosenDexterXtzToTokenTestValues.token_pool,
-    //     decimalPlaces: 8,
-    //   })
-    //console.log('logging xtz, token pools of calculateTokenToXTZ', xtzPool, tokenPool)
-
-    // const result = dex.calculateXtzToToken(
-    //   amountToSwap,
-    //   xtzPool,
-    //   tokenPool,
-    //   convertedSlippagePercentToValue,
-    //   dexSettings,
-    // )
-    const result = dex.calculateXtzToToken(
-      amountToSwap,
-      xtzPool,
-      tokenPool,
+    const { expected, minimum, rate, priceImpact } = CalcXtzToToken(
+      amount,
+      generalDexStats.tezPool,
+      generalDexStats.tokenPool,
       convertedSlippagePercentToValue,
-      dexSettings,
-    )
-    console.log('%c logging result of dex.calculateXtzToToken', 'color: #03fcfc', result)
-    // console.log(typeof xtzPool, typeof tokenPool, typeof chosenDexterXtzToTokenTestValues.xtz_in)
-    // const resultFromKukaiNormal = dexterCalculations
-    //   .xtzToTokenTokenOutput(chosenDexterXtzToTokenTestValues.xtz_in, xtzPool, tokenPool)
-    //   ?.toNumber()
-    // console.log(
-    //   '%c logging result of resultFromKukaiNormal',
-    //   'color: #fc03e3',
-    //   chosenDexterXtzToTokenTestValues.xtz_in,
-    //   xtzPool,
-    //   tokenPool,
-    //   resultFromKukaiNormal,
-    // )
-    // console.log(
-    //   `%c logging comparison of tokenOut in dexCals: \ndex.calculateXtzToToken.expected.bigInt / expectedRaw / minimum: ${
-    //     result.expected.internalBigInt
-    //   } or ${result.expected?.internalNormalised.toFixed(result.expected?.decimalPlaces).toString()} or ${
-    //     result.minimum
-    //   } === token_out ${chosenDexterXtzToTokenTestValues.token_out} ? ${
-    //     result.expected.internalBigInt === chosenDexterXtzToTokenTestValues.token_out
-    //   }`,
-    //   'color: #03fc45',
-    //   resultFromKukaiNormal,
-    // )
-    // console.log(
-    //   `%c logging comparison of PriceImpact in dexCals: \ndex.calculateXtzToToken.impactdouble: ${result.impactDouble}
-    //     .toString()} === price_impact ${chosenDexterXtzToTokenTestValues.price_impact} ? ${
-    //     result.impactDouble === chosenDexterXtzToTokenTestValues.price_impact
-    //   }`,
-    //   'color: #fc7303',
-    //   resultFromKukaiNormal,
-    // )
-    const minimumTzBTC = result.minimum
-    const impactDouble = result.impactDouble
-    const expected = result.expected
-    const expectedRaw = result.expected?.internalNormalised.toFixed(result.expected?.decimalPlaces).toString()
-    // const minTokensBought = xtzToTokenTokenOutput(
-    //   amount,
-    //   xtzPool.internalNormalised,
-    //   tokenPool.internalNormalised,
-    //   0,
-    //   0,
-    //   false,
-    // )
-
-    const minTzBTCBoughtOutput1 = Number((0 * 10 ** 8).toFixed(0)),
-      minTzBTCBoughtOutput2 = Number(minimumTzBTC.internalBigInt.toNumber().toFixed(0))
-    console.log(
-      'Logging minTokensBought from xtzToTokenTokenOutput in calculateXtzToToken: ',
-      expected.internalBigInt.toNumber(),
-      minTzBTCBoughtOutput2,
+      dexType,
     )
     setInputValues({
       ...inputValues,
-      tzBTC: parseSrtToNum(expectedRaw),
+      tzBTC: expected,
       XTZ: amount,
     })
-    setMinReceived(minimumTzBTC.internalBigInt.toNumber())
-    setPriceImpact(impactDouble)
+    setExchangeRate(rate)
+    setMinReceived(minimum)
+    setPriceImpact(priceImpact)
   }
 
   const dynamicSwapCalculations = ({
@@ -324,45 +221,6 @@ export const LBSwap = ({ ready, dex }: { ready: boolean; dex: Dex }) => {
     }
   }
 
-  const xtzToTokenTokenOutput = (p: {
-    xtzIn: BigNumber | number
-    xtzPool: BigNumber | number
-    tokenPool: BigNumber | number
-  }): BigNumber | null => {
-    let { xtzIn, xtzPool: _xtzPool, tokenPool } = p
-
-    let xtzPool = creditSubsidy(_xtzPool)
-    let xtzIn_ = new BigNumber(0)
-    let xtzPool_ = new BigNumber(0)
-    let tokenPool_ = new BigNumber(0)
-    try {
-      xtzIn_ = new BigNumber(xtzIn)
-      xtzPool_ = new BigNumber(_xtzPool)
-      tokenPool_ = new BigNumber(tokenPool)
-    } catch (err) {
-      return null
-    }
-    console.log('Logging XTZ in: ', xtzIn_)
-    console.log('Logging XTZ Pool: ', _xtzPool)
-    console.log('Logging Token Pool: ', tokenPool_.toNumber())
-    if (xtzIn_.isGreaterThan(0) && xtzPool_.isGreaterThan(0) && tokenPool_.isGreaterThan(0)) {
-      // Includes 0.1% fee and 0.1% burn calculated separately: 999/1000 * 999/1000 = 998100/1000000
-      // (xtzIn_ * tokenPool_ * 999 * 999) / (tokenPool * 1000 - tokenOut * 999 * 999)
-      const numerator = xtzIn_.times(tokenPool_).times(new BigNumber(998100))
-      const denominator = xtzPool_.times(new BigNumber(1000000)).plus(xtzIn_.times(new BigNumber(998100)))
-      const minReceived = numerator.dividedBy(denominator)
-      setMinReceived(minReceived.toNumber())
-      setInputValues({
-        ...inputValues,
-        tzBTC: Number(minReceived),
-        XTZ: Number(xtzIn),
-      })
-      return minReceived
-    } else {
-      return null
-    }
-  }
-
   // handling dynamic filling second input on input change
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => {
     let { name, value } = e.target
@@ -380,85 +238,30 @@ export const LBSwap = ({ ready, dex }: { ready: boolean; dex: Dex }) => {
     const { xtzPool, tokenPool } = dex.createPoolAmounts()
 
     if (name === 'XTZ') {
-      const amountToSwap = parseFloat(value) * 10 ** 6
-      setAmountToSwap(amountToSwap)
-      console.log(
-        'Here in swap to XTZ to Token',
-        // amountToSwap,
-        // xtzPool.internalNormalised,
-        // tokenPool.internalNormalised,
-      )
-      // xtzToTokenTokenOutput({ xtzIn: parseFloat(value), xtzPool: xtz_pool, tokenPool: token_pool })
+      setAmountToSwap(parseFloat(value))
       calculateXtzToToken(parseFloat(value))
-      // xtzToTokenTokenOutput({
-      //   xtzIn: parseFloat(value),
-      //   xtzPool: xtzPool.internalNormalised,
-      //   tokenPool: tokenPool.internalNormalised,
-      // })
     } else {
-      const amountToSwap = parseFloat(value) * 10 ** 8
-      setAmountToSwap(amountToSwap)
       console.log('Here in swap Token to XTZ', amountToSwap)
-
-      // tokenToXtzXtzOutput({ tokenIn: parseFloat(value), xtzPool: xtz_pool, tokenPool: token_pool })
+      setAmountToSwap(parseFloat(value))
       tokenToXtzXtzOutput({
         tokenIn: parseFloat(value),
         xtzPool: xtzPool.internalNormalised,
         tokenPool: tokenPool.internalNormalised,
       })
     }
-    // dynamicSwapCalculations({
-    //   newCoinAmountValue: value,
-    //   newFromValue: isTypingBottomInput ? isRevertedCoins.to : isRevertedCoins.from,
-    //   newToValue: isTypingBottomInput ? isRevertedCoins.from : isRevertedCoins.to,
-    // })
   }
 
   // performing swap for xtz=>tzBTC & tzBTC=>xtz
   const swapBtnHandler = async () => {
-    if (!accountPkh) return
     try {
-      const lbContract = await tezos?.wallet.at(address)
-      const deadline = new Date(Date.now() + 60000).toISOString()
-
       // if XTZ => tzBTC perform %xtzToToken
       if (isRevertedCoins.from === 'XTZ' && isRevertedCoins.to === 'tzBTC') {
-        try {
-          // await xtzToTzBTCSwap({
-          //   dex,
-          //   token_pool,
-          //   xtz_pool,
-          //   deadline,
-          //   lbContract,
-          //   xtzAmount: inputValues.XTZ,
-          //   slippage: slippagePercent,
-          //   accountAddress: accountPkh,
-          // })
-          console.log('%c Here before calling %dispatch(swapXtzToToken(amountToSwap))', 'color: #bada55')
-          console.log(`Printing amountToSwap: ${typeof minReceived}`)
-          dispatch(swapXtzToToken(minReceived))
-        } catch (e: any) {
-          console.error('swap XTZ => tzBTC error', e.message)
-        }
+        dispatch(swapXtzToToken(amountToSwap, minReceived * PRECISION_NUMBER_EIGHT_ZEROES))
       }
 
       // if tzBTC => XTZ perform %tokenToXtz
       if (isRevertedCoins.from === 'tzBTC' && isRevertedCoins.to === 'XTZ') {
         try {
-          const tzBtcContract = await tezos?.wallet.at(token_address)
-          const Tezos = tezos
-          // await tzbtcToXtzSwap({
-          //   dexType,
-          //   token_pool,
-          //   xtz_pool,
-          //   deadline,
-          //   lbContract,
-          //   Tezos,
-          //   tzBtcContract,
-          //   tzBTCAmount: inputValues.XTZ,
-          //   slippage: slippagePercent,
-          //   accountAddress: accountPkh,
-          // })
           console.log('%c Here before calling %dispatch(swapTokenToXtz(amountToSwap, minReceived))', 'color: #bada55')
           console.log(`Printing amountToSwap: ${amountToSwap}, minReceived: ${minReceived}`)
           dispatch(swapTokenToXtz(amountToSwap, minReceived))
@@ -598,12 +401,7 @@ export const LBSwap = ({ ready, dex }: { ready: boolean; dex: Dex }) => {
 
         <CustomizedText color={cyanColor} fontWidth={500}>
           1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
-          <CommaNumber
-            value={coinPrices.tezos.usd / coinPrices.tzbtc.usd}
-            showDecimal
-            decimalsToShow={8}
-            endingText="tzBTC"
-          />
+          <CommaNumber value={exchangeRate} showDecimal decimalsToShow={8} endingText="tzBTC" />
         </CustomizedText>
       </VertInfo>
 

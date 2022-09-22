@@ -16,7 +16,7 @@ import { MinimumReceived } from 'app/App.components/LBActionBottomFields/Minimum
 import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
 import { addLiquidityCalculationsHandler, addLiquidityReturn } from 'utils/DEX/liquidityUtils'
 import { parseSrtToNum, slippagePercentToValue } from 'utils/utils'
-import { CoinsInputsValues, AddLiquidutityInputChangeEventType } from '../helpers/actionsScreen.types'
+import { AddLiquidutityInputChangeEventType, CoinsInputsValues } from '../helpers/actionsScreen.types'
 import { AddLiquidityDefault } from './AddLiquidityDefault.controller'
 import { AddLiquidityOnlyXTZ } from './AddLiquidityOnlyXTZ.controller'
 import { xtzToTzBTCSwap } from '../helpers/swap.utils'
@@ -31,7 +31,7 @@ const DEFAULT_COINS_AMOUNT = {
   tzBTC: 0,
 }
 
-export const LBAddLiquidity = ({ ready }: { ready: boolean }) => {
+export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
   const {
     lbData: { xtz_pool, token_pool, address, token_address, lqt_total },
   } = useSelector((state: State) => state.tokens)

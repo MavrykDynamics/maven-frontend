@@ -1,13 +1,10 @@
-import {
-  tokenToXtzMinimumXtzOutput,
-  tokenToXtzPriceImpact,
-  tokenToXtzXtzOutput,
-  xtzToTokenMinimumTokenOutput,
-  xtzToTokenPriceImpact,
-  xtzToTokenTokenOutput,
-} from 'utils/DEX/DexCalcs'
-import { DEXType } from './Dex.types'
+import {DEXType} from './Dex.types'
+import {PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES} from '../consts'
+// @ts-ignore
+import dexterCalculations from 'dex-calcs/dist/index-mobile.min'
+import BigNumber from 'bignumber.js'
 
+// const DexCalculations = new DexterCalculations(true)
 // kukai actions
 export const swapCalculateCoinReceive = (
   fromCoin: 'XTZ' | 'tzBTC',
@@ -45,6 +42,115 @@ export const swapCalculateCoinReceive = (
   // }
 
   return { expected: 0, minimum: 0, priceImpact: 0 }
+}
+
+/**
+ *  XTZ -> tzBTC swap functions
+ */
+
+/**
+ * XTZ -> tzBTC Swap main function entrypoint
+ *
+ * @param xtzToSell
+ * @param xtzPool
+ * @param tokenPool
+ * @param maxSlippage
+ * @param dex
+ */
+export function calculateXtzToToken(
+  xtzToSell: number,
+  xtzPool: number,
+  tokenPool: number,
+  maxSlippage: number,
+  dex: { fee: number; burn: number; includeSubsidy: boolean },
+): { expected: number; minimum: number; rate: number; priceImpact: number } {
+  console.log(
+    `Logging input in calculateXtzToToken\nxtzToSell: ${xtzToSell}\n xtzPool: ${xtzPool}\ntokenPool: ${tokenPool}\nmaxSlippage: ${maxSlippage}`,
+  )
+  let _xtzToSell = new BigNumber(xtzToSell * PRECISION_NUMBER_SIX_ZEROES),
+    _xtzPool = new BigNumber(xtzPool * PRECISION_NUMBER_SIX_ZEROES),
+    _tokenPool = new BigNumber(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES)
+
+  const expectedTokenReceived = xtzToTokenExpectedReturn(_xtzToSell, _xtzPool, _tokenPool, dex)
+  console.log(
+    `Logging output of expectedTokenReceived in calculateXtzToToken\nValue: ${expectedTokenReceived}\n Type: ${typeof expectedTokenReceived}`,
+  )
+  const minimumReceived = xtzToTokenMinimumReturn(expectedTokenReceived, maxSlippage)
+  const exchangeRate = xtzToTokenExchangeRateDisplay(_xtzToSell, _xtzPool, _tokenPool, dex)
+  const priceImpact = xtzToTokenPriceImpact(_xtzToSell, _xtzPool, _tokenPool, dex)
+  console.log(
+    `Logging results in calculateXtzToToken\nExpected: ${expectedTokenReceived}\n Minimum: ${minimumReceived}\nExchangeRate: ${exchangeRate}\nPriceImpact: ${priceImpact}`,
+  )
+  return {
+    expected: expectedTokenReceived.toNumber() / PRECISION_NUMBER_EIGHT_ZEROES,
+    minimum: minimumReceived.toNumber() / PRECISION_NUMBER_EIGHT_ZEROES,
+    rate: exchangeRate,
+    priceImpact: priceImpact,
+  }
+}
+
+function xtzToTokenExpectedReturn(
+  xtzToSell: BigNumber,
+  xtzPool: BigNumber,
+  tokenPool: BigNumber,
+  dex: { fee: number; burn: number; includeSubsidy: boolean },
+): BigNumber {
+  const result = dexterCalculations.xtzToTokenTokenOutput(
+    xtzToSell.toString(),
+    xtzPool.toString(),
+    tokenPool.toString(),
+    dex.fee.toString(),
+    dex.burn.toString(),
+  )
+  return new BigNumber(result && result.gt(0) ? result : 0)
+}
+
+function xtzToTokenMinimumReturn(expectedReturn: BigNumber, maxSlippage: number): BigNumber {
+  if (maxSlippage < 0 || maxSlippage > 1) {
+    console.log(`slippage value supplied to 'xtzToTokenMinimumReturn' was not between 0 and 1: ${maxSlippage}`)
+    return new BigNumber(0)
+  }
+  const result = dexterCalculations.xtzToTokenMinimumTokenOutput(expectedReturn.toString(), maxSlippage)
+  return new BigNumber(result && result.gt(0) ? result : 0)
+}
+
+function xtzToTokenExchangeRateDisplay(
+  xtzToSell: BigNumber,
+  xtzPool: BigNumber,
+  tokenPool: BigNumber,
+  dex: { fee: number; burn: number; includeSubsidy: boolean },
+): number {
+  const result = dexterCalculations.xtzToTokenExchangeRateForDisplay(
+    xtzToSell.toString(),
+    xtzPool.toString(),
+    tokenPool.toString(),
+    8,
+    dex.fee,
+    dex.burn,
+  )
+  return result ? Number(result) : 0
+}
+
+function xtzToTokenPriceImpact(
+  xtzToSell: BigNumber,
+  xtzPool: BigNumber,
+  tokenPool: BigNumber,
+  dex: { fee: number; burn: number; includeSubsidy: boolean },
+): number {
+  console.log(
+    'Logging here in xtzToTokenPriceImpact: ',
+    xtzToSell.toNumber(),
+    xtzPool.toNumber(),
+    tokenPool.toNumber(),
+    dex,
+  )
+  const result = dexterCalculations.xtzToTokenPriceImpact(
+    xtzToSell.toNumber(),
+    xtzPool.toNumber(),
+    tokenPool.toNumber(),
+    dex.burn,
+  )
+  return result ? Number(result) : 0
 }
 
 // original dex calculations

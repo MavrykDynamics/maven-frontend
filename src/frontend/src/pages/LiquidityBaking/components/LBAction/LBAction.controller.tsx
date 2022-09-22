@@ -8,6 +8,7 @@ import { LBAddLiquidity } from './LBActionScreens/LBAddLiquidity.controller'
 import { LBRemoveLiquidity } from './LBActionScreens/LBRemoveLiquidity.controller'
 import { LBSwap } from './LBActionScreens/LBSwap.controller'
 import { Dex } from '../../../../utils/DEX/Dex'
+import { LBGeneralStats } from '../../LiquidityBaking.view'
 
 const FIRST_TOGGLER_VALUES = [
   {
@@ -29,8 +30,10 @@ const FIRST_TOGGLER_VALUES = [
     ],
   },
 ]
-
-export const LBAction = () => {
+type LBActionProps = {
+  generalDexStats: LBGeneralStats
+}
+export const LBAction = ({ generalDexStats }: LBActionProps) => {
   const [fBtnSelected, setFBtnSelected] = useState(FIRST_TOGGLER_VALUES[0].value as 'swap' | 'liquidity')
   const dex = new Dex()
   const sTogglerValues = useMemo(
@@ -43,12 +46,7 @@ export const LBAction = () => {
 
   useEffect(() => {
     setSBtnSelected(sTogglerValues?.[0].value || '')
-    const fetchData = async () => {
-      await dex.fetchStorage(dex.lqdContract)
-    }
-
-    fetchData()
-  }, [dex, fBtnSelected])
+  }, [fBtnSelected, sTogglerValues])
 
   return (
     <LBActionStyled>
@@ -69,9 +67,15 @@ export const LBAction = () => {
         ) : null}
       </ToggleButtonsWrapper>
 
-      {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap ready={ready} dex={dex} /> : null}
-      {fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' ? <LBAddLiquidity ready={ready} /> : null}
-      {fBtnSelected === 'liquidity' && sBtnSelected === 'remove liquidity' ? <LBRemoveLiquidity ready={ready} /> : null}
+      {fBtnSelected === 'swap' && !sBtnSelected ? (
+        <LBSwap ready={ready} dex={dex} generalDexStats={generalDexStats} />
+      ) : null}
+      {fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' ? (
+        <LBAddLiquidity ready={ready} generalDexStats={generalDexStats} />
+      ) : null}
+      {fBtnSelected === 'liquidity' && sBtnSelected === 'remove liquidity' ? (
+        <LBRemoveLiquidity ready={ready} generalDexStats={generalDexStats} />
+      ) : null}
     </LBActionStyled>
   )
 }

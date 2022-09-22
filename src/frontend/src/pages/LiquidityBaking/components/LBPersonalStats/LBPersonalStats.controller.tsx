@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
 import { LBPersonalStatsView } from './LBPersonalStats.view'
 import { useCallback, useEffect, useState } from 'react'
-import { Dex } from '../../../../utils/DEX/Dex'
-import { GET_PERSONAL_STATS_QUERY, GET_PERSONAL_STATS_VARIABLES } from '../../../../gql/queries/personalStats.query'
+import { GET_PERSONAL_STATS_QUERY, GET_PERSONAL_STATS_VARIABLES } from 'gql/queries/personalStats.query'
 import useSWR from 'swr'
+import { LBGeneralStats } from '../../LiquidityBaking.view'
 
-export const LBPersonalStats = () => {
+export const LBPersonalStats = ({ generalStats }: { generalStats: LBGeneralStats }) => {
   const dispatch = useDispatch()
   const { ready, accountPkh } = useSelector((state: State) => state.wallet)
   const { LBTBalance, xtzBalance, tzBTCBalance, realizedPl, unrealizedPL } = useSelector((state: State) => state.user)
@@ -23,9 +23,6 @@ export const LBPersonalStats = () => {
     unrealizedPnL: 0,
     realizedPnL: 0,
   })
-  const dex = new Dex()
-  const dexSettings = dex.settings('liquidityBaking')
-
   const personalStatsQueryVars = GET_PERSONAL_STATS_VARIABLES(accountPkh ?? '')
   const { data: personalStats, error: personalStatsError } = useSWR(
     accountPkh ? [GET_PERSONAL_STATS_QUERY, personalStatsQueryVars] : null,
@@ -33,34 +30,30 @@ export const LBPersonalStats = () => {
   const checkPersonalStatsLoading = !personalStatsError && !personalStats
 
   const calcEstimatedTzBTCOwned = useCallback(() => {
-    const xtzOut = (+LBTBalance * xtz_pool) / lqt_total
-    const tzbtcOut = (+LBTBalance * token_pool) / lqt_total
+    if (!personalStats) return { xtzOut: 0, tzbtcOut: 0 }
+    const xtzOut = (+Number(personalStats.position[0].sharesQty) * generalStats.tezPool) / generalStats.sharesTotal
+    const tzbtcOut = (+Number(personalStats.position[0].sharesQty) * generalStats.tokenPool) / generalStats.sharesTotal
     return {
       xtzOut,
       tzbtcOut,
     }
-  }, [LBTBalance, lqt_total, token_pool, xtz_pool])
+  }, [generalStats, personalStats])
 
   const calcUnrealizedPnL = (usersShares: string, averageSharePriceXTZ: string, currentSharePriceXTZ: string) => {
     let unrealizedPnL = 0
     const positionValueXTZ = Number(usersShares) * Number(currentSharePriceXTZ)
     const avgShareCostXTZ = Number(usersShares) * Number(averageSharePriceXTZ)
     unrealizedPnL = positionValueXTZ - avgShareCostXTZ
-    console.log(positionValueXTZ, avgShareCostXTZ)
     return unrealizedPnL
   }
-  useEffect(() => {
-    const fetchData = async () => {
-      await dex.fetchStorage(dex.lqdContract)
-    }
-
-    fetchData()
-  }, [dex])
 
   useEffect(() => {
-    // dispatch(getPersonalStats())
-    const { xtzOut, tzbtcOut } = calcEstimatedTzBTCOwned()
     if (!checkPersonalStatsLoading) {
+      const { xtzOut, tzbtcOut } = calcEstimatedTzBTCOwned()
+      setEstimatedAssetsOwned({
+        estimatedPoolXtzOwned: xtzOut,
+        estimatedPoolTzBTCOwned: tzbtcOut,
+      })
       setPnLStats({
         unrealizedPnL: calcUnrealizedPnL(
           personalStats.position[0].sharesQty,
@@ -70,10 +63,7 @@ export const LBPersonalStats = () => {
         realizedPnL: Number(personalStats.position[0].realizedPl),
       })
     }
-    setEstimatedAssetsOwned({
-      estimatedPoolXtzOwned: xtzOut,
-      estimatedPoolTzBTCOwned: tzbtcOut,
-    })
+
     setSirPoolShare((LBTBalance / lqt_total) * 100)
   }, [
     calcEstimatedTzBTCOwned,

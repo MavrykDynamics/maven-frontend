@@ -3,7 +3,7 @@ import LiquidityBaking from 'pages/LiquidityBaking/LiquidityBaking.controller'
 import { Litepaper } from 'pages/Litepaper/Litepaper.controller'
 import { Privacy } from 'pages/Privacy/Privacy.controller'
 import { useCallback, useEffect, useState } from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { TempleWallet } from '@temple-wallet/dapp'
 import { useDispatch, useSelector } from 'react-redux'
 import { configureStore } from 'redux/storeConfigurator'
@@ -14,6 +14,7 @@ import { State } from 'utils/interfaces'
 import { PopupChangeNode } from './App.components/SettingsPopup/SettingsPopup.controller'
 import { Toaster } from './App.components/Toaster/Toaster.controller'
 import { toggleRPCNodePopup } from 'redux/actions/preferences.action'
+import Loader from './App.components/Loader/Loader.view'
 
 export const store = configureStore({})
 
@@ -23,7 +24,7 @@ export type GetState = typeof store.getState
 export const App = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentPage, setCurrentPage] = useState('/')
-
+  const loader = useSelector((state: State) => state.loading)
   const { changeNodePopupOpen } = useSelector((state: State) => state.preferences)
   const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [])
 
@@ -38,6 +39,7 @@ export const App = () => {
   return (
     <Router>
       {/* <Popup /> */}
+      {loader ? <Loader loaderType={loader} /> : null}
       <Switch>
         <Route
           exact
