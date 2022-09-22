@@ -8,17 +8,26 @@ import { unregister } from './serviceWorker'
 import { GlobalStyle } from './styles'
 
 import './styles/fonts.css'
+import { SWRConfig } from 'swr'
+import { mavrykGqlFetcher } from './gql/gql.helpers'
 
 export const Root = () => {
   return (
-    <ReduxProvider store={store}>
-      <DarkThemeProvider>
-        <ParallaxProvider>
-          <GlobalStyle />
-          <App />
-        </ParallaxProvider>
-      </DarkThemeProvider>
-    </ReduxProvider>
+    <SWRConfig
+      value={{
+        refreshInterval: 3000,
+        fetcher: mavrykGqlFetcher,
+      }}
+    >
+      <ReduxProvider store={store}>
+        <DarkThemeProvider>
+          <ParallaxProvider>
+            <GlobalStyle />
+            <App />
+          </ParallaxProvider>
+        </DarkThemeProvider>
+      </ReduxProvider>
+    </SWRConfig>
   )
 }
 

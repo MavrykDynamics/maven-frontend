@@ -1,9 +1,18 @@
-import env from "utils/env"
+import env from 'utils/env'
+import { DexGqlClient, MavrykGqlClient } from './gqlClient'
 
-async function fetchGraphQL(operationsDoc: string, operationName: string, variables: Record<string, any>, gqlNetwork?: string) {
+export const dexGqlFetcher = (query: string, variables: any) => DexGqlClient.request(query, variables)
+export const mavrykGqlFetcher = (query: string, variables: any) => MavrykGqlClient.request(query, variables)
+
+async function fetchGraphQL(
+  operationsDoc: string,
+  operationName: string,
+  variables: Record<string, any>,
+  gqlNetwork?: string,
+) {
   const developmentAPI = gqlNetwork || env.gqlLink
-  const prodictionAPI = gqlNetwork || env.gqlLink
-  const gqlAPINetwork = env.NODE_ENV === 'development' ? developmentAPI : prodictionAPI
+  const productionAPI = gqlNetwork || env.gqlLink
+  const gqlAPINetwork = env.NODE_ENV === 'development' ? developmentAPI : productionAPI
 
   return new Promise<any>((resolve, reject) => {
     fetch(gqlAPINetwork, {
@@ -23,7 +32,12 @@ async function fetchGraphQL(operationsDoc: string, operationName: string, variab
   })
 }
 
-export async function fetchFromIndexer(operationsDoc: string, operationName: string, variables: Record<string, any>, gqlNetwork?: string) {
+export async function fetchFromIndexer(
+  operationsDoc: string,
+  operationName: string,
+  variables: Record<string, any>,
+  gqlNetwork?: string,
+) {
   return await fetchGraphQL(operationsDoc, operationName, variables, gqlNetwork)
     .then(({ data, errors }: any) => {
       if (errors) {

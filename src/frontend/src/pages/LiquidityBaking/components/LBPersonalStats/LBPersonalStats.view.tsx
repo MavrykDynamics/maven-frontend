@@ -21,6 +21,10 @@ type PersonalStatsProps = {
     estimatedPoolXtzOwned: number
     estimatedPoolTzBTCOwned: number
   }
+  pnLStats: {
+    unrealizedPnL: number
+    realizedPnL: number
+  }
 }
 
 export const LBPersonalStatsView = ({
@@ -28,7 +32,9 @@ export const LBPersonalStatsView = ({
   balances,
   userPoolShare,
   estimatedAssetsOwned,
+  pnLStats,
 }: PersonalStatsProps) => {
+  console.log(pnLStats)
   return (
     <LBPersonalStatsStyled>
       <div className="title">My Stats</div>
@@ -36,10 +42,10 @@ export const LBPersonalStatsView = ({
       <div className="stats-grid">
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={balances.unrealizedPL} endingText="ꜩ" showNone={showNone} />
+            <CommaNumber value={pnLStats.unrealizedPnL} endingText="ꜩ" showNone={showNone} />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
-            Unrealized PL (fix)
+            Unrealized PL
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">
@@ -52,7 +58,7 @@ export const LBPersonalStatsView = ({
 
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={balances.realizedPl} endingText="ꜩ" showNone={showNone} />
+            <CommaNumber value={pnLStats.realizedPnL} endingText="ꜩ" showNone={showNone} />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Realized PL

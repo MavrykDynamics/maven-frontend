@@ -1,10 +1,7 @@
-import { fetchFromIndexer } from 'gql/gql.heplers'
+import { fetchFromIndexer } from 'gql/gql.helpers'
 import { LB_DATA_QUERY, LB_DATA_QUERY_NAME } from 'gql/queries/lbData.query'
 import { GET_TOKENS_DATA } from 'redux/action.types'
-import { TezosToolkit } from '@taquito/taquito'
 import { State } from '../../utils/interfaces'
-import BigNumber from 'bignumber.js'
-import { DexCalcOutput } from '../../utils/DEX/DexCalcOutput'
 
 const TZBTC_CONTRACT = 'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
   LB_DEX_CONTRACT = 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5',

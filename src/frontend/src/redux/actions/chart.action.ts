@@ -1,4 +1,4 @@
-import { fetchFromIndexer } from 'gql/gql.heplers'
+import { fetchFromIndexer } from 'gql/gql.helpers'
 import { CHART_QUERY_NAME, CHART_QUERY_VARIABLES, getChartQuery } from 'gql/queries/chart.query'
 import { GET_CHART_DATA, TOOGLE_CHART_INTERVAL, TOOGLE_CHART_TYPE } from 'redux/action.types'
 import { ChartPoint, ChartTypeType, IntervalType } from 'utils/interfaces'
@@ -29,7 +29,6 @@ export const getChartData = (interval: IntervalType) => async (dispatch: any, ge
         y: parseFloat(chartPoint.close),
       }))
       .sort((first: any, second: any) => first.x.getTime() - second.x.getTime())
-
 
     dispatch({
       type: GET_CHART_DATA,

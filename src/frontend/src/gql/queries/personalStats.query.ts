@@ -6,8 +6,9 @@ export const GET_PERSONAL_STATS_QUERY = `
       realizedPl
       traderId
       exchange {
-          sharePx
-          sharesTotal
+        sharePx
+        sharePxUsd
+        sharesTotal
       }
     }
   }
@@ -18,13 +19,13 @@ export const GET_PERSONAL_STATS_QUERY_NAME = 'GetPersonalStats'
 export function GET_PERSONAL_STATS_VARIABLES(userAddress: string): Record<string, any> {
   /* prettier-ignore */
   return {
-        "v1": {
-            "traderId": {
-                "_eq": userAddress
+        v1: {
+            traderId: {
+                _eq: userAddress,
             },
-            "exchangeId": {
-                "_eq": "KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5"
-            }
+            exchangeId: {
+                _eq: 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5',
+            },
         }
     }
 }

@@ -1,4 +1,4 @@
-import { fetchFromIndexer } from 'gql/gql.heplers'
+import { fetchFromIndexer } from 'gql/gql.helpers'
 
 import {
   GET_PERSONAL_STATS_QUERY,

@@ -10,6 +10,8 @@ import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { Footer } from 'app/App.components/Footer/Footer.controller'
 import { LBStyled } from './LiquidityBaking.styles'
 import { toggleRPCNodePopup } from 'redux/actions/preferences.action'
+import { dexGqlFetcher } from '../../gql/gql.helpers'
+import { SWRConfig } from 'swr'
 
 const LiquidityBaking = () => {
   const dispatch = useDispatch()
@@ -24,13 +26,18 @@ const LiquidityBaking = () => {
   }, [chartInterval, dispatch])
 
   return (
-    <>
+    <SWRConfig
+      value={{
+        refreshInterval: 1000,
+        fetcher: dexGqlFetcher,
+      }}
+    >
       <LBStyled>
         <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
         <LiquidityBakingView />
       </LBStyled>
       <Footer />
-    </>
+    </SWRConfig>
   )
 }
 

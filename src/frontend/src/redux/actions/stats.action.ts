@@ -1,5 +1,5 @@
-import { TOKEN_QUERY_NAME, TOKEN_QUERY } from 'gql/queries/token.query'
-import { fetchFromIndexer } from 'gql/gql.heplers'
+import { TOKEN_QUERY, TOKEN_QUERY_NAME } from 'gql/queries/token.query'
+import { fetchFromIndexer } from 'gql/gql.helpers'
 import { GET_GENERAL_STATS } from './../action.types'
 import dayjs from 'dayjs'
 
