@@ -64,3 +64,7 @@ export const nonNumberSymbolsValidation = (e: React.KeyboardEvent<HTMLInputEleme
     e.preventDefault()
   }
 }
+
+export function isWholeNumber(input: number): boolean {
+  return input - Math.floor(input) === 0
+}
