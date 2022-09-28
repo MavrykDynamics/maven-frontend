@@ -11,19 +11,15 @@ export const getUserData = (accountPkh: string) => async (dispatch: any, getStat
       },
       wallet,
     } = getState()
-    console.log(token_address, lqt_address)
     // account that has tokens tz1QhxptJuMYyNAouTdjWsYFcPKknuL92YkJ
     const apiNetwork = env.NODE_ENV === 'production' ? '' : env.rpcTestNetNetwork + '.'
     const xtzBalance = await (await fetch(`https://api.${apiNetwork}tzkt.io/v1/accounts/${accountPkh}/balance`)).json()
 
     // Test API call for checking on Mainnet
-    console.log(token_address, lqt_address)
     //https://api.tzkt.io/v1/tokens/balances?account.eq=tz1QhxptJuMYyNAouTdjWsYFcPKknuL92YkJ&token.contract.in=KT1AafHA1C1vk959wvHWBispY9Y2f3fxBUUo,KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn
     const getTokenBalancesAPIUrl = `https://api.${apiNetwork}tzkt.io/v1/tokens/balances?account.eq=${accountPkh}&token.contract.in=${lqt_address},${token_address}`
 
     const [firstToken, secondToken] = await (await fetch(getTokenBalancesAPIUrl)).json()
-
-    console.log('Printing out the XTZ Balance: ', xtzBalance)
 
     let tzBTCBalance = 0,
       lbtBalance = 0
@@ -62,7 +58,6 @@ export const getUserData = (accountPkh: string) => async (dispatch: any, getStat
       estimatedPoolXtzOwned: 0,
     }
 
-    console.log('Printing out User Info: ', userInfo)
     dispatch({
       type: GET_USER_DATA,
       userData: userInfo,

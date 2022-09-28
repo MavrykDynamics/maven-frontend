@@ -21,7 +21,6 @@ import { AddLiquidityDefault } from './AddLiquidityDefault.controller'
 import { AddLiquidityOnlyXTZ } from './AddLiquidityOnlyXTZ.controller'
 import { xtzToTzBTCSwap } from '../helpers/swap.utils'
 import { addLiquidityHandler } from '../helpers/addAndRemoveLiquidity.utils'
-import { swapCalculateCoinReceive } from 'utils/DEX/swapUtils'
 import { Button } from 'app/App.components/Button/Button.controller'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
@@ -64,21 +63,21 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
       [coinName]: coinAmount,
     })
 
-    const tokemAmoutReceive = swapCalculateCoinReceive(
-      'XTZ',
-      'tzBTC',
-      parseSrtToNum(coinAmount),
-      xtz_pool,
-      token_pool,
-      convertedSlippagePersentToValue,
-      dex,
-    )
+    // const tokemAmoutReceive = swapCalculateCoinReceive(
+    //   'XTZ',
+    //   'tzBTC',
+    //   parseSrtToNum(coinAmount),
+    //   xtz_pool,
+    //   token_pool,
+    //   convertedSlippagePersentToValue,
+    //   dex,
+    // )
 
-    setOnlyXtzSwapData({
-      ...onlyXtzSwapData,
-      XTZ: parseSrtToNum(coinAmount) / 2,
-      tzBTC: tokemAmoutReceive.expected,
-    })
+    // setOnlyXtzSwapData({
+    //   ...onlyXtzSwapData,
+    //   XTZ: parseSrtToNum(coinAmount) / 2,
+    //   tzBTC: tokemAmoutReceive.expected,
+    // })
 
     const { expected, minimum } = addLiquidityReturn(
       parseSrtToNum(onlyXtzSwapData.XTZ),

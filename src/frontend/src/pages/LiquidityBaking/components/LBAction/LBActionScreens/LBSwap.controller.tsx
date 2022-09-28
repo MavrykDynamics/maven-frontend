@@ -23,11 +23,10 @@ import { cyanColor } from 'styles'
 import { ActionScreenWrapper } from '../LBAction.style'
 import { Dex } from '../../../../../utils/DEX/Dex'
 import { swapTokenToXtz, swapXtzToToken } from '../../../../../redux/actions/swap.action'
-import BigNumber from 'bignumber.js'
 
-import { calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
+import { calculateTokenToXtz as CalcTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
 import { LBGeneralStats } from '../../../LiquidityBaking.view'
-import { PRECISION_NUMBER_EIGHT_ZEROES } from 'utils/consts'
+import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -63,10 +62,8 @@ export const LBSwap = ({
     lbData: { token_address },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
-  const { tezos } = useSelector((state: State) => state.wallet)
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
-  const dexSettings = dex.settings('liquidityBaking')
   const [selectedSlippage, setSelectedSlippage] = useState<number>(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [slippagePercent, setSlippagePercent] = useState<string | number>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
   const [minReceived, setMinReceived] = useState(0)
@@ -92,7 +89,7 @@ export const LBSwap = ({
     console.log('logging input of calculateTokenToXTZ', amount)
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
 
-    const { expected, minimum, rate, priceImpact } = CalcXtzToToken(
+    const { expected, minimum, rate, priceImpact } = CalcTokenToXtz(
       amount,
       generalDexStats.tezPool,
       generalDexStats.tokenPool,
@@ -105,6 +102,8 @@ export const LBSwap = ({
       tzBTC: amount,
       XTZ: expected,
     })
+
+    setExchangeRate(rate)
     setMinReceived(minimum)
     setPriceImpact(priceImpact)
   }
@@ -171,61 +170,12 @@ export const LBSwap = ({
       setSelectedSlippage(parseSrtToNum(value))
     }
   }
-  const creditSubsidy = (xtzPool: BigNumber | number): BigNumber => {
-    const LIQUIDITY_BAKING_SUBSIDY = 2500000
-    if (BigNumber.isBigNumber(xtzPool)) {
-      return xtzPool.plus(new BigNumber(LIQUIDITY_BAKING_SUBSIDY))
-    } else {
-      return new BigNumber(xtzPool).plus(new BigNumber(LIQUIDITY_BAKING_SUBSIDY))
-    }
-  }
-
-  const tokenToXtzXtzOutput = (p: {
-    tokenIn: BigNumber | number
-    xtzPool: BigNumber | number
-    tokenPool: BigNumber | number
-  }): BigNumber | null => {
-    const { tokenIn, xtzPool: _xtzPool, tokenPool } = p
-    let xtzPool = creditSubsidy(_xtzPool)
-    let tokenIn_ = new BigNumber(0)
-    let xtzPool_ = new BigNumber(0)
-    let tokenPool_ = new BigNumber(0)
-    try {
-      let tempTokenIn = Number(tokenIn)
-      console.log('loggin exponential tokenIn: ', tempTokenIn)
-      tokenIn_ = new BigNumber(tokenIn)
-      xtzPool_ = new BigNumber(_xtzPool)
-      tokenPool_ = new BigNumber(tokenPool)
-    } catch (err) {
-      return null
-    }
-    if (tokenIn_.isGreaterThan(0) && xtzPool_.isGreaterThan(0) && tokenPool_.isGreaterThan(0)) {
-      // Includes 0.1% fee and 0.1% burn calculated separately:
-      // 999/1000 * 999/1000 = 998001/1000000
-      let numerator = new BigNumber(tokenIn).times(new BigNumber(_xtzPool)).times(new BigNumber(998001))
-      let denominator = new BigNumber(tokenPool)
-        .times(new BigNumber(1000000))
-        .plus(new BigNumber(tokenIn).times(new BigNumber(999000)))
-      const minReceived = numerator.dividedBy(denominator)
-      setMinReceived(minReceived.toNumber())
-      console.log(minReceived)
-      setInputValues({
-        ...inputValues,
-        tzBTC: Number(Number(tokenIn).toFixed(8)),
-        XTZ: Number(Number(minReceived).toFixed(6)),
-      })
-
-      return minReceived
-    } else {
-      return null
-    }
-  }
 
   // handling dynamic filling second input on input change
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => {
     let { name, value } = e.target
-    if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) return
-
+    // if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) return
+    if (+value < 0) return
     const isTypingBottomInput = name === isRevertedCoins.to
 
     if (isTypingBottomInput) {
@@ -235,19 +185,12 @@ export const LBSwap = ({
       })
     }
 
-    const { xtzPool, tokenPool } = dex.createPoolAmounts()
-
     if (name === 'XTZ') {
       setAmountToSwap(parseFloat(value))
       calculateXtzToToken(parseFloat(value))
     } else {
-      console.log('Here in swap Token to XTZ', amountToSwap)
       setAmountToSwap(parseFloat(value))
-      tokenToXtzXtzOutput({
-        tokenIn: parseFloat(value),
-        xtzPool: xtzPool.internalNormalised,
-        tokenPool: tokenPool.internalNormalised,
-      })
+      calculateTokenToXtz(parseFloat(value))
     }
   }
 
@@ -262,9 +205,9 @@ export const LBSwap = ({
       // if tzBTC => XTZ perform %tokenToXtz
       if (isRevertedCoins.from === 'tzBTC' && isRevertedCoins.to === 'XTZ') {
         try {
-          console.log('%c Here before calling %dispatch(swapTokenToXtz(amountToSwap, minReceived))', 'color: #bada55')
-          console.log(`Printing amountToSwap: ${amountToSwap}, minReceived: ${minReceived}`)
-          dispatch(swapTokenToXtz(amountToSwap, minReceived))
+          dispatch(
+            swapTokenToXtz(amountToSwap * PRECISION_NUMBER_EIGHT_ZEROES, minReceived * PRECISION_NUMBER_SIX_ZEROES),
+          )
         } catch (e: any) {
           console.error('swap tzBTC => XTZ error', e.message)
         }
@@ -361,7 +304,7 @@ export const LBSwap = ({
           placeholder={''}
           name="tzBTC"
           onChange={inputChangeHandler}
-          type={'tel'}
+          type={'number'}
           kind={'LB'}
           value={inputValues.tzBTC}
           convertedValue={parseSrtToNum(inputValues.tzBTC) * coinPrices.tzbtc.usd}
