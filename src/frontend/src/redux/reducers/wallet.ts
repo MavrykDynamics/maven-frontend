@@ -1,9 +1,13 @@
 import { WalletState } from 'utils/interfaces'
 import * as actions from '../action.types'
+import { SET_TEZOS_TOOLKIT } from '../action.types'
+import { TezosToolkit } from '@taquito/taquito'
+
+const RpcNetwork = 'https://mainnet.smartpy.io'
 
 export const walletDefaultState: WalletState = {
   wallet: undefined,
-  tezos: undefined,
+  tezos: new TezosToolkit(RpcNetwork),
   accountPkh: undefined,
   ready: false,
 }
@@ -24,6 +28,11 @@ const wallet = (state = walletDefaultState, action: any) => {
       return {
         ...state,
         ...walletDefaultState,
+      }
+    case SET_TEZOS_TOOLKIT:
+      return {
+        ...state,
+        tezos: action.tezos,
       }
     default:
       return state

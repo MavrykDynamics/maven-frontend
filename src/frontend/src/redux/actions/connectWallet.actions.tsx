@@ -6,10 +6,21 @@ import type {AppDispatch, GetState} from '../../app/App.controller'
 import {State} from 'utils/interfaces'
 import {CONNECT, DISCONNECT, SET_WALLET} from 'redux/action.types'
 import {getUserData} from './user.action'
+import {TezosToolkit} from '@taquito/taquito'
 
 // const network = process.env.REACT_APP_API_NETWORK
 export const network: Network = { type: NetworkType.MAINNET }
-
+export const WalletOptions = {
+  name: process.env.REACT_APP_NAME || 'MAVRYK',
+  preferredNetwork: network.type,
+  eventHandlers: {
+    PERMISSION_REQUEST_SUCCESS: {
+      handler: async (data: any) => {
+        console.log('permission data:', data)
+      },
+    },
+  },
+}
 export const setWallet = (wallet?: BeaconWallet) => (dispatch: AppDispatch) => {
   console.log('Here in Set Wallet')
   try {
@@ -44,86 +55,28 @@ export const setWallet = (wallet?: BeaconWallet) => (dispatch: AppDispatch) => {
 export const connect = () => async (dispatch: AppDispatch, getState: GetState) => {
   console.log('Here in connectWallet')
   const state: State = getState()
-
-  // try {
-  //   if (!state.wallet) {
-  //     dispatch(showToaster(ERROR, 'Temple Wallet not available', ''))
-  //     throw new Error('Temple Wallet not available')
-  //   } else {
-  //     await state.wallet.wallet?.connect(('mainnet' || network) as TempleDAppNetwork, {
-  //       forcePermission,
-  //     })
-  //     const tzs = await state.wallet.wallet?.toTezos()
-  //     const accountPkh = await tzs?.wallet.pkh()
-  //     dispatch({
-  //       type: CONNECT,
-  //       tezos: tzs,
-  //       ready: Boolean(tzs),
-  //       accountPkh: accountPkh,
-  //     })
-  //     if (accountPkh) dispatch(getUserData(accountPkh))
-  //   }
-  // } catch (err) {
-  //   if (err instanceof Error) {
-  //     dispatch(showToaster(ERROR, 'Failed to connect TempleWallet', err.message))
-  //     console.error(`Failed to connect TempleWallet: ${err.message}`)
-  //   }
-  // }
-
   try {
-    const walletOptions = {
-      name: process.env.REACT_APP_NAME || 'MAVRYK',
-      preferredNetwork: network.type,
-      eventHandlers: {
-        PERMISSION_REQUEST_SUCCESS: {
-          handler: async (data: any) => {
-            dispatch(showToaster(SUCCESS, 'Permission successful', ''))
-            console.log('permission data:', data)
-          },
-        },
-      },
-    }
-
     const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
-    const wallet = new BeaconWallet(walletOptions)
-    //const walletResponse = await checkIfWalletIsConnected(wallet)
-    let account = await wallet.client.getActiveAccount()
-    if (!account) {
-      await wallet.client.requestPermissions({
-        network,
+    const wallet = new BeaconWallet(WalletOptions)
+    const walletResponse = await checkIfWalletIsConnected(wallet)
+    if (walletResponse.success) {
+      const Tezos = new TezosToolkit(rpcNetwork)
+      let account = await wallet.client.getActiveAccount()
+      if (!account) {
+        await wallet.client.requestPermissions({
+          network,
+        })
+        account = await wallet.client.getActiveAccount()
+      }
+      dispatch({
+        type: CONNECT,
+        wallet,
+        tezos: Tezos,
+        ready: Boolean(wallet),
+        accountPkh: account?.address,
       })
-      account = await wallet.client.getActiveAccount()
+      if (account?.address) dispatch(getUserData(account?.address))
     }
-    dispatch({
-      type: CONNECT,
-      wallet,
-      tezos: undefined,
-      ready: Boolean(wallet),
-      accountPkh: account?.address,
-    })
-    if (account?.address) dispatch(getUserData(account?.address))
-    //
-    // if (walletResponse.success) {
-    //   const Tezos = new TezosToolkit(rpcNetwork)
-    //   Tezos.setRpcProvider(rpcNetwork)
-    //   Tezos.setWalletProvider(wallet)
-    //   const accountPkh = await wallet.getPKH()
-    //
-    // }
-    //
-    // const scopes: PermissionScope[] = [PermissionScope.OPERATION_REQUEST, PermissionScope.SIGN]
-    // try {
-    //   const permissions = await wallet.client.requestPermissions({scopes})
-    //   console.log('Got permissions:', permissions.address)
-    // } catch (error) {
-    //   console.log('Got error:', error)
-    // }
-    //
-    // const tzs = new TezosToolkit(rpcNetwork)
-    // console.log(tzs, rpcNetwork)
-    // console.log(wallet)
-    // tzs.setProvider({wallet})
-    // // tzs.setWalletProvider(wallet)
   } catch (err: any) {
     dispatch(showToaster(ERROR, 'Failed to connect Wallet', err.message))
     console.error(`Failed to connect Wallet: ${err.message}`)

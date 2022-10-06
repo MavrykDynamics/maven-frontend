@@ -69,7 +69,7 @@ export type MavrykTheme = Record<string, string>
 
 export interface WalletState {
   wallet?: BeaconWallet
-  tezos?: TezosToolkit
+  tezos: TezosToolkit
   accountPkh?: string
   ready: boolean
   error?: any

@@ -2,9 +2,10 @@ import { State } from '../../utils/interfaces'
 import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
 import { ERROR, INFO, SUCCESS } from '../../app/App.components/Toaster/Toaster.constants'
 import { getUserData } from './user.action'
-import { OpKind, TezosToolkit } from '@taquito/taquito'
+import { OpKind } from '@taquito/taquito'
 import { BeaconWallet } from '@taquito/beacon-wallet'
-import { checkIfWalletIsConnected, network } from './connectWallet.actions'
+import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
+import { SET_TEZOS_TOOLKIT } from '../action.types'
 
 const TZBTC_CONTRACT = 'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
   LB_DEX_CONTRACT = 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5',
@@ -33,51 +34,23 @@ export const addLiquidity =
     }
 
     try {
-      const walletOptions = {
-        name: process.env.REACT_APP_NAME || 'MAVRYK',
-        preferredNetwork: network.type,
-        eventHandlers: {
-          PERMISSION_REQUEST_SUCCESS: {
-            handler: async (data: any) => {
-              dispatch(showToaster(SUCCESS, 'Permission successful', ''))
-              console.log('permission data:', data)
-            },
-          },
-        },
-      }
-
       const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
-      const wallet = new BeaconWallet(walletOptions)
+      const wallet = new BeaconWallet(WalletOptions)
       const walletResponse = await checkIfWalletIsConnected(wallet)
-      console.log('Here in addLiquidity Action')
-      if (walletResponse.success) {
-        const Tezos = new TezosToolkit(rpcNetwork)
-        Tezos.setRpcProvider(rpcNetwork)
-        Tezos.setWalletProvider(wallet)
-        const accountPkh = await wallet.getPKH()
 
-        const lqdContract = await Tezos.wallet.at(LB_DEX_CONTRACT)
-        const tzBTCContract = await Tezos.wallet.at(TZBTC_CONTRACT)
-        //
-        console.log(tzBTCContract, lqdContract, minLqtMinted, maxTokensSold, xtzToAdd)
+      if (walletResponse.success) {
+        const tzs = state.wallet.tezos
+        tzs.setRpcProvider(rpcNetwork)
+        tzs.setWalletProvider(wallet)
+
+        dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+
+        const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
+        const tzBTCContract = await tzs.wallet.at(TZBTC_CONTRACT)
+
         const tokensToSell = Math.round(maxTokensSold)
-        // if (lqdContract && tzBTCContract) {
-        debugger
         const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
-        // let batch = await state.wallet.tezos?.wallet
-        //   .batch()
-        //   .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0))
-        //   .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, maxTokensSold))
-        //   .withContractCall(
-        //     lqdContract.methods.addLiquidity(state.user.userAddress, minLqtMinted, maxTokensSold, deadline),
-        //   )
-        //   .withTransfer({
-        //     to: LB_DEX_CONTRACT,
-        //     amount: xtzToAdd,
-        //     mutez: true,
-        //   })
-        //   .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0))
-        const batchOp = await Tezos.wallet
+        const batchOp = await tzs.wallet
           .batch([
             {
               kind: OpKind.TRANSACTION,
