@@ -9,25 +9,30 @@ import {xtzToTokenExchangeRateDisplay} from './swapUtils'
  */
 export function calculateAddLiquidity(
   xtzToAdd: number,
-  tokenToAdd: number,
   xtzPool: number,
   tokenPool: number,
   lqtTotal: number,
   maxSlippage: number,
   dex: { fee: number; burn: number; includeSubsidy: boolean },
-): {
-  xtz: { liquidityExpected: number; liquidityMinimum: number; required: number; exchangeRate: number }
-  tzBTC: { liquidityExpected: number; liquidityMinimum: number; required: number; exchangeRate: number }
-} {
+): { liquidityExpected: number; liquidityMinimum: number; required: number; exchangeRate: number } {
   let _xtzToAdd = new BigNumber(xtzToAdd * PRECISION_NUMBER_SIX_ZEROES),
-    _tokenToAdd = new BigNumber(xtzToAdd * PRECISION_NUMBER_SIX_ZEROES),
     _xtzPool = new BigNumber(xtzPool * PRECISION_NUMBER_SIX_ZEROES),
     _tokenPool = new BigNumber(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES),
     _lqtTotal = new BigNumber(lqtTotal)
 
+  const { liquidityExpected, liquidityMinimum, required, exchangeRate } = calculateAddLiquidityXTZ(
+    _xtzToAdd,
+    _xtzPool,
+    _tokenPool,
+    _lqtTotal,
+    maxSlippage,
+    dex,
+  )
   return {
-    tzBTC: { exchangeRate: 0, liquidityExpected: 0, liquidityMinimum: 0, required: 0 },
-    xtz: { exchangeRate: 0, liquidityExpected: 0, liquidityMinimum: 0, required: 0 },
+    exchangeRate: exchangeRate,
+    liquidityExpected: liquidityExpected.toNumber(),
+    liquidityMinimum: liquidityMinimum.toNumber(),
+    required: required.toNumber() / PRECISION_NUMBER_EIGHT_ZEROES,
   }
 }
 

@@ -19,7 +19,7 @@ import { getSettings } from 'utils/DEX/DexCalcs'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { AddLiquidutityInputChangeEventType } from '../helpers/actionsScreen.types'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
-import { removeLiquidity } from '../../../../../redux/actions/liquidity.actions'
+import { removeLiquidity } from '../../../../../redux/actions/liquidity.action'
 import { calculateRemoveLiquidity } from '../../../../../utils/DEX/liquidityUtils'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from '../../../../../utils/consts'
 

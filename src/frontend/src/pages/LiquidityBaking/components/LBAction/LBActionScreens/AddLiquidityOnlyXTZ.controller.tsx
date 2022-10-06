@@ -9,9 +9,10 @@ import { State } from 'utils/interfaces'
 
 import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 
-import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { cyanColor } from 'styles'
 import { StepBlock } from '../LBAction.style'
+import { MinCoinsData } from './LBAddLiquidity.controller'
 
 export const AddLiquidityOnlyXTZ = ({
   inputValues,
@@ -19,16 +20,19 @@ export const AddLiquidityOnlyXTZ = ({
   setInputValues,
   inputChangeHandler,
   swapData,
+  minCoinsForSwap,
 }: {
   inputValues: CoinsInputsValues
   swapData: CoinsInputsValues
   inputChangeHandler: (arg: AddLiquidutityInputChangeEventType) => void
   lqtReceived: number
   setInputValues: (arg: CoinsInputsValues) => void
+  minCoinsForSwap: MinCoinsData
 }) => {
   const { coinPrices } = useSelector((state: State) => state.tokens)
   const { xtzBalance } = useSelector((state: State) => state.user)
 
+  console.log('Logging swapData: ', swapData, minCoinsForSwap)
   return (
     <>
       <Input
@@ -89,9 +93,8 @@ export const AddLiquidityOnlyXTZ = ({
         />
         <HorisontalInfo>
           <CustomizedText fontWidth={500}>Minimum tzBTC Received</CustomizedText>
-
           <CustomizedText fontWidth={500} color={cyanColor}>
-            <CommaNumber value={0} showDecimal endingText="tzBTC" />
+            <CommaNumber value={minCoinsForSwap.minTzBTC} showDecimal decimalsToShow={8} endingText="tzBTC" />
           </CustomizedText>
         </HorisontalInfo>
       </div>
@@ -100,7 +103,8 @@ export const AddLiquidityOnlyXTZ = ({
 
       <div className="step-wrapper">
         <StepBlock>
-          <div className="step">2</div>Add Liquidity
+          <div className="step">2</div>
+          Add Liquidity
         </StepBlock>
 
         <CoinSwap

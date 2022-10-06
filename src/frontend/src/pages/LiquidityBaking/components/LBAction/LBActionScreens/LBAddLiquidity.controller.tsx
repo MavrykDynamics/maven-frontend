@@ -12,7 +12,7 @@ import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFi
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
 import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
 import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
-import { calculateAddLiquidityXTZ } from 'utils/DEX/liquidityUtils'
+import { calculateAddLiquidity } from 'utils/DEX/liquidityUtils'
 import { parseSrtToNum, slippagePercentToValue } from 'utils/utils'
 import { AddLiquidutityInputChangeEventType, CoinsInputsValues } from '../helpers/actionsScreen.types'
 import { AddLiquidityDefault } from './AddLiquidityDefault.controller'
@@ -21,13 +21,23 @@ import { Button } from 'app/App.components/Button/Button.controller'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import { getSettings } from '../../../../../utils/DEX/DexCalcs'
-import BigNumber from 'bignumber.js'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from '../../../../../utils/consts'
-import { addLiquidity } from '../../../../../redux/actions/liquidity.actions'
+import { addLiquidity, addLiquidityOnlyXTZ } from '../../../../../redux/actions/liquidity.action'
+import { calculateXtzToToken as CalcXtzToToken } from '../../../../../utils/DEX/swapUtils'
 
 const DEFAULT_COINS_AMOUNT = {
   XTZ: 0,
   tzBTC: 0,
+}
+
+export interface MinCoinsData {
+  minXTZ: number
+  minTzBTC: number
+}
+
+const DefaultMinCoinsData: MinCoinsData = {
+  minXTZ: 0,
+  minTzBTC: 0,
 }
 const dexType = getSettings('liquidity')
 export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
@@ -40,46 +50,101 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
 
   const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
   const [onlyXtzSwapData, setOnlyXtzSwapData] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
+  const [onlyXtzMinCoinsData, setOnlyXtzMinCoinsData] = useState<MinCoinsData>(DefaultMinCoinsData)
   const [selectedSlippage, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [slippagePercent, setSlippagePercent] = useState<string | number>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
   const [switchValue, setSwitchValue] = useState(false)
   const [lastCoinUpdated, setLastCoinUpdated] = useState<null | 'XTZ' | 'tzBTC'>(null)
   const [lqtReceived, setLqtReceived] = useState(0)
   const [minlqtReceived, setMinLqtReceived] = useState(0)
+  const [priceImpact, setPriceImpact] = useState(0)
 
   useEffect(() => {
     setInputValues(DEFAULT_COINS_AMOUNT)
     setOnlyXtzSwapData(DEFAULT_COINS_AMOUNT)
+    setOnlyXtzMinCoinsData(DefaultMinCoinsData)
   }, [ready])
 
-  const calcAddLiquidityXTZ = (amount: number) => {
-    console.log('logging input of calcAddLiquidityXTZ', amount)
+  const calcAddLiquidityXtzAndTzbtc = (amount: number) => {
+    console.log('logging input of calcAddLiquidityXtzAndTzbtc', amount)
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
-    let _xtzToAdd = new BigNumber(amount * PRECISION_NUMBER_SIX_ZEROES),
-      _xtzPool = new BigNumber(generalDexStats.tezPool * PRECISION_NUMBER_SIX_ZEROES),
-      _tokenPool = new BigNumber(generalDexStats.tokenPool * PRECISION_NUMBER_EIGHT_ZEROES),
-      _lqtTotal = new BigNumber(generalDexStats.sharesTotal)
-    const { liquidityExpected, liquidityMinimum, required, exchangeRate } = calculateAddLiquidityXTZ(
-      _xtzToAdd,
-      _xtzPool,
-      _tokenPool,
-      _lqtTotal,
+    const { liquidityExpected, liquidityMinimum, required, exchangeRate } = calculateAddLiquidity(
+      amount,
+      generalDexStats.tezPool,
+      generalDexStats.tokenPool,
+      generalDexStats.sharesTotal,
       convertedSlippagePercentToValue,
       dexType,
     )
-    const _liquidityExpected = liquidityExpected.toNumber(),
-      _liquidityMinimum = liquidityMinimum.toNumber(),
-      _required = required.toNumber() / PRECISION_NUMBER_EIGHT_ZEROES
-    console.log('logging result of calcAddLiquidityXTZ', _liquidityExpected, _liquidityMinimum, _required, exchangeRate)
+    console.log(
+      'logging result of calcAddLiquidityXtzAndTzbtc',
+      liquidityExpected,
+      liquidityMinimum,
+      required,
+      exchangeRate,
+    )
     setInputValues({
       ...inputValues,
-      tzBTC: _required,
+      tzBTC: required,
       XTZ: amount,
     })
 
-    setLqtReceived(_liquidityExpected)
-    setMinLqtReceived(_liquidityMinimum)
+    setLqtReceived(liquidityExpected)
+    setMinLqtReceived(liquidityMinimum)
   }
+
+  const calcAddLiquidityOnlyXTZ = (amount: number) => {
+    // 1. Swap half of the XTZ to tzBTC
+    // 2. Calc add liquidity
+    // 3. Update contract calls to adjust
+
+    const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
+    console.log('logging input of calcAddLiquidityOnlyXTZ', amount)
+    const amountOfXtzToAdd = amount / 2
+    const { expected, minimum, rate, priceImpact } = CalcXtzToToken(
+      amountOfXtzToAdd,
+      generalDexStats.tezPool,
+      generalDexStats.tokenPool,
+      convertedSlippagePercentToValue,
+      dexType,
+    )
+    const { liquidityExpected, liquidityMinimum, required, exchangeRate } = calculateAddLiquidity(
+      amountOfXtzToAdd,
+      generalDexStats.tezPool,
+      generalDexStats.tokenPool,
+      generalDexStats.sharesTotal,
+      convertedSlippagePercentToValue,
+      dexType,
+    )
+    console.log(
+      'logging result of calcAddLiquidityOnlyXTZ',
+      expected,
+      minimum,
+      liquidityExpected,
+      liquidityMinimum,
+      required,
+      exchangeRate,
+    )
+    setInputValues({
+      ...inputValues,
+      tzBTC: required,
+      XTZ: amount,
+    })
+    setOnlyXtzSwapData({
+      ...onlyXtzSwapData,
+      XTZ: amountOfXtzToAdd,
+      tzBTC: expected,
+    })
+    setOnlyXtzMinCoinsData({
+      ...onlyXtzMinCoinsData,
+      minXTZ: amountOfXtzToAdd,
+      minTzBTC: minimum,
+    })
+    setPriceImpact(priceImpact)
+    setLqtReceived(liquidityExpected)
+    setMinLqtReceived(liquidityMinimum)
+  }
+
   // Dynamic calculations for only XTZ block
   const onlyXTZCalculations = (
     coinName: 'XTZ' | 'tzBTC',
@@ -163,14 +228,15 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
 
     if (switchValue) {
       // Only XTZ input
-      onlyXTZCalculations(name as 'XTZ' | 'tzBTC', value)
+      calcAddLiquidityOnlyXTZ(parseFloat(value as string))
+      // onlyXTZCalculations(name as 'XTZ' | 'tzBTC', value)
     } else {
       // XTZ & tzBTC inputs
 
       if (name === 'XTZ') {
-        calcAddLiquidityXTZ(parseFloat(value as string))
+        calcAddLiquidityXtzAndTzbtc(parseFloat(value as string))
       } else {
-        calcAddLiquidityXTZ(parseFloat(value as string))
+        calcAddLiquidityXtzAndTzbtc(parseFloat(value as string))
       }
     }
   }
@@ -206,70 +272,16 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
         ),
       )
     } else {
-    }
-
-    try {
-      // if (!accountPkh) return
-      // const Tezos = new TezosToolkit(env.rpcLink)
-      // const lbContract = await Tezos.wallet.at(address)
-      // const tzBtcContract = await Tezos.wallet.at(token_address)
-      // const deadline = new Date(Date.now() + 60000).toISOString()
-      // const convertedSlippagePersentToValue = slippagePercentToValue(slippagePercent)
-      //
-      // if (switchValue) {
-      //   // try {
-      //   //   await addLiquidityHandler({
-      //   //     tzBTCAmount: inputValues.tzBTC,
-      //   //     xtzAmount: inputValues.XTZ,
-      //   //     lbContract,
-      //   //     accountAddress: accountPkh,
-      //   //     slippage: convertedSlippagePersentToValue,
-      //   //     tzBtcContract,
-      //   //     deadline,
-      //   //     Tezos,
-      //   //     lbAddress: address,
-      //   //     lqtReceived,
-      //   //   })
-      //   // } catch (e: any) {
-      //   //   console.error('add liquidity xtz&tzBTC error', e.message)
-      //   // }
-      // } else {
-      //   // Performing swap
-      //   try {
-      //     await xtzToTzBTCSwap({
-      //       dex,
-      //       token_pool,
-      //       xtz_pool,
-      //       deadline,
-      //       lbContract,
-      //       xtzAmount: parseSrtToNum(inputValues.XTZ) / 2,
-      //       slippage: convertedSlippagePersentToValue,
-      //       accountAddress: accountPkh,
-      //     })
-      //   } catch (e: any) {
-      //     console.error('add liquidity only xtz swap error', e.message)
-      //   }
-      //
-      //   // Performing add Liquidity
-      //   try {
-      //     await addLiquidityHandler({
-      //       tzBTCAmount: onlyXtzSwapData.tzBTC,
-      //       xtzAmount: onlyXtzSwapData.XTZ,
-      //       lbContract,
-      //       accountAddress: accountPkh,
-      //       slippage: convertedSlippagePersentToValue,
-      //       tzBtcContract,
-      //       deadline,
-      //       Tezos,
-      //       lbAddress: address,
-      //       lqtReceived,
-      //     })
-      //   } catch (e: any) {
-      //     console.error('add liquidity only xtz add liquidity error', e.message)
-      //   }
-      // }
-    } catch (e: any) {
-      console.error('addLiquidityBtnHandler initializing params error', e.message)
+      console.log('Here in add liquidity only xtz', onlyXtzMinCoinsData.minTzBTC, onlyXtzMinCoinsData.minXTZ)
+      dispatch(
+        addLiquidityOnlyXTZ(
+          onlyXtzMinCoinsData.minTzBTC * PRECISION_NUMBER_EIGHT_ZEROES,
+          onlyXtzMinCoinsData.minXTZ * PRECISION_NUMBER_SIX_ZEROES,
+          Number(inputValues.tzBTC) * PRECISION_NUMBER_EIGHT_ZEROES,
+          Math.floor(minlqtReceived),
+          onlyXtzMinCoinsData.minXTZ * PRECISION_NUMBER_SIX_ZEROES,
+        ),
+      )
     }
   }
 
@@ -311,6 +323,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
           lqtReceived={lqtReceived}
           setInputValues={setInputValues}
           swapData={onlyXtzSwapData}
+          minCoinsForSwap={onlyXtzMinCoinsData}
         />
       ) : (
         <AddLiquidityDefault
@@ -334,7 +347,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
       )}
 
       <LBActionBottomWrapperStyled>
-        <PriceImpact priceImpact={0} />
+        <PriceImpact priceImpact={priceImpact} />
         <MinimumReceived minimumReceived={[{ value: minlqtReceived, tokenName: 'LBT' }]} />
         <Slippage
           onClickHandler={(value) => slippageChangeHandler(value, false)}

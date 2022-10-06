@@ -163,3 +163,100 @@ export const removeLiquidity =
       })
     }
   }
+export const ADD_LIQUIDITY_ONLY_XTZ_REQUEST = 'ADD_LIQUIDITY_ONLY_XTZ_REQUEST'
+export const ADD_LIQUIDITY_ONLY_XTZ_RESULT = 'ADD_LIQUIDITY_ONLY_XTZ_RESULT'
+export const ADD_LIQUIDITY_ONLY_XTZ_ERROR = 'ADD_LIQUIDITY_ONLY_XTZ_ERROR'
+export const addLiquidityOnlyXTZ =
+  (minTokensToBuy: number, xtzToSwap: number, maxTokensSold: number, minLqtMinted: number, xtzToAdd: number) =>
+  async (dispatch: any, getState: any) => {
+    const state: State = getState()
+
+    if (!state.wallet.ready) {
+      dispatch(showToaster(ERROR, 'Please connect your wallet', 'Click Connect in the left menu'))
+      return
+    }
+
+    if (!(maxTokensSold > 0)) {
+      dispatch(showToaster(ERROR, 'Incorrect amount', 'Please enter an amount superior to zero'))
+      return
+    }
+
+    if (state.loading) {
+      dispatch(showToaster(ERROR, 'Cannot send transaction', 'Previous transaction still pending...'))
+      return
+    }
+
+    try {
+      const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
+      const wallet = new BeaconWallet(WalletOptions)
+      const walletResponse = await checkIfWalletIsConnected(wallet)
+
+      if (walletResponse.success) {
+        const tzs = state.wallet.tezos
+        tzs.setRpcProvider(rpcNetwork)
+        tzs.setWalletProvider(wallet)
+
+        dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+
+        const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
+        const tzBTCContract = await tzs.wallet.at(TZBTC_CONTRACT)
+
+        const tokensToSell = Math.round(maxTokensSold)
+        const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
+        const batchOp = await tzs.wallet
+          .batch([
+            {
+              kind: OpKind.TRANSACTION,
+              ...lqdContract.methods
+                .xtzToToken(state.user.userAddress, minTokensToBuy.toString(), deadline)
+                .toTransferParams(),
+              amount: xtzToSwap,
+              mutez: true,
+            },
+            {
+              kind: OpKind.TRANSACTION,
+              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0).toTransferParams(),
+            },
+            {
+              kind: OpKind.TRANSACTION,
+              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, tokensToSell).toTransferParams(),
+            },
+            {
+              kind: OpKind.TRANSACTION,
+              ...lqdContract.methods
+                .addLiquidity(state.user.userAddress, minLqtMinted - 3, tokensToSell, deadline)
+                .toTransferParams(),
+              amount: xtzToAdd,
+              mutez: true,
+            },
+            {
+              kind: OpKind.TRANSACTION,
+              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0).toTransferParams(),
+            },
+          ])
+          .send()
+
+        dispatch(showToaster(INFO, 'Adding Liquidity', 'Please wait 30s...'))
+        await batchOp?.confirmation()
+        dispatch({
+          type: ADD_LIQUIDITY_ONLY_XTZ_REQUEST,
+          amount: xtzToAdd,
+        })
+
+        dispatch(showToaster(SUCCESS, 'Add Liquidity completed', 'All good :)'))
+
+        dispatch({
+          type: ADD_LIQUIDITY_ONLY_XTZ_RESULT,
+          amount: minLqtMinted,
+        })
+      }
+      if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
+    } catch (error: any) {
+      console.error(error)
+      dispatch(showToaster(ERROR, 'Error', error.message))
+      dispatch({
+        type: ADD_LIQUIDITY_ONLY_XTZ_ERROR,
+        error,
+      })
+    }
+  }

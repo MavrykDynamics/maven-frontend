@@ -3,6 +3,7 @@ import { ThemeType } from 'redux/actions/preferences.action'
 import { LoadingState } from '../redux/reducers/loading'
 import {
   ADD_LIQUIDITY,
+  ADD_LIQUIDITY_ONLY_XTZ,
   REMOVE_LIQUIDITY,
   SWAP_TZBTC_TO_XTZ,
   SWAP_XTZ_TO_TZBTC,
@@ -186,7 +187,7 @@ export interface PurschasedStatsTable {
 }
 
 export interface LiquidityBakingAction {
-  type: SWAP_XTZ_TO_TZBTC | SWAP_TZBTC_TO_XTZ | ADD_LIQUIDITY | REMOVE_LIQUIDITY | undefined
+  type: SWAP_XTZ_TO_TZBTC | SWAP_TZBTC_TO_XTZ | ADD_LIQUIDITY | REMOVE_LIQUIDITY | ADD_LIQUIDITY_ONLY_XTZ | undefined
   amount: number
   error: any | undefined
 }

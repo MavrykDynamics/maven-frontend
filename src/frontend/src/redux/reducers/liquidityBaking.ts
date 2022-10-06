@@ -9,12 +9,15 @@ import {
 } from '../actions/swap.action'
 import {
   ADD_LIQUIDITY_ERROR,
+  ADD_LIQUIDITY_ONLY_XTZ_ERROR,
+  ADD_LIQUIDITY_ONLY_XTZ_REQUEST,
+  ADD_LIQUIDITY_ONLY_XTZ_RESULT,
   ADD_LIQUIDITY_REQUEST,
   ADD_LIQUIDITY_RESULT,
   REMOVE_LIQUIDITY_ERROR,
   REMOVE_LIQUIDITY_REQUEST,
   REMOVE_LIQUIDITY_RESULT,
-} from '../actions/liquidity.actions'
+} from '../actions/liquidity.action'
 
 export type SWAP_XTZ_TO_TZBTC =
   | typeof SWAP_XTZ_TO_TOKEN_REQUEST
@@ -29,6 +32,10 @@ export type REMOVE_LIQUIDITY =
   | typeof REMOVE_LIQUIDITY_REQUEST
   | typeof REMOVE_LIQUIDITY_RESULT
   | typeof REMOVE_LIQUIDITY_ERROR
+export type ADD_LIQUIDITY_ONLY_XTZ =
+  | typeof ADD_LIQUIDITY_ONLY_XTZ_REQUEST
+  | typeof ADD_LIQUIDITY_ONLY_XTZ_RESULT
+  | typeof ADD_LIQUIDITY_ONLY_XTZ_ERROR
 export const defaultLiquidityBaking: LiquidityBakingAction = {
   amount: 0,
   type: undefined,
@@ -38,6 +45,7 @@ export const defaultLiquidityBaking: LiquidityBakingAction = {
 const liquidityBaking = (state = defaultLiquidityBaking, action: any) => {
   switch (action.type) {
     case ADD_LIQUIDITY_REQUEST:
+    case ADD_LIQUIDITY_ONLY_XTZ_REQUEST:
     case REMOVE_LIQUIDITY_REQUEST:
     case SWAP_XTZ_TO_TOKEN_REQUEST:
     case SWAP_TOKEN_TO_XTZ_REQUEST:
@@ -46,6 +54,7 @@ const liquidityBaking = (state = defaultLiquidityBaking, action: any) => {
         amount: action.amount,
       }
     case ADD_LIQUIDITY_RESULT:
+    case ADD_LIQUIDITY_ONLY_XTZ_RESULT:
     case REMOVE_LIQUIDITY_RESULT:
     case SWAP_XTZ_TO_TOKEN_RESULT:
     case SWAP_TOKEN_TO_XTZ_RESULT:
@@ -54,6 +63,7 @@ const liquidityBaking = (state = defaultLiquidityBaking, action: any) => {
         amount: action.amount,
       }
     case ADD_LIQUIDITY_ERROR:
+    case ADD_LIQUIDITY_ONLY_XTZ_ERROR:
     case REMOVE_LIQUIDITY_ERROR:
     case SWAP_XTZ_TO_TOKEN_ERROR:
     case SWAP_TOKEN_TO_XTZ_ERROR:
