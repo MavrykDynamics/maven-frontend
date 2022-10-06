@@ -21,9 +21,9 @@ import { Button } from 'app/App.components/Button/Button.controller'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import { getSettings } from '../../../../../utils/DEX/DexCalcs'
-import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from '../../../../../utils/consts'
-import { addLiquidity, addLiquidityOnlyXTZ } from '../../../../../redux/actions/liquidity.action'
-import { calculateXtzToToken as CalcXtzToToken } from '../../../../../utils/DEX/swapUtils'
+import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
+import { addLiquidity, addLiquidityOnlyXTZ } from 'redux/actions/liquidity.action'
+import { calculateTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
 
 const DEFAULT_COINS_AMOUNT = {
   XTZ: 0,
@@ -65,11 +65,21 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
     setOnlyXtzMinCoinsData(DefaultMinCoinsData)
   }, [ready])
 
-  const calcAddLiquidityXtzAndTzbtc = (amount: number) => {
-    console.log('logging input of calcAddLiquidityXtzAndTzbtc', amount)
+  const calcAddLiquidityXtzAndTzbtc = (amount: number, name: string) => {
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
+    let inputAmount = amount
+    if (name === 'tzBTC') {
+      const { expected, minimum, rate, priceImpact } = calculateTokenToXtz(
+        amount,
+        generalDexStats.tezPool,
+        generalDexStats.tokenPool,
+        convertedSlippagePercentToValue,
+        dexType,
+      )
+      inputAmount = expected
+    }
     const { liquidityExpected, liquidityMinimum, required, exchangeRate } = calculateAddLiquidity(
-      amount,
+      inputAmount,
       generalDexStats.tezPool,
       generalDexStats.tokenPool,
       generalDexStats.sharesTotal,
@@ -86,7 +96,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
     setInputValues({
       ...inputValues,
       tzBTC: required,
-      XTZ: amount,
+      XTZ: inputAmount,
     })
 
     setLqtReceived(liquidityExpected)
@@ -232,12 +242,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
       // onlyXTZCalculations(name as 'XTZ' | 'tzBTC', value)
     } else {
       // XTZ & tzBTC inputs
-
-      if (name === 'XTZ') {
-        calcAddLiquidityXtzAndTzbtc(parseFloat(value as string))
-      } else {
-        calcAddLiquidityXtzAndTzbtc(parseFloat(value as string))
-      }
+      calcAddLiquidityXtzAndTzbtc(parseFloat(value as string), name)
     }
   }
 
@@ -261,7 +266,6 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
 
   // handle add liquidity button with xtz and tzbtc
   const addLiquidityBtnHandler = async () => {
-    console.log('Here in switchValue', switchValue)
     // Only XTZ switch is not active, so providing both XTZ and tzBTC from wallet
     if (!switchValue) {
       dispatch(
@@ -272,7 +276,6 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
         ),
       )
     } else {
-      console.log('Here in add liquidity only xtz', onlyXtzMinCoinsData.minTzBTC, onlyXtzMinCoinsData.minXTZ)
       dispatch(
         addLiquidityOnlyXTZ(
           onlyXtzMinCoinsData.minTzBTC * PRECISION_NUMBER_EIGHT_ZEROES,
