@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useMedia } from 'react-use'
 
 import { ConnectWalletStyled } from './ConnectWallet.style'
-import { ConnectedWalletBlock, CoinsInfoType, InstallWalletButton, NoWalletConnectedButton } from './ConnectWallet.view'
+import { CoinsInfoType, ConnectedWalletBlock, NoWalletConnectedButton } from './ConnectWallet.view'
 import { getWertOptions } from './Wert/WertIO.const'
 import { useCallback, useState } from 'react'
 import WertIoPopup from './Wert/WertIoPopup'
@@ -32,11 +32,11 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
   const isMobileView = useMedia('(max-width: 870px)')
 
   const handleConnect = () => {
-    dispatch(connect({ forcePermission: false }))
+    dispatch(connect())
   }
 
   const handleNewConnect = () => {
-    dispatch(connect({ forcePermission: true }))
+    dispatch(connect())
   }
 
   const disconnectWallet = () => {
@@ -81,27 +81,21 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
   return (
     <ConnectWalletStyled className={className} id={'connectWalletButton'}>
       {/* For use of Beacon wallet, comment out below line and remove false section of this conditional */}
-      {wallet ? (
+      {ready && accountPkh ? (
         <>
-          {ready && accountPkh ? (
-            <>
-              <ConnectedWalletBlock
-                accountPkh={accountPkh}
-                signOutHandler={disconnectWallet}
-                changeWalletHandler={handleNewConnect}
-                coinsInfo={coinsInfo}
-                isMobile={isMobileView}
-                detailsHandlers={detailsHandlers}
-                closeMobileMenu={closeAllForMobileMenu}
-              />
-              <WertIoPopup closePopup={() => setShowWertIoPopup(false)} isOpened={showWertIoPopup} />
-            </>
-          ) : (
-            <NoWalletConnectedButton handleConnect={handleConnect} />
-          )}
+          <ConnectedWalletBlock
+            accountPkh={accountPkh}
+            signOutHandler={disconnectWallet}
+            changeWalletHandler={handleNewConnect}
+            coinsInfo={coinsInfo}
+            isMobile={isMobileView}
+            detailsHandlers={detailsHandlers}
+            closeMobileMenu={closeAllForMobileMenu}
+          />
+          <WertIoPopup closePopup={() => setShowWertIoPopup(false)} isOpened={showWertIoPopup} />
         </>
       ) : (
-        <InstallWalletButton />
+        <NoWalletConnectedButton handleConnect={handleConnect} />
       )}
     </ConnectWalletStyled>
   )

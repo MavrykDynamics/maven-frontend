@@ -8,8 +8,11 @@
     "analyze": "react-scripts build && source-map-explorer 'build/static/js/*.js'"
   },
   "dependencies": {
+    "@airgap/beacon-sdk": "^3.2.0",
     "@n8tb1t/use-scroll-position": "^2.0.3",
+    "@taquito/beacon-wallet": "^14.0.0",
     "@taquito/taquito": "^13.0.0",
+    "@taquito/tezbridge-signer": "^14.0.0",
     "@temple-wallet/dapp": "^7.0.0",
     "@types/js-cookie": "^3.0.2",
     "@types/react-lottie": "^1.2.6",

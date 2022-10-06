@@ -1,7 +1,13 @@
 import { TezosToolkit } from '@taquito/taquito'
-import { TempleWallet } from '@temple-wallet/dapp'
 import { ThemeType } from 'redux/actions/preferences.action'
 import { LoadingState } from '../redux/reducers/loading'
+import {
+  ADD_LIQUIDITY,
+  REMOVE_LIQUIDITY,
+  SWAP_TZBTC_TO_XTZ,
+  SWAP_XTZ_TO_TZBTC,
+} from '../redux/reducers/liquidityBaking'
+import { BeaconWallet } from '@taquito/beacon-wallet'
 
 export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1w' | 'quotes15mNogaps' | 'quotes5mNogaps'
 export type ChartTypeType = 'area' | 'candlestick'
@@ -62,7 +68,7 @@ export type MavrykTheme = Record<string, string>
 // }
 
 export interface WalletState {
-  wallet?: TempleWallet
+  wallet?: BeaconWallet
   tezos?: TezosToolkit
   accountPkh?: string
   ready: boolean
@@ -177,4 +183,10 @@ export interface PurschasedStatsTable {
   symbol: string
   amount: number
   usdPrice: number
+}
+
+export interface LiquidityBakingAction {
+  type: SWAP_XTZ_TO_TZBTC | SWAP_TZBTC_TO_XTZ | ADD_LIQUIDITY | REMOVE_LIQUIDITY | undefined
+  amount: number
+  error: any | undefined
 }

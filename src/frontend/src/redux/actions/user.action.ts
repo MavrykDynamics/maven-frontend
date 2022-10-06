@@ -2,6 +2,7 @@ import { GET_USER_DATA } from 'redux/action.types'
 import { PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
 import { State, UserData } from 'utils/interfaces'
 import env from 'utils/env'
+import { SIR_CONTRACT, TZBTC_CONTRACT } from './swap.action'
 
 export const getUserData = (accountPkh: string) => async (dispatch: any, getState: () => State) => {
   try {
@@ -17,7 +18,7 @@ export const getUserData = (accountPkh: string) => async (dispatch: any, getStat
 
     // Test API call for checking on Mainnet
     //https://api.tzkt.io/v1/tokens/balances?account.eq=tz1QhxptJuMYyNAouTdjWsYFcPKknuL92YkJ&token.contract.in=KT1AafHA1C1vk959wvHWBispY9Y2f3fxBUUo,KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn
-    const getTokenBalancesAPIUrl = `https://api.${apiNetwork}tzkt.io/v1/tokens/balances?account.eq=${accountPkh}&token.contract.in=${lqt_address},${token_address}`
+    const getTokenBalancesAPIUrl = `https://api.${apiNetwork}tzkt.io/v1/tokens/balances?account.eq=${accountPkh}&token.contract.in=${SIR_CONTRACT},${TZBTC_CONTRACT}`
 
     const [firstToken, secondToken] = await (await fetch(getTokenBalancesAPIUrl)).json()
 

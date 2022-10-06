@@ -6,5 +6,6 @@ import tokens from './reducers/tokens'
 import user from './reducers/user'
 import wallet from './reducers/wallet'
 import { loading } from './reducers/loading'
+import liquidityBaking from './reducers/liquidityBaking'
 
-export default combineReducers({ preferences, wallet, user, tokens, chart, toaster, loading })
+export default combineReducers({ preferences, wallet, user, tokens, chart, toaster, loading, liquidityBaking })

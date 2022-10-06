@@ -1,6 +1,5 @@
-import { OpKind } from "@taquito/taquito"
-import { calculateLqtOutput } from "utils/DEX/liquidityUtils"
-import { parseSrtToNum } from "utils/utils"
+import { OpKind } from '@taquito/taquito'
+import { parseSrtToNum } from 'utils/utils'
 
 export const addLiquidityHandler = async ({
   tzBTCAmount,
@@ -12,7 +11,7 @@ export const addLiquidityHandler = async ({
   deadline,
   Tezos,
   lbAddress,
-  lqtReceived
+  lqtReceived,
 }: {
   lbContract: any
   Tezos: any
@@ -61,7 +60,7 @@ export const removeLiquidityHandler = async ({
   deadline,
   xtz_pool,
   token_pool,
-  lqt_total
+  lqt_total,
 }: {
   lbContract: any
   sirAmount: number | string
@@ -71,15 +70,15 @@ export const removeLiquidityHandler = async ({
   token_pool: number
   lqt_total: number
 }) => {
-  const { xtz, tzbtc } = calculateLqtOutput({
-    lqTokens: parseSrtToNum(sirAmount),
-    xtzPool: xtz_pool,
-    tzbtcPool: token_pool,
-    lqtTotal: lqt_total,
-  })
-
-  const op = await lbContract.methods
-    .removeLiquidity(accountAddress, parseSrtToNum(sirAmount), xtz, tzbtc, deadline)
-    .send()
-  await op.confirmation()
+  // const { xtz, tzbtc } = calculateLqtOutput({
+  //   lqTokens: parseSrtToNum(sirAmount),
+  //   xtzPool: xtz_pool,
+  //   tzbtcPool: token_pool,
+  //   lqtTotal: lqt_total,
+  // })
+  //
+  // const op = await lbContract.methods
+  //   .removeLiquidity(accountAddress, parseSrtToNum(sirAmount), xtz, tzbtc, deadline)
+  //   .send()
+  // await op.confirmation()
 }

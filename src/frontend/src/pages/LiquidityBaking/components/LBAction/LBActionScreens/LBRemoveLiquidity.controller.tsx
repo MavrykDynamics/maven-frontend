@@ -15,7 +15,6 @@ import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { State } from 'utils/interfaces'
 
-import { removeLiquidityTokenReceived, removeLiquidityXtzReceived } from 'utils/DEX/liquidityUtils'
 import env from 'utils/env'
 import { nonNumberSymbolsValidation, parseSrtToNum, slippagePercentToValue } from 'utils/utils'
 import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
@@ -61,30 +60,30 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
   }) => {
     const convertedSlippagePersentToValue = slippagePercentToValue(newSlippagePersent ?? slippagePercent)
 
-    const { expected: expectedXtz, minimum: minimumXtz } = removeLiquidityXtzReceived(
-      parseSrtToNum(newSirBurnedValue || inputValues.SIR),
-      lqt_total,
-      xtz_pool,
-      convertedSlippagePersentToValue,
-      dex,
-    )
+    // const { expected: expectedXtz, minimum: minimumXtz } = removeLiquidityXtzReceived(
+    //   parseSrtToNum(newSirBurnedValue || inputValues.SIR),
+    //   lqt_total,
+    //   xtz_pool,
+    //   convertedSlippagePersentToValue,
+    //   dex,
+    // )
+    //
+    // const { expected: expectedToken, minimum: minimumToken } = removeLiquidityTokenReceived(
+    //   parseSrtToNum(newSirBurnedValue || inputValues.SIR),
+    //   lqt_total,
+    //   token_pool,
+    //   convertedSlippagePersentToValue,
+    // )
 
-    const { expected: expectedToken, minimum: minimumToken } = removeLiquidityTokenReceived(
-      parseSrtToNum(newSirBurnedValue || inputValues.SIR),
-      lqt_total,
-      token_pool,
-      convertedSlippagePersentToValue,
-    )
-
-    setReceivedAmount({
-      xtz: expectedXtz.value,
-      tzbtc: expectedToken.value,
-    })
-
-    setMinimumReceived({
-      xtz: minimumXtz.value,
-      tzbtc: minimumToken.value,
-    })
+    // setReceivedAmount({
+    //   xtz: expectedXtz.value,
+    //   tzbtc: expectedToken.value,
+    // })
+    //
+    // setMinimumReceived({
+    //   xtz: minimumXtz.value,
+    //   tzbtc: minimumToken.value,
+    // })
   }
 
   // change slippage value handler

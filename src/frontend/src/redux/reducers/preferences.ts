@@ -5,12 +5,16 @@ import { DARK_THEME } from '../actions/preferences.action'
 
 const defaultPreferences: PreferencesType = {
   themeSelected: getItemFromStorage('theme') || DARK_THEME,
-  REACT_APP_RPC_PROVIDER: 'https://jakartanet.tezos.marigold.dev/',
+  REACT_APP_RPC_PROVIDER: 'https://mainnet.smartpy.io',
   changeNodePopupOpen: false,
   scrollPosition: 0,
   RPC_NODES: [
-    { title: 'MARIGOLD', url: 'https://jakartanet.tezos.marigold.dev/', nodeLogoUrl: 'marigold_logo.png' },
-    { title: 'ECADLABS', url: 'https://jakartanet.ecadinfra.com', nodeLogoUrl: 'ECAD_logo.png' },
+    {
+      title: 'SmartPy',
+      url: 'https://mainnet.smartpy.io',
+      nodeLogoUrl: 'https://smartpy.io/static/img/logo-only.svg',
+    },
+    { title: 'ECADLABS', url: 'https://mainnet.api.tez.ie', nodeLogoUrl: 'ECAD_logo.png' },
   ],
 }
 

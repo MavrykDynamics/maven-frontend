@@ -4,10 +4,8 @@ import { Litepaper } from 'pages/Litepaper/Litepaper.controller'
 import { Privacy } from 'pages/Privacy/Privacy.controller'
 import { useCallback, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { TempleWallet } from '@temple-wallet/dapp'
 import { useDispatch, useSelector } from 'react-redux'
 import { configureStore } from 'redux/storeConfigurator'
-import { setWalletAction } from 'redux/actions/wallet.action'
 import { AnyAction } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
 import { State } from 'utils/interfaces'
@@ -25,16 +23,19 @@ export const App = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentPage, setCurrentPage] = useState('/')
   const loader = useSelector((state: State) => state.loading)
+  const { wallet } = useSelector((state: State) => state.wallet)
   const { changeNodePopupOpen } = useSelector((state: State) => state.preferences)
   const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [])
 
   const dispatch = useDispatch()
+
   useEffect(() => {
-    return TempleWallet.onAvailabilityChange((available) => {
-      console.log('available', new TempleWallet(process.env.REACT_APP_NAME || 'MAVRYK'))
-      if (available) dispatch(setWalletAction(new TempleWallet(process.env.REACT_APP_NAME || 'MAVRYK')))
-    })
-  }, [dispatch])
+    //handleCheckActiveAccount(wallet)
+    // return TempleWallet.onAvailabilityChange((available) => {
+    //   console.log('available', new TempleWallet(process.env.REACT_APP_NAME || 'MAVRYK'))
+    //   if (available) dispatch(setWalletAction(new TempleWallet(process.env.REACT_APP_NAME || 'MAVRYK')))
+    // })
+  }, [dispatch, wallet])
 
   return (
     <Router>

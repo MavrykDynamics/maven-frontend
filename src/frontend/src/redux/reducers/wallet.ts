@@ -13,6 +13,7 @@ const wallet = (state = walletDefaultState, action: any) => {
     case actions.CONNECT:
       return {
         ...state,
+        wallet: action.wallet,
         tezos: action.tezos,
         ready: action.ready,
         accountPkh: action.accountPkh,

@@ -63,7 +63,7 @@ function xtzToTokenMinimumReturn(expectedReturn: BigNumber, maxSlippage: number)
   return new BigNumber(result && result.gt(0) ? result : 0)
 }
 
-function xtzToTokenExchangeRateDisplay(
+export function xtzToTokenExchangeRateDisplay(
   xtzToSell: BigNumber,
   xtzPool: BigNumber,
   tokenPool: BigNumber,
