@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { TezosToolkit } from '@taquito/taquito'
 import React, { useEffect, useState } from 'react'
 
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
@@ -14,25 +13,21 @@ import { ActionScreenWrapper } from '../LBAction.style'
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { State } from 'utils/interfaces'
-
-import env from 'utils/env'
 import { nonNumberSymbolsValidation, parseSrtToNum, slippagePercentToValue } from 'utils/utils'
 import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { getSettings } from 'utils/DEX/DexCalcs'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
-import { removeLiquidityHandler } from '../helpers/addAndRemoveLiquidity.utils'
 import { AddLiquidutityInputChangeEventType } from '../helpers/actionsScreen.types'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
+import { removeLiquidity } from '../../../../../redux/actions/liquidity.actions'
+import { calculateRemoveLiquidity } from '../../../../../utils/DEX/liquidityUtils'
+import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from '../../../../../utils/consts'
 
 const dex = getSettings('liquidity')
 
 export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
-  const {
-    lbData: { xtz_pool, token_pool, address, lqt_total },
-    coinPrices,
-  } = useSelector((state: State) => state.tokens)
+  const { coinPrices } = useSelector((state: State) => state.tokens)
   const dispatch = useDispatch()
-  const { accountPkh } = useSelector((state: State) => state.wallet)
   const { LBTBalance } = useSelector((state: State) => state.user)
 
   const [inputValues, setInputValues] = useState({ SIR: '0' })
@@ -51,47 +46,43 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
     setInputValues({ SIR: '0' })
   }, [ready])
 
-  const tzbtcAndXtzAmountCalculation = ({
-    newSlippagePersent,
-    newSirBurnedValue,
-  }: {
-    newSlippagePersent?: string | number
-    newSirBurnedValue?: string | number
-  }) => {
-    const convertedSlippagePersentToValue = slippagePercentToValue(newSlippagePersent ?? slippagePercent)
+  const calculateReceivedXtzAndTzbtc = (amount: number) => {
+    const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
+    const { xtzExpected, xtzMinimum, tokenExpected, tokenMinimum, exchangeRate } = calculateRemoveLiquidity(
+      amount,
+      generalDexStats.tezPool,
+      generalDexStats.tokenPool,
+      generalDexStats.sharesTotal,
+      convertedSlippagePercentToValue,
+      dex,
+    )
+    console.log(
+      'logging result of calculateReceivedXtzAndTzbtc',
+      xtzExpected,
+      xtzMinimum,
+      tokenExpected,
+      tokenMinimum,
+      exchangeRate,
+    )
+    setInputValues({
+      SIR: String(amount),
+    })
+    setReceivedAmount({
+      xtz: xtzExpected,
+      tzbtc: tokenExpected,
+    })
 
-    // const { expected: expectedXtz, minimum: minimumXtz } = removeLiquidityXtzReceived(
-    //   parseSrtToNum(newSirBurnedValue || inputValues.SIR),
-    //   lqt_total,
-    //   xtz_pool,
-    //   convertedSlippagePersentToValue,
-    //   dex,
-    // )
-    //
-    // const { expected: expectedToken, minimum: minimumToken } = removeLiquidityTokenReceived(
-    //   parseSrtToNum(newSirBurnedValue || inputValues.SIR),
-    //   lqt_total,
-    //   token_pool,
-    //   convertedSlippagePersentToValue,
-    // )
-
-    // setReceivedAmount({
-    //   xtz: expectedXtz.value,
-    //   tzbtc: expectedToken.value,
-    // })
-    //
-    // setMinimumReceived({
-    //   xtz: minimumXtz.value,
-    //   tzbtc: minimumToken.value,
-    // })
+    setMinimumReceived({
+      xtz: xtzMinimum,
+      tzbtc: tokenMinimum,
+    })
   }
-
   // change slippage value handler
   const slippageChangeHandler = (value: string | number, isInput?: boolean) => {
     const newSlippagePersent = Number(parseSrtToNum(value) < 0 ? 0 : value)
     if (newSlippagePersent >= 0 && newSlippagePersent <= 100) {
       setSlippagePercent(value)
-      tzbtcAndXtzAmountCalculation({ newSlippagePersent })
+      calculateReceivedXtzAndTzbtc(parseFloat(inputValues.SIR))
     }
 
     if (!isInput) {
@@ -103,38 +94,17 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
   const inputChangeHandler = (e: AddLiquidutityInputChangeEventType) => {
     const { name, value } = e.target
     if (+value < 0 || (ready && +value > LBTBalance)) return
-
-    tzbtcAndXtzAmountCalculation({ newSirBurnedValue: value })
-
-    setInputValues({
-      ...inputValues,
-      [name]: value,
-    })
+    calculateReceivedXtzAndTzbtc(parseFloat(value as string))
   }
 
   const removeLiquidityBtnHandler = async () => {
-    try {
-      if (!accountPkh) return
-      const Tezos = new TezosToolkit(env.rpcLink)
-      const lbContract = await Tezos.wallet.at(address)
-      const deadline = new Date(Date.now() + 60000).toISOString()
-
-      try {
-        await removeLiquidityHandler({
-          sirAmount: inputValues.SIR,
-          lbContract,
-          accountAddress: accountPkh,
-          deadline,
-          xtz_pool,
-          token_pool,
-          lqt_total,
-        })
-      } catch (e: any) {
-        console.error('remove liquidity error', e.message)
-      }
-    } catch (e: any) {
-      console.error('removeLiquidityBtnHandler initializing params error', e.message)
-    }
+    dispatch(
+      removeLiquidity(
+        Number(inputValues.SIR),
+        receivedAmount.xtz * PRECISION_NUMBER_SIX_ZEROES,
+        receivedAmount.tzbtc * PRECISION_NUMBER_EIGHT_ZEROES,
+      ),
+    )
   }
 
   return (
@@ -146,7 +116,6 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
         type={'number'}
         kind={'LB'}
         value={inputValues.SIR}
-        convertedValue={parseSrtToNum(inputValues.SIR) * coinPrices.tezos.usd}
         icon={'XTZ_tezos'}
         pinnedText={'SIR'}
         onKeyDown={nonNumberSymbolsValidation}

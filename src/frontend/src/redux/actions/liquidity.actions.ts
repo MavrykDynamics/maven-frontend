@@ -123,9 +123,18 @@ export const removeLiquidity =
     }
 
     try {
-      const lqdContract = await state.wallet.tezos?.wallet.at(LB_DEX_CONTRACT)
-      const tzbtcContact = await state.wallet.tezos?.wallet.at(TZBTC_CONTRACT)
-      if (lqdContract && tzbtcContact) {
+      const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
+      const wallet = new BeaconWallet(WalletOptions)
+      const walletResponse = await checkIfWalletIsConnected(wallet)
+
+      if (walletResponse.success) {
+        const tzs = state.wallet.tezos
+        tzs.setRpcProvider(rpcNetwork)
+        tzs.setWalletProvider(wallet)
+
+        dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+
+        const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
         const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
         dispatch(showToaster(INFO, 'Removing Liquidity', 'Please wait 30s...'))
         const op = await lqdContract.methods

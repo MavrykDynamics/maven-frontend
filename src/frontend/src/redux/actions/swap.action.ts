@@ -1,11 +1,13 @@
 import { fetchFromIndexer } from 'gql/gql.helpers'
 import { LB_DATA_QUERY, LB_DATA_QUERY_NAME } from 'gql/queries/lbData.query'
-import { GET_TOKENS_DATA } from 'redux/action.types'
+import { GET_TOKENS_DATA, SET_TEZOS_TOOLKIT } from 'redux/action.types'
 import { State } from '../../utils/interfaces'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { ERROR, INFO, SUCCESS } from 'app/App.components/Toaster/Toaster.constants'
 import { isWholeNumber } from 'utils/utils'
 import { getUserData } from './user.action'
+import { BeaconWallet } from '@taquito/beacon-wallet'
+import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
 
 export const TZBTC_CONTRACT = 'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
   LB_DEX_CONTRACT = 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5',
@@ -80,26 +82,35 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
     return
   }
   try {
-    const lqdContract = await state.wallet.tezos?.wallet.at(LB_DEX_CONTRACT),
-      tzBTCContract = await state.wallet.tezos?.wallet.at(TZBTC_CONTRACT)
-    const deadline = new Date(Date.now() + 60000).toISOString()
-
     dispatch({
       type: SWAP_TOKEN_TO_XTZ_REQUEST,
       amount: tokensSold,
     })
-    // dispatch(showToaster(INFO, 'Staking...', 'Please wait 30s'))
-    if (tzBTCContract && lqdContract) {
+
+    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
+    const wallet = new BeaconWallet(WalletOptions)
+    const walletResponse = await checkIfWalletIsConnected(wallet)
+
+    if (walletResponse.success) {
+      const tzs = state.wallet.tezos
+      tzs.setRpcProvider(rpcNetwork)
+      tzs.setWalletProvider(wallet)
+
+      dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+
+      const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
+      const tzBTCContract = await tzs.wallet.at(TZBTC_CONTRACT)
+
+      const deadline = new Date(Date.now() + 60000).toISOString()
       let batch = await state.wallet.tezos?.wallet
         .batch()
         .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0))
         .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, tokensSold))
         .withContractCall(lqdContract.methods.tokenToXtz(state.user.userAddress, tokensSold, minXTZBought, deadline))
       const batchOp = await batch?.send()
+      dispatch(showToaster(INFO, 'Swapping tzBTC -> XTZ', 'Please wait 30s...'))
       await batchOp?.confirmation()
-      console.log('done', batchOp)
-      // dispatch(showToaster(SUCCESS, 'Staking done', 'All good :)'))
-
+      dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
       dispatch({
         type: SWAP_TOKEN_TO_XTZ_RESULT,
         amount: minXTZBought,
@@ -145,9 +156,18 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
   }
 
   try {
-    const lqdContract = await state.wallet.tezos?.wallet.at(LB_DEX_CONTRACT)
+    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
+    const wallet = new BeaconWallet(WalletOptions)
+    const walletResponse = await checkIfWalletIsConnected(wallet)
 
-    if (lqdContract) {
+    if (walletResponse.success) {
+      const tzs = state.wallet.tezos
+      tzs.setRpcProvider(rpcNetwork)
+      tzs.setWalletProvider(wallet)
+
+      dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+
+      const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
       const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
 
       const op = await lqdContract.methods
@@ -158,10 +178,8 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
         amount: amount,
       })
       dispatch(showToaster(INFO, 'Swapping XTZ -> tzBTC', 'Please wait 30s...'))
-
       await op.confirmation()
       dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
-
       dispatch({
         type: SWAP_XTZ_TO_TOKEN_RESULT,
         amount: minTokensBought,

@@ -96,6 +96,104 @@ export function addLiquidityReturn(
   return { expected: new BigNumber(expected), minimum: new BigNumber(minimum) }
 }
 
+/**
+ *  Remove Liquidity function + helpers
+ * @param liquidityBurned
+ * @param xtzPool
+ * @param tokenPool
+ * @param totalLiquidity
+ * @param maxSlippage
+ * @param dex
+ */
+export function calculateRemoveLiquidity(
+  liquidityBurned: number,
+  xtzPool: number,
+  tokenPool: number,
+  totalLiquidity: number,
+  maxSlippage: number,
+  dex: { fee: number; burn: number; includeSubsidy: boolean },
+): {
+  xtzExpected: number
+  xtzMinimum: number
+  tokenExpected: number
+  tokenMinimum: number
+  exchangeRate: number
+} {
+  let _liquidityBurned = new BigNumber(liquidityBurned),
+    _xtzPool = new BigNumber(xtzPool * PRECISION_NUMBER_SIX_ZEROES),
+    _tokenPool = new BigNumber(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES),
+    _totalLiquidity = new BigNumber(totalLiquidity)
+  const xtzOut = removeLiquidityXtzReceived(_liquidityBurned, _totalLiquidity, _xtzPool, maxSlippage, dex)
+  const tokenOut = removeLiquidityTokenReceived(_liquidityBurned, _totalLiquidity, _tokenPool, maxSlippage)
+  const exchangeRate = xtzToTokenExchangeRateDisplay(xtzOut.expected, _xtzPool, _tokenPool, dex)
+  console.log(
+    'here in calculateRemoveLiquidity: ',
+    xtzOut.expected.toNumber(),
+    tokenOut.expected.toNumber(),
+    exchangeRate,
+  )
+  return {
+    xtzExpected: xtzOut?.expected.toNumber() / PRECISION_NUMBER_SIX_ZEROES,
+    xtzMinimum: xtzOut?.minimum.toNumber() / PRECISION_NUMBER_SIX_ZEROES,
+    tokenExpected: tokenOut?.expected.toNumber() / PRECISION_NUMBER_EIGHT_ZEROES,
+    tokenMinimum: tokenOut?.minimum.toNumber() / PRECISION_NUMBER_EIGHT_ZEROES,
+    exchangeRate,
+  }
+}
+
+function removeLiquidityXtzReceived(
+  liquidityBurned: BigNumber,
+  totalLiquidity: BigNumber,
+  xtzPool: BigNumber,
+  maxSlippage: number,
+  dex: { fee: number; burn: number; includeSubsidy: boolean },
+): { expected: BigNumber; minimum: BigNumber } {
+  if (maxSlippage < 0 || maxSlippage > 1) {
+    console.log(`slippage value supplied to 'removeLiquidityXtzReceived' was not between 0 and 1: ${maxSlippage}`)
+    return { expected: new BigNumber(0), minimum: new BigNumber(0) }
+  }
+  const result = dexterCalculations.removeLiquidityXtzOut(
+    liquidityBurned.toString(),
+    totalLiquidity.toString(),
+    xtzPool.toString(),
+    dex.includeSubsidy,
+  )
+
+  if (!!new BigNumber(result.value).toString()) {
+    const expected = Number(result?.value)
+    const minimum = expected - expected * maxSlippage
+    return { expected: new BigNumber(expected), minimum: new BigNumber(minimum) }
+  } else {
+    return { expected: new BigNumber(0), minimum: new BigNumber(0) }
+  }
+}
+
+function removeLiquidityTokenReceived(
+  liquidityBurned: BigNumber,
+  totalLiquidity: BigNumber,
+  tokenPool: BigNumber,
+  maxSlippage: number,
+): { expected: BigNumber; minimum: BigNumber } {
+  if (maxSlippage < 0 || maxSlippage > 1) {
+    console.log(`slippage value supplied to 'removeLiquidityTokenReceived' was not between 0 and 1: ${maxSlippage}`)
+    return { expected: new BigNumber(0), minimum: new BigNumber(0) }
+  }
+
+  const result = dexterCalculations.removeLiquidityTokenOut(
+    liquidityBurned.toString(),
+    totalLiquidity.toString(),
+    tokenPool.toString(),
+  )
+
+  if (!!new BigNumber(result.value).toString()) {
+    const expected = Number(result?.value)
+    const minimum = expected - expected * maxSlippage
+    return { expected: new BigNumber(expected), minimum: new BigNumber(minimum) }
+  } else {
+    return { expected: new BigNumber(0), minimum: new BigNumber(0) }
+  }
+}
+
 //
 // export const calculateLqtOutput = ({
 //   lqTokens,

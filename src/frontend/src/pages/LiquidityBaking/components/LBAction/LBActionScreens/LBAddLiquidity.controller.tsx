@@ -70,7 +70,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
     const _liquidityExpected = liquidityExpected.toNumber(),
       _liquidityMinimum = liquidityMinimum.toNumber(),
       _required = required.toNumber() / PRECISION_NUMBER_EIGHT_ZEROES
-    console.log('logging result of calculateTokenToXTZ', _liquidityExpected, _liquidityMinimum, _required, exchangeRate)
+    console.log('logging result of calcAddLiquidityXTZ', _liquidityExpected, _liquidityMinimum, _required, exchangeRate)
     setInputValues({
       ...inputValues,
       tzBTC: _required,
