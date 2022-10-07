@@ -95,7 +95,7 @@ export const ActionScreenWrapper = styled.div`
       flex-direction: column;
       align-items: center;
 
-      svg {
+      > svg {
         width: 24px;
         height: 24px;
         cursor: pointer;

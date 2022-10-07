@@ -74,7 +74,7 @@ export const LBPersonalStatsView = ({
 
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={userPoolShare} endingText="%" showNone={showNone} />
+            <CommaNumber value={userPoolShare} endingText="%" showNone={showNone} showDecimal decimalsToShow={6} />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Pool Share

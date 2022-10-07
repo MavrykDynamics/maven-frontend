@@ -33,7 +33,11 @@ const LBFAQ = () => {
         <CustomizedText fontSize={25} fontWidth={700} color={'#8D86EB'} className="title">
           Where can I read more about liquidity baking?
         </CustomizedText>
-        <CustomizedText>Great article by Tezos Commons & Arthur Breitman</CustomizedText>
+        <a href="/" target="_blank">
+          <CustomizedText color="#86D4C9" link>
+            Great article by Tezos Commons & Arthur Breitman
+          </CustomizedText>
+        </a>
         <a href="/" target="_blank">
           <CustomizedText color="#86D4C9" link>
             Liquidity Baking documentation

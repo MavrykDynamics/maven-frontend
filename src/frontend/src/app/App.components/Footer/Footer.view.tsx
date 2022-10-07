@@ -30,6 +30,11 @@ export const FooterView = () => {
                 <use xlinkHref="/icons/sprites.svg#twitter" />
               </svg>
             </a>
+            <a href="https://discord.com/invite/7VXPR4gkT6" target="_blank" rel="noreferrer">
+              <svg>
+                <use xlinkHref="/icons/sprites.svg#discord" />
+              </svg>
+            </a>
             <a href="https://t.me/Mavryk_Finance" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#telegram" />
@@ -38,11 +43,6 @@ export const FooterView = () => {
             <a href="https://medium.com/@Mavryk_Finance" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#medium" />
-              </svg>
-            </a>
-            <a href="https://discord.com/invite/7VXPR4gkT6" target="_blank" rel="noreferrer">
-              <svg>
-                <use xlinkHref="/icons/sprites.svg#discord" />
               </svg>
             </a>
             <a href="https://github.com/mavrykfinance/" target="_blank" rel="noreferrer">

@@ -1,12 +1,12 @@
-import {BeaconWallet} from '@taquito/beacon-wallet'
-import {Network, NetworkType} from '@airgap/beacon-sdk'
-import {showToaster} from '../../app/App.components/Toaster/Toaster.actions'
-import {ERROR, SUCCESS} from '../../app/App.components/Toaster/Toaster.constants'
-import type {AppDispatch, GetState} from '../../app/App.controller'
-import {State} from 'utils/interfaces'
-import {CONNECT, DISCONNECT, SET_WALLET} from 'redux/action.types'
-import {getUserData} from './user.action'
-import {TezosToolkit} from '@taquito/taquito'
+import { BeaconWallet } from '@taquito/beacon-wallet'
+import { Network, NetworkType } from '@airgap/beacon-sdk'
+import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
+import { ERROR, SUCCESS } from '../../app/App.components/Toaster/Toaster.constants'
+import type { AppDispatch, GetState } from '../../app/App.controller'
+import { State } from 'utils/interfaces'
+import { CONNECT, DISCONNECT, SET_WALLET } from 'redux/action.types'
+import { getUserData } from './user.action'
+import { TezosToolkit } from '@taquito/taquito'
 
 // const network = process.env.REACT_APP_API_NETWORK
 export const network: Network = { type: NetworkType.MAINNET }

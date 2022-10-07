@@ -19,7 +19,7 @@ import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.conto
 
 import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
-import { cyanColor } from 'styles'
+import { cyanColor, subHeaderColor } from 'styles'
 import { ActionScreenWrapper } from '../LBAction.style'
 import { Dex } from '../../../../../utils/DEX/Dex'
 import { swapTokenToXtz, swapXtzToToken } from '../../../../../redux/actions/swap.action'
@@ -82,6 +82,7 @@ export const LBSwap = ({
   )
 
   useEffect(() => {
+    setExchangeRate(Number(coinPrices.tzbtc.usd))
     setInputValues(DEFAULT_COINS_AMOUNT)
   }, [ready])
 
@@ -339,16 +340,21 @@ export const LBSwap = ({
         <ConnectWallet className="swap-action" />
       )}
 
-      <VertInfo>
-        <CustomizedText fontWidth={500}>Exchange Rate</CustomizedText>
-
-        <CustomizedText color={cyanColor} fontWidth={500}>
-          1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
-          <CommaNumber value={exchangeRate} showDecimal decimalsToShow={8} endingText="tzBTC" />
-        </CustomizedText>
-      </VertInfo>
-
       <LBActionBottomWrapperStyled>
+        <div className="exchange-rate">
+          <CustomizedText color={subHeaderColor} fontWidth={500}>
+            Exchange Rate
+          </CustomizedText>
+          <CustomizedText color={cyanColor} fontWidth={500}>
+            1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
+            <CommaNumber
+              value={coinPrices.tezos.usd / exchangeRate}
+              showDecimal
+              decimalsToShow={8}
+              endingText="tzBTC"
+            />
+          </CustomizedText>
+        </div>
         <PriceImpact priceImpact={priceImpact} />
         <MinimumReceived minimumReceived={[{ value: minReceived, tokenName: isRevertedCoins.to }]} />
         <Slippage

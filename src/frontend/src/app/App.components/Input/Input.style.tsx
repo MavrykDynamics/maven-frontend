@@ -44,8 +44,8 @@ export const InputComponentContainer = styled.div<{ theme: MavrykTheme }>`
     right: 17px;
 
     svg {
-      width: 36px;
-      height: 36px;
+      width: 28px;
+      height: 28px;
       margin-right: 10px;
       fill: ${({ theme }) => theme.darkBackroundColor};
     }

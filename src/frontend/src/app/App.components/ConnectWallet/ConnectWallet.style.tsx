@@ -328,6 +328,7 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   height: 50px;
   cursor: pointer;
   border-radius: ${BUTTON_RADIUS};
+  border: none;
   text-align: center;
   font-weight: bold;
   line-height: 50px;

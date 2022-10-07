@@ -20,6 +20,11 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
     margin-top: 30px;
   }
 
+  .exchange-rate {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .controls-wrapper {
     display: flex;
     align-items: center;
