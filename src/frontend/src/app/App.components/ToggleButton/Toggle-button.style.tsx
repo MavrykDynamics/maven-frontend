@@ -69,7 +69,7 @@ export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`
   &.selected {
     color: ${({ theme }) => theme.toggleButtonColorSelected};
     background: ${({ theme }) => theme.toggleButtonBgSelected};
-    border-radius: 17.5px;
+    border-radius: 20px;
     transition: 0.4s all ease-in-out;
   }
 

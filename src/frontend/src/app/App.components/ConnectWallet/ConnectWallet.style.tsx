@@ -327,8 +327,6 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   margin: 0 auto;
   height: 50px;
   cursor: pointer;
-  color: ${skyColor};
-  border: 2px solid ${skyColor};
   border-radius: ${BUTTON_RADIUS};
   text-align: center;
   font-weight: bold;
@@ -338,7 +336,8 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   align-items: center;
   justify-content: center;
   width: 190px;
-  background: none;
+  color: ${({ theme }) => theme.containerColor};
+  background-color: ${({ theme }) => theme.actionPrimaryBtnColor};
 
   &:hover {
     opacity: 0.8;
@@ -347,7 +346,7 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   svg {
     width: 25px;
     height: 30px;
-    stroke: ${skyColor};
+    stroke: ${({ theme }) => theme.containerColor};
     fill: transparent;
     margin-right: 16px;
   }

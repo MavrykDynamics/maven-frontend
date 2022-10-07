@@ -84,6 +84,7 @@ export const darkMode: MavrykTheme = {
   topBarLinkColor: silverColor,
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
+  actionPrimaryBtnColor: cyanColor,
 }
 
 export const lightMode: MavrykTheme = {
@@ -142,6 +143,7 @@ export const lightMode: MavrykTheme = {
   topBarLinkColor: '#27007A',
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
+  actionPrimaryBtnColor: cyanColor,
 }
 
 export const spaceMode: MavrykTheme = {
@@ -200,4 +202,5 @@ export const spaceMode: MavrykTheme = {
   topBarLinkColor: '#27007A',
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
+  actionPrimaryBtnColor: cyanColor,
 }

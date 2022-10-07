@@ -20,12 +20,12 @@ const FIRST_TOGGLER_VALUES = [
     value: 'liquidity',
     subToggler: [
       {
-        title: 'remove liquidity',
-        value: 'remove liquidity',
-      },
-      {
         title: 'add liquidity',
         value: 'add liquidity',
+      },
+      {
+        title: 'remove liquidity',
+        value: 'remove liquidity',
       },
     ],
   },

@@ -206,13 +206,28 @@ export const AREA_CHART_OPTIONS = (
         [
           {
             offset: 0,
-            color: '#03D563',
+            color: '#86D4C9',
             opacity: 1,
           },
           {
+            offset: 10,
+            color: '#86D4C9',
+            opacity: 0.6,
+          },
+          {
+            offset: 30,
+            color: '#86D4C9',
+            opacity: 0.4,
+          },
+          {
+            offset: 60,
+            color: '#86D4C9',
+            opacity: 0.2,
+          },
+          {
             offset: 100,
-            color: '#03D563',
-            opacity: 0.1,
+            color: '#86D4C9',
+            opacity: 0.05,
           },
         ],
       ],
