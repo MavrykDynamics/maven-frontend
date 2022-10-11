@@ -25,7 +25,7 @@ export const LBStyled = styled.div`
 
   @media screen and (max-width: 1500px) {
     .content-wrapper {
-      padding: 150px 25px 70px 25px;
+      padding: 110px 25px 70px 25px;
     }
   }
 
