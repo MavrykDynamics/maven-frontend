@@ -5,27 +5,27 @@ import { useSelector } from 'react-redux'
 import { State } from 'utils/interfaces'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { calculateAPY, diffBetweenCoinsInPercent } from 'utils/utils'
-import {useEffect, useState} from "react";
+import { useEffect, useMemo, useState } from 'react'
 
 const LBHeader = () => {
   const {
     lbData: { xtz_pool, lqt_total },
     coinPrices,
   } = useSelector((state: State) => state.tokens)
-  const [priceDifference, setPriceDifference] = useState<number>(0);
+  const [priceDifference, setPriceDifference] = useState<number>(0)
 
   useEffect(() => {
-    setPriceDifference(diffBetweenCoinsInPercent(Number(coinPrices.tzbtc.usd), coinPrices.bitcoin.usd))
-
+    const calculatedDiff = diffBetweenCoinsInPercent(Number(coinPrices.tzbtc.usd), coinPrices.bitcoin.usd)
+    setPriceDifference(isNaN(calculatedDiff) ? 0 : calculatedDiff)
   }, [coinPrices.bitcoin.usd, coinPrices.tzbtc.usd, priceDifference])
 
-  const APY = calculateAPY(xtz_pool)
+  const APY = useMemo(() => calculateAPY(xtz_pool), [xtz_pool])
   return (
     <LBHeaderStyled>
       <div className="title">
         <img src="/images/sirius-icon.png" alt="sirius logo" />
         <CustomizedText fontWidth={700} fontSize={35}>
-          Liquidity Baking (Sirius)
+          Liquidity Baking DEX (Sirius)
         </CustomizedText>
       </div>
 
@@ -44,7 +44,7 @@ const LBHeader = () => {
             APY
           </CustomizedText>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber endingText="%" value={APY} />
+            <CommaNumber endingText="%" value={isFinite(APY) ? APY : 0} />
           </CustomizedText>
         </VertInfo>
 

@@ -48,20 +48,9 @@ const DEFAULT_COINS_AMOUNT = {
 }
 const dexType = getSettings('liquidity')
 
-export const LBSwap = ({
-  ready,
-  dex,
-  generalDexStats,
-}: {
-  ready: boolean
-  dex: Dex
-  generalDexStats: LBGeneralStats
-}) => {
+export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: LBGeneralStats }) => {
   const dispatch = useDispatch()
-  const {
-    lbData: { token_address },
-    coinPrices,
-  } = useSelector((state: State) => state.tokens)
+  const { coinPrices } = useSelector((state: State) => state.tokens)
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
   const [selectedSlippage, setSelectedSlippage] = useState<number>(SLIPPAGE_TOGGLE_VALUES[0].value)
@@ -82,9 +71,12 @@ export const LBSwap = ({
   )
 
   useEffect(() => {
-    setExchangeRate(Number(coinPrices.tzbtc.usd))
     setInputValues(DEFAULT_COINS_AMOUNT)
   }, [ready])
+
+  useEffect(() => {
+    setExchangeRate(Number(coinPrices.tzbtc.usd))
+  }, [coinPrices.tzbtc.usd])
 
   const calculateTokenToXtz = (amount: number) => {
     console.log('logging input of calculateTokenToXTZ', amount)

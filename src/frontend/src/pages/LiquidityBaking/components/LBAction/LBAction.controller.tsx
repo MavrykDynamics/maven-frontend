@@ -35,7 +35,6 @@ type LBActionProps = {
 }
 export const LBAction = ({ generalDexStats }: LBActionProps) => {
   const [fBtnSelected, setFBtnSelected] = useState(FIRST_TOGGLER_VALUES[0].value as 'swap' | 'liquidity')
-  const dex = new Dex()
   const sTogglerValues = useMemo(
     () => FIRST_TOGGLER_VALUES.find(({ value }) => value === fBtnSelected)?.subToggler,
     [fBtnSelected],
@@ -67,9 +66,7 @@ export const LBAction = ({ generalDexStats }: LBActionProps) => {
         ) : null}
       </ToggleButtonsWrapper>
 
-      {fBtnSelected === 'swap' && !sBtnSelected ? (
-        <LBSwap ready={ready} dex={dex} generalDexStats={generalDexStats} />
-      ) : null}
+      {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap ready={ready} generalDexStats={generalDexStats} /> : null}
       {fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' ? (
         <LBAddLiquidity ready={ready} generalDexStats={generalDexStats} />
       ) : null}
