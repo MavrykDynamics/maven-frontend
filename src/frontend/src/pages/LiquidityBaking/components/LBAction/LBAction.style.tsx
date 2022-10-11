@@ -59,6 +59,28 @@ export const ActionScreenWrapper = styled.div`
       display: flex;
       flex-direction: column;
       row-gap: 20px;
+      position: relative;
+      margin-bottom: 20px;
+
+      .inner-content {
+        padding-left: 45px;
+        row-gap: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      &:before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        bottom: -20px;
+        background: #503eaa;
+      }
+
+      &:last-child {
+        margin-top: 20px;
+      }
     }
 
     .switch-wrapper {

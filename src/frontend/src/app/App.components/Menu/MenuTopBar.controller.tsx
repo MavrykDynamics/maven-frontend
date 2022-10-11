@@ -87,7 +87,7 @@ export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
       <div className="right-side">
         <SocialIcons />
         {/* Need this condition cuz of wert io container, technically without it will be 2 containers, and wert will take this container on mobile, not the mobile one */}
-        {!isMobileView ? <ConnectWallet /> : null}
+        {!isMobileView ? <ConnectWallet className="connect-wallet-small" /> : null}
         <div className="settingsIcon" onClick={openChangeNodePopupHandler}>
           <Icon id="gear" />
         </div>

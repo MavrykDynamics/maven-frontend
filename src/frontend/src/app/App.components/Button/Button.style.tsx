@@ -71,6 +71,21 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     border: 2px solid ${({ theme }) => theme.actionPrimaryBtnColor};
   }
 
+  &.removeLiquidity_btn {
+    max-width: 400px;
+    margin: 10px auto 0 auto;
+  }
+
+  &.addLiquidity_btn {
+    max-width: 400px;
+    margin: 40px auto 0 auto;
+  }
+
+  &.swap_btn {
+    max-width: 400px;
+    margin: 0 auto 25px auto;
+  }
+
   &.LB {
     color: ${({ theme }) => theme.toggleButtonColorSelected};
 
@@ -78,21 +93,6 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
       stroke: ${({ theme }) => theme.toggleButtonColorSelected};
       fill: ${({ theme }) => theme.toggleButtonColorSelected};
     }
-  }
-
-  &.removeLiquidity_btn {
-    max-width: 220px;
-    margin: 10px auto 0 auto;
-  }
-
-  &.addLiquidity_btn {
-    max-width: 220px;
-    margin: 40px auto 0 auto;
-  }
-
-  &.swap_btn {
-    max-width: 220px;
-    margin: 0 auto 25px auto;
   }
 
   &.toggleChart {

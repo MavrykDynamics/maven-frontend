@@ -100,14 +100,26 @@ export const ConnectWalletStyled = styled.div<{ theme: MavrykTheme }>`
   &.swap-action {
     margin: 0 auto;
     margin-bottom: 25px;
+
+    > button {
+      width: 400px;
+    }
   }
 
   &.addLiq-action {
     margin-top: 40px;
+
+    > button {
+      width: 400px;
+    }
   }
 
   &.removeLiq-action {
     margin-top: 15px;
+
+    > button {
+      width: 400px;
+    }
   }
 `
 
@@ -339,6 +351,14 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   width: 190px;
   color: ${({ theme }) => theme.containerColor};
   background-color: ${({ theme }) => theme.actionPrimaryBtnColor};
+
+  &.connect-wallet-small {
+    width: 220px;
+  }
+
+  &.connect-wallet-large {
+    width: 400px;
+  }
 
   &:hover {
     opacity: 0.8;

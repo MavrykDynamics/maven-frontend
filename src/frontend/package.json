@@ -7,6 +7,9 @@
     "test": "react-scripts test",
     "analyze": "react-scripts build && source-map-explorer 'build/static/js/*.js'"
   },
+  "overrides": {
+    "react-error-overlay": "6.0.9"
+  },
   "dependencies": {
     "@airgap/beacon-sdk": "^3.2.0",
     "@n8tb1t/use-scroll-position": "^2.0.3",

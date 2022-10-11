@@ -79,52 +79,52 @@ export const AddLiquidityOnlyXTZ = ({
           <div className="step">1</div>
           Swap
         </StepBlock>
-
-        <CoinSwap
-          icon={{ name: 'exchange', width: 22, height: 15 }}
-          XTZCoinData={{
-            icon: 'XTZ_tezos',
-            amount: parseSrtToNum(swapData.XTZ),
-          }}
-          tzBTCCoinData={{
-            icon: 'tzBTC',
-            amount: parseSrtToNum(swapData.tzBTC),
-          }}
-        />
-        <HorisontalInfo>
-          <CustomizedText fontWidth={500}>Minimum tzBTC Received</CustomizedText>
-          <CustomizedText fontWidth={500} color={cyanColor}>
-            <CommaNumber value={minCoinsForSwap.minTzBTC} showDecimal decimalsToShow={8} endingText="tzBTC" />
-          </CustomizedText>
-        </HorisontalInfo>
+        <div className="inner-content">
+          <CoinSwap
+            icon={{ name: 'exchange', width: 22, height: 15 }}
+            XTZCoinData={{
+              icon: 'XTZ_tezos',
+              amount: parseSrtToNum(swapData.XTZ),
+            }}
+            tzBTCCoinData={{
+              icon: 'tzBTC',
+              amount: parseSrtToNum(swapData.tzBTC),
+            }}
+          />
+          <HorisontalInfo>
+            <CustomizedText fontWidth={500}>Minimum tzBTC Received</CustomizedText>
+            <CustomizedText fontWidth={500} color={cyanColor}>
+              <CommaNumber value={minCoinsForSwap.minTzBTC} showDecimal decimalsToShow={8} endingText="tzBTC" />
+            </CustomizedText>
+          </HorisontalInfo>
+        </div>
       </div>
 
-      <hr />
-
-      <div className="step-wrapper">
+      <div className="step-wrapper" style={{ marginTop: '25px' }}>
         <StepBlock>
           <div className="step">2</div>
           Add Liquidity
         </StepBlock>
+        <div className="inner-content">
+          <CoinSwap
+            icon={{ name: 'plus', width: 8, height: 14 }}
+            XTZCoinData={{
+              icon: 'XTZ_tezos',
+              amount: parseSrtToNum(swapData.XTZ),
+            }}
+            tzBTCCoinData={{
+              icon: 'tzBTC',
+              amount: parseSrtToNum(swapData.tzBTC),
+            }}
+          />
+          <HorisontalInfo>
+            <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
 
-        <CoinSwap
-          icon={{ name: 'plus', width: 8, height: 14 }}
-          XTZCoinData={{
-            icon: 'XTZ_tezos',
-            amount: parseSrtToNum(swapData.XTZ),
-          }}
-          tzBTCCoinData={{
-            icon: 'tzBTC',
-            amount: parseSrtToNum(swapData.tzBTC),
-          }}
-        />
-        <HorisontalInfo>
-          <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
-
-          <CustomizedText fontWidth={500} color={cyanColor}>
-            <CommaNumber value={lqtReceived} showDecimal endingText="LBT" />
-          </CustomizedText>
-        </HorisontalInfo>
+            <CustomizedText fontWidth={500} color={cyanColor}>
+              <CommaNumber value={lqtReceived} showDecimal endingText="LBT" />
+            </CustomizedText>
+          </HorisontalInfo>
+        </div>
       </div>
     </>
   )
