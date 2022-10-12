@@ -9,6 +9,9 @@ import { LBRemoveLiquidity } from './LBActionScreens/LBRemoveLiquidity.controlle
 import { LBSwap } from './LBActionScreens/LBSwap.controller'
 import { Dex } from '../../../../utils/DEX/Dex'
 import { LBGeneralStats } from '../../LiquidityBaking.view'
+import { Button } from 'app/App.components/Button/Button.controller'
+import { LBChart } from '../LBChart/LBChart.controller'
+import { useMedia } from 'react-use'
 
 const FIRST_TOGGLER_VALUES = [
   {
@@ -35,6 +38,8 @@ type LBActionProps = {
 }
 export const LBAction = ({ generalDexStats }: LBActionProps) => {
   const [fBtnSelected, setFBtnSelected] = useState(FIRST_TOGGLER_VALUES[0].value as 'swap' | 'liquidity')
+  const isMobile = useMedia('(max-width: 769px)')
+  const [showChart, setShowChart] = useState<boolean>(false)
   const sTogglerValues = useMemo(
     () => FIRST_TOGGLER_VALUES.find(({ value }) => value === fBtnSelected)?.subToggler,
     [fBtnSelected],
@@ -47,31 +52,55 @@ export const LBAction = ({ generalDexStats }: LBActionProps) => {
     setSBtnSelected(sTogglerValues?.[0].value || '')
   }, [fBtnSelected, sTogglerValues])
 
-  return (
-    <LBActionStyled>
-      <ToggleButtonsWrapper className="action-toggle-header">
-        <ToggleButton
-          className="action-toggler"
-          values={FIRST_TOGGLER_VALUES}
-          selected={fBtnSelected}
-          handleSetSelectedToggler={(value: unknown) => setFBtnSelected(value as 'swap' | 'liquidity')}
-        />
-        {sTogglerValues && sTogglerValues.length ? (
-          <ToggleButton
-            className="action-toggler"
-            values={sTogglerValues}
-            selected={sBtnSelected}
-            handleSetSelectedToggler={(value: unknown) => setSBtnSelected(value as string)}
-          />
-        ) : null}
-      </ToggleButtonsWrapper>
+  useEffect(() => {
+    if (!isMobile) {
+      setShowChart(false)
+    }
+  }, [isMobile])
 
-      {fBtnSelected === 'swap' && !sBtnSelected ? <LBSwap ready={ready} generalDexStats={generalDexStats} /> : null}
-      {fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' ? (
+  return (
+    <LBActionStyled isShowingChartMobile={showChart}>
+      {!showChart ? (
+        <ToggleButtonsWrapper className="action-toggle-header">
+          <div className="top">
+            <ToggleButton
+              className="action-toggler main"
+              values={FIRST_TOGGLER_VALUES}
+              selected={fBtnSelected}
+              handleSetSelectedToggler={(value: unknown) => setFBtnSelected(value as 'swap' | 'liquidity')}
+            />
+            {isMobile ? (
+              <Button
+                text={''}
+                icon={showChart ? '' : 'toggleChartToArea'}
+                className={`toggleChart LB toggleBlock`}
+                kind="transparent"
+                onClick={() => setShowChart(true)}
+              />
+            ) : null}
+          </div>
+          {sTogglerValues && sTogglerValues.length ? (
+            <ToggleButton
+              className="action-toggler"
+              values={sTogglerValues}
+              selected={sBtnSelected}
+              handleSetSelectedToggler={(value: unknown) => setSBtnSelected(value as string)}
+            />
+          ) : null}
+        </ToggleButtonsWrapper>
+      ) : null}
+
+      {fBtnSelected === 'swap' && !sBtnSelected && !showChart ? (
+        <LBSwap ready={ready} generalDexStats={generalDexStats} />
+      ) : null}
+      {fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' && !showChart ? (
         <LBAddLiquidity ready={ready} generalDexStats={generalDexStats} />
       ) : null}
-      {fBtnSelected === 'liquidity' && sBtnSelected === 'remove liquidity' ? (
+      {fBtnSelected === 'liquidity' && sBtnSelected === 'remove liquidity' && !showChart ? (
         <LBRemoveLiquidity ready={ready} generalDexStats={generalDexStats} />
+      ) : null}
+      {showChart && isMobile ? (
+        <LBChart className="mobile-chart" returnBackToActionScreenHandler={() => setShowChart(false)} />
       ) : null}
     </LBActionStyled>
   )

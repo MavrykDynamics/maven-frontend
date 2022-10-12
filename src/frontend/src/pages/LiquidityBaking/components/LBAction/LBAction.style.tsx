@@ -1,24 +1,15 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { cyanColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
-export const LBActionStyled = styled.div<{ theme: MavrykTheme }>`
+export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMobile?: boolean }>`
   z-index: 1;
   padding: 20px 40px 50px 40px;
   background: ${({ theme }) => theme.darkBackroundColor};
   border: 1px solid ${({ theme }) => theme.lbBorder};
   border-radius: 10px;
   width: calc(50% - 15px);
-
-  hr {
-    height: 2px;
-    width: 100%;
-    background: #503eaa;
-    color: transparent;
-    margin: 0;
-    border: none;
-    margin: 22px 0;
-  }
+  position: relative;
 
   @media screen and (max-width: 1340px) {
     padding: 20px 15px 50px 15px;
@@ -26,7 +17,6 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme }>`
 
   @media screen and (max-width: 960px) {
     width: 100%;
-    /* width: calc(100% - 30px); */
     max-width: 769px;
     padding: 20px 40px 50px 40px;
     margin: 0 auto;
@@ -34,6 +24,25 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme }>`
 
   @media screen and (max-width: 540px) {
     padding: 20px 15px 20px 15px;
+  }
+
+  @media screen and (max-width: 769px) {
+    .mobile-chart {
+      display: block;
+    }
+
+    ${({ isShowingChartMobile }) =>
+      isShowingChartMobile
+        ? css`
+            padding: 30px 20px 30px 10px;
+          `
+        : ''}
+  }
+
+  @media screen and (min-width: 769px) {
+    .mobile-chart {
+      display: none;
+    }
   }
 `
 
@@ -44,10 +53,46 @@ export const ToggleButtonsWrapper = styled.div`
   margin: 0 auto 30px auto;
   margin-bottom: 30px;
   width: fit-content;
+  position: relative;
+
+  .top {
+    display: flex;
+    column-gap: 20px;
+    @media screen and (max-width: 610px) {
+      .main {
+        > div {
+          width: 150px;
+        }
+      }
+    }
+
+    @media screen and (max-width: 450px) {
+      .main {
+        > div {
+          width: 110px;
+        }
+      }
+    }
+
+    .toggleBlock {
+      @media screen and (min-width: 769px) {
+        display: none;
+      }
+    }
+  }
 
   @media screen and (max-width: 1340px) {
     div {
       font-size: 14px;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .action-toggler {
+      .toggle-btn {
+        font-size: 14px;
+        padding: 10px 15px;
+      }
     }
   }
 `
@@ -180,6 +225,9 @@ export const ActionScreenWrapper = styled.div`
       row-gap: 15px;
       display: flex;
       flex-direction: column;
+    }
+
+    @media screen and (max-width: 500px) {
     }
   }
 

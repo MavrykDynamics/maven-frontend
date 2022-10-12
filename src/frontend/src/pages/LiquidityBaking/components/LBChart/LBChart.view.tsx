@@ -39,6 +39,8 @@ type LBChartViewProps = {
   chartMouseMoveHandler: (value: number, isOut?: boolean) => void
   chartData: any
   xtztzBTC: number
+  className?: string
+  returnBackToActionScreenHandler?: () => void
 }
 
 export const LBChartView = ({
@@ -49,6 +51,8 @@ export const LBChartView = ({
   xtztzBTC,
   chartData,
   selectedChartType,
+  className,
+  returnBackToActionScreenHandler,
 }: LBChartViewProps) => {
   const ChartControllsButtons = ({ className }: { className?: string }) => (
     <div className={className}>
@@ -68,9 +72,20 @@ export const LBChartView = ({
     </div>
   )
 
+  const isMobileChart = className === 'mobile-chart'
+
   return (
-    <ChartStyled>
+    <ChartStyled className={className}>
       <div className="chart-controlls">
+        {isMobileChart ? (
+          <Button
+            text={''}
+            icon={'goBackIcon'}
+            className={`toggleChart LB`}
+            kind="transparent"
+            onClick={returnBackToActionScreenHandler}
+          />
+        ) : null}
         <div className="chart-info">
           <img src="/images/sirius-icon.png" alt="" />
           <svg>
@@ -85,8 +100,9 @@ export const LBChartView = ({
             </CustomizedText>
           </div>
         </div>
-        <ChartControllsButtons className="right-wrapper" />
+        {!isMobileChart ? <ChartControllsButtons className="right-wrapper" /> : null}
       </div>
+
       {chartData.length ? (
         <div className="chart-wrapper">
           {selectedChartType === 'area' ? (
@@ -97,7 +113,7 @@ export const LBChartView = ({
         </div>
       ) : null}
 
-      <ChartControllsButtons className="right-wrapper-mobile" />
+      {isMobileChart ? <ChartControllsButtons className="right-wrapper-mobile" /> : null}
     </ChartStyled>
   )
 }

@@ -37,6 +37,12 @@ export const LBStyled = styled.div`
 
     padding-bottom: 0px;
   }
+
+  @media screen and (max-width: 769px) {
+    .desktop-chart {
+      display: none;
+    }
+  }
 `
 
 export const VertInfo = styled.div`

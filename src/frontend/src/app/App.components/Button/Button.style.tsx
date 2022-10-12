@@ -91,6 +91,7 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     background: transparent;
     border: 1px solid ${({ theme }) => theme.primaryColor};
     transition: 0.5s all;
+    margin: 0;
     svg {
       width: 24px;
       height: 24px;
@@ -109,11 +110,6 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     }
 
     @media screen and (max-width: 1200px) and (min-width: 1070px) and (max-width: 490px) {
-      width: 30px;
-      height: 30px;
-    }
-
-    @media screen and (max-width: 490px) {
       width: 30px;
       height: 30px;
     }

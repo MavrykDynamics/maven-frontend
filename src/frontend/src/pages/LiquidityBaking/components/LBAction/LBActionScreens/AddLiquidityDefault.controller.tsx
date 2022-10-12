@@ -107,7 +107,7 @@ export const AddLiquidityDefault = ({
         />
       </div>
 
-      <HorisontalInfo>
+      <HorisontalInfo style={{ marginTop: '15px' }}>
         <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
 
         <CustomizedText fontWidth={500} color={cyanColor}>

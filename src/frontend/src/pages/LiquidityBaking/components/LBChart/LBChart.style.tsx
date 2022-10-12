@@ -19,6 +19,48 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
   align-items: center;
   flex-direction: column;
 
+  &.mobile-chart {
+    border: none;
+    padding-top: 0;
+
+    .chart-wrapper {
+      width: 100%;
+    }
+
+    .chart-controlls {
+      align-items: center;
+
+      .chart-info {
+        img {
+          width: 40px;
+        }
+      }
+    }
+
+    @media screen and (max-width: 425px) {
+      .chart-controlls {
+        padding: 0 10px 0 15px;
+      }
+    }
+  }
+
+  .right-wrapper-mobile {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 15px;
+
+    .chart-toggler {
+      margin: 0;
+      max-height: 40px;
+
+      .toggle-btn {
+        padding: 10px 25px;
+        font-size: 16px;
+      }
+    }
+  }
+
   .chart-controlls {
     padding: 0 20px 0 30px;
     width: 100%;
@@ -54,10 +96,6 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
-  .right-wrapper-mobile {
-    display: none;
-  }
-
   .chart-wrapper {
     height: 560px;
     width: 97%;
@@ -88,37 +126,6 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
       svg {
         width: 100% !important;
         height: 100% !important;
-      }
-    }
-  }
-
-  @media screen and (max-width: 720px) {
-    height: fit-content;
-    .chart-controlls {
-      flex-direction: column;
-      align-items: flex-start;
-      row-gap: 20px;
-      margin-bottom: 10px;
-    }
-  }
-
-  @media screen and (max-width: 550px) {
-    .chart-controlls {
-      .right-wrapper {
-        display: none;
-      }
-    }
-
-    .right-wrapper-mobile {
-      width: 100%;
-      margin-left: 0;
-      justify-content: center;
-      column-gap: 15px;
-      display: flex;
-      margin-bottom: 10px;
-
-      > div {
-        margin: 0;
       }
     }
   }
