@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { cyanColor } from 'styles'
 import { BLOCK_RADIUS } from 'styles/constants'
 import { MavrykTheme } from 'utils/interfaces'
 
@@ -43,6 +44,7 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
         transform: rotate(90deg);
         width: 21px;
         height: 21px;
+        fill: #8d86eb;
       }
 
       .info {

@@ -118,7 +118,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
         value={inputValues.SIR}
         icon={'siriusLogo'}
         pinnedText={'SIR'}
-        // onKeyDown={nonNumberSymbolsValidation}
+        onKeyDown={nonNumberSymbolsValidation}
         onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
         useMaxHandler={() => {
           inputChangeHandler({

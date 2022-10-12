@@ -95,6 +95,17 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
       width: 24px;
       height: 24px;
       margin: 0;
+      fill: #8d86eb;
+      stroke: #8d86eb;
+    }
+
+    &:hover {
+      border: 1px solid ${cyanColor};
+
+      svg {
+        fill: ${cyanColor};
+        stroke: ${cyanColor};
+      }
     }
 
     @media screen and (max-width: 1200px) and (min-width: 1070px) and (max-width: 490px) {

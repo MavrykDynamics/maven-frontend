@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { cyanColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const LBActionStyled = styled.div<{ theme: MavrykTheme }>`
@@ -135,6 +136,11 @@ export const ActionScreenWrapper = styled.div`
         height: 18px;
         transform: rotate(90deg);
         cursor: pointer;
+        fill: #8d86eb;
+
+        &:hover {
+          fill: ${cyanColor};
+        }
       }
 
       &.reverted {
@@ -151,6 +157,11 @@ export const ActionScreenWrapper = styled.div`
         width: 24px;
         height: 24px;
         cursor: pointer;
+        fill: #8d86eb;
+
+        &:hover {
+          fill: ${cyanColor};
+        }
       }
 
       span {
