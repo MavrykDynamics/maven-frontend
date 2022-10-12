@@ -99,7 +99,7 @@ export const CustomizedText = styled.div<{
       background: #503eaa;
       color: #9ea9e8;
       opacity: 0;
-      transition: 0.3s all;
+      transition: 0.2s all;
       visibility: hidden;
       width: max-content;
       max-width: 330px;
@@ -124,6 +124,12 @@ export const CustomizedText = styled.div<{
 
       svg {
         fill: ${cyanColor};
+      }
+    }
+
+    @media screen and (max-width: 650px) {
+      .text {
+        max-width: 270px;
       }
     }
   }

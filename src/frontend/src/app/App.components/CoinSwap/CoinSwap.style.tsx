@@ -11,8 +11,20 @@ export const CoinSwapStyled = styled.div<{ theme: MavrykTheme }>`
     margin: 0 20px;
 
     svg {
-      stroke: ${({ theme }) => theme.labelColor};
+      stroke: none;
+      fill: ${({ theme }) => theme.labelColor};
       transform: rotate(90deg);
+    }
+  }
+
+  &.onlyXtz {
+    > div {
+      font-size: 18px;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 `

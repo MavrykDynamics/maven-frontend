@@ -108,7 +108,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
   }
 
   return (
-    <ActionScreenWrapper className="removeLiqidity swap">
+    <ActionScreenWrapper className="removeLiqiudity swap">
       <Input
         placeholder={''}
         name="Sir"
@@ -118,7 +118,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
         value={inputValues.SIR}
         icon={'siriusLogo'}
         pinnedText={'SIR'}
-        onKeyDown={nonNumberSymbolsValidation}
+        // onKeyDown={nonNumberSymbolsValidation}
         onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
         useMaxHandler={() => {
           inputChangeHandler({
@@ -147,37 +147,35 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
         }}
       />
 
-      <hr />
+      <div className="receive-info-wrapper">
+        <CustomizedText style={{ marginBottom: '20px' }}>You Receive</CustomizedText>
 
-      <CustomizedText style={{ marginBottom: '20px' }}>You Receive</CustomizedText>
-
-      <CoinSwap
-        icon={{ name: 'plus', width: 12, height: 18 }}
-        XTZCoinData={{
-          icon: 'XTZ_tezos',
-          amount: receivedAmount.xtz,
-        }}
-        tzBTCCoinData={{
-          icon: 'tzBTC',
-          amount: receivedAmount.tzbtc,
-        }}
-      />
-
-      <hr />
+        <CoinSwap
+          icon={{ name: 'plus', width: 12, height: 18 }}
+          XTZCoinData={{
+            icon: 'XTZ_tezos',
+            amount: receivedAmount.xtz,
+          }}
+          tzBTCCoinData={{
+            icon: 'tzBTC',
+            amount: receivedAmount.tzbtc,
+          }}
+        />
+      </div>
 
       {ready ? (
         <Button
           text={'Remove Liquidity'}
           icon={'minus'}
           onClick={removeLiquidityBtnHandler}
-          className="removeLiquidity_btn LB"
+          className="LB"
           kind={PRIMARY}
         />
       ) : (
-        <ConnectWallet className="swap-action removeLiq-action" />
+        <ConnectWallet className="LB" />
       )}
 
-      <LBActionBottomWrapperStyled className="liquidity">
+      <LBActionBottomWrapperStyled>
         <PriceImpact priceImpact={0} />
         <MinimumReceived
           minimumReceived={[

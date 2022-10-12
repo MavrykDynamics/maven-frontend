@@ -24,7 +24,7 @@ const LBHeader = () => {
     <LBHeaderStyled>
       <div className="title">
         <img src="/images/sirius-icon.png" alt="sirius logo" />
-        <CustomizedText fontWidth={700} fontSize={35}>
+        <CustomizedText fontWidth={700} fontSize={30}>
           Liquidity Baking DEX (Sirius)
         </CustomizedText>
       </div>
@@ -34,7 +34,7 @@ const LBHeader = () => {
           <CustomizedText fontWidth={500} className="block-name">
             Total Value Locked
           </CustomizedText>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+          <CustomizedText color={cyanColor} fontWidth={700} fontSize={23}>
             <CommaNumber beginningText="$" value={xtz_pool * 2 * coinPrices.tezos.usd} />
           </CustomizedText>
         </VertInfo>
@@ -43,7 +43,7 @@ const LBHeader = () => {
           <CustomizedText fontWidth={500} className="block-name">
             APY
           </CustomizedText>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+          <CustomizedText color={cyanColor} fontWidth={700} fontSize={23}>
             <CommaNumber endingText="%" value={isFinite(APY) ? APY : 0} />
           </CustomizedText>
         </VertInfo>
@@ -52,7 +52,7 @@ const LBHeader = () => {
           <CustomizedText fontWidth={500} className="block-name">
             Total Sirius Tokens
           </CustomizedText>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+          <CustomizedText color={cyanColor} fontWidth={700} fontSize={23}>
             <CommaNumber value={lqt_total} />
           </CustomizedText>
         </VertInfo>
@@ -61,7 +61,7 @@ const LBHeader = () => {
           <CustomizedText fontWidth={500} className="block-name">
             tzBTC/BTC Price Difference
           </CustomizedText>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+          <CustomizedText color={cyanColor} fontWidth={700} fontSize={23}>
             <CommaNumber endingText="%" value={priceDifference} />
           </CustomizedText>
         </VertInfo>

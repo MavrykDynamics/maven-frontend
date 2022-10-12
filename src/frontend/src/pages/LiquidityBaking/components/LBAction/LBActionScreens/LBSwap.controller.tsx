@@ -327,9 +327,9 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       </div>
 
       {ready ? (
-        <Button text={'Swap'} icon={'swapBtnIcon'} onClick={swapBtnHandler} className="swap_btn LB" kind={PRIMARY} />
+        <Button text={'Swap'} icon={'swapBtnIcon'} onClick={swapBtnHandler} className="LB" kind={PRIMARY} />
       ) : (
-        <ConnectWallet className="swap-action" />
+        <ConnectWallet className="LB" />
       )}
 
       <LBActionBottomWrapperStyled>

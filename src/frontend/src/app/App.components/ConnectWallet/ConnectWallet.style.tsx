@@ -97,25 +97,8 @@ export const ConnectWalletStyled = styled.div<{ theme: MavrykTheme }>`
     margin: 0 auto;
   }
 
-  &.swap-action {
-    margin: 0 auto;
-    margin-bottom: 25px;
-
-    > button {
-      width: 400px;
-    }
-  }
-
-  &.addLiq-action {
-    margin-top: 40px;
-
-    > button {
-      width: 400px;
-    }
-  }
-
-  &.removeLiq-action {
-    margin-top: 15px;
+  &.LB {
+    margin: 30px auto;
 
     > button {
       width: 400px;

@@ -10,6 +10,7 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding: 0 5px;
 
   .title {
     display: flex;
@@ -33,7 +34,7 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 58%;
+    width: 55%;
   }
 
   @media screen and (max-width: 1400px) {
@@ -80,13 +81,54 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
-  @media screen and (max-width: 510px) {
+  @media screen and (max-width: 650px) {
+    .title {
+      > div {
+        line-height: 110%;
+      }
+    }
+
+    .info-wrapper {
+      padding: 0 10px;
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 20px;
+
+      div:nth-child(1) {
+        order: 1;
+      }
+
+      div:nth-child(3) {
+        order: 2;
+      }
+
+      div:nth-child(2) {
+        order: 3;
+      }
+
+      div:nth-child(4) {
+        order: 4;
+      }
+
+      div {
+        line-height: 19px;
+        font-size: 19px;
+        align-items: flex-start;
+
+        .block-name {
+          line-height: 25px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 500px) {
     padding: 15px 10px;
     .title {
       column-gap: 10px;
       div {
-        font-size: 24px;
-        line-height: 100%;
+        font-size: 25px;
+        line-height: 110%;
       }
 
       img {
@@ -94,17 +136,17 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
         height: 50px;
       }
     }
-  }
 
-  @media screen and (max-width: 420px) {
-    .title {
+    .info-wrapper {
+      padding: 0;
       div {
-        font-size: 20px;
-      }
+        line-height: 16px;
+        font-size: 16px;
 
-      img {
-        width: 45px;
-        height: 45px;
+        .block-name {
+          line-height: 14px;
+          font-size: 14px;
+        }
       }
     }
   }

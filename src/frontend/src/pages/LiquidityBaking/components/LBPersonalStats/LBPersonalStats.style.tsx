@@ -46,6 +46,33 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)`
     height: 600px;
   }
 
+  @media screen and (max-width: 650px) {
+    background-image: none;
+    height: fit-content;
+    padding-bottom: 30px;
+
+    .stats-grid {
+      margin-top: 20px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+
+      > div {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+
+        > div:not(.block-name) {
+          font-weight: 500;
+
+          P {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+
   @media screen and (max-width: 480px) {
     column-gap: 10px;
     background-size: contain;

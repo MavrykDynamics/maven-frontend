@@ -24,6 +24,7 @@ import { getSettings } from '../../../../../utils/DEX/DexCalcs'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
 import { addLiquidity, addLiquidityOnlyXTZ } from 'redux/actions/liquidity.action'
 import { calculateTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
+import Icon from 'app/App.components/Icon/Icon.view'
 
 const DEFAULT_COINS_AMOUNT = {
   XTZ: 0,
@@ -290,34 +291,30 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
 
   return (
     <ActionScreenWrapper className="liquidity swap">
-      <hr />
       <div className="switch-wrapper">
-        <div className="top">
-          <CustomizedText fontSize={16} color={subHeaderColor} fontWidth={500}>
-            Provide only XTZ
-          </CustomizedText>
+        <CheckBoxWrapper>
+          <CheckBox
+            id="checkbox"
+            type="checkbox"
+            checked={switchValue}
+            onChange={() => {
+              setInputValues(DEFAULT_COINS_AMOUNT)
+              setSwitchValue(!switchValue)
+            }}
+          />
+          <CheckBoxLabel htmlFor="checkbox" />
+        </CheckBoxWrapper>
 
-          <CheckBoxWrapper>
-            <CheckBox
-              id="checkbox"
-              type="checkbox"
-              checked={switchValue}
-              onChange={() => {
-                setInputValues(DEFAULT_COINS_AMOUNT)
-                setSwitchValue(!switchValue)
-              }}
-            />
-            <CheckBoxLabel htmlFor="checkbox" />
-          </CheckBoxWrapper>
-        </div>
-        {switchValue && (
-          <CustomizedText fontSize={14} fontWidth={400} style={{ marginTop: '10px' }}>
-            You can add liquidity with only XTZ. <br />A swap of half the XTZ to tzBTC will be done first.
-          </CustomizedText>
-        )}
+        <CustomizedText fontSize={16} color={subHeaderColor} fontWidth={500}>
+          Provide only XTZ
+          <div className="info">
+            <Icon id="infoIcon" />
+            <div className="text">
+              You can add liquidity with only XTZ. <br />A swap of half the XTZ to tzBTC will be done first.
+            </div>
+          </div>
+        </CustomizedText>
       </div>
-
-      <hr />
 
       {switchValue ? (
         <AddLiquidityOnlyXTZ
@@ -342,11 +339,11 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
           text={'Add Liquidity'}
           icon={'plusDark'}
           onClick={addLiquidityBtnHandler}
-          className="addLiquidity_btn LB"
+          className="LB"
           kind={PRIMARY}
         />
       ) : (
-        <ConnectWallet className="swap-action addLiq-action addLiquidity_btn" />
+        <ConnectWallet className="LB" />
       )}
 
       <LBActionBottomWrapperStyled>

@@ -26,13 +26,19 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
 
     .right-wrapper {
       display: flex;
+      align-items: center;
       column-gap: 15px;
+
+      .LB {
+        margin: 0;
+      }
     }
 
     .chart-info {
       display: flex;
       align-items: center;
       column-gap: 10px;
+      height: fit-content;
       svg {
         transform: rotate(90deg);
         width: 21px;
@@ -80,14 +86,6 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
       svg {
         width: 100% !important;
         height: 100% !important;
-      }
-    }
-  }
-
-  @media screen and (max-width: 1200px) and (min-width: 1070px) {
-    .chart-controlls {
-      .right-wrapper {
-        align-items: center;
       }
     }
   }

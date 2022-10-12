@@ -24,7 +24,8 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   @media screen and (max-width: 960px) {
-    width: calc(100% - 30px);
+    width: 100%;
+    /* width: calc(100% - 30px); */
     max-width: 769px;
     padding: 20px 40px 50px 40px;
     margin: 0 auto;
@@ -60,16 +61,24 @@ export const ActionScreenWrapper = styled.div`
       flex-direction: column;
       row-gap: 20px;
       position: relative;
-      margin-bottom: 20px;
+      margin-top: 20px;
+      padding: 5px 0;
 
-      .inner-content {
-        padding-left: 45px;
-        row-gap: 20px;
+      .top {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
       }
 
-      &:before {
+      &:not(.no-before):before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        top: -10px;
+        background: #503eaa;
+      }
+
+      &:after {
         content: '';
         width: 100%;
         height: 1px;
@@ -78,17 +87,39 @@ export const ActionScreenWrapper = styled.div`
         background: #503eaa;
       }
 
-      &:last-child {
-        margin-top: 20px;
+      > div:last-child {
+        padding-left: 25px;
       }
     }
 
     .switch-wrapper {
-      padding-right: 25px;
-      .top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
+  }
+
+  &.removeLiqiudity {
+    .receive-info-wrapper {
+      position: relative;
+      margin: 20px 0;
+
+      &:before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        top: -10px;
+        background: #503eaa;
+      }
+
+      &:after {
+        content: '';
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        bottom: -20px;
+        background: #503eaa;
       }
     }
   }
@@ -112,7 +143,6 @@ export const ActionScreenWrapper = styled.div`
     }
 
     .input-wrapper {
-      margin: 15px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -158,9 +188,9 @@ export const PriceChange = styled.div<{ up?: boolean }>`
 
 export const StepBlock = styled.div`
   font-weight: 700;
-  font-size: 25px;
+  font-size: 18px;
   line-height: 25px;
-  color: #77a4f2;
+  color: #8d86eb;
   position: relative;
   padding-left: 50px;
   display: flex;
@@ -174,14 +204,14 @@ export const StepBlock = styled.div`
     border-radius: 50%;
     color: #8d86eb;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 18px;
     line-height: 25px;
     position: absolute;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    width: 38px;
-    height: 38px;
+    width: 23px;
+    height: 23px;
   }
 `
 
