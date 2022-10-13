@@ -27,10 +27,13 @@ export const LBPersonalStats = ({ generalStats }: { generalStats: LBGeneralStats
   const { data: personalStats, error: personalStatsError } = useSWR(
     accountPkh ? [GET_PERSONAL_STATS_QUERY, personalStatsQueryVars] : null,
   )
+
+  console.log('personalStats', personalStats)
+
   const checkPersonalStatsLoading = !personalStatsError && !personalStats
 
   const calcEstimatedTzBTCOwned = useCallback(() => {
-    if (!personalStats) return { xtzOut: 0, tzbtcOut: 0 }
+    if (!personalStats || !personalStats.position.length) return { xtzOut: 0, tzbtcOut: 0 }
     const xtzOut = (+Number(personalStats.position[0].sharesQty) * generalStats.tezPool) / generalStats.sharesTotal
     const tzbtcOut = (+Number(personalStats.position[0].sharesQty) * generalStats.tokenPool) / generalStats.sharesTotal
     return {
@@ -56,11 +59,11 @@ export const LBPersonalStats = ({ generalStats }: { generalStats: LBGeneralStats
       })
       setPnLStats({
         unrealizedPnL: calcUnrealizedPnL(
-          personalStats.position[0].sharesQty,
-          personalStats.position[0].avgSharePx,
-          personalStats.position[0].exchange.sharePx,
+          personalStats.position[0]?.sharesQty ?? 0,
+          personalStats.position[0]?.avgSharePx ?? 0,
+          personalStats.position[0]?.exchange.sharePx ?? 0,
         ),
-        realizedPnL: Number(personalStats.position[0].realizedPl),
+        realizedPnL: Number(personalStats.position[0]?.realizedPl ?? 0),
       })
     }
 
