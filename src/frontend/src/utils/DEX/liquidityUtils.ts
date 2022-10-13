@@ -1,8 +1,8 @@
 // @ts-ignore
 import dexterCalculations from 'dex-calcs/dist/index-mobile.min'
 import BigNumber from 'bignumber.js'
-import {PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES} from '../consts'
-import {xtzToTokenExchangeRateDisplay} from './swapUtils'
+import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from '../consts'
+import { xtzToTokenExchangeRateDisplay } from './swapUtils'
 
 /**
  *  Add liquidity functions
@@ -164,7 +164,7 @@ function removeLiquidityXtzReceived(
     dex.includeSubsidy,
   )
 
-  if (!!new BigNumber(result.value).toString()) {
+  if (!!new BigNumber(result?.value).toString()) {
     const expected = Number(result?.value)
     const minimum = expected - expected * maxSlippage
     return { expected: new BigNumber(expected), minimum: new BigNumber(minimum) }
@@ -190,7 +190,7 @@ function removeLiquidityTokenReceived(
     tokenPool.toString(),
   )
 
-  if (!!new BigNumber(result.value).toString()) {
+  if (!!new BigNumber(result?.value).toString()) {
     const expected = Number(result?.value)
     const minimum = expected - expected * maxSlippage
     return { expected: new BigNumber(expected), minimum: new BigNumber(minimum) }

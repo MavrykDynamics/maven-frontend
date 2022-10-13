@@ -26,11 +26,10 @@ import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from '../.
 const dex = getSettings('liquidity')
 
 export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
-  const { coinPrices } = useSelector((state: State) => state.tokens)
   const dispatch = useDispatch()
   const { LBTBalance } = useSelector((state: State) => state.user)
 
-  const [inputValues, setInputValues] = useState({ SIR: '0' })
+  const [inputValues, setInputValues] = useState<{ SIR: number | string }>({ SIR: '0' })
   const [selectedSlippage, setSelectedSlippage] = useState<number>(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [slippagePercent, setSlippagePercent] = useState<string | number>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
   const [receivedAmount, setReceivedAmount] = useState({
@@ -64,17 +63,15 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
       tokenMinimum,
       exchangeRate,
     )
-    setInputValues({
-      SIR: String(amount),
-    })
+
     setReceivedAmount({
-      xtz: xtzExpected,
-      tzbtc: tokenExpected,
+      xtz: isNaN(xtzExpected) ? 0 : xtzExpected,
+      tzbtc: isNaN(tokenExpected) ? 0 : tokenExpected,
     })
 
     setMinimumReceived({
-      xtz: xtzMinimum,
-      tzbtc: tokenMinimum,
+      xtz: isNaN(xtzMinimum) ? 0 : xtzMinimum,
+      tzbtc: isNaN(tokenMinimum) ? 0 : tokenMinimum,
     })
   }
   // change slippage value handler
@@ -82,7 +79,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
     const newSlippagePersent = Number(parseSrtToNum(value) < 0 ? 0 : value)
     if (newSlippagePersent >= 0 && newSlippagePersent <= 100) {
       setSlippagePercent(value)
-      calculateReceivedXtzAndTzbtc(parseFloat(inputValues.SIR))
+      calculateReceivedXtzAndTzbtc(parseFloat(inputValues.SIR.toString()))
     }
 
     if (!isInput) {
@@ -92,9 +89,13 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
 
   // change input value handler
   const inputChangeHandler = (e: AddLiquidutityInputChangeEventType) => {
-    const { name, value } = e.target
+    const { value } = e.target
     if (+value < 0 || (ready && +value > LBTBalance)) return
-    calculateReceivedXtzAndTzbtc(parseFloat(value as string))
+
+    calculateReceivedXtzAndTzbtc(value === '' ? 0 : parseFloat(value.toString()))
+    setInputValues({
+      SIR: value,
+    })
   }
 
   const removeLiquidityBtnHandler = async () => {
@@ -178,6 +179,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
       <LBActionBottomWrapperStyled>
         <PriceImpact priceImpact={0} />
         <MinimumReceived
+          className="min-received"
           minimumReceived={[
             { value: minimumReceived.xtz, tokenName: 'XTZ' },
             { value: minimumReceived.tzbtc, tokenName: 'tzBTC' },

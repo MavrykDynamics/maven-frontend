@@ -24,6 +24,7 @@ import { swapTokenToXtz, swapXtzToToken } from '../../../../../redux/actions/swa
 import { calculateTokenToXtz as CalcTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
 import { LBGeneralStats } from '../../../LiquidityBaking.view'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
+import { useMedia } from 'react-use'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -58,6 +59,8 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
   const [exchangeRate, setExchangeRate] = useState<number>(0)
   const [amountToSwap, setAmountToSwap] = useState(0)
+
+  const isMobile = useMedia('(max-width: 600px)')
 
   const BALANCE_BY_COIN = useMemo(
     () => ({
@@ -290,6 +293,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
               decimalsToShow={8}
               endingText="tzBTC"
               maxSymbols={10}
+              useMaxSymbols={isMobile}
             />
           </CustomizedText>
         </div>

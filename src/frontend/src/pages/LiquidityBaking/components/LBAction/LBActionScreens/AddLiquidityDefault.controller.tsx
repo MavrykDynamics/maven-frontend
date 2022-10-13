@@ -10,6 +10,7 @@ import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 
 import { AddLiquidutityInputChangeEventType, CoinsInputsValues } from '../helpers/actionsScreen.types'
 import { State } from 'utils/interfaces'
+import { useMedia } from 'react-use'
 
 export const AddLiquidityDefault = ({
   inputValues,
@@ -24,6 +25,7 @@ export const AddLiquidityDefault = ({
 }) => {
   const { coinPrices } = useSelector((state: State) => state.tokens)
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
+  const isMobile = useMedia('max-width: 600px')
 
   return (
     <>
@@ -111,7 +113,13 @@ export const AddLiquidityDefault = ({
         <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
 
         <CustomizedText fontWidth={500} color={cyanColor}>
-          <CommaNumber value={lqtReceived} showDecimal endingText="LBT" />
+          <CommaNumber
+            value={isNaN(lqtReceived) ? 0 : lqtReceived}
+            showDecimal
+            endingText="LBT"
+            maxSymbols={8}
+            useMaxSymbols={isMobile}
+          />
         </CustomizedText>
       </HorisontalInfo>
     </>

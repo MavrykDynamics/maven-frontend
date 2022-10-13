@@ -27,6 +27,12 @@ export const CoinSwapStyled = styled.div<{ theme: MavrykTheme }>`
       }
     }
   }
+
+  @media screen and (max-width: 600px) {
+    div {
+      font-size: 14px;
+    }
+  }
 `
 
 export const CoinSwapCoinWrapper = styled.div<{ theme: MavrykTheme }>`
@@ -38,5 +44,13 @@ export const CoinSwapCoinWrapper = styled.div<{ theme: MavrykTheme }>`
     height: 36px;
     margin-right: 15px;
     fill: ${({ theme }) => theme.darkBackroundColor};
+  }
+
+  @media screen and (max-width: 600px) {
+    svg {
+      width: 30px;
+      height: 30px;
+      margin-right: 7px;
+    }
   }
 `

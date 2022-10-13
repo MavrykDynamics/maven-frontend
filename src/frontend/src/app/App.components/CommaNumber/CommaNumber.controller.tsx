@@ -12,6 +12,7 @@ export const CommaNumber = ({
   decimalsToShow = DECIMALS_TO_SHOW,
   showNone,
   maxSymbols,
+  useMaxSymbols = false,
 }: {
   value: number
   decimalsToShow?: number
@@ -22,6 +23,7 @@ export const CommaNumber = ({
   showDecimal?: boolean
   showNone?: boolean
   maxSymbols?: number
+  useMaxSymbols?: boolean
 }) => {
   let decimals = decimalsToShow
   let decimalMagnitude = !value || (value !== 0 && value < 1) ? -Math.floor(Math.log10(value) + 1) + 2 : 0
@@ -33,12 +35,9 @@ export const CommaNumber = ({
   })
   let title = ''
 
-  if (maxSymbols && numberWithCommas.length > maxSymbols) {
+  if (maxSymbols && useMaxSymbols && numberWithCommas.length > maxSymbols) {
     title = numberWithCommas
-    numberWithCommas = `${numberWithCommas.slice(0, 5)}...${numberWithCommas.slice(
-      numberWithCommas.length - 4,
-      numberWithCommas.length,
-    )}`
+    numberWithCommas = `${numberWithCommas.slice(0, maxSymbols)}...`
   }
   return (
     <>

@@ -13,6 +13,7 @@ import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityB
 import { cyanColor } from 'styles'
 import { StepBlock } from '../LBAction.style'
 import { MinCoinsData } from './LBAddLiquidity.controller'
+import { useMedia } from 'react-use'
 
 export const AddLiquidityOnlyXTZ = ({
   inputValues,
@@ -95,10 +96,17 @@ export const AddLiquidityOnlyXTZ = ({
           />
         </div>
 
-        <HorisontalInfo>
+        <HorisontalInfo className="liq-tokens-created">
           <CustomizedText fontWidth={600}>Minimum tzBTC Received</CustomizedText>
           <CustomizedText fontWidth={500} color={cyanColor}>
-            <CommaNumber value={minCoinsForSwap.minTzBTC} showDecimal decimalsToShow={8} endingText="tzBTC" />
+            <CommaNumber
+              value={minCoinsForSwap.minTzBTC}
+              showDecimal
+              decimalsToShow={8}
+              endingText="tzBTC"
+              maxSymbols={7}
+              useMaxSymbols={useMedia('(max-width: 600px)')}
+            />
           </CustomizedText>
         </HorisontalInfo>
       </div>
@@ -123,7 +131,7 @@ export const AddLiquidityOnlyXTZ = ({
           />
         </div>
 
-        <HorisontalInfo>
+        <HorisontalInfo className="liq-tokens-created">
           <CustomizedText fontWidth={600}>Liquidity Tokens created</CustomizedText>
 
           <CustomizedText fontWidth={500} color={cyanColor}>

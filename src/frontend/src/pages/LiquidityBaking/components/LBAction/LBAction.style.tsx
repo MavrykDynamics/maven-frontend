@@ -147,6 +147,12 @@ export const ActionScreenWrapper = styled.div`
           flex-direction: column;
         }
 
+        .liq-tokens-created {
+          div {
+            font-size: 14px;
+          }
+        }
+
         > div:last-child {
           padding-left: 0;
         }
@@ -182,6 +188,9 @@ export const ActionScreenWrapper = styled.div`
         bottom: -20px;
         background: #503eaa;
       }
+    }
+
+    .min-received {
     }
   }
 
