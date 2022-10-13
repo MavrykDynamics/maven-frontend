@@ -70,13 +70,13 @@ const LiquidityBakingView = () => {
 
   return (
     <div className="content-wrapper">
-      {/* <LBHeader /> */}
+      <LBHeader />
       <div className="middle-block">
-        {/* <LBPersonalStats generalStats={generalDexStats} /> */}
+        <LBPersonalStats generalStats={generalDexStats} />
         <LBAction generalDexStats={generalDexStats} />
       </div>
       <LBChart className="desktop-chart" />
-      {/* <LBFAQ /> */}
+      <LBFAQ />
     </div>
   )
 }

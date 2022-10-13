@@ -91,7 +91,7 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     .info-wrapper {
       padding: 0 10px;
       display: grid;
-      grid-template-columns: repeat(2, auto);
+      grid-template-columns: repeat(2, fit-content(48%));
       gap: 20px;
 
       div:nth-child(1) {
@@ -139,6 +139,9 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
 
     .info-wrapper {
       padding: 0;
+      width: fit-content;
+      margin: 0 auto;
+      grid-template-columns: repeat(2, fit-content(42%));
       div {
         line-height: 16px;
         font-size: 16px;

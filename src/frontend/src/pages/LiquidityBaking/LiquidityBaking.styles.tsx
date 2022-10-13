@@ -43,6 +43,12 @@ export const LBStyled = styled.div`
       display: none;
     }
   }
+
+  @media screen and (max-width: 425px) {
+    .content-wrapper {
+      padding: 110px 15px 70px 15px;
+    }
+  }
 `
 
 export const VertInfo = styled.div`
@@ -55,6 +61,54 @@ export const HorisontalInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &.slippage {
+    @media screen and (max-width: 500px) {
+      display: grid;
+      row-gap: 5px;
+      height: fit-content;
+      grid-template:
+        'name mobileInfo'
+        'controls controls';
+    }
+
+    > div:nth-child(1) {
+      grid-area: name;
+    }
+
+    .controls-wrapper {
+      display: flex;
+      justify-content: space-between;
+      grid-area: controls;
+
+      #inputStyled {
+        width: fit-content;
+      }
+
+      .swap-toggler {
+        .toggle-btn {
+          padding: 8px 12px;
+        }
+      }
+    }
+
+    .mobile-info {
+      display: none;
+      grid-area: mobileInfo;
+      @media screen and (max-width: 500px) {
+        display: block;
+
+        > div {
+          display: block;
+          width: unset;
+
+          p {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
 `
 
 export const CustomizedText = styled.div<{
@@ -136,6 +190,12 @@ export const CustomizedText = styled.div<{
     @media screen and (max-width: 650px) {
       .text {
         max-width: 270px;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .text {
+        max-width: 250px;
       }
     }
   }

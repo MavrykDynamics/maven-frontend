@@ -48,15 +48,12 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
         color: ${({ theme }) => theme.toggleButtonColor};
       }
     }
+  }
 
-    @media screen and (max-width: 490px) {
-      flex-direction: column;
-      align-items: flex-end;
-      row-gap: 10px;
-      height: fit-content;
-
-      #inputStyled {
-        width: fit-content;
+  @media screen and (max-width: 450px) {
+    > div {
+      div {
+        font-size: 14px;
       }
     }
   }

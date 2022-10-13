@@ -1,8 +1,9 @@
 import { SLIPPAGE_TOGGLE_VALUES } from 'pages/LiquidityBaking/components/LBAction/helpers/const'
 import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import React from 'react'
-import { subHeaderColor } from 'styles'
+import { cyanColor, subHeaderColor } from 'styles'
 import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
+import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import Icon from '../Icon/Icon.view'
 import { Input } from '../Input/Input.controller'
 import { ToggleButton } from '../ToggleButton/Toggle-button.view'
@@ -19,7 +20,7 @@ export const Slippage = ({
   setSlippagePersent: (val: string | number) => void
 }) => {
   return (
-    <HorisontalInfo>
+    <HorisontalInfo className="slippage">
       <CustomizedText color={subHeaderColor} fontWidth={500}>
         Slippage Tolerance
         <div className="info">
@@ -31,6 +32,12 @@ export const Slippage = ({
           </div>
         </div>
       </CustomizedText>
+
+      <div className="mobile-info">
+        <CustomizedText color={cyanColor} fontWidth={500}>
+          <CommaNumber value={Number(slippagePersent)} endingText="%" />
+        </CustomizedText>
+      </div>
 
       <div className="controls-wrapper">
         <ToggleButton

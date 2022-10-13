@@ -335,7 +335,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       <LBActionBottomWrapperStyled>
         <div className="exchange-rate">
           <CustomizedText color={subHeaderColor} fontWidth={500}>
-            Exchange Rate
+            Exc. Rate
           </CustomizedText>
           <CustomizedText color={cyanColor} fontWidth={500}>
             1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;

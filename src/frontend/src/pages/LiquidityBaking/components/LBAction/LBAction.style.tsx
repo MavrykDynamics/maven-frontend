@@ -22,7 +22,11 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
     margin: 0 auto;
   }
 
-  @media screen and (max-width: 540px) {
+  @media screen and (max-width: 600px) {
+    padding: 20px 25px 20px 25px;
+  }
+
+  @media screen and (max-width: 550px) {
     padding: 20px 15px 20px 15px;
   }
 
@@ -135,6 +139,17 @@ export const ActionScreenWrapper = styled.div`
 
       > div:last-child {
         padding-left: 25px;
+      }
+
+      @media screen and (max-width: 525px) {
+        .top {
+          row-gap: 15px;
+          flex-direction: column;
+        }
+
+        > div:last-child {
+          padding-left: 0;
+        }
       }
     }
 
