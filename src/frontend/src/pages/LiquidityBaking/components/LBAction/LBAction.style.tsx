@@ -101,7 +101,7 @@ export const ToggleButtonsWrapper = styled.div`
   }
 `
 
-export const ActionScreenWrapper = styled.div`
+export const ActionScreenWrapper = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   flex-direction: column;
 
@@ -117,6 +117,10 @@ export const ActionScreenWrapper = styled.div`
       .top {
         display: flex;
         justify-content: space-between;
+
+        div:first-child {
+          color: ${({ theme }) => theme.toggleButtonColor};
+        }
       }
 
       &:not(.no-before):before {
@@ -253,7 +257,7 @@ export const StepBlock = styled.div`
   line-height: 25px;
   color: #8d86eb;
   position: relative;
-  padding-left: 50px;
+  padding-left: 35px;
   display: flex;
   align-items: center;
 
