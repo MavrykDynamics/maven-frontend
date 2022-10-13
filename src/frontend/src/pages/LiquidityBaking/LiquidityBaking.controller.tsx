@@ -28,7 +28,7 @@ const LiquidityBaking = () => {
   return (
     <SWRConfig
       value={{
-        refreshInterval: 1000,
+        refreshInterval: 10000,
         fetcher: dexGqlFetcher,
       }}
     >

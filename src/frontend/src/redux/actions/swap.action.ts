@@ -13,39 +13,15 @@ export const TZBTC_CONTRACT = 'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
   LB_DEX_CONTRACT = 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5',
   SIR_CONTRACT = 'KT1AafHA1C1vk959wvHWBispY9Y2f3fxBUUo'
 
-export const getTokensData = () => async (dispatch: any, getState: any) => {
+export const getTokensData = () => async (dispatch: any) => {
   try {
-    const state = getState()
     const tokensInfoFromIndexer = await fetchFromIndexer(LB_DATA_QUERY, LB_DATA_QUERY_NAME, {})
 
     const parsedTokensData = tokensInfoFromIndexer.liquidity_baking[0]
-    parsedTokensData['token_pool'] = parsedTokensData['token_pool'] / 10 ** parsedTokensData['token_decimals']
-    parsedTokensData['xtz_pool'] = parsedTokensData['xtz_pool'] / 10 ** parsedTokensData['xtz_decimals']
-
-    //TODO: Remove later, currently to get the right address for tzBTC token on the Ghostnet
-    // parsedTokensData['token_address'] = 'KT1VqarPDicMFn1ejmQqqshUkUXTCTXwmkCN'
-    //
-    // const Tezos = new TezosToolkit('https://mainnet.api.tez.ie/')
-    // const lbDexContractStorage = await Tezos.contract
-    //   .at('KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5')
-    //   .then((c) => {
-    //     return (c as any).storage()
-    //   })
-    //   .then((data) => {
-    //     return {
-    //       lqtAddress: data.lqtAddress,
-    //       tokenAddress: data.tokenAddress,
-    //       lqtTotal: parseFloat(data.lqtTotal),
-    //       tokenPool: parseFloat(data.tokenPool),
-    //       xtzPool: parseFloat(data.xtzPool),
-    //     }
-    //   })
-    //   .catch((error) => console.log(`Error: ${error}`))
-
-    // @ts-ignore
-    // const { tokenPool, xtzPool } = lbDexContractStorage
-    // parsedTokensData['token_pool'] = tokenPool / 10 ** parsedTokensData['token_decimals']
-    // parsedTokensData['xtz_pool'] = xtzPool / 10 ** parsedTokensData['xtz_decimals']
+    parsedTokensData['token_pool'] =
+      (parsedTokensData?.['token_pool'] ?? 0) / 10 ** (parsedTokensData?.['token_decimals'] ?? 0)
+    parsedTokensData['xtz_pool'] =
+      (parsedTokensData?.['xtz_pool'] ?? 0) / 10 ** (parsedTokensData?.['xtz_decimals'] ?? 0)
 
     dispatch({
       type: GET_TOKENS_DATA,
@@ -152,7 +128,6 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
   let minTokensToBuy = minTokensBought
   if (!isWholeNumber(minTokensBought)) {
     minTokensToBuy = Math.round(minTokensBought)
-    console.log(minTokensBought, minTokensToBuy)
   }
 
   try {

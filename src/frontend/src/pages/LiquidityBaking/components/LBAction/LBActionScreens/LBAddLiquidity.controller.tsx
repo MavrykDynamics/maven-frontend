@@ -39,7 +39,9 @@ const DefaultMinCoinsData: MinCoinsData = {
   minXTZ: 0,
   minTzBTC: 0,
 }
+
 const dexType = getSettings('liquidity')
+
 export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
   const dispatch = useDispatch()
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toogleChartInterval, toogleChartType } from 'redux/actions/chart.action'
 import { IntervalType, State } from 'utils/interfaces'
@@ -12,8 +12,15 @@ export const LBChart = ({
   returnBackToActionScreenHandler?: () => void
 }) => {
   const { chartDataCandlestick, chartDataArea, chartInterval, chartType } = useSelector((state: State) => state.chart)
-  const DEFAULT_CHART_COMPARE_VALUE = chartDataArea.at(-1)?.y || chartDataCandlestick.at(-1)?.y[3] || 0
-  const [moveValue, setMoveValue] = useState(DEFAULT_CHART_COMPARE_VALUE)
+  const DEFAULT_CHART_COMPARE_VALUE = useMemo(
+    () => chartDataArea.at(-1)?.y || chartDataCandlestick.at(-1)?.y[3] || 0,
+    [chartDataArea, chartDataCandlestick],
+  )
+  const [moveValue, setMoveValue] = useState(0)
+
+  useEffect(() => {
+    setMoveValue(DEFAULT_CHART_COMPARE_VALUE)
+  }, [DEFAULT_CHART_COMPARE_VALUE])
 
   const chartHoverHandler = (value: number, isOut?: boolean) => {
     if (isOut) setMoveValue(DEFAULT_CHART_COMPARE_VALUE)

@@ -162,7 +162,7 @@ export const CustomizedText = styled.div<{
       padding: 3px 5px;
       border-radius: 3px;
       line-height: 15px;
-      background: ${({ theme }) => theme.toggleButtonBgSelected};
+      background: ${({ theme }) => theme.tooltipBg};
       color: ${({ theme }) => theme.tooltipColor};
       opacity: 0;
       transition: 0.2s all;
@@ -179,7 +179,7 @@ export const CustomizedText = styled.div<{
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
-      border-color: ${({ theme }) => theme.toggleButtonBgSelected} transparent transparent transparent;
+      border-color: ${({ theme }) => theme.tooltipBg} transparent transparent transparent;
     }
 
     &:hover {
