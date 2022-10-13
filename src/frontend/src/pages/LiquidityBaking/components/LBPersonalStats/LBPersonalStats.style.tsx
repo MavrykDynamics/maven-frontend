@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { MavrykTheme } from 'utils/interfaces'
 import { LBActionStyled } from '../LBAction/LBAction.style'
 
-export const LBPersonalStatsStyled = styled(LBActionStyled)`
+export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme }>`
   background-image: url('images/stats_bg.png');
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -10,7 +11,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)`
   .title {
     font-weight: 700;
     font-size: 30px;
-    color: #8d86eb;
+    color: ${({ theme }) => theme.headingColor};
   }
 
   .stats-grid {

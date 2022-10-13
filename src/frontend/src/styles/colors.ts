@@ -85,6 +85,8 @@ export const darkMode: MavrykTheme = {
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
   actionPrimaryBtnColor: cyanColor,
+  tooltipColor: '#EBF0FF',
+  theme: 'dark'
 }
 
 export const lightMode: MavrykTheme = {
@@ -144,6 +146,8 @@ export const lightMode: MavrykTheme = {
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
   actionPrimaryBtnColor: cyanColor,
+  tooltipColor: '#EBF0FF',
+  theme: 'light'
 }
 
 export const spaceMode: MavrykTheme = {
@@ -203,4 +207,12 @@ export const spaceMode: MavrykTheme = {
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
   actionPrimaryBtnColor: cyanColor,
+  tooltipColor: '#9ea9e8',
+  theme: 'space'
+}
+
+export default {
+  light: lightMode,
+  dark: darkMode,
+  space: spaceMode,
 }

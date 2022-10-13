@@ -332,8 +332,16 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   align-items: center;
   justify-content: center;
   width: 190px;
-  color: ${({ theme }) => theme.containerColor};
-  background-color: ${({ theme }) => theme.actionPrimaryBtnColor};
+  color: ${({ theme }) => theme.toggleButtonColorSelected};
+  background-color: ${({ theme }) => theme.btnBackroundColor};
+
+  svg {
+    stroke: ${({ theme }) => theme.toggleButtonColorSelected};
+    width: 25px;
+    height: 30px;
+    fill: transparent;
+    margin-right: 16px;
+  }
 
   &.connect-wallet-small {
     width: 220px;
@@ -345,14 +353,6 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
 
   &:hover {
     opacity: 0.8;
-  }
-
-  svg {
-    width: 25px;
-    height: 30px;
-    stroke: ${({ theme }) => theme.containerColor};
-    fill: transparent;
-    margin-right: 16px;
   }
 
   span {

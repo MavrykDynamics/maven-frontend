@@ -186,28 +186,6 @@ export const ActionScreenWrapper = styled.div`
   }
 
   &.swap {
-    .exchange-block {
-      display: flex;
-      column-gap: 15px;
-      margin: 0 auto;
-      transition: 0.5s all;
-      svg {
-        width: 24px;
-        height: 18px;
-        transform: rotate(90deg);
-        cursor: pointer;
-        fill: #8d86eb;
-
-        &:hover {
-          fill: ${cyanColor};
-        }
-      }
-
-      &.reverted {
-        flex-direction: row-reverse;
-      }
-    }
-
     .input-wrapper {
       display: flex;
       flex-direction: column;
@@ -217,7 +195,7 @@ export const ActionScreenWrapper = styled.div`
         width: 24px;
         height: 24px;
         cursor: pointer;
-        fill: #8d86eb;
+        fill: ${({ theme }) => theme.toggleButtonColor};
 
         &:hover {
           fill: ${cyanColor};

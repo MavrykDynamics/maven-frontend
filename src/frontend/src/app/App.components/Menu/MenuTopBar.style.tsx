@@ -89,7 +89,7 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
       svg {
         max-width: 26px;
         height: 21px;
-        stroke: #8d86eb;
+        stroke: ${({ theme }) => theme.toggleButtonColor};
         transition: 0.6s all;
       }
 
@@ -153,14 +153,14 @@ export const MenuMobileBurger = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const MobileTopBarStyled = styled.div<{ show: boolean }>`
+export const MobileTopBarStyled = styled.div<{ show: boolean; theme: MavrykTheme }>`
   position: absolute;
   width: 100vw;
   height: calc(100vh - 80px);
   max-height: 0;
   left: 0;
   top: 80px;
-  background: #160e3f;
+  background: ${({ theme }) => theme.backgroundColor};
   z-index: ${MENU_Z_INDEX};
   transition: 0.5s all;
   overflow: hidden;

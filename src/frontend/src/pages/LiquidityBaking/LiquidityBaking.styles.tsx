@@ -2,8 +2,14 @@ import styled, { css } from 'styled-components'
 import { cyanColor, headerColor, skyColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
-export const LBStyled = styled.div`
-  background-image: url('images/lb_bg.png');
+export const LBStyled = styled.div<{ theme: MavrykTheme }>`
+  background-image: ${({ theme }) =>
+    `url(${theme.theme === 'dark' ? 'images/lb/lb-dark-desktop-bg.svg' : 'images/lb/lb-light-desktop-bg.svg'})`};
+
+  @media screen and (max-width: 769px) {
+    background-image: ${({ theme }) =>
+      `url(${theme.theme === 'dark' ? 'images/lb/lb-dark-mob-bg.svg' : 'images/lb/lb-light-mob-bg.svg'})`};
+  }
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -142,7 +148,7 @@ export const CustomizedText = styled.div<{
     svg {
       width: 16px;
       height: 16px;
-      fill: #8d86eb;
+      fill: ${({ theme }) => theme.toggleButtonColor};
     }
 
     .text {
@@ -156,8 +162,8 @@ export const CustomizedText = styled.div<{
       padding: 3px 5px;
       border-radius: 3px;
       line-height: 15px;
-      background: #503eaa;
-      color: #9ea9e8;
+      background: ${({ theme }) => theme.toggleButtonBgSelected};
+      color: ${({ theme }) => theme.tooltipColor};
       opacity: 0;
       transition: 0.2s all;
       visibility: hidden;
@@ -173,7 +179,7 @@ export const CustomizedText = styled.div<{
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
-      border-color: #503eaa transparent transparent transparent;
+      border-color: ${({ theme }) => theme.toggleButtonBgSelected} transparent transparent transparent;
     }
 
     &:hover {

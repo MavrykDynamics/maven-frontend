@@ -13,7 +13,7 @@ const GRID_SETTING = {
   show: false,
 }
 
-const YAXIS_SETTING = (interval: IntervalType, isMobile?: boolean) => ({
+const YAXIS_SETTING = (interval: IntervalType, textColor: string, isMobile?: boolean) => ({
   opposite: true,
   show: true,
   showAlways: !isMobile,
@@ -25,16 +25,16 @@ const YAXIS_SETTING = (interval: IntervalType, isMobile?: boolean) => ({
     show: true,
     formatter: (value: any) => parseInt(value).toFixed(isMobile ? 1 : 4),
     style: {
-      colors: '#8D86EB',
+      colors: textColor,
     },
   },
   axisBorder: {
     show: true,
-    color: '#8D86EB',
+    color: textColor,
   },
 })
 
-const XAXIS_SETTING = {
+const XAXIS_SETTING = (textColor: string) => ({
   type: 'category' as 'category',
   tickAmount: 6,
   tickPlacement: 'on',
@@ -48,23 +48,23 @@ const XAXIS_SETTING = {
     offsetX: 10,
     offsetY: -2,
     style: {
-      colors: '#8D86EB',
+      colors: textColor,
     },
   },
   axisBorder: {
     show: true,
-    color: '#8D86EB',
+    color: textColor,
     width: '100%',
     offsetY: 1,
   },
   axisTicks: {
     show: true,
-    color: '#8D86EB',
+    color: textColor,
   },
   tooltip: {
     enabled: false,
   },
-}
+})
 
 const CHART_SETTING = (moveHandler: (candleValue: number, isOut?: boolean) => void) => ({
   toolbar: {
@@ -156,10 +156,11 @@ export const CANDLESTICK_CHART_OPTIONS = (
   interval: IntervalType,
   moveHandler: (candleValue: number, isOut?: boolean) => void,
   isMobileChart: boolean,
+  textColor: string,
 ) => ({
   chart: CHART_SETTING(moveHandler),
-  xaxis: XAXIS_SETTING,
-  yaxis: YAXIS_SETTING(interval, isMobileChart),
+  xaxis: XAXIS_SETTING(textColor),
+  yaxis: YAXIS_SETTING(interval, textColor, isMobileChart),
   responsive: RESPONSIVE_SETTING,
   grid: GRID_SETTING,
   tooltip: {
@@ -182,9 +183,10 @@ export const AREA_CHART_OPTIONS = (
   interval: IntervalType,
   moveHandler: (candleValue: number, isOut?: boolean) => void,
   isMobileChart: boolean,
+  textColor: string,
 ) => ({
   chart: CHART_SETTING(moveHandler),
-  xaxis: XAXIS_SETTING,
+  xaxis: XAXIS_SETTING(textColor),
   responsive: RESPONSIVE_SETTING,
   tooltip: {
     custom: function ({ dataPointIndex, w }: any) {
@@ -192,7 +194,7 @@ export const AREA_CHART_OPTIONS = (
       return getTooltipMarkup(dataForToltip.y, dataForToltip.x)
     },
   },
-  yaxis: YAXIS_SETTING(interval, isMobileChart),
+  yaxis: YAXIS_SETTING(interval, textColor, isMobileChart),
   grid: GRID_SETTING,
   dataLabels: {
     enabled: false,

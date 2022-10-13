@@ -14,59 +14,6 @@ export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1w' | 'q
 export type ChartTypeType = 'area' | 'candlestick'
 
 export type MavrykTheme = Record<string, string>
-// {
-//   whatMakesBackground: string
-//   calculatorBackground: string
-//   featuresBackground: string
-//   teamCityDecor: string
-//   teamDecor1: string
-//   teamDecor2: string
-//   teamDecor3: string
-//   teamDecor4: string
-//   subscribeBachground: string
-//   starsBachground: string
-//   satellitesGradient: string
-//   skyGradientTransparent: string
-//   skyGradient: string
-//   backgroundColor: string
-//   containerColor: string
-//   textColor: string
-//   subTextColor: string
-//   placeholderColor: string
-//   primaryColor: string
-//   upColor: string
-//   downColor: string
-//   litepaperLinkColor: string
-//   navColor: string
-//   inputBorderColor: string
-//   headerTeam: string
-//   headerColor: string
-//   headerSectionsColor: string
-//   headerDarkColor: string
-//   darkestBackroundColor: string
-//   darkBackroundColor: string
-//   labelColor: string
-//   headingColor: string
-//   btnBackroundColor: string
-//   btnColor: string
-//   linkedinLinkColor: string
-//   socialBackroundColor: string
-//   socialColor: string
-//   inputColor: string
-//   btnBackroundNewsColor: string
-//   btnNewsColor: string
-//   inputNewsBg: string
-//   inputNewsColor: string
-//   roadmapValueColor: string
-//   arrowStrokeColor: string
-//   socialsColor: string
-//   lbBorder: string
-//   toggleButtonBg: string
-//   toggleButtonColor: string
-//   toggleButtonColorSelected: string
-//   toggleButtonBgSelected: string
-//   inputTextColor: string
-// }
 
 export interface WalletState {
   wallet?: BeaconWallet

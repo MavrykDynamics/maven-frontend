@@ -234,21 +234,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
 
   return (
     <ActionScreenWrapper className="swap">
-      <div className={`exchange-block ${isRevertedCoins.from !== 'XTZ' ? 'reverted' : ''}`}>
-        <CustomizedText>XTZ</CustomizedText>
-        <svg
-          onClick={() =>
-            setIsRevertedCoins({
-              from: isRevertedCoins.to,
-              to: isRevertedCoins.from,
-            })
-          }
-        >
-          <use xlinkHref="/icons/sprites.svg#exchange" />
-        </svg>
-        <CustomizedText>tzBTC</CustomizedText>
-      </div>
-
       <div className={`input-wrapper ${isRevertedCoins.from !== 'XTZ' ? 'reverted' : ''}`}>
         <Input
           placeholder={''}

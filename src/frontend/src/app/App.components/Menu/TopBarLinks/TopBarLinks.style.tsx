@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
 import { cyanColor, headerColor, silverColor } from 'styles'
+import { MavrykTheme } from 'utils/interfaces'
 
-export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selected?: boolean }>`
+export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selected?: boolean; theme: MavrykTheme }>`
   margin: 0 25px;
   height: 100%;
   position: relative;
@@ -111,7 +112,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
                   left: 0;
                   bottom: -10px;
                   content: '';
-                  background: #38237c;
+                  background: ${({ theme }) => theme.btnNewsColor};
                 }
               `}
 
@@ -140,7 +141,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
             max-height: 0;
             display: none;
             overflow: hidden;
-            background: #080628;
+            background: ${({ theme }) => theme.darkestBackroundColor};
             margin-top: 10px;
 
             a {
