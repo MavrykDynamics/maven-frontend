@@ -106,9 +106,19 @@ export const LBChartView = ({
       {chartData.length ? (
         <div className="chart-wrapper">
           {selectedChartType === 'area' ? (
-            <AreaChart chartData={chartData} interval={selectedInterval} moveHandler={chartMouseMoveHandler} />
+            <AreaChart
+              isMobileChart={isMobileChart}
+              chartData={chartData}
+              interval={selectedInterval}
+              moveHandler={chartMouseMoveHandler}
+            />
           ) : (
-            <CandlestickChart chartData={chartData} interval={selectedInterval} moveHandler={chartMouseMoveHandler} />
+            <CandlestickChart
+              isMobileChart={isMobileChart}
+              chartData={chartData}
+              interval={selectedInterval}
+              moveHandler={chartMouseMoveHandler}
+            />
           )}
         </div>
       ) : null}

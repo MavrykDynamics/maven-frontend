@@ -13,17 +13,17 @@ const GRID_SETTING = {
   show: false,
 }
 
-const YAXIS_SETTING = (interval: IntervalType) => ({
+const YAXIS_SETTING = (interval: IntervalType, isMobile?: boolean) => ({
   opposite: true,
   show: true,
-  showAlways: true,
+  showAlways: !isMobile,
   showForNullSeries: true,
   tickAmount: 8,
   min: (min: number) => (min - INTERVAL_PRICE_CUSHION[interval] >= 0 ? min - INTERVAL_PRICE_CUSHION[interval] : min),
   max: (max: number) => max + INTERVAL_PRICE_CUSHION[interval],
   labels: {
     show: true,
-    formatter: (value: any) => parseInt(value).toFixed(4),
+    formatter: (value: any) => parseInt(value).toFixed(isMobile ? 1 : 4),
     style: {
       colors: '#8D86EB',
     },
@@ -155,10 +155,11 @@ const RESPONSIVE_SETTING = [
 export const CANDLESTICK_CHART_OPTIONS = (
   interval: IntervalType,
   moveHandler: (candleValue: number, isOut?: boolean) => void,
+  isMobileChart: boolean,
 ) => ({
   chart: CHART_SETTING(moveHandler),
   xaxis: XAXIS_SETTING,
-  yaxis: YAXIS_SETTING(interval),
+  yaxis: YAXIS_SETTING(interval, isMobileChart),
   responsive: RESPONSIVE_SETTING,
   grid: GRID_SETTING,
   tooltip: {
@@ -180,6 +181,7 @@ export const CANDLESTICK_CHART_OPTIONS = (
 export const AREA_CHART_OPTIONS = (
   interval: IntervalType,
   moveHandler: (candleValue: number, isOut?: boolean) => void,
+  isMobileChart: boolean,
 ) => ({
   chart: CHART_SETTING(moveHandler),
   xaxis: XAXIS_SETTING,
@@ -190,7 +192,7 @@ export const AREA_CHART_OPTIONS = (
       return getTooltipMarkup(dataForToltip.y, dataForToltip.x)
     },
   },
-  yaxis: YAXIS_SETTING(interval),
+  yaxis: YAXIS_SETTING(interval, isMobileChart),
   grid: GRID_SETTING,
   dataLabels: {
     enabled: false,

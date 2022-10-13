@@ -5,9 +5,11 @@ import { IntervalType } from 'utils/interfaces'
 const AreaChart = ({
   chartData,
   interval,
+  isMobileChart,
   moveHandler,
 }: {
   chartData: any
+  isMobileChart: boolean
   interval: IntervalType
   moveHandler: (value: number, isOut?: boolean) => void
 }) => {
@@ -15,7 +17,7 @@ const AreaChart = ({
     // @ts-ignore
     <Chart
       series={[{ data: chartData }]}
-      options={AREA_CHART_OPTIONS(interval, moveHandler)}
+      options={AREA_CHART_OPTIONS(interval, moveHandler, isMobileChart)}
       type="area"
       height={'550px'}
       width={'100%'}

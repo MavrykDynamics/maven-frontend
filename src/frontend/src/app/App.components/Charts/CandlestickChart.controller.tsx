@@ -6,8 +6,10 @@ const CandlestickChart = ({
   chartData,
   interval,
   moveHandler,
+  isMobileChart,
 }: {
   chartData: any
+  isMobileChart: boolean
   interval: IntervalType
   moveHandler: (value: number, isOut?: boolean) => void
 }) => {
@@ -15,7 +17,7 @@ const CandlestickChart = ({
     // @ts-ignore
     <Chart
       series={[{ data: chartData }]}
-      options={CANDLESTICK_CHART_OPTIONS(interval, moveHandler)}
+      options={CANDLESTICK_CHART_OPTIONS(interval, moveHandler, isMobileChart)}
       type="candlestick"
       height={'550px'}
       width={'100%'}

@@ -25,6 +25,10 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
 
     .chart-wrapper {
       width: 100%;
+
+      @media screen and (max-width: 570px) {
+        width: 105%;
+      }
     }
 
     .chart-controlls {
@@ -57,6 +61,16 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
       .toggle-btn {
         padding: 10px 25px;
         font-size: 16px;
+      }
+    }
+
+    @media screen and (max-width: 550px) {
+      align-items: center;
+      .chart-toggler {
+        .toggle-btn {
+          padding: 10px 14px;
+          font-size: 14px;
+        }
       }
     }
   }
