@@ -2,8 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
-import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
-import { getSettings } from 'utils/DEX/DexCalcs'
+import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { nonNumberSymbolsValidation, parseSrtToNum, slippagePercentToValue } from 'utils/utils'
 import { State } from 'utils/interfaces'
 

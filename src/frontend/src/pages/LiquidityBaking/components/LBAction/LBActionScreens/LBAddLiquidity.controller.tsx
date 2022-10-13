@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
+import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { subHeaderColor } from 'styles'
 
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
@@ -20,7 +20,6 @@ import { AddLiquidityOnlyXTZ } from './AddLiquidityOnlyXTZ.controller'
 import { Button } from 'app/App.components/Button/Button.controller'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
-import { getSettings } from '../../../../../utils/DEX/DexCalcs'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
 import { addLiquidity, addLiquidityOnlyXTZ } from 'redux/actions/liquidity.action'
 import { calculateTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
@@ -51,7 +50,6 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
   const [selectedSlippage, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [slippagePercent, setSlippagePercent] = useState<string | number>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
   const [switchValue, setSwitchValue] = useState(false)
-  const [lastCoinUpdated, setLastCoinUpdated] = useState<null | 'XTZ' | 'tzBTC'>(null)
   const [lqtReceived, setLqtReceived] = useState(0)
   const [minlqtReceived, setMinLqtReceived] = useState(0)
   const [priceImpact, setPriceImpact] = useState(0)
@@ -66,7 +64,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
     let inputAmount = amount
     if (name === 'tzBTC') {
-      const { expected, minimum, rate, priceImpact } = calculateTokenToXtz(
+      const { expected } = calculateTokenToXtz(
         amount,
         generalDexStats.tezPool,
         generalDexStats.tokenPool,

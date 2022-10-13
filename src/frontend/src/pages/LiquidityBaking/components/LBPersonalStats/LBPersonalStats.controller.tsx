@@ -28,8 +28,6 @@ export const LBPersonalStats = ({ generalStats }: { generalStats: LBGeneralStats
     accountPkh ? [GET_PERSONAL_STATS_QUERY, personalStatsQueryVars] : null,
   )
 
-  console.log('personalStats', personalStats)
-
   const checkPersonalStatsLoading = !personalStatsError && !personalStats
 
   const calcEstimatedTzBTCOwned = useCallback(() => {

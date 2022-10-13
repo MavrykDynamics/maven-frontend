@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { cyanColor } from 'styles'
 import { BLOCK_RADIUS } from 'styles/constants'
 import { MavrykTheme } from 'utils/interfaces'
 
