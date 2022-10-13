@@ -28,7 +28,7 @@ const LiquidityBaking = () => {
   return (
     <SWRConfig
       value={{
-        refreshInterval: 10000,
+        refreshInterval: 5000,
         fetcher: dexGqlFetcher,
       }}
     >
@@ -36,6 +36,7 @@ const LiquidityBaking = () => {
         <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
         <LiquidityBakingView />
       </LBStyled>
+
       <Footer />
     </SWRConfig>
   )
