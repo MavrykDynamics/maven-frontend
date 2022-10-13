@@ -5,8 +5,6 @@ import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { getSettings } from 'utils/DEX/DexCalcs'
 import { nonNumberSymbolsValidation, parseSrtToNum, slippagePercentToValue } from 'utils/utils'
-// @ts-ignore
-import dexterCalculations from 'dexCalcs/dist/index-mobile.min'
 import { State } from 'utils/interfaces'
 
 import { Button } from 'app/App.components/Button/Button.controller'
@@ -17,11 +15,10 @@ import { MinimumReceived } from 'app/App.components/LBActionBottomFields/Minimum
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
 import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
 
-import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
 import { cyanColor, subHeaderColor } from 'styles'
 import { ActionScreenWrapper } from '../LBAction.style'
-import { Dex } from '../../../../../utils/DEX/Dex'
 import { swapTokenToXtz, swapXtzToToken } from '../../../../../redux/actions/swap.action'
 
 import { calculateTokenToXtz as CalcTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
@@ -90,15 +87,12 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       dexType,
     )
     console.log('logging result of calculateTokenToXTZ', expected, minimum, rate, priceImpact)
-    setInputValues({
-      ...inputValues,
-      tzBTC: amount,
-      XTZ: expected,
-    })
 
-    setExchangeRate(rate)
+    setExchangeRate(amount !== 0 ? rate : Number(coinPrices.tzbtc.usd))
     setMinReceived(minimum)
     setPriceImpact(priceImpact)
+
+    return expected
   }
 
   const calculateXtzToToken = (amount: number) => {
@@ -110,45 +104,12 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       convertedSlippagePercentToValue,
       dexType,
     )
-    setInputValues({
-      ...inputValues,
-      tzBTC: expected,
-      XTZ: amount,
-    })
-    setExchangeRate(rate)
+
+    setExchangeRate(amount !== 0 ? rate : Number(coinPrices.tzbtc.usd))
     setMinReceived(minimum)
     setPriceImpact(priceImpact)
-  }
 
-  const dynamicSwapCalculations = ({
-    newSlippagePersent,
-    newCoinAmountValue,
-    newFromValue,
-    newToValue,
-  }: {
-    newSlippagePersent?: string | number
-    newCoinAmountValue?: string | number
-    newFromValue?: 'XTZ' | 'tzBTC'
-    newToValue?: 'XTZ' | 'tzBTC'
-  }) => {
-    const convertedSlippagePersentToValue = slippagePercentToValue(newSlippagePersent ?? slippagePercent)
-    // const { expected, priceImpact, minimum } = swapCalculateCoinReceive(
-    //   newFromValue || isRevertedCoins.from,
-    //   newToValue || isRevertedCoins.to,
-    //   parseSrtToNum(newCoinAmountValue ?? inputValues[isRevertedCoins.from]),
-    //   xtz_pool,
-    //   token_pool,
-    //   convertedSlippagePersentToValue,
-    //     dexSettings,
-    // )
-
-    // setInputValues({
-    //   ...inputValues,
-    //   [newFromValue || isRevertedCoins.from]: newCoinAmountValue ?? inputValues[isRevertedCoins.from],
-    //   [newToValue || isRevertedCoins.to]: parseSrtToNum(expected.toFixed(5)),
-    // })
-    // setMinReceived(minimum)
-    // setPriceImpact(priceImpact)
+    return expected
   }
 
   // handle slippage value changing
@@ -156,7 +117,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
     const newSlippagePercent = Number(parseSrtToNum(value) < 0 ? 0 : value)
     if (newSlippagePercent >= 0 && newSlippagePercent <= 100) {
       setSlippagePercent(value)
-      dynamicSwapCalculations({ newSlippagePersent: newSlippagePercent })
     }
 
     if (!isInput) {
@@ -178,12 +138,16 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       })
     }
 
+    const parsedValue = isNaN(parseFloat(value)) ? 0 : parseFloat(value)
+
     if (name === 'XTZ') {
-      setAmountToSwap(parseFloat(value))
-      calculateXtzToToken(parseFloat(value))
+      setAmountToSwap(parsedValue)
+      const tzBTCValue = calculateXtzToToken(parsedValue)
+      setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
     } else {
-      setAmountToSwap(parseFloat(value))
-      calculateTokenToXtz(parseFloat(value))
+      setAmountToSwap(parsedValue)
+      const XTZ_Value = calculateTokenToXtz(parsedValue)
+      setInputValues({ ...inputValues, XTZ: XTZ_Value, [name]: value })
     }
   }
 
@@ -221,12 +185,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       setIsRevertedCoins({
         from,
         to,
-      })
-
-      dynamicSwapCalculations({
-        newCoinAmountValue: BALANCE_BY_COIN[from],
-        newFromValue: from,
-        newToValue: to,
       })
     },
     [BALANCE_BY_COIN, inputValues, slippagePercent],
@@ -293,6 +251,8 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
           onKeyDown={nonNumberSymbolsValidation}
           onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
           onBlur={() => {
+            console.log('inputValues', inputValues)
+
             if (inputValues.tzBTC === '') {
               setInputValues({
                 ...inputValues,
@@ -329,6 +289,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
               showDecimal
               decimalsToShow={8}
               endingText="tzBTC"
+              maxSymbols={10}
             />
           </CustomizedText>
         </div>
