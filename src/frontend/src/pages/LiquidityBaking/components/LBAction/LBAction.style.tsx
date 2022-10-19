@@ -60,12 +60,16 @@ export const ToggleButtonsWrapper = styled.div`
   position: relative;
 
   @media screen and (max-width: 520px) {
-    margin: 0;
     margin-bottom: 30px;
     width: 100%;
 
+    .top {
+      justify-content: space-between;
+    }
+
     .action-toggler {
       width: 100%;
+      margin: 0;
 
       &.main {
         width: 80%;
