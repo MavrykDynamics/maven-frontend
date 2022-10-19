@@ -160,7 +160,7 @@ export const MobileTopBarStyled = styled.div<{ show: boolean; theme: MavrykTheme
   max-height: 0;
   left: 0;
   top: 80px;
-  background: ${({ theme }) => theme.backgroundColor};
+  background: ${({ theme }) => theme.darkBackroundColor};
   z-index: ${MENU_Z_INDEX};
   transition: 0.5s all;
   overflow: hidden;

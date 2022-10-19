@@ -155,14 +155,10 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     }
   }
 
-  &.start_verification {
-    border: 1px solid ${cyanColor};
-    color: ${headerColor};
-    background: ${({ theme }) => theme.settingsConfigmBG};
-
+  &.popup_btn {
+    margin: 0;
     svg {
-      stroke: ${headerColor};
-      fill: ${headerColor};
+      stroke: unset;
       stroke-width: 0.3;
     }
   }

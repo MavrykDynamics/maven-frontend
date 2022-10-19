@@ -176,7 +176,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
             visibility: hidden;
             width: fit-content;
             border-radius: 10px;
-            border: 1px solid #86d4c9;
+            border: 1px solid ${({ theme }) => theme.topBarLinkColor};
           }
 
           &:hover {

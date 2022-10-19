@@ -11,7 +11,7 @@ import {
   setNewRPCNodes,
 } from 'redux/actions/preferences.action'
 import { RPCNodeType, State } from 'utils/interfaces'
-import { ACTION_PRIMARY, TRANSPARENT } from '../Button/Button.constants'
+import { ACTION_PRIMARY, PRIMARY, TRANSPARENT } from '../Button/Button.constants'
 import { Button } from '../Button/Button.controller'
 
 import {
@@ -89,10 +89,10 @@ export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) 
 
         <Button
           onClick={confirmHandler}
-          className="popup_btn default_svg start_verification"
+          className="popup_btn default_svg LB"
           text="Confirm"
           icon="okIcon"
-          kind={ACTION_PRIMARY}
+          kind={PRIMARY}
         />
       </div>
 
