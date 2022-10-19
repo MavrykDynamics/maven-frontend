@@ -105,9 +105,14 @@ export const InputView = ({
 
         {isLB && pinnedText && icon ? (
           <div className="LB-coin-info">
-            <svg>
-              <use xlinkHref={`/icons/sprites.svg#${icon}`} />
-            </svg>
+            {icon.includes('.png') ? (
+              <img src={`/images/${icon}`} />
+            ) : (
+              <svg>
+                <use xlinkHref={`/icons/sprites.svg#${icon}`} />
+              </svg>
+            )}
+
             <CustomizedText color="#C0DBFF" fontSize={22} fontWidth={600}>
               {pinnedText}
             </CustomizedText>

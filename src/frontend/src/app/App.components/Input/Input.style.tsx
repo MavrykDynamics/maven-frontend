@@ -43,7 +43,8 @@ export const InputComponentContainer = styled.div<{ theme: MavrykTheme }>`
     transform: translateY(-50%);
     right: 17px;
 
-    svg {
+    svg,
+    img {
       width: 28px;
       height: 28px;
       margin-right: 10px;

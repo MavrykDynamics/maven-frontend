@@ -116,7 +116,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
         type={'number'}
         kind={'LB'}
         value={inputValues.SIR}
-        icon={'siriusLogo'}
+        icon={'sirius-icon.png'}
         pinnedText={'SIR'}
         onKeyDown={nonNumberSymbolsValidation}
         onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}

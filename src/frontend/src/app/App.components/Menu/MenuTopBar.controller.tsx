@@ -94,11 +94,9 @@ export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
       </div>
 
       <div className="mobile-menu">
-        {showMobileTopBar ? (
-          <div className="settingsIcon" onClick={openChangeNodePopupHandler}>
-            <Icon id="gear" />
-          </div>
-        ) : null}
+        <div className="settingsIcon" onClick={openChangeNodePopupHandler}>
+          <Icon id="gear" />
+        </div>
 
         <Link to="/">
           <MenuLogo alt="logo" className={'mobile-logo'} src={logoMobile} />

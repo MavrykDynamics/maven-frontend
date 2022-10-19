@@ -188,6 +188,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         from,
         to,
       })
+      inputChangeHandler({ target: { name: from, value: BALANCE_BY_COIN[from].toString() } })
     },
     [BALANCE_BY_COIN, inputValues, slippagePercent],
   )

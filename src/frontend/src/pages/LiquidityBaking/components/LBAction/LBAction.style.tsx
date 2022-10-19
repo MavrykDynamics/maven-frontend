@@ -65,6 +65,7 @@ export const ToggleButtonsWrapper = styled.div`
 
     .top {
       justify-content: space-between;
+      column-gap: 0px;
     }
 
     .action-toggler {
@@ -78,6 +79,7 @@ export const ToggleButtonsWrapper = styled.div`
   }
 
   .top {
+    column-gap: 20px;
     display: flex;
     @media screen and (max-width: 520px) {
       .main {
