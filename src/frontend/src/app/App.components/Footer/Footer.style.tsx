@@ -24,6 +24,7 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
     div {
       > div {
         color: ${({ theme }) => theme.footerText};
+        font-size: 16px;
       }
     }
 
