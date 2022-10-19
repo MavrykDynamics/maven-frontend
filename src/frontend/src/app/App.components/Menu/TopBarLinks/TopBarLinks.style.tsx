@@ -19,6 +19,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
     transition: 0.35s all;
     cursor: pointer;
     color: ${({ theme }) => theme.topBarLinkColor};
+    font-weight: 600;
     display: flex;
     align-items: center;
 
@@ -38,15 +39,15 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
     }
 
     &:hover {
-      color: ${cyanColor};
+      color: ${({ theme }) => theme.topBarLinkColorActive};
 
       svg {
-        stroke: ${cyanColor};
+        stroke: ${({ theme }) => theme.topBarLinkColorActive};
         transform: rotate(90deg);
       }
 
       a {
-        color: ${cyanColor};
+        color: ${({ theme }) => theme.topBarLinkColorActive};
       }
     }
 
@@ -65,17 +66,27 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
 
     a {
       text-transform: capitalize;
+      position: relative;
       white-space: nowrap;
       font-size: 18px;
       transition: 0.35s all;
       width: 120%;
       padding: 6px 0;
+      font-weight: 600;
       padding-left: 10px;
       border-radius: 5px;
       color: ${({ theme }) => theme.topBarLinkColor};
       &:hover {
-        color: ${cyanColor};
-        background: ${headerColor};
+        color: ${({ theme }) => theme.topBarLinkColorActive};
+
+        &::before {
+          content: '✓';
+          position: absolute;
+          right: 0px;
+          font-size: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
       }
     }
   }
@@ -117,10 +128,10 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
               `}
 
             &.selected {
-              color: ${cyanColor};
+              color: ${({ theme }) => theme.topBarLinkColorActive};
 
               svg {
-                stroke: ${cyanColor};
+                color: ${({ theme }) => theme.topBarLinkColorActive};
                 transform: rotate(90deg);
               }
             }
@@ -175,10 +186,10 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
             }
 
             .group-name {
-              color: ${cyanColor};
+              color: ${({ theme }) => theme.topBarLinkColorActive};
 
               svg {
-                stroke: ${cyanColor};
+                color: ${({ theme }) => theme.topBarLinkColorActive};
               }
             }
           }

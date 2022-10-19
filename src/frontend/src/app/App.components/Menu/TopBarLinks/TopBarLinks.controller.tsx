@@ -1,5 +1,4 @@
 import Icon from 'app/App.components/Icon/Icon.view'
-
 import { TopBarLinksStyled } from './TopBarLinks.style'
 
 type TopBarLinksProps = {
