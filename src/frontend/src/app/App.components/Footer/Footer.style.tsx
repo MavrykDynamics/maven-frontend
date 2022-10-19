@@ -18,10 +18,18 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
     --max-container: calc(100vw - 80px);
   }
 
-  &.lb {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+  &.LB {
+    --max-container: 90vw;
+
+    div {
+      > div {
+        color: ${({ theme }) => theme.footerText};
+      }
+    }
+
+    @media (min-width: 1700px) {
+      --max-container: calc(100vw - 550px);
+    }
   }
 `
 

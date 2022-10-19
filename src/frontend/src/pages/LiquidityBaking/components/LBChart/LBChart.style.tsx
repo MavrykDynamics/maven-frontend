@@ -99,12 +99,16 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
         transform: rotate(90deg);
         width: 21px;
         height: 21px;
-        fill: #8d86eb;
+        fill: ${({ theme }) => theme.toggleButtonColor};
       }
 
       .info {
         display: flex;
         flex-direction: column;
+
+        .value {
+          color: ${({ theme }) => theme.priceImpact};
+        }
       }
     }
   }

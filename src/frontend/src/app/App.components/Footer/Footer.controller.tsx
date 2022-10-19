@@ -1,5 +1,5 @@
 import { FooterView } from './Footer.view'
 
-export const Footer = () => {
-  return <FooterView />
+export const Footer = ({ className }: { className?: string }) => {
+  return <FooterView className={className} />
 }

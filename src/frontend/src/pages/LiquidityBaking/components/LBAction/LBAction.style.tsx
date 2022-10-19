@@ -54,26 +54,31 @@ export const ToggleButtonsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 0 auto;
   margin-bottom: 30px;
   width: fit-content;
   position: relative;
 
-  .top {
-    display: flex;
-    column-gap: 20px;
-    @media screen and (max-width: 610px) {
-      .main {
-        > div {
-          width: 150px;
-        }
+  @media screen and (max-width: 520px) {
+    margin: 0;
+    margin-bottom: 30px;
+    width: 100%;
+
+    .action-toggler {
+      width: 100%;
+
+      &.main {
+        width: 80%;
       }
     }
+  }
 
-    @media screen and (max-width: 450px) {
+  .top {
+    display: flex;
+    @media screen and (max-width: 520px) {
       .main {
         > div {
-          width: 110px;
+          width: 50%;
         }
       }
     }
@@ -95,7 +100,7 @@ export const ToggleButtonsWrapper = styled.div`
     .action-toggler {
       .toggle-btn {
         font-size: 14px;
-        padding: 10px 15px;
+        padding: 10px 8px;
       }
     }
   }
@@ -244,8 +249,8 @@ export const ActionScreenWrapper = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const PriceChange = styled.div<{ up?: boolean }>`
-  color: ${({ up }) => (up ? '#27AE60' : '#FF4343')};
+export const PriceChange = styled.div<{ up?: boolean; theme: MavrykTheme }>`
+  color: ${({ up, theme }) => (up ? theme.priceImpact : theme.downColor)};
   font-weight: 600;
   font-size: 18px;
   line-height: 18px;

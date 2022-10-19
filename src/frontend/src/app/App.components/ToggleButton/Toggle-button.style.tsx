@@ -21,8 +21,9 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   }
 
   &.action-toggler {
+    height: 40px;
     div {
-      width: 200px;
+      height: 39px;
     }
   }
 
@@ -35,14 +36,6 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   @media screen and (max-width: 490px) {
     &.chart-toggler {
       max-height: 30px;
-    }
-  }
-
-  @media screen and (max-width: 540px) {
-    &.action-toggler {
-      div {
-        width: fit-content;
-      }
     }
   }
 `

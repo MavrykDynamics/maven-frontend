@@ -60,7 +60,7 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
       }
 
       svg {
-        fill: ${silverColor};
+        fill: ${({ theme }) => theme.socialColor};
         width: 33px;
         height: 33px;
       }

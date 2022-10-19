@@ -37,7 +37,7 @@ const LiquidityBaking = () => {
         <LiquidityBakingView />
       </LBStyled>
 
-      <Footer />
+      <Footer className="LB" />
     </SWRConfig>
   )
 }

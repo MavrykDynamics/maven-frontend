@@ -95,7 +95,7 @@ export const LBChartView = ({
             <CustomizedText color="#8D86EB" fontSize={14} fontWidth={600}>
               XTZ/tzBTC (Sirius)
             </CustomizedText>
-            <CustomizedText color={cyanColor} fontSize={14} fontWidth={600}>
+            <CustomizedText fontSize={14} fontWidth={600} className="value">
               <CommaNumber value={xtztzBTC} endingText="ꜩ" />
             </CustomizedText>
           </div>

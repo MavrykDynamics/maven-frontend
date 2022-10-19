@@ -87,7 +87,9 @@ export const darkMode: MavrykTheme = {
   actionPrimaryBtnColor: cyanColor,
   tooltipColor: '#9EA9E8',
   tooltipBg: '#38237C',
-  theme: 'dark'
+  priceImpact: cyanColor,
+  footerText: silverColor,
+  theme: 'dark',
 }
 
 export const lightMode: MavrykTheme = {
@@ -131,6 +133,7 @@ export const lightMode: MavrykTheme = {
   headerDarkColor: headerColor,
   roadmapValueColor: headerColor,
   headerTeam: '#27007A',
+  priceImpact: '#27007A',
   btnNewsColor: '#fff',
   inputNewsBg: 'rgba(255, 255, 255, 0.5)',
   inputNewsColor: '#080628',
@@ -149,7 +152,8 @@ export const lightMode: MavrykTheme = {
   actionPrimaryBtnColor: cyanColor,
   tooltipColor: '#9EA9E8',
   tooltipBg: '#38237C',
-  theme: 'light'
+  footerText: '#38237C',
+  theme: 'light',
 }
 
 export const spaceMode: MavrykTheme = {
@@ -211,7 +215,9 @@ export const spaceMode: MavrykTheme = {
   actionPrimaryBtnColor: cyanColor,
   tooltipColor: '#9ea9e8',
   tooltipBg: '#38237C',
-  theme: 'space'
+  priceImpact: cyanColor,
+  footerText: silverColor,
+  theme: 'space',
 }
 
 export default {

@@ -7,7 +7,7 @@ const LBFAQ = () => {
     <LBFAQStyled>
       <FaqItem>
         <CustomizedText fontSize={25} fontWidth={700} color={'#8D86EB'} className="title">
-          What is Liquidity Baking?
+          What is Liquidity Baking DEX (Sirius)?
         </CustomizedText>
         <CustomizedText lineHeight={27}>
           Liquidity baking (LB) is a protocol level DeFi feature of the Tezos blockchain. LB is a stand-alone DEX which
