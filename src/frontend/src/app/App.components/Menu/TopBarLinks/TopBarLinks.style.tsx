@@ -82,7 +82,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
         &::before {
           content: '✓';
           position: absolute;
-          right: 0px;
+          right: 10px;
           font-size: 18px;
           top: 50%;
           transform: translateY(-50%);
@@ -174,7 +174,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
             top: 85px;
             opacity: 0;
             visibility: hidden;
-            width: 215px;
+            width: 250px;
             border-radius: 10px;
             border: 1px solid ${({ theme }) => theme.topBarLinkColor};
           }
