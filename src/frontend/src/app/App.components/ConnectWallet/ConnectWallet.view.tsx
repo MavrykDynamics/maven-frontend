@@ -4,6 +4,7 @@ import { ACTION_PRIMARY, PRIMARY, TRANSPARENT } from '../Button/Button.constants
 import { Button } from '../Button/Button.controller'
 import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import Icon from '../Icon/Icon.view'
+import { BLUE } from '../TzAddress/TzAddress.constants'
 import { TzAddress } from '../TzAddress/TzAddress.view'
 import {
   ConnectedWalletStyled,
@@ -54,7 +55,7 @@ export const MobileDetailsBlock = ({
       <div className="top-visible-part ">
         <Icon id="wallet" className="wallet" />
         <var>
-          <TzAddress tzAddress={accountPkh} hasIcon={false} shouldCopy={false} />
+          <TzAddress tzAddress={accountPkh} hasIcon shouldCopy />
         </var>
         <Icon id="openLinkRight" className="openLink" />
       </div>
@@ -144,6 +145,19 @@ export const ConnectedWalletBlock = ({
       </div>
 
       <div className={`wallet-details ${detailsShown ? 'visible' : ''} ${isMobile ? 'mobile' : ''}`}>
+        <div className="wallet-details-header">
+          <div className="details-wallet ">
+            <Icon id="wallet" className="wallet hover" />
+            <var className="wallet-details-address hover">
+              <TzAddress tzAddress={accountPkh} hasIcon type={BLUE} />
+            </var>
+          </div>
+
+          <a href={`https://tzstats.com/${accountPkh}`} target="_blank" rel="noreferrer">
+            <Icon id="send" className="icon-send" />
+          </a>
+        </div>
+
         <ConnectedWalletDetailsItem
           buttonText={'Buy XTZ'}
           coinAmount={coinsInfo.userXTZBalance}

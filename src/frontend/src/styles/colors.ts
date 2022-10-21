@@ -94,6 +94,7 @@ export const darkMode: MavrykTheme = {
   policyPopupTextColor: '#d0cfd9',
   tooltipValue: cyanColor,
   tooltipDate: '#8d86eb',
+  headerSkyColor: skyColor,
   theme: 'dark',
 }
 
@@ -164,6 +165,7 @@ export const lightMode: MavrykTheme = {
   tooltipValue: '#FFFFFF  ',
   tooltipDate: '#FFFFFF  ',
   chartTooltipBg: '#503EAA',
+  headerSkyColor: darkColor,
   theme: 'light',
 }
 
@@ -237,6 +239,7 @@ export const spaceMode: MavrykTheme = {
   tooltipDate: '#8d86eb',
   chartTooltipBg: '#160e3f',
   theme: 'space',
+  headerSkyColor: skyColor,
 }
 
 export default {

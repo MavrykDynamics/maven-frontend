@@ -141,9 +141,6 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
     border: 1px solid ${({ theme }) => theme.selectedColor};
     border-radius: 10px;
 
-    opacity: 1;
-    visibility: visible;
-
     &.visible {
       opacity: 1;
       visibility: visible;
@@ -155,6 +152,73 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
 
     .buttons-wrapper {
       align-items: center;
+    }
+
+    .wallet-details-header {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding-bottom: 30px;
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 15px;
+        width: 375px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 1px;
+        background: #503eaa;
+      }
+
+      .details-wallet {
+        display: flex;
+        column-gap: 10px;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 22px;
+        color: ${({ theme: { toggleButtonColor } }) => toggleButtonColor};
+
+        var {
+          font-style: normal;
+          > div {
+            svg {
+              display: none;
+            }
+
+            &:hover {
+              svg {
+                display: block;
+              }
+            }
+          }
+        }
+
+        svg {
+          &.wallet {
+            width: 27px;
+            height: 22px;
+          }
+
+          stroke: ${({ theme: { toggleButtonColor } }) => toggleButtonColor};
+          fill: transparent;
+        }
+      }
+
+      a {
+        svg {
+          width: 16px;
+          height: 16px;
+          fill: transparent;
+          stroke: ${({ theme: { toggleButtonColor } }) => toggleButtonColor};
+        }
+
+        &:hover {
+          svg {
+            stroke: ${({ theme }) => theme.selectedColor};
+          }
+        }
+      }
     }
   }
 
@@ -199,6 +263,11 @@ export const MobileDetailsStyled = styled.div<{ theme: MavrykTheme }>`
   .top-visible-part {
     width: fit-content;
     margin: 25px auto;
+
+    svg {
+      stroke: ${({ theme: { linkedinLinkColor } }) => linkedinLinkColor};
+      fill: transparent;
+    }
   }
 
   .details {
