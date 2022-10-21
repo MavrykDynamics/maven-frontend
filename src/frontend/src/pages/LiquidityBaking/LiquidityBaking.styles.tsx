@@ -94,6 +94,10 @@ export const HorisontalInfo = styled.div`
       .swap-toggler {
         .toggle-btn {
           padding: 8px 13px;
+
+          @media screen and (max-width: 625px) {
+            padding: 9px 13px;
+          }
         }
       }
     }
