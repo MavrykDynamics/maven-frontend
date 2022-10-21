@@ -10,7 +10,7 @@ import { togglePolicyPopup, toggleRPCNodePopup } from 'redux/actions/preferences
 import Loader from './App.components/Loader/Loader.view'
 
 import { useCallback, useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import { AnyAction } from 'redux'
 import { useDispatch, useSelector } from 'react-redux'
@@ -35,7 +35,6 @@ export const App = () => {
   }, [policyPopupFromCookie])
 
   const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [])
-  const closePolicyHandler = useCallback(() => dispatch(togglePolicyPopup(false)), [])
   const proccedPolicy = useCallback(() => {
     setCookie('policyPopup', true)
     dispatch(togglePolicyPopup(false))
@@ -44,11 +43,7 @@ export const App = () => {
   return (
     <Router>
       {/* <Popup /> */}
-      <PolicyPopup
-        isModalOpened={policyPopup && page === '/liquidity-baking'}
-        closeModal={closePolicyHandler}
-        proccedPolicy={proccedPolicy}
-      />
+      <PolicyPopup isModalOpened={policyPopup && page === '/liquidity-baking'} proccedPolicy={proccedPolicy} />
       {loader ? <Loader loaderType={loader} /> : null}
       <Switch>
         <Route

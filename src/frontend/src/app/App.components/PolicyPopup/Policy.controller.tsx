@@ -9,11 +9,9 @@ import { PolicyStyled } from './Policy.style'
 
 export const PolicyPopup = ({
   isModalOpened,
-  closeModal,
   proccedPolicy,
 }: {
   isModalOpened: boolean
-  closeModal: () => void
   proccedPolicy: () => void
 }) => {
   useLockBodyScroll(isModalOpened)
@@ -22,7 +20,7 @@ export const PolicyPopup = ({
   return (
     <PopupStyled>
       <CSSTransition in={isModalOpened} timeout={200} classNames="popup" unmountOnExit>
-        <PopupContainer onClick={closeModal}>
+        <PopupContainer style={{ zIndex: 15 }}>
           <PolicyStyled onClick={(e: React.MouseEvent) => e.stopPropagation()}>
             <div className="title">Disclaimer: Risks of Using Protocol</div>
 

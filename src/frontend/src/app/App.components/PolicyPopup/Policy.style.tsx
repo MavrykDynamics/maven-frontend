@@ -64,7 +64,7 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
       display: block;
       min-height: 50px;
       position: sticky;
-      bottom: 0;
+      bottom: -3px;
       pointer-events: none;
       background: ${({ theme }) => `linear-gradient(transparent 0%,  ${theme.backgroundColor} 100%)`};
     }
@@ -152,6 +152,40 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
       -webkit-transform: rotate(35deg);
       -ms-transform: rotate(35deg);
       transform: rotate(35deg);
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    max-width: 90vw;
+    height: fit-content;
+    max-height: 80vh;
+    padding: 40px 20px;
+
+    > .title {
+      font-size: 20px;
+    }
+
+    .main_text {
+      .text {
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+
+    .checkbox_wrapper {
+      column-gap: 15px;
+
+      p {
+        margin-left: 5px;
+        padding-top: 10px;
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+
+    .popup_btn {
+      padding: 10px;
+      margin: 20px auto 0 auto;
     }
   }
 `
