@@ -92,7 +92,8 @@ export const darkMode: MavrykTheme = {
   priceImpact: cyanColor,
   footerText: silverColor,
   policyPopupTextColor: '#d0cfd9',
-
+  tooltipValue: cyanColor,
+  tooltipDate: '#8d86eb',
   theme: 'dark',
 }
 
@@ -160,6 +161,9 @@ export const lightMode: MavrykTheme = {
   tooltipBg: '#38237C',
   footerText: '#38237C',
   policyPopupTextColor: '#27007A',
+  tooltipValue: '#FFFFFF  ',
+  tooltipDate: '#FFFFFF  ',
+  chartTooltipBg: '#503EAA',
   theme: 'light',
 }
 
@@ -229,6 +233,9 @@ export const spaceMode: MavrykTheme = {
   priceImpact: cyanColor,
   footerText: silverColor,
   policyPopupTextColor: '#d0cfd9',
+  tooltipValue: cyanColor,
+  tooltipDate: '#8d86eb',
+  chartTooltipBg: '#160e3f',
   theme: 'space',
 }
 

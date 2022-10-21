@@ -16,12 +16,11 @@ const AreaChart = ({
   moveHandler: (value: number, isOut?: boolean) => void
 }) => {
   const theme = useSelector((state: State) => state.preferences.themeSelected)
-  const textColor = Colors[theme].toggleButtonColor
   return (
     // @ts-ignore
     <Chart
       series={[{ data: chartData }]}
-      options={AREA_CHART_OPTIONS(interval, moveHandler, isMobileChart, textColor)}
+      options={AREA_CHART_OPTIONS(interval, moveHandler, isMobileChart, Colors[theme])}
       type="area"
       height={'550px'}
       width={'100%'}

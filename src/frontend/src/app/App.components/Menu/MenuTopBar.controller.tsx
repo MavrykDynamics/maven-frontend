@@ -35,7 +35,7 @@ export const SocialIcons = () => (
 )
 
 export const PRODUCTS_LINKS = [
-  { name: 'Dapp', href: 'https://front-dev.mavryk-dapp.pages.dev/' },
+  { name: 'Dapp', href: 'https://front-dev.mavryk-dapp.pages.dev/dashboard/lending' },
   { name: 'Liquidity Baking', href: 'mavryk.finance/liquidity-baking' },
   { name: 'Mavryk Bakery', href: '/' },
   { name: 'DAO Bakery', href: '/' },

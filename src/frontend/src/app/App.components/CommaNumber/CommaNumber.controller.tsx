@@ -13,6 +13,7 @@ export const CommaNumber = ({
   showNone,
   maxSymbols,
   useMaxSymbols = false,
+  useMagnitude = true,
 }: {
   value: number
   decimalsToShow?: number
@@ -24,9 +25,11 @@ export const CommaNumber = ({
   showNone?: boolean
   maxSymbols?: number
   useMaxSymbols?: boolean
+  useMagnitude?: boolean
 }) => {
   let decimals = decimalsToShow
-  let decimalMagnitude = !value || (value !== 0 && value < 1) ? -Math.floor(Math.log10(value) + 1) + 2 : 0
+  let decimalMagnitude =
+    useMagnitude && (!value || (value !== 0 && value < 1)) ? -Math.floor(Math.log10(value) + 1) + 2 : 0
   if (decimalMagnitude > 8) decimalMagnitude = 8
   if (decimalsToShow + decimalMagnitude > 8) decimals = Math.min(decimalsToShow + decimalMagnitude, 8)
   if (value > 1 && decimalsToShow < 8) decimals = decimalsToShow

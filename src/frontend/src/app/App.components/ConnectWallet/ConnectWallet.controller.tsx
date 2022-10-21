@@ -21,14 +21,13 @@ type ConnectWalletProps = {
 export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps) => {
   const dispatch = useDispatch()
   const [showWertIoPopup, setShowWertIoPopup] = useState(false)
-  const { wallet, ready, accountPkh } = useSelector((state: State) => state.wallet)
+  const { ready, accountPkh } = useSelector((state: State) => state.wallet)
   const {
     coinPrices: {
-      mvk: { usd: mvkUsdRate },
       tezos: { usd: xtzUsdRate },
     },
   } = useSelector((state: State) => state.tokens)
-  const { mvkBalance, smvkBalance, xtzBalance } = useSelector((state: State) => state.user)
+  const { xtzBalance, LBTBalance, tzBTCBalance } = useSelector((state: State) => state.user)
   const isMobileView = useMedia('(max-width: 870px)')
 
   const handleConnect = () => {
@@ -60,17 +59,19 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
   }
 
   const coinsInfo: CoinsInfoType = {
-    MVKExchangeRate: mvkUsdRate,
-    userMVKBalance: mvkBalance,
     userXTZBalance: xtzBalance,
-    userMVKStaked: smvkBalance,
+    usertzBTCBalance: tzBTCBalance,
+    userLBTBalance: LBTBalance,
     XTZExchnageRate: xtzUsdRate,
+    tzBTCExchnageRate: 1,
+    LBTExchnageRate: 1,
   }
 
+  // TODO: clarify it with Sam
   const detailsHandlers = {
-    buyMVKHandler: () => mountWertWiget('MVK'),
+    buyMVKHandler: () => mountWertWiget('tzBTC'),
     buyXTZHandler: () => mountWertWiget('XTZ'),
-    stakeMVKHandler: () => window.open('https://front-dev.mavryk-dapp.pages.dev/', '_blank'),
+    stakeMVKHandler: () => mountWertWiget('Sirius'),
   }
 
   const closeAllForMobileMenu = useCallback((e: React.MouseEvent<HTMLElement>) => {

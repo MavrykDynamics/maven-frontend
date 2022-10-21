@@ -129,12 +129,13 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     align-items: center;
     position: relative;
     margin-right: 15px;
-    color: ${cyanColor};
+    color: ${({ theme: { toggleButtonColor } }) => toggleButtonColor};
     opacity: 0.8;
     background-color: transparent;
 
     &:hover {
       opacity: 1;
+      color: ${({ theme: { selectedColor } }) => selectedColor};
     }
   }
 

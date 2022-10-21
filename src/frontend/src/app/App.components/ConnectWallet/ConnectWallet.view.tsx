@@ -15,11 +15,12 @@ import {
 } from './ConnectWallet.style'
 
 export type CoinsInfoType = {
-  MVKExchangeRate: number
-  userMVKBalance: number
   userXTZBalance: number
-  userMVKStaked: number
   XTZExchnageRate: number
+  tzBTCExchnageRate: number
+  LBTExchnageRate: number
+  usertzBTCBalance: number
+  userLBTBalance: number
 }
 
 type ConnectedWalletBlockProps = {
@@ -60,29 +61,32 @@ export const MobileDetailsBlock = ({
 
       <div className="details">
         <ConnectedWalletDetailsItem
-          buttonText={'Buy MVK'}
-          coinAmount={coinsInfo.userMVKBalance}
-          coinName={'MVK'}
+          buttonText={'Buy XTZ'}
+          coinAmount={coinsInfo.userXTZBalance}
+          coinName={'XTZ'}
           buttonHandler={detailsHandlers.buyMVKHandler}
-          subtextAmount={coinsInfo.userMVKBalance * coinsInfo.MVKExchangeRate}
+          subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
+          iconName={'XTZ_tezos'}
         />
         <ConnectedWalletDetailsItem
-          buttonText={'Stake MVK'}
-          coinAmount={coinsInfo.userMVKStaked}
-          coinName={'MVK'}
+          buttonText={'But tzBTC'}
+          coinAmount={coinsInfo.usertzBTCBalance}
+          coinName={'tzBTC'}
           buttonHandler={(e: React.MouseEvent<HTMLElement>) => {
             closeMobileMenu(e)
             handleCloseBtn()
             detailsHandlers.stakeMVKHandler()
           }}
-          subtextInfo="Total staked MVK"
+          subtextAmount={coinsInfo.usertzBTCBalance * coinsInfo.tzBTCExchnageRate}
+          iconName={'tzBTC'}
         />
         <ConnectedWalletDetailsItem
-          buttonText={'Buy XTZ'}
-          coinAmount={coinsInfo.userXTZBalance}
-          coinName={'XTZ'}
+          buttonText={'Get Sirius'}
+          coinAmount={coinsInfo.userLBTBalance}
+          coinName={'Sirius'}
           buttonHandler={detailsHandlers.buyXTZHandler}
-          subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
+          subtextAmount={coinsInfo.userLBTBalance * coinsInfo.LBTExchnageRate}
+          iconName={'sirius'}
         />
 
         <div className="buttons-wrapper">
@@ -141,25 +145,28 @@ export const ConnectedWalletBlock = ({
 
       <div className={`wallet-details ${detailsShown ? 'visible' : ''} ${isMobile ? 'mobile' : ''}`}>
         <ConnectedWalletDetailsItem
-          buttonText={'Buy MVK'}
-          coinAmount={coinsInfo.userMVKBalance}
-          coinName={'MVK'}
-          buttonHandler={detailsHandlers.buyMVKHandler}
-          subtextAmount={coinsInfo.userMVKBalance * coinsInfo.MVKExchangeRate}
-        />
-        <ConnectedWalletDetailsItem
-          buttonText={'Stake MVK'}
-          coinAmount={coinsInfo.userMVKStaked}
-          coinName={'MVK'}
-          buttonHandler={detailsHandlers.stakeMVKHandler}
-          subtextInfo="Total staked MVK"
-        />
-        <ConnectedWalletDetailsItem
           buttonText={'Buy XTZ'}
           coinAmount={coinsInfo.userXTZBalance}
           coinName={'XTZ'}
-          buttonHandler={detailsHandlers.buyXTZHandler}
+          buttonHandler={detailsHandlers.buyMVKHandler}
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
+          iconName={'XTZ_tezos'}
+        />
+        <ConnectedWalletDetailsItem
+          buttonText={'Buy tzBTC'}
+          coinAmount={coinsInfo.usertzBTCBalance}
+          coinName={'tzBTC'}
+          buttonHandler={detailsHandlers.stakeMVKHandler}
+          subtextAmount={coinsInfo.userXTZBalance * coinsInfo.tzBTCExchnageRate}
+          iconName={'tzBTC'}
+        />
+        <ConnectedWalletDetailsItem
+          buttonText={'Get Sirius'}
+          coinAmount={coinsInfo.userLBTBalance}
+          coinName={'Sirius'}
+          buttonHandler={detailsHandlers.buyXTZHandler}
+          subtextAmount={coinsInfo.userLBTBalance * coinsInfo.LBTExchnageRate}
+          iconName={'sirius'}
         />
 
         <div className="buttons-wrapper">
@@ -210,6 +217,7 @@ type ConnectedWalletDetailsItemProps = {
   buttonHandler: (e: React.MouseEvent<HTMLElement>) => void
   subtextInfo?: string
   subtextAmount?: number
+  iconName: string
 }
 
 const ConnectedWalletDetailsItem = ({
@@ -219,13 +227,34 @@ const ConnectedWalletDetailsItem = ({
   buttonHandler,
   subtextInfo,
   subtextAmount,
+  iconName,
 }: ConnectedWalletDetailsItemProps) => {
   return (
     <ConnectedWalletDetailsItemStyled>
       <div className="left-part">
-        <CommaNumber value={coinAmount} endingText={coinName} showDecimal className="main" />
+        <div className="main-wrap">
+          <div className="icon">
+            {iconName === 'sirius' ? <img src={`/images/sirius-icon.png`} alt="" /> : <Icon id={iconName} />}
+          </div>
+          <CommaNumber
+            value={coinAmount}
+            endingText={coinName}
+            showDecimal
+            decimalsToShow={4}
+            useMagnitude={false}
+            className="main"
+          />
+        </div>
+
         {subtextAmount !== undefined ? (
-          <CommaNumber value={subtextAmount} endingText={'USD'} showDecimal className="subtext" />
+          <CommaNumber
+            value={subtextAmount}
+            endingText={'USD'}
+            showDecimal
+            decimalsToShow={4}
+            useMagnitude={false}
+            className="subtext"
+          />
         ) : (
           <div className="subtext">{subtextInfo}</div>
         )}

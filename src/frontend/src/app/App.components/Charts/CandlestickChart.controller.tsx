@@ -16,12 +16,11 @@ const CandlestickChart = ({
   moveHandler: (value: number, isOut?: boolean) => void
 }) => {
   const theme = useSelector((state: State) => state.preferences.themeSelected)
-  const textColor = Colors[theme].toggleButtonColor
   return (
     // @ts-ignore
     <Chart
       series={[{ data: chartData }]}
-      options={CANDLESTICK_CHART_OPTIONS(interval, moveHandler, isMobileChart, textColor)}
+      options={CANDLESTICK_CHART_OPTIONS(interval, moveHandler, isMobileChart, Colors[theme])}
       type="candlestick"
       height={'550px'}
       width={'100%'}

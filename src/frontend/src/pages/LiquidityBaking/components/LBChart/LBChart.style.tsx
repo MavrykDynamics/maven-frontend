@@ -122,8 +122,8 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
       min-height: 550px !important;
 
       .apexcharts-tooltip {
-        background: #160e3f;
-        border: 1px solid #86d4c9;
+        background: ${({ theme }) => theme.chartTooltipBg};
+        border: 1px solid ${({ theme }) => theme.selectedColor};
         border-radius: 10px;
         padding: 6px 9px;
         display: flex;

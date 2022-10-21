@@ -1,12 +1,14 @@
-import { IntervalType } from 'utils/interfaces'
+import { IntervalType, MavrykTheme } from 'utils/interfaces'
 import dayjs from 'dayjs'
 import { INTERVAL_PRICE_CUSHION } from 'utils/consts'
 
-export const getTooltipMarkup = (price: number, date: Date) => `
-<div style='color: #86d4c9'>
+export const getTooltipMarkup = (price: number, date: Date, themeColors: Record<string, string>) => `
+<div style='color: ${themeColors.tooltipValue}'>
   ${price.toLocaleString('en-US', { maximumFractionDigits: 10 })}tz
 </div>
-<div style='color: #8d86eb'>${dayjs(date).format('MMM DD, HH:mm')}</div>
+<div style='color: ${themeColors.tooltipDate}; font-size: 11px; margin: 0 auto;'>${dayjs(date).format(
+  'MMM DD, HH:mm',
+)}</div>
 `
 
 const GRID_SETTING = {
@@ -156,17 +158,17 @@ export const CANDLESTICK_CHART_OPTIONS = (
   interval: IntervalType,
   moveHandler: (candleValue: number, isOut?: boolean) => void,
   isMobileChart: boolean,
-  textColor: string,
+  theme: MavrykTheme,
 ) => ({
   chart: CHART_SETTING(moveHandler),
-  xaxis: XAXIS_SETTING(textColor),
-  yaxis: YAXIS_SETTING(interval, textColor, isMobileChart),
+  xaxis: XAXIS_SETTING(theme.toggleButtonColor),
+  yaxis: YAXIS_SETTING(interval, theme.toggleButtonColor, isMobileChart),
   responsive: RESPONSIVE_SETTING,
   grid: GRID_SETTING,
   tooltip: {
     custom: function ({ dataPointIndex, w }: any) {
       const dataForToltip = w.config.series[0].data[dataPointIndex]
-      return getTooltipMarkup(dataForToltip.y[3], dataForToltip.x)
+      return getTooltipMarkup(dataForToltip.y[3], dataForToltip.x, theme)
     },
   },
   plotOptions: {
@@ -183,18 +185,18 @@ export const AREA_CHART_OPTIONS = (
   interval: IntervalType,
   moveHandler: (candleValue: number, isOut?: boolean) => void,
   isMobileChart: boolean,
-  textColor: string,
+  theme: MavrykTheme,
 ) => ({
   chart: CHART_SETTING(moveHandler),
-  xaxis: XAXIS_SETTING(textColor),
+  xaxis: XAXIS_SETTING(theme.toggleButtonColor),
   responsive: RESPONSIVE_SETTING,
   tooltip: {
     custom: function ({ dataPointIndex, w }: any) {
       const dataForToltip = w.config.series[0].data[dataPointIndex]
-      return getTooltipMarkup(dataForToltip.y, dataForToltip.x)
+      return getTooltipMarkup(dataForToltip.y, dataForToltip.x, theme)
     },
   },
-  yaxis: YAXIS_SETTING(interval, textColor, isMobileChart),
+  yaxis: YAXIS_SETTING(interval, theme.toggleButtonColor, isMobileChart),
   grid: GRID_SETTING,
   dataLabels: {
     enabled: false,

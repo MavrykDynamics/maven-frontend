@@ -141,6 +141,9 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
     border: 1px solid ${({ theme }) => theme.selectedColor};
     border-radius: 10px;
 
+    opacity: 1;
+    visibility: visible;
+
     &.visible {
       opacity: 1;
       visibility: visible;
@@ -148,6 +151,10 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
 
     &.mobile {
       display: none;
+    }
+
+    .buttons-wrapper {
+      align-items: center;
     }
   }
 
@@ -226,13 +233,29 @@ export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavrykTheme 
     display: flex;
     flex-direction: column;
 
-    > div {
-      &.main {
-        font-size: 20px;
-        line-height: 20px;
-        color: #8d86eb;
+    .main-wrap {
+      display: flex;
+      column-gap: 10px;
+
+      .icon {
+        width: 24px;
+        height: 24px;
+
+        img,
+        svg {
+          width: 100%;
+          height: 100%;
+        }
       }
 
+      .main {
+        font-size: 18px;
+        line-height: 20px;
+        color: ${({ theme: { toggleButtonColor } }) => toggleButtonColor};
+      }
+    }
+
+    > div {
       &.subtext {
         font-weight: 600;
         font-size: 12px;
@@ -258,7 +281,7 @@ export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavrykTheme 
     }
     &:hover {
       svg {
-        stroke: ${cyanColor};
+        stroke: ${({ theme: { selectedColor } }) => selectedColor};
       }
     }
   }
