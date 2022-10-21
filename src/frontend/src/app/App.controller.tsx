@@ -2,17 +2,20 @@ import { Home } from 'pages/Home/Home.controller'
 import LiquidityBaking from 'pages/LiquidityBaking/LiquidityBaking.controller'
 import { Litepaper } from 'pages/Litepaper/Litepaper.controller'
 import { Privacy } from 'pages/Privacy/Privacy.controller'
-import { useCallback, useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
 import { configureStore } from 'redux/storeConfigurator'
-import { AnyAction } from 'redux'
-import { ThunkDispatch } from 'redux-thunk'
 import { State } from 'utils/interfaces'
 import { PopupChangeNode } from './App.components/SettingsPopup/SettingsPopup.controller'
 import { Toaster } from './App.components/Toaster/Toaster.controller'
-import { toggleRPCNodePopup } from 'redux/actions/preferences.action'
+import { togglePolicyPopup, toggleRPCNodePopup } from 'redux/actions/preferences.action'
 import Loader from './App.components/Loader/Loader.view'
+
+import { useCallback, useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
+import { AnyAction } from 'redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { ThunkDispatch } from 'redux-thunk'
+import { PolicyPopup } from './App.components/PolicyPopup/Policy.controller'
 
 export const store = configureStore({})
 
@@ -20,33 +23,39 @@ export type AppDispatch = ThunkDispatch<State, unknown, AnyAction>
 export type GetState = typeof store.getState
 
 export const App = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [currentPage, setCurrentPage] = useState('/')
-  const loader = useSelector((state: State) => state.loading)
-  const { wallet } = useSelector((state: State) => state.wallet)
-  const { changeNodePopupOpen } = useSelector((state: State) => state.preferences)
-  const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [])
-
+  const [page, setPage] = useState<string | null>(null)
   const dispatch = useDispatch()
+  const loader = useSelector((state: State) => state.loading)
+  const { changeNodePopupOpen, policyPopup } = useSelector((state: State) => state.preferences)
+
+  const [{ policyPopup: policyPopupFromCookie = null }, setCookie] = useCookies(['policyPopup'])
 
   useEffect(() => {
-    //handleCheckActiveAccount(wallet)
-    // return TempleWallet.onAvailabilityChange((available) => {
-    //   console.log('available', new TempleWallet(process.env.REACT_APP_NAME || 'MAVRYK'))
-    //   if (available) dispatch(setWalletAction(new TempleWallet(process.env.REACT_APP_NAME || 'MAVRYK')))
-    // })
-  }, [dispatch, wallet])
+    dispatch(togglePolicyPopup(!Boolean(policyPopupFromCookie)))
+  }, [policyPopupFromCookie])
+
+  const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [])
+  const closePolicyHandler = useCallback(() => dispatch(togglePolicyPopup(false)), [])
+  const proccedPolicy = useCallback(() => {
+    setCookie('policyPopup', true)
+    dispatch(togglePolicyPopup(false))
+  }, [])
 
   return (
     <Router>
       {/* <Popup /> */}
+      <PolicyPopup
+        isModalOpened={policyPopup && page === '/liquidity-baking'}
+        closeModal={closePolicyHandler}
+        proccedPolicy={proccedPolicy}
+      />
       {loader ? <Loader loaderType={loader} /> : null}
       <Switch>
         <Route
           exact
           path="/"
           component={() => {
-            setCurrentPage('/')
+            setPage('/')
             return <Home />
           }}
         />
@@ -54,7 +63,7 @@ export const App = () => {
           exact
           path="/litepaper"
           component={() => {
-            setCurrentPage('/litepaper')
+            setPage('/litepaper')
             return <Litepaper />
           }}
         />
@@ -62,7 +71,7 @@ export const App = () => {
           exact
           path="/privacy"
           component={() => {
-            setCurrentPage('/')
+            setPage('/privacy')
             return <Privacy />
           }}
         />
@@ -70,7 +79,7 @@ export const App = () => {
           exact
           path="/liquidity-baking"
           component={() => {
-            setCurrentPage('/liquidity-baking')
+            setPage('/liquidity-baking')
             return <LiquidityBaking />
           }}
         />

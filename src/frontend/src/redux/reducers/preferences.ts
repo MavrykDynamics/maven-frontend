@@ -7,6 +7,7 @@ const defaultPreferences: PreferencesType = {
   themeSelected: getItemFromStorage('theme') || DARK_THEME,
   REACT_APP_RPC_PROVIDER: 'https://mainnet.smartpy.io',
   changeNodePopupOpen: false,
+  policyPopup: false,
   scrollPosition: 0,
   RPC_NODES: [
     {
@@ -22,6 +23,8 @@ const preferences = (state = defaultPreferences, action: any) => {
   switch (action.type) {
     case actions.TOGGLE_DARK_THEME:
       return { ...state, themeSelected: action.newThemeSelected }
+    case actions.TOOGLE_POLICY_POPUP:
+      return { ...state, policyPopup: action.policyPopup }
     case actions.SCROLL:
       return { ...state, scrollPosition: action.scrollPosition }
     case actions.TOGGLE_RPC_NODE_POPUP:

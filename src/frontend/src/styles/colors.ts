@@ -90,6 +90,7 @@ export const darkMode: MavrykTheme = {
   tooltipBg: '#38237C',
   priceImpact: cyanColor,
   footerText: silverColor,
+  policyPopupTextColor: '#d0cfd9',
   theme: 'dark',
 }
 
@@ -155,6 +156,7 @@ export const lightMode: MavrykTheme = {
   tooltipColor: '#9EA9E8',
   tooltipBg: '#38237C',
   footerText: '#38237C',
+  policyPopupTextColor: '#27007A',
   theme: 'light',
 }
 
@@ -220,6 +222,7 @@ export const spaceMode: MavrykTheme = {
   tooltipBg: '#38237C',
   priceImpact: cyanColor,
   footerText: silverColor,
+  policyPopupTextColor: '#d0cfd9',
   theme: 'space',
 }
 

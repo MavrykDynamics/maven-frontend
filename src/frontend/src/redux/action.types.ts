@@ -1,6 +1,7 @@
 export const GET_TOKENS_DATA = 'GET_TOKENS_DATA'
 export const GET_TOKENS_PRICES = 'GET_TOKENS_PRICES'
 export const TOGGLE_DARK_THEME = 'TOGGLE_DARK_THEME'
+export const TOOGLE_POLICY_POPUP = 'TOOGLE_POLICY_POPUP'
 export const SCROLL = 'SCROLL'
 export const CONNECT = 'CONNECT'
 export const SET_WALLET = 'SET_WALLET'

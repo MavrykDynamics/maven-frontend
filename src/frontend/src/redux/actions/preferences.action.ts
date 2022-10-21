@@ -1,3 +1,4 @@
+import { TOOGLE_POLICY_POPUP } from './../action.types'
 import { AppDispatch } from 'app/App.controller'
 import { TOGGLE_DARK_THEME, SCROLL } from 'redux/action.types'
 import { setItemInStorage } from 'utils/utils'
@@ -29,6 +30,13 @@ export const toggleRPCNodePopup = (isOpened: boolean) => (dispatch: AppDispatch)
   dispatch({
     type: TOGGLE_RPC_NODE_POPUP,
     isOpened,
+  })
+}
+
+export const togglePolicyPopup = (policyPopup: boolean) => (dispatch: AppDispatch) => {
+  dispatch({
+    type: TOOGLE_POLICY_POPUP,
+    policyPopup,
   })
 }
 

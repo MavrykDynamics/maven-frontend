@@ -98,6 +98,7 @@ export type PreferencesType = {
   themeSelected: ThemeType
   scrollPosition: number
   changeNodePopupOpen: boolean
+  policyPopup: boolean
   RPC_NODES: Array<RPCNodeType>
   REACT_APP_RPC_PROVIDER: string
 }
