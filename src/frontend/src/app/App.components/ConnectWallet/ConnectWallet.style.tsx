@@ -48,8 +48,8 @@ const VISIBLE_PART_CONNECTED_WALLET = (theme: MavrykTheme, isMobileDetails?: boo
       ? ''
       : ` &:hover {
       var, .wallet, .end-icon {
-        color: ${cyanColor};
-        stroke: ${cyanColor};
+        color: ${theme.selectedColor};
+        stroke: ${theme.selectedColor};
       }
     }
   `
@@ -120,8 +120,8 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
     var,
     .wallet,
     .end-icon {
-      color: ${cyanColor};
-      stroke: ${cyanColor};
+      color: ${({ theme }) => theme.selectedColor};
+      stroke: ${({ theme }) => theme.selectedColor};
     }
     .end-icon {
       transform: rotate(90deg);
@@ -138,7 +138,7 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
     transition: 0.6s all;
     width: 375px;
     background: ${({ theme }) => theme.darkBackroundColor};
-    border: 1px solid #86d4c9;
+    border: 1px solid ${({ theme }) => theme.selectedColor};
     border-radius: 10px;
 
     &.visible {

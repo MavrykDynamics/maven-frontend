@@ -111,6 +111,7 @@ export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) 
             kind={TRANSPARENT}
             onClick={() => setNewThemeHandler(DARK_THEME)}
             className={`theme-btn ${themeSelected === DARK_THEME ? 'selected' : ''}`}
+            disabled
           />
           <Button
             text={'Light'}

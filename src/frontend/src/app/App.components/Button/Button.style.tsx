@@ -1,7 +1,16 @@
 import styled, { keyframes } from 'styled-components/macro'
 import { MavrykTheme } from 'utils/interfaces'
 
-import { backgroundColor, cyanColor, darkColor, headerColor, primaryColor, skyColor, titleColor } from '../../../styles'
+import {
+  backgroundColor,
+  cyanColor,
+  darkColor,
+  headerColor,
+  primaryColor,
+  silverColor,
+  skyColor,
+  titleColor,
+} from '../../../styles'
 import { BUTTON_RADIUS } from '../../../styles/constants'
 
 export const clickWave = keyframes`
@@ -89,7 +98,7 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     justify-content: center;
     align-items: center;
     background: transparent;
-    border: 1px solid ${({ theme }) => theme.primaryColor};
+    border: 1px solid ${({ theme }) => theme.toggleButtonColor};
     transition: 0.5s all;
     margin: 0;
     svg {
@@ -101,11 +110,11 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     }
 
     &:hover {
-      border: 1px solid ${cyanColor};
+      border: 1px solid ${({ theme }) => theme.selectedColor};
 
       svg {
-        fill: ${cyanColor};
-        stroke: ${cyanColor};
+        fill: ${({ theme }) => theme.selectedColor};
+        stroke: ${({ theme }) => theme.selectedColor};
       }
     }
 
@@ -138,10 +147,15 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     transition: 0.4s all;
     background-color: transparent;
 
-    &:hover,
-    &.selected {
-      border: 1px solid ${cyanColor};
-      color: ${cyanColor};
+    &:hover:not(:disabled),
+    &.selected:not(:disabled) {
+      border: 1px solid ${({ theme }) => theme.selectedColor};
+      color: ${({ theme }) => theme.selectedColor};
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
   }
 

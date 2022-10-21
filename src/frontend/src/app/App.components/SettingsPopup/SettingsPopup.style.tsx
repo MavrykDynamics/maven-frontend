@@ -7,7 +7,7 @@ export const PopupContainerWrapper = styled.div<{ theme: MavrykTheme }>`
   flex-direction: column;
   padding: 40px;
   background: #160e3f;
-  border: 1px solid #86d4c9;
+  border: 1px solid ${({ theme }) => theme.btnBackroundNewsColor};
   border-radius: 10px;
   height: fit-content;
   max-width: 395px;
@@ -88,7 +88,7 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
   margin-top: 12px;
   border-radius: 10px;
   cursor: pointer;
-  border: ${({ isSelected }) => (isSelected ? `1px solid ${cyanColor}` : `1px solid ${titleColor};`)};
+  border: ${({ isSelected, theme }) => (isSelected ? `1px solid ${theme.selectedColor}` : `1px solid ${titleColor};`)};
 
   &.add_node {
     width: calc(100% - 10px);
@@ -117,12 +117,15 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
       margin: 0;
       padding: 0;
       padding-left: 7px;
-      color: ${silverColor};
+      color: ${({ theme }) => theme.footerText};
       font-size: 16px;
       text-overflow: ellipsis;
       transition: 0.5s all;
       overflow: hidden;
       white-space: nowrap;
+      &::placeholder {
+        color: ${({ theme }) => theme.footerText};
+      }
     }
 
     &.expanded {

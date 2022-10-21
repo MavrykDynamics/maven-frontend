@@ -6,6 +6,7 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   margin: 0 auto;
   width: fit-content;
   justify-content: center;
+  align-items: center;
   border: 1px solid #503eaa;
   background: ${({ theme }) => theme.toggleButtonBg};
   border-radius: 20px;

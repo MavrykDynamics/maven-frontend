@@ -15,7 +15,7 @@ export const InputStyled = styled.div<{ theme: MavrykTheme }>`
     transition: 0.25s all;
 
     &:hover {
-      color: ${cyanColor};
+      color: ${({ theme }) => theme.selectedColor};
     }
   }
 

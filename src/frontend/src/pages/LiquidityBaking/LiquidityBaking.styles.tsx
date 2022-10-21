@@ -93,7 +93,7 @@ export const HorisontalInfo = styled.div`
 
       .swap-toggler {
         .toggle-btn {
-          padding: 8px 12px;
+          padding: 8px 13px;
         }
       }
     }
@@ -189,7 +189,7 @@ export const CustomizedText = styled.div<{
       }
 
       svg {
-        fill: ${cyanColor};
+        fill: ${({ theme }) => theme.selectedColor};
       }
     }
 

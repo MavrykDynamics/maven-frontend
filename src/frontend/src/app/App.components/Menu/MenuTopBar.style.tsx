@@ -45,7 +45,7 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
 
       &:hover {
         svg {
-          stroke: ${cyanColor};
+          stroke: ${({ theme }) => theme.selectedColor};
         }
       }
     }
@@ -95,7 +95,7 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
 
       &:hover {
         svg {
-          stroke: ${cyanColor};
+          stroke: ${({ theme }) => theme.selectedColor};
         }
       }
     }
@@ -110,7 +110,7 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
 
       &:hover {
         svg {
-          stroke: ${cyanColor};
+          stroke: ${({ theme }) => theme.selectedColor};
         }
       }
     }

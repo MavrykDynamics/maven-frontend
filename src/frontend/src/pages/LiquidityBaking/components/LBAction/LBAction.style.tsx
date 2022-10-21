@@ -222,7 +222,7 @@ export const ActionScreenWrapper = styled.div<{ theme: MavrykTheme }>`
         fill: ${({ theme }) => theme.toggleButtonColor};
 
         &:hover {
-          fill: ${cyanColor};
+          fill: ${({ theme }) => theme.selectedColor};
         }
       }
 
