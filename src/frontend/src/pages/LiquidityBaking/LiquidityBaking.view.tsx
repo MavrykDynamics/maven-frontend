@@ -6,6 +6,7 @@ import { LBPersonalStats } from './components/LBPersonalStats/LBPersonalStats.co
 import { useEffect, useState } from 'react'
 import { GET_GENERAL_STATS_QUERY, GET_GENERAL_STATS_VARIABLES } from '../../gql/queries/generalStats.query'
 import useSWR from 'swr'
+import { ScrollToTop } from 'app/App.components/ScrollToTop/ScrollToTop.controller'
 
 export interface LBGeneralStats {
   address: string
@@ -77,6 +78,7 @@ const LiquidityBakingView = () => {
       </div>
       <LBChart className="desktop-chart" />
       <LBFAQ />
+      <ScrollToTop />
     </div>
   )
 }
