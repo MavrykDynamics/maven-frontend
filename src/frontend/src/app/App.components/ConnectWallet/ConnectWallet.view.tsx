@@ -19,7 +19,6 @@ export type CoinsInfoType = {
   userXTZBalance: number
   XTZExchnageRate: number
   tzBTCExchnageRate: number
-  LBTExchnageRate: number
   usertzBTCBalance: number
   userLBTBalance: number
 }
@@ -33,7 +32,6 @@ type ConnectedWalletBlockProps = {
   detailsHandlers: {
     buyXTZHandler: () => void
     buyTZBTCHandler: () => void
-    stakeSiriusHandler: () => void
   }
   closeMobileMenu: (e: React.MouseEvent<HTMLElement>) => void
 }
@@ -65,7 +63,7 @@ export const MobileDetailsBlock = ({
           buttonText={'Buy XTZ'}
           coinAmount={coinsInfo.userXTZBalance}
           coinName={'XTZ'}
-          buttonHandler={detailsHandlers.buyTZBTCHandler}
+          buttonHandler={detailsHandlers.buyXTZHandler}
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
           iconName={'XTZ_tezos'}
         />
@@ -76,19 +74,13 @@ export const MobileDetailsBlock = ({
           buttonHandler={(e: React.MouseEvent<HTMLElement>) => {
             closeMobileMenu(e)
             handleCloseBtn()
-            detailsHandlers.stakeSiriusHandler()
+            detailsHandlers.buyTZBTCHandler()
           }}
           subtextAmount={coinsInfo.usertzBTCBalance * coinsInfo.tzBTCExchnageRate}
           iconName={'tzBTC'}
+          disableBtn
         />
-        <ConnectedWalletDetailsItem
-          buttonText={'Get Sirius'}
-          coinAmount={coinsInfo.userLBTBalance}
-          coinName={'Sirius'}
-          buttonHandler={detailsHandlers.buyXTZHandler}
-          subtextAmount={coinsInfo.userLBTBalance * coinsInfo.LBTExchnageRate}
-          iconName={'sirius'}
-        />
+        <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
 
         <div className="buttons-wrapper">
           <SignOutButton onClick={signOutHandler}>Sign out</SignOutButton>
@@ -162,7 +154,7 @@ export const ConnectedWalletBlock = ({
           buttonText={'Buy XTZ'}
           coinAmount={coinsInfo.userXTZBalance}
           coinName={'XTZ'}
-          buttonHandler={detailsHandlers.buyTZBTCHandler}
+          buttonHandler={detailsHandlers.buyXTZHandler}
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
           iconName={'XTZ_tezos'}
         />
@@ -170,18 +162,12 @@ export const ConnectedWalletBlock = ({
           buttonText={'Buy tzBTC'}
           coinAmount={coinsInfo.usertzBTCBalance}
           coinName={'tzBTC'}
-          buttonHandler={detailsHandlers.stakeSiriusHandler}
+          buttonHandler={detailsHandlers.buyTZBTCHandler}
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.tzBTCExchnageRate}
           iconName={'tzBTC'}
+          disableBtn
         />
-        <ConnectedWalletDetailsItem
-          buttonText={'Get Sirius'}
-          coinAmount={coinsInfo.userLBTBalance}
-          coinName={'Sirius'}
-          buttonHandler={detailsHandlers.buyXTZHandler}
-          subtextAmount={coinsInfo.userLBTBalance * coinsInfo.LBTExchnageRate}
-          iconName={'sirius'}
-        />
+        <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
 
         <div className="buttons-wrapper">
           <SignOutButton onClick={signOutHandler}>Sign out</SignOutButton>
@@ -225,13 +211,14 @@ export const SimpleConnectButtonNoAddress = ({ handleConnect }: { handleConnect:
 }
 
 type ConnectedWalletDetailsItemProps = {
-  buttonText: string
+  buttonText?: string
   coinName: string
   coinAmount: number
-  buttonHandler: (e: React.MouseEvent<HTMLElement>) => void
+  buttonHandler?: (e: React.MouseEvent<HTMLElement>) => void
   subtextInfo?: string
   subtextAmount?: number
   iconName: string
+  disableBtn?: boolean
 }
 
 const ConnectedWalletDetailsItem = ({
@@ -242,6 +229,7 @@ const ConnectedWalletDetailsItem = ({
   subtextInfo,
   subtextAmount,
   iconName,
+  disableBtn = false,
 }: ConnectedWalletDetailsItemProps) => {
   return (
     <ConnectedWalletDetailsItemStyled>
@@ -274,10 +262,18 @@ const ConnectedWalletDetailsItem = ({
         )}
       </div>
 
-      <div className="btn-wrapper">
-        <Button text={buttonText} kind={TRANSPARENT} onClick={buttonHandler} className="connect-wallet-details" />
-        <Icon id="paginationArrowLeft" />
-      </div>
+      {buttonHandler && buttonText ? (
+        <div className="btn-wrapper">
+          <Button
+            text={buttonText}
+            kind={TRANSPARENT}
+            onClick={buttonHandler}
+            disabled={disableBtn}
+            className="connect-wallet-details"
+          />
+          <Icon id="paginationArrowLeft" className={disableBtn ? 'disabled' : ''} />
+        </div>
+      ) : null}
     </ConnectedWalletDetailsItemStyled>
   )
 }

@@ -88,6 +88,7 @@ export const disconnect = () => async (dispatch: AppDispatch, getState: GetState
     const state: State = getState()
     // clearing wallet data
     await state.wallet.wallet?.clearActiveAccount()
+    localStorage.clear()
     dispatch({ type: DISCONNECT })
     // set some wallet data, so user can see connect wallet instead of install wallet btn
     dispatch(setWallet())

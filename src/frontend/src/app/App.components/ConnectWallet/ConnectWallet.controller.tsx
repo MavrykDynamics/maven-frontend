@@ -36,6 +36,7 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
   }
 
   const handleNewConnect = () => {
+    dispatch(disconnect())
     dispatch(connect())
   }
 
@@ -65,14 +66,12 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
     userLBTBalance: LBTBalance,
     XTZExchnageRate: xtzUsdRate,
     tzBTCExchnageRate: Number(tzBTCRate),
-    LBTExchnageRate: 1,
   }
 
-  // TODO: clarify it with Sam
   const detailsHandlers = {
+    // TODO: wert is  implementing this stuff
     buyTZBTCHandler: () => mountWertWiget('tzBTC'),
     buyXTZHandler: () => mountWertWiget('XTZ'),
-    stakeSiriusHandler: () => mountWertWiget('Sirius'),
   }
 
   const closeAllForMobileMenu = useCallback((e: React.MouseEvent<HTMLElement>) => {

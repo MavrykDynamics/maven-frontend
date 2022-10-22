@@ -133,9 +133,14 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     opacity: 0.8;
     background-color: transparent;
 
-    &:hover {
+    &:hover:not(:disabled) {
       opacity: 1;
       color: ${({ theme: { selectedColor } }) => selectedColor};
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
   }
 
