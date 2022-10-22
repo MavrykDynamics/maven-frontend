@@ -52,6 +52,10 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
     height: fit-content;
     padding-bottom: 30px;
 
+    .title {
+      font-size: 25px;
+    }
+
     .stats-grid {
       margin-top: 20px;
       padding: 0;
@@ -65,10 +69,16 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
 
         > div:not(.block-name) {
           font-weight: 500;
+          white-space: pre;
+          margin-left: 7px;
 
           P {
-            font-size: 18px;
+            font-size: 16px;
           }
+        }
+
+        .block-name {
+          font-size: 14px;
         }
       }
     }

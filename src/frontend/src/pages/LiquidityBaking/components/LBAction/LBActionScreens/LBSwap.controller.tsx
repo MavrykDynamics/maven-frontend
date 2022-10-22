@@ -59,7 +59,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   const [exchangeRate, setExchangeRate] = useState<number>(0)
   const [amountToSwap, setAmountToSwap] = useState(0)
 
-  const isMobile = useMedia('(max-width: 600px)')
+  const isMobile = useMedia('(max-width: 500px)')
 
   const BALANCE_BY_COIN = useMemo(
     () => ({

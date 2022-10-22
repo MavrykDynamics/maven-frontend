@@ -18,7 +18,6 @@ type CoinSwapProps = {
 }
 
 export const CoinSwap = ({ icon, XTZCoinData, tzBTCCoinData, className }: CoinSwapProps) => {
-  const isMobile = useMedia('(max-width: 600px)')
   return (
     <CoinSwapStyled className={className}>
       <CoinSwapCoinWrapper>
@@ -26,14 +25,7 @@ export const CoinSwap = ({ icon, XTZCoinData, tzBTCCoinData, className }: CoinSw
           <use xlinkHref={`/icons/sprites.svg#${XTZCoinData.icon}`} />
         </svg>
         <CustomizedText fontWidth={500} color={cyanColor}>
-          <CommaNumber
-            value={XTZCoinData.amount}
-            showDecimal
-            decimalsToShow={6}
-            endingText={'XTZ'}
-            maxSymbols={5}
-            useMaxSymbols={isMobile}
-          />
+          <CommaNumber value={XTZCoinData.amount} showDecimal decimalsToShow={6} endingText={'XTZ'} />
         </CustomizedText>
       </CoinSwapCoinWrapper>
 
@@ -48,14 +40,7 @@ export const CoinSwap = ({ icon, XTZCoinData, tzBTCCoinData, className }: CoinSw
           <use xlinkHref={`/icons/sprites.svg#${tzBTCCoinData.icon}`} />
         </svg>
         <CustomizedText fontWidth={500} color={cyanColor}>
-          <CommaNumber
-            value={tzBTCCoinData.amount}
-            showDecimal
-            decimalsToShow={6}
-            endingText={'tzBTC'}
-            maxSymbols={5}
-            useMaxSymbols={isMobile}
-          />
+          <CommaNumber value={tzBTCCoinData.amount} showDecimal decimalsToShow={6} endingText={'tzBTC'} />
         </CustomizedText>
       </CoinSwapCoinWrapper>
     </CoinSwapStyled>

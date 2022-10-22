@@ -119,6 +119,8 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
         icon={'sirius-icon.png'}
         pinnedText={'SIR'}
         onKeyDown={nonNumberSymbolsValidation}
+        // TODO: ask where do i take rate for sirius
+        convertedValue={parseSrtToNum(inputValues.SIR) * 1}
         onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
         useMaxHandler={() => {
           inputChangeHandler({

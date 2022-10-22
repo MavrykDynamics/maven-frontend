@@ -95,9 +95,9 @@ export const MobileDetailsBlock = ({
           <Button
             text="Change Wallet"
             onClick={changeWalletHandler}
-            kind={ACTION_PRIMARY}
+            kind={PRIMARY}
             icon="exchange"
-            className="change-wallet"
+            className="LB change-wallet"
           />
         </div>
       </div>

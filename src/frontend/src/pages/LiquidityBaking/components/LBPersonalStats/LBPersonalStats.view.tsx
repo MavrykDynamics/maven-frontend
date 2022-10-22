@@ -118,7 +118,7 @@ export const LBPersonalStatsView = ({
               value={estimatedAssetsOwned.estimatedPoolTzBTCOwned}
               endingText="tzBTC"
               showNone={showNone}
-              decimalsToShow={8}
+              decimalsToShow={7}
             />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">

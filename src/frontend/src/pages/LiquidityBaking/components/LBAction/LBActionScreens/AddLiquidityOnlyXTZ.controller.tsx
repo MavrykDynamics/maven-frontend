@@ -99,14 +99,7 @@ export const AddLiquidityOnlyXTZ = ({
         <HorisontalInfo className="liq-tokens-created">
           <CustomizedText fontWidth={600}>Minimum tzBTC Received</CustomizedText>
           <CustomizedText fontWidth={500} color={cyanColor}>
-            <CommaNumber
-              value={minCoinsForSwap.minTzBTC}
-              showDecimal
-              decimalsToShow={8}
-              endingText="tzBTC"
-              maxSymbols={7}
-              useMaxSymbols={useMedia('(max-width: 600px)')}
-            />
+            <CommaNumber value={minCoinsForSwap.minTzBTC} showDecimal decimalsToShow={8} endingText="tzBTC" />
           </CustomizedText>
         </HorisontalInfo>
       </div>
@@ -135,7 +128,7 @@ export const AddLiquidityOnlyXTZ = ({
           <CustomizedText fontWidth={600}>Liquidity Tokens created</CustomizedText>
 
           <CustomizedText fontWidth={500} color={cyanColor}>
-            <CommaNumber value={lqtReceived} showDecimal endingText="LBT" />
+            <CommaNumber value={isNaN(lqtReceived) ? 0 : lqtReceived} showDecimal endingText="LBT" />
           </CustomizedText>
         </HorisontalInfo>
       </div>

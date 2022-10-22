@@ -53,4 +53,10 @@ export const CoinSwapCoinWrapper = styled.div<{ theme: MavrykTheme }>`
       margin-right: 7px;
     }
   }
+
+  @media screen (min-width: 961px) and (max-width: 1200px) {
+    div {
+      width: min-content;
+    }
+  }
 `

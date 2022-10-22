@@ -58,7 +58,7 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
       max-height: 40px;
 
       .toggle-btn {
-        padding: 10px 25px;
+        padding: 11px 25px;
         font-size: 16px;
       }
     }

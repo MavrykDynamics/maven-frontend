@@ -232,7 +232,7 @@ export const MobileDetailsStyled = styled.div<{ theme: MavrykTheme }>`
   top: 0;
   left: 0;
   z-index: 15;
-  background: #160e3f;
+  background: ${({ theme }) => theme.darkBackroundColor};
   padding-top: 60px;
 
   .close {
@@ -455,6 +455,8 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
 export const SignOutButton = styled(WalletNotConnectedButton)`
   width: 110px;
   margin: 0;
+  color: ${({ theme }) => theme.containerColor};
+  font-size: 14px;
 `
 
 export const SimpleConnectedButton = styled.div<{ theme: MavrykTheme }>`

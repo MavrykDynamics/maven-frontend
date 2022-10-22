@@ -25,7 +25,7 @@ export const AddLiquidityDefault = ({
 }) => {
   const { coinPrices } = useSelector((state: State) => state.tokens)
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
-  const isMobile = useMedia('max-width: 600px')
+  const isMobile = useMedia('max-width: 500px')
 
   return (
     <>

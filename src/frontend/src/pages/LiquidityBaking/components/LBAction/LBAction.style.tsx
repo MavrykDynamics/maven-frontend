@@ -128,6 +128,7 @@ export const ActionScreenWrapper = styled.div<{ theme: MavrykTheme }>`
       .top {
         display: flex;
         justify-content: space-between;
+        column-gap: 7px;
 
         div:first-child {
           color: ${({ theme }) => theme.toggleButtonColor};
