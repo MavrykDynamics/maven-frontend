@@ -32,8 +32,8 @@ type ConnectedWalletBlockProps = {
   isMobile: boolean
   detailsHandlers: {
     buyXTZHandler: () => void
-    buyMVKHandler: () => void
-    stakeMVKHandler: () => void
+    buyTZBTCHandler: () => void
+    stakeSiriusHandler: () => void
   }
   closeMobileMenu: (e: React.MouseEvent<HTMLElement>) => void
 }
@@ -65,7 +65,7 @@ export const MobileDetailsBlock = ({
           buttonText={'Buy XTZ'}
           coinAmount={coinsInfo.userXTZBalance}
           coinName={'XTZ'}
-          buttonHandler={detailsHandlers.buyMVKHandler}
+          buttonHandler={detailsHandlers.buyTZBTCHandler}
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
           iconName={'XTZ_tezos'}
         />
@@ -76,7 +76,7 @@ export const MobileDetailsBlock = ({
           buttonHandler={(e: React.MouseEvent<HTMLElement>) => {
             closeMobileMenu(e)
             handleCloseBtn()
-            detailsHandlers.stakeMVKHandler()
+            detailsHandlers.stakeSiriusHandler()
           }}
           subtextAmount={coinsInfo.usertzBTCBalance * coinsInfo.tzBTCExchnageRate}
           iconName={'tzBTC'}
@@ -162,7 +162,7 @@ export const ConnectedWalletBlock = ({
           buttonText={'Buy XTZ'}
           coinAmount={coinsInfo.userXTZBalance}
           coinName={'XTZ'}
-          buttonHandler={detailsHandlers.buyMVKHandler}
+          buttonHandler={detailsHandlers.buyTZBTCHandler}
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
           iconName={'XTZ_tezos'}
         />
@@ -170,7 +170,7 @@ export const ConnectedWalletBlock = ({
           buttonText={'Buy tzBTC'}
           coinAmount={coinsInfo.usertzBTCBalance}
           coinName={'tzBTC'}
-          buttonHandler={detailsHandlers.stakeMVKHandler}
+          buttonHandler={detailsHandlers.stakeSiriusHandler}
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.tzBTCExchnageRate}
           iconName={'tzBTC'}
         />
