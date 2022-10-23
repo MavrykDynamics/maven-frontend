@@ -1,10 +1,10 @@
 import { PreferencesType } from 'utils/interfaces'
 import { getItemFromStorage } from 'utils/utils'
 import * as actions from '../action.types'
-import { DARK_THEME } from '../actions/preferences.action'
+import { DARK_THEME, SPACE_THEME } from '../actions/preferences.action'
 
 const defaultPreferences: PreferencesType = {
-  themeSelected: getItemFromStorage('theme') || DARK_THEME,
+  themeSelected: getItemFromStorage('theme') || SPACE_THEME,
   REACT_APP_RPC_PROVIDER: 'https://mainnet.smartpy.io',
   changeNodePopupOpen: false,
   policyPopup: false,

@@ -9,9 +9,10 @@ import { getGeneralStats } from 'redux/actions/stats.action'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { Footer } from 'app/App.components/Footer/Footer.controller'
 import { LBStyled } from './LiquidityBaking.styles'
-import { toggleRPCNodePopup } from 'redux/actions/preferences.action'
+import { DARK_THEME, SPACE_THEME, toggleRPCNodePopup } from 'redux/actions/preferences.action'
 import { dexGqlFetcher } from '../../gql/gql.helpers'
 import { SWRConfig } from 'swr'
+import { getItemFromStorage, setItemInStorage } from 'utils/utils'
 
 const LiquidityBaking = () => {
   const dispatch = useDispatch()
@@ -24,6 +25,12 @@ const LiquidityBaking = () => {
     dispatch(getChartData(chartInterval))
     dispatch(getGeneralStats())
   }, [chartInterval, dispatch])
+
+  useEffect(() => {
+    if (!getItemFromStorage('theme')) {
+      setItemInStorage('theme', SPACE_THEME)
+    }
+  }, [])
 
   return (
     <SWRConfig
