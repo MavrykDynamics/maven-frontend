@@ -33,7 +33,7 @@ export const TzAddressStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   &.${BLUE} {
-    color: ${({ theme }) => theme.toggleButtonColor};
+    color: ${({ theme }) => theme.walletDetailsAddress};
   }
 `
 
@@ -62,6 +62,6 @@ export const TzAddressIcon = styled.svg<{ theme: MavrykTheme }>`
   }
 
   &.${BLUE} {
-    stroke: ${({ theme }) => theme.toggleButtonColor};
+    stroke: ${({ theme }) => theme.walletDetailsAddress};
   }
 `

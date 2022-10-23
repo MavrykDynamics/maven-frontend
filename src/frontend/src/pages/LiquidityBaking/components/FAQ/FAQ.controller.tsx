@@ -4,7 +4,7 @@ import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 const LBFAQ = () => {
   return (
-    <LBFAQStyled>
+    <LBFAQStyled id="FAQ-block">
       <FaqItem>
         <CustomizedText fontSize={25} fontWidth={700} color={'#8D86EB'} className="title">
           What is Liquidity Baking DEX (Sirius)?

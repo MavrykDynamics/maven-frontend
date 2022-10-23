@@ -83,7 +83,7 @@ export const MobileDetailsBlock = ({
         <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
 
         <div className="buttons-wrapper">
-          <SignOutButton onClick={signOutHandler}>Sign out</SignOutButton>
+          <Button onClick={signOutHandler} icon="signOut" text="Sign out" className="sign-out" />
           <Button
             text="Change Wallet"
             onClick={changeWalletHandler}
@@ -170,7 +170,7 @@ export const ConnectedWalletBlock = ({
         <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
 
         <div className="buttons-wrapper">
-          <SignOutButton onClick={signOutHandler}>Sign out</SignOutButton>
+          <Button onClick={signOutHandler} icon="signOut" text="Sign out" className="sign-out" />
           <Button
             text="Change Wallet"
             onClick={changeWalletHandler}

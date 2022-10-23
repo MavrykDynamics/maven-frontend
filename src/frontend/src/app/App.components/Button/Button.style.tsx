@@ -176,6 +176,20 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     }
   }
 
+  &.sign-out {
+    color: ${({ theme: { priceImpact } }) => priceImpact};
+    border: 1px solid ${({ theme: { priceImpact } }) => priceImpact};
+    width: fit-content;
+    background: transparent;
+    width: 140px;
+    margin-right: 10px;
+    svg {
+      stroke: ${({ theme: { priceImpact } }) => priceImpact};
+      fill: ${({ theme: { priceImpact } }) => priceImpact};
+      stroke-width: 0.3;
+    }
+  }
+
   &.popup_btn {
     margin: 0;
     svg {
