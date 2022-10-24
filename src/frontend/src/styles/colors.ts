@@ -99,6 +99,7 @@ export const darkMode: MavrykTheme = {
   headerSkyColor: skyColor,
   walletDetailsAddress: '#77A4F2',
   walletDetailsSubtext: '#77A4F2',
+  scrollToTop: '#77A4F2',
   theme: 'dark',
 }
 
@@ -171,6 +172,7 @@ export const lightMode: MavrykTheme = {
   tooltipValue: '#FFFFFF  ',
   tooltipDate: '#FFFFFF  ',
   chartTooltipBg: '#503EAA',
+  scrollToTop: '#27007A',
   headerSkyColor: darkColor,
   theme: 'light',
 }
@@ -246,6 +248,7 @@ export const spaceMode: MavrykTheme = {
   tooltipValue: cyanColor,
   tooltipDate: '#8d86eb',
   chartTooltipBg: '#160e3f',
+  scrollToTop: '#77A4F2',
   theme: 'space',
   headerSkyColor: skyColor,
 }

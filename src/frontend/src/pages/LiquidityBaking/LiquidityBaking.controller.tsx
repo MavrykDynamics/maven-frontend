@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTokensData } from 'redux/actions/swap.action'
 import LiquidityBakingView from './LiquidityBaking.view'
@@ -9,13 +9,16 @@ import { getGeneralStats } from 'redux/actions/stats.action'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { Footer } from 'app/App.components/Footer/Footer.controller'
 import { LBStyled } from './LiquidityBaking.styles'
-import { DARK_THEME, SPACE_THEME, toggleRPCNodePopup } from 'redux/actions/preferences.action'
+import { SPACE_THEME, toggleRPCNodePopup } from 'redux/actions/preferences.action'
 import { dexGqlFetcher } from '../../gql/gql.helpers'
 import { SWRConfig } from 'swr'
 import { getItemFromStorage, setItemInStorage } from 'utils/utils'
+import { ScrollToTop } from 'app/App.components/ScrollToTop/ScrollToTop.controller'
 
 const LiquidityBaking = () => {
   const dispatch = useDispatch()
+  const [isVisible, setIsVisible] = useState(true)
+  const footerRef = useRef(null)
   const { chartInterval } = useSelector((state: State) => state.chart)
   const openChangeNodePopup = useCallback(() => dispatch(toggleRPCNodePopup(true)), [])
 
@@ -32,6 +35,22 @@ const LiquidityBaking = () => {
     }
   }, [])
 
+  const observerFn = ([entry]: any) => {
+    setIsVisible(!Boolean(entry.isIntersecting))
+  }
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(observerFn, {
+      threshold: 0.1,
+    })
+
+    if (footerRef.current) observer.observe(footerRef.current)
+
+    return () => {
+      if (footerRef.current) observer.unobserve(footerRef.current)
+    }
+  }, [])
+
   return (
     <SWRConfig
       value={{
@@ -43,8 +62,10 @@ const LiquidityBaking = () => {
         <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
         <LiquidityBakingView />
       </LBStyled>
-
-      <Footer className="LB" />
+      <div className="footer-wrap" ref={footerRef}>
+        <Footer className="LB" />
+      </div>
+      <ScrollToTop isVisible={isVisible} />
     </SWRConfig>
   )
 }
