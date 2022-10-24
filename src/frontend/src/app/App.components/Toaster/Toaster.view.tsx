@@ -1,5 +1,4 @@
 import {
-  ToasterClose,
   ToasterContent,
   ToasterCountdown,
   ToasterGrid,
@@ -14,16 +13,9 @@ type ToasterViewProps = {
   status?: string
   title?: string
   message?: string
-  closeCallback: () => void
 }
 
-export const ToasterView = ({
-  showing,
-  status,
-  title = 'Error',
-  message = 'Undefined Error',
-  closeCallback,
-}: ToasterViewProps) => {
+export const ToasterView = ({ showing, status, title = 'Error', message = 'Undefined Error' }: ToasterViewProps) => {
   return (
     <ToasterStyled showing={showing}>
       <ToasterGrid>
@@ -36,11 +28,6 @@ export const ToasterView = ({
           <ToasterTitle>{title}</ToasterTitle>
           <ToasterMessage>{message}</ToasterMessage>
         </ToasterContent>
-        <ToasterClose onClick={closeCallback}>
-          <svg>
-            <use xlinkHref="/icons/sprites.svg#close" />
-          </svg>
-        </ToasterClose>
       </ToasterGrid>
       <ToasterCountdown showing={showing} status={status} />
     </ToasterStyled>

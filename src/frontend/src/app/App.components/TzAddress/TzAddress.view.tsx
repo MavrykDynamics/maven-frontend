@@ -1,7 +1,8 @@
 import { TzAddressStyles } from './TzAddress.constants'
 import { TzAddressContainer, TzAddressIcon, TzAddressStyled } from './TzAddress.style'
-import * as React from 'react'
 import { useDispatch } from 'react-redux'
+import { showToaster } from '../Toaster/Toaster.actions'
+import { SUCCESS } from '../Toaster/Toaster.constants'
 
 type TzAddressProps = {
   tzAddress: string
@@ -24,7 +25,7 @@ export const TzAddress = ({ tzAddress = '', type, hasIcon, iconToLeft, isBold, s
     if (shouldCopy) {
       navigator.clipboard.writeText(tzAddress)
     }
-    // dispatch(showToaster('SUCCESS', 'Copied to Clipboard', `${address}`))
+    dispatch(showToaster(SUCCESS, 'Copied to Clipboard', `${address}`))
   }
 
   if (!tzAddress) {

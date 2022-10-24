@@ -9,7 +9,6 @@ export const backgroundTextColor = '#191919'
 export const placeholderColor = '#9090A0'
 export const primaryColor = '#7068AA'
 export const secondaryColor = '#73d7c3'
-export const upColor = '#00E205'
 export const downColor = '#F90021'
 export const selectedColor = '#aea3ff3d'
 export const btnLightColor = '#86D4C9'
@@ -25,6 +24,9 @@ export const connectWalletSecondary = '#EEEAF4'
 export const infoColor = '#00C2FF'
 export const silverColor = '#C0DBFF'
 export const warningColor = '#FF7A00'
+export const upColor = '#27AE60'
+export const dangerColor = '#FF8486'
+export const awaitingColor = '#FFCA43'
 
 export const darkMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-dark.svg',
