@@ -120,7 +120,7 @@ export const LBPersonalStatsView = ({
               }
               endingText="ꜩ"
               showNone={showNone}
-              decimalsToShow={5}
+              decimalsToShow={6}
             />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
@@ -142,7 +142,7 @@ export const LBPersonalStatsView = ({
               }
               endingText="tzBTC"
               showNone={showNone}
-              decimalsToShow={6}
+              decimalsToShow={8}
             />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">

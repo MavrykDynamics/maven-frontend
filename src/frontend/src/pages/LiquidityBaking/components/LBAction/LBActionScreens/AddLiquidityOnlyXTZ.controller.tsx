@@ -128,7 +128,7 @@ export const AddLiquidityOnlyXTZ = ({
           <CustomizedText fontWidth={600}>Liquidity Tokens created</CustomizedText>
 
           <CustomizedText fontWidth={500} color={cyanColor}>
-            <CommaNumber value={isNaN(lqtReceived) ? 0 : lqtReceived} showDecimal endingText="LBT" />
+            <CommaNumber value={isNaN(lqtReceived) ? 0 : lqtReceived} showDecimal endingText="SIR" />
           </CustomizedText>
         </HorisontalInfo>
       </div>

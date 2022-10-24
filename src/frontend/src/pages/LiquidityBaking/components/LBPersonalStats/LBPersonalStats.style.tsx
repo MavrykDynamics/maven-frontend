@@ -29,15 +29,47 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
     }
   }
 
-  @media screen and (max-width: 1160px) {
+  @media screen and (max-width: 1400px) {
     .stats-grid {
-      div {
-        div {
+      column-gap: 35px;
+      > div {
+        row-gap: 7px;
+        div:not(.block-name) {
           font-size: 22px;
+          line-height: 100%;
         }
 
         .block-name {
-          font-size: 16px;
+          font-size: 17px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1160px) {
+    .stats-grid {
+      column-gap: 30px;
+      div {
+        div {
+          font-size: 29px;
+        }
+
+        .block-name {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1060px) {
+    .stats-grid {
+      div {
+        div:not(.block-name) {
+          font-size: 18px;
+        }
+
+        .block-name {
+          font-size: 13px;
         }
       }
     }

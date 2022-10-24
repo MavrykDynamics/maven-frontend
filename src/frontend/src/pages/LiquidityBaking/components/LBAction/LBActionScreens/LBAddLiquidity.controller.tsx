@@ -265,7 +265,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
 
       <LBActionBottomWrapperStyled>
         <PriceImpact priceImpact={priceImpact} />
-        <MinimumReceived minimumReceived={[{ value: minlqtReceived, tokenName: 'LBT' }]} />
+        <MinimumReceived minimumReceived={[{ value: minlqtReceived, tokenName: 'SIR' }]} />
         <Slippage
           onClickHandler={(value) => slippageChangeHandler(value, false)}
           selectedToogle={selectedSlippage}
