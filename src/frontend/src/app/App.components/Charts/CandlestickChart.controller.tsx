@@ -7,20 +7,18 @@ import Colors from 'styles/colors'
 const CandlestickChart = ({
   chartData,
   interval,
-  moveHandler,
   isMobileChart,
 }: {
   chartData: any
   isMobileChart: boolean
   interval: IntervalType
-  moveHandler: (value: number, isOut?: boolean) => void
 }) => {
   const theme = useSelector((state: State) => state.preferences.themeSelected)
   return (
     // @ts-ignore
     <Chart
       series={[{ data: chartData }]}
-      options={CANDLESTICK_CHART_OPTIONS(interval, moveHandler, isMobileChart, Colors[theme])}
+      options={CANDLESTICK_CHART_OPTIONS(interval, isMobileChart, Colors[theme])}
       type="candlestick"
       height={'550px'}
       width={'100%'}

@@ -8,19 +8,17 @@ const AreaChart = ({
   chartData,
   interval,
   isMobileChart,
-  moveHandler,
 }: {
   chartData: any
   isMobileChart: boolean
   interval: IntervalType
-  moveHandler: (value: number, isOut?: boolean) => void
 }) => {
   const theme = useSelector((state: State) => state.preferences.themeSelected)
   return (
     // @ts-ignore
     <Chart
       series={[{ data: chartData }]}
-      options={AREA_CHART_OPTIONS(interval, moveHandler, isMobileChart, Colors[theme])}
+      options={AREA_CHART_OPTIONS(interval, isMobileChart, Colors[theme])}
       type="area"
       height={'550px'}
       width={'100%'}

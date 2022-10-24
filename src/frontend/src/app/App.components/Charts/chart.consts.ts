@@ -25,7 +25,10 @@ const YAXIS_SETTING = (interval: IntervalType, textColor: string, isMobile?: boo
   max: (max: number) => max + INTERVAL_PRICE_CUSHION[interval],
   labels: {
     show: true,
-    formatter: (value: any) => parseInt(value).toFixed(isMobile ? 1 : 4),
+    formatter: (value: any) =>
+      parseInt(value).toLocaleString('en-US', {
+        maximumFractionDigits: isMobile ? 1 : 4,
+      }),
     style: {
       colors: textColor,
     },
@@ -68,7 +71,7 @@ const XAXIS_SETTING = (textColor: string) => ({
   },
 })
 
-const CHART_SETTING = (moveHandler: (candleValue: number, isOut?: boolean) => void) => ({
+const CHART_SETTING = {
   toolbar: {
     show: false,
   },
@@ -78,20 +81,7 @@ const CHART_SETTING = (moveHandler: (candleValue: number, isOut?: boolean) => vo
   sparkline: {
     enabled: false,
   },
-  events: {
-    mouseMove: function (_: any, __: any, config: any) {
-      const candleData =
-        config.config.series?.[config.seriesIndex]?.data[config.dataPointIndex] ||
-        config.config.series?.[0]?.data.at(-1)
-      if (candleData) {
-        moveHandler(Array.isArray(candleData.y) ? candleData.y[3] : candleData.y)
-      }
-    },
-    mouseLeave: function () {
-      moveHandler(0, true)
-    },
-  },
-})
+}
 
 const RESPONSIVE_SETTING = [
   {
@@ -154,13 +144,8 @@ const RESPONSIVE_SETTING = [
   },
 ]
 
-export const CANDLESTICK_CHART_OPTIONS = (
-  interval: IntervalType,
-  moveHandler: (candleValue: number, isOut?: boolean) => void,
-  isMobileChart: boolean,
-  theme: MavrykTheme,
-) => ({
-  chart: CHART_SETTING(moveHandler),
+export const CANDLESTICK_CHART_OPTIONS = (interval: IntervalType, isMobileChart: boolean, theme: MavrykTheme) => ({
+  chart: CHART_SETTING,
   xaxis: XAXIS_SETTING(theme.toggleButtonColor),
   yaxis: YAXIS_SETTING(interval, theme.toggleButtonColor, isMobileChart),
   responsive: RESPONSIVE_SETTING,
@@ -181,13 +166,8 @@ export const CANDLESTICK_CHART_OPTIONS = (
   },
 })
 
-export const AREA_CHART_OPTIONS = (
-  interval: IntervalType,
-  moveHandler: (candleValue: number, isOut?: boolean) => void,
-  isMobileChart: boolean,
-  theme: MavrykTheme,
-) => ({
-  chart: CHART_SETTING(moveHandler),
+export const AREA_CHART_OPTIONS = (interval: IntervalType, isMobileChart: boolean, theme: MavrykTheme) => ({
+  chart: CHART_SETTING,
   xaxis: XAXIS_SETTING(theme.toggleButtonColor),
   responsive: RESPONSIVE_SETTING,
   tooltip: {

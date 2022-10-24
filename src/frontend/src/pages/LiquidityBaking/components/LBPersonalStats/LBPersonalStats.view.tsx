@@ -41,7 +41,11 @@ export const LBPersonalStatsView = ({
       <div className="stats-grid">
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={pnLStats.unrealizedPnL} endingText="ꜩ" showNone={showNone} />
+            <CommaNumber
+              value={isFinite(pnLStats.unrealizedPnL) ? pnLStats.unrealizedPnL : 0}
+              endingText="ꜩ"
+              showNone={showNone}
+            />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Unrealized PL
@@ -57,7 +61,11 @@ export const LBPersonalStatsView = ({
 
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={pnLStats.realizedPnL} endingText="ꜩ" showNone={showNone} />
+            <CommaNumber
+              value={isFinite(pnLStats.realizedPnL) ? pnLStats.realizedPnL : 0}
+              endingText="ꜩ"
+              showNone={showNone}
+            />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Realized PL
@@ -74,7 +82,13 @@ export const LBPersonalStatsView = ({
 
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={userPoolShare} endingText="%" showNone={showNone} showDecimal decimalsToShow={6} />
+            <CommaNumber
+              value={isFinite(userPoolShare) ? userPoolShare : 0}
+              endingText="%"
+              showNone={showNone}
+              showDecimal
+              decimalsToShow={6}
+            />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Pool Share
@@ -87,7 +101,11 @@ export const LBPersonalStatsView = ({
 
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
-            <CommaNumber value={balances.siriusBalance} showNone={showNone} endingText=" " />
+            <CommaNumber
+              value={isFinite(balances.siriusBalance) ? balances.siriusBalance : 0}
+              showNone={showNone}
+              endingText=" "
+            />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Sirius tokens
@@ -97,7 +115,9 @@ export const LBPersonalStatsView = ({
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
             <CommaNumber
-              value={estimatedAssetsOwned.estimatedPoolXtzOwned}
+              value={
+                isFinite(estimatedAssetsOwned.estimatedPoolXtzOwned) ? estimatedAssetsOwned.estimatedPoolXtzOwned : 0
+              }
               endingText="ꜩ"
               showNone={showNone}
               decimalsToShow={5}
@@ -115,7 +135,11 @@ export const LBPersonalStatsView = ({
         <VertInfo>
           <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
             <CommaNumber
-              value={estimatedAssetsOwned.estimatedPoolTzBTCOwned}
+              value={
+                isFinite(estimatedAssetsOwned.estimatedPoolTzBTCOwned)
+                  ? estimatedAssetsOwned.estimatedPoolTzBTCOwned
+                  : 0
+              }
               endingText="tzBTC"
               showNone={showNone}
               decimalsToShow={6}
