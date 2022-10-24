@@ -25,15 +25,16 @@ const LiquidityBaking = () => {
   useEffect(() => {
     dispatch(getTokensData())
     dispatch(getTokensPrices())
-    dispatch(getChartData(chartInterval))
     dispatch(getGeneralStats())
-  }, [chartInterval, dispatch])
 
-  useEffect(() => {
     if (!getItemFromStorage('theme')) {
       setItemInStorage('theme', SPACE_THEME)
     }
   }, [])
+
+  useEffect(() => {
+    dispatch(getChartData(chartInterval))
+  }, [chartInterval])
 
   const observerFn = ([entry]: any) => {
     setIsVisible(!Boolean(entry.isIntersecting))
