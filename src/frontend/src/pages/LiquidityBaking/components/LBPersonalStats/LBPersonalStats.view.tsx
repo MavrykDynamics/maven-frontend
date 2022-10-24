@@ -100,7 +100,7 @@ export const LBPersonalStatsView = ({
               value={estimatedAssetsOwned.estimatedPoolXtzOwned}
               endingText="ꜩ"
               showNone={showNone}
-              decimalsToShow={6}
+              decimalsToShow={5}
             />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
@@ -118,7 +118,7 @@ export const LBPersonalStatsView = ({
               value={estimatedAssetsOwned.estimatedPoolTzBTCOwned}
               endingText="tzBTC"
               showNone={showNone}
-              decimalsToShow={7}
+              decimalsToShow={6}
             />
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">

@@ -70,7 +70,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
 
         > div:not(.block-name) {
           font-weight: 500;
-          white-space: pre;
+          white-space: nowrap;
           margin-left: 7px;
 
           P {
