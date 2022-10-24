@@ -126,32 +126,29 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
       background: ${({ theme }) => theme.darkestBackroundColor};
       border-radius: 5px;
       border: 1px solid #503eaa;
+
+      svg {
+        width: 12px;
+        height: 9px;
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        fill: ${({ theme }) => theme.toggleButtonColorSelected};
+      }
     }
 
     .container:hover input ~ .checkmark {
-      border: 1px solid ${cyanColor};
+      background: ${({ theme }) =>
+        theme.theme === 'dark' || theme.theme === 'space' ? theme.backgroundColor : theme.darkestBackroundColor};
     }
 
-    .checkmark:after {
-      content: '';
-      position: absolute;
-      display: none;
-    }
-
-    .container input:checked ~ .checkmark:after {
-      display: block;
-    }
-
-    .container .checkmark:after {
-      left: 6px;
-      top: 3px;
-      width: 5px;
-      height: 8px;
-      border: solid white;
-      border-width: 0 2px 2px 0;
-      -webkit-transform: rotate(35deg);
-      -ms-transform: rotate(35deg);
-      transform: rotate(35deg);
+    .container input:checked ~ .checkmark {
+      background-color: #503eaa;
+      svg {
+        display: block;
+      }
     }
   }
 

@@ -1,9 +1,9 @@
-import { CheckBox } from 'pages/LiquidityBaking/components/LBAction/LBAction.style'
 import React, { useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { useLockBodyScroll } from 'react-use'
 import { PRIMARY } from '../Button/Button.constants'
 import { Button } from '../Button/Button.controller'
+import Icon from '../Icon/Icon.view'
 import { PopupContainer, PopupStyled } from '../SettingsPopup/SettingsPopup.style'
 import { PolicyStyled } from './Policy.style'
 
@@ -54,7 +54,9 @@ export const PolicyPopup = ({
                   }}
                   checked={checkbox}
                 />
-                <span className="checkmark"></span>
+                <span className="checkmark">
+                  <Icon id="checkbox_arrow" />
+                </span>
               </label>
               <label htmlFor="checkbox">
                 <p>I understand the risks and would like to proceed.</p>
