@@ -24,8 +24,8 @@ export const TzAddress = ({ tzAddress = '', type, hasIcon, iconToLeft, isBold, s
   const _handleCopyToClipboard = (address: string) => {
     if (shouldCopy) {
       navigator.clipboard.writeText(tzAddress)
+      dispatch(showToaster(SUCCESS, 'Copied to Clipboard', `${address}`))
     }
-    dispatch(showToaster(SUCCESS, 'Copied to Clipboard', `${address}`))
   }
 
   if (!tzAddress) {

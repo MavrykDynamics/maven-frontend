@@ -318,10 +318,15 @@ export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavrykTheme 
       }
 
       .main {
-        font-size: 18px;
+        font-size: 17px;
         line-height: 20px;
         font-weight: 500;
         color: ${({ theme }) => theme.policyPopupTextColor};
+
+        @media screen and (max-width: 550px) {
+          font-size: 16px;
+          line-height: 17px;
+        }
       }
     }
 
@@ -332,6 +337,11 @@ export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavrykTheme 
         font-size: 14px;
         line-height: 22px;
         color: ${({ theme: { walletDetailsSubtext } }) => walletDetailsSubtext};
+
+        @media screen and (max-width: 550px) {
+          font-size: 12px;
+          line-height: 17px;
+        }
       }
 
       p {

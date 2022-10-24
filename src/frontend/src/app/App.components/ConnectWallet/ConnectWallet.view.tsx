@@ -53,7 +53,7 @@ export const MobileDetailsBlock = ({
       <div className="top-visible-part ">
         <Icon id="wallet" className="wallet" />
         <var>
-          <TzAddress tzAddress={accountPkh} hasIcon shouldCopy />
+          <TzAddress tzAddress={accountPkh} hasIcon />
         </var>
         <Icon id="openLinkRight" className="openLink" />
       </div>
@@ -66,6 +66,7 @@ export const MobileDetailsBlock = ({
           buttonHandler={detailsHandlers.buyXTZHandler}
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
           iconName={'XTZ_tezos'}
+          decimals={6}
         />
         <ConnectedWalletDetailsItem
           buttonText={'But tzBTC'}
@@ -78,6 +79,7 @@ export const MobileDetailsBlock = ({
           }}
           subtextAmount={coinsInfo.usertzBTCBalance * coinsInfo.tzBTCExchnageRate}
           iconName={'tzBTC'}
+          decimals={8}
           disableBtn
         />
         <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
@@ -141,7 +143,7 @@ export const ConnectedWalletBlock = ({
           <div className="details-wallet ">
             <Icon id="wallet" className="wallet hover" />
             <var className="wallet-details-address hover">
-              <TzAddress tzAddress={accountPkh} hasIcon type={BLUE} />
+              <TzAddress tzAddress={accountPkh} hasIcon type={BLUE} shouldCopy={false} />
             </var>
           </div>
 
@@ -157,14 +159,16 @@ export const ConnectedWalletBlock = ({
           buttonHandler={detailsHandlers.buyXTZHandler}
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
           iconName={'XTZ_tezos'}
+          decimals={6}
         />
         <ConnectedWalletDetailsItem
           buttonText={'Buy tzBTC'}
           coinAmount={coinsInfo.usertzBTCBalance}
           coinName={'tzBTC'}
           buttonHandler={detailsHandlers.buyTZBTCHandler}
-          subtextAmount={coinsInfo.userXTZBalance * coinsInfo.tzBTCExchnageRate}
+          subtextAmount={coinsInfo.usertzBTCBalance * coinsInfo.tzBTCExchnageRate}
           iconName={'tzBTC'}
+          decimals={8}
           disableBtn
         />
         <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
@@ -219,6 +223,7 @@ type ConnectedWalletDetailsItemProps = {
   subtextAmount?: number
   iconName: string
   disableBtn?: boolean
+  decimals?: number
 }
 
 const ConnectedWalletDetailsItem = ({
@@ -230,6 +235,7 @@ const ConnectedWalletDetailsItem = ({
   subtextAmount,
   iconName,
   disableBtn = false,
+  decimals = 6,
 }: ConnectedWalletDetailsItemProps) => {
   return (
     <ConnectedWalletDetailsItemStyled>
@@ -242,7 +248,7 @@ const ConnectedWalletDetailsItem = ({
             value={coinAmount}
             endingText={coinName}
             showDecimal
-            decimalsToShow={4}
+            decimalsToShow={decimals}
             useMagnitude={false}
             className="main"
           />
@@ -253,7 +259,7 @@ const ConnectedWalletDetailsItem = ({
             value={subtextAmount}
             endingText={'USD'}
             showDecimal
-            decimalsToShow={4}
+            decimalsToShow={decimals}
             useMagnitude={false}
             className="subtext"
           />
