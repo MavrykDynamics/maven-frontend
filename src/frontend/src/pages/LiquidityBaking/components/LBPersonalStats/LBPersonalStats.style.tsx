@@ -98,7 +98,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
       > div {
         flex-direction: row-reverse;
         justify-content: space-between;
-        column-gap: 15px;
+        column-gap: 30px;
 
         > div:not(.block-name) {
           font-weight: 500;
