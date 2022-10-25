@@ -38,18 +38,23 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
       transition: 0.35s all;
     }
 
-    &:hover {
-      color: ${({ theme }) => theme.topBarLinkColorActive};
+    ${({ useClickOpening }) =>
+      !useClickOpening
+        ? css`
+            &:hover {
+              color: ${({ theme }) => theme.topBarLinkColorActive};
 
-      svg {
-        stroke: ${({ theme }) => theme.topBarLinkColorActive};
-        transform: rotate(90deg);
-      }
+              svg {
+                stroke: ${({ theme }) => theme.topBarLinkColorActive};
+                transform: rotate(90deg);
+              }
 
-      a {
-        color: ${({ theme }) => theme.topBarLinkColorActive};
-      }
-    }
+              a {
+                color: ${({ theme }) => theme.topBarLinkColorActive};
+              }
+            }
+          `
+        : ''}
 
     @media screen and (max-width: 1380px) {
       font-size: 18px;
@@ -110,12 +115,17 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
     }
   }
 
-  &:hover {
-    cursor: pointer;
-    svg {
-      transform: rotate(90deg);
-    }
-  }
+  ${({ useClickOpening }) =>
+    !useClickOpening
+      ? css`
+          &:hover {
+            cursor: pointer;
+            svg {
+              transform: rotate(90deg);
+            }
+          }
+        `
+      : ''}
 
   ${({ useClickOpening, selected }) =>
     useClickOpening
@@ -150,7 +160,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
               color: ${({ theme }) => theme.topBarLinkColorActive};
 
               svg {
-                color: ${({ theme }) => theme.topBarLinkColorActive};
+                stroke: ${({ theme }) => theme.topBarLinkColorActive};
                 transform: rotate(90deg);
               }
             }
