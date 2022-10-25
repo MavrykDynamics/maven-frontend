@@ -53,7 +53,6 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
     margin-top: 42px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
     color: ${({ theme }) => theme.policyPopupTextColor};
     display: flex;
     flex-direction: column;
@@ -82,7 +81,6 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
       font-weight: 500;
       font-size: 14px;
       line-height: 24px;
-      white-space: nowrap;
     }
   }
 
