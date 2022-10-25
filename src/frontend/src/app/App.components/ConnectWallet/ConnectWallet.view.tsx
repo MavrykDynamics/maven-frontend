@@ -50,12 +50,17 @@ export const MobileDetailsBlock = ({
       <div className="close" onClick={handleCloseBtn}>
         <Icon id="close-stroke" />
       </div>
-      <div className="top-visible-part ">
-        <Icon id="wallet" className="wallet" />
-        <var>
-          <TzAddress tzAddress={accountPkh} hasIcon />
-        </var>
-        <Icon id="openLinkRight" className="openLink" />
+      <div className="wallet-details-header">
+        <div className="details-wallet ">
+          <Icon id="wallet" className="wallet hover" />
+          <var className="wallet-details-address hover">
+            <TzAddress tzAddress={accountPkh} hasIcon type={BLUE} shouldCopy={false} />
+          </var>
+        </div>
+
+        <a href={`https://tzstats.com/${accountPkh}`} target="_blank" rel="noreferrer">
+          <Icon id="send" className="icon-send" />
+        </a>
       </div>
 
       <div className="details">
@@ -130,9 +135,9 @@ export const ConnectedWalletBlock = ({
 
   return (
     <ConnectedWalletStyled onMouseOver={mouseOverHanlder} onMouseLeave={closeHandler} onClick={mobileClickOpenHanler}>
-      <div className="top-visible-part ">
-        <Icon id="wallet" className="wallet" />
+      <div className={`top-visible-part ${isMobile ? 'mobile' : ''}`}>
         <var>
+          <Icon id="wallet" className="wallet" />
           <TzAddress tzAddress={accountPkh} hasIcon={false} shouldCopy={false} />
         </var>
         <Icon id="paginationArrowLeft" className="end-icon" />
