@@ -17,17 +17,10 @@ export const PolicyPopup = ({
   useLockBodyScroll(isModalOpened)
   const [checkbox, setCheckbox] = useState(false)
 
-  useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.body.style.overflow = 'none'
-    }
-  }, [])
-
   return (
     <PopupStyled>
       <CSSTransition in={isModalOpened || true} timeout={200} classNames="popup" unmountOnExit>
-        <PopupContainer style={{ zIndex: 15 }}>
+        <PopupContainer style={{ zIndex: 15, position: 'absolute' }}>
           <PolicyStyled onClick={(e: React.MouseEvent) => e.stopPropagation()}>
             <div className="title">Disclaimer: Risks of Using Protocol</div>
 
