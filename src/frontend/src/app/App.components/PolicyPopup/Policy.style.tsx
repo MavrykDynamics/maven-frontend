@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cyanColor } from 'styles'
+import { cyanColor, titleColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
@@ -52,7 +52,6 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
     max-height: 340px;
     margin-top: 42px;
     overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
     color: ${({ theme }) => theme.policyPopupTextColor};
     display: flex;
     flex-direction: column;
@@ -160,12 +159,35 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
     max-height: 80vh;
     padding: 40px 20px;
     top: 45%;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: ${titleColor}4d;
+    }
+    &::-webkit-scrollbar {
+      width: 5px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: ${titleColor};
+    }
 
     > .title {
       font-size: 20px;
     }
 
     .main_text {
+      max-height: unset;
+      height: fit-content;
+      overflow-y: unset;
+
+      &:after {
+        display: none;
+      }
       .text {
         font-size: 12px;
         line-height: 20px;
