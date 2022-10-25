@@ -53,6 +53,7 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
     margin-top: 42px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
     color: ${({ theme }) => theme.policyPopupTextColor};
     display: flex;
     flex-direction: column;

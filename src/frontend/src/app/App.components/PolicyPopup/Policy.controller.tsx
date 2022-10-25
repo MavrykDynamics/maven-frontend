@@ -24,8 +24,7 @@ export const PolicyPopup = ({
           <PolicyStyled onClick={(e: React.MouseEvent) => e.stopPropagation()}>
             <div className="title">Disclaimer: Risks of Using Protocol</div>
 
-            <div className="main_text">
-              {/*scroll-block"> */}
+            <div className="main_text scroll-block">
               <div className="title">Use at Your Own Risk:</div>
               <div className="text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
