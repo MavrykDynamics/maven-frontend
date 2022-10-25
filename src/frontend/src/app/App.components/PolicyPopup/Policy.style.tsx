@@ -51,13 +51,14 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
   .main_text {
     max-height: 340px;
     margin-top: 42px;
-    overflow-y: auto;
+    overflow-y: scroll;
     color: ${({ theme }) => theme.policyPopupTextColor};
     display: flex;
     flex-direction: column;
     row-gap: 20px;
     padding-right: 25px;
     position: relative;
+    z-index: 100;
 
     &:after {
       content: '';
@@ -157,6 +158,7 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
     height: fit-content;
     max-height: 80vh;
     padding: 40px 20px;
+    top: 45%;
 
     > .title {
       font-size: 20px;
