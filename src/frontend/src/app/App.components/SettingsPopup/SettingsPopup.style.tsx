@@ -210,7 +210,9 @@ export const PopupStyled = styled.div`
 
 export const PopupContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
+  height: 100%;
+  overflow: auto;
   background-color: #0000007a;
   z-index: 11;
   position: fixed;
