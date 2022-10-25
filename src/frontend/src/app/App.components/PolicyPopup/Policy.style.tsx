@@ -51,7 +51,8 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
   .main_text {
     max-height: 340px;
     margin-top: 42px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     color: ${({ theme }) => theme.policyPopupTextColor};
     display: flex;
     flex-direction: column;
