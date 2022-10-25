@@ -58,11 +58,33 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
 
   .group-links {
     display: flex;
-    padding: 20px 45px 20px 15px;
+    padding: 20px 5px 20px 15px;
     background: ${({ theme }) => theme.darkBackroundColor};
     transition: 0.6s all;
     flex-direction: column;
     row-gap: 15px;
+
+    .link-wrapper {
+      width: 100%;
+      position: relative;
+      &.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      &:hover:not(.disabled),
+      &.selected {
+        &::before {
+          content: '✓';
+          position: absolute;
+          right: 10px;
+          font-size: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: ${({ theme }) => theme.topBarLinkColorActive};
+        }
+      }
+    }
 
     a {
       text-transform: capitalize;
@@ -76,17 +98,14 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
       padding-left: 10px;
       border-radius: 5px;
       color: ${({ theme }) => theme.topBarLinkColor};
-      &:hover {
-        color: ${({ theme }) => theme.topBarLinkColorActive};
 
-        &::before {
-          content: '✓';
-          position: absolute;
-          right: 10px;
-          font-size: 18px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
+      &.disabled {
+        pointer-events: none;
+      }
+
+      &:hover:not(.disabled),
+      &.selected {
+        color: ${({ theme }) => theme.topBarLinkColorActive};
       }
     }
   }
@@ -123,7 +142,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
                   left: 0;
                   bottom: -10px;
                   content: '';
-                  background: ${({ theme }) => theme.btnNewsColor};
+                  color: ${({ theme }) => theme.topBarLinkColorActive};
                 }
               `}
 
@@ -155,9 +174,13 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
             background: ${({ theme }) => theme.darkestBackroundColor};
             margin-top: 10px;
 
-            a {
-              width: 200px;
+            .link-wrapper {
+              width: 220px;
               margin-left: 15px;
+            }
+
+            a {
+              width: 100%;
             }
 
             ${() =>
@@ -189,7 +212,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
               color: ${({ theme }) => theme.topBarLinkColorActive};
 
               svg {
-                color: ${({ theme }) => theme.topBarLinkColorActive};
+                stroke: ${({ theme }) => theme.topBarLinkColorActive};
               }
             }
           }

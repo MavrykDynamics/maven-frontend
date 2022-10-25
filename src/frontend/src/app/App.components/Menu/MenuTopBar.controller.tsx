@@ -35,26 +35,31 @@ export const SocialIcons = () => (
 )
 
 export const PRODUCTS_LINKS = [
-  { name: 'Dapp', href: 'https://front-dev.mavryk-dapp.pages.dev/dashboard/lending' },
-  { name: 'Liquidity Baking', href: 'mavryk.finance/liquidity-baking' },
-  { name: 'Mavryk Bakery', href: '/' },
-  { name: 'DAO Bakery', href: '/' },
+  {
+    name: 'Dapp (Soon)',
+    href: 'https://front-dev.mavryk-dapp.pages.dev/dashboard/lending',
+    disabled: true,
+    path: '/dashboard/lending',
+  },
+  { name: 'Liquidity Baking', href: 'mavryk.finance/liquidity-baking', path: '/liquidity-baking' },
+  { name: 'Mavryk Bakery (Soon)', href: '/', disabled: true },
+  { name: 'DAO Bakery (Soon)', href: '/', disabled: true },
 ]
 
 export const ABOUT_LINKS = [
-  { name: 'Who we are', href: 'https://mavryk.finance/' },
-  { name: 'MVK Token', href: '/' },
-  { name: 'Team', href: 'https://mavryk.finance/#team' },
-  { name: 'Roadmap', href: 'https://mavryk.finance/#roadmap' },
+  { name: 'MVK Token (Soon)', href: '/', disabled: true },
+  { name: 'Team', href: 'https://mavryk.finance/#team', path: 'https://mavryk.finance/#team' },
+  // { name: 'Who we are', href: 'https://mavryk.finance/' },
+  // { name: 'Roadmap', href: 'https://mavryk.finance/#roadmap' },
 ]
 
 export const BLOG_LINKS = []
 
 export const DOCS_LINKS = [
-  { name: 'Litepaper', href: 'https://mavryk.finance/litepaper' },
-  { name: 'DAO docs', href: '/' },
-  { name: 'Security Audits', href: '/' },
-  { name: 'Github', href: 'https://github.com/mavrykfinance/' },
+  { name: 'Litepaper', href: 'https://mavryk.finance/litepaper', path: 'https://mavryk.finance/litepaper' },
+  { name: 'DAO docs (Soon)', href: '/', disabled: true },
+  { name: 'Security Audits (Soon)', href: '/', disabled: true },
+  { name: 'Github (Soon)', href: 'https://github.com/mavrykfinance/', disabled: true },
 ]
 
 export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
