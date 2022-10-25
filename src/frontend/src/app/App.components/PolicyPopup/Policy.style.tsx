@@ -49,7 +49,7 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   .main_text {
-    max-height: 55%;
+    max-height: 340px;
     margin-top: 42px;
     overflow-y: auto;
     color: ${({ theme }) => theme.policyPopupTextColor};
