@@ -183,7 +183,9 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
     }
 
     .popup_btn {
-      padding: 10px;
+      > div {
+        padding: 10px;
+      }
       margin: 20px auto 0 auto;
     }
   }

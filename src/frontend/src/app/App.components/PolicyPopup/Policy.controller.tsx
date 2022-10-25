@@ -19,8 +19,8 @@ export const PolicyPopup = ({
 
   return (
     <PopupStyled>
-      <CSSTransition in={isModalOpened || true} timeout={200} classNames="popup" unmountOnExit>
-        <PopupContainer style={{ zIndex: 15, position: 'absolute' }}>
+      <CSSTransition in={isModalOpened} timeout={200} classNames="popup" unmountOnExit>
+        <PopupContainer style={{ zIndex: 15 }}>
           <PolicyStyled onClick={(e: React.MouseEvent) => e.stopPropagation()}>
             <div className="title">Disclaimer: Risks of Using Protocol</div>
 
