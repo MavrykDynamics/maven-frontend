@@ -209,6 +209,8 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
             &:hover {
               svg {
                 display: block;
+                transform: scale(1.4);
+                margin-left: 10px;
               }
             }
           }
@@ -259,6 +261,7 @@ export const MobileDetailsStyled = styled.div<{ theme: MavrykTheme }>`
     top: 27px;
     right: 15px;
     cursor: pointer;
+    z-index: 20;
 
     svg {
       width: 26px;
@@ -312,6 +315,8 @@ export const MobileDetailsStyled = styled.div<{ theme: MavrykTheme }>`
           &:hover {
             svg {
               display: block;
+              transform: scale(1.4);
+              margin-left: 10px;
             }
           }
         }

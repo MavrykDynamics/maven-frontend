@@ -54,7 +54,7 @@ export const MobileDetailsBlock = ({
         <div className="details-wallet ">
           <Icon id="wallet" className="wallet hover" />
           <var className="wallet-details-address hover">
-            <TzAddress tzAddress={accountPkh} hasIcon type={BLUE} shouldCopy={false} />
+            <TzAddress tzAddress={accountPkh} hasIcon type={BLUE} />
           </var>
         </div>
 

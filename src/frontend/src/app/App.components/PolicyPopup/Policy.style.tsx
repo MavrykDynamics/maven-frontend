@@ -23,6 +23,10 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
     max-width: 200px;
     margin: 40px auto 0 auto;
 
+    > div {
+      padding: 10px;
+    }
+
     &:disabled {
       opacity: 0.6;
       cursor: not-allowed;
