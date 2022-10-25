@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { useLockBodyScroll } from 'react-use'
 import { PRIMARY } from '../Button/Button.constants'
@@ -16,6 +16,13 @@ export const PolicyPopup = ({
 }) => {
   useLockBodyScroll(isModalOpened)
   const [checkbox, setCheckbox] = useState(false)
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = 'none'
+    }
+  }, [])
 
   return (
     <PopupStyled>
