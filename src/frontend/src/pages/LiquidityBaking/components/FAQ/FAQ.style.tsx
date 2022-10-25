@@ -12,11 +12,6 @@ export const LBFAQStyled = styled.div<{ theme: MavrykTheme }>`
   justify-content: space-between;
   row-gap: 20px;
 
-  // TODO: remove it
-  max-height: 340px;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-
   @media screen and (max-width: 500px) {
     padding: 50px 15px 50px 15px;
   }
