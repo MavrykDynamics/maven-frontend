@@ -22,6 +22,11 @@ export const PopupContainerWrapper = styled.div<{ theme: MavrykTheme }>`
     padding: 40px 20px;
   }
 
+  @media (max-height: 650px) {
+    max-height: 85vh;
+    top: 47%;
+  }
+
   .close_modal {
     position: absolute;
     font-size: 35px;
@@ -75,6 +80,10 @@ export const ChangeNodeNodesList = styled.div`
   height: fit-content;
   overflow-y: auto;
   padding-right: 10px;
+
+  @media (max-height: 650px) {
+    max-height: 85px;
+  }
 `
 
 export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`

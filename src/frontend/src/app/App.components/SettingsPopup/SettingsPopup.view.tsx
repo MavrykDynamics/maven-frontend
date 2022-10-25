@@ -52,7 +52,7 @@ export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) 
         </div>
         <PopupTitle className="change_node">Change RPC Node</PopupTitle>
 
-        <ChangeNodeNodesList className="scroll-block">
+        <ChangeNodeNodesList className="scroll-block change-node-list">
           {RPC_NODES.map(({ title, url, nodeLogoUrl, isUser }, idx) => (
             <ChangeNodeNodesListItem
               key={title + idx}
