@@ -11,6 +11,10 @@ export const LBFAQStyled = styled.div<{ theme: MavrykTheme }>`
   flex-direction: column;
   justify-content: space-between;
   row-gap: 20px;
+
+  @media screen and (max-width: 500px) {
+    padding: 50px 15px 50px 15px;
+  }
 `
 
 export const FaqItem = styled.div<{ last?: boolean }>`

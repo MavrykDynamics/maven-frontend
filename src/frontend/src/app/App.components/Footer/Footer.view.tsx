@@ -14,7 +14,7 @@ export const FooterView = ({ className }: { className?: string }) => {
     <FooterStyled id="footer" className={className}>
       <FooterContainer>
         <FooterTop className="top">
-          <div>
+          <div className="logo-descr">
             <Link to="/">
               <FooterLogo alt="logo" src={logoUrl} />
             </Link>
@@ -22,6 +22,13 @@ export const FooterView = ({ className }: { className?: string }) => {
               Mavryk is a DAO operated financial ecosystem that lets users borrow and earn on their terms, while
               participating in the governance of the platform.
             </FooterDescription>
+
+            <FooterBottom className="lb-mob">
+              <div>© Mavryk Finance {new Date().getFullYear()}</div>
+              {/* <FooterLinks>
+            <Link to="privacy">Privacy Policy</Link>
+          </FooterLinks> */}
+            </FooterBottom>
           </div>
 
           <FooterSocials>
@@ -52,7 +59,7 @@ export const FooterView = ({ className }: { className?: string }) => {
             </a>
           </FooterSocials>
         </FooterTop>
-        <FooterBottom>
+        <FooterBottom className="lb">
           <div>© Mavryk Finance {new Date().getFullYear()}</div>
           {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
