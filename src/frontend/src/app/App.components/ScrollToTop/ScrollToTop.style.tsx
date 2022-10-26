@@ -11,6 +11,7 @@ export const StyledScrollToTop = styled.div<{ theme: MavrykTheme; show: boolean 
   transition: 0.1s all;
   opacity: 0;
   visibility: hidden;
+  animation: upDown 2s ease infinite;
 
   svg {
     width: 57px;
@@ -27,7 +28,8 @@ export const StyledScrollToTop = styled.div<{ theme: MavrykTheme; show: boolean 
         `
       : ''}
 
-  &:before,
+  // old pulse animation
+  /* &:before,
   &:after {
     content: '';
     position: absolute;
@@ -47,11 +49,27 @@ export const StyledScrollToTop = styled.div<{ theme: MavrykTheme; show: boolean 
 
   &:after {
     animation: pulse 2s 0.5s ease-out infinite;
-  }
-  @keyframes pulse {
+  } */
+  /* @keyframes pulse {
     100% {
       transform: scale(1.8);
       opacity: 0;
+    }
+  } */
+
+  @keyframes upDown {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
     }
   }
 
