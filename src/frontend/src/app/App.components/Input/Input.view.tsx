@@ -11,6 +11,8 @@ import {
   InputStatus,
   InputStyled,
 } from './Input.style'
+import Icon from '../Icon/Icon.view'
+import { ERROR } from '../Toaster/Toaster.constants'
 
 type InputViewProps = {
   icon?: string
@@ -59,7 +61,9 @@ export const InputView = ({
 }: InputViewProps) => {
   const isLB = kind === 'LB'
   const status = inputStatus !== undefined ? inputStatus : 'none'
-  const classNames = `${kind} ${className || ''} ${status} ${isLB ? 'LB' : ''}`
+  const classNames = `${kind} ${className || ''} ${status} ${isLB ? 'LB' : ''} ${
+    convertedValue === undefined ? 'no-subtext' : ''
+  }`
 
   return (
     <InputStyled id={'inputStyled'}>
@@ -105,7 +109,9 @@ export const InputView = ({
 
         {isLB && pinnedText && icon ? (
           <div className="LB-coin-info">
-            {icon.includes('.png') ? (
+            {status === ERROR ? (
+              <Icon id="error" className="error-icon" />
+            ) : icon.includes('.png') ? (
               <img src={`/images/${icon}`} />
             ) : (
               <svg>
@@ -113,13 +119,15 @@ export const InputView = ({
               </svg>
             )}
 
-            <CustomizedText color="#C0DBFF" fontSize={22} fontWidth={600}>
-              {pinnedText}
-            </CustomizedText>
+            {pinnedText && (
+              <CustomizedText color="#C0DBFF" fontSize={22} fontWidth={600}>
+                {pinnedText}
+              </CustomizedText>
+            )}
           </div>
         ) : null}
 
-        {isLB && (
+        {isLB && convertedValue !== undefined && (
           <div className="transfer_result">
             <CustomizedText color="#C0DBFF" fontSize={12} fontWidth={500}>
               <CommaNumber beginningText="= $" value={convertedValue || 0} />

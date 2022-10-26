@@ -24,6 +24,9 @@ import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'util
 import { addLiquidity, addLiquidityOnlyXTZ } from 'redux/actions/liquidity.action'
 import { calculateTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
 import Icon from 'app/App.components/Icon/Icon.view'
+import { InputStatusType } from 'app/App.components/Input/Input.controller'
+import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
+import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
 
 const DEFAULT_COINS_AMOUNT = {
   XTZ: 0,
@@ -40,6 +43,16 @@ const DefaultMinCoinsData: MinCoinsData = {
   minTzBTC: 0,
 }
 
+export type CoinsInputsErrors = {
+  XTZ: InputStatusType
+  tzBTC: InputStatusType
+}
+
+export const DEFAULT_COINS_ERRORS = {
+  XTZ: '' as InputStatusType,
+  tzBTC: '' as InputStatusType,
+}
+
 const dexType = getSettings('liquidity')
 
 export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
@@ -47,6 +60,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
   const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
+  const [inputErrors, setInputErrors] = useState<CoinsInputsErrors>(DEFAULT_COINS_ERRORS)
   const [onlyXtzSwapData, setOnlyXtzSwapData] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
   const [onlyXtzMinCoinsData, setOnlyXtzMinCoinsData] = useState<MinCoinsData>(DefaultMinCoinsData)
   const [selectedSlippage, setSeletedToggle] = useState(SLIPPAGE_TOGGLE_VALUES[0].value)
@@ -61,6 +75,11 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
     setOnlyXtzSwapData(DEFAULT_COINS_AMOUNT)
     setOnlyXtzMinCoinsData(DefaultMinCoinsData)
   }, [ready])
+
+  useEffect(() => {
+    setInputErrors(DEFAULT_COINS_ERRORS)
+    setInputValues(DEFAULT_COINS_AMOUNT)
+  }, [switchValue])
 
   const calcAddLiquidityXtzAndTzbtc = (amount: number, name: string) => {
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
@@ -150,7 +169,14 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
   // input handler
   const inputChangeHandler = (e: AddLiquidutityInputChangeEventType) => {
     const { name, value } = e.target
-    if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) return
+    if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) {
+      dispatch(showToaster(ERROR, 'Insufficient wallet balance', 'Please enter sufficient amount'))
+      setInputErrors({
+        ...inputErrors,
+        [name]: ERROR,
+      })
+      return
+    }
 
     if (switchValue) {
       // Only XTZ input
@@ -236,18 +262,22 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
       {switchValue ? (
         <AddLiquidityOnlyXTZ
           inputValues={inputValues}
+          inputErrors={inputErrors}
           inputChangeHandler={inputChangeHandler}
           lqtReceived={lqtReceived}
           setInputValues={setInputValues}
+          setInputErrors={setInputErrors}
           swapData={onlyXtzSwapData}
           minCoinsForSwap={onlyXtzMinCoinsData}
         />
       ) : (
         <AddLiquidityDefault
           inputValues={inputValues}
+          inputErrors={inputErrors}
           inputChangeHandler={inputChangeHandler}
           lqtReceived={lqtReceived}
           setInputValues={setInputValues}
+          setInputErrors={setInputErrors}
         />
       )}
 

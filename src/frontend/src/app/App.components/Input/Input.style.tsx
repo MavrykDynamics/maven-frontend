@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components/macro'
-import { cyanColor, titleColor } from 'styles'
+import { cyanColor, downColor, titleColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const InputStyled = styled.div<{ theme: MavrykTheme }>`
@@ -49,6 +49,11 @@ export const InputComponentContainer = styled.div<{ theme: MavrykTheme }>`
       height: 28px;
       margin-right: 10px;
       fill: ${({ theme }) => theme.darkBackroundColor};
+
+      &.error-icon {
+        stroke: ${downColor};
+        width: 20px;
+      }
     }
   }
 
@@ -113,6 +118,10 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
     color: ${({ theme }) => theme.headerColor};
     background-color: ${({ theme }) => theme.toggleButtonBg};
     border: 1px solid ${titleColor};
+  }
+
+  &.no-subtext {
+    padding-bottom: 0;
   }
 
   &::placeholder:not(.search) {

@@ -12,28 +12,31 @@ import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { cyanColor } from 'styles'
 import { StepBlock } from '../LBAction.style'
-import { MinCoinsData } from './LBAddLiquidity.controller'
+import { CoinsInputsErrors, DEFAULT_COINS_ERRORS, MinCoinsData } from './LBAddLiquidity.controller'
 import { useMedia } from 'react-use'
 
 export const AddLiquidityOnlyXTZ = ({
   inputValues,
+  inputErrors,
   lqtReceived,
   setInputValues,
   inputChangeHandler,
+  setInputErrors,
   swapData,
   minCoinsForSwap,
 }: {
   inputValues: CoinsInputsValues
+  inputErrors: CoinsInputsErrors
   swapData: CoinsInputsValues
   inputChangeHandler: (arg: AddLiquidutityInputChangeEventType) => void
   lqtReceived: number
   setInputValues: (arg: CoinsInputsValues) => void
+  setInputErrors: (arg: CoinsInputsErrors) => void
   minCoinsForSwap: MinCoinsData
 }) => {
   const { coinPrices } = useSelector((state: State) => state.tokens)
   const { xtzBalance } = useSelector((state: State) => state.user)
 
-  console.log('Logging swapData: ', swapData, minCoinsForSwap)
   return (
     <>
       <Input
@@ -46,6 +49,7 @@ export const AddLiquidityOnlyXTZ = ({
         convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
         icon={'XTZ_tezos'}
         pinnedText={'XTZ'}
+        inputStatus={inputErrors.XTZ}
         onKeyDown={nonNumberSymbolsValidation}
         onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
         useMaxHandler={() => {
@@ -64,6 +68,7 @@ export const AddLiquidityOnlyXTZ = ({
               XTZ: 0,
             })
           }
+          setInputErrors(DEFAULT_COINS_ERRORS)
         }}
         onFocus={() => {
           if (parseSrtToNum(inputValues.XTZ) === 0) {

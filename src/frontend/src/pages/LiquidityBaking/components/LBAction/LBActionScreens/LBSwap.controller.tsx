@@ -9,7 +9,7 @@ import { State } from 'utils/interfaces'
 import { Button } from 'app/App.components/Button/Button.controller'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
+import { Input, InputStatusType } from 'app/App.components/Input/Input.controller'
 import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
 import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
@@ -24,6 +24,8 @@ import { calculateTokenToXtz as CalcTokenToXtz, calculateXtzToToken as CalcXtzTo
 import { LBGeneralStats } from '../../../LiquidityBaking.view'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
 import { useMedia } from 'react-use'
+import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
+import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -34,6 +36,17 @@ type CoinsInputsValues = {
   XTZ: string | number
   tzBTC: string | number
 }
+
+type CoinsInputsErrors = {
+  XTZ: InputStatusType
+  tzBTC: InputStatusType
+}
+
+const DEFAULT_COINS_ERRORS = {
+  XTZ: '' as InputStatusType,
+  tzBTC: '' as InputStatusType,
+}
+
 const DEFAULT_COINS_ORDER: CoinsOrderType = {
   from: 'XTZ',
   to: 'tzBTC',
@@ -56,6 +69,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   const [priceImpact, setPriceImpact] = useState(0)
   const [isRevertedCoins, setIsRevertedCoins] = useState<CoinsOrderType>(DEFAULT_COINS_ORDER)
   const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
+  const [inputErrors, setInputErrors] = useState<CoinsInputsErrors>(DEFAULT_COINS_ERRORS)
   const [exchangeRate, setExchangeRate] = useState<number>(0)
   const [amountToSwap, setAmountToSwap] = useState(0)
 
@@ -124,7 +138,16 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => {
     let { name, value } = e.target
 
-    if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) return
+    if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) {
+      dispatch(showToaster(ERROR, 'Insufficient wallet balance', 'Please enter sufficient amount'))
+      setInputErrors({
+        ...inputErrors,
+        [name]: ERROR,
+      })
+      return
+    }
+
+    setInputErrors(DEFAULT_COINS_ERRORS)
     const isTypingBottomInput = name === isRevertedCoins.to
 
     const parsedValue = isNaN(parseFloat(value)) ? 0 : parseFloat(value)
@@ -217,6 +240,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
           pinnedText={'XTZ'}
           useMaxHandler={() => maxHandler('XTZ', 'tzBTC')}
           userBalance={xtzBalance}
+          inputStatus={inputErrors.XTZ}
           onKeyDown={nonNumberSymbolsValidation}
           onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
           onBlur={() => {
@@ -226,6 +250,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
                 XTZ: 0,
               })
             }
+            setInputErrors(DEFAULT_COINS_ERRORS)
           }}
           onFocus={() => {
             if (parseSrtToNum(inputValues.XTZ) === 0) {
@@ -261,16 +286,16 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
           useMaxHandler={() => maxHandler('tzBTC', 'XTZ')}
           userBalance={tzBTCBalance}
           onKeyDown={nonNumberSymbolsValidation}
+          inputStatus={inputErrors.tzBTC}
           onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
           onBlur={() => {
-            console.log('inputValues', inputValues)
-
             if (inputValues.tzBTC === '') {
               setInputValues({
                 ...inputValues,
                 tzBTC: 0,
               })
             }
+            setInputErrors(DEFAULT_COINS_ERRORS)
           }}
           onFocus={() => {
             if (parseSrtToNum(inputValues.tzBTC) === 0) {

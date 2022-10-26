@@ -6,7 +6,7 @@ import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.conto
 import { Button } from 'app/App.components/Button/Button.controller'
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
 import { MinimumReceived } from 'app/App.components/LBActionBottomFields/MinimumReceived.controller'
-import { Input } from 'app/App.components/Input/Input.controller'
+import { Input, InputStatusType } from 'app/App.components/Input/Input.controller'
 
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
 import { ActionScreenWrapper } from '../LBAction.style'
@@ -21,14 +21,25 @@ import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.co
 import { removeLiquidity } from '../../../../../redux/actions/liquidity.action'
 import { calculateRemoveLiquidity } from '../../../../../utils/DEX/liquidityUtils'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from '../../../../../utils/consts'
+import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
+import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 
 const dex = getSettings('liquidity')
+
+type CoinsInputsErrors = {
+  SIR: InputStatusType
+}
+
+const DEFAULT_COINS_ERRORS = {
+  SIR: '' as InputStatusType,
+}
 
 export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
   const dispatch = useDispatch()
   const { LBTBalance } = useSelector((state: State) => state.user)
 
   const [inputValues, setInputValues] = useState<{ SIR: number | string }>({ SIR: '0' })
+  const [inputErrors, setInputErrors] = useState<CoinsInputsErrors>(DEFAULT_COINS_ERRORS)
   const [selectedSlippage, setSelectedSlippage] = useState<number>(SLIPPAGE_TOGGLE_VALUES[0].value)
   const [slippagePercent, setSlippagePercent] = useState<string | number>(SLIPPAGE_TOGGLE_VALUES[0].value.toString())
   const [receivedAmount, setReceivedAmount] = useState({
@@ -89,7 +100,15 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
   // change input value handler
   const inputChangeHandler = (e: AddLiquidutityInputChangeEventType) => {
     const { value } = e.target
-    if (+value < 0 || (ready && +value > LBTBalance)) return
+    if (+value < 0 || (ready && +value > LBTBalance)) {
+      dispatch(showToaster(ERROR, 'Insufficient wallet balance', 'Please enter sufficient amount'))
+      setInputErrors({
+        SIR: ERROR,
+      })
+      return
+    }
+
+    setInputErrors(DEFAULT_COINS_ERRORS)
 
     calculateReceivedXtzAndTzbtc(value === '' ? 0 : parseFloat(value.toString()))
     setInputValues({
@@ -119,8 +138,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
         icon={'sirius-icon.png'}
         pinnedText={'SIR'}
         onKeyDown={nonNumberSymbolsValidation}
-        // TODO: ask where do i take rate for sirius
-        convertedValue={parseSrtToNum(inputValues.SIR) * 1}
+        inputStatus={inputErrors.SIR}
         onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
         useMaxHandler={() => {
           inputChangeHandler({
@@ -138,6 +156,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
               SIR: '0',
             })
           }
+          setInputErrors(DEFAULT_COINS_ERRORS)
         }}
         onFocus={() => {
           if (parseSrtToNum(inputValues.SIR) === 0) {
