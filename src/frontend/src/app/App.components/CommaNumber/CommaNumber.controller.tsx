@@ -1,3 +1,4 @@
+import Icon from '../Icon/Icon.view'
 import { LoadingIcon } from './CommaNumber.style'
 
 export const DECIMALS_TO_SHOW = 2
@@ -6,6 +7,7 @@ export const CommaNumber = ({
   value,
   loading,
   endingText,
+  endingIconName,
   beginningText,
   className = '',
   showDecimal = true,
@@ -19,6 +21,7 @@ export const CommaNumber = ({
   decimalsToShow?: number
   loading?: boolean
   endingText?: string
+  endingIconName?: string
   beginningText?: string
   className?: string
   showDecimal?: boolean
@@ -52,12 +55,14 @@ export const CommaNumber = ({
         </div>
       ) : (
         <>
-          {beginningText || endingText ? (
+          {beginningText || endingText || endingIconName ? (
             <div className={className} title={title && title}>
               <p>
                 {beginningText ? beginningText + ' ' : ''}
                 {showNone ? '-' : numberWithCommas}
                 {endingText ? ' ' + endingText : ''}
+                {/* TODO:  add posibility to use icons */}
+                {/* {endingIconName ? <Icon id={endingIconName} /> : ''} */}
               </p>
             </div>
           ) : (

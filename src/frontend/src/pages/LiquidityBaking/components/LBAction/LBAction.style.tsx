@@ -15,7 +15,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
     padding: 20px 15px 50px 15px;
   }
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 1024px) {
     width: 100%;
     max-width: 769px;
     padding: 20px 40px 50px 40px;

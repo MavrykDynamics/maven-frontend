@@ -75,7 +75,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
     }
   }
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 1024px) {
     height: 600px;
   }
 
