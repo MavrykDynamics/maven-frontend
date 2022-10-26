@@ -34,6 +34,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
           height: 16px;
           width: 16px;
           margin-left: 3px;
+          fill: ${({ theme }) => theme.priceImpact};
         }
       }
     }
