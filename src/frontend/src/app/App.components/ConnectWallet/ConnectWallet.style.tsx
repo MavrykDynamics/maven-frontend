@@ -171,6 +171,7 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
     }
 
     .buttons-wrapper {
+      column-gap: 10px;
       align-items: center;
     }
 

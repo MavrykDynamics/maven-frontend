@@ -217,6 +217,7 @@ export const ActionScreenWrapper = styled.div<{ theme: MavrykTheme }>`
       align-items: center;
 
       > svg {
+        user-select: none;
         width: 24px;
         height: 24px;
         cursor: pointer;
