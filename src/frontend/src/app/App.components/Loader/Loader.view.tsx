@@ -19,7 +19,6 @@ export const LoaderRocket = () => (
       <div>
         <Lottie width={250} height={200} options={shipLoopOptions} isClickToPauseDisabled={true} />
       </div>
-      <figcaption>Loading...</figcaption>
     </figure>
   </LoaderStyledWithBackdrop>
 )
