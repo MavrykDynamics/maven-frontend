@@ -77,8 +77,11 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
     setExchangeRate(Number(coinPrices.tzbtc.usd))
   }, [coinPrices.tzbtc.usd])
 
+  useEffect(() => {
+    inputChangeHandler({ target: { name: isRevertedCoins.from, value: String(inputValues[isRevertedCoins.from]) } })
+  }, [isRevertedCoins])
+
   const calculateTokenToXtz = (amount: number) => {
-    console.log('logging input of calculateTokenToXTZ', amount)
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
 
     const { expected, minimum, rate, priceImpact } = CalcTokenToXtz(
@@ -88,13 +91,8 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       convertedSlippagePercentToValue,
       dexType,
     )
-    console.log('logging result of calculateTokenToXTZ', expected, minimum, rate, priceImpact)
 
-    setExchangeRate(amount !== 0 ? rate : Number(coinPrices.tzbtc.usd))
-    setMinReceived(minimum)
-    setPriceImpact(priceImpact)
-
-    return expected
+    return { XTZ_Value: expected, minimum, priceImpact, rate: amount !== 0 ? rate : Number(coinPrices.tzbtc.usd) }
   }
 
   const calculateXtzToToken = (amount: number) => {
@@ -107,11 +105,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       dexType,
     )
 
-    setExchangeRate(amount !== 0 ? rate : Number(coinPrices.tzbtc.usd))
-    setMinReceived(minimum)
-    setPriceImpact(priceImpact)
-
-    return expected
+    return { tzBTCValue: expected, minimum, priceImpact, rate: amount !== 0 ? rate : Number(coinPrices.tzbtc.usd) }
   }
 
   // handle slippage value changing
@@ -129,27 +123,46 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   // handling dynamic filling second input on input change
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => {
     let { name, value } = e.target
-    // if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) return
-    if (+value < 0) return
+
+    if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) return
     const isTypingBottomInput = name === isRevertedCoins.to
 
-    if (isTypingBottomInput) {
-      setIsRevertedCoins({
-        from: isRevertedCoins.to,
-        to: isRevertedCoins.from,
-      })
-    }
-
     const parsedValue = isNaN(parseFloat(value)) ? 0 : parseFloat(value)
-
-    if (name === 'XTZ') {
-      setAmountToSwap(parsedValue)
-      const tzBTCValue = calculateXtzToToken(parsedValue)
-      setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
+    if (isTypingBottomInput) {
+      if (name === 'XTZ') {
+        const { tzBTCValue } = calculateXtzToToken(parsedValue)
+        const { minimum: XTZMinimum, priceImpact: XTZriceImpact, rate } = calculateTokenToXtz(tzBTCValue)
+        setAmountToSwap(tzBTCValue)
+        setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
+        setExchangeRate(rate || exchangeRate)
+        setMinReceived(XTZMinimum)
+        setPriceImpact(XTZriceImpact)
+      } else {
+        const { XTZ_Value, rate } = calculateTokenToXtz(parsedValue)
+        const { minimum: tzBTCMinimum, priceImpact: tzBTCPI } = calculateXtzToToken(XTZ_Value)
+        setAmountToSwap(XTZ_Value)
+        setInputValues({ ...inputValues, XTZ: XTZ_Value, [name]: value })
+        setExchangeRate(rate || exchangeRate)
+        setMinReceived(tzBTCMinimum)
+        setPriceImpact(tzBTCPI)
+      }
     } else {
-      setAmountToSwap(parsedValue)
-      const XTZ_Value = calculateTokenToXtz(parsedValue)
-      setInputValues({ ...inputValues, XTZ: XTZ_Value, [name]: value })
+      if (name === 'XTZ') {
+        setAmountToSwap(parsedValue)
+        const { tzBTCValue, minimum, priceImpact } = calculateXtzToToken(parsedValue)
+        const { rate } = calculateTokenToXtz(tzBTCValue)
+        setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
+        setExchangeRate(rate || exchangeRate)
+        setMinReceived(minimum)
+        setPriceImpact(priceImpact)
+      } else {
+        setAmountToSwap(parsedValue)
+        const { XTZ_Value, minimum, priceImpact, rate } = calculateTokenToXtz(parsedValue)
+        setInputValues({ ...inputValues, XTZ: XTZ_Value, [name]: value })
+        setExchangeRate(rate || exchangeRate)
+        setMinReceived(minimum)
+        setPriceImpact(priceImpact)
+      }
     }
   }
 
@@ -184,10 +197,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   // handling use max button
   const maxHandler = useCallback(
     (from: 'XTZ' | 'tzBTC', to: 'tzBTC' | 'XTZ') => {
-      setIsRevertedCoins({
-        from,
-        to,
-      })
       inputChangeHandler({ target: { name: from, value: BALANCE_BY_COIN[from].toString() } })
     },
     [BALANCE_BY_COIN, inputValues, slippagePercent],

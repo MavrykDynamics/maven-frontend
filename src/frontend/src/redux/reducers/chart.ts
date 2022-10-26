@@ -4,7 +4,7 @@ import * as actions from '../action.types'
 export const defaultChart: ChartType = {
   chartDataCandlestick: [],
   chartDataArea: [],
-  chartInterval: 'quotes5mNogaps',
+  chartInterval: 'quotes1dNogaps',
   chartType: 'candlestick',
 }
 
