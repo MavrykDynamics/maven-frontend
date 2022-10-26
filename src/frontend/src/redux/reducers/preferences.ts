@@ -13,7 +13,7 @@ const defaultPreferences: PreferencesType = {
     {
       title: 'SmartPy',
       url: 'https://mainnet.smartpy.io',
-      nodeLogoUrl: 'https://smartpy.io/static/img/logo-only.svg',
+      nodeLogoUrl: 'smartpy.png',
     },
     { title: 'ECADLABS', url: 'https://mainnet.api.tez.ie', nodeLogoUrl: 'ECAD_logo.png' },
   ],
