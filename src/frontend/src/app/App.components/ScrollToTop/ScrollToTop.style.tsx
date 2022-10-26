@@ -5,8 +5,6 @@ export const StyledScrollToTop = styled.div<{ theme: MavrykTheme; show: boolean 
   position: fixed;
   bottom: 25px;
   right: 25px;
-  width: 57px;
-  height: 92px;
   z-index: 11;
   transition: 0.1s all;
   opacity: 0;

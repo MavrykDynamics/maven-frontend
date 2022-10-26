@@ -50,7 +50,8 @@ export const PopupContainerWrapper = styled.div<{ theme: MavrykTheme }>`
 
       .buttons-wrapper {
         display: flex;
-        justify-content: space-between;
+        column-gap: 10px;
+        justify-content: center;
       }
     }
   }
@@ -65,7 +66,8 @@ export const PopupContainerWrapper = styled.div<{ theme: MavrykTheme }>`
 
         .buttons-wrapper {
           display: flex;
-          justify-content: space-between;
+          column-gap: 10px;
+          justify-content: center;
         }
       }
     }
