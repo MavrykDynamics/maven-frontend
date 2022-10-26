@@ -26,6 +26,16 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
 
     > div {
       row-gap: 20px;
+
+      p {
+        display: flex;
+        align-items: center;
+        svg {
+          height: 16px;
+          width: 16px;
+          margin-left: 3px;
+        }
+      }
     }
   }
 
@@ -98,7 +108,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
       > div {
         flex-direction: row-reverse;
         justify-content: space-between;
-        column-gap: 30px;
+        column-gap: 25px;
 
         > div:not(.block-name) {
           font-weight: 500;
@@ -107,6 +117,9 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
 
           P {
             font-size: 16px;
+
+            svg {
+            }
           }
         }
 

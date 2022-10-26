@@ -62,7 +62,7 @@ export const CommaNumber = ({
                 {showNone ? '-' : numberWithCommas}
                 {endingText ? ' ' + endingText : ''}
                 {/* TODO:  add posibility to use icons */}
-                {/* {endingIconName ? <Icon id={endingIconName} /> : ''} */}
+                {endingIconName ? <Icon id={endingIconName} /> : ''}
               </p>
             </div>
           ) : (
