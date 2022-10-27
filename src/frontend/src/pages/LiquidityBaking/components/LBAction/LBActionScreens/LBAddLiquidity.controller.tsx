@@ -92,8 +92,10 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
         convertedSlippagePercentToValue,
         dexType,
       )
+
       inputAmount = expected
     }
+
     const { liquidityExpected, liquidityMinimum, required, exchangeRate } = calculateAddLiquidity(
       inputAmount,
       generalDexStats.tezPool,
@@ -113,7 +115,8 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
     setLqtReceived(liquidityExpected)
     setMinLqtReceived(liquidityMinimum)
 
-    return required
+    // return required // how it was
+    return name === 'tzBTC' ? inputAmount : required
   }
 
   const calcAddLiquidityOnlyXTZ = (amount: number) => {
@@ -168,6 +171,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
 
   // input handler
   const inputChangeHandler = (e: AddLiquidutityInputChangeEventType) => {
+    setInputErrors(DEFAULT_COINS_ERRORS)
     const { name, value } = e.target
     if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) {
       dispatch(showToaster(ERROR, 'Insufficient wallet balance', 'Please enter sufficient amount'))
@@ -189,6 +193,26 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
     } else {
       // XTZ & tzBTC inputs
       const calcValue = calcAddLiquidityXtzAndTzbtc(value !== '' ? parseFloat(value.toString()) : 0, name)
+
+      // if we enter XTZ we dynamic calc tzBTC amount, so check it there
+      if (name === 'xtz' && ready && calcValue > tzBTCBalance) {
+        dispatch(showToaster(ERROR, 'Insufficient tzBTC wallet balance', 'Please enter sufficient XTZ amount'))
+        setInputErrors({
+          ...inputErrors,
+          tzBTC: ERROR,
+        })
+        return
+      }
+
+      // if we enter tzBTC we dynamic calc XTZ amount, so check it there
+      if (name === 'tzBTC' && ready && calcValue > xtzBalance) {
+        dispatch(showToaster(ERROR, 'Insufficient XTZ wallet balance', 'Please enter sufficient tzBTC amount'))
+        setInputErrors({
+          ...inputErrors,
+          XTZ: ERROR,
+        })
+        return
+      }
 
       setInputValues({
         ...inputValues,
