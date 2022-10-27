@@ -38,7 +38,7 @@ export const LBStyled = styled.div<{ theme: MavrykTheme }>`
   @media screen and (max-width: 1024px) {
     .middle-block {
       flex-direction: column;
-      row-gap: 30px;
+      row-gap: 10px;
     }
 
     padding-bottom: 0px;

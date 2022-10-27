@@ -279,7 +279,7 @@ export const ToggleButtonsWrapper = styled.div`
     }
 
     .toggleBlock {
-      @media screen and (min-width: 769px) {
+      @media screen and (min-width: 770px) {
         display: none;
       }
     }

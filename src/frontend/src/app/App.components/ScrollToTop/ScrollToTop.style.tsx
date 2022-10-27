@@ -20,6 +20,16 @@ export const StyledScrollToTop = styled.div<{ theme: MavrykTheme; show: boolean 
     fill: ${({ theme }) => theme.scrollToTop};
   }
 
+  @media screen and (max-width: 1645px) {
+    padding: 10px 5px 5px 5px;
+    right: 7px;
+    bottom: 7px;
+    svg {
+      width: 21px;
+      height: 27px;
+    }
+  }
+
   ${({ show }) =>
     show
       ? css`
