@@ -83,24 +83,36 @@ export const FooterBottom = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  &.lb-mob {
+  .aditional-links {
+    display: flex;
+    column-gap: 15px;
+    a {
+      color: ${({ theme }) => theme.footerText};
+      font-size: 16px;
+      text-decoration: underline;
+    }
+  }
+
+  &.mob {
     display: none;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   @media (max-width: 700px) {
-    justify-content: space-evenly;
-    margin-top: 20px;
-  }
-
-  @media (max-width: 500px) {
-    &.lb {
+    .hide {
       display: none;
     }
 
-    &.lb-mob {
+    &.mob {
       display: block;
     }
+
+    margin: 0 0 20px 0;
+    justify-content: flex-start;
+  }
+
+  @media (min-width: 500px) and (max-width: 700px) {
+    justify-content: center;
   }
 `
 export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
@@ -108,12 +120,14 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
   align-items: center;
   margin-left: auto;
   margin-bottom: 16px;
+  position: relative;
+  height: 100%;
 
   @media (max-width: 700px) {
     margin-right: auto;
   }
 
-  a {
+  > a {
     width: 60px;
     height: 60px;
     display: flex;
@@ -137,6 +151,11 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
     @media (max-width: 700px) {
       height: 25px;
     }
+  }
+
+  @media (max-width: 500px) {
+    margin-bottom: 0;
+    margin-left: 0;
   }
 `
 

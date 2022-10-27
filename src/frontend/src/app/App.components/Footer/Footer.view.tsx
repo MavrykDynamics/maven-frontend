@@ -23,7 +23,7 @@ export const FooterView = ({ className }: { className?: string }) => {
               participating in the governance of the platform.
             </FooterDescription>
 
-            <FooterBottom className="lb-mob">
+            <FooterBottom className="mob">
               <div>© Mavryk Finance {new Date().getFullYear()}</div>
               {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
@@ -59,11 +59,19 @@ export const FooterView = ({ className }: { className?: string }) => {
             </a>
           </FooterSocials>
         </FooterTop>
-        <FooterBottom className="lb">
-          <div>© Mavryk Finance {new Date().getFullYear()}</div>
+        <FooterBottom>
+          <div className="hide">© Mavryk Finance {new Date().getFullYear()}</div>
           {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
           </FooterLinks> */}
+          <div className="aditional-links">
+            <a href="https://docs.google.com/document/d/1jW-XtRPv3TsCV2meV2ajgkQ6dI0iEwuz9xgZwnyMliw/edit?usp=sharing">
+              Privacy Policy
+            </a>
+            <a href="https://docs.google.com/document/d/1R0LA7CmVQjH7vr-FvWOy96LRxJ_XU3HXLXnqNZjZlJQ/edit?usp=sharing">
+              Terms of Use
+            </a>
+          </div>
         </FooterBottom>
       </FooterContainer>
     </FooterStyled>
