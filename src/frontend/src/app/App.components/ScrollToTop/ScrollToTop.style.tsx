@@ -12,10 +12,11 @@ export const StyledScrollToTop = styled.div<{ theme: MavrykTheme; show: boolean 
   animation: upDown 2s ease infinite;
   border-radius: 40px;
   border: 2px solid ${({ theme }) => theme.scrollToTop};
+  padding: 20px 10px 10px 10px;
 
   svg {
-    width: 57px;
-    height: 92px;
+    width: 32px;
+    height: 45px;
     stroke: ${({ theme }) => theme.scrollToTop};
     fill: ${({ theme }) => theme.scrollToTop};
   }
