@@ -6,6 +6,7 @@ import { Button } from '../Button/Button.controller'
 import Icon from '../Icon/Icon.view'
 import { PopupContainer, PopupStyled } from '../SettingsPopup/SettingsPopup.style'
 import { PolicyStyled } from './Policy.style'
+import { PolicyPopupContent } from './PolicyPopupContent.controller'
 
 export const PolicyPopup = ({
   isModalOpened,
@@ -15,13 +16,14 @@ export const PolicyPopup = ({
   proccedPolicy: () => void
 }) => {
   useLockBodyScroll(isModalOpened)
-  const [checkbox, setCheckbox] = useState(false)
+  // const [checkbox, setCheckbox] = useState(false)
 
   return (
     <PopupStyled>
       <CSSTransition in={isModalOpened} timeout={200} classNames="popup" unmountOnExit>
         <PopupContainer style={{ zIndex: 15 }}>
-          <PolicyStyled onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+          <PolicyPopupContent proccedPolicy={proccedPolicy} />
+          {/* <PolicyStyled onClick={(e: React.MouseEvent) => e.stopPropagation()}>
             <div className="title">Disclaimer: Risks of Using Protocol</div>
 
             <div className="main_text scroll-block">
@@ -81,7 +83,7 @@ export const PolicyPopup = ({
               text="Proceed"
               disabled={!checkbox}
             />
-          </PolicyStyled>
+          </PolicyStyled> */}
         </PopupContainer>
       </CSSTransition>
     </PopupStyled>

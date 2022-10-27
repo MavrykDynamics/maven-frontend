@@ -214,7 +214,7 @@ export const PopupContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #0000007a;
-  z-index: 11;
+  z-index: 15;
   position: fixed;
   top: 0;
   left: 0;
