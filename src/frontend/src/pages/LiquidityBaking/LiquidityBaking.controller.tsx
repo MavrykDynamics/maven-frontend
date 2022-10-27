@@ -24,7 +24,7 @@ import { PopupChangeNodeView } from 'app/App.components/SettingsPopup/SettingsPo
 const LiquidityBaking = () => {
   const dispatch = useDispatch()
   const { pathname } = useLocation()
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
   const [isIOS, setIsIOS] = useState(true)
   const footerRef = useRef(null)
   const { chartInterval } = useSelector((state: State) => state.chart)
