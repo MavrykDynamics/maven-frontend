@@ -143,5 +143,17 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
         height: 100% !important;
       }
     }
+
+    @media screen and (max-width: 770px) {
+      height: 430px;
+      > div {
+        height: 430px !important;
+        min-height: 430px !important;
+      }
+    }
+
+    @media screen and (max-width: 550px) {
+      height: 518px;
+    }
   }
 `
