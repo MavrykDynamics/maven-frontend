@@ -316,7 +316,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         <CustomizedText color={cyanColor} fontWidth={500} fontSize={16}>
           1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
           <CommaNumber
-            value={coinPrices.tezos.usd / exchangeRate}
+            value={isNaN(coinPrices.tezos.usd / exchangeRate) ? 0 : coinPrices.tezos.usd / exchangeRate}
             showDecimal
             decimalsToShow={8}
             endingText="tzBTC"
