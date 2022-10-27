@@ -50,9 +50,9 @@ export const LBStyled = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 445px) {
     .content-wrapper {
-      padding: 110px 15px 70px 15px;
+      padding: 90px 15px 70px 15px;
     }
   }
 `

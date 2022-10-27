@@ -272,7 +272,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
           <CheckBoxLabel htmlFor="checkbox" />
         </CheckBoxWrapper>
 
-        <CustomizedText fontSize={16} color={subHeaderColor} fontWidth={500}>
+        <CustomizedText fontSize={14} color={subHeaderColor} fontWidth={500}>
           Provide only XTZ
           <div className="info">
             <Icon id="infoIcon" />

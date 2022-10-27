@@ -112,7 +112,7 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   .chart-wrapper {
-    height: 560px;
+    height: 518px;
     width: 97%;
 
     > div {

@@ -5,6 +5,7 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
   row-gap: 7px;
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 
   > div {
     height: 25px;

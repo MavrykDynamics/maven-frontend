@@ -83,8 +83,7 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
   &.LB {
     color: ${({ theme }) => theme.toggleButtonColorSelected};
     max-width: 400px;
-    /* margin: 30px auto; */
-    height: fit-content;
+    height: 50px;
     svg {
       stroke: ${({ theme }) => theme.toggleButtonColorSelected};
       fill: ${({ theme }) => theme.toggleButtonColorSelected};

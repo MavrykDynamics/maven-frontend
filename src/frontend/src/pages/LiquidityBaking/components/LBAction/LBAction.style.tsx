@@ -8,7 +8,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
   background: ${({ theme }) => theme.darkBackroundColor};
   border: 1px solid ${({ theme }) => theme.lbBorder};
   border-radius: 10px;
-  width: calc(50% - 10px);
+  width: calc(50% - 5px);
   position: relative;
   height: 100vh;
   max-height: 560px;
@@ -34,7 +34,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
     }
 
     span {
-      font-size: 45px;
+      font-size: 35px;
       font-weight: 300;
       color: ${({ theme }) => theme.headingColor};
     }
@@ -48,17 +48,27 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
   .exchange-rate {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
+    margin-top: auto;
+    column-gap: 15px;
+    font-size: 16px;
+    flex-wrap: wrap;
+  }
+
+  .swap-input {
+    @media screen and (max-width: 1024px) {
+      margin-bottom: 40px;
+    }
   }
 
   .swap-btn {
-    margin-bottom: 15px;
+    margin: 0 auto;
+    margin-top: auto;
   }
 
   // remove liquidity stuff
   .receive-info-wrapper {
     position: relative;
-    margin: 20px 0;
+    margin-top: auto;
 
     &:before {
       content: '';
@@ -74,30 +84,39 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
       width: 100%;
       height: 1px;
       position: absolute;
-      bottom: -20px;
+      bottom: -13px;
       background: #503eaa;
     }
   }
 
   .removeLiq-input {
-    margin: 25px auto;
-  }
-
-  .removeLiq-btn {
     margin: 20px auto;
   }
 
+  .removeLiq-btn {
+    margin: 0 auto;
+    margin-top: auto;
+  }
+
   // add liquidity stuff
+  .liqTokens-created {
+    margin-top: 20px;
+  }
+
   .addLiq-input {
     margin: 10px auto;
+    @media screen and (max-width: 550px) {
+      margin-bottom: 20px;
+    }
   }
 
   .addLiq-input-XTZ {
-    margin: 20px auto 30px auto;
+    margin: 10px auto 30px auto;
   }
 
   .addLiq-btn {
-    margin: 15px auto;
+    margin: 0 auto;
+    margin-top: auto;
   }
 
   .step-wrapper {
@@ -114,12 +133,6 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
 
       div:first-child {
         color: ${({ theme }) => theme.toggleButtonColor};
-      }
-    }
-
-    .liq-tokens-created {
-      div {
-        font-size: 16px;
       }
     }
 
@@ -147,8 +160,14 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
 
     @media screen and (max-width: 525px) {
       .top {
-        row-gap: 15px;
+        row-gap: 5px;
         flex-direction: column;
+      }
+
+      .liq-tokens-created {
+        div {
+          font-size: 14px;
+        }
       }
 
       > div:last-child {
@@ -161,6 +180,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
     display: flex;
     align-items: center;
     column-gap: 10px;
+    margin-bottom: -6px;
   }
 
   // adaptive
@@ -170,7 +190,6 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
 
   @media screen and (max-width: 1024px) {
     width: 100%;
-    max-width: 769px;
     padding: 20px 40px 20px 40px;
     margin: 0 auto;
   }
@@ -181,6 +200,11 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
 
   @media screen and (max-width: 550px) {
     padding: 20px 15px 20px 15px;
+    max-height: 650px;
+
+    .liqTokens-created {
+      margin-top: auto;
+    }
   }
 
   @media screen and (max-width: 769px) {
@@ -216,6 +240,12 @@ export const ToggleButtonsWrapper = styled.div`
     margin-bottom: 20px;
   }
 
+  &.removeLiquidity {
+    @media screen and (max-width: 550px) {
+      margin-bottom: 40px;
+    }
+  }
+
   @media screen and (max-width: 520px) {
     margin-bottom: 30px;
     width: 100%;
@@ -238,6 +268,8 @@ export const ToggleButtonsWrapper = styled.div`
   .top {
     column-gap: 20px;
     display: flex;
+    align-items: center;
+
     @media screen and (max-width: 520px) {
       .main {
         > div {

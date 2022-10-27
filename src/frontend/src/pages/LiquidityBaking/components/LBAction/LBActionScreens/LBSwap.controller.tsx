@@ -237,6 +237,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
           convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
           icon={'XTZ_tezos'}
           pinnedText={'XTZ'}
+          className="swap-input"
           useMaxHandler={() => maxHandler('XTZ', 'tzBTC')}
           userBalance={xtzBalance}
           inputStatus={inputErrors.XTZ}
@@ -281,6 +282,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
           value={inputValues.tzBTC}
           convertedValue={parseSrtToNum(inputValues.tzBTC) * coinPrices.tzbtc.usd}
           icon={'tzBTC'}
+          className="swap-input"
           pinnedText={'tzBTC'}
           useMaxHandler={() => maxHandler('tzBTC', 'XTZ')}
           userBalance={tzBTCBalance}
@@ -308,10 +310,10 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       </div>
 
       <div className="exchange-rate">
-        <CustomizedText color={subHeaderColor} fontWidth={500}>
+        <CustomizedText color={subHeaderColor} fontWidth={500} fontSize={16}>
           Exc. Rate
         </CustomizedText>
-        <CustomizedText color={cyanColor} fontWidth={500}>
+        <CustomizedText color={cyanColor} fontWidth={500} fontSize={16}>
           1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
           <CommaNumber
             value={coinPrices.tezos.usd / exchangeRate}

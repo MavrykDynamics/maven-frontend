@@ -57,7 +57,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
     }
   }
 
-  @media screen and (max-width: 1160px) {
+  @media screen and (min-width: 1024px) and (max-width: 1160px) {
     .stats-grid {
       column-gap: 30px;
       div {
@@ -72,7 +72,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
     }
   }
 
-  @media screen and (max-width: 1060px) {
+  /* @media screen and (max-width: 1060px) {
     .stats-grid {
       div {
         div:not(.block-name) {
@@ -84,10 +84,14 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
         }
       }
     }
-  }
+  } */
 
   @media screen and (max-width: 1024px) {
-    height: 600px;
+    height: 420px;
+    .stats-grid {
+      margin-top: 20px;
+      row-gap: 0px;
+    }
   }
 
   @media screen and (max-width: 650px) {

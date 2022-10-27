@@ -120,10 +120,12 @@ export const AddLiquidityDefault = ({
         />
       </div>
 
-      <HorisontalInfo style={{ margin: '25px 0 0 0' }}>
-        <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
+      <HorisontalInfo className="liqTokens-created">
+        <CustomizedText fontWidth={500} fontSize={16}>
+          Liquidity Tokens created
+        </CustomizedText>
 
-        <CustomizedText fontWidth={500} color={cyanColor}>
+        <CustomizedText fontWidth={500} color={cyanColor} fontSize={16}>
           <CommaNumber
             value={isNaN(lqtReceived) ? 0 : lqtReceived}
             showDecimal

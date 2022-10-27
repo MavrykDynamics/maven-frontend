@@ -62,7 +62,9 @@ export const LBAction = ({ generalDexStats }: LBActionProps) => {
       {!showChart ? (
         <ToggleButtonsWrapper
           className={`action-toggle-header ${
-            fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' ? 'addLiquidity' : ''
+            fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' && !showChart ? 'addLiquidity' : ''
+          } ${
+            fBtnSelected === 'liquidity' && sBtnSelected === 'remove liquidity' && !showChart ? 'removeLiquidity' : ''
           }`}
         >
           <div className="top">
