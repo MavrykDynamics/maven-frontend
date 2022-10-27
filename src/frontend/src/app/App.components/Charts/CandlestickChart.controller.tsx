@@ -20,7 +20,7 @@ const CandlestickChart = ({
       series={[{ data: chartData }]}
       options={CANDLESTICK_CHART_OPTIONS(interval, isMobileChart, Colors[theme])}
       type="candlestick"
-      height={'550px'}
+      height={'500px'}
       width={'100%'}
     />
   )

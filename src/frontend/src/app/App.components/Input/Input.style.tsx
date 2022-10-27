@@ -5,7 +5,7 @@ import { MavrykTheme } from 'utils/interfaces'
 export const InputStyled = styled.div<{ theme: MavrykTheme }>`
   position: relative;
   width: 100%;
-  margin: 25px 0;
+  margin: 18px 0;
 
   .useMax {
     position: absolute;

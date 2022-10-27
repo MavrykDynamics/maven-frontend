@@ -45,6 +45,7 @@ export const AddLiquidityDefault = ({
           convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
           icon={'XTZ_tezos'}
           pinnedText={'XTZ'}
+          className="addLiq-input"
           inputStatus={inputErrors.XTZ}
           onKeyDown={nonNumberSymbolsValidation}
           onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
@@ -87,6 +88,7 @@ export const AddLiquidityDefault = ({
           value={inputValues.tzBTC}
           convertedValue={parseSrtToNum(inputValues.tzBTC) * coinPrices.tzbtc.usd}
           icon={'tzBTC'}
+          className="addLiq-input"
           inputStatus={inputErrors.tzBTC}
           pinnedText={'tzBTC'}
           useMaxHandler={() => {
@@ -118,7 +120,7 @@ export const AddLiquidityDefault = ({
         />
       </div>
 
-      <HorisontalInfo style={{ marginTop: '15px' }}>
+      <HorisontalInfo style={{ margin: '25px 0 0 0' }}>
         <CustomizedText fontWidth={500}>Liquidity Tokens created</CustomizedText>
 
         <CustomizedText fontWidth={500} color={cyanColor}>

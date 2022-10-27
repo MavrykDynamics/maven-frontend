@@ -9,7 +9,6 @@ import { MinimumReceived } from 'app/App.components/LBActionBottomFields/Minimum
 import { Input, InputStatusType } from 'app/App.components/Input/Input.controller'
 
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
-import { ActionScreenWrapper } from '../LBAction.style'
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { State } from 'utils/interfaces'
@@ -127,7 +126,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
   }
 
   return (
-    <ActionScreenWrapper className="removeLiqiudity swap">
+    <>
       <Input
         placeholder={''}
         name="Sir"
@@ -148,6 +147,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
             },
           })
         }}
+        className="removeLiq-input"
         userBalance={LBTBalance}
         onBlur={() => {
           if (inputValues.SIR === '') {
@@ -169,7 +169,9 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
       />
 
       <div className="receive-info-wrapper">
-        <CustomizedText style={{ marginBottom: '20px' }}>You Receive</CustomizedText>
+        <CustomizedText style={{ marginBottom: '10px' }} fontSize={16}>
+          You Receive
+        </CustomizedText>
 
         <CoinSwap
           icon={{ name: 'plus', width: 12, height: 18 }}
@@ -189,11 +191,11 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
           text={'Remove Liquidity'}
           icon={'minus'}
           onClick={removeLiquidityBtnHandler}
-          className="LB"
+          className="LB removeLiq-btn"
           kind={PRIMARY}
         />
       ) : (
-        <ConnectWallet className="LB" />
+        <ConnectWallet className="LB removeLiq-btn" />
       )}
 
       <LBActionBottomWrapperStyled>
@@ -212,6 +214,6 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
           slippagePersent={slippagePercent}
         />
       </LBActionBottomWrapperStyled>
-    </ActionScreenWrapper>
+    </>
   )
 }

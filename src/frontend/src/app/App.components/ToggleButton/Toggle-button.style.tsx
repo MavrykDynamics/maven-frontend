@@ -22,9 +22,9 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   }
 
   &.action-toggler {
-    height: 40px;
+    height: 30px;
     div {
-      height: 39px;
+      height: 29px;
     }
   }
 

@@ -91,7 +91,7 @@ export const ConnectWalletStyled = styled.div<{ theme: MavrykTheme }>`
   border-radius: ${BUTTON_RADIUS};
   margin: 10px auto 34px;
   width: 100%;
-  height: 100%;
+  height: fit-content;
   display: flex;
   align-items: center;
   column-gap: 20px;
@@ -101,8 +101,6 @@ export const ConnectWalletStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   &.LB {
-    margin: 30px auto;
-
     > button {
       width: 400px;
     }

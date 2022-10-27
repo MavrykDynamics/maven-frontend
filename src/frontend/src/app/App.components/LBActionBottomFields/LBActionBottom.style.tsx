@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
-  row-gap: 15px;
+  row-gap: 7px;
   display: flex;
   flex-direction: column;
 
@@ -15,9 +15,10 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
-  .exchange-rate {
-    display: flex;
-    justify-content: space-between;
+  > div {
+    div {
+      font-size: 16px;
+    }
   }
 
   .controls-wrapper {

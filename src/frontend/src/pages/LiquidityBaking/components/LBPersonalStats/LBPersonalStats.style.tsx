@@ -16,12 +16,12 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
 
   .stats-grid {
     padding-left: 22px;
-    margin-top: 10%;
+    margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, 82px);
     column-gap: 50px;
-    row-gap: 10%;
+    row-gap: 50px;
     height: 100%;
 
     > div {

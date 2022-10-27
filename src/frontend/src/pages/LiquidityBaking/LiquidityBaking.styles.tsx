@@ -16,10 +16,10 @@ export const LBStyled = styled.div<{ theme: MavrykTheme }>`
   padding-bottom: 100px;
 
   .content-wrapper {
-    padding-top: 150px;
+    padding-top: 90px;
     display: flex;
     flex-direction: column;
-    row-gap: 30px;
+    row-gap: 10px;
     max-width: 1440px;
     margin: 0 auto;
   }
@@ -31,7 +31,7 @@ export const LBStyled = styled.div<{ theme: MavrykTheme }>`
 
   @media screen and (max-width: 1500px) {
     .content-wrapper {
-      padding: 110px 25px 70px 25px;
+      padding: 90px 25px 70px 25px;
     }
   }
 

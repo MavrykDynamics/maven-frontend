@@ -4,21 +4,174 @@ import { MavrykTheme } from 'utils/interfaces'
 
 export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMobile?: boolean }>`
   z-index: 1;
-  padding: 20px 40px 50px 40px;
+  padding: 20px 40px 20px 40px;
   background: ${({ theme }) => theme.darkBackroundColor};
   border: 1px solid ${({ theme }) => theme.lbBorder};
   border-radius: 10px;
-  width: calc(50% - 15px);
+  width: calc(50% - 10px);
   position: relative;
+  height: 100vh;
+  max-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > svg {
+      user-select: none;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      fill: ${({ theme }) => theme.toggleButtonColor};
+
+      &:hover {
+        fill: ${({ theme }) => theme.selectedColor};
+      }
+    }
+
+    span {
+      font-size: 45px;
+      font-weight: 300;
+      color: ${({ theme }) => theme.headingColor};
+    }
+
+    &.reverted {
+      flex-direction: column-reverse;
+    }
+  }
+
+  //swap stuff
+  .exchange-rate {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+
+  .swap-btn {
+    margin-bottom: 15px;
+  }
+
+  // remove liquidity stuff
+  .receive-info-wrapper {
+    position: relative;
+    margin: 20px 0;
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: -10px;
+      background: #503eaa;
+    }
+
+    &:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      bottom: -20px;
+      background: #503eaa;
+    }
+  }
+
+  .removeLiq-input {
+    margin: 25px auto;
+  }
+
+  .removeLiq-btn {
+    margin: 20px auto;
+  }
+
+  // add liquidity stuff
+  .addLiq-input {
+    margin: 10px auto;
+  }
+
+  .addLiq-input-XTZ {
+    margin: 20px auto 30px auto;
+  }
+
+  .addLiq-btn {
+    margin: 15px auto;
+  }
+
+  .step-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    position: relative;
+    margin-top: 10px;
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      column-gap: 7px;
+
+      div:first-child {
+        color: ${({ theme }) => theme.toggleButtonColor};
+      }
+    }
+
+    .liq-tokens-created {
+      div {
+        font-size: 16px;
+      }
+    }
+
+    &:not(.no-before):before {
+      content: '';
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: -7px;
+      background: #503eaa;
+    }
+
+    &:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      bottom: -7px;
+      background: #503eaa;
+    }
+
+    > div:last-child {
+      padding-left: 35px;
+    }
+
+    @media screen and (max-width: 525px) {
+      .top {
+        row-gap: 15px;
+        flex-direction: column;
+      }
+
+      > div:last-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .switch-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  // adaptive
   @media screen and (max-width: 1340px) {
-    padding: 20px 15px 50px 15px;
+    padding: 20px 15px 20px 15px;
   }
 
   @media screen and (max-width: 1024px) {
     width: 100%;
     max-width: 769px;
-    padding: 20px 40px 50px 40px;
+    padding: 20px 40px 20px 40px;
     margin: 0 auto;
   }
 
@@ -53,11 +206,15 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
 export const ToggleButtonsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
+  row-gap: 12px;
   margin: 0 auto 0 auto;
   margin-bottom: 30px;
   width: fit-content;
   position: relative;
+
+  &.addLiquidity {
+    margin-bottom: 20px;
+  }
 
   @media screen and (max-width: 520px) {
     margin-bottom: 30px;
@@ -112,151 +269,6 @@ export const ToggleButtonsWrapper = styled.div`
   }
 `
 
-export const ActionScreenWrapper = styled.div<{ theme: MavrykTheme }>`
-  display: flex;
-  flex-direction: column;
-
-  &.liquidity {
-    .step-wrapper {
-      display: flex;
-      flex-direction: column;
-      row-gap: 20px;
-      position: relative;
-      margin-top: 20px;
-      padding: 5px 0;
-
-      .top {
-        display: flex;
-        justify-content: space-between;
-        column-gap: 7px;
-
-        div:first-child {
-          color: ${({ theme }) => theme.toggleButtonColor};
-        }
-      }
-
-      &:not(.no-before):before {
-        content: '';
-        width: 100%;
-        height: 1px;
-        position: absolute;
-        top: -10px;
-        background: #503eaa;
-      }
-
-      &:after {
-        content: '';
-        width: 100%;
-        height: 1px;
-        position: absolute;
-        bottom: -20px;
-        background: #503eaa;
-      }
-
-      > div:last-child {
-        padding-left: 25px;
-      }
-
-      @media screen and (max-width: 525px) {
-        .top {
-          row-gap: 15px;
-          flex-direction: column;
-        }
-
-        .liq-tokens-created {
-          div {
-            font-size: 14px;
-          }
-        }
-
-        > div:last-child {
-          padding-left: 0;
-        }
-      }
-    }
-
-    .switch-wrapper {
-      display: flex;
-      align-items: center;
-      column-gap: 10px;
-    }
-  }
-
-  &.removeLiqiudity {
-    .receive-info-wrapper {
-      position: relative;
-      margin: 20px 0;
-
-      &:before {
-        content: '';
-        width: 100%;
-        height: 1px;
-        position: absolute;
-        top: -10px;
-        background: #503eaa;
-      }
-
-      &:after {
-        content: '';
-        width: 100%;
-        height: 1px;
-        position: absolute;
-        bottom: -20px;
-        background: #503eaa;
-      }
-    }
-
-    .min-received {
-    }
-  }
-
-  &.swap {
-    .input-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      > svg {
-        user-select: none;
-        width: 24px;
-        height: 24px;
-        cursor: pointer;
-        fill: ${({ theme }) => theme.toggleButtonColor};
-
-        &:hover {
-          fill: ${({ theme }) => theme.selectedColor};
-        }
-      }
-
-      span {
-        font-size: 45px;
-        font-weight: 300;
-        color: ${({ theme }) => theme.headingColor};
-      }
-
-      &.reverted {
-        flex-direction: column-reverse;
-      }
-    }
-
-    .bottom-wrapper {
-      margin-top: 40px;
-      row-gap: 15px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    @media screen and (max-width: 500px) {
-    }
-  }
-
-  @media screen and (max-width: 1340px) {
-    div {
-      font-size: 16px;
-    }
-  }
-`
-
 export const PriceChange = styled.div<{ up?: boolean; theme: MavrykTheme }>`
   color: ${({ up, theme }) => (up ? theme.priceImpact : theme.downColor)};
   font-weight: 600;
@@ -282,8 +294,7 @@ export const StepBlock = styled.div`
     border-radius: 50%;
     color: #8d86eb;
     font-weight: 700;
-    font-size: 18px;
-    line-height: 25px;
+    font-size: 16px;
     position: absolute;
     top: 50%;
     left: 0;

@@ -20,7 +20,7 @@ const AreaChart = ({
       series={[{ data: chartData }]}
       options={AREA_CHART_OPTIONS(interval, isMobileChart, Colors[theme])}
       type="area"
-      height={'550px'}
+      height={'500px'}
       width={'100%'}
     />
   )

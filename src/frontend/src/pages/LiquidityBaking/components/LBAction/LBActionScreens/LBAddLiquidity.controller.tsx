@@ -6,7 +6,7 @@ import { subHeaderColor } from 'styles'
 
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
-import { ActionScreenWrapper, CheckBox, CheckBoxLabel, CheckBoxWrapper } from '../LBAction.style'
+import { CheckBox, CheckBoxLabel, CheckBoxWrapper } from '../LBAction.style'
 import { State } from 'utils/interfaces'
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
@@ -257,7 +257,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
   }
 
   return (
-    <ActionScreenWrapper className="liquidity swap">
+    <>
       <div className="switch-wrapper">
         <CheckBoxWrapper>
           <CheckBox
@@ -310,11 +310,11 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
           text={'Add Liquidity'}
           icon={'plusDark'}
           onClick={addLiquidityBtnHandler}
-          className="LB"
+          className="LB addLiq-btn"
           kind={PRIMARY}
         />
       ) : (
-        <ConnectWallet className="LB" />
+        <ConnectWallet className="LB addLiq-btn" />
       )}
 
       <LBActionBottomWrapperStyled>
@@ -327,6 +327,6 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
           slippagePersent={slippagePercent}
         />
       </LBActionBottomWrapperStyled>
-    </ActionScreenWrapper>
+    </>
   )
 }

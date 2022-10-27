@@ -61,12 +61,10 @@ export const InputView = ({
 }: InputViewProps) => {
   const isLB = kind === 'LB'
   const status = inputStatus !== undefined ? inputStatus : 'none'
-  const classNames = `${kind} ${className || ''} ${status} ${isLB ? 'LB' : ''} ${
-    convertedValue === undefined ? 'no-subtext' : ''
-  }`
+  const classNames = `${kind} ${status} ${isLB ? 'LB' : ''} ${convertedValue === undefined ? 'no-subtext' : ''}`
 
   return (
-    <InputStyled id={'inputStyled'}>
+    <InputStyled id={'inputStyled'} className={className}>
       {useMaxHandler ? (
         <CustomizedText className="useMax" onClick={useMaxHandler} fontSize={14} fontWidth={600}>
           Use Max

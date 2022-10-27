@@ -5,7 +5,7 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
   background: ${({ theme }) => theme.darkBackroundColor};
   border: 1px solid ${({ theme }) => theme.lbBorder};
   border-radius: 10px;
-  min-height: 112px;
+  min-height: 90px;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       &::after {
         display: none;
       }
-      font-size: 35px;
+      font-size: 32px;
     }
 
     img {

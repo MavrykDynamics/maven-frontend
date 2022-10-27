@@ -6,13 +6,11 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
   background: ${({ theme }) => theme.darkBackroundColor};
   border: 1px solid ${({ theme }) => theme.lbBorder};
   border-radius: ${BLOCK_RADIUS};
-  padding-top: 25px;
+  padding-top: 30px;
   z-index: 1;
-
-  height: 100%;
+  height: 610px;
   width: 100%;
   row-gap: 10px;
-
   display: flex;
   justify-content: center;
   align-items: center;

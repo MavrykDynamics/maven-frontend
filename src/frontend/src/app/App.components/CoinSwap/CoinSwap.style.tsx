@@ -19,11 +19,15 @@ export const CoinSwapStyled = styled.div<{ theme: MavrykTheme }>`
 
   &.onlyXtz {
     > div {
-      font-size: 18px;
+      font-size: 14px;
+
+      div {
+        font-size: 14px;
+      }
 
       svg {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
       }
     }
   }
@@ -54,9 +58,15 @@ export const CoinSwapCoinWrapper = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
-  @media screen (min-width: 961px) and (max-width: 1200px) {
+  @media screen and (min-width: 1024px) and (max-width: 1250px) {
     div {
-      width: min-content;
+      font-size: 15px;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
     }
   }
 `

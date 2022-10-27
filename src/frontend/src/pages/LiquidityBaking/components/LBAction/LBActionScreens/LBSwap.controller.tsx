@@ -17,7 +17,6 @@ import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.conto
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
 import { cyanColor, subHeaderColor } from 'styles'
-import { ActionScreenWrapper } from '../LBAction.style'
 import { swapTokenToXtz, swapXtzToToken } from '../../../../../redux/actions/swap.action'
 
 import { calculateTokenToXtz as CalcTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
@@ -226,8 +225,8 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   )
 
   return (
-    <ActionScreenWrapper className="swap">
-      <div className={`input-wrapper ${isRevertedCoins.from !== 'XTZ' ? 'reverted' : ''}`}>
+    <>
+      <div className={`input-wrapper ${isRevertedCoins.from !== 'XTZ' ? 'reverted' : ''} swap-input-wrapper`}>
         <Input
           placeholder={''}
           name="XTZ"
@@ -308,29 +307,30 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         />
       </div>
 
+      <div className="exchange-rate">
+        <CustomizedText color={subHeaderColor} fontWidth={500}>
+          Exc. Rate
+        </CustomizedText>
+        <CustomizedText color={cyanColor} fontWidth={500}>
+          1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
+          <CommaNumber
+            value={coinPrices.tezos.usd / exchangeRate}
+            showDecimal
+            decimalsToShow={8}
+            endingText="tzBTC"
+            maxSymbols={10}
+            useMaxSymbols={isMobile}
+          />
+        </CustomizedText>
+      </div>
+
       {ready ? (
-        <Button text={'Swap'} icon={'swapBtnIcon'} onClick={swapBtnHandler} className="LB" kind={PRIMARY} />
+        <Button text={'Swap'} icon={'swapBtnIcon'} onClick={swapBtnHandler} className="LB swap-btn" kind={PRIMARY} />
       ) : (
-        <ConnectWallet className="LB" />
+        <ConnectWallet className="LB swap-btn" />
       )}
 
       <LBActionBottomWrapperStyled>
-        <div className="exchange-rate">
-          <CustomizedText color={subHeaderColor} fontWidth={500}>
-            Exc. Rate
-          </CustomizedText>
-          <CustomizedText color={cyanColor} fontWidth={500}>
-            1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
-            <CommaNumber
-              value={coinPrices.tezos.usd / exchangeRate}
-              showDecimal
-              decimalsToShow={8}
-              endingText="tzBTC"
-              maxSymbols={10}
-              useMaxSymbols={isMobile}
-            />
-          </CustomizedText>
-        </div>
         <PriceImpact priceImpact={priceImpact} />
         <MinimumReceived minimumReceived={[{ value: minReceived, tokenName: isRevertedCoins.to }]} />
         <Slippage
@@ -340,6 +340,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
           slippagePersent={slippagePercent}
         />
       </LBActionBottomWrapperStyled>
-    </ActionScreenWrapper>
+    </>
   )
 }

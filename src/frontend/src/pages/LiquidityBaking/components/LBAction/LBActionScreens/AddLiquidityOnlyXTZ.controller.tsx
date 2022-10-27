@@ -13,7 +13,6 @@ import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityB
 import { cyanColor } from 'styles'
 import { StepBlock } from '../LBAction.style'
 import { CoinsInputsErrors, DEFAULT_COINS_ERRORS, MinCoinsData } from './LBAddLiquidity.controller'
-import { useMedia } from 'react-use'
 
 export const AddLiquidityOnlyXTZ = ({
   inputValues,
@@ -49,6 +48,7 @@ export const AddLiquidityOnlyXTZ = ({
         convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
         icon={'XTZ_tezos'}
         pinnedText={'XTZ'}
+        className="addLiq-input-XTZ"
         inputStatus={inputErrors.XTZ}
         onKeyDown={nonNumberSymbolsValidation}
         onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
@@ -109,7 +109,7 @@ export const AddLiquidityOnlyXTZ = ({
         </HorisontalInfo>
       </div>
 
-      <div className="step-wrapper no-before" style={{ marginTop: '30px', marginBottom: '20px' }}>
+      <div className="step-wrapper no-before" style={{ marginTop: '15px', marginBottom: '10px' }}>
         <div className="top">
           <StepBlock>
             <div className="step">2</div>
