@@ -164,8 +164,10 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
   @media screen and (max-width: 800px) {
     max-width: 90vw;
     height: fit-content;
-    max-height: 85vh;
+    max-height: 100vh;
     padding: 40px 20px;
+    margin-top: env(safe-area-inset-top);
+    margin-bottom: env(safe-area-inset-bottom);
     top: 45%;
 
     > .title {
