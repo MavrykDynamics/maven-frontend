@@ -61,7 +61,7 @@ export const LBAction = ({ generalDexStats }: LBActionProps) => {
     <LBActionStyled isShowingChartMobile={showChart}>
       {!showChart ? (
         <ToggleButtonsWrapper
-          className={`action-toggle-header ${
+          className={`action-toggle-header ${fBtnSelected === 'swap' && !sBtnSelected && !showChart ? 'swap' : ''} ${
             fBtnSelected === 'liquidity' && sBtnSelected === 'add liquidity' && !showChart ? 'addLiquidity' : ''
           } ${
             fBtnSelected === 'liquidity' && sBtnSelected === 'remove liquidity' && !showChart ? 'removeLiquidity' : ''

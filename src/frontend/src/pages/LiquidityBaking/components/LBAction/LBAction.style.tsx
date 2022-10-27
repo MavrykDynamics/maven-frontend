@@ -55,7 +55,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
   }
 
   .swap-input {
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 550px) {
       margin-bottom: 40px;
     }
   }
@@ -241,9 +241,11 @@ export const ToggleButtonsWrapper = styled.div`
   }
 
   &.removeLiquidity {
-    @media screen and (max-width: 550px) {
-      margin-bottom: 40px;
-    }
+    margin-bottom: 25px;
+  }
+
+  &.swap {
+    margin-bottom: 70px;
   }
 
   @media screen and (max-width: 520px) {

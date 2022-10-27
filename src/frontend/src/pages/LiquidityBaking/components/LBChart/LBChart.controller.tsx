@@ -88,7 +88,7 @@ export const LBChart = ({
           <Button
             text={''}
             icon={'goBackIcon'}
-            className={`toggleChart LB`}
+            className={`toggleChart arrow LB`}
             kind="transparent"
             onClick={returnBackToActionScreenHandler}
           />

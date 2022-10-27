@@ -107,6 +107,11 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
       margin: 0;
       fill: ${({ theme }) => theme.toggleButtonColor};
       stroke: ${({ theme }) => theme.toggleButtonColor};
+
+      &.arrow {
+        fill: ${({ theme }) => theme.toggleButtonColor};
+        stroke: unset;
+      }
     }
 
     &:hover {
