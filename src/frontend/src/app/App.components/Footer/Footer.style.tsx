@@ -9,42 +9,31 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
   font-weight: 400;
   font-size: 18px;
 
-  @media (max-width: 1200px) {
-    --max-container: calc(100vw - 300px);
+  --max-container: 90vw;
+
+  div {
+    > div {
+      color: ${({ theme }) => theme.footerText};
+      font-size: 16px;
+    }
   }
 
-  @media (max-width: 1000px) {
-    font-size: 16px;
-    --max-container: calc(100vw - 80px);
+  @media (min-width: 1700px) {
+    --max-container: calc(100vw - 550px);
   }
 
-  &.LB {
-    --max-container: 90vw;
+  @media (max-width: 500px) {
+    .logo-descr {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 
-    div {
-      > div {
-        color: ${({ theme }) => theme.footerText};
-        font-size: 16px;
+      div {
+        text-align: left;
       }
     }
-
-    @media (min-width: 1700px) {
-      --max-container: calc(100vw - 550px);
-    }
-
-    @media (max-width: 500px) {
-      .logo-descr {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
-        div {
-          text-align: left;
-        }
-      }
-      > div {
-        padding: 32px 20px 0px 20px;
-      }
+    > div {
+      padding: 32px 20px 0px 20px;
     }
   }
 `

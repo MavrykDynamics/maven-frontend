@@ -64,7 +64,7 @@ const LiquidityBaking = () => {
         <LiquidityBakingView />
       </LBStyled>
       <div className="footer-wrap" ref={footerRef}>
-        <Footer className="LB" />
+        <Footer />
       </div>
       <ScrollToTop isVisible={isVisible} />
     </SWRConfig>
