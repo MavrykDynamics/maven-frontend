@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { cyanColor, titleColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
@@ -166,7 +166,7 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
     height: fit-content;
     max-height: 80vh;
     padding: 40px 20px;
-    top: 45%;
+    top: 50%;
 
     > .title {
       font-size: 20px;
