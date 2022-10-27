@@ -166,7 +166,7 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
     height: fit-content;
     max-height: 80vh;
     padding: 40px 20px;
-    top: 47%;
+    top: 49%;
 
     > .title {
       font-size: 20px;

@@ -24,7 +24,7 @@ export const PopupContainerWrapper = styled.div<{ theme: MavrykTheme }>`
 
   @media (max-height: 650px) {
     max-height: 80vh;
-    top: 48%;
+    top: 50%;
   }
 
   .close_modal {
