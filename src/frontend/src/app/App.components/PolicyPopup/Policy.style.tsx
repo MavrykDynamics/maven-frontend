@@ -64,6 +64,10 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
     position: relative;
     z-index: 100;
 
+    b {
+      line-height: 120%;
+    }
+
     &:after {
       content: '';
       display: block;

@@ -25,22 +25,33 @@ export const PolicyPopup = ({
             <div className="title">Disclaimer: Risks of Using Protocol</div>
 
             <div className="main_text scroll-block">
-              <div className="title">Use at Your Own Risk:</div>
               <div className="text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Eu volutpat odio facilisis mauris sit amet massa. Egestas purus viverra accumsan in
-                nisl nisi scelerisque eu ultrices. Nisi lacus sed viverra tellus in hac. Arcu bibendum at varius vel
-                pharetra vel. Curabitur gravida arcu ac tortor dignissim convallis aenean. Risus nullam eget felis eget
-                nunc lobortis. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin. Sit amet nisl suscipit
-                adipiscing. Donec ac odio tempor orci. Non diam phasellus vestibulum lorem sed risus ultricies
-                tristique. Vulputate dignissim suspendisse in est ante in nibh mauris. Quis auctor elit sed vulputate mi
-                sit amet mauris commodo. Nullam ac tortor vitae purus faucibus ornare suspendisse. Velit egestas dui id
-                ornare arcu odio ut. Habitasse platea dictumst quisque sagittis purus sit amet volutpat consequat. Est
-                sit amet facilisis magna etiam tempor orci eu. Lobortis elementum nibh tellus molestie nunc non blandit
-                massa. Nulla porttitor massa id neque aliquam vestibulum morbi. Magna etiam tempor orci eu lobortis
-                elementum nibh tellus. Id velit ut tortor pretium viverra suspendisse. Nulla pellentesque dignissim enim
-                sit amet venenatis urna. Est lorem ipsum dolor sit amet consectetur. Nunc sed velit dignissim sodales ut
-                eu.
+                <b>TLDR:</b> DeFi is brand new & exciting, but risky. Please interact with common sense, as we are not
+                liable for any losses or negligence of any kind. In short, be responsible.
+              </div>
+              <b>Use at Your Own Risk:</b>
+              <div className="text">
+                Mavryk Finance is a cutting edge & unique decentralized platform & protocol that allows users to deposit
+                assets, trade, lend, and borrow assets. The Mavryk Finance platform & protocol is made up of both
+                proprietary and free, public, and open-source software. <br /> <br />
+                Your use of Mavryk Finance involves various risks, including, but not limited, to losses while digital
+                assets are deposited into Mavryk Finance via smart contract or economic exploits, and losses due to
+                liquidations and redemptions.
+                <br />
+                <br />
+                Before lending, borrowing, staking, trading, or liquidity providing you should fully review
+                our technical documentation to understand how the Mavryk Finance platform & protocol works. <br />
+                <br />
+                While Mavryk Finance will be thoroughly audited by an independent software security firm and undergone
+                beta testing and public testnet testing, there remains a risk that assets deposited into the protocol as
+                well as Mavryk tokens may suffer complete and permanent economic loss should the protocol’s technical or
+                economic mechanisms suffer catastrophic failure. <br />
+                <br />
+                THE MAVRYK FINANCE PLATFORM IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
+                No developer or entity involved in creating the MAVRYK FINANCE PLATFORM & PROTOCOL will be liable for
+                any damages or claims whatsoever associated with your use, inability to use, or your interaction with
+                other users of Mavryk Finance, including any direct, indirect, incidental, special, exemplary, punitive
+                or consequential damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
               </div>
             </div>
             <div className="checkbox_wrapper">
