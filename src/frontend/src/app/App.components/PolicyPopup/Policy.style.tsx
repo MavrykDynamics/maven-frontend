@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { cyanColor, titleColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
@@ -164,7 +164,7 @@ export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
   @media screen and (max-width: 800px) {
     max-width: 90vw;
     height: fit-content;
-    max-height: 80vh;
+    max-height: 90vh;
     padding: 40px 20px;
     top: 45%;
 

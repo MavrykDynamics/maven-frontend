@@ -19,6 +19,7 @@ import { PopupChangeNode } from 'app/App.components/SettingsPopup/SettingsPopup.
 import { useLocation } from 'react-router'
 import { useCookies } from 'react-cookie'
 import { PolicyPopupContent } from 'app/App.components/PolicyPopup/PolicyPopupContent.controller'
+import { PopupChangeNodeView } from 'app/App.components/SettingsPopup/SettingsPopup.view'
 
 const LiquidityBaking = () => {
   const dispatch = useDispatch()
@@ -52,10 +53,10 @@ const LiquidityBaking = () => {
         (navigator.userAgent.includes('Mac') && 'ontouchend' in document),
     )
 
-    setIsIOS(
-      ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
-        (navigator.userAgent.includes('Mac') && 'ontouchend' in document),
-    )
+    // setIsIOS(
+    //   ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
+    //     (navigator.userAgent.includes('Mac') && 'ontouchend' in document),
+    // )
   }, [])
 
   useEffect(() => {
@@ -87,6 +88,7 @@ const LiquidityBaking = () => {
   }
 
   if (isIOS && changeNodePopupOpen) {
+    return <PopupChangeNodeView closeModal={closeModalHandler} />
   }
 
   return (
