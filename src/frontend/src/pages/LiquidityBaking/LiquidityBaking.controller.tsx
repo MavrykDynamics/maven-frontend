@@ -48,15 +48,10 @@ const LiquidityBaking = () => {
       setItemInStorage('theme', SPACE_THEME)
     }
 
-    console.log(
+    setIsIOS(
       ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
         (navigator.userAgent.includes('Mac') && 'ontouchend' in document),
     )
-
-    // setIsIOS(
-    //   ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
-    //     (navigator.userAgent.includes('Mac') && 'ontouchend' in document),
-    // )
   }, [])
 
   useEffect(() => {
