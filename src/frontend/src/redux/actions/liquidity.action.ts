@@ -187,6 +187,10 @@ export const addLiquidityOnlyXTZ =
     }
 
     try {
+      dispatch({
+        type: ADD_LIQUIDITY_ONLY_XTZ_REQUEST,
+        amount: xtzToAdd,
+      })
       const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
       const wallet = new BeaconWallet(WalletOptions)
       const walletResponse = await checkIfWalletIsConnected(wallet)
@@ -238,10 +242,6 @@ export const addLiquidityOnlyXTZ =
 
         dispatch(showToaster(INFO, 'Adding Liquidity', 'Please wait 30s...'))
         await batchOp?.confirmation()
-        dispatch({
-          type: ADD_LIQUIDITY_ONLY_XTZ_REQUEST,
-          amount: xtzToAdd,
-        })
 
         dispatch(showToaster(SUCCESS, 'Add Liquidity completed', 'All good :)'))
 

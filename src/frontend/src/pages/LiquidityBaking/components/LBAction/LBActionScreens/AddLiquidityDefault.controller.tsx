@@ -4,7 +4,7 @@ import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controll
 import { Input } from 'app/App.components/Input/Input.controller'
 
 import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { cyanColor } from 'styles'
+import { cyanColor, subHeaderColor } from 'styles'
 
 import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 
@@ -121,7 +121,7 @@ export const AddLiquidityDefault = ({
       </div>
 
       <HorisontalInfo className="liqTokens-created">
-        <CustomizedText fontWidth={500} fontSize={16}>
+        <CustomizedText fontWidth={500} fontSize={16} color={subHeaderColor}>
           Liquidity Tokens created
         </CustomizedText>
 

@@ -23,8 +23,8 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
 
     > svg {
       user-select: none;
-      width: 24px;
-      height: 24px;
+      width: 21px;
+      height: 21px;
       cursor: pointer;
       fill: ${({ theme }) => theme.toggleButtonColor};
 
@@ -34,7 +34,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
     }
 
     span {
-      font-size: 35px;
+      font-size: 37px;
       font-weight: 300;
       color: ${({ theme }) => theme.headingColor};
     }
