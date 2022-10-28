@@ -11,27 +11,17 @@ export const getChartData = (interval: IntervalType) => async (dispatch: any, ge
       CHART_QUERY_VARIABLES(),
       'https://dex.dipdup.net/v1/graphql',
     )
-    // const parsedChartDataToCandlestick = chartData?.[interval]
-    //   .map((chartPoint: ChartPoint) => ({
-    //     x: new Date(chartPoint.bucket),
-    //     y: [
-    //       parseFloat(chartPoint.open),
-    //       parseFloat(chartPoint.high),
-    //       parseFloat(chartPoint.low),
-    //       parseFloat(chartPoint.close),
-    //     ],
-    //   }))
-    //   .sort((first: any, second: any) => first.x.getTime() - second.x.getTime())
-
     const parsedChartDataToCandlestick = chartData?.[interval]
       .map((chartPoint: ChartPoint) => ({
-        date: new Date(chartPoint.bucket),
-        open: parseFloat(chartPoint.open),
-        high: parseFloat(chartPoint.high),
-        low: parseFloat(chartPoint.low),
-        close: parseFloat(chartPoint.close),
+        x: new Date(chartPoint.bucket),
+        y: [
+          parseFloat(chartPoint.open),
+          parseFloat(chartPoint.high),
+          parseFloat(chartPoint.low),
+          parseFloat(chartPoint.close),
+        ],
       }))
-      .sort((first: any, second: any) => first.date.getTime() - second.date.getTime())
+      .sort((first: any, second: any) => first.x.getTime() - second.x.getTime())
 
     const parsedChartDataToArea = chartData?.[interval]
       .map((chartPoint: ChartPoint) => ({
