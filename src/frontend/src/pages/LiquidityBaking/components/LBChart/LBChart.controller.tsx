@@ -103,7 +103,7 @@ export const LBChart = ({
               XTZ/tzBTC (Sirius)
             </CustomizedText>
             <CustomizedText fontSize={14} fontWidth={600} className="value">
-              <CommaNumber value={moveValue} endingText="ꜩ" />
+              <CommaNumber value={moveValue} endingIconName="tezosAsset" />
             </CustomizedText>
           </div>
         </div>
