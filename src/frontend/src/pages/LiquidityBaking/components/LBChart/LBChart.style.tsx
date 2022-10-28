@@ -115,6 +115,11 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
     height: 518px;
     width: 97%;
 
+    .react-stockcharts-tooltip-content {
+      display: flex;
+      flex-direction: column;
+    }
+
     > div {
       height: 550px !important;
       min-height: 550px !important;
