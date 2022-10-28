@@ -49,7 +49,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
     display: flex;
     justify-content: space-between;
     margin-top: auto;
-    margin-bottom: auto;
+    margin-bottom: 10px;
     column-gap: 15px;
     font-size: 16px;
     flex-wrap: wrap;
