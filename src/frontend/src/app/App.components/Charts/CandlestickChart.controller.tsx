@@ -136,7 +136,7 @@ const CandlestickChart = ({
     >
       <Chart id={1} yExtents={(d) => [d.high + (d.high / 100) * 3, d.low - (d.low / 100) * 3]}>
         <HoverTooltip
-          tooltipSVG={tooltipSVG}
+          // tooltipSVG={tooltipSVG}
           tooltipContent={tooltipContent}
           bgFill={Colors[theme].toggleButtonColor}
           fill={Colors[theme].darkBackroundColor}
