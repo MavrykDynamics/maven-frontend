@@ -131,6 +131,10 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
   }
 
   try {
+    dispatch({
+      type: SWAP_XTZ_TO_TOKEN_REQUEST,
+      amount: amount,
+    })
     const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
     const wallet = new BeaconWallet(WalletOptions)
     const walletResponse = await checkIfWalletIsConnected(wallet)
@@ -148,10 +152,7 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
       const op = await lqdContract.methods
         .xtzToToken(state.user.userAddress, minTokensToBuy.toString(), deadline)
         .send({ amount })
-      dispatch({
-        type: SWAP_XTZ_TO_TOKEN_REQUEST,
-        amount: amount,
-      })
+
       dispatch(showToaster(INFO, 'Swapping XTZ -> tzBTC', 'Please wait 30s...'))
       await op.confirmation()
       dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
