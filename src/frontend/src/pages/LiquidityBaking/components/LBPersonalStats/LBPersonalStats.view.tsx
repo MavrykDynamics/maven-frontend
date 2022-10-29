@@ -125,10 +125,11 @@ export const LBPersonalStatsView = ({
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Estimated XTZ owned
-            <div className="info">
+            {/* <div className="info">
               <Icon id="infoIcon" />
+              TODO: add text
               <div className="text">To fill in</div>
-            </div>
+            </div> */}
           </CustomizedText>
         </VertInfo>
 
@@ -147,10 +148,11 @@ export const LBPersonalStatsView = ({
           </CustomizedText>
           <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
             Estimated tzBTC owned
-            <div className="info">
+            {/* <div className="info">
               <Icon id="infoIcon" />
-              <div className="text">To fill in</div>
-            </div>
+              TODO: add text
+              <div className="text"></div>
+            </div> */}
           </CustomizedText>
         </VertInfo>
       </div>
