@@ -84,7 +84,7 @@ export const StyledScrollToTop = styled.div<{ theme: MavrykTheme; show: boolean 
     }
   }
 
-  @media screen and (max-width: 965px) {
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `

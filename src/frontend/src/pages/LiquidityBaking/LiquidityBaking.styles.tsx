@@ -29,7 +29,13 @@ export const LBStyled = styled.div<{ theme: MavrykTheme }>`
     justify-content: space-between;
   }
 
-  @media screen and (max-width: 1500px) {
+  @media screen and (max-width: 1540px) {
+    .content-wrapper {
+      padding: 90px 45px 70px 45px;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
     .content-wrapper {
       padding: 90px 25px 70px 25px;
     }
