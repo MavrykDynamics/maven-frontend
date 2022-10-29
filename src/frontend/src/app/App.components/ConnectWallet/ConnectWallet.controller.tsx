@@ -11,7 +11,7 @@ import WertIoPopup from './Wert/WertIoPopup'
 import { State } from 'utils/interfaces'
 import { showToaster } from '../Toaster/Toaster.actions'
 import { ERROR } from '../Toaster/Toaster.constants'
-import { connect, disconnect } from 'redux/actions/connectWallet.actions'
+import { changeWallet, connect, disconnect } from 'redux/actions/connectWallet.actions'
 
 type ConnectWalletProps = {
   className?: string
@@ -36,8 +36,8 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
   }
 
   const handleNewConnect = async () => {
-    await dispatch(disconnect())
-    await dispatch(connect())
+    // await dispatch(disconnect())
+    await dispatch(changeWallet())
   }
 
   const disconnectWallet = () => {

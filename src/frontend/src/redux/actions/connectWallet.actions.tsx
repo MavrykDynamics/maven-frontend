@@ -35,6 +35,34 @@ export const setWallet = (wallet?: BeaconWallet) => (dispatch: AppDispatch) => {
   })
 }
 
+export const changeWallet = () => async (dispatch: AppDispatch, getState: GetState) => {
+  const state: State = getState()
+  try {
+    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
+    const wallet = new BeaconWallet(WalletOptions)
+    const walletResponse = await checkIfWalletIsConnected(wallet)
+
+    if (walletResponse.success) {
+      const Tezos = new TezosToolkit(rpcNetwork)
+      await wallet.client.requestPermissions({
+        network,
+      })
+      const account = await wallet.client.getActiveAccount()
+
+      await dispatch({
+        type: CONNECT,
+        wallet,
+        tezos: Tezos,
+        ready: Boolean(wallet),
+        accountPkh: account?.address,
+      })
+      if (account?.address) dispatch(getUserData(account?.address))
+    }
+  } catch (err: any) {
+    console.error(`Failed to change wallet: `, err)
+  }
+}
+
 export const connect = () => async (dispatch: AppDispatch, getState: GetState) => {
   const state: State = getState()
   try {
@@ -51,6 +79,7 @@ export const connect = () => async (dispatch: AppDispatch, getState: GetState) =
         })
         account = await wallet.client.getActiveAccount()
       }
+
       dispatch({
         type: CONNECT,
         wallet,
@@ -61,8 +90,7 @@ export const connect = () => async (dispatch: AppDispatch, getState: GetState) =
       if (account?.address) dispatch(getUserData(account?.address))
     }
   } catch (err: any) {
-    dispatch(showToaster(ERROR, 'Failed to connect Wallet', err.message))
-    console.error(`Failed to connect Wallet: ${err.message}`)
+    console.error(`Failed to connect Wallet:`, err)
   }
 }
 
