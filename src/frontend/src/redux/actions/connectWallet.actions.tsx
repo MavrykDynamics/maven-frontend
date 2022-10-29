@@ -8,33 +8,16 @@ import { CONNECT, DISCONNECT, SET_WALLET } from 'redux/action.types'
 import { getUserData } from './user.action'
 import { TezosToolkit } from '@taquito/taquito'
 
-// const network = process.env.REACT_APP_API_NETWORK
 export const network: Network = { type: NetworkType.MAINNET }
 export const WalletOptions = {
   name: process.env.REACT_APP_NAME || 'MAVRYK',
   preferredNetwork: network.type,
-  eventHandlers: {
-    PERMISSION_REQUEST_SUCCESS: {
-      handler: async (data: any) => {
-        console.log('permission data:', data)
-      },
-    },
-  },
 }
 export const setWallet = (wallet?: BeaconWallet) => (dispatch: AppDispatch) => {
-  console.log('Here in Set Wallet')
   try {
     const walletOptions = {
       name: process.env.REACT_APP_NAME || 'MAVRYK',
       preferredNetwork: (process.env.REACT_APP_NETWORK || 'mainnet') as any,
-      eventHandlers: {
-        PERMISSION_REQUEST_SUCCESS: {
-          handler: async (data: any) => {
-            dispatch(showToaster(SUCCESS, 'Permission successful', ''))
-            console.log('permission data:', data)
-          },
-        },
-      },
     }
     const wallet = new BeaconWallet(walletOptions)
     dispatch({
@@ -53,12 +36,12 @@ export const setWallet = (wallet?: BeaconWallet) => (dispatch: AppDispatch) => {
 }
 
 export const connect = () => async (dispatch: AppDispatch, getState: GetState) => {
-  console.log('Here in connectWallet')
   const state: State = getState()
   try {
     const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
     const wallet = new BeaconWallet(WalletOptions)
     const walletResponse = await checkIfWalletIsConnected(wallet)
+
     if (walletResponse.success) {
       const Tezos = new TezosToolkit(rpcNetwork)
       let account = await wallet.client.getActiveAccount()
@@ -102,7 +85,6 @@ export const disconnect = () => async (dispatch: AppDispatch, getState: GetState
 
 export const checkIfWalletIsConnected = async (wallet: any) => {
   try {
-    console.log('Logging wallet in handleCheckActiveAccount', wallet)
     const activeAccount = await wallet.client.getActiveAccount()
     if (!activeAccount) {
       await wallet.client.requestPermissions({

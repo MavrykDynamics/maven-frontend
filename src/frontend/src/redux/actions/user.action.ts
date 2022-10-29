@@ -6,12 +6,6 @@ import { SIR_CONTRACT, TZBTC_CONTRACT } from './swap.action'
 
 export const getUserData = (accountPkh: string) => async (dispatch: any, getState: () => State) => {
   try {
-    const {
-      tokens: {
-        lbData: { token_address, lqt_address },
-      },
-      wallet,
-    } = getState()
     // account that has tokens tz1QhxptJuMYyNAouTdjWsYFcPKknuL92YkJ
     const apiNetwork = env.NODE_ENV === 'production' ? '' : env.rpcTestNetNetwork + '.'
     const xtzBalance = await (await fetch(`https://api.${apiNetwork}tzkt.io/v1/accounts/${accountPkh}/balance`)).json()
@@ -42,14 +36,6 @@ export const getUserData = (accountPkh: string) => async (dispatch: any, getStat
       xtzBalance: xtzBalance / PRECISION_NUMBER_SIX_ZEROES || 0,
       tzBTCBalance: tzBTCBalance,
       LBTBalance: lbtBalance,
-      // tzBTCBalance:
-      //   (firstToken && firstToken.token.metadata.name === 'tzBTC'
-      //     ? parseFloat(firstToken?.balance)
-      //     : parseFloat(secondToken?.balance)) || 0,
-      // LBTBalance:
-      //   (firstToken.token.metadata.name === 'Sirius'
-      //     ? parseFloat(firstToken?.balance)
-      //     : parseFloat(secondToken?.balance)) || 0,
       mvkBalance: 0,
       smvkBalance: 0,
       userAddress: accountPkh,

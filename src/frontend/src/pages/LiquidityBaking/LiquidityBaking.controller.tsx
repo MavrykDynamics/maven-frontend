@@ -20,6 +20,7 @@ import { useLocation } from 'react-router'
 import { useCookies } from 'react-cookie'
 import { PolicyPopupContent } from 'app/App.components/PolicyPopup/PolicyPopupContent.controller'
 import { PopupChangeNodeView } from 'app/App.components/SettingsPopup/SettingsPopup.view'
+import { connect } from 'redux/actions/connectWallet.actions'
 
 const LiquidityBaking = () => {
   const dispatch = useDispatch()
@@ -43,6 +44,13 @@ const LiquidityBaking = () => {
     dispatch(getTokensData())
     dispatch(getTokensPrices())
     dispatch(getGeneralStats())
+
+    if (
+      localStorage.getItem('beacon:active-account') &&
+      localStorage.getItem('beacon:active-account') !== 'undefined'
+    ) {
+      dispatch(connect())
+    }
 
     if (!getItemFromStorage('theme')) {
       setItemInStorage('theme', SPACE_THEME)

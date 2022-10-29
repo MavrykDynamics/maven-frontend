@@ -35,9 +35,9 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
     dispatch(connect())
   }
 
-  const handleNewConnect = () => {
-    dispatch(disconnect())
-    dispatch(connect())
+  const handleNewConnect = async () => {
+    await dispatch(disconnect())
+    await dispatch(connect())
   }
 
   const disconnectWallet = () => {
