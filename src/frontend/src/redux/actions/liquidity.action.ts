@@ -62,12 +62,7 @@ export const addLiquidity =
             {
               kind: OpKind.TRANSACTION,
               ...lqdContract.methods
-                .addLiquidity(
-                  state.user.userAddress,
-                  removeDecimal(minLqtMinted - 3),
-                  removeDecimal(tokensToSell),
-                  deadline,
-                )
+                .addLiquidity(state.user.userAddress, minLqtMinted - 3, removeDecimal(tokensToSell), deadline)
                 .toTransferParams(),
               amount: removeDecimal(xtzToAdd),
               mutez: true,
@@ -132,7 +127,7 @@ export const removeLiquidity =
         const op = await lqdContract.methods
           .removeLiquidity(
             state.wallet.accountPkh,
-            removeDecimal(lqtToSell),
+            lqtToSell,
             removeDecimal(xtzToReceive),
             removeDecimal(tzBtcToReceive),
             deadline,
@@ -212,12 +207,7 @@ export const addLiquidityOnlyXTZ =
             {
               kind: OpKind.TRANSACTION,
               ...lqdContract.methods
-                .addLiquidity(
-                  state.user.userAddress,
-                  removeDecimal(minLqtMinted - 3),
-                  removeDecimal(tokensToSell),
-                  deadline,
-                )
+                .addLiquidity(state.user.userAddress, minLqtMinted - 3, removeDecimal(tokensToSell), deadline)
                 .toTransferParams(),
               amount: removeDecimal(xtzToAdd),
               mutez: true,

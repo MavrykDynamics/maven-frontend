@@ -110,9 +110,9 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
   const removeLiquidityBtnHandler = async () => {
     dispatch(
       removeLiquidity(
-        removeDecimal(Number(inputValues.SIR)),
-        removeDecimal(receivedAmount.xtz * PRECISION_NUMBER_SIX_ZEROES),
-        removeDecimal(receivedAmount.tzbtc * PRECISION_NUMBER_EIGHT_ZEROES),
+        Number(inputValues.SIR),
+        receivedAmount.xtz * PRECISION_NUMBER_SIX_ZEROES,
+        receivedAmount.tzbtc * PRECISION_NUMBER_EIGHT_ZEROES,
       ),
     )
     setInputValues({

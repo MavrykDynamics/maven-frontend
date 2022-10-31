@@ -133,7 +133,7 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
 
       const op = await lqdContract.methods
         .xtzToToken(state.user.userAddress, removeDecimal(minTokensBought).toString(), deadline)
-        .send({ amount: removeDecimal(amount) })
+        .send({ amount })
 
       await dispatch(toggleLoader(ROCKET_LOADER))
       await dispatch(showToaster(INFO, 'Swapping XTZ -> tzBTC', 'Please wait 30s...'))
