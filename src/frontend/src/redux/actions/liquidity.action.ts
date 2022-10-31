@@ -87,7 +87,7 @@ export const addLiquidity =
         await dispatch(toggleLoader())
         await dispatch(showToaster(SUCCESS, 'Add Liquidity completed', 'All good :)'))
       }
-      if (state.wallet.accountPkh) await dispatch(getUserData(state.wallet.accountPkh))
+      await dispatch(getUserData())
     } catch (error: any) {
       console.error(error)
       dispatch(showToaster(ERROR, 'Error', error.message))
@@ -146,7 +146,7 @@ export const removeLiquidity =
         await dispatch(toggleLoader())
         await dispatch(showToaster(SUCCESS, 'Remove Liquidity completed', 'All good :)'))
       }
-      if (state.wallet.accountPkh) await dispatch(getUserData(state.wallet.accountPkh))
+      await dispatch(getUserData())
     } catch (error: any) {
       console.error(error)
       dispatch(showToaster(ERROR, 'Error', error.message))
@@ -237,7 +237,7 @@ export const addLiquidityOnlyXTZ =
         await dispatch(toggleLoader())
         await dispatch(showToaster(SUCCESS, 'Add Liquidity completed', 'All good :)'))
       }
-      if (state.wallet.accountPkh) await dispatch(getUserData(state.wallet.accountPkh))
+      await dispatch(getUserData())
     } catch (error: any) {
       console.error(error)
       dispatch(showToaster(ERROR, 'Error', error.message))

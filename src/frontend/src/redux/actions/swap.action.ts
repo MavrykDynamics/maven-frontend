@@ -52,10 +52,6 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
     return
   }
 
-  if (!isWholeNumber(tokensSold)) {
-    dispatch(showToaster(ERROR, 'Invalid received amount', 'Please refresh and try again'))
-    return
-  }
   try {
     const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
     const wallet = new BeaconWallet(WalletOptions)
@@ -94,7 +90,7 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
       await dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
     }
 
-    if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
+    await dispatch(getUserData())
   } catch (error: any) {
     console.error(error)
     dispatch(showToaster(ERROR, 'Error', error.message))
@@ -120,11 +116,6 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
     return
   }
 
-  let minTokensToBuy = removeDecimal(minTokensBought)
-  if (!isWholeNumber(minTokensBought)) {
-    minTokensToBuy = removeDecimal(Math.round(minTokensBought))
-  }
-
   try {
     const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
     const wallet = new BeaconWallet(WalletOptions)
@@ -141,7 +132,7 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
       const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
 
       const op = await lqdContract.methods
-        .xtzToToken(state.user.userAddress, removeDecimal(minTokensToBuy).toString(), deadline)
+        .xtzToToken(state.user.userAddress, removeDecimal(minTokensBought).toString(), deadline)
         .send({ amount: removeDecimal(amount) })
 
       await dispatch(toggleLoader(ROCKET_LOADER))
@@ -151,7 +142,7 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
       await dispatch(toggleLoader())
       await dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
     }
-    if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
+    await dispatch(getUserData())
   } catch (error: any) {
     console.error(error)
     dispatch(showToaster(ERROR, 'Error', error.message))

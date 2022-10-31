@@ -68,14 +68,14 @@ export const connect = () => async (dispatch: AppDispatch, getState: GetState) =
         account = await wallet.client.getActiveAccount()
       }
 
-      dispatch({
+      await dispatch({
         type: CONNECT,
         wallet,
         tezos: Tezos,
         ready: Boolean(wallet),
         accountPkh: account?.address,
       })
-      if (account?.address) dispatch(getUserData(account?.address))
+      dispatch(getUserData(account?.address))
     }
   } catch (err: any) {
     console.error(`Failed to connect Wallet:`, err)
