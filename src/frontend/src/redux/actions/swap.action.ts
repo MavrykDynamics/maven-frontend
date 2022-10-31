@@ -8,6 +8,8 @@ import { isWholeNumber } from 'utils/utils'
 import { getUserData } from './user.action'
 import { BeaconWallet } from '@taquito/beacon-wallet'
 import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
+import { toggleLoader } from './preferences.action'
+import { ROCKET_LOADER } from 'utils/consts'
 
 export const TZBTC_CONTRACT = 'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
   LB_DEX_CONTRACT = 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5',
@@ -32,9 +34,7 @@ export const getTokensData = () => async (dispatch: any) => {
   }
 }
 
-export const SWAP_TOKEN_TO_XTZ_REQUEST = 'SWAP_TOKEN_TO_XTZ_REQUEST'
-export const SWAP_TOKEN_TO_XTZ_RESULT = 'SWAP_TOKEN_TO_XTZ_RESULT'
-export const SWAP_TOKEN_TO_XTZ_ERROR = 'SWAP_TOKEN_TO_XTZ_ERROR'
+
 export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => async (dispatch: any, getState: any) => {
   const state: State = getState()
 
@@ -80,31 +80,23 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
         .withContractCall(lqdContract.methods.tokenToXtz(state.user.userAddress, tokensSold, minXTZBought, deadline))
       const batchOp = await batch?.send()
 
-      dispatch({ type: SWAP_TOKEN_TO_XTZ_REQUEST })
+      dispatch(toggleLoader(ROCKET_LOADER))
       dispatch(showToaster(INFO, 'Swapping tzBTC -> XTZ', 'Please wait 30s...'))
 
       await batchOp?.confirmation()
       dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
-      dispatch({
-        type: SWAP_TOKEN_TO_XTZ_RESULT,
-        amount: minXTZBought,
-      })
+      dispatch(toggleLoader())
     }
 
     if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
   } catch (error: any) {
     console.error(error)
     dispatch(showToaster(ERROR, 'Error', error.message))
-    dispatch({
-      type: SWAP_TOKEN_TO_XTZ_ERROR,
-      error,
-    })
+    dispatch(toggleLoader())
   }
 }
 
-export const SWAP_XTZ_TO_TOKEN_REQUEST = 'SWAP_XTZ_TO_TOKEN_REQUEST'
-export const SWAP_XTZ_TO_TOKEN_RESULT = 'SWAP_XTZ_TO_TOKEN_RESULT'
-export const SWAP_XTZ_TO_TOKEN_ERROR = 'SWAP_XTZ_TO_TOKEN_ERROR'
+
 export const swapXtzToToken = (amount: number, minTokensBought: number) => async (dispatch: any, getState: any) => {
   const state: State = getState()
 
@@ -147,23 +139,17 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
         .xtzToToken(state.user.userAddress, minTokensToBuy.toString(), deadline)
         .send({ amount })
 
-      dispatch({ type: SWAP_XTZ_TO_TOKEN_REQUEST })
+      dispatch(toggleLoader(ROCKET_LOADER))
       dispatch(showToaster(INFO, 'Swapping XTZ -> tzBTC', 'Please wait 30s...'))
 
       await op.confirmation()
       dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
-      dispatch({
-        type: SWAP_XTZ_TO_TOKEN_RESULT,
-        amount: minTokensBought,
-      })
+      dispatch(toggleLoader())
     }
     if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
   } catch (error: any) {
     console.error(error)
     dispatch(showToaster(ERROR, 'Error', error.message))
-    dispatch({
-      type: SWAP_XTZ_TO_TOKEN_ERROR,
-      error,
-    })
+    dispatch(toggleLoader())
   }
 }

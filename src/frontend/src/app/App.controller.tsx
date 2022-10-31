@@ -18,43 +18,44 @@ export type AppDispatch = ThunkDispatch<State, unknown, AnyAction>
 export type GetState = typeof store.getState
 
 export const App = () => {
-  const loader = useSelector((state: State) => state.loading)
-
   return (
-    <Router>
-      {/* <Popup /> */}
-      {loader ? <Loader loaderType={loader} /> : null}
-      <Switch>
-        <Route
-          exact
-          path="/"
-          component={() => {
-            return <Home />
-          }}
-        />
-        <Route
-          exact
-          path="/litepaper"
-          component={() => {
-            return <Litepaper />
-          }}
-        />
-        <Route
-          exact
-          path="/privacy"
-          component={() => {
-            return <Privacy />
-          }}
-        />
-        <Route
-          exact
-          path="/liquidity-baking"
-          component={() => {
-            return <LiquidityBaking />
-          }}
-        />
-      </Switch>
-      <Toaster />
-    </Router>
+    <>
+      <Loader />
+      <Router>
+        {/* <Popup /> */}
+
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() => {
+              return <Home />
+            }}
+          />
+          <Route
+            exact
+            path="/litepaper"
+            component={() => {
+              return <Litepaper />
+            }}
+          />
+          <Route
+            exact
+            path="/privacy"
+            component={() => {
+              return <Privacy />
+            }}
+          />
+          <Route
+            exact
+            path="/liquidity-baking"
+            component={() => {
+              return <LiquidityBaking />
+            }}
+          />
+        </Switch>
+        <Toaster />
+      </Router>
+    </>
   )
 }

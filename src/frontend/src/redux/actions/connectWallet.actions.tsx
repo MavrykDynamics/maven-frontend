@@ -42,11 +42,9 @@ export const setWallet = (wallet?: BeaconWallet) => (dispatch: AppDispatch) => {
   })
 }
 
-export const changeWallet = () => async (dispatch: AppDispatch, getState: GetState) => {
-  const state: State = getState()
-
+export const changeWallet = () => async (dispatch: AppDispatch) => {
   try {
-    await state.wallet.wallet?.clearActiveAccount()
+    await dispatch(disconnect())
     await dispatch(connect())
   } catch (err: any) {
     console.error(`Failed to change wallet: `, err)

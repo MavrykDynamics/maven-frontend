@@ -1,3 +1,4 @@
+import { ROCKET_LOADER } from 'utils/consts'
 import { State } from '../../utils/interfaces'
 import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
 import { ERROR, INFO, SUCCESS } from '../../app/App.components/Toaster/Toaster.constants'
@@ -6,13 +7,11 @@ import { OpKind } from '@taquito/taquito'
 import { BeaconWallet } from '@taquito/beacon-wallet'
 import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
 import { SET_TEZOS_TOOLKIT } from '../action.types'
+import { toggleLoader } from './preferences.action'
 
 const TZBTC_CONTRACT = 'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
   LB_DEX_CONTRACT = 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5'
 
-export const ADD_LIQUIDITY_REQUEST = 'ADD_LIQUIDITY_REQUEST'
-export const ADD_LIQUIDITY_RESULT = 'ADD_LIQUIDITY_RESULT'
-export const ADD_LIQUIDITY_ERROR = 'ADD_LIQUIDITY_ERROR'
 export const addLiquidity =
   (maxTokensSold: number, minLqtMinted: number, xtzToAdd: number) => async (dispatch: any, getState: any) => {
     const state: State = getState()
@@ -74,32 +73,23 @@ export const addLiquidity =
           ])
           .send()
 
-        dispatch({ type: ADD_LIQUIDITY_REQUEST })
+        dispatch(toggleLoader(ROCKET_LOADER))
         dispatch(showToaster(INFO, 'Adding Liquidity', 'Please wait 30s...'))
 
         await batchOp?.confirmation()
 
         dispatch(showToaster(SUCCESS, 'Add Liquidity completed', 'All good :)'))
 
-        dispatch({
-          type: ADD_LIQUIDITY_RESULT,
-          amount: minLqtMinted,
-        })
+        dispatch(toggleLoader())
       }
       if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
     } catch (error: any) {
       console.error(error)
       dispatch(showToaster(ERROR, 'Error', error.message))
-      dispatch({
-        type: ADD_LIQUIDITY_ERROR,
-        error,
-      })
+      dispatch(toggleLoader())
     }
   }
 
-export const REMOVE_LIQUIDITY_REQUEST = 'REMOVE_LIQUIDITY_REQUEST'
-export const REMOVE_LIQUIDITY_RESULT = 'REMOVE_LIQUIDITY_RESULT'
-export const REMOVE_LIQUIDITY_ERROR = 'REMOVE_LIQUIDITY_ERROR'
 export const removeLiquidity =
   (lqtToSell: number, xtzToReceive: number, tzBtcToReceive: number) => async (dispatch: any, getState: any) => {
     const state: State = getState()
@@ -138,30 +128,22 @@ export const removeLiquidity =
           .removeLiquidity(state.wallet.accountPkh, lqtToSell, xtzToReceive, tzBtcToReceive, deadline)
           .send()
 
-        dispatch({ type: REMOVE_LIQUIDITY_REQUEST })
+        dispatch(toggleLoader(ROCKET_LOADER))
 
         await op.confirmation()
 
         dispatch(showToaster(SUCCESS, 'Remove Liquidity completed', 'All good :)'))
 
-        dispatch({
-          type: REMOVE_LIQUIDITY_RESULT,
-          amount: xtzToReceive,
-        })
+        dispatch(toggleLoader())
       }
       if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
     } catch (error: any) {
       console.error(error)
       dispatch(showToaster(ERROR, 'Error', error.message))
-      dispatch({
-        type: REMOVE_LIQUIDITY_ERROR,
-        error,
-      })
+      dispatch(toggleLoader())
     }
   }
-export const ADD_LIQUIDITY_ONLY_XTZ_REQUEST = 'ADD_LIQUIDITY_ONLY_XTZ_REQUEST'
-export const ADD_LIQUIDITY_ONLY_XTZ_RESULT = 'ADD_LIQUIDITY_ONLY_XTZ_RESULT'
-export const ADD_LIQUIDITY_ONLY_XTZ_ERROR = 'ADD_LIQUIDITY_ONLY_XTZ_ERROR'
+
 export const addLiquidityOnlyXTZ =
   (minTokensToBuy: number, xtzToSwap: number, maxTokensSold: number, minLqtMinted: number, xtzToAdd: number) =>
   async (dispatch: any, getState: any) => {
@@ -232,25 +214,19 @@ export const addLiquidityOnlyXTZ =
           ])
           .send()
 
-        dispatch({ type: ADD_LIQUIDITY_ONLY_XTZ_REQUEST })
+        dispatch(toggleLoader(ROCKET_LOADER))
         dispatch(showToaster(INFO, 'Adding Liquidity', 'Please wait 30s...'))
 
         await batchOp?.confirmation()
 
         dispatch(showToaster(SUCCESS, 'Add Liquidity completed', 'All good :)'))
 
-        dispatch({
-          type: ADD_LIQUIDITY_ONLY_XTZ_RESULT,
-          amount: minLqtMinted,
-        })
+        dispatch(toggleLoader())
       }
       if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
     } catch (error: any) {
       console.error(error)
       dispatch(showToaster(ERROR, 'Error', error.message))
-      dispatch({
-        type: ADD_LIQUIDITY_ONLY_XTZ_ERROR,
-        error,
-      })
+      dispatch(toggleLoader())
     }
   }

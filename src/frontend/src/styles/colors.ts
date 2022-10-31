@@ -44,6 +44,7 @@ export const darkMode: MavrykTheme = {
     'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F00 99.3%)',
   skyGradient:
     'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F 99.3%)',
+  shineAnimationGradient: `linear-gradient(to right, ${subHeaderColor} 0, ${cyanColor} 10%, ${subHeaderColor} 20%)`,
   backgroundColor,
   containerColor,
   textColor,
@@ -117,6 +118,7 @@ export const lightMode: MavrykTheme = {
   satellitesGradient: 'linear-gradient(180deg, #FFFFFF 48.18%, #86D4C9 103.84%)',
   skyGradientTransparent: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
   skyGradient: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
+  shineAnimationGradient: `linear-gradient(to right, ${subHeaderColor} 0, ${cyanColor} 10%, ${subHeaderColor} 20%)`,
   backgroundColor: '#fff',
   containerColor: '#DEE7F7',
   textColor: '#080628',
@@ -193,6 +195,7 @@ export const spaceMode: MavrykTheme = {
     'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F00 99.3%)',
   skyGradient:
     'linear-gradient(0deg, #285A8A 8.7%, #38237C 42.22%, #2D1C6A 52.19%, #221555 68.5%, #1B1149 83.9%, #160E3F 99.3%)',
+  shineAnimationGradient: `linear-gradient(to right, ${subHeaderColor} 0, ${cyanColor} 10%, ${subHeaderColor} 20%)`,
   backgroundColor,
   containerColor,
   textColor,

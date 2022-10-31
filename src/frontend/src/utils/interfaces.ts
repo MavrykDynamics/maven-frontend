@@ -1,13 +1,6 @@
 import { TezosToolkit } from '@taquito/taquito'
 import { ThemeType } from 'redux/actions/preferences.action'
 import { LoadingState } from '../redux/reducers/loading'
-import {
-  ADD_LIQUIDITY,
-  ADD_LIQUIDITY_ONLY_XTZ,
-  REMOVE_LIQUIDITY,
-  SWAP_TZBTC_TO_XTZ,
-  SWAP_XTZ_TO_TZBTC,
-} from '../redux/reducers/liquidityBaking'
 import { BeaconWallet } from '@taquito/beacon-wallet'
 
 export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1w' | 'quotes15mNogaps' | 'quotes5mNogaps'
@@ -132,10 +125,4 @@ export interface PurschasedStatsTable {
   symbol: string
   amount: number
   usdPrice: number
-}
-
-export interface LiquidityBakingAction {
-  type: SWAP_XTZ_TO_TZBTC | SWAP_TZBTC_TO_XTZ | ADD_LIQUIDITY | REMOVE_LIQUIDITY | ADD_LIQUIDITY_ONLY_XTZ | undefined
-  amount: number
-  error: any | undefined
 }

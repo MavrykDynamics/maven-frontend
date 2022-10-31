@@ -43,6 +43,7 @@ export const TopBarLinks = ({
               className={`link-wrapper ${disabled ? 'disabled' : ''} ${
                 path && pathname.includes(path) ? 'selected' : ''
               }`}
+              key={name + href}
             >
               <a
                 href={href}

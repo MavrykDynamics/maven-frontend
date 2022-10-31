@@ -6,6 +6,7 @@ import { SELECT_NEW_RPC_APP_NODE, SET_RPC_NODES, TOGGLE_RPC_NODE_POPUP } from 'r
 import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
 import { SUCCESS } from '../../app/App.components/Toaster/Toaster.constants'
 import { RPCNodeType } from 'utils/interfaces'
+import { ROCKET_LOADER, WERT_IO_LOADER } from 'utils/consts'
 
 export const LIGHT_THEME = 'light'
 export const SPACE_THEME = 'space'
@@ -54,4 +55,12 @@ export const setNewRPCNodes = (newRPCNodes: Array<RPCNodeType>) => (dispatch: Ap
     newRPCNodes,
   })
   dispatch(showToaster(SUCCESS, 'New RPC link added', 'The new RPC link has been added in the DAPP', 3000))
+}
+
+export const TOGGLE_LOADER = 'TOGGLE_LOADER'
+export const toggleLoader = (loader?: typeof ROCKET_LOADER | typeof WERT_IO_LOADER) => (dispatch: AppDispatch) => {
+  dispatch({
+    type: TOGGLE_LOADER,
+    newLoader: loader ?? null,
+  })
 }
