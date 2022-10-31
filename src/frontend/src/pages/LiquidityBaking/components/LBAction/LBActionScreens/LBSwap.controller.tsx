@@ -137,8 +137,9 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   // handling dynamic filling second input on input change
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => {
     let { name, value } = e.target
+    const isTypingBottomInput = name === isRevertedCoins.to
 
-    if (+value < 0 || (ready && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) {
+    if (+value < 0 || (ready && !isTypingBottomInput && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) {
       dispatch(showToaster(ERROR, 'Insufficient wallet balance', 'Please enter sufficient amount'))
       setInputErrors({
         ...inputErrors,
@@ -149,7 +150,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
 
     setInputErrors(DEFAULT_COINS_ERRORS)
     setClearOnSwitch(false)
-    const isTypingBottomInput = name === isRevertedCoins.to
 
     const parsedValue = isNaN(parseFloat(value)) ? 0 : parseFloat(value)
     if (isTypingBottomInput) {
