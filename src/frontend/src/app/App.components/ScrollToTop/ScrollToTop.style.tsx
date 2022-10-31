@@ -4,30 +4,26 @@ import { MavrykTheme } from 'utils/interfaces'
 export const StyledScrollToTop = styled.div<{ theme: MavrykTheme; show: boolean }>`
   position: fixed;
   bottom: 25px;
-  right: 25px;
+  right: 9px;
   z-index: 11;
   transition: 0.1s all;
   opacity: 0;
   visibility: hidden;
   animation: upDown 2s ease infinite;
-  border-radius: 40px;
-  border: 2px solid ${({ theme }) => theme.scrollToTop};
-  padding: 20px 10px 10px 10px;
 
   svg {
-    width: 32px;
-    height: 45px;
-    stroke: ${({ theme }) => theme.scrollToTop};
+    width: 40px;
+    height: 55px;
     fill: ${({ theme }) => theme.scrollToTop};
+    stroke: ${({ theme }) => theme.scrollToTop};
   }
 
   @media screen and (max-width: 1645px) {
-    padding: 10px 5px 5px 5px;
-    right: 7px;
-    bottom: 7px;
+    right: 9px;
+    bottom: 25px;
     svg {
-      width: 21px;
-      height: 27px;
+      width: 30px;
+      height: 40px;
     }
   }
 

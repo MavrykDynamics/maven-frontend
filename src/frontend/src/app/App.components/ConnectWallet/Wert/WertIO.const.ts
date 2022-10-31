@@ -1,7 +1,10 @@
-export const getWertOptions = (commodity: string, setPopupActive: (open: boolean) => void, showErrorToast: () => void) => ({
+export const getWertOptions = (
+  commodity: string,
+  setPopupActive: (open: boolean) => void,
+  showErrorToast: () => void,
+) => ({
   partner_id: '01G0MCBQFJE47YZ0SECRKM81CD',
   commodity,
-  origin: 'https://sandbox.wert.io',
   container_id: 'wert-io-popup-wrapper',
   color_background: 'transparent',
   color_buttons: '#86D4C9',
@@ -24,6 +27,6 @@ export const getWertOptions = (commodity: string, setPopupActive: (open: boolean
       showErrorToast()
       setPopupActive(false)
     },
-    close: () => setPopupActive(false)
+    close: () => setPopupActive(false),
   },
 })
