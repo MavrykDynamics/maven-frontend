@@ -67,3 +67,7 @@ export const nonNumberSymbolsValidation = (e: React.KeyboardEvent<HTMLInputEleme
 export function isWholeNumber(input: number): boolean {
   return input - Math.floor(input) === 0
 }
+
+export const removeDecimal = (number: number): number => {
+  return Number(number.toFixed(0))
+}

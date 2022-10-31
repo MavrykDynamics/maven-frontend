@@ -12,7 +12,7 @@ import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFi
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { State } from 'utils/interfaces'
-import { nonNumberSymbolsValidation, parseSrtToNum, slippagePercentToValue } from 'utils/utils'
+import { nonNumberSymbolsValidation, parseSrtToNum, removeDecimal, slippagePercentToValue } from 'utils/utils'
 import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { PRIMARY } from 'app/App.components/Button/Button.constants'
 import { AddLiquidutityInputChangeEventType } from '../helpers/actionsScreen.types'
@@ -118,9 +118,9 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
   const removeLiquidityBtnHandler = async () => {
     dispatch(
       removeLiquidity(
-        Number(inputValues.SIR),
-        receivedAmount.xtz * PRECISION_NUMBER_SIX_ZEROES,
-        receivedAmount.tzbtc * PRECISION_NUMBER_EIGHT_ZEROES,
+        removeDecimal(Number(inputValues.SIR)),
+        removeDecimal(receivedAmount.xtz * PRECISION_NUMBER_SIX_ZEROES),
+        removeDecimal(receivedAmount.tzbtc * PRECISION_NUMBER_EIGHT_ZEROES),
       ),
     )
     setInputValues({
