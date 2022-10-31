@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components/macro'
-import { Page } from 'styles'
+import { Page, secondaryColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
-export const LitepaperStyled = styled(Page)<{theme: MavrykTheme}>`
+export const LitepaperStyled = styled(Page)<{ theme: MavrykTheme }>`
   font-size: 16px;
-  color: ${({theme}) => theme.subTextColor};
+  color: ${({ theme }) => theme.subTextColor};
   margin: 0 auto;
   margin-top: 100px;
 
@@ -25,7 +25,7 @@ export const LitepaperStyled = styled(Page)<{theme: MavrykTheme}>`
   }
 
   a {
-    color: ${({theme}) => theme.secondaryColor};
+    color: ${secondaryColor};
     /* text-decoration: underline; */
   }
 
@@ -41,7 +41,7 @@ export const LitepaperStyled = styled(Page)<{theme: MavrykTheme}>`
       display: block;
       width: 60px;
       height: 3px;
-      background-color: ${({theme}) => theme.primaryColor};
+      background-color: ${({ theme }) => theme.primaryColor};
       margin: 7px 0 10px 1px;
     }
   }
@@ -58,7 +58,7 @@ export const LitepaperStyled = styled(Page)<{theme: MavrykTheme}>`
       display: block;
       width: 60px;
       height: 3px;
-      background-color: ${({theme}) => theme.primaryColor};
+      background-color: ${({ theme }) => theme.primaryColor};
       margin: 7px 0 10px 1px;
     }
   }
@@ -135,7 +135,7 @@ export const LitepaperIndex = styled.ul`
 
   li a {
     font-size: 12px;
-    color: ${({theme}) => theme.litepaperLinkColor  };
+    color: ${({ theme }) => theme.litepaperLinkColor};
     text-decoration: none;
   }
 
@@ -151,7 +151,7 @@ export const LitepaperRef = styled.a<{ selected?: boolean }>`
     props.selected &&
     css`
       font-weight: bold;
-      border-left: 2px solid ${({theme}) => theme.subTextColor};
+      border-left: 2px solid ${({ theme }) => theme.subTextColor};
     `}
 `
 
@@ -163,6 +163,6 @@ export const LitepaperLink = styled.div<{ selected?: boolean }>`
     props.selected &&
     css`
       font-weight: bold;
-      border-left: 2px solid ${({theme}) => theme.subTextColor};
+      border-left: 2px solid ${({ theme }) => theme.subTextColor};
     `}
 `

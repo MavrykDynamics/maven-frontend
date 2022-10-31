@@ -3,23 +3,31 @@ import ReactDOM from 'react-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import { ParallaxProvider } from 'react-scroll-parallax'
 
-import { App } from './app/App.controller'
+import { App, store } from './app/App.controller'
 import { unregister } from './serviceWorker'
-import store from './store'
 import { GlobalStyle } from './styles'
 
 import './styles/fonts.css'
+import { SWRConfig } from 'swr'
+import { mavrykGqlFetcher } from './gql/gql.helpers'
 
 export const Root = () => {
   return (
-    <ReduxProvider store={store}>
-      <DarkThemeProvider>
-        <ParallaxProvider>
-          <GlobalStyle />
-          <App />
-        </ParallaxProvider>
-      </DarkThemeProvider>
-    </ReduxProvider>
+    <SWRConfig
+      value={{
+        refreshInterval: 3000,
+        fetcher: mavrykGqlFetcher,
+      }}
+    >
+      <ReduxProvider store={store}>
+        <DarkThemeProvider>
+          <ParallaxProvider>
+            <GlobalStyle />
+            <App />
+          </ParallaxProvider>
+        </DarkThemeProvider>
+      </ReduxProvider>
+    </SWRConfig>
   )
 }
 

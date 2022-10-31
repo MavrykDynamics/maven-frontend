@@ -4,27 +4,45 @@ import { MavrykTheme } from 'utils/interfaces'
 
 export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
   --max-container: calc(100vw - 550px);
-  background-color: ${({ theme }) => theme.darkestBackroundColor};
+  background-color: ${({ theme }) => theme.darkBackroundColor};
   color: ${({ theme }) => theme.textColor};
-  margin-top: 20px;
   font-weight: 400;
   font-size: 18px;
 
-  @media (max-width: 1200px) {
-    --max-container: calc(100vw - 300px);
+  --max-container: 90vw;
+
+  div {
+    > div {
+      color: ${({ theme }) => theme.footerText};
+      font-size: 16px;
+    }
   }
 
-  @media (max-width: 1000px) {
-    font-size: 16px;
-    --max-container: calc(100vw - 80px);
+  @media (min-width: 1700px) {
+    --max-container: calc(100vw - 550px);
+  }
+
+  @media (max-width: 500px) {
+    .logo-descr {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      div {
+        text-align: left;
+      }
+    }
+    > div {
+      padding: 32px 20px 0px 20px;
+    }
   }
 `
 
 export const FooterContainer = styled.div`
-  padding: 50px 20px;
+  padding: 60px 20px;
 
   @media (max-width: 1500px) {
-    padding: 50px 40px;
+    padding: 60px 40px;
   }
 
   @media (max-width: 700px) {
@@ -54,9 +72,36 @@ export const FooterBottom = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  .aditional-links {
+    display: flex;
+    column-gap: 15px;
+    a {
+      color: ${({ theme }) => theme.footerText};
+      font-size: 16px;
+      text-decoration: underline;
+    }
+  }
+
+  &.mob {
+    display: none;
+    margin-bottom: 20px;
+  }
+
   @media (max-width: 700px) {
-    justify-content: space-evenly;
-    margin-top: 20px;
+    .hide {
+      display: none;
+    }
+
+    &.mob {
+      display: block;
+    }
+
+    margin: 0 0 20px 0;
+    justify-content: flex-start;
+  }
+
+  @media (min-width: 500px) and (max-width: 700px) {
+    justify-content: center;
   }
 `
 export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
@@ -64,12 +109,14 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
   align-items: center;
   margin-left: auto;
   margin-bottom: 16px;
+  position: relative;
+  height: 100%;
 
   @media (max-width: 700px) {
     margin-right: auto;
   }
 
-  a {
+  > a {
     width: 60px;
     height: 60px;
     display: flex;
@@ -77,7 +124,6 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.socialBackroundColor};
 
     @media (max-width: 700px) {
       margin-right: 5px;
@@ -94,6 +140,11 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
     @media (max-width: 700px) {
       height: 25px;
     }
+  }
+
+  @media (max-width: 500px) {
+    margin-bottom: 0;
+    margin-left: 0;
   }
 `
 

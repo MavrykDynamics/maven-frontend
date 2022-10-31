@@ -1,16 +1,25 @@
-
-import React from "react";
-import { useSelector } from "react-redux";
-import { ThemeProvider } from "styled-components";
-import { darkMode, lightMode } from "styles";
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
+import { ThemeProvider } from 'styled-components'
+import { darkMode, lightMode, spaceMode } from 'styles'
+import { State } from 'utils/interfaces'
 
 const DarkThemeProvider = ({ children }: any) => {
-  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled);
+  const { themeSelected } = useSelector((state: State) => state.preferences)
   return (
-    <ThemeProvider theme={darkThemeEnabled ? darkMode : lightMode }>
+    <ThemeProvider
+      theme={
+        themeSelected === LIGHT_THEME
+          ? { isDarkTheme: false, ...lightMode }
+          : themeSelected === DARK_THEME
+          ? { isDarkTheme: true, ...darkMode }
+          : { isDarkTheme: true, ...spaceMode }
+      }
+    >
       {children}
     </ThemeProvider>
-  );
-};
+  )
+}
 
-export default DarkThemeProvider;
+export default DarkThemeProvider

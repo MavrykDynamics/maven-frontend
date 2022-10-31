@@ -1,17 +1,20 @@
-import { TOGGLE_DARKTHEME } from 'actions'
+import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from './Header.style'
+import { TOGGLE_DARK_THEME } from 'redux/action.types'
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 import Toggle from 'react-toggle'
-
-// prettier-ignore
-import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from "./Header.style";
+import { State } from 'utils/interfaces'
+import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
+import { useMedia } from 'react-use'
 
 export const HeaderView = () => {
-  const darkThemeEnabled = useSelector((state: any) => state.preferences.darkThemeEnabled)
+  const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected !== LIGHT_THEME)
   const dispatch = useDispatch()
+
+  const isMobile = useMedia('(max-width: 1240px)')
 
   const isLitepaperPage = window.location.pathname === '/litepaper'
 
@@ -55,6 +58,7 @@ export const HeaderView = () => {
         </Link>
 
         <Link to="/litepaper">Litepaper</Link>
+        <Link to="/liquidity-baking">{isMobile ? 'LB' : 'Liquidity Baking'}</Link>
 
         <HashLink
           to="/#calculator"
@@ -112,7 +116,9 @@ export const HeaderView = () => {
               unchecked: <HeaderIcon src="/images/sun.svg" />,
             }}
             aria-label="Dark mode toggle"
-            onChange={() => dispatch({ type: TOGGLE_DARKTHEME })}
+            onChange={() =>
+              dispatch({ type: TOGGLE_DARK_THEME, newThemeSelected: darkThemeEnabled ? LIGHT_THEME : DARK_THEME })
+            }
           />
         </label>
       </HeaderGrid>

@@ -1,25 +1,34 @@
 import { Home } from 'pages/Home/Home.controller'
+import LiquidityBaking from 'pages/LiquidityBaking/LiquidityBaking.controller'
 import { Litepaper } from 'pages/Litepaper/Litepaper.controller'
 import { Privacy } from 'pages/Privacy/Privacy.controller'
-import { useState } from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { configureStore } from 'redux/storeConfigurator'
+import { State } from 'utils/interfaces'
+import { Toaster } from './App.components/Toaster/Toaster.controller'
+import Loader from './App.components/Loader/Loader.view'
 
-import { Header } from './App.components/Header/Header.controller'
-import { Popup } from './App.components/Popup/Popup.controller'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { AnyAction } from 'redux'
+import { ThunkDispatch } from 'redux-thunk'
+import { useSelector } from 'react-redux'
+
+export const store = configureStore({})
+
+export type AppDispatch = ThunkDispatch<State, unknown, AnyAction>
+export type GetState = typeof store.getState
 
 export const App = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [currentPage, setCurrentPage] = useState('/')
   return (
+    <>
+      <Loader />
       <Router>
-        <Popup />
-        <Header />
+        {/* <Popup /> */}
+
         <Switch>
           <Route
             exact
             path="/"
             component={() => {
-              setCurrentPage('/')
               return <Home />
             }}
           />
@@ -27,7 +36,6 @@ export const App = () => {
             exact
             path="/litepaper"
             component={() => {
-              setCurrentPage('/litepaper')
               return <Litepaper />
             }}
           />
@@ -35,12 +43,19 @@ export const App = () => {
             exact
             path="/privacy"
             component={() => {
-              setCurrentPage('/')
               return <Privacy />
             }}
           />
+          <Route
+            exact
+            path="/liquidity-baking"
+            component={() => {
+              return <LiquidityBaking />
+            }}
+          />
         </Switch>
-        {/* {currentPage !== '/litepaper' && <Footer />} */}
+        <Toaster />
       </Router>
+    </>
   )
 }

@@ -1,7 +1,11 @@
-import * as React from 'react'
-
+import { Header } from 'app/App.components/Header/Header.controller'
 import { HomeView } from './Home.view'
 
 export const Home = () => {
-  return <HomeView />
+  return (
+    <>
+      <Header />
+      <HomeView />
+    </>
+  )
 }

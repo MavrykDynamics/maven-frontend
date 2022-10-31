@@ -17,7 +17,6 @@ type Props = {
 
 const TeamFigureView = (props: Props) => {
   const { name, avatar, job, link, title } = props
-  console.log(title)
   return (
     <TeamFigure>
       <a href={link} target="_blank" rel="noreferrer">
