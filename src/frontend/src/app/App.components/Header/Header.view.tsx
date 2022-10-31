@@ -10,7 +10,7 @@ import { State } from 'utils/interfaces'
 import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
 
 export const HeaderView = () => {
-  const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected === DARK_THEME)
+  const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected !== LIGHT_THEME)
   const dispatch = useDispatch()
 
   const isLitepaperPage = window.location.pathname === '/litepaper'
@@ -55,7 +55,7 @@ export const HeaderView = () => {
         </Link>
 
         <Link to="/litepaper">Litepaper</Link>
-        <Link to="/liquidity-baking">Liquidity Baking</Link>
+        <Link to="/liquidity-baking">Sirius</Link>
 
         <HashLink
           to="/#calculator"

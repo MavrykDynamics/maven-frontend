@@ -2,7 +2,7 @@ import { scroll } from 'redux/actions/preferences.action'
 import { Footer } from 'app/App.components/Footer/Footer.controller'
 import * as React from 'react'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { AppFeaturesView } from './components/AppFeatures/AppFeatures.view'
 import { CalculatorView } from './components/Calculator/Calculator.view'
@@ -18,6 +18,7 @@ import { TeamView } from './components/Team/Team.view'
 import { TokenomicsView } from './components/Tokenomics/Tokenomics.view'
 import { WhatMakesView } from './components/WhatMakes/WhatMakes.view'
 import { HomeNoParallax, HomeStyled } from './Home.style'
+import { State } from 'utils/interfaces'
 
 export const HomeView = () => {
   const dispatch = useDispatch()

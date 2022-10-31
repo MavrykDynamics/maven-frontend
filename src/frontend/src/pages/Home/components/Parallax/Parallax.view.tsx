@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux'
 import { ParallaxBanner } from 'react-scroll-parallax'
-import { DARK_THEME } from 'redux/actions/preferences.action'
+import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
 import { State } from 'utils/interfaces'
 import { ParallaxDesktop, ParallaxLayer, ParallaxStyled } from './Parallax.style'
 
 export const ParallaxView = ({ children, className }: { children?: JSX.Element; className?: string }) => {
   const { themeSelected } = useSelector((state: State) => state.preferences)
-  const folder = '/images/parallax/' + (themeSelected === DARK_THEME ? 'dark' : 'light')
+  const folder = '/images/parallax/' + (themeSelected === LIGHT_THEME ? 'light' : 'dark')
 
   return (
     <ParallaxStyled>

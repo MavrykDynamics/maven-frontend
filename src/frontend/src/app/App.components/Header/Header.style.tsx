@@ -30,7 +30,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   margin: 0 auto;
   max-width: calc(100vw - 80px);
   width: ${CONTAINER_WIDTH};
-  margin-top: ${(props) => (props.showBg ? ({ theme }) => '0' : '30px')};
+  margin-top: ${(props) => (props.showBg ? '0' : '30px')};
   position: relative;
   text-align: center;
   height: 80px;
@@ -83,10 +83,11 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
       margin-right: auto;
     }
 
-    a:nth-child(3),
     a:nth-child(4),
     a:nth-child(5),
-    a:nth-child(6) {
+    a:nth-child(6),
+    a:nth-child(7),
+    a:nth-child(8) {
       display: none;
     }
 
