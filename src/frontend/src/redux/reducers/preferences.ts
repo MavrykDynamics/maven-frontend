@@ -5,7 +5,7 @@ import { DARK_THEME, SPACE_THEME } from '../actions/preferences.action'
 
 const defaultPreferences: PreferencesType = {
   themeSelected: getItemFromStorage('theme') || SPACE_THEME,
-  REACT_APP_RPC_PROVIDER: 'https://mainnet.smartpy.io',
+  REACT_APP_RPC_PROVIDER: 'https://mainnet.api.tez.ie',
   changeNodePopupOpen: false,
   policyPopup: false,
   scrollPosition: 0,
