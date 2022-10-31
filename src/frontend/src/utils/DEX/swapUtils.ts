@@ -115,7 +115,7 @@ export function calculateTokenToXtz(
   maxSlippage: number,
   dex: { fee: number; burn: number; includeSubsidy: boolean },
 ): { expected: number; minimum: number; rate: number; priceImpact: number } {
-  let _tokenToSell = new BigNumber(tokenToSell * PRECISION_NUMBER_EIGHT_ZEROES),
+  let _tokenToSell = new BigNumber(Math.round(tokenToSell * PRECISION_NUMBER_EIGHT_ZEROES)),
     _xtzPool = new BigNumber(xtzPool * PRECISION_NUMBER_SIX_ZEROES),
     _tokenPool = new BigNumber(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES)
   const expectedXtzReceived = tokenToXtzExpectedReturn(_tokenToSell, _xtzPool, _tokenPool, dex)
