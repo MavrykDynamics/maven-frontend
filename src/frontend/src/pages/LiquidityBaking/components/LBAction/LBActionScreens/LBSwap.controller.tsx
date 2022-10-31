@@ -138,6 +138,8 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement> | { target: { name: string; value: string } }) => {
     let { name, value } = e.target
     const isTypingBottomInput = name === isRevertedCoins.to
+    setInputErrors(DEFAULT_COINS_ERRORS)
+    setClearOnSwitch(false)
 
     if (+value < 0 || (ready && !isTypingBottomInput && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) {
       dispatch(showToaster(ERROR, 'Insufficient wallet balance', 'Please enter sufficient amount'))
@@ -145,11 +147,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         ...inputErrors,
         [name]: ERROR,
       })
-      return
     }
-
-    setInputErrors(DEFAULT_COINS_ERRORS)
-    setClearOnSwitch(false)
 
     const parsedValue = isNaN(parseFloat(value)) ? 0 : parseFloat(value)
     if (isTypingBottomInput) {
@@ -157,11 +155,14 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         const { tzBTCValue } = calculateXtzToToken(parsedValue)
         const { minimum: XTZMinimum, priceImpact: XTZriceImpact, rate } = calculateTokenToXtz(tzBTCValue)
         if (tzBTCValue > tzBTCBalance) {
-          setClearOnSwitch(true)
           setInputErrors({
             ...inputErrors,
             tzBTC: ERROR,
           })
+        }
+
+        if (Number(value) > xtzBalance) {
+          setClearOnSwitch(true)
         }
         setAmountToSwap(tzBTCValue)
         setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
@@ -171,12 +172,15 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       } else {
         const { XTZ_Value, rate } = calculateTokenToXtz(parsedValue)
         const { minimum: tzBTCMinimum, priceImpact: tzBTCPI } = calculateXtzToToken(XTZ_Value)
-        if (XTZ_Value > tzBTCBalance) {
-          setClearOnSwitch(true)
+        if (XTZ_Value > xtzBalance) {
           setInputErrors({
             ...inputErrors,
             XTZ: ERROR,
           })
+        }
+
+        if (Number(value) > tzBTCBalance) {
+          setClearOnSwitch(true)
         }
         setAmountToSwap(XTZ_Value)
         setInputValues({ ...inputValues, XTZ: XTZ_Value, [name]: value })
@@ -270,7 +274,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
                 XTZ: 0,
               })
             }
-            setInputErrors(DEFAULT_COINS_ERRORS)
           }}
           onFocus={() => {
             if (parseSrtToNum(inputValues.XTZ) === 0) {
@@ -320,7 +323,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
                 tzBTC: 0,
               })
             }
-            setInputErrors(DEFAULT_COINS_ERRORS)
           }}
           onFocus={() => {
             if (parseSrtToNum(inputValues.tzBTC) === 0) {
