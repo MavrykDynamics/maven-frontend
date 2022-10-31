@@ -13,7 +13,7 @@ import {
     DiscordPopupStyled
 } from './DiscordPopup.style'
 import { State } from 'utils/interfaces'
-import { DARK_THEME } from 'redux/actions/preferences.action'
+import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
 
 type NewsLetterProps = {
   closeCallback?: () => void
@@ -21,9 +21,9 @@ type NewsLetterProps = {
 
 export const DiscordPopupView = ({ closeCallback }: NewsLetterProps) => {
   const { themeSelected } = useSelector((state: State) => state.preferences)
-  const frontImgUrl = themeSelected === DARK_THEME ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
+  const frontImgUrl = themeSelected !== LIGHT_THEME ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
   const frontImgUrlPopup =
-    themeSelected === DARK_THEME ? '/images/city-bg-popup-dark.svg' : '/images/city-bg-popup-light.svg'
+    themeSelected !== LIGHT_THEME ? '/images/city-bg-popup-dark.svg' : '/images/city-bg-popup-light.svg'
   const [clicked, setIsClicked] = useState(false)
 
   React.useEffect(() => {

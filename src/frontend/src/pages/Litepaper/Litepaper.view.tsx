@@ -9,14 +9,14 @@ import { LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperMarkdown, Litepa
 import { useDispatch, useSelector } from 'react-redux'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { State } from 'utils/interfaces'
-import { DARK_THEME, toggleRPCNodePopup } from 'redux/actions/preferences.action'
+import { DARK_THEME, toggleRPCNodePopup, LIGHT_THEME } from 'redux/actions/preferences.action'
 
 export const LitepaperView = () => {
   const themeSelected = useSelector((state: State) => state.preferences.themeSelected)
   const dispatch = useDispatch()
   const openChangeNodePopup = useCallback(() => dispatch(toggleRPCNodePopup(true)), [])
 
-  const darkThemeEnabled = themeSelected === DARK_THEME
+  const darkThemeEnabled = themeSelected !== LIGHT_THEME
 
   const [tops, setTops] = useState<any>({
     abstract: 0,

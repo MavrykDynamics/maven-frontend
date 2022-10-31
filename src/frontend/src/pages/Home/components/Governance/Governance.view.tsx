@@ -11,13 +11,13 @@ import {
   GovernanceImagePlanet,
   GovernanceParallaxLayer,
 } from './Governance.style'
-import { DARK_THEME } from 'redux/actions/preferences.action'
+import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
 import { State } from 'utils/interfaces'
 
 export const GovernanceView = () => {
   const { themeSelected } = useSelector((state: State) => state.preferences)
   const planetUrl =
-    themeSelected === DARK_THEME ? '/images/governance/planet-dark.svg' : '/images/governance/planet-light.svg'
+    themeSelected !== LIGHT_THEME ? '/images/governance/planet-dark.svg' : '/images/governance/planet-light.svg'
 
   return (
     <GovernanceStyled>
