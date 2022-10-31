@@ -93,7 +93,7 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
       align-items: center;
       column-gap: 10px;
       height: fit-content;
-      svg {
+      > svg {
         transform: rotate(90deg);
         width: 21px;
         height: 21px;
@@ -103,6 +103,20 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
       .info {
         display: flex;
         flex-direction: column;
+
+        p {
+          margin-top: 3px;
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+        }
+
+        svg {
+          height: 16px;
+          width: 16px;
+          margin-left: 3px;
+          fill: ${({ theme }) => theme.priceImpact};
+        }
 
         .value {
           color: ${({ theme }) => theme.priceImpact};
