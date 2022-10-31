@@ -123,6 +123,9 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
         receivedAmount.tzbtc * PRECISION_NUMBER_EIGHT_ZEROES,
       ),
     )
+    setInputValues({
+      SIR: 0,
+    })
   }
 
   return (
