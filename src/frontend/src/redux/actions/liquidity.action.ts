@@ -38,10 +38,10 @@ export const addLiquidity =
 
       if (walletResponse.success) {
         const tzs = state.wallet.tezos
-        tzs.setRpcProvider(rpcNetwork)
-        tzs.setWalletProvider(wallet)
+        await tzs.setRpcProvider(rpcNetwork)
+        await tzs.setWalletProvider(wallet)
 
-        dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+        await dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
 
         const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
         const tzBTCContract = await tzs.wallet.at(TZBTC_CONTRACT)
@@ -73,16 +73,15 @@ export const addLiquidity =
           ])
           .send()
 
-        dispatch(toggleLoader(ROCKET_LOADER))
-        dispatch(showToaster(INFO, 'Adding Liquidity', 'Please wait 30s...'))
+        await dispatch(toggleLoader(ROCKET_LOADER))
+        await dispatch(showToaster(INFO, 'Adding Liquidity', 'Please wait 30s...'))
 
         await batchOp?.confirmation()
 
-        dispatch(showToaster(SUCCESS, 'Add Liquidity completed', 'All good :)'))
-
-        dispatch(toggleLoader())
+        await dispatch(toggleLoader())
+        await dispatch(showToaster(SUCCESS, 'Add Liquidity completed', 'All good :)'))
       }
-      if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
+      if (state.wallet.accountPkh) await dispatch(getUserData(state.wallet.accountPkh))
     } catch (error: any) {
       console.error(error)
       dispatch(showToaster(ERROR, 'Error', error.message))
@@ -116,10 +115,10 @@ export const removeLiquidity =
 
       if (walletResponse.success) {
         const tzs = state.wallet.tezos
-        tzs.setRpcProvider(rpcNetwork)
-        tzs.setWalletProvider(wallet)
+        await tzs.setRpcProvider(rpcNetwork)
+        await tzs.setWalletProvider(wallet)
 
-        dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+        await dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
 
         const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
         const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
@@ -128,15 +127,14 @@ export const removeLiquidity =
           .removeLiquidity(state.wallet.accountPkh, lqtToSell, xtzToReceive, tzBtcToReceive, deadline)
           .send()
 
-        dispatch(toggleLoader(ROCKET_LOADER))
+        await dispatch(toggleLoader(ROCKET_LOADER))
 
         await op.confirmation()
 
-        dispatch(showToaster(SUCCESS, 'Remove Liquidity completed', 'All good :)'))
-
-        dispatch(toggleLoader())
+        await dispatch(toggleLoader())
+        await dispatch(showToaster(SUCCESS, 'Remove Liquidity completed', 'All good :)'))
       }
-      if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
+      if (state.wallet.accountPkh) await dispatch(getUserData(state.wallet.accountPkh))
     } catch (error: any) {
       console.error(error)
       dispatch(showToaster(ERROR, 'Error', error.message))
@@ -171,10 +169,10 @@ export const addLiquidityOnlyXTZ =
 
       if (walletResponse.success) {
         const tzs = state.wallet.tezos
-        tzs.setRpcProvider(rpcNetwork)
-        tzs.setWalletProvider(wallet)
+        await tzs.setRpcProvider(rpcNetwork)
+        await tzs.setWalletProvider(wallet)
 
-        dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+        await dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
 
         const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
         const tzBTCContract = await tzs.wallet.at(TZBTC_CONTRACT)
@@ -214,16 +212,15 @@ export const addLiquidityOnlyXTZ =
           ])
           .send()
 
-        dispatch(toggleLoader(ROCKET_LOADER))
-        dispatch(showToaster(INFO, 'Adding Liquidity', 'Please wait 30s...'))
+        await dispatch(toggleLoader(ROCKET_LOADER))
+        await dispatch(showToaster(INFO, 'Adding Liquidity', 'Please wait 30s...'))
 
         await batchOp?.confirmation()
 
-        dispatch(showToaster(SUCCESS, 'Add Liquidity completed', 'All good :)'))
-
-        dispatch(toggleLoader())
+        await dispatch(toggleLoader())
+        await dispatch(showToaster(SUCCESS, 'Add Liquidity completed', 'All good :)'))
       }
-      if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
+      if (state.wallet.accountPkh) await dispatch(getUserData(state.wallet.accountPkh))
     } catch (error: any) {
       console.error(error)
       dispatch(showToaster(ERROR, 'Error', error.message))

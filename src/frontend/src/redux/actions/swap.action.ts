@@ -34,7 +34,6 @@ export const getTokensData = () => async (dispatch: any) => {
   }
 }
 
-
 export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => async (dispatch: any, getState: any) => {
   const state: State = getState()
 
@@ -64,10 +63,10 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
 
     if (walletResponse.success) {
       const tzs = state.wallet.tezos
-      tzs.setRpcProvider(rpcNetwork)
-      tzs.setWalletProvider(wallet)
+      await tzs.setRpcProvider(rpcNetwork)
+      await tzs.setWalletProvider(wallet)
 
-      dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+      await dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
 
       const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
       const tzBTCContract = await tzs.wallet.at(TZBTC_CONTRACT)
@@ -80,12 +79,12 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
         .withContractCall(lqdContract.methods.tokenToXtz(state.user.userAddress, tokensSold, minXTZBought, deadline))
       const batchOp = await batch?.send()
 
-      dispatch(toggleLoader(ROCKET_LOADER))
-      dispatch(showToaster(INFO, 'Swapping tzBTC -> XTZ', 'Please wait 30s...'))
+      await dispatch(toggleLoader(ROCKET_LOADER))
+      await dispatch(showToaster(INFO, 'Swapping tzBTC -> XTZ', 'Please wait 30s...'))
 
       await batchOp?.confirmation()
-      dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
-      dispatch(toggleLoader())
+      await dispatch(toggleLoader())
+      await dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
     }
 
     if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
@@ -95,7 +94,6 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
     dispatch(toggleLoader())
   }
 }
-
 
 export const swapXtzToToken = (amount: number, minTokensBought: number) => async (dispatch: any, getState: any) => {
   const state: State = getState()
@@ -127,10 +125,10 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
 
     if (walletResponse.success) {
       const tzs = state.wallet.tezos
-      tzs.setRpcProvider(rpcNetwork)
-      tzs.setWalletProvider(wallet)
+      await tzs.setRpcProvider(rpcNetwork)
+      await tzs.setWalletProvider(wallet)
 
-      dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+      await dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
 
       const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
       const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
@@ -139,12 +137,12 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
         .xtzToToken(state.user.userAddress, minTokensToBuy.toString(), deadline)
         .send({ amount })
 
-      dispatch(toggleLoader(ROCKET_LOADER))
-      dispatch(showToaster(INFO, 'Swapping XTZ -> tzBTC', 'Please wait 30s...'))
+      await dispatch(toggleLoader(ROCKET_LOADER))
+      await dispatch(showToaster(INFO, 'Swapping XTZ -> tzBTC', 'Please wait 30s...'))
 
       await op.confirmation()
-      dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
-      dispatch(toggleLoader())
+      await dispatch(toggleLoader())
+      await dispatch(showToaster(SUCCESS, 'Swap completed', 'All good :)'))
     }
     if (state.wallet.accountPkh) dispatch(getUserData(state.wallet.accountPkh))
   } catch (error: any) {
