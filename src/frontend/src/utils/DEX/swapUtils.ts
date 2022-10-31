@@ -118,7 +118,6 @@ export function calculateTokenToXtz(
   let _tokenToSell = new BigNumber(tokenToSell * PRECISION_NUMBER_EIGHT_ZEROES),
     _xtzPool = new BigNumber(xtzPool * PRECISION_NUMBER_SIX_ZEROES),
     _tokenPool = new BigNumber(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES)
-
   const expectedXtzReceived = tokenToXtzExpectedReturn(_tokenToSell, _xtzPool, _tokenPool, dex)
   const minimumReceived = tokenToXtzMinimumReturn(expectedXtzReceived, maxSlippage)
   const exchangeRate = tokenToXtzExchangeRateDisplay(_tokenToSell, _xtzPool, _tokenPool, dex)
