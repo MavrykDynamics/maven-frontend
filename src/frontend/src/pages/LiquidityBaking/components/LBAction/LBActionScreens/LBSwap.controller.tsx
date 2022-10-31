@@ -158,6 +158,10 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         const { minimum: XTZMinimum, priceImpact: XTZriceImpact, rate } = calculateTokenToXtz(tzBTCValue)
         if (tzBTCValue > tzBTCBalance) {
           setClearOnSwitch(true)
+          setInputErrors({
+            ...inputErrors,
+            tzBTC: ERROR,
+          })
         }
         setAmountToSwap(tzBTCValue)
         setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
@@ -169,6 +173,10 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         const { minimum: tzBTCMinimum, priceImpact: tzBTCPI } = calculateXtzToToken(XTZ_Value)
         if (XTZ_Value > tzBTCBalance) {
           setClearOnSwitch(true)
+          setInputErrors({
+            ...inputErrors,
+            XTZ: ERROR,
+          })
         }
         setAmountToSwap(XTZ_Value)
         setInputValues({ ...inputValues, XTZ: XTZ_Value, [name]: value })
@@ -198,6 +206,10 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
 
   // performing swap for xtz=>tzBTC & tzBTC=>xtz
   const swapBtnHandler = async () => {
+    if (clearOnSwitch || inputErrors.XTZ || inputErrors.tzBTC) {
+      dispatch(showToaster(ERROR, 'Insufficient wallet balance', 'Please enter sufficient amount'))
+      return
+    }
     try {
       // if XTZ => tzBTC perform %xtzToToken
       if (isRevertedCoins.from === 'XTZ' && isRevertedCoins.to === 'tzBTC') {
