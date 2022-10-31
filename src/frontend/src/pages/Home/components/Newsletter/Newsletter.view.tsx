@@ -32,7 +32,6 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
 
   React.useEffect(() => {
     if (success) {
-      console.log('%c ||||| success set IS_SUBSCRIBE', 'color:yellowgreen', success)
       Cookie.set('IS_SUBSCRIBE', 'true', { expires: 365, path: '/' })
     }
   }, [success])

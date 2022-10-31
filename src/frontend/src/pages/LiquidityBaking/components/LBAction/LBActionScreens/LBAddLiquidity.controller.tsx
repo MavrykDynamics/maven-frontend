@@ -104,13 +104,6 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
       convertedSlippagePercentToValue,
       dexType,
     )
-    console.log(
-      'logging result of calcAddLiquidityXtzAndTzbtc',
-      liquidityExpected,
-      liquidityMinimum,
-      required,
-      exchangeRate,
-    )
 
     setLqtReceived(liquidityExpected)
     setMinLqtReceived(liquidityMinimum)
@@ -125,7 +118,6 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
     // 3. Update contract calls to adjust
 
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
-    console.log('logging input of calcAddLiquidityOnlyXTZ', amount)
     const amountOfXtzToAdd = amount / 2
     const { expected, minimum, rate, priceImpact } = CalcXtzToToken(
       amountOfXtzToAdd,
@@ -141,15 +133,6 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
       generalDexStats.sharesTotal,
       convertedSlippagePercentToValue,
       dexType,
-    )
-    console.log(
-      'logging result of calcAddLiquidityOnlyXTZ',
-      expected,
-      minimum,
-      liquidityExpected,
-      liquidityMinimum,
-      required,
-      exchangeRate,
     )
 
     setOnlyXtzSwapData({
@@ -320,7 +303,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
 
       <LBActionBottomWrapperStyled>
         <PriceImpact priceImpact={priceImpact} />
-        <MinimumReceived minimumReceived={[{ value: minlqtReceived, tokenName: 'SIR' }]} />
+        <MinimumReceived minimumReceived={[{ value: minlqtReceived, tokenName: 'SIRS' }]} />
         <Slippage
           onClickHandler={(value) => slippageChangeHandler(value, false)}
           selectedToogle={selectedSlippage}

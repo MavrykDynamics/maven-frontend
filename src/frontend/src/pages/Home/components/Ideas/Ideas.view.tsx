@@ -26,12 +26,10 @@ export const IdeasView = () => {
   const frontImgUrl = themeSelected !== LIGHT_THEME ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
   const loadingImgUrl = themeSelected !== LIGHT_THEME ? '/icons/loading-white.svg' : '/icons/loading.svg'
 
-  // console.log('%c ||||| data', 'color:yellowgreen', data)
   const isMiddleScreen = useMediaQuery('(max-width: 1280px)')
   const isPhone = useMediaQuery('(max-width: 850px)')
   const { loading, mediumFeedData } = useGetMediumFeed()
 
-  console.log('%c ||||| mediumFeedData', 'color:yellowgreen', mediumFeedData)
   const chunkAmount = isPhone ? 1 : isMiddleScreen ? 4 : 6
   const groupedData = chunkArrayInGroups(data, chunkAmount)
 

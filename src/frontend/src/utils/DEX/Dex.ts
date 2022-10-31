@@ -80,11 +80,7 @@ export class Dex {
   }
 
   createPoolAmounts(): { xtzPool: DexCalcOutput; tokenPool: DexCalcOutput } {
-    console.log(
-      'here in create pool amounts: ',
-      this.storage[this.lqdContract]?.tez_pool,
-      this.storage[this.lqdContract]?.token_pool,
-    )
+    
     const xtzPool = new DexCalcOutput({
       rpcAmount: parseFloat(this.storage[this.lqdContract]?.tez_pool),
       decimalPlaces: 6,
@@ -103,14 +99,7 @@ export class Dex {
     maxSlippage: number,
     dex: Settings,
   ): { expected: DexCalcOutput; minimum: DexCalcOutput; rate: string; impactDouble: number } {
-    console.log('Here in dex.calculateXtzToToken()')
-    console.log(
-      'Logging dex.calculateXtzToToken() input: ',
-      xtzToSell.internalBigInt,
-      xtzPool.internalBigInt,
-      tokenPool.internalBigInt,
-      dex,
-    )
+    
     const expected = this.xtzToTokenExpectedReturn(xtzToSell, xtzPool, tokenPool, dex)
     const minimum = this.xtzToTokenMinimumReturn(expected, maxSlippage)
     const rate = this.xtzToTokenExchangeRateDisplay(xtzToSell, xtzPool, tokenPool, dex)
@@ -142,14 +131,11 @@ export class Dex {
     maxSlippage: number,
     dex: Settings,
   ): { expected: DexCalcOutput; minimum: DexCalcOutput; rate: string; impactDouble: number } {
-    console.log('Here in dex.calculateTokenToXTZ()')
-    console.log('Logging dex.calculateTokenToXTZ() input: ', tokenToSell, xtzPool, tokenPool, dex)
     const expected = this.tokenToXtzExpectedReturn(tokenToSell, xtzPool, tokenPool, dex)
     const minimum = this.tokenToXtzMinimumReturn(expected, maxSlippage)
     const rate = this.tokenToXtzExchangeRateDisplay(tokenToSell, xtzPool, tokenPool, dex)
     const priceImpact = this.tokenToXtzPriceImpact(tokenToSell, xtzPool, tokenPool, dex)
     const impactDouble = priceImpact ?? 0
-    console.log('Logging dex.calculateTokenToXTZ() output: ', expected, minimum, rate, priceImpact, impactDouble)
     return { expected, minimum, rate, impactDouble }
   }
 
@@ -261,7 +247,6 @@ export class Dex {
       dex.burn.toString(),
       dex.includeSubsidy,
     )
-    console.log('Here in xtzToTokenExpectedReturn: ', result)
     return new DexCalcOutput({
       rpcAmount: result?.toString() || '0',
       decimalPlaces: tokenPool.decimalPlaces,
@@ -271,7 +256,6 @@ export class Dex {
   xtzToTokenMinimumReturn(tokenAmount: DexCalcOutput, slippage: number): DexCalcOutput {
     const token = tokenAmount.internalBigInt
     if (slippage < 0 || slippage > 1) {
-      console.log(`slippage value supplied to 'xtzToTokenMinimumReturn' was not between 0 and 1: ${slippage}`)
       return new DexCalcOutput(0)
     }
     const result = dexterCalculations.xtzToTokenMinimumTokenOutput(token.toString(), slippage)
@@ -393,7 +377,6 @@ export class Dex {
     const xtz = xtzAmount.internalBigInt
 
     if (slippage < 0 || slippage > 1) {
-      console.log(`slippage value supplied to 'tokenToXtzMinimumReturn' was not between 0 and 1: ${slippage}`)
       return new DexCalcOutput(0)
     }
 
@@ -509,7 +492,6 @@ export class Dex {
     dex: Settings,
   ): { expected: DexCalcOutput; minimum: DexCalcOutput } {
     if (slippage < 0 || slippage > 1) {
-      console.log(`slippage value supplied to 'addLiquidityReturn' was not between 0 and 1: ${slippage}`)
       return { expected: new DexCalcOutput(0), minimum: new DexCalcOutput(0) }
     }
 
@@ -583,7 +565,6 @@ export class Dex {
     slippage: number,
   ): { expected: DexCalcOutput; minimum: DexCalcOutput } {
     if (slippage < 0 || slippage > 1) {
-      console.log(`slippage value supplied to 'removeLiquidityTokenReceived' was not between 0 and 1: ${slippage}`)
       return { expected: new DexCalcOutput(0), minimum: new DexCalcOutput(0) }
     }
 
@@ -617,7 +598,6 @@ export class Dex {
     dex: Settings,
   ): { expected: DexCalcOutput; minimum: DexCalcOutput } {
     if (slippage < 0 || slippage > 1) {
-      console.log(`slippage value supplied to 'removeLiquidityXtzReceived' was not between 0 and 1: ${slippage}`)
       return { expected: new DexCalcOutput(0), minimum: new DexCalcOutput(0) }
     }
 

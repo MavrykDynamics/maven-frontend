@@ -64,14 +64,6 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
       convertedSlippagePercentToValue,
       dex,
     )
-    console.log(
-      'logging result of calculateReceivedXtzAndTzbtc',
-      xtzExpected,
-      xtzMinimum,
-      tokenExpected,
-      tokenMinimum,
-      exchangeRate,
-    )
 
     setReceivedAmount({
       xtz: isNaN(xtzExpected) ? 0 : xtzExpected,
@@ -138,7 +130,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
         kind={'LB'}
         value={inputValues.SIR}
         icon={'sirius-icon.png'}
-        pinnedText={'SIR'}
+        pinnedText={'SIRS'}
         onKeyDown={nonNumberSymbolsValidation}
         inputStatus={inputErrors.SIR}
         onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}

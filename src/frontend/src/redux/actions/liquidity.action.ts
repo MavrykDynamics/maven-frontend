@@ -8,6 +8,7 @@ import { BeaconWallet } from '@taquito/beacon-wallet'
 import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
 import { SET_TEZOS_TOOLKIT } from '../action.types'
 import { toggleLoader } from './preferences.action'
+import { removeDecimal } from 'utils/utils'
 
 const TZBTC_CONTRACT = 'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
   LB_DEX_CONTRACT = 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5'
@@ -56,14 +57,19 @@ export const addLiquidity =
             },
             {
               kind: OpKind.TRANSACTION,
-              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, tokensToSell).toTransferParams(),
+              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, removeDecimal(tokensToSell)).toTransferParams(),
             },
             {
               kind: OpKind.TRANSACTION,
               ...lqdContract.methods
-                .addLiquidity(state.user.userAddress, minLqtMinted - 3, tokensToSell, deadline)
+                .addLiquidity(
+                  state.user.userAddress,
+                  removeDecimal(minLqtMinted - 3),
+                  removeDecimal(tokensToSell),
+                  deadline,
+                )
                 .toTransferParams(),
-              amount: xtzToAdd,
+              amount: removeDecimal(xtzToAdd),
               mutez: true,
             },
             {
@@ -124,7 +130,13 @@ export const removeLiquidity =
         const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
         dispatch(showToaster(INFO, 'Removing Liquidity', 'Please wait 30s...'))
         const op = await lqdContract.methods
-          .removeLiquidity(state.wallet.accountPkh, lqtToSell, xtzToReceive, tzBtcToReceive, deadline)
+          .removeLiquidity(
+            state.wallet.accountPkh,
+            removeDecimal(lqtToSell),
+            removeDecimal(xtzToReceive),
+            removeDecimal(tzBtcToReceive),
+            deadline,
+          )
           .send()
 
         await dispatch(toggleLoader(ROCKET_LOADER))
@@ -184,9 +196,9 @@ export const addLiquidityOnlyXTZ =
             {
               kind: OpKind.TRANSACTION,
               ...lqdContract.methods
-                .xtzToToken(state.user.userAddress, minTokensToBuy.toString(), deadline)
+                .xtzToToken(state.user.userAddress, removeDecimal(minTokensToBuy).toString(), deadline)
                 .toTransferParams(),
-              amount: xtzToSwap,
+              amount: removeDecimal(xtzToSwap),
               mutez: true,
             },
             {
@@ -195,14 +207,19 @@ export const addLiquidityOnlyXTZ =
             },
             {
               kind: OpKind.TRANSACTION,
-              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, tokensToSell).toTransferParams(),
+              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, removeDecimal(tokensToSell)).toTransferParams(),
             },
             {
               kind: OpKind.TRANSACTION,
               ...lqdContract.methods
-                .addLiquidity(state.user.userAddress, minLqtMinted - 3, tokensToSell, deadline)
+                .addLiquidity(
+                  state.user.userAddress,
+                  removeDecimal(minLqtMinted - 3),
+                  removeDecimal(tokensToSell),
+                  deadline,
+                )
                 .toTransferParams(),
-              amount: xtzToAdd,
+              amount: removeDecimal(xtzToAdd),
               mutez: true,
             },
             {

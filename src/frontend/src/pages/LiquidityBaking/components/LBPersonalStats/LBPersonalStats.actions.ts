@@ -11,7 +11,6 @@ export const getPersonalStats = () => async (dispatch: any, getState: any) => {
   const state = getState()
 
   if (!state.wallet.ready) {
-    console.log('Wallet not connected')
     return
   }
   try {
@@ -32,8 +31,6 @@ export const getPersonalStats = () => async (dispatch: any, getState: any) => {
       const { avgSharePx, exchange, realizedPl, sharesQty } = personalStatsData.position[0]
       personalStats.realizedPl = Number(realizedPl)
     }
-
-    console.log('Logging personal stats', personalStatsData)
 
     dispatch({
       type: GET_PERSONAL_STATS,

@@ -26,7 +26,6 @@ export const CalculatorView = () => {
       const { data }: any = await axios.get(
         'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XTZ&tsyms=USD',
       )
-      console.log(data)
       setPrices({
         XTZ: data.XTZ.USD,
         wWBTC: data.BTC.USD,

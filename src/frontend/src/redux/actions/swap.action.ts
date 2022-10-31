@@ -4,7 +4,7 @@ import { GET_TOKENS_DATA, SET_TEZOS_TOOLKIT } from 'redux/action.types'
 import { State } from '../../utils/interfaces'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { ERROR, INFO, SUCCESS } from 'app/App.components/Toaster/Toaster.constants'
-import { isWholeNumber } from 'utils/utils'
+import { isWholeNumber, removeDecimal } from 'utils/utils'
 import { getUserData } from './user.action'
 import { BeaconWallet } from '@taquito/beacon-wallet'
 import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
@@ -75,8 +75,15 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
       let batch = await state.wallet.tezos?.wallet
         .batch()
         .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0))
-        .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, tokensSold))
-        .withContractCall(lqdContract.methods.tokenToXtz(state.user.userAddress, tokensSold, minXTZBought, deadline))
+        .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, removeDecimal(tokensSold)))
+        .withContractCall(
+          lqdContract.methods.tokenToXtz(
+            state.user.userAddress,
+            removeDecimal(tokensSold),
+            removeDecimal(minXTZBought),
+            deadline,
+          ),
+        )
       const batchOp = await batch?.send()
 
       await dispatch(toggleLoader(ROCKET_LOADER))
@@ -113,9 +120,9 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
     return
   }
 
-  let minTokensToBuy = minTokensBought
+  let minTokensToBuy = removeDecimal(minTokensBought)
   if (!isWholeNumber(minTokensBought)) {
-    minTokensToBuy = Math.round(minTokensBought)
+    minTokensToBuy = removeDecimal(Math.round(minTokensBought))
   }
 
   try {
@@ -134,8 +141,8 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
       const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
 
       const op = await lqdContract.methods
-        .xtzToToken(state.user.userAddress, minTokensToBuy.toString(), deadline)
-        .send({ amount })
+        .xtzToToken(state.user.userAddress, removeDecimal(minTokensToBuy).toString(), deadline)
+        .send({ amount: removeDecimal(amount) })
 
       await dispatch(toggleLoader(ROCKET_LOADER))
       await dispatch(showToaster(INFO, 'Swapping XTZ -> tzBTC', 'Please wait 30s...'))

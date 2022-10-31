@@ -129,7 +129,7 @@ export const AddLiquidityDefault = ({
           <CommaNumber
             value={isNaN(lqtReceived) ? 0 : lqtReceived}
             showDecimal
-            endingText="SIR"
+            endingText="SIRS"
             maxSymbols={8}
             useMaxSymbols={isMobile}
           />

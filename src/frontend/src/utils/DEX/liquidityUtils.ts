@@ -87,7 +87,6 @@ export function addLiquidityReturn(
   dex: { fee: number; burn: number; includeSubsidy: boolean },
 ): { expected: BigNumber; minimum: BigNumber } {
   if (slippage < 0 || slippage > 1) {
-    console.log(`slippage value supplied to 'addLiquidityReturn' was not between 0 and 1: ${slippage}`)
     return { expected: new BigNumber(0), minimum: new BigNumber(0) }
   }
 
@@ -131,12 +130,7 @@ export function calculateRemoveLiquidity(
   const xtzOut = removeLiquidityXtzReceived(_liquidityBurned, _totalLiquidity, _xtzPool, maxSlippage, dex)
   const tokenOut = removeLiquidityTokenReceived(_liquidityBurned, _totalLiquidity, _tokenPool, maxSlippage)
   const exchangeRate = xtzToTokenExchangeRateDisplay(xtzOut.expected, _xtzPool, _tokenPool, dex)
-  console.log(
-    'here in calculateRemoveLiquidity: ',
-    xtzOut.expected.toNumber(),
-    tokenOut.expected.toNumber(),
-    exchangeRate,
-  )
+  
   return {
     xtzExpected: xtzOut?.expected.toNumber() / PRECISION_NUMBER_SIX_ZEROES,
     xtzMinimum: xtzOut?.minimum.toNumber() / PRECISION_NUMBER_SIX_ZEROES,
@@ -154,7 +148,6 @@ function removeLiquidityXtzReceived(
   dex: { fee: number; burn: number; includeSubsidy: boolean },
 ): { expected: BigNumber; minimum: BigNumber } {
   if (maxSlippage < 0 || maxSlippage > 1) {
-    console.log(`slippage value supplied to 'removeLiquidityXtzReceived' was not between 0 and 1: ${maxSlippage}`)
     return { expected: new BigNumber(0), minimum: new BigNumber(0) }
   }
   const result = dexterCalculations.removeLiquidityXtzOut(
@@ -180,7 +173,6 @@ function removeLiquidityTokenReceived(
   maxSlippage: number,
 ): { expected: BigNumber; minimum: BigNumber } {
   if (maxSlippage < 0 || maxSlippage > 1) {
-    console.log(`slippage value supplied to 'removeLiquidityTokenReceived' was not between 0 and 1: ${maxSlippage}`)
     return { expected: new BigNumber(0), minimum: new BigNumber(0) }
   }
 

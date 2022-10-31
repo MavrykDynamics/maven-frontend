@@ -17,8 +17,6 @@ const AreaChart = ({
   const isMobileMax = useMedia('(max-width: 770px)')
   const isMobileMin = useMedia('(min-width: 550px)')
 
-  console.log(isMobileMax, isMobileMin)
-
   const theme = useSelector((state: State) => state.preferences.themeSelected)
   return (
     // @ts-ignore

@@ -28,7 +28,6 @@ export const DiscordPopupView = ({ closeCallback }: NewsLetterProps) => {
 
   React.useEffect(() => {
     if (clicked) {
-      console.log('%c ||||| success set IS_SUBSCRIBE', 'color:yellowgreen', clicked)
       Cookie.set('IS_SUBSCRIBE', 'true', { expires: 365, path: '/' })
     }
   }, [clicked])
