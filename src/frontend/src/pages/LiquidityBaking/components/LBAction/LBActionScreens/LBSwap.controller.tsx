@@ -154,6 +154,14 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       if (name === 'XTZ') {
         const { tzBTCValue } = calculateXtzToToken(parsedValue)
         const { minimum: XTZMinimum, priceImpact: XTZriceImpact, rate } = calculateTokenToXtz(tzBTCValue)
+        if (tzBTCValue > tzBTCBalance) {
+          dispatch(showToaster(ERROR, 'Insufficient XTZ wallet balance', 'Please enter sufficient amount'))
+          setInputErrors({
+            ...inputErrors,
+            XTZ: ERROR,
+          })
+          return
+        }
         setAmountToSwap(tzBTCValue)
         setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
         setExchangeRate(rate || exchangeRate)
@@ -162,6 +170,14 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       } else {
         const { XTZ_Value, rate } = calculateTokenToXtz(parsedValue)
         const { minimum: tzBTCMinimum, priceImpact: tzBTCPI } = calculateXtzToToken(XTZ_Value)
+        if (XTZ_Value > tzBTCBalance) {
+          dispatch(showToaster(ERROR, 'Insufficient tzBTC wallet balance', 'Please enter sufficient amount'))
+          setInputErrors({
+            ...inputErrors,
+            tzBTC: ERROR,
+          })
+          return
+        }
         setAmountToSwap(XTZ_Value)
         setInputValues({ ...inputValues, XTZ: XTZ_Value, [name]: value })
         setExchangeRate(rate || exchangeRate)
@@ -170,16 +186,16 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       }
     } else {
       if (name === 'XTZ') {
-        setAmountToSwap(parsedValue)
         const { tzBTCValue, minimum, priceImpact } = calculateXtzToToken(parsedValue)
         const { rate } = calculateTokenToXtz(tzBTCValue)
+        setAmountToSwap(parsedValue)
         setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
         setExchangeRate(rate || exchangeRate)
         setMinReceived(minimum)
         setPriceImpact(priceImpact)
       } else {
+        const { XTZ_Value, minimum, priceImpact, rate } = calculateTokenToXtz(parsedValue) // 0.0003
         setAmountToSwap(parsedValue)
-        const { XTZ_Value, minimum, priceImpact, rate } = calculateTokenToXtz(parsedValue)
         setInputValues({ ...inputValues, XTZ: XTZ_Value, [name]: value })
         setExchangeRate(rate || exchangeRate)
         setMinReceived(minimum)
