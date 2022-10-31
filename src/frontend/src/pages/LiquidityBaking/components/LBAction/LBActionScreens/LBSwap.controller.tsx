@@ -70,6 +70,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
   const [inputErrors, setInputErrors] = useState<CoinsInputsErrors>(DEFAULT_COINS_ERRORS)
   const [exchangeRate, setExchangeRate] = useState<number>(0)
+  const [clearOnSwitch, setClearOnSwitch] = useState(false)
   const [amountToSwap, setAmountToSwap] = useState(0)
 
   const isMobile = useMedia('(max-width: 500px)')
@@ -147,6 +148,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
     }
 
     setInputErrors(DEFAULT_COINS_ERRORS)
+    setClearOnSwitch(false)
     const isTypingBottomInput = name === isRevertedCoins.to
 
     const parsedValue = isNaN(parseFloat(value)) ? 0 : parseFloat(value)
@@ -155,12 +157,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         const { tzBTCValue } = calculateXtzToToken(parsedValue)
         const { minimum: XTZMinimum, priceImpact: XTZriceImpact, rate } = calculateTokenToXtz(tzBTCValue)
         if (tzBTCValue > tzBTCBalance) {
-          dispatch(showToaster(ERROR, 'Insufficient XTZ wallet balance', 'Please enter sufficient amount'))
-          setInputErrors({
-            ...inputErrors,
-            XTZ: ERROR,
-          })
-          return
+          setClearOnSwitch(true)
         }
         setAmountToSwap(tzBTCValue)
         setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
@@ -171,12 +168,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         const { XTZ_Value, rate } = calculateTokenToXtz(parsedValue)
         const { minimum: tzBTCMinimum, priceImpact: tzBTCPI } = calculateXtzToToken(XTZ_Value)
         if (XTZ_Value > tzBTCBalance) {
-          dispatch(showToaster(ERROR, 'Insufficient tzBTC wallet balance', 'Please enter sufficient amount'))
-          setInputErrors({
-            ...inputErrors,
-            tzBTC: ERROR,
-          })
-          return
+          setClearOnSwitch(true)
         }
         setAmountToSwap(XTZ_Value)
         setInputValues({ ...inputValues, XTZ: XTZ_Value, [name]: value })
@@ -279,12 +271,16 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         />
 
         <svg
-          onClick={() =>
+          onClick={() => {
             setIsRevertedCoins({
               from: isRevertedCoins.to,
               to: isRevertedCoins.from,
             })
-          }
+
+            if (clearOnSwitch) {
+              setInputValues(DEFAULT_COINS_AMOUNT)
+            }
+          }}
         >
           <use xlinkHref="/icons/sprites.svg#exchange" />
         </svg>

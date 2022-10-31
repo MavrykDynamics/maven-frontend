@@ -72,6 +72,7 @@ export const MobileDetailsBlock = ({
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
           iconName={'XTZ_tezos'}
           decimals={6}
+          disableBtn
         />
         <ConnectedWalletDetailsItem
           buttonText={'But tzBTC'}
@@ -165,6 +166,7 @@ export const ConnectedWalletBlock = ({
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
           iconName={'XTZ_tezos'}
           decimals={6}
+          disableBtn
         />
         <ConnectedWalletDetailsItem
           buttonText={'Buy tzBTC'}
