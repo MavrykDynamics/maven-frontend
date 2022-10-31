@@ -8,6 +8,13 @@ import { CONNECT, DISCONNECT, SET_WALLET } from 'redux/action.types'
 import { getUserData } from './user.action'
 import { TezosToolkit } from '@taquito/taquito'
 
+const Beacon_localStorage_keys = [
+  'beacon:active-account',
+  'beacon:postmessage-peers-dapp',
+  'beacon:accounts',
+  'beacon:sdk-secret-seed',
+  'beacon:sdk_version',
+]
 export const network: Network = { type: NetworkType.MAINNET }
 export const WalletOptions = {
   name: process.env.REACT_APP_NAME || 'MAVRYK',
@@ -37,27 +44,10 @@ export const setWallet = (wallet?: BeaconWallet) => (dispatch: AppDispatch) => {
 
 export const changeWallet = () => async (dispatch: AppDispatch, getState: GetState) => {
   const state: State = getState()
+
   try {
-    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
-    const wallet = new BeaconWallet(WalletOptions)
-    const walletResponse = await checkIfWalletIsConnected(wallet)
-
-    if (walletResponse.success) {
-      const Tezos = new TezosToolkit(rpcNetwork)
-      await wallet.client.requestPermissions({
-        network,
-      })
-      const account = await wallet.client.getActiveAccount()
-
-      await dispatch({
-        type: CONNECT,
-        wallet,
-        tezos: Tezos,
-        ready: Boolean(wallet),
-        accountPkh: account?.address,
-      })
-      if (account?.address) dispatch(getUserData(account?.address))
-    }
+    await state.wallet.wallet?.clearActiveAccount()
+    await dispatch(connect())
   } catch (err: any) {
     console.error(`Failed to change wallet: `, err)
   }
@@ -99,7 +89,7 @@ export const disconnect = () => async (dispatch: AppDispatch, getState: GetState
     const state: State = getState()
     // clearing wallet data
     await state.wallet.wallet?.clearActiveAccount()
-    localStorage.clear()
+    Beacon_localStorage_keys.forEach((key) => localStorage.removeItem(key))
     dispatch({ type: DISCONNECT })
     // set some wallet data, so user can see connect wallet instead of install wallet btn
     dispatch(setWallet())
