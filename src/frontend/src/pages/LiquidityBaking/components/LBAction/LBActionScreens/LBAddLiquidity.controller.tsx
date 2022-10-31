@@ -254,6 +254,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
         ),
       )
     }
+    setInputValues(DEFAULT_COINS_AMOUNT)
   }
 
   return (
