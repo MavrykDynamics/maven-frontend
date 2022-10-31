@@ -72,21 +72,8 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
     }
   }
 
-  /* @media screen and (max-width: 1060px) {
-    .stats-grid {
-      div {
-        div:not(.block-name) {
-          font-size: 18px;
-        }
-
-        .block-name {
-          font-size: 13px;
-        }
-      }
-    }
-  } */
-
   @media screen and (max-width: 1024px) {
+    min-height: unset;
     height: 420px;
     .stats-grid {
       margin-top: 20px;

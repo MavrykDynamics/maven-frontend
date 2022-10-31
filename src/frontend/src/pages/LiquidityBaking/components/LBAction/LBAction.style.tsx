@@ -10,6 +10,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
   border-radius: 10px;
   width: calc(50% - 5px);
   position: relative;
+  min-height: 560px;
   height: 100vh;
   max-height: 560px;
   display: flex;
