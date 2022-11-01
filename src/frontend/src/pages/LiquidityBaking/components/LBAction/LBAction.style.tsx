@@ -203,6 +203,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
   @media screen and (max-width: 550px) {
     padding: 20px 15px 20px 15px;
     max-height: 650px;
+    min-height: 650px;
 
     .liqTokens-created {
       margin-top: auto;
