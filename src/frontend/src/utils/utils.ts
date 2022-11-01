@@ -71,3 +71,20 @@ export function isWholeNumber(input: number): boolean {
 export const removeDecimal = (number: number): number => {
   return Number(number.toFixed(0))
 }
+
+export const getFullNumber = (value?: number | string) => {
+  // it's exponential number if e-7 it will scientific notation, every that are < -7 normal notation
+  if (Number(value)?.toString().includes('e')) {
+    const [number, tenGrade] = Number(value).toString().split('e')
+    const [integer = '', decimals = ''] = number.split('.')
+    // extra low number
+    if (+tenGrade < 0) {
+      // how much zeroes we will have
+      const newTenGrade = Number(tenGrade) + integer.length
+
+      return `0.${''.padEnd(Math.abs(+newTenGrade), '0')}${integer}${decimals}`
+    }
+  }
+
+  return value
+}

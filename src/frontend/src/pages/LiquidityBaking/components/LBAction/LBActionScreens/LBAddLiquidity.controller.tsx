@@ -217,6 +217,11 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
 
   // handle add liquidity button with xtz and tzbtc
   const addLiquidityBtnHandler = async () => {
+    if (minlqtReceived < 1) {
+      dispatch(showToaster(ERROR, 'Invalid Input', `Minumum amount of SIRS to create is 1`))
+      return
+    }
+
     // Only XTZ switch is not active, so providing both XTZ and tzBTC from wallet
     if (!switchValue) {
       dispatch(
