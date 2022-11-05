@@ -25,6 +25,7 @@ import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'util
 import { useMedia } from 'react-use'
 import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
+import { getFullNumber } from '../../../../../utils/utils'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -56,6 +57,29 @@ const DEFAULT_COINS_AMOUNT = {
   tzBTC: 0,
 }
 const dexType = getSettings('liquidity')
+
+const MIN_AMOUNT_XTZ = 0.000001
+const MIN_AMOUNT_tzBTC = 0.00000001
+
+const isValidXTZ = (xtz: string | number) => {
+  const [int, decimal] = getFullNumber(xtz)?.toString().split('.') ?? ['', '']
+
+  if (decimal?.length > 6) {
+    return false
+  }
+
+  return true
+}
+
+const isValidTZBTC = (tzBTC: string | number) => {
+  const [int, decimal] = getFullNumber(tzBTC)?.toString().split('.') ?? ['', '']
+
+  if (decimal?.length > 8) {
+    return false
+  }
+
+  return true
+}
 
 export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: LBGeneralStats }) => {
   const dispatch = useDispatch()
@@ -90,10 +114,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
   useEffect(() => {
     setExchangeRate(Number(coinPrices.tzbtc.usd))
   }, [coinPrices.tzbtc.usd])
-
-  useEffect(() => {
-    inputChangeHandler({ target: { name: isRevertedCoins.from, value: String(inputValues[isRevertedCoins.from]) } })
-  }, [isRevertedCoins])
 
   const calculateTokenToXtz = (amount: number) => {
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
@@ -143,6 +163,22 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
 
     if (+value < 0 || (ready && !isTypingBottomInput && +value > (name === 'XTZ' ? xtzBalance : tzBTCBalance))) {
       dispatch(showToaster(ERROR, 'Insufficient wallet balance', 'Please enter sufficient amount'))
+      setInputErrors({
+        ...inputErrors,
+        [name]: ERROR,
+      })
+    }
+
+    if (name === 'XTZ' && !isValidXTZ(value)) {
+      dispatch(showToaster(ERROR, 'Invalid Input', `Please input a number that exists in XTZ`))
+      setInputErrors({
+        ...inputErrors,
+        [name]: ERROR,
+      })
+    }
+
+    if (name === 'tzBTC' && !isValidTZBTC(value)) {
+      dispatch(showToaster(ERROR, 'Invalid Input', `Please input a number that exists in tzBTC`))
       setInputErrors({
         ...inputErrors,
         [name]: ERROR,
@@ -210,10 +246,21 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
 
   // performing swap for xtz=>tzBTC & tzBTC=>xtz
   const swapBtnHandler = async () => {
+    if (inputValues.XTZ <= 0) {
+      dispatch(showToaster(ERROR, 'Invalid Input', `Please input a number that exists in tzBTC`))
+      return
+    }
+
+    if (inputValues.tzBTC <= 0) {
+      dispatch(showToaster(ERROR, 'Invalid Input', `Please input a number that exists in XTZ`))
+      return
+    }
+
     if (clearOnSwitch || inputErrors.XTZ || inputErrors.tzBTC) {
       dispatch(showToaster(ERROR, 'Insufficient wallet balance', 'Please enter sufficient amount'))
       return
     }
+
     try {
       // if XTZ => tzBTC perform %xtzToToken
       if (isRevertedCoins.from === 'XTZ' && isRevertedCoins.to === 'tzBTC') {
@@ -291,6 +338,8 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
               from: isRevertedCoins.to,
               to: isRevertedCoins.from,
             })
+
+            inputChangeHandler({ target: { name: isRevertedCoins.to, value: String(inputValues[isRevertedCoins.to]) } })
 
             if (clearOnSwitch) {
               setInputValues(DEFAULT_COINS_AMOUNT)

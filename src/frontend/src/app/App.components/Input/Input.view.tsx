@@ -13,6 +13,7 @@ import {
 } from './Input.style'
 import Icon from '../Icon/Icon.view'
 import { ERROR } from '../Toaster/Toaster.constants'
+import { getFullNumber } from '../../../utils/utils'
 
 type InputViewProps = {
   icon?: string
@@ -94,7 +95,7 @@ export const InputView = ({
           className={classNames}
           placeholder={placeholder}
           onWheel={onWheel}
-          value={value}
+          value={isLB ? getFullNumber(value) : value}
           onChange={onChange}
           onBlur={onBlur}
           onKeyDown={onKeyDown}
@@ -128,7 +129,7 @@ export const InputView = ({
         {isLB && convertedValue !== undefined && (
           <div className="transfer_result">
             <CustomizedText color="#C0DBFF" fontSize={12} fontWidth={500}>
-              <CommaNumber beginningText="= $" value={convertedValue || 0} />
+              <CommaNumber beginningText="= $" value={convertedValue ?? 0} decimalsToShow={6} />
             </CustomizedText>
           </div>
         )}
