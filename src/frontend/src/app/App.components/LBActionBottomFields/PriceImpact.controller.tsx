@@ -6,6 +6,8 @@ import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import Icon from '../Icon/Icon.view'
 
 export const PriceImpact = ({ priceImpact }: { priceImpact: number }) => {
+  const value = priceImpact > 0.04 ? '> 4%' : priceImpact > 0.005 && priceImpact <= 0.04 ? '1.2-2%' : '< 0.5%'
+  const isGreen = priceImpact <= 0.04
   return (
     <HorisontalInfo>
       <CustomizedText color={subHeaderColor} fontWidth={500}>
@@ -21,14 +23,15 @@ export const PriceImpact = ({ priceImpact }: { priceImpact: number }) => {
       </CustomizedText>
 
       <CustomizedText fontWidth={500}>
-        <PriceChange up={priceImpact >= 0}>
-          <CommaNumber
+        <PriceChange up={isGreen}>
+          {value}
+          {/* <CommaNumber
             beginningText={priceImpact === 0 ? '' : priceImpact > 0 ? '+' : '-'}
             value={priceImpact}
             showDecimal
             decimalsToShow={5}
             endingText="%"
-          />
+          /> */}
         </PriceChange>
       </CustomizedText>
     </HorisontalInfo>

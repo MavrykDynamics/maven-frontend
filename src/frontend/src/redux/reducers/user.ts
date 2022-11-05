@@ -29,6 +29,10 @@ const user = (state = defaultUser, action: any) => {
         estimatedPoolTzBTCOwned: action.personalStats.estimatedPoolTzBTCOwned,
         estimatedPoolXtzOwned: action.personalStats.estimatedPoolXtzOwned,
       }
+    case actions.DISCONNECT:
+      return {
+        ...defaultUser,
+      }
     default:
       return state
   }
