@@ -21,7 +21,7 @@ const YAXIS_SETTING = (interval: IntervalType, textColor: string, isMobile?: boo
   showAlways: !isMobile,
   showForNullSeries: true,
   tickAmount: 8,
-  min: (min: number) => (min - INTERVAL_PRICE_CUSHION[interval] >= 0 ? min - INTERVAL_PRICE_CUSHION[interval] : min),
+  min: (min: number) => Math.min(min - INTERVAL_PRICE_CUSHION[interval], min),
   max: (max: number) => max + INTERVAL_PRICE_CUSHION[interval],
   labels: {
     show: true,
