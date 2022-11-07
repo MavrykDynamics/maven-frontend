@@ -27,6 +27,7 @@ export const warningColor = '#FF7A00'
 export const upColor = '#27AE60'
 export const dangerColor = '#FF8486'
 export const awaitingColor = '#FFCA43'
+export const silverTwoColor = '#CDCDCD'
 
 export const darkMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-dark.svg',
@@ -101,6 +102,8 @@ export const darkMode: MavrykTheme = {
   walletDetailsAddress: '#77A4F2',
   walletDetailsSubtext: '#77A4F2',
   scrollToTop: '#77A4F2',
+  settingsPopupText: silverTwoColor,
+  settingsPopupTextDescr: silverTwoColor,
   theme: 'dark',
 }
 
@@ -176,6 +179,8 @@ export const lightMode: MavrykTheme = {
   chartTooltipBg: '#503EAA',
   scrollToTop: '#27007A',
   headerSkyColor: darkColor,
+  settingsPopupText: '#27007A',
+  settingsPopupTextDescr: '#8D86EB',
   theme: 'light',
 }
 
@@ -254,6 +259,8 @@ export const spaceMode: MavrykTheme = {
   scrollToTop: '#77A4F2',
   theme: 'space',
   headerSkyColor: skyColor,
+  settingsPopupText: silverTwoColor,
+  settingsPopupTextDescr: silverTwoColor,
 }
 
 export default {

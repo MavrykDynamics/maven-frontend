@@ -7,7 +7,7 @@ export const PopupContainerWrapper = styled.div<{ theme: MavrykTheme }>`
   flex-direction: column;
   padding: 40px;
   background: #160e3f;
-  border: 1px solid ${({ theme }) => theme.btnBackroundNewsColor};
+  border: 1px solid ${titleColor};
   border-radius: 10px;
   height: fit-content;
   max-width: 395px;
@@ -95,7 +95,8 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
   font-weight: 600;
   font-size: 18px;
   line-height: 18px;
-  color: #8d86eb;
+  /* color: #8d86eb; */
+  color: ${({ theme }) => theme.settingsPopupText};
   margin-top: 12px;
   border-radius: 10px;
   cursor: pointer;
@@ -113,7 +114,7 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
       font-weight: 600;
       font-size: 18px;
       line-height: 18px;
-      color: #8d86eb;
+      color: ${({ theme }) => theme.settingsPopupText};
       white-space: nowrap;
       margin-right: 10px;
     }
@@ -128,14 +129,16 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
       margin: 0;
       padding: 0;
       padding-left: 7px;
-      color: ${({ theme }) => theme.footerText};
+      color: ${({ theme }) => theme.settingsPopupText};
+      border-color: ${({ theme }) => theme.toggleButtonBgSelected};
       font-size: 16px;
       text-overflow: ellipsis;
       transition: 0.5s all;
       overflow: hidden;
       white-space: nowrap;
       &::placeholder {
-        color: ${({ theme }) => theme.footerText};
+        color: ${({ theme }) => theme.settingsPopupText};
+        opacity: 0.8;
       }
     }
 
@@ -202,7 +205,8 @@ export const PopupStyled = styled.div`
     font-weight: 100;
     height: 35px;
     width: 35px;
-    color: #8d86eb;
+    color: ${({ theme }) => theme.settingsPopupText};
+    /* color: #8d86eb; */
     transform: rotate(45deg);
     top: 15px;
     right: 15px;
@@ -259,6 +263,7 @@ export const PopupTitle = styled.div`
   &.change_node {
     margin: 0 auto;
     width: fit-content;
+    color: ${({ theme }) => theme.settingsPopupText};
     &::before {
       display: none;
     }
@@ -284,11 +289,11 @@ export const PopupTitle = styled.div`
   }
 `
 
-export const DescrText = styled.div`
+export const DescrText = styled.div<{ theme: MavrykTheme }>`
   max-width: 620px;
   font-size: 16px;
   line-height: 24px;
-  color: #77a4f2;
+  color: ${({ theme }) => theme.settingsPopupTextDescr};
   margin-top: 30px;
 
   &.change_node {
