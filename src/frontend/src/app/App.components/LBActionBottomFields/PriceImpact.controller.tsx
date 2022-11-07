@@ -23,16 +23,7 @@ export const PriceImpact = ({ priceImpact }: { priceImpact: number }) => {
       </CustomizedText>
 
       <CustomizedText fontWidth={500}>
-        <PriceChange up={isGreen}>
-          {value}
-          {/* <CommaNumber
-            beginningText={priceImpact === 0 ? '' : priceImpact > 0 ? '+' : '-'}
-            value={priceImpact}
-            showDecimal
-            decimalsToShow={5}
-            endingText="%"
-          /> */}
-        </PriceChange>
+        <PriceChange up={isGreen}>{value}</PriceChange>
       </CustomizedText>
     </HorisontalInfo>
   )
