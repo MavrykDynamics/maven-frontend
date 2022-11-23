@@ -2,14 +2,14 @@
   {
     "id": 1,
     "img": "/images/app-features/own-loan.svg",
-    "header": "Mint Your Own Loan",
-    "text": "Mint your own loan in the form of an algorithmic stablecoin (USDM), backed against your crypto collateral. Loans can be issued against a single asset or multiple assets. No capital gains tax."
+    "header": "Multi-Collateral Vaults",
+    "text": "Deposit multiple forms of collateral in a single vault to healthily secure your loan against liquidation. Vaults are non-custodial, providing users maximum security & full access to their funds."
   },
   {
     "id": 2,
     "img": "/images/app-features/yield-farming.svg",
     "header": "Yield Farming",
-    "text": "Stake your LP tokens (MVK/XTZ, MVK/USDM, and USDM/XTZ) within yield farms and earn staked MVK in return."
+    "text": "Provide liquidity to DEX's and Mavryk's lending pools, stake your LP tokens in our yield farms, and earn staked MVK in return."
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
     "id": 5,
     "img": "/images/app-features/own-satellite.svg",
     "header": "Run Your Own Satellite",
-    "text": "Operate a Satellite to play an active role in Mavryk’s governance, control the Treasury, and provide the network with on-chain data via the oracle. Get paid in staked MVK and USDM."
+    "text": "Operate a Satellite to play an active role in Mavryk’s governance, control the Treasury, and provide the network with on-chain data via the oracle. Get paid in staked MVK and XTZ."
   },
   {
     "id": 6,

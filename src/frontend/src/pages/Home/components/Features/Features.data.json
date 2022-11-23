@@ -1,20 +1,20 @@
 [
   {
     "id": 1,
-    "img": "/images/money.svg",
-    "header": "A Stablecoin You Control",
-    "text": "Put up existing crypto-assets as equity for a USDM stablecoin loan, up to a 50% loan-to-value ratio."
+    "img": "/images/plant.svg",
+    "header": "Securely Lend Your Assets",
+    "text": "Safely earn yield by depositing assets into lending pools for over collateralized & decentralized loans."
   },
   {
     "id": 2,
-    "img": "/images/plant.svg",
-    "header": "Earn With Your USDM",
-    "text": "Use your USDM to earn passive income through yield farming, position leveraging, a USDM savings account, or by sending to any Tezos wallet."
+    "img": "/images/money.svg",
+    "header": "Borrow On Your Terms",
+    "text": "Borrow against a single asset or basket of assets by providing them as collateral to your own personal vault. Your assets always remain in your control, and only secure your vault."
   },
   {
     "id": 3,
     "img": "/images/piggy.svg",
-    "header": "Dynamic Savings Rate",
-    "text": "Store your USDM in an interest-paying Dynamic Savings Rate (DSR) account and get paid from the on-chain treasury."
+    "header": "Stake MVk & Earn Rewards",
+    "text": "As a community bank, members may stake & delegate their MVK or operate a Satellite node to earn rewards from the Treasury."
   }
 ]

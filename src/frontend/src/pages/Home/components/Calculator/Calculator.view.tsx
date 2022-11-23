@@ -3,7 +3,19 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 
 // prettier-ignore
-import { CalculatorButton, CalculatorCointainer, CalculatorControls, CalculatorGrid, CalculatorGrid2, CalculatorInput, CalculatorResult, CalculatorResultFee, CalculatorResults, CalculatorSection, CalculatorStyled } from './Calculator.style'
+import {
+  CalculatorButton,
+  CalculatorCointainer,
+  CalculatorControls,
+  CalculatorGrid,
+  CalculatorGrid2,
+  CalculatorInput,
+  CalculatorResult,
+  CalculatorResultFee,
+  CalculatorResults,
+  CalculatorSection,
+  CalculatorStyled
+} from './Calculator.style'
 
 export const CalculatorView = () => {
   const [prices, setPrices] = useState({
@@ -145,7 +157,7 @@ export const CalculatorView = () => {
             <CalculatorResult>
               <div>Debt after 12 months</div>
               <p>{`$${values.debt}`}</p>
-              <CalculatorResultFee>Stability fee 2.0%</CalculatorResultFee>
+              <CalculatorResultFee>Interest rate 2.0%</CalculatorResultFee>
             </CalculatorResult>
           </CalculatorResults>
         </CalculatorCointainer>
