@@ -153,7 +153,7 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     height: 38px;
     width: 31%;
     border: 1px solid ${({ theme }) => theme.toggleButtonBgSelected};
-    color: ${({ theme }) => theme.toggleButtonBgSelected};
+    color: ${({ theme }) => theme.settingsPopupText};
     border-radius: 8px;
     transition: 0.4s all;
     background-color: transparent;

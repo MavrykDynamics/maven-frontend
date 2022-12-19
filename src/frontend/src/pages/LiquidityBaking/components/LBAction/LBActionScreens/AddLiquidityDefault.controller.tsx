@@ -122,7 +122,7 @@ export const AddLiquidityDefault = ({
 
       <HorisontalInfo className="liqTokens-created">
         <CustomizedText fontWidth={500} fontSize={16} color={subHeaderColor}>
-          Liquidity Tokens created
+          Sirius LP tokens created
         </CustomizedText>
 
         <CustomizedText fontWidth={500} color={cyanColor} fontSize={16}>

@@ -25,7 +25,7 @@ const LBHeader = () => {
       <div className="title">
         <img src="/images/sirius-icon.png" alt="sirius logo" />
         <CustomizedText fontWidth={700} fontSize={30}>
-          Liquidity Baking DEX (Sirius)
+          The Liquidity Baking DEX
         </CustomizedText>
       </div>
 
