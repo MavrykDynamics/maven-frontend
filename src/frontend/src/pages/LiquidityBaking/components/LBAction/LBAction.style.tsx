@@ -308,7 +308,7 @@ export const ToggleButtonsWrapper = styled.div`
 
 export const PriceChange = styled.div<{ up?: boolean; theme: MavrykTheme }>`
   color: ${({ up, theme }) => (up ? theme.priceImpact : theme.downColor)};
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   line-height: 18px;
 `
