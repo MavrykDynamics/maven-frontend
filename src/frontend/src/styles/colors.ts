@@ -50,6 +50,7 @@ export const darkMode: MavrykTheme = {
   containerColor,
   textColor,
   subTextColor: '#fff',
+  textDarkColor: '#77A4F2',
   placeholderColor: '#F7F9FD',
   primaryColor: '#7068AA',
   upColor: '#00E205',
