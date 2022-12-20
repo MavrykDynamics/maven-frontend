@@ -1,5 +1,6 @@
 import { Home } from 'pages/Home/Home.controller'
 import LiquidityBaking from 'pages/LiquidityBaking/LiquidityBaking.controller'
+import { Bakery } from 'pages/Bakery/Bakery.controller'
 import { Litepaper } from 'pages/Litepaper/Litepaper.controller'
 import { Privacy } from 'pages/Privacy/Privacy.controller'
 import { configureStore } from 'redux/storeConfigurator'
@@ -10,7 +11,6 @@ import Loader from './App.components/Loader/Loader.view'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { AnyAction } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
-import { useSelector } from 'react-redux'
 
 export const store = configureStore({})
 
@@ -51,6 +51,13 @@ export const App = () => {
             path="/liquidity-baking"
             component={() => {
               return <LiquidityBaking />
+            }}
+          />
+          <Route
+            exact
+            path="/bakery"
+            component={() => {
+              return <Bakery />
             }}
           />
         </Switch>
