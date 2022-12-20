@@ -57,9 +57,10 @@ export function Bakery () {
       >
         <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
         <PopupChangeNode isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
+
         <BakeryStyled>
-            
         </BakeryStyled>
+
         <FooterStyled />
     </SWRConfig>
   )

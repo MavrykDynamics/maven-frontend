@@ -18,7 +18,12 @@ export const BakeryStyled = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 80px;
+  row-gap: 10px;
+  max-width: 1440px;
 `
 
 export const FooterStyled = styled(Footer)<{ theme: MavrykTheme }>`
