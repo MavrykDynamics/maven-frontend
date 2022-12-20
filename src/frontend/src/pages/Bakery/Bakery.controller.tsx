@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { SWRConfig } from 'swr'
 
 // components
+import { BakeryView } from './Bakery.view'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { PopupChangeNodeView } from 'app/App.components/SettingsPopup/SettingsPopup.view'
 import { PopupChangeNode } from 'app/App.components/SettingsPopup/SettingsPopup.controller'
@@ -17,7 +18,7 @@ import { getItemFromStorage, setItemInStorage } from 'utils/utils'
 import { State } from 'utils/interfaces'
 
 // styles
-import { BakeryStyled, FooterStyled } from "./Bakery.style";
+import { FooterStyled } from "./Bakery.style";
 
 export function Bakery () {
   const dispatch = useDispatch()
@@ -48,6 +49,7 @@ export function Bakery () {
   if (isIOS && changeNodePopupOpen) {
     return <PopupChangeNodeView closeModal={closeModalHandler} />
   }
+
   return (
     <SWRConfig
       value={{
@@ -58,8 +60,7 @@ export function Bakery () {
         <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
         <PopupChangeNode isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
 
-        <BakeryStyled>
-        </BakeryStyled>
+        <BakeryView />
 
         <FooterStyled />
     </SWRConfig>

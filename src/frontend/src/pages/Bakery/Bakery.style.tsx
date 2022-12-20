@@ -12,6 +12,7 @@ export const BakeryStyled = styled.div`
   flex-direction: column;
   margin: 0 auto;
   margin-top: 80px;
+  padding-top: 30px;
   row-gap: 20px;
   max-width: 1440px;
 
@@ -28,6 +29,10 @@ export const BakeryStyled = styled.div`
     line-height: 35px;
 
     color: ${({ theme }) => theme.headingColor};
+
+    &::after {
+      height: 0;
+    }
   }
 
   p {
@@ -35,7 +40,7 @@ export const BakeryStyled = styled.div`
     font-size: 18px;
     line-height: 27px;
 
-    color: ${({ theme }) => theme.textDarkColor};
+    color: ${({ theme }) => theme.textSkyColor};
   }
 
   a {
@@ -46,6 +51,10 @@ export const BakeryStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
+  }
+
+  .paragraph-max-width {
+    max-width: 845px;
   }
 
   @media screen and (max-width: 769px) {
@@ -64,10 +73,20 @@ export const Card = styled.div`
   background-color: ${({ theme }) => theme.darkestBackroundColor};
   border: 1px solid ${({ theme }) => theme.socialBackroundColor};
   border-radius: 10px;
+
+  p {
+    margin-bottom: 30px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 `
 
 export const MiniCard = styled.div`
   background-color: ${({ theme }) => theme.tooltipBg};
+  border-radius: 10px;
+  opacity: 0.5;
 
   h4 {
     font-weight: 600;
