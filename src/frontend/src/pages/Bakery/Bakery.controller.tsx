@@ -4,7 +4,6 @@ import { SWRConfig } from 'swr'
 
 // components
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
-import { Footer } from 'app/App.components/Footer/Footer.controller'
 import { PopupChangeNodeView } from 'app/App.components/SettingsPopup/SettingsPopup.view'
 import { PopupChangeNode } from 'app/App.components/SettingsPopup/SettingsPopup.controller'
 import { connect } from 'redux/actions/connectWallet.actions'
@@ -18,7 +17,7 @@ import { getItemFromStorage, setItemInStorage } from 'utils/utils'
 import { State } from 'utils/interfaces'
 
 // styles
-import { BakeryStyled } from "./Bakery.style";
+import { BakeryStyled, FooterStyled } from "./Bakery.style";
 
 export function Bakery () {
   const dispatch = useDispatch()
@@ -61,7 +60,7 @@ export function Bakery () {
         <BakeryStyled>
             
         </BakeryStyled>
-        <Footer />
+        <FooterStyled />
     </SWRConfig>
   )
 }
