@@ -36,6 +36,8 @@ export const BakeryStyled = styled.div`
   }
 
   p {
+    margin: 0;
+
     font-weight: 500;
     font-size: 18px;
     line-height: 27px;
@@ -70,7 +72,7 @@ export const FooterStyled = styled(Footer)<{ theme: MavrykTheme }>`
 export const Card = styled.div`
   padding: 40px;
 
-  background-color: ${({ theme }) => theme.darkestBackroundColor};
+  background-color: ${({ theme }) => theme.darkBackroundColor};
   border: 1px solid ${({ theme }) => theme.socialBackroundColor};
   border-radius: 10px;
 
@@ -81,6 +83,14 @@ export const Card = styled.div`
       margin-bottom: 0;
     }
   }
+`
+
+export const CardWithBackground = styled(Card)`
+  min-height: 425px;
+  background-image: url('images/mavryk-finance.svg');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: auto;
 `
 
 export const MiniCard = styled.div`
