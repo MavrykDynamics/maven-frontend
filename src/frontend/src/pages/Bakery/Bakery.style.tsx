@@ -97,6 +97,11 @@ export const BakeryStyled = styled.div`
     justify-content: center;
   }
 
+  .space-between {
+    display: flex;
+    justify-content: space-between;
+  }
+
   @media screen and (max-width: 769px) {
     background-image: ${({ theme }) =>
       `url(${theme.theme === 'light' ? 'images/bakery/bakery-light-mob-bg.svg' : 'images/bakery/bakery-dark-mob-bg.svg'})`};
@@ -172,5 +177,15 @@ export const ButtonStyled = styled(Button)`
 
   &.actionSecondary {
     fill: ${({ theme }) => theme.navColor};
+  }
+`
+
+export const RoundButton =  styled(ButtonStyled)`
+  margin: 0;
+  width: 50px;
+  height: 50px;
+
+  svg {
+    margin-right: 1px;
   }
 `

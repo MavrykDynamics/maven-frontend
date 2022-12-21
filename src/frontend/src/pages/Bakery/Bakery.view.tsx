@@ -10,13 +10,12 @@ import { ACTION_PRIMARY, ACTION_SECONDARY } from 'app/App.components/Button/Butt
 // types
 
 // styles
-import { BakeryStyled, Card, CardWithBackground, MiniCard, ButtonStyled } from "./Bakery.style"
+import { BakeryStyled, Card, CardWithBackground, MiniCard, ButtonStyled, RoundButton } from "./Bakery.style"
 
 export function BakeryView () {
 
   return (
     <BakeryStyled>
-
       <CardWithBackground>
         <h1>Delegate your Tezos</h1>
 
@@ -26,7 +25,16 @@ export function BakeryView () {
 
       <div className='grid-two-columns'>
         <Card>
-          <h1>Mavryk DAO Bakery</h1>
+          <div className='space-between'>
+            <h1>Mavryk DAO Bakery</h1>
+
+            <RoundButton
+              text=''
+              icon='plusDark'
+              kind={ACTION_SECONDARY}
+            />
+          </div>
+
           <p>{hardcodeText.mavrykDAOBakery}</p>
 
           <div className='address'>
@@ -41,11 +49,13 @@ export function BakeryView () {
               <h4>Rewards</h4>
               <span>5-6%</span>
             </MiniCard>
+
             <MiniCard>
               <Icon id='coinHand' />
               <h4>Commission</h4>
               <span>5%</span>
             </MiniCard>
+            
             <MiniCard>
               <Icon id='planet' />
               <h4>Available XTZ Space</h4>
@@ -62,8 +72,18 @@ export function BakeryView () {
           </div>
         </Card>
         <Card>
-          <h1>Mavryk Dynamics Bakery</h1>
+          <div className='space-between'>
+            <h1>Mavryk Dynamics Bakery</h1>
+
+            <RoundButton
+              text=''
+              icon='plusDark'
+              kind={ACTION_PRIMARY}
+            />
+          </div>
+
           <p>{hardcodeText.mavrykDynamicsBakery}</p>
+
           <div className='address'>
             <span>Bakery Address</span>
             &nbsp;
@@ -76,11 +96,13 @@ export function BakeryView () {
               <h4>Rewards</h4>
               <span>5-6%</span>
             </MiniCard>
+
             <MiniCard>
               <Icon id='coinHand' />
               <h4>Commission</h4>
               <span>5%</span>
             </MiniCard>
+
             <MiniCard>
               <Icon id='planet' />
               <h4>Available XTZ Space</h4>
