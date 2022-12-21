@@ -17,7 +17,8 @@ export const FrequentlyAskedQuestionsCard = styled.div`
   border-top: 1px solid ${({ theme }) => theme.lbBorder};
   border-bottom: 1px solid transparent;
 
-  &:hover {
+  &:hover,
+  &.active {
     border-top: 1px solid ${({ theme }) => theme.navColor};
     border-bottom: 1px solid ${({ theme }) => theme.navColor};
 
