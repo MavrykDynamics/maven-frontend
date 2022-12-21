@@ -29,10 +29,13 @@ export function BakeryView () {
             <h1>Mavryk DAO Bakery</h1>
 
             <RoundButton
-              text=''
-              icon='plusDark'
-              kind={ACTION_SECONDARY}
-            />
+              className={ACTION_SECONDARY}
+              href="https://tzkt.io/tz1ZY5ug2KcAiaVfxhDKtKLx8U5zEgsxgdjV/operations/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon id='plusDark' />
+            </RoundButton>
           </div>
 
           <p>{hardcodeText.mavrykDAOBakery}</p>
@@ -76,10 +79,13 @@ export function BakeryView () {
             <h1>Mavryk Dynamics Bakery</h1>
 
             <RoundButton
-              text=''
-              icon='plusDark'
-              kind={ACTION_PRIMARY}
-            />
+              className={ACTION_PRIMARY} 
+              href="https://tzkt.io/tz1ZY5ug2KcAiaVfxhDKtKLx8U5zEgsxgdjV/operations/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon id='plusDark' />
+            </RoundButton>
           </div>
 
           <p>{hardcodeText.mavrykDynamicsBakery}</p>

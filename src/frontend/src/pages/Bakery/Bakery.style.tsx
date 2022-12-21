@@ -180,12 +180,33 @@ export const ButtonStyled = styled(Button)`
   }
 `
 
-export const RoundButton =  styled(ButtonStyled)`
-  margin: 0;
+export const RoundButton =  styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   height: 50px;
 
+  border-radius: 50%;
+  cursor: pointer;
+
   svg {
-    margin-right: 1px;
+    width: 22px;
+    height: 22px;
+  }
+
+  &.actionSecondary {
+    color: ${({ theme }) => theme.actionPrimaryBtnColor};
+    background-color: transparent;
+    border: 2px solid ${({ theme }) => theme.actionPrimaryBtnColor};
+
+    svg {
+      fill: ${({ theme }) => theme.navColor};
+    }
+  }
+
+  &.actionPrimary {
+    color: ${({ theme }) => theme.containerColor};
+    background-color: ${({ theme }) => theme.actionPrimaryBtnColor};
   }
 `
