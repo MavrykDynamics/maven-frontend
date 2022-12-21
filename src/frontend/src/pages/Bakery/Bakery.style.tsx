@@ -8,15 +8,6 @@ import { Footer } from "app/App.components/Footer/Footer.controller";
 import { Button } from "app/App.components/Button/Button.controller";
 
 export const BakeryStyled = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  margin-top: 80px;
-  padding-top: 30px;
-  row-gap: 20px;
-  max-width: 1440px;
-
   background-repeat: no-repeat;
   background-size: cover;
   background-image: ${({ theme }) =>
@@ -49,6 +40,16 @@ export const BakeryStyled = styled.div`
   a {
     color: ${({ theme }) => theme.navColor};
     text-decoration: underline;
+  }
+
+  .main-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-top: 110px;
+    row-gap: 20px;
+    max-width: 1440px;
   }
 
   .grid-two-columns,
