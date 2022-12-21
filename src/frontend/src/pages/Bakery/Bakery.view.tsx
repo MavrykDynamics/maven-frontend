@@ -58,7 +58,7 @@ export function BakeryView () {
               target="_blank"
               rel="noreferrer"
             >
-              Read more about staking her
+              Read more about staking here
             </a>
           </div>
 
