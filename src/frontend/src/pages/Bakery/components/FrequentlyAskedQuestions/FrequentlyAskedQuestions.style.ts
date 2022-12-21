@@ -15,6 +15,16 @@ export const FrequentlyAskedQuestionsStyled = styled(Card)`
 export const FrequentlyAskedQuestionsCard = styled.div`
   padding: 0 40px;
   border-top: 1px solid ${({ theme }) => theme.lbBorder};
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-top: 1px solid ${({ theme }) => theme.navColor};
+    border-bottom: 1px solid ${({ theme }) => theme.navColor};
+
+    h2 {
+      color: ${({ theme }) => theme.navColor};
+    }
+  }
 
   h2 {
     margin: 20px 0;
