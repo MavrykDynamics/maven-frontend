@@ -48,6 +48,7 @@ export const BakeryStyled = styled.div`
 
   a {
     color: ${({ theme }) => theme.navColor};
+    text-decoration: underline;
   }
 
   .grid-two-columns,
@@ -59,6 +60,10 @@ export const BakeryStyled = styled.div`
 
   .grid-three-columns {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .grid-column-gap {
+    column-gap: 100px;
   }
 
   .paragraph-max-width {
@@ -97,8 +102,14 @@ export const BakeryStyled = styled.div`
     justify-content: center;
   }
 
-  .space-between {
+  .space-between-horizontal {
     display: flex;
+    justify-content: space-between;
+  }
+
+  .space-between-vertical {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
   }
 
