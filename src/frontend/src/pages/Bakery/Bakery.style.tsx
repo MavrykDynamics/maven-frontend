@@ -5,6 +5,7 @@ import { MavrykTheme } from "utils/interfaces";
 
 // components
 import { Footer } from "app/App.components/Footer/Footer.controller";
+import { Button } from "app/App.components/Button/Button.controller";
 
 export const BakeryStyled = styled.div`
   position: relative;
@@ -91,6 +92,11 @@ export const BakeryStyled = styled.div`
     }
   }
 
+  .centring-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
   @media screen and (max-width: 769px) {
     background-image: ${({ theme }) =>
       `url(${theme.theme === 'light' ? 'images/bakery/bakery-light-mob-bg.svg' : 'images/bakery/bakery-dark-mob-bg.svg'})`};
@@ -157,5 +163,14 @@ export const MiniCard = styled.div`
     line-height: 18px;
 
     color: ${({ theme }) => theme.tooltipValue};
+  }
+`
+
+export const ButtonStyled = styled(Button)`
+  margin: 50px 0 20px 0;
+  width: 367px;
+
+  &.actionSecondary {
+    fill: ${({ theme }) => theme.navColor};
   }
 `

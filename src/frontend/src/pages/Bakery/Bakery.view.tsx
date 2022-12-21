@@ -5,11 +5,12 @@ import Icon from 'app/App.components/Icon/Icon.view'
 import { hardcodeText } from './Bakery.consts'
 import { TzAddress } from 'app/App.components/TzAddress/TzAddress.view'
 import { CYAN } from 'app/App.components/TzAddress/TzAddress.constants'
+import { ACTION_PRIMARY, ACTION_SECONDARY } from 'app/App.components/Button/Button.constants'
 
 // types
 
 // styles
-import { BakeryStyled, Card, CardWithBackground, MiniCard } from "./Bakery.style"
+import { BakeryStyled, Card, CardWithBackground, MiniCard, ButtonStyled } from "./Bakery.style"
 
 export function BakeryView () {
 
@@ -51,6 +52,14 @@ export function BakeryView () {
               <span>~ 3 days</span>
             </MiniCard>
           </div>
+
+          <div className='centring-wrapper'>
+            <ButtonStyled
+              text='Delegate to the DAO'
+              icon='plusDark'
+              kind={ACTION_SECONDARY}
+            />
+          </div>
         </Card>
         <Card>
           <h1>Mavryk Dynamics Bakery</h1>
@@ -77,6 +86,14 @@ export function BakeryView () {
               <h4>Available XTZ Space</h4>
               <span>~ 3 days</span>
             </MiniCard>
+          </div>
+
+          <div className='centring-wrapper'>
+            <ButtonStyled
+              text='Delegate to Mavryk Dynamics'
+              icon='plusDark'
+              kind={ACTION_PRIMARY}
+            />
           </div>
         </Card>
       </div>
