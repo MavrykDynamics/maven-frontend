@@ -100,6 +100,7 @@ export const darkMode: MavrykTheme = {
   tooltipValue: cyanColor,
   tooltipDate: '#8d86eb',
   headerSkyColor: skyColor,
+  addressPrimaryColor: cyanColor,
   walletDetailsAddress: '#77A4F2',
   walletDetailsSubtext: '#77A4F2',
   scrollToTop: '#77A4F2',
@@ -181,6 +182,7 @@ export const lightMode: MavrykTheme = {
   chartTooltipBg: '#503EAA',
   scrollToTop: '#27007A',
   headerSkyColor: darkColor,
+  addressPrimaryColor: cyanColor,
   settingsPopupText: '#27007A',
   settingsPopupTextDescr: '#8D86EB',
   theme: 'light',
@@ -262,6 +264,7 @@ export const spaceMode: MavrykTheme = {
   scrollToTop: '#77A4F2',
   theme: 'space',
   headerSkyColor: skyColor,
+  addressPrimaryColor: cyanColor,
   settingsPopupText: silverTwoColor,
   settingsPopupTextDescr: silverTwoColor,
 }
