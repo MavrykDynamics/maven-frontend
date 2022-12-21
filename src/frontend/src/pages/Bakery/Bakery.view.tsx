@@ -1,4 +1,5 @@
 // components
+import Icon from 'app/App.components/Icon/Icon.view'
 
 // helpers
 import { hardcodeText } from './Bakery.consts'
@@ -35,14 +36,17 @@ export function BakeryView () {
 
           <div className='grid-three-columns'>
             <MiniCard>
+              <Icon id='threeCoins' />
               <h4>Rewards</h4>
               <span>5-6%</span>
             </MiniCard>
             <MiniCard>
+              <Icon id='coinHand' />
               <h4>Commission</h4>
               <span>5%</span>
             </MiniCard>
             <MiniCard>
+              <Icon id='planet' />
               <h4>Available XTZ Space</h4>
               <span>~ 3 days</span>
             </MiniCard>
@@ -51,6 +55,29 @@ export function BakeryView () {
         <Card>
           <h1>Mavryk Dynamics Bakery</h1>
           <p>{hardcodeText.mavrykDynamicsBakery}</p>
+          <div className='address'>
+            <span>Bakery Address</span>
+            &nbsp;
+            <TzAddress type={CYAN} tzAddress={hardcodeText.tzAddress} hasIcon />
+          </div>
+
+          <div className='grid-three-columns'>
+            <MiniCard>
+              <Icon id='threeCoins' />
+              <h4>Rewards</h4>
+              <span>5-6%</span>
+            </MiniCard>
+            <MiniCard>
+              <Icon id='coinHand' />
+              <h4>Commission</h4>
+              <span>5%</span>
+            </MiniCard>
+            <MiniCard>
+              <Icon id='planet' />
+              <h4>Available XTZ Space</h4>
+              <span>~ 3 days</span>
+            </MiniCard>
+          </div>
         </Card>
       </div>
     </BakeryStyled>

@@ -135,6 +135,11 @@ export const MiniCard = styled.div`
   background-color: ${({ theme }) => theme.tooltipBg};
   border-radius: 10px;
 
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+
   h4 {
     margin: 10px 0;
 
