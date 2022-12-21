@@ -1,5 +1,6 @@
 // components
 import Icon from 'app/App.components/Icon/Icon.view'
+import { FrequentlyAskedQuestions } from './components/FrequentlyAskedQuestions/FrequentlyAskedQuestions.view'
 
 // helpers
 import { hardcodeText } from './Bakery.consts'
@@ -163,6 +164,8 @@ export function BakeryView () {
             </div>
           </div>
         </Card>
+
+        <FrequentlyAskedQuestions />
       </div>
     </BakeryStyled>
   )
