@@ -1,5 +1,6 @@
 // compopnents
 import Icon from "app/App.components/Icon/Icon.view"
+import { Description } from "./Description.view"
 
 // styles
 import { Card, MiniCard, RoundButton, ButtonStyled } from "../Bakery.style"
@@ -48,9 +49,7 @@ export function DelegateCard ({
           </RoundButton>
         </div>
 
-        {description.map((text) => (
-          <p>{text}</p>
-        ))}
+        <Description list={description} />
 
         <div className='address'>
           <span>Bakery Address</span>
