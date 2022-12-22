@@ -16,6 +16,7 @@ export const FrequentlyAskedQuestionsCard = styled.div`
   padding: 0 40px;
   border-top: 1px solid ${({ theme }) => theme.lbBorder};
   border-bottom: 1px solid transparent;
+  cursor: pointer;
 
   &:hover,
   &.active {

@@ -57,6 +57,7 @@ export const BakeryStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
+    row-gap: 20px;
   }
 
   .grid-three-columns {

@@ -4,8 +4,8 @@ import { DelegateCard } from './components/DelegateCard.view'
 import { Description } from './components/Description.view'
 
 // helpers
-import bakeryData from './Bakery.json'
-import { ACTION_PRIMARY, ACTION_SECONDARY } from 'app/App.components/Button/Button.constants'
+import { bakeryData, delegationCardData } from './BakeryData'
+import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 
 // types
 
@@ -13,45 +13,32 @@ import { ACTION_PRIMARY, ACTION_SECONDARY } from 'app/App.components/Button/Butt
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from "./Bakery.style"
 
 export function BakeryView () {
+  const handleClickDelegate = () => {
+
+  }
 
   return (
     <BakeryStyled>
       <div className='main-content'>
         <CardWithBackground>
           <h1>Delegate your Tezos</h1>
-          <Description list={bakeryData[0]} className='paragraph-max-width' />
+          <Description list={bakeryData.delegateYourTezos} className='paragraph-max-width' />
         </CardWithBackground>
 
         <div className='grid-two-columns'>
-          <DelegateCard
-            title='Mavryk DAO Bakery'
-            tzAddress='tz1ezDb77a9jaFMHDWs8QXrKEDkpgGdgsjPD'
-            rewards={[5, 6]}
-            commission={[5]}
-            availableXtzSpace={[3]}
-            onClick={() => {}}
-            kind={ACTION_SECONDARY}
-            link='https://tzkt.io/tz1ZY5ug2KcAiaVfxhDKtKLx8U5zEgsxgdjV/operations/'
-            description={bakeryData[1]}
-          />
-
-          <DelegateCard
-            title='Mavryk Dynamics Bakery'
-            tzAddress='tz1ezDb77a9jaFMHDWs8QXrKEDkpgGdgsjPD'
-            rewards={[5, 6]}
-            commission={[5]}
-            availableXtzSpace={[3]}
-            onClick={() => {}}
-            kind={ACTION_PRIMARY}
-            link='https://tzkt.io/tz1ZY5ug2KcAiaVfxhDKtKLx8U5zEgsxgdjV/operations/'
-            description={bakeryData[2]}
-          />
+          {delegationCardData.map(({id, ...item}) => (
+            <DelegateCard
+              key={id}
+              onClick={handleClickDelegate}
+              {...item}
+            />
+          ))}
         </div>
 
         <Card className='grid-two-columns grid-column-gap'>
           <div>
             <h1>Delegation & Staking 101</h1>
-            <Description list={bakeryData[3]} />
+            <Description list={bakeryData.delegationAndStaking101} />
 
             <a
               href=''
@@ -65,7 +52,7 @@ export function BakeryView () {
           <div className='space-between-vertical'>
             <div>
               <h1>How to delegate and receive rewards</h1>
-              <Description list={bakeryData[4]} />
+              <Description list={bakeryData.howToDelegateAndReceiveRewards} />
             </div>
 
             <div className='centring-wrapper'>

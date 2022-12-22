@@ -1,5 +1,3 @@
-
-
 // compopnents
 import Icon from "app/App.components/Icon/Icon.view"
 
@@ -9,6 +7,7 @@ import { Card, MiniCard, RoundButton, ButtonStyled } from "../Bakery.style"
 // helpers
 import { CYAN } from "app/App.components/TzAddress/TzAddress.constants"
 import { TzAddress } from "app/App.components/TzAddress/TzAddress.view"
+import { ButtonStyle } from "app/App.components/Button/Button.constants"
 
 type Props = {
   title: string
@@ -18,7 +17,7 @@ type Props = {
   availableXtzSpace: number[]
   onClick: () => void
   description: string[]
-  kind: 'actionPrimary' | 'actionSecondary'
+  kind: string
   link: string
 }
 
@@ -84,7 +83,7 @@ export function DelegateCard ({
         <ButtonStyled
           text='Delegate to the DAO'
           icon='plusDark'
-          kind={kind}
+          kind={kind as ButtonStyle}
           onClick={onClick}
         />
       </div>
