@@ -57,8 +57,8 @@ export function Bakery () {
         fetcher: dexGqlFetcher,
       }}
       >
-        <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
         <PopupChangeNode isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
+        <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
         <BakeryView />
         <FooterStyled />
     </SWRConfig>
