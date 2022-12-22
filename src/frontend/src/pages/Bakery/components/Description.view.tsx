@@ -6,8 +6,8 @@ type Props = {
 export function Description ({ list, className }: Props) {
   return (
     <>
-      {list.map((text) => (
-        <p className={className}>{text}</p>
+      {list.map((text, index) => (
+        <p key={index} className={className}>{text}</p>
       ))}
     </>
   )
