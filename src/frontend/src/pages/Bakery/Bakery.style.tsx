@@ -11,7 +11,8 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
   background-repeat: no-repeat;
   background-size: cover;
   background-image: ${({ theme }) =>
-    `url(${theme.theme === 'light' ? theme.bakeryLightDesktopBg : theme.bakeryDarkDesktopBg})`};
+    `url(${theme.theme === 'light' ? theme.primaryLightDesktopBg : theme.primaryDarkDesktopBg})`
+  };
 
   h1 {
     margin: 10px 0 30px 0;
@@ -117,8 +118,8 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
 
   @media screen and (max-width: 769px) {
     background-image: ${({ theme }) =>
-      `url(${theme.theme === 'light' ? theme.bakeryLightMobBg : theme.bakeryDarkMobBg})`};
-  }
+       `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`
+  }};
 `
 
 export const FooterStyled = styled(Footer)<{ theme: MavrykTheme }>`
