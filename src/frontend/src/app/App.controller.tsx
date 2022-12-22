@@ -28,37 +28,27 @@ export const App = () => {
           <Route
             exact
             path="/"
-            component={() => {
-              return <Home />
-            }}
+            component={Home}
           />
           <Route
             exact
             path="/litepaper"
-            component={() => {
-              return <Litepaper />
-            }}
+            component={Litepaper}
           />
           <Route
             exact
             path="/privacy"
-            component={() => {
-              return <Privacy />
-            }}
+            component={Privacy}
           />
           <Route
             exact
             path="/liquidity-baking"
-            component={() => {
-              return <LiquidityBaking />
-            }}
+            component={LiquidityBaking}
           />
           <Route
             exact
             path="/bakery"
-            component={() => {
-              return <Bakery />
-            }}
+            component={Bakery}
           />
         </Switch>
         <Toaster />

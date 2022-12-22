@@ -7,10 +7,10 @@ import { FrequentlyAskedQuestionsStyled, FrequentlyAskedQuestionsCard } from "./
 import frequentlyAskedQuestionsData from './FrequentlyAskedQuestions.json'
 
 export function FrequentlyAskedQuestions () {
-  const [activeCard, setActiveCard] = useState('')
+  const [activeCard, setActiveCard] = useState(0)
 
-  const handleClickCard = (title: string) => {
-    setActiveCard(activeCard !== title ? title : '')
+  const handleClickCard = (id: number) => {
+    setActiveCard(activeCard !== id ? id : 0)
   }
 
   return (
@@ -20,13 +20,13 @@ export function FrequentlyAskedQuestions () {
       </div>
 
       {frequentlyAskedQuestionsData.map((item) => {
-        const isActive = activeCard === item.title
+        const isActive = activeCard === item.id
 
         return (
           <FrequentlyAskedQuestionsCard
-            key={item.title}
+            key={item.id}
             className={isActive ? 'active' : ''}
-            onClick={() => handleClickCard(item.title)}
+            onClick={() => handleClickCard(item.id)}
           >
             <h2>{item.title}</h2>
             {isActive && <p>{item.description}</p>}
