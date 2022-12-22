@@ -7,11 +7,11 @@ import { MavrykTheme } from "utils/interfaces";
 import { Footer } from "app/App.components/Footer/Footer.controller";
 import { Button } from "app/App.components/Button/Button.controller";
 
-export const BakeryStyled = styled.div`
+export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
   background-repeat: no-repeat;
   background-size: cover;
   background-image: ${({ theme }) =>
-    `url(${theme.theme === 'light' ? 'images/bakery/bakery-light-desktop-bg.svg' : 'images/bakery/bakery-dark-desktop-bg.svg'})`};
+    `url(${theme.theme === 'light' ? theme.bakeryLightDesktopBg : theme.bakeryDarkDesktopBg})`};
 
   h1 {
     margin: 10px 0 30px 0;
@@ -117,7 +117,7 @@ export const BakeryStyled = styled.div`
 
   @media screen and (max-width: 769px) {
     background-image: ${({ theme }) =>
-      `url(${theme.theme === 'light' ? 'images/bakery/bakery-light-mob-bg.svg' : 'images/bakery/bakery-dark-mob-bg.svg'})`};
+      `url(${theme.theme === 'light' ? theme.bakeryLightMobBg : theme.bakeryDarkMobBg})`};
   }
 `
 
@@ -141,9 +141,9 @@ export const Card = styled.div`
   }
 `
 
-export const CardWithBackground = styled(Card)`
+export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   min-height: 425px;
-  background-image: url('images/mavryk-finance.svg');
+  background-image: url(${({ theme }) => theme.mavrykFinanceBg});
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: auto;
