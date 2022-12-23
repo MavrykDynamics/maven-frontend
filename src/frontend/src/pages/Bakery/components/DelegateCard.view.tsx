@@ -50,11 +50,13 @@ export function DelegateCard ({
         </div>
 
         <Description list={description} />
+      </div>
 
+      <div>
         <div className='address'>
           <span>Bakery Address</span>
-          &nbsp;
-          <TzAddress type={CYAN} tzAddress={tzAddress} hasIcon />
+            &nbsp;
+            <TzAddress type={CYAN} tzAddress={tzAddress} hasIcon />
         </div>
 
         <div className='grid-three-columns'>
@@ -76,15 +78,15 @@ export function DelegateCard ({
             <span>~ {availableXtzSpace[0]} days</span>
           </MiniCard>
         </div>
-      </div>
 
-      <div className='centring-wrapper'>
-        <ButtonStyled
-          text='Delegate to the DAO'
-          icon='plusDark'
-          kind={kind as ButtonStyle}
-          onClick={onClick}
-        />
+        <div className='centring-wrapper'>
+          <ButtonStyled
+            text='Delegate to the DAO'
+            icon='plusDark'
+            kind={kind as ButtonStyle}
+            onClick={onClick}
+          />
+        </div>
       </div>
     </Card>
   ) 
