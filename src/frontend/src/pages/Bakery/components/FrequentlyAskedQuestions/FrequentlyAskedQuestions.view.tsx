@@ -1,5 +1,8 @@
 import React, { useState } from "react"
 
+// components
+import { Description } from "../Description.view"
+
 // styles
 import { FrequentlyAskedQuestionsStyled, FrequentlyAskedQuestionsCard } from "./FrequentlyAskedQuestions.style"
 
@@ -29,7 +32,7 @@ export function FrequentlyAskedQuestions () {
             onClick={() => handleClickCard(item.id)}
           >
             <h2>{item.title}</h2>
-            {isActive && <p>{item.description}</p>}
+            {isActive && <Description list={item.description} />}
           </FrequentlyAskedQuestionsCard>
         )}
       )}

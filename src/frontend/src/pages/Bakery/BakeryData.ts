@@ -16,7 +16,7 @@ export const delegationCardData = [
   {
     "id": 2,
     "title": "Mavryk Dynamics Bakery",
-    "description": ["The Mavryk DAO Bakery belongs to the Mavryk Finance network. A small portion of the earnings are used to pay for the Decentralized Oracle’s transaction fees. The DAO Bakery is operated by Mavryk Dynamics on behalf of the Mavryk Finance network."],
+    "description": ["The Mavryk Dynamics Bakery belongs to one of the core teams contributing to Mavryk Finance. Delegating to this Bakery contributes to the further development of Mavryk Finance."],
     "tzAddress": "tz1ezDb77a9jaFMHDWs8QXrKEDkpgGdgsjPD",
     "rewards": [5, 6],
     "commission": [5],
@@ -27,9 +27,8 @@ export const delegationCardData = [
 ]
 
 export const bakeryData = {
-  delegateYourTezos: ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."],
-  delegationAndStaking101: ["Delegation - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  "Staking - It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing. Read more about staking here"],
-  howToDelegateAndReceiveRewards:   ["You can stake your tezos tokens using your wallet or ledger device. The process is simple and requires you to delegate your staking rights to our address. You’re always in control of your private keys."],
+  delegateYourTezos: ["Earn rewards for helping to secure the Tezos blockchain! There are two Bakeries that are part of the Mavryk Finance ecosystem, check them out below and delegate your XTZ with no risk."],
+  delegationAndStaking101: ["Delegating your XTZ tokens allows you to earn rewards for helping secure the Tezos network. By delegating, you are assigning your token’s voting rights to a Tezos Baker, who uses the token’s voting weight to secure the network and vote on Tezos governance.",
+  "You remain in control of your tokens at all times. Tezos uses Liquid Proof of Stake, so your delegated tokens are liquid and not locked."],
+  howToDelegateAndReceiveRewards:   ["You can stake your Tezos tokens using your wallet or ledger device. The process is simple and requires you to delegate your staking rights to our address. You’re always in control of your private keys."],
 }
