@@ -55,7 +55,6 @@ export const darkMode: MavrykTheme = {
   containerColor,
   textColor,
   subTextColor: '#fff',
-  textSkyColor: '#77A4F2',
   placeholderColor: '#F7F9FD',
   primaryColor: '#7068AA',
   upColor: '#00E205',
@@ -112,6 +111,12 @@ export const darkMode: MavrykTheme = {
   settingsPopupText: silverTwoColor,
   settingsPopupTextDescr: silverTwoColor,
   theme: 'dark',
+  primaryTextCardColor: '#77A4F2',
+  secondaryTextCardColor: cyanColor,
+  secondaryBgCardColor: headerColor,
+  headingCardColor: subHeaderColor,
+  headingSecondaryCardColor: '#77A4F2',
+  borderCard: '#503EAA',
 }
 
 export const lightMode: MavrykTheme = {
@@ -138,7 +143,6 @@ export const lightMode: MavrykTheme = {
   containerColor: '#DEE7F7',
   textColor: '#080628',
   subTextColor: '#29264C',
-  textSkyColor: '#77A4F2',
   placeholderColor: '#7068AA',
   primaryColor: '#7068AA',
   upColor: 'green',
@@ -196,6 +200,12 @@ export const lightMode: MavrykTheme = {
   settingsPopupText: '#27007A',
   settingsPopupTextDescr: '#8D86EB',
   theme: 'light',
+  primaryTextCardColor: headerColor,
+  secondaryTextCardColor: skyColor,
+  secondaryBgCardColor: '#EBF0FF',
+  headingCardColor: '#27007A',
+  headingSecondaryCardColor: '#27007A',
+  borderCard: '#503EAA',
 }
 
 export const spaceMode: MavrykTheme = {
@@ -224,7 +234,6 @@ export const spaceMode: MavrykTheme = {
   containerColor,
   textColor,
   subTextColor: '#fff',
-  textSkyColor: '#77A4F2',
   placeholderColor: '#F7F9FD',
   primaryColor: '#7068AA',
   upColor: '#00E205',
@@ -282,6 +291,12 @@ export const spaceMode: MavrykTheme = {
   addressPrimaryColor: cyanColor,
   settingsPopupText: silverTwoColor,
   settingsPopupTextDescr: silverTwoColor,
+  primaryTextCardColor: '#77A4F2',
+  secondaryTextCardColor: cyanColor,
+  secondaryBgCardColor: headerColor,
+  headingCardColor: subHeaderColor,
+  headingSecondaryCardColor: '#77A4F2',
+  borderCard: '#503EAA',
 }
 
 export default {

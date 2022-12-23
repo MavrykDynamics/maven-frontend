@@ -21,7 +21,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     font-size: 35px;
     line-height: 35px;
 
-    color: ${({ theme }) => theme.headingColor};
+    color: ${({ theme }) => theme.headingCardColor};
 
     &::after {
       height: 0;
@@ -35,11 +35,11 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     font-size: 18px;
     line-height: 27px;
 
-    color: ${({ theme }) => theme.textSkyColor};
+    color: ${({ theme }) => theme.primaryTextCardColor};
   }
 
   a {
-    color: ${({ theme }) => theme.navColor};
+    color: ${({ theme }) => theme.secondaryTextCardColor};
     text-decoration: underline;
   }
 
@@ -84,7 +84,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
       font-size: 18px;
       line-height: 27px;
 
-      color: ${({ theme }) => theme.textSkyColor};
+      color: ${({ theme }) => theme.primaryTextCardColor};
     }
 
     div {
@@ -92,6 +92,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
       font-size: 18px;
       line-height: 27px;
 
+      color: ${({ theme }) => theme.secondaryTextCardColor};
       transition: opacity 0.3;
       cursor: pointer;
 
@@ -131,7 +132,7 @@ export const Card = styled.div`
   padding: 40px;
 
   background-color: ${({ theme }) => theme.darkBackroundColor};
-  border: 1px solid ${({ theme }) => theme.socialBackroundColor};
+  border: 1px solid ${({ theme }) => theme.borderCard};
   border-radius: 10px;
 
   p {
@@ -158,12 +159,13 @@ export const MiniCard = styled.div`
 
   padding: 25px 0;
 
-  background-color: ${({ theme }) => theme.tooltipBg};
+  background-color: ${({ theme }) => theme.secondaryBgCardColor};
   border-radius: 10px;
 
   svg {
     width: 50px;
     height: 50px;
+    fill: ${({ theme }) => theme.headingSecondaryCardColor};
   }
 
   h4 {
@@ -173,7 +175,7 @@ export const MiniCard = styled.div`
     font-size: 16px;
     line-height: 22px;
 
-    color: ${({ theme }) => theme.textSkyColor};
+    color: ${({ theme }) => theme.headingSecondaryCardColor};
     text-transform: capitalize;
   }
 
@@ -182,7 +184,7 @@ export const MiniCard = styled.div`
     font-size: 18px;
     line-height: 18px;
 
-    color: ${({ theme }) => theme.tooltipValue};
+    color: ${({ theme }) => theme.secondaryTextCardColor};
   }
 `
 
@@ -210,6 +212,11 @@ export const RoundButton =  styled.a`
     height: 22px;
   }
 
+  &.actionPrimary {
+    color: ${({ theme }) => theme.containerColor};
+    background-color: ${({ theme }) => theme.actionPrimaryBtnColor};
+  }
+
   &.actionSecondary {
     color: ${({ theme }) => theme.actionPrimaryBtnColor};
     background-color: transparent;
@@ -218,10 +225,5 @@ export const RoundButton =  styled.a`
     svg {
       fill: ${({ theme }) => theme.navColor};
     }
-  }
-
-  &.actionPrimary {
-    color: ${({ theme }) => theme.containerColor};
-    background-color: ${({ theme }) => theme.actionPrimaryBtnColor};
   }
 `
