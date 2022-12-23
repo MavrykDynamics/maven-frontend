@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components'
-import { cyanColor, headerColor, skyColor } from 'styles'
+import { skyColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const LBStyled = styled.div<{ theme: MavrykTheme }>`
   background-image: ${({ theme }) =>
-    `url(${theme.theme === 'light' ? 'images/lb/lb-light-desktop-bg.svg' : 'images/lb/lb-dark-desktop-bg.svg'})`};
+    `url(${theme.theme === 'light' ? theme.primaryLightDesktopBg : theme.primaryDarkDesktopBg})`};
 
   @media screen and (max-width: 769px) {
     background-image: ${({ theme }) =>
-      `url(${theme.theme === 'light' ? 'images/lb/lb-light-mob-bg.svg' : 'images/lb/lb-dark-mob-bg.svg'})`};
+      `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`};
   }
   background-repeat: no-repeat;
   background-size: cover;
