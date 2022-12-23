@@ -94,7 +94,6 @@ export const darkMode: MavrykTheme = {
   topBarLinkColorActive: '#8D86EB',
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
-  actionPrimaryBtnColor: cyanColor,
   tooltipColor: '#9EA9E8',
   selectedColor: cyanColor,
   tooltipBg: '#38237C',
@@ -104,7 +103,6 @@ export const darkMode: MavrykTheme = {
   tooltipValue: cyanColor,
   tooltipDate: '#8d86eb',
   headerSkyColor: skyColor,
-  addressPrimaryColor: cyanColor,
   walletDetailsAddress: '#77A4F2',
   walletDetailsSubtext: '#77A4F2',
   scrollToTop: '#77A4F2',
@@ -117,6 +115,7 @@ export const darkMode: MavrykTheme = {
   headingCardColor: subHeaderColor,
   headingSecondaryCardColor: '#77A4F2',
   borderCard: '#503EAA',
+  primaryButtonColor: btnLightColor,
 }
 
 export const lightMode: MavrykTheme = {
@@ -184,7 +183,6 @@ export const lightMode: MavrykTheme = {
   topBarLinkColorActive: '#77A4F2',
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
-  actionPrimaryBtnColor: cyanColor,
   tooltipColor: '#9EA9E8',
   selectedColor: '#77A4F2',
   tooltipBg: '#38237C',
@@ -196,7 +194,6 @@ export const lightMode: MavrykTheme = {
   chartTooltipBg: '#503EAA',
   scrollToTop: '#27007A',
   headerSkyColor: darkColor,
-  addressPrimaryColor: cyanColor,
   settingsPopupText: '#27007A',
   settingsPopupTextDescr: '#8D86EB',
   theme: 'light',
@@ -206,6 +203,7 @@ export const lightMode: MavrykTheme = {
   headingCardColor: '#27007A',
   headingSecondaryCardColor: '#27007A',
   borderCard: '#503EAA',
+  primaryButtonColor: '#27007A',
 }
 
 export const spaceMode: MavrykTheme = {
@@ -276,7 +274,6 @@ export const spaceMode: MavrykTheme = {
   topBarLinkColorActive: '#8D86EB',
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
-  actionPrimaryBtnColor: cyanColor,
   tooltipColor: '#9EA9E8',
   tooltipBg: '#38237C',
   priceImpact: cyanColor,
@@ -288,7 +285,6 @@ export const spaceMode: MavrykTheme = {
   scrollToTop: '#77A4F2',
   theme: 'space',
   headerSkyColor: skyColor,
-  addressPrimaryColor: cyanColor,
   settingsPopupText: silverTwoColor,
   settingsPopupTextDescr: silverTwoColor,
   primaryTextCardColor: '#77A4F2',
@@ -297,6 +293,7 @@ export const spaceMode: MavrykTheme = {
   headingCardColor: subHeaderColor,
   headingSecondaryCardColor: '#77A4F2',
   borderCard: '#503EAA',
+  primaryButtonColor: btnLightColor,
 }
 
 export default {

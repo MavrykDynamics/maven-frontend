@@ -192,8 +192,12 @@ export const ButtonStyled = styled(Button)`
   margin: 50px 0 20px 0;
   width: 367px;
 
+  &.actionPrimary {
+    fill: ${({ theme }) => theme.containerColor};
+  }
+
   &.actionSecondary {
-    fill: ${({ theme }) => theme.navColor};
+    fill: ${({ theme }) => theme.primaryButtonColor};
   }
 `
 
@@ -213,17 +217,19 @@ export const RoundButton =  styled.a`
   }
 
   &.actionPrimary {
-    color: ${({ theme }) => theme.containerColor};
-    background-color: ${({ theme }) => theme.actionPrimaryBtnColor};
+    background-color: ${({ theme }) => theme.primaryButtonColor};
+
+    svg {
+      fill: ${({ theme }) => theme.darkBackroundColor};
+    }
   }
 
   &.actionSecondary {
-    color: ${({ theme }) => theme.actionPrimaryBtnColor};
     background-color: transparent;
-    border: 2px solid ${({ theme }) => theme.actionPrimaryBtnColor};
+    border: 2px solid ${({ theme }) => theme.primaryButtonColor};
 
     svg {
-      fill: ${({ theme }) => theme.navColor};
+      fill: ${({ theme }) => theme.primaryButtonColor};
     }
   }
 `
