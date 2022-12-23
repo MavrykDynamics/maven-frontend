@@ -138,7 +138,7 @@ export const Card = styled.div`
   p {
     margin-bottom: 30px;
 
-    &:last-of-type {
+    &:last-child {
       margin-bottom: 0;
     }
   }
