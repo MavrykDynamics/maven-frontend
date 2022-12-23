@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { secondaryColor, subTextColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 import { CONTAINER_WIDTH } from '../../../pages/Home/Home.style'
@@ -82,11 +83,11 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
       margin-right: auto;
     }
 
+    a:nth-child(4),
     a:nth-child(5),
     a:nth-child(6),
     a:nth-child(7),
-    a:nth-child(8),
-    a:nth-child(9) {
+    a:nth-child(8) {
       display: none;
     }
 

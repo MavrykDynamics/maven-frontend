@@ -29,7 +29,7 @@ export const TzAddressStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   &.${CYAN} {
-    color: ${({ theme }) => theme.addressPrimaryColor};
+    color: ${({ theme }) => theme.navTitleColor};
   }
 
   &.${BLUE} {
@@ -58,12 +58,10 @@ export const TzAddressIcon = styled.svg<{ theme: MavrykTheme }>`
   }
 
   &.${CYAN} {
-    stroke: ${({ theme }) => theme.addressPrimaryColor};
-    fill: transparent;
+    stroke: ${({ theme }) => theme.navIconColor};
   }
 
   &.${BLUE} {
     stroke: ${({ theme }) => theme.walletDetailsAddress};
-    fill: transparent;
   }
 `

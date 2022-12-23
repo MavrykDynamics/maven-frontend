@@ -6,16 +6,12 @@ import { State } from 'utils/interfaces'
 // prettier-ignore
 import { FooterBottom, FooterContainer, FooterDescription, FooterLogo, FooterSocials, FooterStyled, FooterTop } from "./Footer.style";
 
-type Props = {
-  className?: string
-}
-
-export const FooterView = ({ className }: Props) => {
+export const FooterView = () => {
   const { themeSelected } = useSelector((state: State) => state.preferences)
   const logoUrl = themeSelected !== LIGHT_THEME ? '/logo-dark.svg' : '/logo-light.svg'
 
   return (
-    <FooterStyled className={className} id="footer">
+    <FooterStyled id="footer">
       <FooterContainer>
         <FooterTop className="top">
           <div className="logo-descr">
