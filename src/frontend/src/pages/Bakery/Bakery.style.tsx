@@ -48,6 +48,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    padding: 110px 0 100px 0;
     padding-top: 110px;
     padding-bottom: 100px;
     row-gap: 20px;
@@ -130,11 +131,23 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     display: none;
   }
 
+  @media screen and (max-width: 1540px) {
+    .main-content {
+      padding: 110px 45px 70px 45px;
+    }
+  }
+
   @media screen and (max-width: 1300px) {
     .grid-two-columns {
       h1 {
         max-width: 350px;
       }
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .main-content {
+      padding: 110px 25px 70px 25px;
     }
   }
 
@@ -158,6 +171,10 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
   }};
 
   @media screen and (max-width: 600px) {
+    .main-content {
+      padding: 100px 10px 60px 10px;
+    }
+
     .grid-two-columns {
       .media-margin-top-2 {
         margin-top: 20px;
