@@ -5,6 +5,7 @@ export const delegationCardData = [
   {
     "id": 1,
     "title": "Mavryk DAO Bakery",
+    "shortTitle": "DAO Bakery",
     "description": ["The Mavryk DAO Bakery belongs to the Mavryk Finance network. A small portion of the earnings are used to pay for the Decentralized Oracle’s transaction fees. The DAO Bakery is operated by Mavryk Dynamics on behalf of the Mavryk Finance network."],
     "tzAddress": "tz1ezDb77a9jaFMHDWs8QXrKEDkpgGdgsjPD",
     "rewards": [5, 6],
@@ -16,6 +17,7 @@ export const delegationCardData = [
   {
     "id": 2,
     "title": "Mavryk Dynamics Bakery",
+    "shortTitle": "Dynamics Bakery",
     "description": ["The Mavryk Dynamics Bakery belongs to one of the core teams contributing to Mavryk Finance. Delegating to this Bakery contributes to the further development of Mavryk Finance."],
     "tzAddress": "tz1ezDb77a9jaFMHDWs8QXrKEDkpgGdgsjPD",
     "rewards": [5, 6],

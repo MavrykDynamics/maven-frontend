@@ -118,6 +118,18 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     justify-content: space-between;
   }
 
+  .slider {
+    margin: 10px 0 20px 0;
+
+    button {
+      margin: 0;
+    }
+  }
+
+  .mobile {
+    display: none;
+  }
+
   @media screen and (max-width: 1300px) {
     .grid-two-columns {
       h1 {
@@ -128,7 +140,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
 
   @media screen and (max-width: 990px) {
     .grid-two-columns {
-      display: block;
+      grid-template-columns: 1fr;
 
       h1 {
         max-width: 100%;
@@ -150,6 +162,14 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
       .media-margin-top-2 {
         margin-top: 20px;
       }
+    }
+
+    .desktop {
+      display: none;
+    }
+
+    .mobile {
+      display: block;
     }
   }
 `
