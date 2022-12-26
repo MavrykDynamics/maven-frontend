@@ -307,7 +307,7 @@ export const MiniCard = styled.div`
 
 export const ButtonStyled = styled(Button)`
   margin: 50px 0 20px 0;
-  width: 367px;
+  max-width: 370px;
 
   font-weight: 600;
   font-size: 16px;
