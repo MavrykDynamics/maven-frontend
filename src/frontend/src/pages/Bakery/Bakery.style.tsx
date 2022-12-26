@@ -62,32 +62,6 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     row-gap: 20px;
   }
 
-  .grid-two-columns {
-    @media screen and (max-width: 1300px) {
-      h1 {
-        max-width: 350px;
-      }
-    }
-
-    @media screen and (max-width: 990px) {
-      display: block;
-
-      h1 {
-        max-width: 100%;
-      }
-
-      .media-margin-top-1 {
-        margin-top: 40px;
-      }
-    }
-
-    @media screen and (max-width: 600px) {
-      .media-margin-top-2 {
-        margin-top: 20px;
-      }
-    }
-  }
-
   .grid-three-columns {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -144,10 +118,40 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     justify-content: space-between;
   }
 
+  @media screen and (max-width: 1300px) {
+    .grid-two-columns {
+      h1 {
+        max-width: 350px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 990px) {
+    .grid-two-columns {
+      display: block;
+
+      h1 {
+        max-width: 100%;
+      }
+
+      .media-margin-top-1 {
+        margin-top: 40px;
+      }
+    }
+  }
+
   @media screen and (max-width: 770px) {
     background-image: ${({ theme }) =>
        `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`
   }};
+
+  @media screen and (max-width: 600px) {
+    .grid-two-columns {
+      .media-margin-top-2 {
+        margin-top: 20px;
+      }
+    }
+  }
 `
 
 export const FooterStyled = styled(Footer)<{ theme: MavrykTheme }>`
