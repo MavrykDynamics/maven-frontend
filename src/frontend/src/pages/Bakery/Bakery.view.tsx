@@ -51,7 +51,7 @@ export function BakeryView () {
 
           <div className='space-between-vertical'>
             <div>
-              <h1>How to delegate and receive rewards</h1>
+              <h1 className='media-margin-top-1'>How to delegate and receive rewards</h1>
               <Description list={bakeryData.howToDelegateAndReceiveRewards} />
             </div>
 
@@ -60,6 +60,7 @@ export function BakeryView () {
                 text='Delegate to Mavryk Dynamics'
                 icon='plusDark'
                 kind={ACTION_PRIMARY}
+                className='media-margin-top-2'
               />
             </div>
           </div>

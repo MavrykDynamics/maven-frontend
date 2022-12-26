@@ -9,6 +9,13 @@ export const FrequentlyAskedQuestionsStyled = styled(Card)`
 
   h1 {
     margin-bottom: 65px;
+    padding: 0 20px;
+  }
+
+  @media screen and (max-width: 600px) {
+    h1 {
+      margin-bottom: 30px;
+    }
   }
 `
 
@@ -58,5 +65,17 @@ export const FrequentlyAskedQuestionsCard = styled.div`
   
   p:last-of-type {
     margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 600px) {
+    h2, p {
+      padding: 0 20px;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+    }
   }
 `

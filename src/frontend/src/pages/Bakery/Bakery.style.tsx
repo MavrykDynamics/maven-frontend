@@ -62,6 +62,32 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     row-gap: 20px;
   }
 
+  .grid-two-columns {
+    @media screen and (max-width: 1300px) {
+      h1 {
+        max-width: 350px;
+      }
+    }
+
+    @media screen and (max-width: 990px) {
+      display: block;
+
+      h1 {
+        max-width: 100%;
+      }
+
+      .media-margin-top-1 {
+        margin-top: 40px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .media-margin-top-2 {
+        margin-top: 20px;
+      }
+    }
+  }
+
   .grid-three-columns {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -118,7 +144,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     justify-content: space-between;
   }
 
-  @media screen and (max-width: 769px) {
+  @media screen and (max-width: 770px) {
     background-image: ${({ theme }) =>
        `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`
   }};
@@ -142,6 +168,45 @@ export const Card = styled.div`
       margin-bottom: 0;
     }
   }
+
+  @media screen and (max-width: 600px) {
+    padding: 20px;
+
+    h1 {
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 30px;
+
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+
+      margin-bottom: 20px;
+
+      &:last-of-type {
+        margin-bottom: 10px;
+      }
+    }
+
+    button {
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    .address {
+      margin: 20px 0;
+
+      span, div {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  };
 `
 
 export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
@@ -150,6 +215,26 @@ export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: auto;
+
+  @media screen and (max-width: 1300px) {
+    p {
+      width: 55%;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    height: 650px;
+    background-position: bottom center;
+
+    p {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 500px;
+    background-size: 320px 230px;
+  }
 `
 
 export const MiniCard = styled.div`
@@ -157,7 +242,7 @@ export const MiniCard = styled.div`
   flex-direction: column;
   align-items: center;
 
-  padding: 25px 0;
+  padding: 25px 10px;
 
   background-color: ${({ theme }) => theme.secondaryBgCardColor};
   border-radius: 10px;
@@ -186,11 +271,23 @@ export const MiniCard = styled.div`
 
     color: ${({ theme }) => theme.secondaryTextCardColor};
   }
+
+  @media screen and (max-width: 600px) {
+    h4 {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
 `
 
 export const ButtonStyled = styled(Button)`
   margin: 50px 0 20px 0;
   width: 367px;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
 
   &.actionPrimary {
     fill: ${({ theme }) => theme.containerColor};
