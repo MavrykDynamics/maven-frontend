@@ -2,19 +2,30 @@
 import { FrequentlyAskedQuestions } from './components/FrequentlyAskedQuestions/FrequentlyAskedQuestions.view'
 import { DelegateCard } from './components/DelegateCard.view'
 import { Description } from './components/Description.view'
+import { SlidingTabButtons, TabItem } from 'app/App.components/SlidingTabButtons/SlidingTabButtons.controller'
 
 // helpers
 import { bakeryData, delegationCardData } from './BakeryData'
 import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 
-// types
-
 // styles
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from "./Bakery.style"
+
+const tabItems: TabItem[] = delegationCardData.map((item, index) => {
+  return {
+    text: item.title,
+    id: index,
+    active: !index,
+  }
+})
 
 export function BakeryView () {
   const handleClickDelegate = () => {
 
+  }
+
+  const handleClickTab = (id: number) => {
+    console.log(id);
   }
 
   return (
@@ -24,7 +35,7 @@ export function BakeryView () {
           <h1>Delegate your Tezos</h1>
           <Description list={bakeryData.delegateYourTezos} className='paragraph-max-width' />
         </CardWithBackground>
-
+  
         <div className='grid-two-columns'>
           {delegationCardData.map(({id, ...item}) => (
             <DelegateCard
