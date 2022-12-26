@@ -13,19 +13,37 @@ export const FrequentlyAskedQuestionsStyled = styled(Card)`
 `
 
 export const FrequentlyAskedQuestionsCard = styled.div`
-  padding: 0 40px;
-  border-top: 1px solid ${({ theme }) => theme.borderCard};
-  border-bottom: 1px solid transparent;
+  position: relative;
+  border-bottom: 1px solid ${({ theme }) => theme.borderCard};
   cursor: pointer;
+
+  &:last-of-type {
+    border-bottom: 1px solid transparent;
+  }
 
   &:hover,
   &.active {
-    border-top: 1px solid ${({ theme }) => theme.secondaryTextCardColor};
     border-bottom: 1px solid ${({ theme }) => theme.secondaryTextCardColor};
 
+    &::before {
+      position: absolute;
+      top: -21px;
+
+      display: block;
+      height: 1px;
+      width: 100%;
+
+      content: '';
+      background-color: ${({ theme }) => theme.secondaryTextCardColor};
+    }
+    
     h2 {
       color: ${({ theme }) => theme.secondaryTextCardColor};
     }
+  }
+
+  p, h2 {
+    padding: 0 40px;
   }
 
   h2 {
