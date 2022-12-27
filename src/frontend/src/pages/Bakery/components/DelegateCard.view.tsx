@@ -1,6 +1,7 @@
 // compopnents
 import Icon from "app/App.components/Icon/Icon.view"
 import { Description } from "./Description.view"
+import { SlidingTabButtons, TabItem } from "app/App.components/SlidingTabButtons/SlidingTabButtons.controller"
 
 // styles
 import { Card, MiniCard, RoundButton, ButtonStyled } from "../Bakery.style"
@@ -18,8 +19,11 @@ type Props = {
   availableXtzSpace: number[]
   onClick: () => void
   description: string[]
+  buttonName: string
   kind: string
   link: string
+  tabItems?: TabItem[]
+  handleTabClick?: (id: number) => void
 }
 
 export function DelegateCard ({
@@ -30,24 +34,35 @@ export function DelegateCard ({
   availableXtzSpace,
   onClick,
   description,
+  buttonName,
   kind,
   link,
+  tabItems,
+  handleTabClick,
 }: Props) {
+  const showSlider = tabItems?.length && handleTabClick
+
   return (
     <Card className='space-between-vertical'>
       <div>
-        <div className='space-between-horizontal'>
-          <h1>{title}</h1>
+        {showSlider
+          ? <SlidingTabButtons 
+            className="slider"
+            tabItems={tabItems}
+            onClick={handleTabClick}
+          />
+          : <div className='space-between-horizontal'>
+            <h1>{title}</h1>
 
-          <RoundButton
-            className={kind}
-            href={link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Icon id='plusDark' />
-          </RoundButton>
-        </div>
+            <RoundButton
+              className={kind}
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon id='plusDark' />
+            </RoundButton>
+          </div>}
 
         <Description list={description} />
       </div>
@@ -81,7 +96,7 @@ export function DelegateCard ({
 
         <div className='centring-wrapper'>
           <ButtonStyled
-            text='Delegate to the DAO'
+            text={buttonName}
             icon='plusDark'
             kind={kind as ButtonStyle}
             onClick={onClick}

@@ -48,6 +48,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    padding: 110px 0 100px 0;
     padding-top: 110px;
     padding-bottom: 100px;
     row-gap: 20px;
@@ -118,10 +119,76 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     justify-content: space-between;
   }
 
-  @media screen and (max-width: 769px) {
+  .slider {
+    margin: 10px 0 20px 0;
+
+    button {
+      margin: 0;
+    }
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 1540px) {
+    .main-content {
+      padding: 110px 45px 70px 45px;
+    }
+  }
+
+  @media screen and (max-width: 1300px) {
+    .grid-two-columns {
+      h1 {
+        max-width: 350px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .main-content {
+      padding: 110px 25px 70px 25px;
+    }
+  }
+
+  @media screen and (max-width: 990px) {
+    .grid-two-columns {
+      grid-template-columns: 1fr;
+
+      h1 {
+        max-width: 100%;
+      }
+
+      .media-margin-top-1 {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 770px) {
     background-image: ${({ theme }) =>
        `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`
   }};
+
+  @media screen and (max-width: 600px) {
+    .main-content {
+      padding: 100px 10px 60px 10px;
+    }
+
+    .grid-two-columns {
+      .media-margin-top-2 {
+        margin-top: 20px;
+      }
+    }
+
+    .desktop {
+      display: none;
+    }
+
+    .mobile {
+      display: block;
+    }
+  }
 `
 
 export const FooterStyled = styled(Footer)<{ theme: MavrykTheme }>`
@@ -142,6 +209,45 @@ export const Card = styled.div`
       margin-bottom: 0;
     }
   }
+
+  @media screen and (max-width: 600px) {
+    padding: 20px;
+
+    h1 {
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 30px;
+
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+
+      margin-bottom: 20px;
+
+      &:last-of-type {
+        margin-bottom: 10px;
+      }
+    }
+
+    button {
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    .address {
+      margin: 20px 0;
+
+      span, div {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  };
 `
 
 export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
@@ -150,6 +256,26 @@ export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: auto;
+
+  @media screen and (max-width: 1300px) {
+    p {
+      width: 55%;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    height: 650px;
+    background-position: bottom center;
+
+    p {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 500px;
+    background-size: 320px 230px;
+  }
 `
 
 export const MiniCard = styled.div`
@@ -157,7 +283,7 @@ export const MiniCard = styled.div`
   flex-direction: column;
   align-items: center;
 
-  padding: 25px 0;
+  padding: 25px 10px;
 
   background-color: ${({ theme }) => theme.secondaryBgCardColor};
   border-radius: 10px;
@@ -186,11 +312,23 @@ export const MiniCard = styled.div`
 
     color: ${({ theme }) => theme.secondaryTextCardColor};
   }
+
+  @media screen and (max-width: 600px) {
+    h4 {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
 `
 
 export const ButtonStyled = styled(Button)`
   margin: 50px 0 20px 0;
-  width: 367px;
+  max-width: 370px;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
 
   &.actionPrimary {
     fill: ${({ theme }) => theme.containerColor};

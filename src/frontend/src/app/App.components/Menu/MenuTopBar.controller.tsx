@@ -108,7 +108,7 @@ export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
         </Link>
 
         <div className="top-bar-toggler" onClick={() => setShowMobileTopBar(!showMobileTopBar)}>
-          {showMobileTopBar ? <Icon id="close-stroke" /> : <Icon id="mobileTopBarToggler" />}
+          {showMobileTopBar ? <Icon id="close-stroke" /> : <Icon id="burger-menu" />}
         </div>
       </div>
 
