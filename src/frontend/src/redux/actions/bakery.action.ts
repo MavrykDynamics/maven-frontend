@@ -36,12 +36,15 @@ export const delegation = (bekerAddress: string) => async (dispatch: AppDispatch
     const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
     const wallet = new BeaconWallet(WalletOptions)
     const walletResponse = await checkIfWalletIsConnected(wallet)
+    const sourceAddress = state.wallet.accountPkh
 
-    if (walletResponse) {
+    if (walletResponse && sourceAddress) {
       await dispatch(toggleLoader(ROCKET_LOADER))
-
+      console.log({ sourceAddress, bekerAddress })
+      
       const Tezos = new TezosToolkit(rpcNetwork)
-      await Tezos.contract.setDelegate({ source: 'tz1_source', delegate: bekerAddress });
+      await Tezos.contract.registerDelegate({});
+      await Tezos.contract.setDelegate({ source: sourceAddress, delegate: bekerAddress });
 
       await dispatch(toggleLoader())
       await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
