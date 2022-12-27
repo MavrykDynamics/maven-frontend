@@ -1,7 +1,7 @@
 // helpers
 import { ACTION_PRIMARY, ACTION_SECONDARY } from "app/App.components/Button/Button.constants"
 
-export const delegationCardData = [
+export const delegateCardData = [
   {
     "id": 1,
     "title": "Mavryk DAO Bakery",
