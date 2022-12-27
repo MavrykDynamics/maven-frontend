@@ -12,7 +12,7 @@ import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 import { calcWithoutMu } from 'utils/utils'
 
 // actions
-import { getBakeryDelegateData, BakeryDelegateDataType } from './Bakery.actions'
+import { getBakeryDelegateData, BakeryDelegateDataType } from '../../redux/actions/bakery.action'
 
 // styles
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from "./Bakery.style"
