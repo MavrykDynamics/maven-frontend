@@ -19,6 +19,7 @@ type Props = {
   availableXtzSpace: number[]
   onClick: () => void
   description: string[]
+  buttonName: string
   kind: string
   link: string
   tabItems?: TabItem[]
@@ -33,6 +34,7 @@ export function DelegateCard ({
   availableXtzSpace,
   onClick,
   description,
+  buttonName,
   kind,
   link,
   tabItems,
@@ -94,7 +96,7 @@ export function DelegateCard ({
 
         <div className='centring-wrapper'>
           <ButtonStyled
-            text='Delegate to the DAO'
+            text={buttonName}
             icon='plusDark'
             kind={kind as ButtonStyle}
             onClick={onClick}

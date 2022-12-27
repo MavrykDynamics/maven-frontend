@@ -13,7 +13,7 @@ import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 // styles
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from "./Bakery.style"
 
-const tabItems: TabItem[] = delegationCardData.reverse().map((item, index) => {
+const tabItems: TabItem[] = [...delegationCardData].reverse().map((item, index) => {
   return {
     text: item.shortTitle,
     id: index,

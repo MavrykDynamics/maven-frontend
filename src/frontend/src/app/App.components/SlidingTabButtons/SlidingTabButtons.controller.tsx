@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { SlidingTabButtonsView } from './SlidingTabButtons.view'
 
 export interface TabItem {
@@ -31,27 +31,20 @@ export const SlidingTabButtons = ({
   )
 
   useEffect(() => {
-    const foundActiveTabId = tabItems.find(({ active, isDisabled }) => active && !isDisabled)?.id
-    if (foundActiveTabId) {
-      setActiveTab(foundActiveTabId)
-    }
-  }, [tabItems])
-
-  useEffect(() => {
     if (disableAll) {
       setActiveTab(undefined)
     }
   }, [disableAll])
 
-  const clickHandler = (tabId: number) => {
+  const clickHandler = useCallback((tabId: number) => {
     if (disabled) return
     setActiveTab(tabId)
     onClick(tabId)
-  }
+  }, [disabled, onClick])
 
   return (
     <SlidingTabButtonsView
-      className={`${className} ${disabled && 'disabled'}`}
+      className={`${className}${disabled ? ' disabled' : ''}`}
       onClick={clickHandler}
       activeTab={activeTab}
       tabValues={tabItems}
