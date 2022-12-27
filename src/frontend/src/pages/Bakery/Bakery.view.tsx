@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 // components
 import { FrequentlyAskedQuestions } from './components/FrequentlyAskedQuestions/FrequentlyAskedQuestions.view'
@@ -12,7 +13,7 @@ import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 import { calcWithoutMu } from 'utils/utils'
 
 // actions
-import { getBakeryDelegateData, BakeryDelegateDataType } from '../../redux/actions/bakery.action'
+import { getBakeryDelegateData, BakeryDelegateDataType, delegation } from '../../redux/actions/bakery.action'
 
 // styles
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from "./Bakery.style"
@@ -34,11 +35,13 @@ const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) =>
 })
 
 export function BakeryView () {
+  const dispatch = useDispatch()
+
   const [activeSliderTab, setActiveSliderTab] = useState(tabItems.length - 1)
   const [delegateData, setDelegateDate] = useState(delegateCardData)
 
-  const handleClickDelegate = () => {
-
+  const handleClickDelegate = (bakerAddress: string) => {
+    dispatch(delegation(bakerAddress))
   }
 
   const handleTabClick = (id: number) => {
@@ -117,6 +120,7 @@ export function BakeryView () {
                 text='Delegate to Mavryk Dynamics'
                 icon='plusDark'
                 kind={ACTION_PRIMARY}
+                onClick={() => handleClickDelegate(delegateData[1].tzAddress)}
                 className='media-margin-top-2'
               />
             </div>

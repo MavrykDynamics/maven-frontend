@@ -17,7 +17,7 @@ type Props = {
   rewards: number[]
   commission: number[]
   availableXtzSpace: number[]
-  onClick: () => void
+  onClick: (address: string) => void
   description: string[]
   buttonName: string
   kind: string
@@ -99,7 +99,7 @@ export function DelegateCard ({
             text={buttonName}
             icon='plusDark'
             kind={kind as ButtonStyle}
-            onClick={onClick}
+            onClick={() => onClick(tzAddress)}
           />
         </div>
       </div>
