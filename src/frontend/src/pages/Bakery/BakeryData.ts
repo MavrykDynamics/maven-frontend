@@ -9,8 +9,8 @@ export const delegationCardData = [
     "description": ["The Mavryk DAO Bakery belongs to the Mavryk Finance network. A small portion of the earnings are used to pay for the Decentralized Oracle’s transaction fees. The DAO Bakery is operated by Mavryk Dynamics on behalf of the Mavryk Finance network."],
     "tzAddress": "tz1ZY5ug2KcAiaVfxhDKtKLx8U5zEgsxgdjV",
     "rewards": [5, 6],
-    "commission": [5],
-    "availableXtzSpace": [3],
+    "commission": [10],
+    "availableXtzSpace": [0],
     "kind": ACTION_SECONDARY,
     "buttonName": "Delegate to the DAO",
     "link": "https://tzkt.io/tz1ZY5ug2KcAiaVfxhDKtKLx8U5zEgsxgdjV/operations/"
@@ -22,8 +22,8 @@ export const delegationCardData = [
     "description": ["The Mavryk Dynamics Bakery belongs to one of the core teams contributing to Mavryk Finance. Delegating to this Bakery contributes to the further development of Mavryk Finance."],
     "tzAddress": "tz1NKnczKg77PwF5NxrRohjT5j4PmPXw6hhL",
     "rewards": [5, 6],
-    "commission": [5],
-    "availableXtzSpace": [3],
+    "commission": [10],
+    "availableXtzSpace": [0],
     "kind": ACTION_PRIMARY,
     "buttonName": "Delegate to Mavryk Dynamics",
     "link": "https://tzkt.io/tz1ZY5ug2KcAiaVfxhDKtKLx8U5zEgsxgdjV/operations/"

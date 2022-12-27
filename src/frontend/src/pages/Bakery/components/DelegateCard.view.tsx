@@ -78,7 +78,7 @@ export function DelegateCard ({
           <MiniCard>
             <Icon id='threeCoins' />
             <h4>Rewards</h4>
-            <span>{rewards[0]-rewards[1]}%</span>
+            <span>{rewards[0]}-{rewards[1]}%</span>
           </MiniCard>
 
           <MiniCard>
@@ -90,7 +90,7 @@ export function DelegateCard ({
           <MiniCard>
             <Icon id='planet' />
             <h4>Available XTZ Space</h4>
-            <span>~ {availableXtzSpace[0]} days</span>
+            <span>{availableXtzSpace[0]}</span>
           </MiniCard>
         </div>
 
