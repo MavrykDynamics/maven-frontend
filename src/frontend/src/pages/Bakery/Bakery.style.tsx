@@ -373,6 +373,54 @@ export const RoundButton =  styled.a`
   }
 `
 
-export const BakeryChartStyled = styled(Chart)`
+export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
   max-width: 760px;
+
+  border: 1px solid ${({ theme }) => theme.borderCard};
+  border-radius: 10px;
+
+  .header {
+    padding: 25px 0 0 20px;
+    width: max-content;
+
+    h3 {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+
+      color: ${({ theme }) => theme.primaryTextCardColor};
+    }
+    
+    p {
+      margin: 0;
+
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 27px;
+
+      color: ${({ theme }) => theme.headingThirdCardColor};
+    }
+
+    .percentages {
+      text-align: end;
+
+      span {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 21px;
+
+        color: ${({ theme }) => theme.upColor};
+      }
+    }
+
+    .info {
+      display: flex;
+
+      svg {
+        margin-right: 10px;
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
 `
