@@ -29,16 +29,17 @@ const getFreeSpace = (data: BakeryDelegateDataType) => {
 const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) => {
   return {
     text: item.shortTitle,
-    id: index,
-    active: index === delegateCardData.length - 1,
+    id: item.id,
+    active: !index,
   }
 })
 
 export function BakeryView () {
   const dispatch = useDispatch()
 
-  const [activeSliderTab, setActiveSliderTab] = useState(tabItems.length - 1)
+  const [activeSliderTab, setActiveSliderTab] = useState(tabItems[0].id)
   const [delegateData, setDelegateDate] = useState(delegateCardData)
+  const delegateMobileData = delegateData.find((item) => item.id === activeSliderTab) || delegateData[activeSliderTab - 1]
 
   const handleClickDelegate = (bakerAddress: string) => {
     dispatch(delegation(bakerAddress))
@@ -91,7 +92,7 @@ export function BakeryView () {
             onClick={handleClickDelegate}
             handleTabClick={handleTabClick}
             tabItems={tabItems}
-            {...delegateData[activeSliderTab]}
+            {...delegateMobileData}
           />
         </div>
 
