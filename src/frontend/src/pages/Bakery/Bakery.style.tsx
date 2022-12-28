@@ -257,6 +257,10 @@ export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   background-position: bottom right;
   background-size: auto;
 
+  .chart {
+    max-width: 760px;
+  }
+
   @media screen and (max-width: 1300px) {
     p {
       width: 55%;

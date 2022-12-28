@@ -28,6 +28,7 @@ export const upColor = '#27AE60'
 export const dangerColor = '#FF8486'
 export const awaitingColor = '#FFCA43'
 export const silverTwoColor = '#CDCDCD'
+export const lightTextColor = '#D0CFD9'
 
 export const darkMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-dark.svg',

@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { UTCTimestamp } from 'lightweight-charts'
 
 // components
 import { FrequentlyAskedQuestions } from './components/FrequentlyAskedQuestions/FrequentlyAskedQuestions.view'
 import { DelegateCard } from './components/DelegateCard.view'
 import { Description } from './components/Description.view'
 import { TabItem } from 'app/App.components/SlidingTabButtons/SlidingTabButtons.controller'
+import { Chart } from 'app/App.components/Chart/Chart.view'
 
 // helpers
 import { bakeryData, delegateCardData } from './BakeryData'
@@ -18,6 +20,29 @@ import { getBakeryDelegateData, BakeryDelegateDataType, delegation } from '../..
 // styles
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from "./Bakery.style"
 
+const chartData = [
+  {
+    "value": 100000000000,
+    "time": new Date("2022-12-20T14:26:15+00:00").getTime() as UTCTimestamp,
+  },
+  {
+    "value": 64997812677,
+    "time": new Date ("2022-12-20T14:26:30+00:00").getTime() as UTCTimestamp,
+  },
+  {
+    "value": 74997812677,
+    "time": new Date ("2022-12-20T14:37:05+00:00").getTime() as UTCTimestamp,
+  },
+  {
+    "value": 174997812677,
+    "time": new Date ("2022-12-20T14:37:35+00:00").getTime() as UTCTimestamp,
+  },
+  {
+    "value": 175007812677,
+    "time": new Date ("2022-12-20T15:17:25+00:00").getTime() as UTCTimestamp,
+  }
+]
+
 const getFreeSpace = (data: BakeryDelegateDataType) => {
   if (data.balance === -1) return [-1]
 
@@ -28,7 +53,7 @@ const getFreeSpace = (data: BakeryDelegateDataType) => {
 
   return [Number(divededByMu)]
 }
-
+  
 const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) => {
   return {
     text: item.shortTitle,
@@ -78,6 +103,22 @@ export function BakeryView () {
         <CardWithBackground>
           <h1>Delegate your Tezos</h1>
           <Description list={bakeryData.delegateYourTezos} className='paragraph-max-width' />
+
+          <Chart
+            data={chartData}
+            colors={{
+              lineColor: '#86D4C9',
+              areaTopColor: '#86D4C9',
+              areaBottomColor: 'rgba(119, 164, 242, 0)',
+              textColor: '#CDCDCD',
+              borderColor: 'transparent'
+            }}
+            settings={{
+              height: 110,
+              showTooltip: false,
+            }}
+            className='chart'
+          />
         </CardWithBackground>
   
         <div className='grid-two-columns desktop'>
