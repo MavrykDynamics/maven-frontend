@@ -6,6 +6,7 @@ import { MavrykTheme } from "utils/interfaces";
 // components
 import { Footer } from "app/App.components/Footer/Footer.controller";
 import { Button } from "app/App.components/Button/Button.controller";
+import { Chart } from "app/App.components/Chart/Chart.view";
 
 export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
   background-repeat: no-repeat;
@@ -257,10 +258,6 @@ export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   background-position: bottom right;
   background-size: auto;
 
-  .chart {
-    max-width: 760px;
-  }
-
   @media screen and (max-width: 1300px) {
     p {
       width: 55%;
@@ -374,4 +371,8 @@ export const RoundButton =  styled.a`
       fill: ${({ theme }) => theme.primaryButtonColor};
     }
   }
+`
+
+export const BakeryChartStyled = styled(Chart)`
+  max-width: 760px;
 `
