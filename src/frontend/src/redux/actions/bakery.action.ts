@@ -1,6 +1,6 @@
+import { TezosOperationType } from '@airgap/beacon-sdk'
 import type { AppDispatch, GetState } from '../../app/App.controller'
 import { State } from 'utils/interfaces'
-import { TezosToolkit } from '@taquito/taquito'
 import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
 import { ERROR, INFO, SUCCESS } from '../../app/App.components/Toaster/Toaster.constants'
 import { BeaconWallet } from '@taquito/beacon-wallet'
@@ -19,7 +19,7 @@ export const getBakeryDelegateData = async (bakerAddress: string): Promise<Baker
   return result
 }
 
-export const delegation = (bekerAddress: string) => async (dispatch: AppDispatch, getState: GetState) => {
+export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch, getState: GetState) => {
   const state: State = getState()
 
   if (!state.wallet.ready) {
@@ -33,19 +33,20 @@ export const delegation = (bekerAddress: string) => async (dispatch: AppDispatch
   }
 
   try {
-    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
     const wallet = new BeaconWallet(WalletOptions)
     const walletResponse = await checkIfWalletIsConnected(wallet)
-    const sourceAddress = state.wallet.accountPkh
 
-    if (walletResponse && sourceAddress) {
+    if (walletResponse) {
       await dispatch(toggleLoader(ROCKET_LOADER))
-      console.log({ sourceAddress, bekerAddress })
-      
-      const Tezos = new TezosToolkit(rpcNetwork)
-      await Tezos.contract.registerDelegate({});
-      await Tezos.contract.setDelegate({ source: sourceAddress, delegate: bekerAddress });
-
+      await wallet.client.requestOperation({
+        operationDetails: [
+          {
+            kind: TezosOperationType.DELEGATION,
+            delegate: bakerAddress,
+          },
+        ],
+      })
+    
       await dispatch(toggleLoader())
       await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
     }
