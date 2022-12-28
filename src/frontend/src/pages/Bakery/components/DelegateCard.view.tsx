@@ -90,7 +90,7 @@ export function DelegateCard ({
           <MiniCard>
             <Icon id='planet' />
             <h4>Available XTZ Space</h4>
-            <span>{availableXtzSpace[0]}</span>
+            <span>{availableXtzSpace[0] === -1 ? 'no data' : availableXtzSpace[0]}</span>
           </MiniCard>
         </div>
 

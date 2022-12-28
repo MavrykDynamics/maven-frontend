@@ -14,9 +14,17 @@ export type BakeryDelegateDataType = {
 }
 
 export const getBakeryDelegateData = async (bakerAddress: string): Promise<BakeryDelegateDataType> => {
-  const response = await fetch(`https://api.tzkt.io/v1/delegates/${bakerAddress}`)
-  const result = await response.json()
-  return result
+  try {
+    const response = await fetch(`https://api.tzkt.io/v1/delegates/${bakerAddress}`)
+    const result = await response.json()
+
+    return result
+  } catch {
+    return {
+      balance: -1,
+      delegatedBalance: -1,
+    }
+  }
 }
 
 export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch, getState: GetState) => {

@@ -10,7 +10,7 @@ export const delegateCardData = [
     "tzAddress": "tz1ZY5ug2KcAiaVfxhDKtKLx8U5zEgsxgdjV",
     "rewards": [5, 6],
     "commission": [10],
-    "availableXtzSpace": [0],
+    "availableXtzSpace": [-1],
     "kind": ACTION_SECONDARY,
     "buttonName": "Delegate to the DAO",
     "link": "https://tzkt.io/tz1ZY5ug2KcAiaVfxhDKtKLx8U5zEgsxgdjV/operations/"
@@ -23,7 +23,7 @@ export const delegateCardData = [
     "tzAddress": "tz1NKnczKg77PwF5NxrRohjT5j4PmPXw6hhL",
     "rewards": [5, 6],
     "commission": [10],
-    "availableXtzSpace": [0],
+    "availableXtzSpace": [-1],
     "kind": ACTION_PRIMARY,
     "buttonName": "Delegate to Mavryk Dynamics",
     "link": "https://tzkt.io/tz1ZY5ug2KcAiaVfxhDKtKLx8U5zEgsxgdjV/operations/"

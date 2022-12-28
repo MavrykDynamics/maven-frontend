@@ -19,10 +19,13 @@ import { getBakeryDelegateData, BakeryDelegateDataType, delegation } from '../..
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from "./Bakery.style"
 
 const getFreeSpace = (data: BakeryDelegateDataType) => {
+  if (data.balance === -1) return [-1]
+
   const balance = data.balance
   const totalAmountOfSpace = balance * 9
   const freeSpace = totalAmountOfSpace - data.delegatedBalance
   const divededByMu = calcWithoutMu(freeSpace).toFixed(2)
+
   return [Number(divededByMu)]
 }
 
@@ -30,7 +33,7 @@ const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) =>
   return {
     text: item.shortTitle,
     id: item.id,
-    active: !index,
+    active: index === 0,
   }
 })
 
@@ -50,7 +53,7 @@ export function BakeryView () {
   }
 
   useEffect(() => {
-    async function fetchData () {
+    function fetchData () {
       Promise.all([
         getBakeryDelegateData(delegateCardData[0].tzAddress),
         getBakeryDelegateData(delegateCardData[1].tzAddress)
@@ -63,7 +66,7 @@ export function BakeryView () {
         })
 
         setDelegateDate(updatedDelegateCardData)
-      });
+      })
     }
 
     fetchData()
