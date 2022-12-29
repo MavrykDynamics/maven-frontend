@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 // components
 import { FrequentlyAskedQuestions } from './components/FrequentlyAskedQuestions/FrequentlyAskedQuestions.view'
@@ -7,30 +8,69 @@ import { Description } from './components/Description.view'
 import { TabItem } from 'app/App.components/SlidingTabButtons/SlidingTabButtons.controller'
 
 // helpers
-import { bakeryData, delegationCardData } from './BakeryData'
+import { bakeryData, delegateCardData } from './BakeryData'
 import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
+import { calcWithoutMu } from 'utils/utils'
+
+// actions
+import { getBakeryDelegateData, BakeryDelegateDataType, delegation } from '../../redux/actions/bakery.action'
 
 // styles
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from "./Bakery.style"
 
-const tabItems: TabItem[] = [...delegationCardData].reverse().map((item, index) => {
+const getFreeSpace = (data: BakeryDelegateDataType) => {
+  if (data.balance === -1) return [-1]
+
+  const balance = data.balance
+  const totalAmountOfSpace = balance * 9
+  const freeSpace = totalAmountOfSpace - data.delegatedBalance
+  const divededByMu = calcWithoutMu(freeSpace).toFixed(2)
+
+  return [Number(divededByMu)]
+}
+
+const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) => {
   return {
     text: item.shortTitle,
-    id: index,
-    active: index === delegationCardData.length - 1,
+    id: item.id,
+    active: index === 0,
   }
 })
 
 export function BakeryView () {
-  const [activeSliderTab, setActiveSliderTab] = useState(tabItems.length - 1)
+  const dispatch = useDispatch()
 
-  const handleClickDelegate = () => {
+  const [activeSliderTab, setActiveSliderTab] = useState(tabItems[0].id)
+  const [delegateData, setDelegateDate] = useState(delegateCardData)
+  const delegateMobileData = delegateData.find((item) => item.id === activeSliderTab) || delegateData[activeSliderTab - 1]
 
+  const handleClickDelegate = (bakerAddress: string) => {
+    dispatch(delegation(bakerAddress))
   }
 
   const handleTabClick = (id: number) => {
     setActiveSliderTab(id)
   }
+
+  useEffect(() => {
+    function fetchData () {
+      Promise.all([
+        getBakeryDelegateData(delegateCardData[0].tzAddress),
+        getBakeryDelegateData(delegateCardData[1].tzAddress)
+      ]).then(values => {
+        const updatedDelegateCardData = delegateCardData.map((item, index) => {
+          return {
+            ...item,
+            availableXtzSpace: getFreeSpace(values[index]),
+          }
+        })
+
+        setDelegateDate(updatedDelegateCardData)
+      })
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <BakeryStyled>
@@ -41,7 +81,7 @@ export function BakeryView () {
         </CardWithBackground>
   
         <div className='grid-two-columns desktop'>
-          {delegationCardData.map(({id, ...item}) => (
+          {delegateData.map(({id, ...item}) => (
             <DelegateCard
               key={id}
               onClick={handleClickDelegate}
@@ -55,7 +95,7 @@ export function BakeryView () {
             onClick={handleClickDelegate}
             handleTabClick={handleTabClick}
             tabItems={tabItems}
-            {...delegationCardData[activeSliderTab]}
+            {...delegateMobileData}
           />
         </div>
 
@@ -84,6 +124,7 @@ export function BakeryView () {
                 text='Delegate to Mavryk Dynamics'
                 icon='plusDark'
                 kind={ACTION_PRIMARY}
+                onClick={() => handleClickDelegate(delegateData[1].tzAddress)}
                 className='media-margin-top-2'
               />
             </div>

@@ -17,7 +17,7 @@ type Props = {
   rewards: number[]
   commission: number[]
   availableXtzSpace: number[]
-  onClick: () => void
+  onClick: (address: string) => void
   description: string[]
   buttonName: string
   kind: string
@@ -78,7 +78,7 @@ export function DelegateCard ({
           <MiniCard>
             <Icon id='threeCoins' />
             <h4>Rewards</h4>
-            <span>{rewards[0]-rewards[1]}%</span>
+            <span>{rewards[0]}-{rewards[1]}%</span>
           </MiniCard>
 
           <MiniCard>
@@ -90,7 +90,7 @@ export function DelegateCard ({
           <MiniCard>
             <Icon id='planet' />
             <h4>Available XTZ Space</h4>
-            <span>~ {availableXtzSpace[0]} days</span>
+            <span>{availableXtzSpace[0] === -1 ? 'no data' : availableXtzSpace[0]}</span>
           </MiniCard>
         </div>
 
@@ -99,7 +99,7 @@ export function DelegateCard ({
             text={buttonName}
             icon='plusDark'
             kind={kind as ButtonStyle}
-            onClick={onClick}
+            onClick={() => onClick(tzAddress)}
           />
         </div>
       </div>
