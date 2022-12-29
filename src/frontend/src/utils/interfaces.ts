@@ -3,6 +3,7 @@ import { ThemeType } from 'redux/actions/preferences.action'
 import { LoadingState } from '../redux/reducers/loading'
 import { BeaconWallet } from '@taquito/beacon-wallet'
 import { UTCTimestamp } from 'lightweight-charts'
+import { delegateCardData } from 'pages/Bakery/BakeryData'
 
 export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1w' | 'quotes15mNogaps' | 'quotes5mNogaps'
 export type ChartTypeType = 'area' | 'candlestick'
@@ -102,6 +103,10 @@ export type PreferencesType = {
   REACT_APP_RPC_PROVIDER: string
 }
 
+export type BakeryState = {
+  delegates: typeof delegateCardData
+}
+
 export interface State {
   wallet: WalletState
   user: UserData
@@ -110,6 +115,7 @@ export interface State {
   chart: ChartType
   toaster: ToasterState
   loading: LoadingState
+  bakery: BakeryState
 }
 
 export interface MVKStatsInterface {
