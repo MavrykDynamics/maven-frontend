@@ -436,6 +436,14 @@ export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   @media screen and (max-width: 600px) {
+    p:last-of-type {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+
+      margin: 0;
+    }
+
     .header {
       .percentages {
         display: none;

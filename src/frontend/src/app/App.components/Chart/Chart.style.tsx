@@ -42,20 +42,14 @@ export const Plug = styled.div`
   }
 
   p {
-    margin-top: 55px;
+    margin-top: 10px;
 
     font-weight: 600;
     font-size: 16px;
     line-height: 22px;
 
     text-align: center;
-    color: ${({ theme }) => theme.textColor};
-  }
-
-  &.dorman-chart,
-  &.data-feeds-chart {
-    margin-top: auto;
-    margin-bottom: auto;
+    color: ${({ theme }) => theme.primaryTextCardColor};
   }
 `
 
@@ -67,12 +61,6 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
 
   &.portfolio {
     margin-top: auto;
-  }
-
-  &.dorman-chart,
-  &.data-feeds-chart {
-    margin-top: auto;
-    margin-bottom: auto;
   }
 `
 
