@@ -103,8 +103,10 @@ export type PreferencesType = {
   REACT_APP_RPC_PROVIDER: string
 }
 
+export type DelegatesType = typeof delegateCardData
+
 export type BakeryState = {
-  delegates: typeof delegateCardData
+  delegates: DelegatesType
 }
 
 export interface State {

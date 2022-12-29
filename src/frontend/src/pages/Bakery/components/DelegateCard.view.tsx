@@ -14,21 +14,23 @@ import { ButtonStyle } from "app/App.components/Button/Button.constants"
 type Props = {
   title: string
   tzAddress: string
+  delegateAddress: string
   rewards: number[]
   commission: number[]
   availableXtzSpace: number[]
-  onClick: (address: string) => void
   description: string[]
   buttonName: string
   kind: string
   link: string
-  tabItems?: TabItem[]
+  onClick: (address: string) => void
   handleTabClick?: (id: number) => void
+  tabItems?: TabItem[]
 }
 
 export function DelegateCard ({
   title,
   tzAddress,
+  delegateAddress,
   rewards,
   commission,
   availableXtzSpace,
@@ -100,6 +102,7 @@ export function DelegateCard ({
             icon='plusDark'
             kind={kind as ButtonStyle}
             onClick={() => onClick(tzAddress)}
+            disabled={tzAddress === delegateAddress}
           />
         </div>
       </div>
