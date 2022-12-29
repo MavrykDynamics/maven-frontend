@@ -67,6 +67,7 @@ export function BakeryChart () {
         settings={{
           height: 110,
           showTooltip: false,
+          hideYAxis: true,
         }}
       />
     </BakeryChartStyled>

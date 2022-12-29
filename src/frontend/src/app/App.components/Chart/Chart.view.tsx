@@ -29,6 +29,8 @@ type TradingViewChartProps = {
     dateTooltipFormatter?: (date: number) => string
     valueTooltipFormatter?: (date: number) => string
     showTooltip?: boolean
+    hideXAxis?: boolean
+    hideYAxis?: boolean
   }
   className?: string
 }
@@ -86,7 +88,7 @@ export const TradingViewChart = ({
     textColor = lightTextColor,
     borderColor = headerColor,
   } = {},
-  settings: { height, dateTooltipFormatter, valueTooltipFormatter, tickPriceFormatter, tickDateFormatter, showTooltip = true },
+  settings: { height, dateTooltipFormatter, valueTooltipFormatter, tickPriceFormatter, tickDateFormatter, showTooltip = true, hideXAxis, hideYAxis },
   className,
 }: TradingViewChartProps) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null)
@@ -123,6 +125,23 @@ export const TradingViewChart = ({
           return tickDateFormatter?.(Number(time)) ?? parseDate({ time: Number(time), timeFormat: 'HH:mm' }) ?? ''
         },
       },
+      ...(hideXAxis
+        ? {
+            timeScale: {
+              visible: false,
+            },
+          }
+        : {}),
+      ...(hideYAxis
+        ? {
+            rightPriceScale: {
+              visible: false,
+            },
+            leftPriceScale: {
+              visible: false,
+            },
+          }
+        : {}),
     })
 
     // Setting the border color for the vertical axis
