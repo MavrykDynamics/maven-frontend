@@ -1,6 +1,6 @@
 import { UTCTimestamp } from 'lightweight-charts'
 import { useSelector } from 'react-redux'
-
+import CoinGecko from 'coingecko-api'
 // types
 import { State } from 'utils/interfaces'
 
@@ -11,6 +11,10 @@ import Icon from 'app/App.components/Icon/Icon.view'
 // styles
 import { BakeryChartStyled } from "../Bakery.style"
 import themeColors from 'styles/colors'
+import { useEffect, useState } from 'react'
+
+const coinGeckoClient = new CoinGecko()
+
 
 const chartData = [
   {
@@ -34,10 +38,27 @@ const chartData = [
     "time": new Date ("2022-12-20T15:17:25+00:00").getTime() as UTCTimestamp,
   }
 ]
+console.log("🚀 ~ file: BakeryChart.view.tsx:41 ~ chartData", chartData)
 
 export function BakeryChart () {
   const { themeSelected } = useSelector((state: State) => state.preferences)
+  const [data, setData] = useState<any>([])
 
+  useEffect(() => {
+    async function fetchData () {
+      let x = await coinGeckoClient.coins.fetchMarketChart('tezos', { vs_currency: 'usd', days: '1' });
+
+      setData(x.data.prices.map((item) => {
+        return {
+          value: item[1],
+          time: new Date (item[0]).getTime(),
+        }
+      }))
+    }
+
+    fetchData()
+  }, [])
+  console.log(data);
   return (
     <BakeryChartStyled>
       <div className='header'>
@@ -56,7 +77,7 @@ export function BakeryChart () {
       </div>
 
       <Chart
-        data={chartData}
+        data={data}
         colors={{
           lineColor: '#86D4C9',
           areaTopColor: '#86D4C9',
@@ -65,7 +86,7 @@ export function BakeryChart () {
           borderColor: 'transparent'
         }}
         settings={{
-          height: 110,
+          height: 100,
           showTooltip: false,
           hideYAxis: true,
         }}

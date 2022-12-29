@@ -59,8 +59,7 @@ export const Chart = ({
   data,
   colors,
   settings,
-  // TODO: numberOfItemsToDisplay set 15 after dev
-  numberOfItemsToDisplay = 1,
+  numberOfItemsToDisplay = 15,
   className,
 }: TradingViewChartProps & { numberOfItemsToDisplay?: number }) => {
   if (data.length < numberOfItemsToDisplay) {

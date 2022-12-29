@@ -374,19 +374,18 @@ export const RoundButton =  styled.a`
 `
 
 export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
-  max-width: 760px;
+  padding: 20px;
+  width: 65%;
 
   border: 1px solid ${({ theme }) => theme.borderCard};
   border-radius: 10px;
 
   .header {
-    padding: 25px 0 0 20px;
     width: max-content;
 
     h3 {
       font-weight: 600;
       font-size: 14px;
-      line-height: 21px;
 
       color: ${({ theme }) => theme.primaryTextCardColor};
     }
@@ -396,7 +395,6 @@ export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
 
       font-weight: 600;
       font-size: 18px;
-      line-height: 27px;
 
       color: ${({ theme }) => theme.headingThirdCardColor};
     }
@@ -407,7 +405,6 @@ export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
       span {
         font-weight: 600;
         font-size: 12px;
-        line-height: 21px;
 
         color: ${({ theme }) => theme.upColor};
       }
