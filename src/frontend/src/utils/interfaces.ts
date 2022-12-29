@@ -2,6 +2,7 @@ import { TezosToolkit } from '@taquito/taquito'
 import { ThemeType } from 'redux/actions/preferences.action'
 import { LoadingState } from '../redux/reducers/loading'
 import { BeaconWallet } from '@taquito/beacon-wallet'
+import { UTCTimestamp } from 'lightweight-charts'
 
 export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1w' | 'quotes15mNogaps' | 'quotes5mNogaps'
 export type ChartTypeType = 'area' | 'candlestick'
@@ -31,6 +32,8 @@ export interface UserData {
   estimatedPoolXtzOwned: number
 }
 
+export interface ChartItem { time: UTCTimestamp; value: number }
+
 export interface TokenInfo {
   lbData: {
     address: string
@@ -43,6 +46,9 @@ export interface TokenInfo {
     xtz_pool: number
   }
   coinPrices: Record<string, Record<string, number>>
+  coinHistoryPrices: {
+    tezos: ChartItem[]
+  }
   stats: {
     tvlUSD: number
     tradeVolume: number

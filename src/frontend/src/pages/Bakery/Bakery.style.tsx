@@ -405,8 +405,14 @@ export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
       span {
         font-weight: 600;
         font-size: 12px;
+      }
 
+      .green {
         color: ${({ theme }) => theme.upColor};
+      }
+
+      .red {
+        color: ${({ theme }) => theme.downColor};
       }
     }
 

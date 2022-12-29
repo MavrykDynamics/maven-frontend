@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // components
 import { FrequentlyAskedQuestions } from './components/FrequentlyAskedQuestions/FrequentlyAskedQuestions.view'
@@ -15,9 +15,13 @@ import { calcWithoutMu } from 'utils/utils'
 
 // actions
 import { getBakeryDelegateData, BakeryDelegateDataType, delegation } from '../../redux/actions/bakery.action'
+import { getTezosHistoryPrices } from 'redux/actions/tokenPrices.action'
 
 // styles
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from "./Bakery.style"
+
+// types
+import { State } from 'utils/interfaces'
 
 const getFreeSpace = (data: BakeryDelegateDataType) => {
   if (data.balance === -1) return [-1]
@@ -41,6 +45,8 @@ const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) =>
 export function BakeryView () {
   const dispatch = useDispatch()
 
+  const { coinHistoryPrices: { tezos } } = useSelector((state: State) => state.tokens)
+
   const [activeSliderTab, setActiveSliderTab] = useState(tabItems[0].id)
   const [delegateData, setDelegateDate] = useState(delegateCardData)
   const delegateMobileData = delegateData.find((item) => item.id === activeSliderTab) || delegateData[activeSliderTab - 1]
@@ -52,6 +58,10 @@ export function BakeryView () {
   const handleTabClick = (id: number) => {
     setActiveSliderTab(id)
   }
+
+  useEffect(() => {
+    dispatch(getTezosHistoryPrices())
+  }, [dispatch])
 
   useEffect(() => {
     function fetchData () {
@@ -80,7 +90,7 @@ export function BakeryView () {
           <h1>Delegate your Tezos</h1>
           <Description list={bakeryData.delegateYourTezos} className='paragraph-max-width' />
 
-          <BakeryChart />
+          <BakeryChart chartData={tezos} />
         </CardWithBackground>
   
         <div className='grid-two-columns desktop'>

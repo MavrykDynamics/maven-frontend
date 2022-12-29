@@ -93,3 +93,8 @@ export const getFullNumber = (value?: number | string) => {
 
   return value
 }
+
+export const percentageDifference = (a: number, b: number) => {
+  const value = ((a - b) / ((a + b) / 2)) * 100
+  return Math.round(value * 100) / 100
+}
