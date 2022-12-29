@@ -66,26 +66,26 @@ export const getDelegates = () => async (dispatch: AppDispatch, getState: GetSta
   try {
     if (!accountPkh) return
   
-    Promise.all([
+    const values = await Promise.all([
       getBakeryDelegateData(delegateCardData[0].tzAddress),
       getBakeryDelegateData(delegateCardData[1].tzAddress),
       getAccountByAddress(accountPkh)
-    ]).then((values) => {
-      const availableXtzSpaces = values.slice(0, 2) as BakeryDelegateDataType[]
-      const account = values.slice(2)[0] as AccountType
+    ])
+    
+    const availableXtzSpaces = values.slice(0, 2) as BakeryDelegateDataType[]
+    const account = values.slice(2)[0] as AccountType
 
-      const delegates = delegateCardData.map((item, index) => {
-        return {
-          ...item,
-          availableXtzSpace: getFreeSpace(availableXtzSpaces[index]),
-          delegateAddress: account.delegate.address
-        }
-      })
+    const delegates = delegateCardData.map((item, index) => {
+      return {
+        ...item,
+        availableXtzSpace: getFreeSpace(availableXtzSpaces[index]),
+        delegateAddress: account.delegate.address
+      }
+    })
 
-      dispatch({
-        type: GET_BAKERY_DELEGATES,
-        delegates,
-      })
+    dispatch({
+      type: GET_BAKERY_DELEGATES,
+      delegates,
     })
   } catch (error) {
     console.log('getDelegates', error);
