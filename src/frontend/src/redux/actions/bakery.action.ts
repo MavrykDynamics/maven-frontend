@@ -120,6 +120,8 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
         ],
       })
     
+      dispatch(getDelegates())
+
       await dispatch(toggleLoader())
       await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
     }
