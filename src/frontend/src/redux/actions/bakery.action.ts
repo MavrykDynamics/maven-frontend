@@ -57,6 +57,7 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
     
       await dispatch(toggleLoader())
       await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
+      // TODO: get updated free space
     }
   } catch (error: any) {
     console.error(`Failed delegation:`, error)
