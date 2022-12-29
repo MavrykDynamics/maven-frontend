@@ -6,7 +6,6 @@ import { MavrykTheme } from "utils/interfaces";
 // components
 import { Footer } from "app/App.components/Footer/Footer.controller";
 import { Button } from "app/App.components/Button/Button.controller";
-import { Chart } from "app/App.components/Chart/Chart.view";
 
 export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
   background-repeat: no-repeat;
@@ -265,8 +264,9 @@ export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   }
 
   @media screen and (max-width: 900px) {
-    height: 650px;
+    height: 760px;
     background-position: bottom center;
+    background-size: 400px 290px;
 
     p {
       width: 100%;
@@ -274,7 +274,7 @@ export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   }
 
   @media screen and (max-width: 600px) {
-    height: 500px;
+    height: 660px;
     background-size: 320px 230px;
   }
 `
@@ -375,7 +375,7 @@ export const RoundButton =  styled.a`
 
 export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
   padding: 20px;
-  width: 65%;
+  width: 60%;
 
   border: 1px solid ${({ theme }) => theme.borderCard};
   border-radius: 10px;
@@ -423,6 +423,22 @@ export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
         margin-right: 10px;
         width: 36px;
         height: 36px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1300px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 600px) {
+    .header {
+      .percentages {
+        display: none;
       }
     }
   }
