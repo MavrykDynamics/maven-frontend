@@ -264,8 +264,9 @@ export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   }
 
   @media screen and (max-width: 900px) {
-    height: 650px;
+    height: 760px;
     background-position: bottom center;
+    background-size: 400px 290px;
 
     p {
       width: 100%;
@@ -273,7 +274,7 @@ export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   }
 
   @media screen and (max-width: 600px) {
-    height: 500px;
+    height: 660px;
     background-size: 320px 230px;
   }
 `
@@ -368,6 +369,85 @@ export const RoundButton =  styled.a`
 
     svg {
       fill: ${({ theme }) => theme.primaryButtonColor};
+    }
+  }
+`
+
+export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
+  padding: 20px;
+  width: 60%;
+
+  border: 1px solid ${({ theme }) => theme.borderCard};
+  border-radius: 10px;
+
+  .header {
+    width: max-content;
+
+    h3 {
+      font-weight: 600;
+      font-size: 14px;
+
+      color: ${({ theme }) => theme.primaryTextCardColor};
+    }
+    
+    p {
+      margin: 0;
+
+      font-weight: 600;
+      font-size: 18px;
+
+      color: ${({ theme }) => theme.headingThirdCardColor};
+    }
+
+    .percentages {
+      text-align: end;
+
+      span {
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      .green {
+        color: ${({ theme }) => theme.upColor};
+      }
+
+      .red {
+        color: ${({ theme }) => theme.downColor};
+      }
+    }
+
+    .info {
+      display: flex;
+
+      svg {
+        margin-right: 10px;
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1300px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 600px) {
+    p:last-of-type {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+
+      margin: 0;
+    }
+
+    .header {
+      .percentages {
+        display: none;
+      }
     }
   }
 `

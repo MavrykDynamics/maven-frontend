@@ -3,6 +3,13 @@ import { LoadingIcon } from './CommaNumber.style'
 
 export const DECIMALS_TO_SHOW = 2
 
+export const formatNumber = (showDecimal: boolean, decimalsToShow: number, number?: number): string | undefined => {
+  if (showDecimal && !number) return '0.00'
+  return number?.toLocaleString('en-US', {
+    maximumFractionDigits: showDecimal ? decimalsToShow : 0,
+  })
+}
+
 export const CommaNumber = ({
   value,
   loading,

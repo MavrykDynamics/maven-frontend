@@ -18,6 +18,9 @@ export const defaultTokens: TokenInfo = {
     tzbtc: { usd: 0, eur: 0 },
     mvk: { usd: 0.25, eur: 0.3 },
   },
+  coinHistoryPrices: {
+    tezos: []
+  },
   stats: {
     tvlUSD: 0,
     tradeVolume: 0,
@@ -49,6 +52,14 @@ const tokens = (state = defaultTokens, action: any) => {
           ...state.stats,
           ...action.generalStats,
         },
+      }
+    case actions.GET_TEZOS_HISTORY_PRICES:
+      return {
+        ...state,
+        coinHistoryPrices: {
+          ...state.coinHistoryPrices,
+          tezos: action.tezos,
+        }
       }
     default:
       return state

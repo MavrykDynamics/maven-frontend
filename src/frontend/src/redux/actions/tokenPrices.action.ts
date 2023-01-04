@@ -1,4 +1,4 @@
-import { GET_TOKENS_PRICES } from './../action.types';
+import { GET_TOKENS_PRICES, GET_TEZOS_HISTORY_PRICES } from './../action.types';
 
 import CoinGecko from 'coingecko-api'
 import axios from 'axios'
@@ -20,6 +20,29 @@ export const getTokensPrices = () => async (dispatch: any, getState: any) => {
     })
   } catch (error: any) {
     console.error(error)
+  }
+}
+
+export const getTezosHistoryPrices = () => async (dispatch: any, getState: any) => {
+  try {
+    const response = await coinGeckoClient.coins.fetchMarketChart('tezos', { vs_currency: 'usd', days: '1' });
+    const { prices = [] } = response.data
+  
+    const tezos = prices.length 
+      ? prices.map((item) => {
+          return {
+            value: item[1],
+            time: new Date (item[0]).getTime(),
+          }
+        })
+      : []
+
+    dispatch({
+      type: GET_TEZOS_HISTORY_PRICES,
+      tezos,
+    })
+  } catch (error: any) {
+    console.error('getTezosHistoryPrices', error)
   }
 }
 

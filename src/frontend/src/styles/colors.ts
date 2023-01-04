@@ -28,6 +28,7 @@ export const upColor = '#27AE60'
 export const dangerColor = '#FF8486'
 export const awaitingColor = '#FFCA43'
 export const silverTwoColor = '#CDCDCD'
+export const lightTextColor = '#D0CFD9'
 
 export const darkMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-dark.svg',
@@ -114,6 +115,7 @@ export const darkMode: MavrykTheme = {
   secondaryBgCardColor: headerColor,
   headingCardColor: subHeaderColor,
   headingSecondaryCardColor: '#77A4F2',
+  headingThirdCardColor: '#77A4F2',
   borderCard: '#503EAA',
   primaryButtonColor: btnLightColor,
   sliderBorderColor: '#8D86EB',
@@ -206,6 +208,7 @@ export const lightMode: MavrykTheme = {
   secondaryBgCardColor: '#EBF0FF',
   headingCardColor: '#27007A',
   headingSecondaryCardColor: '#27007A',
+  headingThirdCardColor: '#38237C',
   borderCard: '#503EAA',
   primaryButtonColor: '#27007A',
   sliderBorderColor: '#503EAA',
@@ -300,6 +303,7 @@ export const spaceMode: MavrykTheme = {
   secondaryBgCardColor: headerColor,
   headingCardColor: silverTwoColor,
   headingSecondaryCardColor: '#D0CFD9',
+  headingThirdCardColor: '#77A4F2',
   borderCard: '#503EAA',
   primaryButtonColor: btnLightColor,
   sliderBorderColor: '#8D86EB',

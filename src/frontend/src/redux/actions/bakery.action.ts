@@ -1,12 +1,23 @@
 import { TezosOperationType } from '@airgap/beacon-sdk'
-import type { AppDispatch, GetState } from '../../app/App.controller'
-import { State } from 'utils/interfaces'
-import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
-import { ERROR, INFO, SUCCESS } from '../../app/App.components/Toaster/Toaster.constants'
 import { BeaconWallet } from '@taquito/beacon-wallet'
-import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
-import { toggleLoader } from './preferences.action'
+
+// helpers
+import type { AppDispatch, GetState } from '../../app/App.controller'
 import { ROCKET_LOADER } from 'utils/consts'
+import { ERROR, INFO, SUCCESS } from '../../app/App.components/Toaster/Toaster.constants'
+import { GET_BAKERY_DELEGATES } from 'redux/action.types'
+import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
+import { toggleLoader } from './preferences.action'
+import { getFreeSpace } from 'pages/Bakery/Bakery.helpers'
+
+// data
+import { delegateCardData } from 'pages/Bakery/BakeryData'
+
+// actions
+import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
+
+// types
+import { State } from 'utils/interfaces'
 
 export type BakeryDelegateDataType = {
   balance: number
@@ -24,6 +35,70 @@ export const getBakeryDelegateData = async (bakerAddress: string): Promise<Baker
       balance: -1,
       delegatedBalance: -1,
     }
+  }
+}
+
+type AccountType = {
+  delegate: {
+    address: string | null
+  }
+}
+
+export const getAccountByAddress = async (bakerAddress: string): Promise<AccountType> => {
+  try {
+    const response = await fetch(`https://api.tzkt.io/v1/accounts/${bakerAddress}`)
+    const result = await response.json()
+
+    return result
+  } catch {
+    return {
+      delegate: {
+        address: null
+      }
+    }
+  }
+}
+ 
+export const getDelegates = () => async (dispatch: AppDispatch, getState: GetState) => {
+  const state: State = getState()
+  const { accountPkh } = state.wallet
+
+  try {
+    const values = accountPkh 
+    ? await Promise.all([
+      getBakeryDelegateData(delegateCardData[0].tzAddress),
+      getBakeryDelegateData(delegateCardData[1].tzAddress),
+      getAccountByAddress(accountPkh)
+    ])
+    : await Promise.all([
+      getBakeryDelegateData(delegateCardData[0].tzAddress),
+      getBakeryDelegateData(delegateCardData[1].tzAddress),
+    ])
+    
+    const availableXtzSpaces = values.slice(0, 2) as BakeryDelegateDataType[]
+    const account = values.slice(2)[0] as AccountType
+
+    const delegates = delegateCardData.map((item, index) => {
+      if (!accountPkh) {
+        return {
+          ...item,
+          availableXtzSpace: getFreeSpace(availableXtzSpaces[index]),
+        }
+      }
+
+      return {
+        ...item,
+        availableXtzSpace: getFreeSpace(availableXtzSpaces[index]),
+        delegateAddress: account.delegate.address
+      }
+    })
+
+    dispatch({
+      type: GET_BAKERY_DELEGATES,
+      delegates,
+    })
+  } catch (error) {
+    console.log('getDelegates', error);
   }
 }
 
@@ -55,6 +130,8 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
         ],
       })
     
+      dispatch(getDelegates())
+
       await dispatch(toggleLoader())
       await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
       // TODO: get updated free space
