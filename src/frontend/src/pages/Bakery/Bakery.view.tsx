@@ -53,9 +53,7 @@ export function BakeryView () {
   }, [dispatch])
 
   useEffect(() => {
-    if (accountPkh) {
-      dispatch(getDelegates())
-    }
+    dispatch(getDelegates())
   }, [accountPkh, dispatch])
 
   return (

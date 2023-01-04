@@ -64,18 +64,28 @@ export const getDelegates = () => async (dispatch: AppDispatch, getState: GetSta
   const { accountPkh } = state.wallet
 
   try {
-    if (!accountPkh) return
-  
-    const values = await Promise.all([
+    const values = accountPkh 
+    ? await Promise.all([
       getBakeryDelegateData(delegateCardData[0].tzAddress),
       getBakeryDelegateData(delegateCardData[1].tzAddress),
       getAccountByAddress(accountPkh)
+    ])
+    : await Promise.all([
+      getBakeryDelegateData(delegateCardData[0].tzAddress),
+      getBakeryDelegateData(delegateCardData[1].tzAddress),
     ])
     
     const availableXtzSpaces = values.slice(0, 2) as BakeryDelegateDataType[]
     const account = values.slice(2)[0] as AccountType
 
     const delegates = delegateCardData.map((item, index) => {
+      if (!accountPkh) {
+        return {
+          ...item,
+          availableXtzSpace: getFreeSpace(availableXtzSpaces[index]),
+        }
+      }
+
       return {
         ...item,
         availableXtzSpace: getFreeSpace(availableXtzSpaces[index]),
