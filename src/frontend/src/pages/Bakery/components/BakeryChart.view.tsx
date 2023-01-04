@@ -24,7 +24,7 @@ export function BakeryChart ({ chartData }: Props) {
 
   const currentPrice = chartData.length ? Number(chartData[chartData.length - 1].value.toFixed(7)) : 0
   const initialPrice = chartData.length ? Number(chartData[0].value.toFixed(7)) : 0
-  const changesInValue = percentageDifference(initialPrice, currentPrice)
+  const changesInValue = percentageDifference(currentPrice, initialPrice)
   const isPositiveGrowth = currentPrice > initialPrice
 
   return (
