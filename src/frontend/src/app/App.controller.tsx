@@ -7,7 +7,7 @@ import { State } from 'utils/interfaces'
 import { Toaster } from './App.components/Toaster/Toaster.controller'
 import Loader from './App.components/Loader/Loader.view'
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { AnyAction } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
 import { useSelector } from 'react-redux'
@@ -53,6 +53,13 @@ export const App = () => {
               return <LiquidityBaking />
             }}
           />
+          <Route
+            exact
+            path="/404"
+          >
+            <Home />
+          </Route>
+          <Redirect to='/404' />
         </Switch>
         <Toaster />
       </Router>
