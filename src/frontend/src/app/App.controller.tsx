@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { AnyAction } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
 
@@ -55,6 +55,13 @@ export const App = () => {
             path="/bakery"
             component={Bakery}
           />
+          <Route
+            exact
+            path="/404"
+          >
+            <Home />
+          </Route>
+          <Redirect to='/404' />
         </Switch>
         <Toaster />
       </Router>
