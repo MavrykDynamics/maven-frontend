@@ -43,10 +43,6 @@ export const FrequentlyAskedQuestionsCard = styled.div`
       content: '';
       background-color: ${({ theme }) => theme.secondaryTextCardColor};
     }
-    
-    h2 {
-      color: ${({ theme }) => theme.secondaryTextCardColor};
-    }
   }
 
   p, h2 {
@@ -60,7 +56,7 @@ export const FrequentlyAskedQuestionsCard = styled.div`
     font-size: 18px;
     line-height: 27px;
 
-    color: ${({ theme }) => theme.primaryTextCardColor};
+    color: ${({ theme }) => theme.headingFourthCardColor};
   }
   
   p:last-of-type {
