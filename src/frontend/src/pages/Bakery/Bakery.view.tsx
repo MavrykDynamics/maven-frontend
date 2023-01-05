@@ -112,6 +112,7 @@ export function BakeryView () {
                 kind={ACTION_PRIMARY}
                 onClick={() => handleClickDelegate(delegates[1].tzAddress)}
                 className='media-margin-top-2'
+                disabled={delegates[1].tzAddress === delegates[1].delegateAddress}
               />
             </div>
           </div>
