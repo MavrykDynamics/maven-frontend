@@ -1,5 +1,6 @@
 import { TezosOperationType } from '@airgap/beacon-sdk'
 import { BeaconWallet } from '@taquito/beacon-wallet'
+import { NetworkType } from '@airgap/beacon-types';
 
 // helpers
 import type { AppDispatch, GetState } from '../../app/App.controller'
@@ -129,12 +130,14 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
           },
         ],
       })
+
+      await dispatch(showToaster(INFO, 'Delegation', 'Please wait 30s...'))
     
+      // TODO: check confirmation
       dispatch(getDelegates())
 
       await dispatch(toggleLoader())
       await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
-      // TODO: get updated free space
     }
   } catch (error: any) {
     console.error(`Failed delegation:`, error)
