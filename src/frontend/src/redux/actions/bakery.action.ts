@@ -151,7 +151,7 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
             return
           }
 
-          await dispatch(getDelegates)
+          await dispatch(getDelegates())
           await dispatch(toggleLoader())
           await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
         }, 10000)
