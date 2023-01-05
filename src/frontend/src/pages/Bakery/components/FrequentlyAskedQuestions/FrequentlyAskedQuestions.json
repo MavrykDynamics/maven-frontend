@@ -27,7 +27,7 @@
   {
     "id": 6,
     "title": "What is the difference between the Mavryk Finance DAO Bakery, and the Mavryk Dynamics Bakery?",
-    "description": ["Both operate similar computer hardware and charge a 10% fee. The difference", 
+    "description": ["Both operate similar computer hardware and charge a 10% fee. So what’s the difference between them?", 
       "The Mavryk Finance Bakery belongs to the DAO, helps fund the Oracle transaction fees, and the profits are paid to the DAO Treasury. It is operated by Mavryk Dynamics on behalf of the DAO.",
       "The Mavryk Dynamics Bakery belongs to Mavryk Dynamics, and the profit goes towards building more amazing products."]
   },
