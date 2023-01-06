@@ -124,6 +124,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
 
     button {
       margin: 0;
+      white-space: nowrap;
     }
   }
 
