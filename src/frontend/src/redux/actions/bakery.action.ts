@@ -136,24 +136,27 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
       // TODO: find a better way to do this
       let count = 0
       const checkConfirmartion = () => {
-        setTimeout(async () => {
+        const timerId = setTimeout(async () => {
           count++
           const accountData = await getAccountByAddress(accountPkh)
 
           if (count > 4) {
             await dispatch(toggleLoader())
             dispatch(showToaster(ERROR, 'Error', 'Delegation data not updated'))
+            clearTimeout(timerId)
             return
           }
 
           if (accountData.delegate.address !== bakerAddress) {
             checkConfirmartion()
+            clearTimeout(timerId)
             return
           }
 
           await dispatch(getDelegates())
           await dispatch(toggleLoader())
           await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
+          clearTimeout(timerId)
         }, 10000)
       }
 
