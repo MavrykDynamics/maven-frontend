@@ -87,7 +87,7 @@ export function BakeryView () {
 
         <Card className='grid-two-columns grid-column-gap'>
           <div>
-            <h1>Delegation & Staking 101</h1>
+            <h1>Delegation & Staking&nbsp;101</h1>
             <Description list={bakeryData.delegationAndStaking101} />
 
             <a
