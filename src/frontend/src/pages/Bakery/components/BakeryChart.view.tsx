@@ -40,7 +40,7 @@ export function BakeryChart ({ chartData }: Props) {
         </div>
 
         <div className='percentages'>
-          <span className={isPositiveGrowth ? 'green' : 'red'}>~ {changesInValue}%</span>
+          <span className={isPositiveGrowth ? 'green' : 'red'}>{changesInValue}%</span>
         </div>
       </div>
 
@@ -56,6 +56,7 @@ export function BakeryChart ({ chartData }: Props) {
         settings={{
           height: 100,
           hideYAxis: true,
+          hideTooltip: true,
         }}
       />
     </BakeryChartStyled>

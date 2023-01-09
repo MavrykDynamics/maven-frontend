@@ -28,7 +28,7 @@ type TradingViewChartProps = {
     tickPriceFormatter?: (value: number) => string
     dateTooltipFormatter?: (date: number) => string
     valueTooltipFormatter?: (date: number) => string
-    showTooltip?: boolean
+    hideTooltip?: boolean
     hideXAxis?: boolean
     hideYAxis?: boolean
   }
@@ -87,7 +87,7 @@ export const TradingViewChart = ({
     textColor = lightTextColor,
     borderColor = headerColor,
   } = {},
-  settings: { height, dateTooltipFormatter, valueTooltipFormatter, tickPriceFormatter, tickDateFormatter, showTooltip = true, hideXAxis, hideYAxis },
+  settings: { height, dateTooltipFormatter, valueTooltipFormatter, tickPriceFormatter, tickDateFormatter, hideTooltip, hideXAxis, hideYAxis },
   className,
 }: TradingViewChartProps) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null)
@@ -221,7 +221,7 @@ export const TradingViewChart = ({
   return (
     <ChartStyled className={className} ref={mainChartWrapperRef}>
       <div ref={chartContainerRef} />
-      {showTooltip && <TradingViewTooltip mvkAmount={tooltipValue?.mvkAmount} date={tooltipValue?.date} />}
+      {!hideTooltip && <TradingViewTooltip mvkAmount={tooltipValue?.mvkAmount} date={tooltipValue?.date} />}
     </ChartStyled>
   )
 }
