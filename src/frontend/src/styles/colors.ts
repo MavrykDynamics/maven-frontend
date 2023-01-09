@@ -123,6 +123,7 @@ export const darkMode: MavrykTheme = {
   sliderTextColor: '#8D86EB',
   sliderBgColor: '#080628',
   sliderTabBgColor: 'linear-gradient(90deg, #86d4c9 0.31%, #8d86eb 99.97%)',
+  skyColor,
 }
 
 export const lightMode: MavrykTheme = {
@@ -217,6 +218,7 @@ export const lightMode: MavrykTheme = {
   sliderTextColor: '#27007A',
   sliderBgColor: '#EBF0FF',
   sliderTabBgColor: '#27007A',
+  skyColor,
 }
 
 export const spaceMode: MavrykTheme = {
@@ -313,6 +315,7 @@ export const spaceMode: MavrykTheme = {
   sliderTextColor: '#8D86EB',
   sliderBgColor: '#080628',
   sliderTabBgColor: 'linear-gradient(90deg, #86d4c9 0.31%, #8d86eb 99.97%)',
+  skyColor,
 }
 
 export default {

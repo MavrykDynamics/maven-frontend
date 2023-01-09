@@ -93,9 +93,14 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
       font-size: 18px;
       line-height: 27px;
 
-      color: ${({ theme }) => theme.secondaryTextCardColor};
+      color: ${({ theme }) => theme.skyColor};
       transition: opacity 0.3;
       cursor: pointer;
+
+      svg {
+        fill: transparent;
+        stroke: ${({ theme }) => theme.skyColor};
+      }
 
       &:hover {
         opacity: 0.8;
@@ -317,7 +322,7 @@ export const MiniCard = styled.div`
     font-size: 18px;
     line-height: 18px;
 
-    color: ${({ theme }) => theme.secondaryTextCardColor};
+    color: ${({ theme }) => theme.skyColor};
   }
 
   @media screen and (max-width: 600px) {

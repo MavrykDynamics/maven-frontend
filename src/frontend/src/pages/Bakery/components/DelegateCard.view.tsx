@@ -7,7 +7,6 @@ import { SlidingTabButtons, TabItem } from "app/App.components/SlidingTabButtons
 import { Card, MiniCard, RoundButton, ButtonStyled } from "../Bakery.style"
 
 // helpers
-import { CYAN } from "app/App.components/TzAddress/TzAddress.constants"
 import { TzAddress } from "app/App.components/TzAddress/TzAddress.view"
 import { ButtonStyle } from "app/App.components/Button/Button.constants"
 
@@ -73,7 +72,7 @@ export function DelegateCard ({
         <div className='address'>
           <span>Bakery Address</span>
             &nbsp;
-            <TzAddress type={CYAN} tzAddress={tzAddress} hasIcon />
+            <TzAddress tzAddress={tzAddress} hasIcon />
         </div>
 
         <div className='grid-three-columns'>
