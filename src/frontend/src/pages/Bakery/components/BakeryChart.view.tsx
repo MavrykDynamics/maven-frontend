@@ -51,11 +51,10 @@ export function BakeryChart ({ chartData }: Props) {
           areaTopColor: '#86D4C9',
           areaBottomColor: 'rgba(119, 164, 242, 0)',
           textColor: themeColors[themeSelected].primaryTextCardColor,
-          borderColor: 'transparent'
+          borderColor: 'transparent' 
         }}
         settings={{
           height: 100,
-          showTooltip: false,
           hideYAxis: true,
         }}
       />

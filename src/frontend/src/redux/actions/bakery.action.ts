@@ -104,6 +104,7 @@ export const getDelegates = () => async (dispatch: AppDispatch, getState: GetSta
 
 export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch, getState: GetState) => {
   const state: State = getState()
+  const { accountPkh = '' } = state.wallet
 
   if (!state.wallet.ready) {
     dispatch(showToaster(ERROR, 'Please connect your wallet', 'Click Connect in the left menu'))
@@ -120,7 +121,6 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
     const walletResponse = await checkIfWalletIsConnected(wallet)
 
     if (walletResponse) {
-      await dispatch(toggleLoader(ROCKET_LOADER))
       await wallet.client.requestOperation({
         operationDetails: [
           {
@@ -129,12 +129,36 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
           },
         ],
       })
-    
-      dispatch(getDelegates())
 
-      await dispatch(toggleLoader())
-      await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
-      // TODO: get updated free space
+      await dispatch(toggleLoader(ROCKET_LOADER))
+      await dispatch(showToaster(INFO, 'Delegation', 'Please wait 30s...'))
+
+      // TODO: find a better way to do this
+      // TODO: add clear timer
+      let count = 0
+      const checkConfirmartion = () => {
+        const timerId = setTimeout(async () => {
+          count++
+          const accountData = await getAccountByAddress(accountPkh)
+
+          if (count > 4) {
+            await dispatch(toggleLoader())
+            dispatch(showToaster(ERROR, 'Error', 'Delegation data not updated'))
+            return
+          }
+
+          if (accountData.delegate.address !== bakerAddress) {
+            checkConfirmartion()
+            return
+          }
+
+          await dispatch(getDelegates())
+          await dispatch(toggleLoader())
+          await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
+        }, 10000)
+      }
+
+      checkConfirmartion()
     }
   } catch (error: any) {
     console.error(`Failed delegation:`, error)

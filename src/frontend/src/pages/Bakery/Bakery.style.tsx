@@ -124,6 +124,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
 
     button {
       margin: 0;
+      white-space: nowrap;
     }
   }
 
@@ -179,6 +180,11 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
       .media-margin-top-2 {
         margin-top: 20px;
       }
+    }
+
+    .grid-three-columns {
+      grid-template-columns: 1fr;
+      row-gap: 10px;
     }
 
     .desktop {
@@ -315,6 +321,21 @@ export const MiniCard = styled.div`
   }
 
   @media screen and (max-width: 600px) {
+    display: grid;
+    grid-template-columns: 35px 80px auto;
+    column-gap: 15px;
+    padding: 0 15px;
+    height: 70px;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    span {
+      text-align: end;
+    }
+
     h4 {
       font-weight: 600;
       font-size: 14px;
