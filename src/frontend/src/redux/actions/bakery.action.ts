@@ -134,6 +134,7 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
       await dispatch(showToaster(INFO, 'Delegation', 'Please wait 30s...'))
 
       // TODO: find a better way to do this
+      // TODO: add clear timer
       let count = 0
       const checkConfirmartion = () => {
         const timerId = setTimeout(async () => {
