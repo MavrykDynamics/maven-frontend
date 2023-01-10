@@ -93,14 +93,8 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
       font-size: 18px;
       line-height: 27px;
 
-      color: ${({ theme }) => theme.skyColor};
       transition: opacity 0.3;
       cursor: pointer;
-
-      svg {
-        fill: transparent;
-        stroke: ${({ theme }) => theme.skyColor};
-      }
 
       &:hover {
         opacity: 0.8;

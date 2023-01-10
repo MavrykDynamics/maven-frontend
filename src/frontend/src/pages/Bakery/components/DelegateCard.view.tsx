@@ -9,6 +9,7 @@ import { Card, MiniCard, RoundButton, ButtonStyled } from "../Bakery.style"
 // helpers
 import { TzAddress } from "app/App.components/TzAddress/TzAddress.view"
 import { ButtonStyle } from "app/App.components/Button/Button.constants"
+import { CYAN } from 'app/App.components/TzAddress/TzAddress.constants'
 
 type Props = {
   title: string
@@ -72,7 +73,7 @@ export function DelegateCard ({
         <div className='address'>
           <span>Bakery Address</span>
             &nbsp;
-            <TzAddress tzAddress={tzAddress} hasIcon />
+            <TzAddress type={CYAN} tzAddress={tzAddress} hasIcon />
         </div>
 
         <div className='grid-three-columns'>
