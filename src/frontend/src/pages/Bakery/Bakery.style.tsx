@@ -311,7 +311,8 @@ export const MiniCard = styled.div`
     text-transform: capitalize;
   }
 
-  span {
+  span,
+  .commaNumber {
     font-weight: 700;
     font-size: 18px;
     line-height: 18px;

@@ -2,6 +2,7 @@
 import Icon from "app/App.components/Icon/Icon.view"
 import { Description } from "./Description.view"
 import { SlidingTabButtons, TabItem } from "app/App.components/SlidingTabButtons/SlidingTabButtons.controller"
+import { CommaNumber } from "app/App.components/CommaNumber/CommaNumber.controller"
 
 // styles
 import { Card, MiniCard, RoundButton, ButtonStyled } from "../Bakery.style"
@@ -92,7 +93,9 @@ export function DelegateCard ({
           <MiniCard>
             <Icon id='planet' />
             <h4>Available XTZ Space</h4>
-            <span>{availableXtzSpace[0] === -1 ? 'no data' : availableXtzSpace[0]}</span>
+            {availableXtzSpace[0] === -1
+              ? <span>no data</span>
+              : <CommaNumber value={availableXtzSpace[0]} className='commaNumber' />}
           </MiniCard>
         </div>
 
