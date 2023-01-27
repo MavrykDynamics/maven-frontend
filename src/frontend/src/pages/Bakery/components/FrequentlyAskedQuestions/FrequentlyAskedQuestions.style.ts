@@ -45,6 +45,10 @@ export const FrequentlyAskedQuestionsCard = styled.div`
     }
   }
 
+  &:last-of-type {
+    border-bottom: 1px solid transparent;
+  }
+
   p, h2 {
     padding: 0 40px;
   }
