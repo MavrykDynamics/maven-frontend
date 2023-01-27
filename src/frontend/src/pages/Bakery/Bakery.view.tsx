@@ -91,7 +91,7 @@ export function BakeryView () {
             <Description list={bakeryData.delegationAndStaking101} />
 
             <a
-              href=''
+              href='https://opentezos.com/baking/delegating/'
               target="_blank"
               rel="noreferrer"
             >
