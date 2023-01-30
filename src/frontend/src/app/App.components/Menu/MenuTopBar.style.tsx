@@ -87,8 +87,8 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
     .top-bar-toggler {
       cursor: pointer;
       svg {
-        max-width: 26px;
-        height: 21px;
+        width: 30px;
+        height: 30px;
         stroke: ${({ theme }) => theme.toggleButtonColor};
         transition: 0.6s all;
       }

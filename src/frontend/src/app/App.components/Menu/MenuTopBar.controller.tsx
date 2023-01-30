@@ -41,9 +41,8 @@ export const PRODUCTS_LINKS = [
     disabled: true,
     path: '/dashboard/lending',
   },
-  { name: 'Liquidity Baking', href: 'mavryk.finance/liquidity-baking', path: '/liquidity-baking' },
-  { name: 'Mavryk Bakery (Soon)', href: '/', disabled: true },
-  { name: 'DAO Bakery (Soon)', href: '/', disabled: true },
+  { name: 'Liquidity Baking', href: 'liquidity-baking', path: '/liquidity-baking' },
+  { name: 'Mavryk Bakeries', href: 'bakery', path: '/bakery' },
 ]
 
 export const ABOUT_LINKS = [
@@ -108,7 +107,7 @@ export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
         </Link>
 
         <div className="top-bar-toggler" onClick={() => setShowMobileTopBar(!showMobileTopBar)}>
-          {showMobileTopBar ? <Icon id="close-stroke" /> : <Icon id="mobileTopBarToggler" />}
+          {showMobileTopBar ? <Icon id="close-stroke" /> : <Icon id="burger-menu" />}
         </div>
       </div>
 

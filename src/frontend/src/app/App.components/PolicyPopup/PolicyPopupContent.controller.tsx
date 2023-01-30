@@ -62,7 +62,7 @@ export const PolicyPopupContent = ({ proccedPolicy }: { proccedPolicy: () => voi
       </div>
       <Button
         className="popup_btn LB"
-        icon="okIcon"
+        icon="success"
         kind={PRIMARY}
         onClick={proccedPolicy}
         text="Proceed"

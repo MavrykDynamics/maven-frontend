@@ -109,7 +109,7 @@ const LiquidityBaking = () => {
         <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
         <LiquidityBakingView />
       </LBStyled>
-      <div className="footer-wrap" ref={footerRef}>
+      <div ref={footerRef}>
         <Footer />
       </div>
       <ScrollToTop isVisible={isVisible} />
