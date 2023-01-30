@@ -59,6 +59,7 @@ export function DelegateCard ({
 
             <RoundButton
               className={kind}
+              disabled={tzAddress === delegateAddress}
               onClick={() => onClick(tzAddress)}
             >
               <Icon id='plusDark' />
