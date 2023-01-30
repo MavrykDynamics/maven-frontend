@@ -42,8 +42,7 @@ export const PRODUCTS_LINKS = [
     path: '/dashboard/lending',
   },
   { name: 'Liquidity Baking', href: 'liquidity-baking', path: '/liquidity-baking' },
-  { name: 'Mavryk Bakery', href: 'bakery', path: '/bakery' },
-  { name: 'DAO Bakery (Soon)', href: '/', disabled: true },
+  { name: 'Mavryk Bakeries', href: 'bakery', path: '/bakery' },
 ]
 
 export const ABOUT_LINKS = [
