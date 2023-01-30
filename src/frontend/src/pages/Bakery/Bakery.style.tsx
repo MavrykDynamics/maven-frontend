@@ -361,7 +361,7 @@ export const ButtonStyled = styled(Button)`
   }
 `
 
-export const RoundButton =  styled.div`
+export const RoundButton =  styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -382,6 +382,7 @@ export const RoundButton =  styled.div`
 
   &.actionPrimary {
     background-color: ${({ theme }) => theme.primaryButtonColor};
+    border: 2px solid ${({ theme }) => theme.primaryButtonColor};
 
     svg {
       fill: ${({ theme }) => theme.darkBackroundColor};
@@ -395,6 +396,11 @@ export const RoundButton =  styled.div`
     svg {
       fill: ${({ theme }) => theme.primaryButtonColor};
     }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
   }
 `
 
