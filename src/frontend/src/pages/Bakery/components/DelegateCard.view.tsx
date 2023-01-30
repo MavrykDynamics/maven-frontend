@@ -59,9 +59,7 @@ export function DelegateCard ({
 
             <RoundButton
               className={kind}
-              href={link}
-              target="_blank"
-              rel="noreferrer"
+              onClick={() => onClick(tzAddress)}
             >
               <Icon id='plusDark' />
             </RoundButton>

@@ -361,7 +361,7 @@ export const ButtonStyled = styled(Button)`
   }
 `
 
-export const RoundButton =  styled.a`
+export const RoundButton =  styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -374,6 +374,10 @@ export const RoundButton =  styled.a`
   svg {
     width: 22px;
     height: 22px;
+  }
+  
+  &:hover {
+    opacity: 0.8;
   }
 
   &.actionPrimary {
