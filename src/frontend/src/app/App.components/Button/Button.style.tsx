@@ -71,19 +71,24 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
 
   &.actionPrimary {
     color: ${({ theme }) => theme.containerColor};
-    background-color: ${({ theme }) => theme.actionPrimaryBtnColor};
+    background-color: ${({ theme }) => theme.primaryButtonColor};
   }
 
   &.actionSecondary {
-    color: ${({ theme }) => theme.actionPrimaryBtnColor};
+    color: ${({ theme }) => theme.primaryButtonColor};
     background-color: transparent;
-    border: 2px solid ${({ theme }) => theme.actionPrimaryBtnColor};
+    border: 2px solid ${({ theme }) => theme.primaryButtonColor};
   }
 
   &.LB {
-    color: ${({ theme }) => theme.toggleButtonColorSelected};
     max-width: 400px;
     height: 50px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+
+    color: ${({ theme }) => theme.toggleButtonColorSelected};
     svg {
       stroke: ${({ theme }) => theme.toggleButtonColorSelected};
       fill: ${({ theme }) => theme.toggleButtonColorSelected};
@@ -257,7 +262,7 @@ export const ButtonIcon = styled.svg<{ theme: MavrykTheme }>`
   }
 
   &.actionSecondary {
-    stroke: ${({ theme }) => theme.actionPrimaryBtnColor};
+    stroke: ${({ theme }) => theme.primaryButtonColor};
   }
 `
 

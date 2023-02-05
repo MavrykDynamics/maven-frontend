@@ -28,6 +28,7 @@ export const upColor = '#27AE60'
 export const dangerColor = '#FF8486'
 export const awaitingColor = '#FFCA43'
 export const silverTwoColor = '#CDCDCD'
+export const lightTextColor = '#D0CFD9'
 
 export const darkMode: MavrykTheme = {
   whatMakesBackground: '/images/what-makes-dark.svg',
@@ -39,6 +40,11 @@ export const darkMode: MavrykTheme = {
   teamDecor3: '/images/team/team-decor-3-dark.svg',
   teamDecor4: '/images/team/team-decor-4-dark.svg',
   subscribeBachground: '/images/subscribe-bg-dark.svg',
+  primaryLightMobBg: 'images/background/primary-light-mob-bg.svg',
+  primaryDarkMobBg: 'images/background/primary-dark-mob-bg.svg',
+  primaryLightDesktopBg: 'images/background/primary-light-desktop-bg.svg',
+  primaryDarkDesktopBg: 'images/background/primary-dark-desktop-bg.svg',
+  mavrykFinanceBg: 'images/mavryk-finance.svg',
   starsBachground: '/images/stars-bg-dark.svg',
   satellitesGradient: 'linear-gradient(180deg, #160E3F 3.55%, #321F71 103.84%);',
   skyGradientTransparent:
@@ -89,7 +95,6 @@ export const darkMode: MavrykTheme = {
   topBarLinkColorActive: '#8D86EB',
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
-  actionPrimaryBtnColor: cyanColor,
   tooltipColor: '#9EA9E8',
   selectedColor: cyanColor,
   tooltipBg: '#38237C',
@@ -105,6 +110,20 @@ export const darkMode: MavrykTheme = {
   settingsPopupText: silverTwoColor,
   settingsPopupTextDescr: silverTwoColor,
   theme: 'dark',
+  primaryTextCardColor: '#77A4F2',
+  secondaryTextCardColor: cyanColor,
+  secondaryBgCardColor: headerColor,
+  headingCardColor: subHeaderColor,
+  headingSecondaryCardColor: '#77A4F2',
+  headingThirdCardColor: '#77A4F2',
+  headingFourthCardColor: cyanColor,
+  borderCard: '#503EAA',
+  primaryButtonColor: btnLightColor,
+  sliderBorderColor: '#8D86EB',
+  sliderTextColor: '#8D86EB',
+  sliderBgColor: '#080628',
+  sliderTabBgColor: 'linear-gradient(90deg, #86d4c9 0.31%, #8d86eb 99.97%)',
+  skyColor,
 }
 
 export const lightMode: MavrykTheme = {
@@ -117,6 +136,11 @@ export const lightMode: MavrykTheme = {
   teamDecor3: '/images/team/team-decor-3-light.svg',
   teamDecor4: '/images/team/team-decor-4-light.svg',
   subscribeBachground: '/images/subscribe-bg-light.svg',
+  primaryLightMobBg: 'images/background/primary-light-mob-bg.svg',
+  primaryDarkMobBg: 'images/background/primary-dark-mob-bg.svg',
+  primaryLightDesktopBg: 'images/background/primary-light-desktop-bg.svg',
+  primaryDarkDesktopBg: 'images/background/primary-dark-desktop-bg.svg',
+  mavrykFinanceBg: 'images/mavryk-finance.svg',
   starsBachground: '/images/stars-bg-light.svg',
   satellitesGradient: 'linear-gradient(180deg, #FFFFFF 48.18%, #86D4C9 103.84%)',
   skyGradientTransparent: 'linear-gradient(0deg, #77A4F2 8.7%, #FFFFFF 99.3%)',
@@ -167,7 +191,6 @@ export const lightMode: MavrykTheme = {
   topBarLinkColorActive: '#77A4F2',
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
-  actionPrimaryBtnColor: cyanColor,
   tooltipColor: '#9EA9E8',
   selectedColor: '#77A4F2',
   tooltipBg: '#38237C',
@@ -182,6 +205,20 @@ export const lightMode: MavrykTheme = {
   settingsPopupText: '#27007A',
   settingsPopupTextDescr: '#8D86EB',
   theme: 'light',
+  primaryTextCardColor: headerColor,
+  secondaryTextCardColor: skyColor,
+  secondaryBgCardColor: '#EBF0FF',
+  headingCardColor: '#27007A',
+  headingSecondaryCardColor: '#27007A',
+  headingThirdCardColor: '#38237C',
+  headingFourthCardColor: '#27007A',
+  borderCard: '#503EAA',
+  primaryButtonColor: '#27007A',
+  sliderBorderColor: '#503EAA',
+  sliderTextColor: '#27007A',
+  sliderBgColor: '#EBF0FF',
+  sliderTabBgColor: '#27007A',
+  skyColor,
 }
 
 export const spaceMode: MavrykTheme = {
@@ -194,6 +231,11 @@ export const spaceMode: MavrykTheme = {
   teamDecor3: '/images/team/team-decor-3-dark.svg',
   teamDecor4: '/images/team/team-decor-4-dark.svg',
   subscribeBachground: '/images/subscribe-bg-dark.svg',
+  primaryLightMobBg: 'images/background/primary-light-mob-bg.svg',
+  primaryDarkMobBg: 'images/background/primary-dark-mob-bg.svg',
+  primaryLightDesktopBg: 'images/background/primary-light-desktop-bg.svg',
+  primaryDarkDesktopBg: 'images/background/primary-dark-desktop-bg.svg',
+  mavrykFinanceBg: 'images/mavryk-finance.svg',
   starsBachground: '/images/stars-bg-dark.svg',
   satellitesGradient: 'linear-gradient(180deg, #160E3F 3.55%, #321F71 103.84%);',
   skyGradientTransparent:
@@ -247,7 +289,6 @@ export const spaceMode: MavrykTheme = {
   topBarLinkColorActive: '#8D86EB',
   infoColor: '#00C2FF',
   warningColor: '#FF7A00',
-  actionPrimaryBtnColor: cyanColor,
   tooltipColor: '#9EA9E8',
   tooltipBg: '#38237C',
   priceImpact: cyanColor,
@@ -261,6 +302,20 @@ export const spaceMode: MavrykTheme = {
   headerSkyColor: skyColor,
   settingsPopupText: silverTwoColor,
   settingsPopupTextDescr: silverTwoColor,
+  primaryTextCardColor: '#D0CFD9',
+  secondaryTextCardColor: cyanColor,
+  secondaryBgCardColor: headerColor,
+  headingCardColor: silverTwoColor,
+  headingSecondaryCardColor: '#D0CFD9',
+  headingThirdCardColor: '#77A4F2',
+  headingFourthCardColor: cyanColor,
+  borderCard: '#503EAA',
+  primaryButtonColor: btnLightColor,
+  sliderBorderColor: '#8D86EB',
+  sliderTextColor: '#8D86EB',
+  sliderBgColor: '#080628',
+  sliderTabBgColor: 'linear-gradient(90deg, #86d4c9 0.31%, #8d86eb 99.97%)',
+  skyColor,
 }
 
 export default {
