@@ -3,4 +3,4 @@ dist
 public
 workers-site
 workers
-coverage
+**/Litepaper.markdown.md
