@@ -320,7 +320,7 @@ Any sMVK holder can initiate an emergency governance vote to activate the system
 At Genesis, the Break Glass Council are the same members of the Mavryk Council, that performs operations to develop the Mavryk Finance ecosystem. It is a multi-sig contract with several council members, any of the members can initiate an action and it requires a majority of the multi-sig owners to approve said action. Once the glass is broken, the council has the power to pause/unpause all major entry points (preventing hackers from continuing to siphon funds from the system), change the admins of all of the contracts, update contract lambdas, and more.
 
 It is important to note that the Break Glass council can only take emergency action if it is authorized by vote by a majority of the community.
-~~~~
+
 ### Break Glass: Access Control Layer
 
 Below describes the access control layer for Mavryk Finance smart contracts in 3 different status’. Meaning, who are the admins of each smart contract under which status.
@@ -371,7 +371,7 @@ Revenue is generated through loan interest, admin origination fees, and liquidat
 
 [^(7)]: This fee exists to close a loophole where an owner liquidates himself over and over.
 
-**The interest and liquidation fees are both governable by stakeholders and can be updated by community vote.**
+**The interest, liquidation, and admin origination fees are all governable by stakeholders and can be updated by community vote.**
 
 The revenue is automatically deposited within the Treasury, where a reserve of XTZ, USDT, and EURL is put aside to hedge against extreme market drops which might push at-risk vaults into an under-collateralized ratio so low that it would impossible to liquidate (as no rational investor would pay more money than what the collateral in the vault is worth). The reserve provides stablecoin liquidity to be injected in case of such an event and to maintain overall system stability.
 
