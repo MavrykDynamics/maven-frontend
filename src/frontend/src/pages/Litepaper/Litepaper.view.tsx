@@ -9,7 +9,7 @@ import { LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperMarkdown, Litepa
 import { useDispatch, useSelector } from 'react-redux'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { State } from 'utils/interfaces'
-import { DARK_THEME, toggleRPCNodePopup, LIGHT_THEME } from 'redux/actions/preferences.action'
+import { LIGHT_THEME, toggleRPCNodePopup } from 'redux/actions/preferences.action'
 
 export const LitepaperView = () => {
   const themeSelected = useSelector((state: State) => state.preferences.themeSelected)
@@ -38,39 +38,40 @@ export const LitepaperView = () => {
   useScrollPosition(
     () => {
       // prettier-ignore
-      //@ts-ignore
+      //@ts-ignore/*-//
       setTops({
-                'abstract': document.getElementById('abstract')?.getBoundingClientRect().top!,
-                'problem': document.getElementById('problem')?.getBoundingClientRect().top!,
-                'solution': document.getElementById('solution')?.getBoundingClientRect().top!,
-                'multi-asset-backed-loans': document.getElementById('multi-asset-backed-loans')?.getBoundingClientRect().top!,
-                'usdm-a-multi-collateral-soft-pegged-stablecoin': document.getElementById('usdm-a-multi-collateral-soft-pegged-stablecoin')?.getBoundingClientRect().top!,
-                'instruments-for-maintaining-a-soft-peg-to-usd': document.getElementById('instruments-for-maintaining-a-soft-peg-to-usd')?.getBoundingClientRect().top!,
-                'stability-fee': document.getElementById('stability-fee')?.getBoundingClientRect().top!,
-                'dynamic-savings-rate-dsr': document.getElementById('dynamic-savings-rate-dsr')?.getBoundingClientRect().top!,
-                'liquidations-and-collateral-auctions': document.getElementById('liquidations-and-collateral-auctions')?.getBoundingClientRect().top!,
-                'liquidations': document.getElementById('liquidations')?.getBoundingClientRect().top!,
-                'collateral-auctions': document.getElementById('collateral-auctions')?.getBoundingClientRect().top!,
-                'satellites-governance-and-the-decentralized-oracle': document.getElementById('satellites-governance-and-the-decentralized-oracle')?.getBoundingClientRect().top!,
-                'satellites': document.getElementById('satellites')?.getBoundingClientRect().top!,
-                'governance': document.getElementById('governance')?.getBoundingClientRect().top!,
-                'satellite-delegations': document.getElementById('satellite-delegations')?.getBoundingClientRect().top!,
-                'the-decentralized-oracle': document.getElementById('the-decentralized-oracle')?.getBoundingClientRect().top!,
-                'mvk-and-smvk-doorman-module': document.getElementById('mvk-and-smvk-doorman-module')?.getBoundingClientRect().top!,
-                'what-is-mvk-and-how-does-it-differ-from-smvk': document.getElementById('what-is-mvk-and-how-does-it-differ-from-smvk')?.getBoundingClientRect().top!,
-                'obtaining-smvk': document.getElementById('obtaining-smvk')?.getBoundingClientRect().top!,
-                'converting-smvk-back-to-mvk-exit-fees': document.getElementById('converting-smvk-back-to-mvk-exit-fees')?.getBoundingClientRect().top!,
-                'governance--treasury': document.getElementById('governance--treasury')?.getBoundingClientRect().top!,
-                'decentralization': document.getElementById('decentralization')?.getBoundingClientRect().top!,
-                'voting-power': document.getElementById('voting-power')?.getBoundingClientRect().top!,
-                'voting-with-satellites-electoral-delegates': document.getElementById('voting-with-satellites-electoral-delegates')?.getBoundingClientRect().top!,
-                'treasury': document.getElementById('treasury')?.getBoundingClientRect().top!,
-                'mavryk-council': document.getElementById('mavryk-council')?.getBoundingClientRect().top!,
-                'bootstrapping-liquidity-balancer-style-amm': document.getElementById('bootstrapping-liquidity-balancer-style-amm')?.getBoundingClientRect().top!,
-                'yield-farming': document.getElementById('yield-farming')?.getBoundingClientRect().top!,
-                'tokenomics': document.getElementById('tokenomics')?.getBoundingClientRect().top!,
-                'revenue-model': document.getElementById('revenue-model')?.getBoundingClientRect().top!,
-                'token-flow': document.getElementById('token-flow')?.getBoundingClientRect().top!,
+          'abstract': document.getElementById('abstract')?.getBoundingClientRect().top!,
+          'problem': document.getElementById('problem')?.getBoundingClientRect().top!,
+          'solution': document.getElementById('solution')?.getBoundingClientRect().top!,
+          'multi-asset-backed-loans': document.getElementById('multi-asset-backed-loans')?.getBoundingClientRect().top!,
+          'peer-to-peer-lending': document.getElementById('peer-to-peer-lending')?.getBoundingClientRect().top!,
+          'lending-earning-yield-on-your-assets': document.getElementById('lendings-earning-yield-on-your-assets')?.getBoundingClientRect().top!,
+          'borrowing-single--multi-collateral-vaults': document.getElementById('borrowing-single-multi-collateral-vaults')?.getBoundingClientRect().top!,
+          'multi-collateral-vaults': document.getElementById('multi-collateral-vaults')?.getBoundingClientRect().top!,
+          'liquidations': document.getElementById('liquidations')?.getBoundingClientRect().top!,
+          'satellites-governance-and-the-decentralized-oracle': document.getElementById('satellites-governance-and-the-decentralized-oracle')?.getBoundingClientRect().top!,
+          'satellites': document.getElementById('satellites')?.getBoundingClientRect().top!,
+          'governance': document.getElementById('governance')?.getBoundingClientRect().top!,
+          'satellite-delegations': document.getElementById('satellite-delegations')?.getBoundingClientRect().top!,
+          'the-decentralized-oracle': document.getElementById('the-decentralized-oracle')?.getBoundingClientRect().top!,
+          'mvk-and-smvk-doorman-module': document.getElementById('mvk-and-smvk-doorman-module')?.getBoundingClientRect().top!,
+          'what-is-mvk-and-how-does-it-differ-from-smvk': document.getElementById('what-is-mvk-and-how-does-it-differ-from-smvk')?.getBoundingClientRect().top!,
+          'obtaining-smvk': document.getElementById('obtaining-smvk')?.getBoundingClientRect().top!,
+          'converting-smvk-back-to-mvk-exit-fees': document.getElementById('converting-smvk-back-to-mvk-exit-fees')?.getBoundingClientRect().top!,
+          'governance--treasury': document.getElementById('governance--treasury')?.getBoundingClientRect().top!,
+          'decentralization': document.getElementById('decentralization')?.getBoundingClientRect().top!,
+          'voting-power': document.getElementById('voting-power')?.getBoundingClientRect().top!,
+          'voting-with-satellites-electoral-delegates': document.getElementById('voting-with-satellites-electoral-delegates')?.getBoundingClientRect().top!,
+          'treasury': document.getElementById('treasury')?.getBoundingClientRect().top!,
+          'mavryk-council': document.getElementById('mavryk-council')?.getBoundingClientRect().top!,
+          'emergency-governance--break-glass': document.getElementById('emergency-governance--break-glass')?.getBoundingClientRect().top!,
+          'emergency-governance': document.getElementById('emergency-governance')?.getBoundingClientRect().top!,
+          'break-glass-council': document.getElementById('break-glass-council')?.getBoundingClientRect().top!,
+          'break-glass-access-control-layer': document.getElementById('break-glass-access-control-layer')?.getBoundingClientRect().top!,
+          'yield-farming': document.getElementById('yield-farming')?.getBoundingClientRect().top!,
+          'tokenomics': document.getElementById('tokenomics')?.getBoundingClientRect().top!,
+          'revenue-model': document.getElementById('revenue-model')?.getBoundingClientRect().top!,
+          'token-flow': document.getElementById('token-flow')?.getBoundingClientRect().top!,
             })
     },
     [],
@@ -115,7 +116,6 @@ export const LitepaperView = () => {
                 </HashLink>
               </LitepaperLink>
             </li>
-
             <li>
               <LitepaperLink selected={tops['solution'] <= 110 && tops['multi-asset-backed-loans'] > 110}>
                 <HashLink
@@ -132,12 +132,7 @@ export const LitepaperView = () => {
               </LitepaperLink>
             </li>
             <li>
-              <LitepaperLink
-                selected={
-                  tops['multi-asset-backed-loans'] <= 110 &&
-                  tops['usdm-a-multi-collateral-soft-pegged-stablecoin'] > 110
-                }
-              >
+              <LitepaperLink selected={tops['multi-asset-backed-loans'] <= 110 && tops['peer-to-peer-lending'] > 110}>
                 <HashLink
                   to="#multi-asset-backed-loans"
                   scroll={(el) =>
@@ -153,13 +148,10 @@ export const LitepaperView = () => {
               <ul className="nav">
                 <li>
                   <LitepaperLink
-                    selected={
-                      tops['usdm-a-multi-collateral-soft-pegged-stablecoin'] <= 110 &&
-                      tops['instruments-for-maintaining-a-soft-peg-to-usd'] > 110
-                    }
+                    selected={tops['peer-to-peer-lending'] <= 110 && tops['lending-earning-yield-on-your-assets'] > 110}
                   >
                     <HashLink
-                      to="#usdm-a-multi-collateral-soft-pegged-stablecoin"
+                      to="#peer-to-peer-lending"
                       scroll={(el) =>
                         window.scrollTo({
                           behavior: 'smooth',
@@ -167,18 +159,19 @@ export const LitepaperView = () => {
                         })
                       }
                     >
-                      USDM: A Multi-Collateral Soft-Pegged Stablecoin
+                      Peer To Peer Lending
                     </HashLink>
                   </LitepaperLink>
                 </li>
                 <li>
                   <LitepaperLink
                     selected={
-                      tops['instruments-for-maintaining-a-soft-peg-to-usd'] <= 110 && tops['stability-fee'] > 110
+                      tops['lending-earning-yield-on-your-assets'] <= 110 &&
+                      tops['borrowing-single--multi-collateral-vaults'] > 110
                     }
                   >
                     <HashLink
-                      to="#instruments-for-maintaining-a-soft-peg-to-usd"
+                      to="#lending-earning-yield-on-your-assets"
                       scroll={(el) =>
                         window.scrollTo({
                           behavior: 'smooth',
@@ -186,33 +179,18 @@ export const LitepaperView = () => {
                         })
                       }
                     >
-                      Instruments For Maintaining A Soft Peg To USD
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink selected={tops['stability-fee'] <= 110 && tops['dynamic-savings-rate-dsr'] > 110}>
-                    <HashLink
-                      to="#stability-fee"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Stability Fee
+                      Lending: Earning Yield on Your Assets
                     </HashLink>
                   </LitepaperLink>
                 </li>
                 <li>
                   <LitepaperLink
                     selected={
-                      tops['dynamic-savings-rate-dsr'] <= 110 && tops['liquidations-and-collateral-auctions'] > 110
+                      tops['borrowing-single--multi-collateral-vaults'] <= 110 && tops['multi-collateral-vaults'] > 110
                     }
                   >
                     <HashLink
-                      to="#dynamic-savings-rate-dsr"
+                      to="#borrowing-single--multi-collateral-vaults"
                       scroll={(el) =>
                         window.scrollTo({
                           behavior: 'smooth',
@@ -220,31 +198,31 @@ export const LitepaperView = () => {
                         })
                       }
                     >
-                      Dynamic Savings Rate (DSR)
+                      Borrowing: Single & Multi-Collateral Vaults
                     </HashLink>
                   </LitepaperLink>
                 </li>
-              </ul>
-            </li>
-            <li>
-              <LitepaperLink
-                selected={tops['liquidations-and-collateral-auctions'] <= 110 && tops['liquidations'] > 110}
-              >
-                <HashLink
-                  to="#liquidations-and-collateral-auctions"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Liquidations and Collateral Auctions
-                </HashLink>
-              </LitepaperLink>
-              <ul className="nav">
                 <li>
-                  <LitepaperLink selected={tops['liquidations'] <= 110 && tops['collateral-auctions'] > 110}>
+                  <LitepaperLink selected={tops['multi-collateral-vaults'] <= 110 && tops['liquidations'] > 110}>
+                    <HashLink
+                      to="#multi-collateral-vaults"
+                      scroll={(el) =>
+                        window.scrollTo({
+                          behavior: 'smooth',
+                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
+                        })
+                      }
+                    >
+                      Multi-Collateral Vaults
+                    </HashLink>
+                  </LitepaperLink>
+                </li>
+                <li>
+                  <LitepaperLink
+                    selected={
+                      tops['liquidations'] <= 110 && tops['satellites-governance-and-the-decentralized-oracle'] > 110
+                    }
+                  >
                     <HashLink
                       to="#liquidations"
                       scroll={(el) =>
@@ -255,26 +233,6 @@ export const LitepaperView = () => {
                       }
                     >
                       Liquidations
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={
-                      tops['collateral-auctions'] <= 110 &&
-                      tops['satellites-governance-and-the-decentralized-oracle'] > 110
-                    }
-                  >
-                    <HashLink
-                      to="#collateral-auctions"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Collateral Auctions
                     </HashLink>
                   </LitepaperLink>
                 </li>
@@ -523,7 +481,7 @@ export const LitepaperView = () => {
             </li>
             <li>
               <LitepaperLink
-                selected={tops['mavryk-council'] <= 110 && tops['bootstrapping-liquidity-balancer-style-amm'] > 110}
+                selected={tops['mavryk-council'] <= 110 && tops['emergency-governance--break-glass'] > 110}
               >
                 <HashLink
                   to="#mavryk-council"
@@ -540,10 +498,10 @@ export const LitepaperView = () => {
             </li>
             <li>
               <LitepaperLink
-                selected={tops['bootstrapping-liquidity-balancer-style-amm'] <= 110 && tops['yield-farming'] > 110}
+                selected={tops['emergency-governance--break-glass'] <= 110 && tops['emergency-governance'] > 110}
               >
                 <HashLink
-                  to="#bootstrapping-liquidity-balancer-style-amm"
+                  to="#emergency-governance--break-glass"
                   scroll={(el) =>
                     window.scrollTo({
                       behavior: 'smooth',
@@ -551,9 +509,60 @@ export const LitepaperView = () => {
                     })
                   }
                 >
-                  Bootstrapping Liquidity (Balancer Style AMM)
+                  Emergency Governance & Break Glass
                 </HashLink>
               </LitepaperLink>
+              <ul className="nav">
+                <li>
+                  <LitepaperLink selected={tops['emergency-governance'] <= 110 && tops['break-glass-council'] > 110}>
+                    <HashLink
+                      to="#emergency-governance"
+                      scroll={(el) =>
+                        window.scrollTo({
+                          behavior: 'smooth',
+                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
+                        })
+                      }
+                    >
+                      Emergency Governance
+                    </HashLink>
+                  </LitepaperLink>
+                </li>
+                <li>
+                  <LitepaperLink
+                    selected={tops['break-glass-council'] <= 110 && tops['break-glass-access-control-layer'] > 110}
+                  >
+                    <HashLink
+                      to="#break-glass-council"
+                      scroll={(el) =>
+                        window.scrollTo({
+                          behavior: 'smooth',
+                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
+                        })
+                      }
+                    >
+                      Break Glass Council
+                    </HashLink>
+                  </LitepaperLink>
+                </li>
+                <li>
+                  <LitepaperLink
+                    selected={tops['break-glass-access-control-layer'] <= 110 && tops['yield-farming'] > 110}
+                  >
+                    <HashLink
+                      to="#break-glass-access-control-layer"
+                      scroll={(el) =>
+                        window.scrollTo({
+                          behavior: 'smooth',
+                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
+                        })
+                      }
+                    >
+                      Break Glass: Access Control Layer
+                    </HashLink>
+                  </LitepaperLink>
+                </li>
+              </ul>
             </li>
             <li>
               <LitepaperLink selected={tops['yield-farming'] <= 110 && tops['tokenomics'] > 110}>
