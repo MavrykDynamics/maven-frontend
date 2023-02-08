@@ -329,7 +329,24 @@ Below describes the access control layer for Mavryk Finance smart contracts in 3
 2. During Break Glass and the different stages of it
 3. Upgrading - upgrades from governance decisions
 
-![access-control-layer.png](/images/access-control-layer.png)
+![acl-normal.png](/images/acl-normal.png)
+<center><i>
+Outline of Mavryk Finance's Access control layer under normal conditions
+</i></center>
+
+
+![acl-break-glass.png](/images/acl-break-glass.png)
+<center><i>
+Outline of Mavryk Finance's Access control layer during the Break Glass process
+</i></center>
+
+
+![acl-upgrade.png](/images/acl-upgrade.png)
+<center><i>
+Outline of Mavryk Finance's Access control layer during the contract upgrade process
+</i></center>
+
+
 
 ## Yield Farming
 
