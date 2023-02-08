@@ -26,6 +26,7 @@ import { useMedia } from 'react-use'
 import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { getFullNumber } from '../../../../../utils/utils'
+import { log } from 'console'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -111,11 +112,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
     setInputValues(DEFAULT_COINS_AMOUNT)
   }, [ready])
 
-  useEffect(() => {
-    const new_tzBTC_for_1_xtz = Number(coinPrices.tezos.usd) / Number(coinPrices.tzbtc.usd)
-    setExchangeRate(isNaN(new_tzBTC_for_1_xtz) ? 0 : new_tzBTC_for_1_xtz)
-  }, [coinPrices.tzbtc.usd])
-
   const calculateTokenToXtz = (amount: number) => {
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
 
@@ -139,9 +135,13 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       convertedSlippagePercentToValue,
       dexType,
     )
-
-    return { tzBTCValue: expected, minimum, priceImpact, rate: amount !== 0 ? rate : Number(coinPrices.tzbtc.usd) }
+    return { tzBTCValue: expected, minimum, priceImpact, rate: amount !== 0 ? rate : exchangeRate }
   }
+
+  useEffect(() => {
+    const { rate } = calculateXtzToToken(1)
+    setExchangeRate(rate)
+  }, [generalDexStats])
 
   // handle slippage value changing
   const slippageChangeHandler = (value: string | number, isInput?: boolean) => {
