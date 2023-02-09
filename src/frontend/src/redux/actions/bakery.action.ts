@@ -102,7 +102,7 @@ export const getDelegates = () => async (dispatch: AppDispatch, getState: GetSta
   }
 }
 
-export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch, getState: GetState) => {
+export const delegation = (bakerAddress: string, setTimerId: (id: NodeJS.Timeout) => void) => async (dispatch: AppDispatch, getState: GetState) => {
   const state: State = getState()
   const { accountPkh = '' } = state.wallet
 
@@ -133,8 +133,6 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
       await dispatch(toggleLoader(ROCKET_LOADER))
       await dispatch(showToaster(INFO, 'Delegation', 'Please wait 30s...'))
 
-      // TODO: find a better way to do this
-      // TODO: add clear timer
       let count = 0
       const checkConfirmartion = () => {
         const timerId = setTimeout(async () => {
@@ -156,6 +154,8 @@ export const delegation = (bakerAddress: string) => async (dispatch: AppDispatch
           await dispatch(toggleLoader())
           await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
         }, 10000)
+
+        setTimerId(timerId)
       }
 
       checkConfirmartion()
