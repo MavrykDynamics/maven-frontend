@@ -53,28 +53,28 @@ export const getAccountByAddress = async (bakerAddress: string): Promise<Account
   } catch {
     return {
       delegate: {
-        address: null
-      }
+        address: null,
+      },
     }
   }
 }
- 
+
 export const getDelegates = () => async (dispatch: AppDispatch, getState: GetState) => {
   const state: State = getState()
   const { accountPkh } = state.wallet
 
   try {
-    const values = accountPkh 
-    ? await Promise.all([
-      getBakeryDelegateData(delegateCardData[0].tzAddress),
-      getBakeryDelegateData(delegateCardData[1].tzAddress),
-      getAccountByAddress(accountPkh)
-    ])
-    : await Promise.all([
-      getBakeryDelegateData(delegateCardData[0].tzAddress),
-      getBakeryDelegateData(delegateCardData[1].tzAddress),
-    ])
-    
+    const values = accountPkh
+      ? await Promise.all([
+          getBakeryDelegateData(delegateCardData[0].tzAddress),
+          getBakeryDelegateData(delegateCardData[1].tzAddress),
+          getAccountByAddress(accountPkh),
+        ])
+      : await Promise.all([
+          getBakeryDelegateData(delegateCardData[0].tzAddress),
+          getBakeryDelegateData(delegateCardData[1].tzAddress),
+        ])
+
     const availableXtzSpaces = values.slice(0, 2) as BakeryDelegateDataType[]
     const account = values.slice(2)[0] as AccountType
 
@@ -89,7 +89,7 @@ export const getDelegates = () => async (dispatch: AppDispatch, getState: GetSta
       return {
         ...item,
         availableXtzSpace: getFreeSpace(availableXtzSpaces[index]),
-        delegateAddress: account.delegate.address
+        delegateAddress: account.delegate.address,
       }
     })
 
@@ -98,71 +98,72 @@ export const getDelegates = () => async (dispatch: AppDispatch, getState: GetSta
       delegates,
     })
   } catch (error) {
-    console.log('getDelegates', error);
+    console.log('getDelegates', error)
   }
 }
 
-export const delegation = (bakerAddress: string, setTimerId: (id: NodeJS.Timeout) => void) => async (dispatch: AppDispatch, getState: GetState) => {
-  const state: State = getState()
-  const { accountPkh = '' } = state.wallet
+export const delegation =
+  (bakerAddress: string) =>
+  async (dispatch: AppDispatch, getState: GetState): Promise<NodeJS.Timeout | null> => {
+    const {
+      wallet: { wallet, accountPkh },
+      loading,
+    }: State = getState()
 
-  if (!state.wallet.ready) {
-    dispatch(showToaster(ERROR, 'Please connect your wallet', 'Click Connect in the left menu'))
-    return
-  }
+    if (!accountPkh || !wallet) {
+      dispatch(showToaster(ERROR, 'Please connect your wallet', 'Click Connect in the left menu'))
+      return null
+    }
 
-  if (state.loading) {
-    dispatch(showToaster(ERROR, 'Cannot send transaction', 'Previous transaction still pending...'))
-    return
-  }
+    if (loading) {
+      dispatch(showToaster(ERROR, 'Cannot send transaction', 'Previous transaction still pending...'))
+      return null
+    }
 
-  try {
-    const wallet = new BeaconWallet(WalletOptions)
-    const walletResponse = await checkIfWalletIsConnected(wallet)
+    try {
+      const acttiveAcc = await wallet.client.getActiveAccount()
+      if (acttiveAcc) {
+        await wallet.client.requestOperation({
+          operationDetails: [
+            {
+              kind: TezosOperationType.DELEGATION,
+              delegate: bakerAddress,
+            },
+          ],
+        })
 
-    if (walletResponse) {
-      await wallet.client.requestOperation({
-        operationDetails: [
-          {
-            kind: TezosOperationType.DELEGATION,
-            delegate: bakerAddress,
-          },
-        ],
-      })
+        await dispatch(toggleLoader(ROCKET_LOADER))
+        await dispatch(showToaster(INFO, 'Delegation', 'Please wait 30s...'))
 
-      await dispatch(toggleLoader(ROCKET_LOADER))
-      await dispatch(showToaster(INFO, 'Delegation', 'Please wait 30s...'))
+        let count = 0
+        const checkConfirmartion = () =>
+          setTimeout(async () => {
+            count++
+            const accountData = await getAccountByAddress(accountPkh)
+            if (count > 4) {
+              await dispatch(toggleLoader())
+              dispatch(showToaster(ERROR, 'Error', 'Delegation data not updated'))
+              return
+            }
 
-      let count = 0
-      const checkConfirmartion = () => {
-        const timerId = setTimeout(async () => {
-          count++
-          const accountData = await getAccountByAddress(accountPkh)
+            if (accountData.delegate.address !== bakerAddress) {
+              checkConfirmartion()
+              return
+            }
 
-          if (count > 4) {
+            await dispatch(getDelegates())
             await dispatch(toggleLoader())
-            dispatch(showToaster(ERROR, 'Error', 'Delegation data not updated'))
-            return
-          }
+            await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
+          }, 10000)
 
-          if (accountData.delegate.address !== bakerAddress) {
-            checkConfirmartion()
-            return
-          }
-
-          await dispatch(getDelegates())
-          await dispatch(toggleLoader())
-          await dispatch(showToaster(SUCCESS, 'Successful delegation', 'All good :)'))
-        }, 10000)
-
-        setTimerId(timerId)
+        return checkConfirmartion()
       }
 
-      checkConfirmartion()
+      return null
+    } catch (error: any) {
+      console.error(`Failed delegation:`, error)
+      dispatch(showToaster(ERROR, 'Error', error.message))
+      dispatch(toggleLoader())
+      return null
     }
-  } catch (error: any) {
-    console.error(`Failed delegation:`, error)
-    dispatch(showToaster(ERROR, 'Error', error.message))
-    dispatch(toggleLoader())
   }
-}
