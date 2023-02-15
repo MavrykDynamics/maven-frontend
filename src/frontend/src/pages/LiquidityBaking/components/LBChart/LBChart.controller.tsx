@@ -1,13 +1,17 @@
+import { useCallback, useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useMedia } from 'react-use'
+
+import { toogleChartInterval, toogleChartType } from 'redux/actions/chart.action'
+import { IntervalType, State } from 'utils/interfaces'
+import themeColors from 'styles/colors'
+
 import { Button } from 'app/App.components/Button/Button.controller'
 import { Chart } from 'app/App.components/Chart/Chart.view'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
+
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useMedia } from 'react-use'
-import { toogleChartInterval, toogleChartType } from 'redux/actions/chart.action'
-import { IntervalType, State } from 'utils/interfaces'
 import { ChartStyled } from './LBChart.style'
 
 const intervalData = [
@@ -41,13 +45,12 @@ export const LBChart = ({
   returnBackToActionScreenHandler?: () => void
 }) => {
   const { chartDataCandlestick, chartDataArea, chartInterval, chartType } = useSelector((state: State) => state.chart)
+  const { themeSelected } = useSelector((state: State) => state.preferences)
   const LAST_CHART_COMPARE_VALUE = useMemo(
     () => chartDataArea.at(-1)?.value || chartDataCandlestick.at(-1)?.close || 0,
     [chartDataArea, chartDataCandlestick],
   )
   const dispatch = useDispatch()
-
-  const showSmall = useMedia('(max-width: 700px)')
 
   const changeIntervalHandler = useCallback(async (newInterval: IntervalType) => {
     await dispatch(toogleChartInterval(newInterval))
@@ -102,7 +105,12 @@ export const LBChart = ({
               XTZ/tzBTC (Sirius)
             </CustomizedText>
             <CustomizedText fontSize={14} fontWidth={600} className="value">
-              <CommaNumber value={LAST_CHART_COMPARE_VALUE} endingIconName="tezosAsset" />
+              <CommaNumber
+                value={LAST_CHART_COMPARE_VALUE}
+                endingIconName="tezosAsset"
+                showDecimal
+                decimalsToShow={6}
+              />
             </CustomizedText>
           </div>
         </div>
@@ -114,9 +122,18 @@ export const LBChart = ({
           className="lb-chart"
           data={chartType === 'area' ? chartDataArea : chartDataCandlestick}
           settings={{
-            height: isMobileMax && isMobileMin ? 420 : 500,
+            height: isMobileMax && isMobileMin ? 410 : 500,
+            xAsisTimeFormat: chartInterval === 'quotes1dNogaps' || chartInterval === 'quotes1w' ? 'DD/MM' : 'HH:mm',
+          }}
+          colors={{
+            lineColor: '#86D4C9',
+            areaTopColor: '#86D4C9',
+            areaBottomColor: 'rgba(119, 164, 242, 0)',
+            textColor: themeColors[themeSelected].primaryTextCardColor,
+            borderColor: 'transparent',
           }}
           chartType={chartType}
+          tooltipAsset={'tzBTC'}
         />
       ) : null}
 

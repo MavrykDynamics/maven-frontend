@@ -28,17 +28,17 @@ export const normalizeChartData = (chartData: Array<ChartPoint>) => {
   const parsedChartDataToCandlestick = chartData
     .map((chartPoint: ChartPoint) => ({
       time: new Date(chartPoint.bucket).getTime() as UTCTimestamp,
-      open: parseFloat(chartPoint.open),
-      close: parseFloat(chartPoint.close),
-      high: parseFloat(chartPoint.high),
-      low: parseFloat(chartPoint.low),
+      open: 1 / parseFloat(chartPoint.open),
+      close: 1 / parseFloat(chartPoint.close),
+      high: 1 / parseFloat(chartPoint.high),
+      low: 1 / parseFloat(chartPoint.low),
     }))
     .sort((first, second) => first.time - second.time)
 
   const parsedChartDataToArea = chartData
     .map((chartPoint: ChartPoint) => ({
       time: new Date(chartPoint.bucket).getTime() as UTCTimestamp,
-      value: parseFloat(chartPoint.close),
+      value: 1 / parseFloat(chartPoint.close),
     }))
     .sort((first, second) => first.time - second.time)
 

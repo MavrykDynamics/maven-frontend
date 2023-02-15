@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { createChart, ColorType, BusinessDay, UTCTimestamp, BarPrices } from 'lightweight-charts'
+import { createChart, ColorType, BusinessDay, UTCTimestamp, BarData } from 'lightweight-charts'
 
 // styles
 import { ChartStyled } from './Chart.style'
@@ -15,9 +15,10 @@ import { ChartNormalizerType } from 'utils/interfaces'
 export const TradingViewCandleChart = ({
   data,
   colors: { textColor = lightTextColor, borderColor = headerColor } = {},
-  settings: { height, hideXAxis, hideYAxis },
+  settings: { height, hideXAxis, hideYAxis, xAsisTimeFormat },
   className,
-}: TradingViewChartBaseProps & { data: ChartNormalizerType['candlestick'] }) => {
+  tooltipAsset,
+}: TradingViewChartBaseProps & { data: ChartNormalizerType['candlestick']; tooltipAsset: string }) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null)
   const mainChartWrapperRef = useRef<HTMLDivElement | null>(null)
   const [tooltipValue, setTooltipValue] = useState<TooltipPropsType>({
@@ -49,7 +50,7 @@ export const TradingViewCandleChart = ({
       localization: {
         locale: 'en-US',
         timeFormatter: (time: BusinessDay | UTCTimestamp) => {
-          return parseDate({ time: Number(time), timeFormat: 'HH:mm' }) ?? ''
+          return parseDate({ time: Number(time), timeFormat: xAsisTimeFormat }) ?? ''
         },
       },
       ...(hideXAxis
@@ -72,7 +73,7 @@ export const TradingViewCandleChart = ({
     })
 
     // Setting the border color for the vertical axis
-    chart.priceScale().applyOptions({
+    chart.priceScale('right').applyOptions({
       borderColor,
       scaleMargins: {
         top: 0.1,
@@ -85,7 +86,7 @@ export const TradingViewCandleChart = ({
       borderColor,
       visible: true,
       tickMarkFormatter: (time: UTCTimestamp | BusinessDay) => {
-        return parseDate({ time: Number(time), timeFormat: 'HH:mm' }) ?? ''
+        return parseDate({ time: Number(time), timeFormat: xAsisTimeFormat }) ?? ''
       },
       fixLeftEdge: true,
       fixRightEdge: true,
@@ -102,7 +103,7 @@ export const TradingViewCandleChart = ({
       priceFormat: {
         type: 'custom',
         minMove: 0.000000001,
-        formatter: (price: any) => formatNumber(true, 2, parseFloat(price)),
+        formatter: (price: any) => formatNumber(true, 6, parseFloat(price)),
       },
     })
 
@@ -122,8 +123,8 @@ export const TradingViewCandleChart = ({
           mainChartWrapperRef.current.style.setProperty('--translateY', '0')
         }
       } else {
-        const bar = param.seriesPrices.get(series)
-        const barAmount = isExtendedChartPlot(bar) ? bar?.close : bar
+        const bar = param.seriesData.get(series)
+        const barAmount = isExtendedChartPlot(bar) ? bar?.close : 0
         // set tooltip values
         setTooltipValue({
           ...tooltipValue,
@@ -149,11 +150,9 @@ export const TradingViewCandleChart = ({
   return (
     <ChartStyled className={className} ref={mainChartWrapperRef}>
       <div ref={chartContainerRef} />
-      <TradingViewTooltip amount={tooltipValue.amount} date={tooltipValue.date} />
+      <TradingViewTooltip amount={tooltipValue.amount} date={tooltipValue.date} asset={tooltipAsset} />
     </ChartStyled>
   )
 }
 
-const isExtendedChartPlot = (plot: any): plot is BarPrices => {
-  return plot.close
-}
+const isExtendedChartPlot = (plot: any): plot is BarData => plot.close

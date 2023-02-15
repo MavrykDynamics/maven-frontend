@@ -20,14 +20,6 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
     border: none;
     padding-top: 0;
 
-    .chart-wrapper {
-      width: 100%;
-
-      @media screen and (max-width: 570px) {
-        width: 105%;
-      }
-    }
-
     .chart-controlls {
       align-items: center;
 
@@ -43,6 +35,12 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
         padding: 0 10px 0 15px;
       }
     }
+
+    @media screen and (max-width: 769px) {
+      .chart-controlls {
+        margin-bottom: 10px;
+      }
+    }
   }
 
   .right-wrapper-mobile {
@@ -50,6 +48,7 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
     display: flex;
     justify-content: flex-end;
     column-gap: 15px;
+    margin-top: 10px;
 
     .chart-toggler {
       margin: 0;
@@ -122,57 +121,6 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
           color: ${({ theme }) => theme.priceImpact};
         }
       }
-    }
-  }
-
-  .chart-wrapper {
-    height: 518px;
-    width: 97%;
-
-    .react-stockcharts-tooltip-content {
-      display: flex;
-      flex-direction: column;
-    }
-
-    > div {
-      height: 550px !important;
-      min-height: 550px !important;
-
-      .apexcharts-tooltip {
-        background: ${({ theme }) => theme.chartTooltipBg};
-        border: 1px solid ${({ theme }) => theme.selectedColor};
-        border-radius: 10px;
-        padding: 6px 9px;
-        display: flex;
-        flex-direction: column;
-        row-gap: 5px;
-      }
-
-      .apexcharts-toolbar {
-        top: -8px !important;
-      }
-    }
-
-    #apexchartscandlestickChart {
-      width: 100% !important;
-      height: 100% !important;
-
-      svg {
-        width: 100% !important;
-        height: 100% !important;
-      }
-    }
-
-    @media screen and (max-width: 770px) {
-      height: 430px;
-      > div {
-        height: 430px !important;
-        min-height: 430px !important;
-      }
-    }
-
-    @media screen and (max-width: 550px) {
-      height: 518px;
     }
   }
 `

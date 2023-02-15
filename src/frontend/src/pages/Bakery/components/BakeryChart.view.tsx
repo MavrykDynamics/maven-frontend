@@ -57,8 +57,10 @@ export function BakeryChart({ chartData }: Props) {
           height: 100,
           hideYAxis: true,
           hideTooltip: true,
+          xAsisTimeFormat: 'HH:mm',
         }}
         chartType={'area'}
+        tooltipAsset={'MVK'}
       />
     </BakeryChartStyled>
   )

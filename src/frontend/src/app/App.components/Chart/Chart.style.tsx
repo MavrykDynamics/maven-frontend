@@ -61,6 +61,10 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
 
   &.lb-chart {
     padding: 0 10px 0 30px;
+
+    @media screen and (max-width: 769px) {
+      padding: 0;
+    }
   }
 `
 
@@ -80,10 +84,6 @@ export const TradingViewTooltipStyled = styled.div<{ theme: MavrykTheme }>`
   transform: translate(calc(var(--translateX, 0) * 1px), calc(var(--translateY, 0px) * 1px));
   opacity: var(--translateX, 0);
   pointer-events: none;
-
-  &.hide {
-    visibility: hidden;
-  }
 
   .value {
     p {

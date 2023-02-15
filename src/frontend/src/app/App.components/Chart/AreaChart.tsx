@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { createChart, ColorType, BusinessDay, UTCTimestamp } from 'lightweight-charts'
+import { createChart, ColorType, BusinessDay, UTCTimestamp, LineData } from 'lightweight-charts'
 
 // styles
 import { ChartStyled } from './Chart.style'
@@ -21,9 +21,10 @@ export const TradingViewAreaChart = ({
     textColor = lightTextColor,
     borderColor = headerColor,
   } = {},
-  settings: { height, hideXAxis, hideYAxis },
+  settings: { height, hideXAxis, hideYAxis, xAsisTimeFormat },
   className,
-}: TradingViewChartBaseProps & { data: ChartNormalizerType['area'] }) => {
+  tooltipAsset,
+}: TradingViewChartBaseProps & { data: ChartNormalizerType['area']; tooltipAsset: string }) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null)
   const mainChartWrapperRef = useRef<HTMLDivElement | null>(null)
   const [tooltipValue, setTooltipValue] = useState<TooltipPropsType>({
@@ -55,7 +56,7 @@ export const TradingViewAreaChart = ({
       localization: {
         locale: 'en-US',
         timeFormatter: (time: BusinessDay | UTCTimestamp) => {
-          return parseDate({ time: Number(time), timeFormat: 'HH:mm' }) ?? ''
+          return parseDate({ time: Number(time), timeFormat: xAsisTimeFormat }) ?? ''
         },
       },
       ...(hideXAxis
@@ -78,7 +79,7 @@ export const TradingViewAreaChart = ({
     })
 
     // Setting the border color for the vertical axis
-    chart.priceScale().applyOptions({
+    chart.priceScale('right').applyOptions({
       borderColor,
       scaleMargins: {
         top: 0.1,
@@ -91,7 +92,7 @@ export const TradingViewAreaChart = ({
       borderColor,
       visible: true,
       tickMarkFormatter: (time: UTCTimestamp | BusinessDay) => {
-        return parseDate({ time: Number(time), timeFormat: 'HH:mm' }) ?? ''
+        return parseDate({ time: Number(time), timeFormat: xAsisTimeFormat }) ?? ''
       },
       fixRightEdge: true,
       fixLeftEdge: true,
@@ -109,7 +110,7 @@ export const TradingViewAreaChart = ({
       priceFormat: {
         type: 'custom',
         minMove: 0.000000001,
-        formatter: (price: any) => formatNumber(true, 2, parseFloat(price)),
+        formatter: (price: any) => formatNumber(true, 6, parseFloat(price)),
       },
     })
 
@@ -129,11 +130,13 @@ export const TradingViewAreaChart = ({
           mainChartWrapperRef.current.style.setProperty('--translateY', '0')
         }
       } else {
+        const bar = param.seriesData.get(series)
+        const barAmount = isLinehartPlot(bar) ? bar?.value : 0
         // set tooltip values
         setTooltipValue({
           ...tooltipValue,
           date: parseDate({ time: Number(param.time), timeFormat: 'MMM DD, HH:mm Z' }) ?? '',
-          amount: Number(param.seriesPrices.get(series)),
+          amount: parseFloat(String(barAmount)),
         })
         if (mainChartWrapperRef.current) {
           mainChartWrapperRef.current.style.setProperty('--translateX', `${param.point.x + 15}`)
@@ -154,7 +157,9 @@ export const TradingViewAreaChart = ({
   return (
     <ChartStyled className={className} ref={mainChartWrapperRef}>
       <div ref={chartContainerRef} />
-      <TradingViewTooltip amount={tooltipValue?.amount} date={tooltipValue?.date} />
+      <TradingViewTooltip amount={tooltipValue?.amount} date={tooltipValue?.date} asset={tooltipAsset} />
     </ChartStyled>
   )
 }
+
+const isLinehartPlot = (plot: any): plot is LineData => plot.value

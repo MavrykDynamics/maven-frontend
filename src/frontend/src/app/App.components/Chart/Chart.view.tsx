@@ -9,18 +9,6 @@ import { TradingViewAreaChart } from './AreaChart'
 import { TradingViewCandleChart } from './CandleChart'
 import { ChartNormalizerType, ChartTypeType } from 'utils/interfaces'
 
-import { useEffect, useRef, useState } from 'react'
-import { createChart, ColorType, BusinessDay, UTCTimestamp, BarPrices } from 'lightweight-charts'
-
-// styles
-import { ChartStyled } from './Chart.style'
-
-// helpers
-import { parseDate } from 'utils/time'
-
-import { formatNumber } from '../CommaNumber/CommaNumber.controller'
-import { headerColor, lightTextColor } from 'styles'
-
 export type TradingViewChartBaseProps = {
   colors?: {
     lineColor?: string
@@ -34,6 +22,7 @@ export type TradingViewChartBaseProps = {
     hideTooltip?: boolean
     hideXAxis?: boolean
     hideYAxis?: boolean
+    xAsisTimeFormat: 'HH:mm' | 'DD/MM'
   }
   className?: string
 }
@@ -43,7 +32,7 @@ export type TooltipPropsType = {
   date?: string | number
 }
 
-export const TradingViewTooltip = ({ amount, date }: TooltipPropsType) => {
+export const TradingViewTooltip = ({ amount, date, asset }: TooltipPropsType & { asset: string }) => {
   if (amount === undefined || date === undefined) {
     return null
   }
@@ -51,7 +40,7 @@ export const TradingViewTooltip = ({ amount, date }: TooltipPropsType) => {
   return (
     <TradingViewTooltipStyled>
       <div className="value">
-        <CommaNumber endingText="MVK" value={amount} />
+        <CommaNumber endingText={asset} value={amount} showDecimal decimalsToShow={6} />
       </div>
       <div className="date">{date}</div>
     </TradingViewTooltipStyled>
@@ -73,9 +62,11 @@ export const Chart = ({
   numberOfItemsToDisplay = 15,
   className,
   chartType = 'area',
+  tooltipAsset,
 }: TradingViewChartBaseProps & {
   numberOfItemsToDisplay?: number
   chartType: ChartTypeType
+  tooltipAsset: string
   data: ChartNormalizerType['candlestick'] | ChartNormalizerType['area']
 }) => {
   if (data.length < numberOfItemsToDisplay) {
@@ -92,10 +83,26 @@ export const Chart = ({
   }
 
   if (chartType === 'candlestick' && isCandleChartData(data))
-    return <TradingViewCandleChart data={data} settings={settings} colors={colors} className={className} />
+    return (
+      <TradingViewCandleChart
+        tooltipAsset={tooltipAsset}
+        data={data}
+        settings={settings}
+        colors={colors}
+        className={className}
+      />
+    )
 
   if (chartType === 'area' && isAreaChartData(data))
-    return <TradingViewAreaChart data={data} settings={settings} colors={colors} className={className} />
+    return (
+      <TradingViewAreaChart
+        tooltipAsset={tooltipAsset}
+        data={data}
+        settings={settings}
+        colors={colors}
+        className={className}
+      />
+    )
 
   return null
 }
