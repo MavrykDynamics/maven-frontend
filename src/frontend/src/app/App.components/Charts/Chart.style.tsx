@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/macro'
+import styled from 'styled-components'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const ChartTooltip = styled.div<{ theme: MavrykTheme }>`
@@ -18,7 +18,7 @@ export const ChartTooltip = styled.div<{ theme: MavrykTheme }>`
     font-weight: 500;
     font-size: 9px;
     line-height: 18px;
-    color: ${({ theme }) => theme.primaryTextCardColor};
+    color: ${({ theme }) => theme.headerColor};
   }
 `
 
@@ -42,34 +42,44 @@ export const Plug = styled.div`
   }
 
   p {
-    margin-top: 10px;
+    margin-top: 55px;
 
     font-weight: 600;
     font-size: 16px;
     line-height: 22px;
 
     text-align: center;
-    color: ${({ theme }) => theme.primaryTextCardColor};
+    color: ${({ theme }) => theme.textColor};
+  }
+
+  &.dorman-chart,
+  &.data-feeds-chart {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  &.loan-chart {
+    max-height: 182px;
+    padding: 15px 10px 15px 10px;
+
+    p {
+      margin-top: 25px;
+    }
   }
 `
 
 export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
-  width: fit-content;
-  height: fit-content;
+  height: 100%;
   position: relative;
   width: 100%;
-
-  &.lb-chart {
-    padding: 0 10px 0 30px;
-  }
 `
 
 export const TradingViewTooltipStyled = styled.div<{ theme: MavrykTheme }>`
   position: absolute;
   z-index: 100;
   padding: 7px 10px 7px 10px;
-  background: ${({ theme }) => theme.darkBackroundColor};
-  border: 1px solid ${({ theme }) => theme.borderCard};
+  background: ${({ theme }) => theme.containerColor};
+  border: 1px solid ${({ theme }) => theme.secondaryColor};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -81,25 +91,20 @@ export const TradingViewTooltipStyled = styled.div<{ theme: MavrykTheme }>`
   opacity: var(--translateX, 0);
   pointer-events: none;
 
-  &.hide {
-    visibility: hidden;
-  }
-
   .value {
+    font-weight: 600;
+    font-size: 18px;
+    color: ${({ theme }) => theme.headerColor};
+    white-space: pre;
     p {
       margin: 0;
-
-      font-weight: 600;
-      font-size: 18px;
-      color: ${({ theme }) => theme.headingThirdCardColor};
-      white-space: pre;
     }
   }
 
   .date {
     font-weight: 600;
     font-size: 12px;
-    color: ${({ theme }) => theme.primaryTextCardColor};
+    color: ${({ theme }) => theme.textColor};
     white-space: pre;
   }
 `

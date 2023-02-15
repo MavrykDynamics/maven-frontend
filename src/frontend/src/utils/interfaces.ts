@@ -4,6 +4,7 @@ import { LoadingState } from '../redux/reducers/loading'
 import { BeaconWallet } from '@taquito/beacon-wallet'
 import { UTCTimestamp } from 'lightweight-charts'
 import { delegateCardData } from 'pages/Bakery/BakeryData'
+import { getChartData, normalizeChartData } from 'redux/actions/chart.action'
 
 export type IntervalType = 'quotes1dNogaps' | 'quotes1hNogaps' | 'quotes1w' | 'quotes15mNogaps' | 'quotes5mNogaps'
 export type ChartTypeType = 'area' | 'candlestick'
@@ -33,7 +34,10 @@ export interface UserData {
   estimatedPoolXtzOwned: number
 }
 
-export interface ChartItem { time: UTCTimestamp; value: number }
+export interface ChartItem {
+  time: UTCTimestamp
+  value: number
+}
 
 export interface TokenInfo {
   lbData: {
@@ -67,15 +71,11 @@ export interface ChartPoint {
   open: string
 }
 
+export type ChartNormalizerType = ReturnType<typeof normalizeChartData>
+
 export interface ChartType {
-  chartDataCandlestick: Array<{
-    x: string
-    y: [number, number, number, number]
-  }>
-  chartDataArea: Array<{
-    x: string
-    y: number
-  }>
+  chartDataCandlestick: ChartNormalizerType['candlestick']
+  chartDataArea: ChartNormalizerType['area']
   chartInterval: IntervalType
   chartType: ChartTypeType
 }

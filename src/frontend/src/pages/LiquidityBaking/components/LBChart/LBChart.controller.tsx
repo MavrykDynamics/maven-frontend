@@ -1,6 +1,5 @@
 import { Button } from 'app/App.components/Button/Button.controller'
-import AreaChart from 'app/App.components/Charts/AreaChart.controller'
-import CandlestickChart from 'app/App.components/Charts/CandlestickChart.controller'
+import { Chart } from 'app/App.components/Chart/Chart.view'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
@@ -43,7 +42,7 @@ export const LBChart = ({
 }) => {
   const { chartDataCandlestick, chartDataArea, chartInterval, chartType } = useSelector((state: State) => state.chart)
   const LAST_CHART_COMPARE_VALUE = useMemo(
-    () => chartDataArea.at(-1)?.y || chartDataCandlestick.at(-1)?.y[3] || 0,
+    () => chartDataArea.at(-1)?.value || chartDataCandlestick.at(-1)?.close || 0,
     [chartDataArea, chartDataCandlestick],
   )
   const dispatch = useDispatch()
@@ -78,6 +77,9 @@ export const LBChart = ({
 
   const isMobileChart = className === 'mobile-chart'
 
+  const isMobileMax = useMedia('(max-width: 770px)')
+  const isMobileMin = useMedia('(min-width: 550px)')
+
   return (
     <ChartStyled className={className}>
       <div className="chart-controlls">
@@ -108,25 +110,14 @@ export const LBChart = ({
       </div>
 
       {chartDataCandlestick.length ? (
-        <div className="chart-wrapper">
-          {chartType === 'area' ? (
-            <AreaChart
-              isMobileChart={isMobileChart}
-              chartData={showSmall ? chartDataArea.slice(Math.floor(chartDataArea.length / 1.4)) : chartDataArea}
-              interval={chartInterval}
-            />
-          ) : (
-            <CandlestickChart
-              isMobileChart={isMobileChart}
-              chartData={
-                showSmall
-                  ? chartDataCandlestick.slice(Math.floor(chartDataCandlestick.length / 1.5))
-                  : chartDataCandlestick
-              }
-              interval={chartInterval}
-            />
-          )}
-        </div>
+        <Chart
+          className="lb-chart"
+          data={chartType === 'area' ? chartDataArea : chartDataCandlestick}
+          settings={{
+            height: isMobileMax && isMobileMin ? 420 : 500,
+          }}
+          chartType={chartType}
+        />
       ) : null}
 
       {isMobileChart ? <ChartControllsButtons className="right-wrapper-mobile" /> : null}

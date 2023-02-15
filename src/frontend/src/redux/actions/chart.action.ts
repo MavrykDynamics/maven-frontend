@@ -1,5 +1,6 @@
 import { fetchFromIndexer } from 'gql/gql.helpers'
 import { CHART_QUERY_NAME, CHART_QUERY_VARIABLES, getChartQuery } from 'gql/queries/chart.query'
+import { UTCTimestamp } from 'lightweight-charts'
 import { GET_CHART_DATA, TOOGLE_CHART_INTERVAL, TOOGLE_CHART_TYPE } from 'redux/action.types'
 import { ChartPoint, ChartTypeType, IntervalType } from 'utils/interfaces'
 
@@ -11,32 +12,37 @@ export const getChartData = (interval: IntervalType) => async (dispatch: any, ge
       CHART_QUERY_VARIABLES(),
       'https://dex.dipdup.net/v1/graphql',
     )
-    const parsedChartDataToCandlestick = chartData?.[interval]
-      .map((chartPoint: ChartPoint) => ({
-        x: new Date(chartPoint.bucket),
-        y: [
-          parseFloat(chartPoint.open),
-          parseFloat(chartPoint.high),
-          parseFloat(chartPoint.low),
-          parseFloat(chartPoint.close),
-        ],
-      }))
-      .sort((first: any, second: any) => first.x.getTime() - second.x.getTime())
 
-    const parsedChartDataToArea = chartData?.[interval]
-      .map((chartPoint: ChartPoint) => ({
-        x: new Date(chartPoint.bucket),
-        y: parseFloat(chartPoint.close),
-      }))
-      .sort((first: any, second: any) => first.x.getTime() - second.x.getTime())
+    const normalizedChartData = normalizeChartData(chartData?.[interval])
 
     dispatch({
       type: GET_CHART_DATA,
-      chartData: { candlestick: parsedChartDataToCandlestick, area: parsedChartDataToArea },
+      chartData: normalizedChartData,
     })
   } catch (error: any) {
     console.error(error)
   }
+}
+
+export const normalizeChartData = (chartData: Array<ChartPoint>) => {
+  const parsedChartDataToCandlestick = chartData
+    .map((chartPoint: ChartPoint) => ({
+      time: new Date(chartPoint.bucket).getTime() as UTCTimestamp,
+      open: parseFloat(chartPoint.open),
+      close: parseFloat(chartPoint.close),
+      high: parseFloat(chartPoint.high),
+      low: parseFloat(chartPoint.low),
+    }))
+    .sort((first, second) => first.time - second.time)
+
+  const parsedChartDataToArea = chartData
+    .map((chartPoint: ChartPoint) => ({
+      time: new Date(chartPoint.bucket).getTime() as UTCTimestamp,
+      value: parseFloat(chartPoint.close),
+    }))
+    .sort((first, second) => first.time - second.time)
+
+  return { candlestick: parsedChartDataToCandlestick, area: parsedChartDataToArea }
 }
 
 export const toogleChartInterval = (newInterval: IntervalType) => async (dispatch: any, getState: any) => {
