@@ -60,7 +60,7 @@ export function BakeryChart({ chartData }: Props) {
           xAsisTimeFormat: 'HH:mm',
         }}
         chartType={'area'}
-        tooltipAsset={'MVK'}
+        tooltipAsset={'USD'}
       />
     </BakeryChartStyled>
   )
