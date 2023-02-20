@@ -59,8 +59,12 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
   position: relative;
   width: 100%;
 
-  &.portfolio {
-    margin-top: auto;
+  &.lb-chart {
+    padding: 0 10px 0 30px;
+
+    @media screen and (max-width: 769px) {
+      padding: 0;
+    }
   }
 `
 
