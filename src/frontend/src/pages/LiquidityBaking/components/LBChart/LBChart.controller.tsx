@@ -101,7 +101,7 @@ export const LBChart = ({
             <use xlinkHref="/icons/sprites.svg#exchange" />
           </svg>
           <div className="info">
-            <CustomizedText color="#8D86EB" fontSize={14} fontWidth={600}>
+            <CustomizedText color="#8D86EB" fontSize={20} fontWidth={600}>
               XTZ/tzBTC (Sirius)
             </CustomizedText>
             <CustomizedText fontSize={14} fontWidth={600} className="value">
@@ -130,7 +130,7 @@ export const LBChart = ({
             areaTopColor: '#86D4C9',
             areaBottomColor: 'rgba(119, 164, 242, 0)',
             textColor: themeColors[themeSelected].primaryTextCardColor,
-            borderColor: 'transparent',
+            borderColor: themeColors[themeSelected].headingColor,
           }}
           chartType={chartType}
           tooltipAsset={'tzBTC'}

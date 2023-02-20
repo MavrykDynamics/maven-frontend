@@ -103,7 +103,7 @@ export const TradingViewCandleChart = ({
       priceFormat: {
         type: 'custom',
         minMove: 0.000000001,
-        formatter: (price: any) => formatNumber(true, 6, parseFloat(price)),
+        formatter: (price: any) => formatNumber(true, 8, parseFloat(price)),
       },
     })
 
