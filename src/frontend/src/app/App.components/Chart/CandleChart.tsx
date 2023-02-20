@@ -77,7 +77,7 @@ export const TradingViewCandleChart = ({
       borderColor,
       entireTextOnly: true,
       scaleMargins: {
-        top: 0.1,
+        top: 0.03,
         bottom: 0.03,
       },
     })
