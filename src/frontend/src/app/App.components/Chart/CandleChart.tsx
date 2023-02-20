@@ -75,6 +75,7 @@ export const TradingViewCandleChart = ({
     // Setting the border color for the vertical axis
     chart.priceScale('right').applyOptions({
       borderColor,
+      entireTextOnly: true,
       scaleMargins: {
         top: 0.1,
         bottom: 0.03,
