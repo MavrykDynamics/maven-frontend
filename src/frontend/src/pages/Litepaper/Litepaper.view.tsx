@@ -60,6 +60,8 @@ export const LitepaperView = () => {
           'converting-smvk-back-to-mvk-exit-fees': document.getElementById('converting-smvk-back-to-mvk-exit-fees')?.getBoundingClientRect().top!,
           'governance--treasury': document.getElementById('governance--treasury')?.getBoundingClientRect().top!,
           'decentralization': document.getElementById('decentralization')?.getBoundingClientRect().top!,
+          'core-governance': document.getElementById('core-governance')?.getBoundingClientRect().top!,
+          'threshold-governance': document.getElementById('threshold-governance')?.getBoundingClientRect().top!,
           'voting-power': document.getElementById('voting-power')?.getBoundingClientRect().top!,
           'voting-with-satellites-electoral-delegates': document.getElementById('voting-with-satellites-electoral-delegates')?.getBoundingClientRect().top!,
           'treasury': document.getElementById('treasury')?.getBoundingClientRect().top!,
@@ -414,7 +416,7 @@ export const LitepaperView = () => {
               </LitepaperLink>
               <ul className="nav">
                 <li>
-                  <LitepaperLink selected={tops['decentralization'] <= 110 && tops['voting-power'] > 110}>
+                  <LitepaperLink selected={tops['decentralization'] <= 110 && tops['core-governance'] > 110}>
                     <HashLink
                       to="#decentralization"
                       scroll={(el) =>
@@ -425,6 +427,36 @@ export const LitepaperView = () => {
                       }
                     >
                       Decentralization
+                    </HashLink>
+                  </LitepaperLink>
+                </li>
+                <li>
+                  <LitepaperLink selected={tops['core-governance'] <= 110 && tops['threshold-governance'] > 110}>
+                    <HashLink
+                      to="#core-governance"
+                      scroll={(el) =>
+                        window.scrollTo({
+                          behavior: 'smooth',
+                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
+                        })
+                      }
+                    >
+                      Core Governance
+                    </HashLink>
+                  </LitepaperLink>
+                </li>
+                <li>
+                  <LitepaperLink selected={tops['threshold-governance'] <= 110 && tops['voting-power'] > 110}>
+                    <HashLink
+                      to="#threshold-governance"
+                      scroll={(el) =>
+                        window.scrollTo({
+                          behavior: 'smooth',
+                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
+                        })
+                      }
+                    >
+                      Threshold Governance
                     </HashLink>
                   </LitepaperLink>
                 </li>
