@@ -15,7 +15,6 @@ export const LitepaperView = () => {
   const themeSelected = useSelector((state: State) => state.preferences.themeSelected)
   const dispatch = useDispatch()
   const openChangeNodePopup = useCallback(() => dispatch(toggleRPCNodePopup(true)), [])
-
   const darkThemeEnabled = themeSelected !== LIGHT_THEME
 
   const [tops, setTops] = useState<any>({
@@ -82,582 +81,51 @@ export const LitepaperView = () => {
     300,
   )
 
+  const LitepaperToCHeaderItem = (props: any) => {
+    const { id, children } = props
+    return (
+      <li key={`header${id}`}>
+        <LitepaperToCSubItem key={id.toString()} {...props} />
+        {children && (
+          <ul className="nav">
+            {children.map((child: any) => (
+              <li key={`child${child.id}`}>
+                <LitepaperToCSubItem key={`child${child.id}-${child.hashLinkId}`} {...child} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    )
+  }
+  const LitepaperToCSubItem = (props: any) => {
+    const { id, title, hashLinkId, next } = props
+    const linkIsSelected = next !== null ? tops[hashLinkId] <= 110 && tops[next] > 110 : tops[hashLinkId] <= 110
+    return (
+      <LitepaperLink selected={linkIsSelected} key={`${hashLinkId}${id}`}>
+        <HashLink
+          to={`#${hashLinkId}`}
+          scroll={(el) =>
+            window.scrollTo({
+              behavior: 'smooth',
+              top: el.getBoundingClientRect().top + window.pageYOffset - 100,
+            })
+          }
+        >
+          {title}
+        </HashLink>
+      </LitepaperLink>
+    )
+  }
   return (
     <LitepaperStyled>
       <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
       <LitepaperGrid>
         <div>
           <LitepaperIndex>
-            <li>
-              <LitepaperLink selected={tops['abstract'] <= 110 && tops['problem'] > 110}>
-                <HashLink
-                  to="#abstract"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Abstract
-                </HashLink>
-              </LitepaperLink>
-            </li>
-            <li>
-              <LitepaperLink selected={tops['problem'] <= 110 && tops['solution'] > 110}>
-                <HashLink
-                  to="#problem"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Problem
-                </HashLink>
-              </LitepaperLink>
-            </li>
-            <li>
-              <LitepaperLink selected={tops['solution'] <= 110 && tops['multi-asset-backed-loans'] > 110}>
-                <HashLink
-                  to="#solution"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Solution
-                </HashLink>
-              </LitepaperLink>
-            </li>
-            <li>
-              <LitepaperLink selected={tops['multi-asset-backed-loans'] <= 110 && tops['peer-to-peer-lending'] > 110}>
-                <HashLink
-                  to="#multi-asset-backed-loans"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Multi-Asset Backed Loans
-                </HashLink>
-              </LitepaperLink>
-              <ul className="nav">
-                <li>
-                  <LitepaperLink
-                    selected={tops['peer-to-peer-lending'] <= 110 && tops['lending-earning-yield-on-your-assets'] > 110}
-                  >
-                    <HashLink
-                      to="#peer-to-peer-lending"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Peer To Peer Lending
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={
-                      tops['lending-earning-yield-on-your-assets'] <= 110 &&
-                      tops['borrowing-single--multi-collateral-vaults'] > 110
-                    }
-                  >
-                    <HashLink
-                      to="#lending-earning-yield-on-your-assets"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Lending: Earning Yield on Your Assets
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={
-                      tops['borrowing-single--multi-collateral-vaults'] <= 110 && tops['multi-collateral-vaults'] > 110
-                    }
-                  >
-                    <HashLink
-                      to="#borrowing-single--multi-collateral-vaults"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Borrowing: Single & Multi-Collateral Vaults
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink selected={tops['multi-collateral-vaults'] <= 110 && tops['liquidations'] > 110}>
-                    <HashLink
-                      to="#multi-collateral-vaults"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Multi-Collateral Vaults
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={
-                      tops['liquidations'] <= 110 && tops['satellites-governance-and-the-decentralized-oracle'] > 110
-                    }
-                  >
-                    <HashLink
-                      to="#liquidations"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Liquidations
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <LitepaperLink
-                selected={tops['satellites-governance-and-the-decentralized-oracle'] <= 110 && tops['satellites'] > 110}
-              >
-                <HashLink
-                  to="#satellites-governance-and-the-decentralized-oracle"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Satellites, Governance, and the Decentralized Oracle
-                </HashLink>
-              </LitepaperLink>
-              <ul className="nav">
-                <li>
-                  <LitepaperLink selected={tops['satellites'] <= 110 && tops['governance'] > 110}>
-                    <HashLink
-                      to="#satellites"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Satellites
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink selected={tops['governance'] <= 110 && tops['satellite-delegations'] > 110}>
-                    <HashLink
-                      to="#governance"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Governance
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={tops['satellite-delegations'] <= 110 && tops['the-decentralized-oracle'] > 110}
-                  >
-                    <HashLink
-                      to="#satellite-delegations"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Satellite Delegations
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={tops['the-decentralized-oracle'] <= 110 && tops['mvk-and-smvk-doorman-module'] > 110}
-                  >
-                    <HashLink
-                      to="#the-decentralized-oracle"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      The Decentralized Oracle
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <LitepaperLink
-                selected={
-                  tops['mvk-and-smvk-doorman-module'] <= 110 &&
-                  tops['what-is-mvk-and-how-does-it-differ-from-smvk'] > 110
-                }
-              >
-                <HashLink
-                  to="#mvk-and-smvk-doorman-module"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  MVK and sMVK (Doorman Module)
-                </HashLink>
-              </LitepaperLink>
-              <ul className="nav">
-                <li>
-                  <LitepaperLink
-                    selected={
-                      tops['what-is-mvk-and-how-does-it-differ-from-smvk'] <= 110 && tops['obtaining-smvk'] > 110
-                    }
-                  >
-                    <HashLink
-                      to="#what-is-mvk-and-how-does-it-differ-from-smvk"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      What is MVK and how does it differ from sMVK?
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={tops['obtaining-smvk'] <= 110 && tops['converting-smvk-back-to-mvk-exit-fees'] > 110}
-                  >
-                    <HashLink
-                      to="#obtaining-smvk"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Obtaining sMVK
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={
-                      tops['converting-smvk-back-to-mvk-exit-fees'] <= 110 && tops['governance--treasury'] > 110
-                    }
-                  >
-                    <HashLink
-                      to="#converting-smvk-back-to-mvk-exit-fees"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Converting sMVK back to MVK (exit fees)
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <LitepaperLink selected={tops['governance--treasury'] <= 110 && tops['decentralization'] > 110}>
-                <HashLink
-                  to="#governance--treasury"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Governance & Treasury
-                </HashLink>
-              </LitepaperLink>
-              <ul className="nav">
-                <li>
-                  <LitepaperLink selected={tops['decentralization'] <= 110 && tops['core-governance'] > 110}>
-                    <HashLink
-                      to="#decentralization"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Decentralization
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink selected={tops['core-governance'] <= 110 && tops['threshold-governance'] > 110}>
-                    <HashLink
-                      to="#core-governance"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Core Governance
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink selected={tops['threshold-governance'] <= 110 && tops['voting-power'] > 110}>
-                    <HashLink
-                      to="#threshold-governance"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Threshold Governance
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={tops['voting-power'] <= 110 && tops['voting-with-satellites-electoral-delegates'] > 110}
-                  >
-                    <HashLink
-                      to="#voting-power"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Voting power
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={tops['voting-with-satellites-electoral-delegates'] <= 110 && tops['treasury'] > 110}
-                  >
-                    <HashLink
-                      to="#voting-with-satellites-electoral-delegates"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Voting with Satellites (electoral delegates)
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink selected={tops['treasury'] <= 110 && tops['mavryk-council'] > 110}>
-                    <HashLink
-                      to="#treasury"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Treasury
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <LitepaperLink
-                selected={tops['mavryk-council'] <= 110 && tops['emergency-governance--break-glass'] > 110}
-              >
-                <HashLink
-                  to="#mavryk-council"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Mavryk Council
-                </HashLink>
-              </LitepaperLink>
-            </li>
-            <li>
-              <LitepaperLink
-                selected={tops['emergency-governance--break-glass'] <= 110 && tops['emergency-governance'] > 110}
-              >
-                <HashLink
-                  to="#emergency-governance--break-glass"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Emergency Governance & Break Glass
-                </HashLink>
-              </LitepaperLink>
-              <ul className="nav">
-                <li>
-                  <LitepaperLink selected={tops['emergency-governance'] <= 110 && tops['break-glass-council'] > 110}>
-                    <HashLink
-                      to="#emergency-governance"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Emergency Governance
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={tops['break-glass-council'] <= 110 && tops['break-glass-access-control-layer'] > 110}
-                  >
-                    <HashLink
-                      to="#break-glass-council"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Break Glass Council
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink
-                    selected={tops['break-glass-access-control-layer'] <= 110 && tops['yield-farming'] > 110}
-                  >
-                    <HashLink
-                      to="#break-glass-access-control-layer"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Break Glass: Access Control Layer
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <LitepaperLink selected={tops['yield-farming'] <= 110 && tops['tokenomics'] > 110}>
-                <HashLink
-                  to="#yield-farming"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Yield Farming
-                </HashLink>
-              </LitepaperLink>
-            </li>
-            <li>
-              <LitepaperLink selected={tops['tokenomics'] <= 110 && tops['revenue-model'] > 110}>
-                <HashLink
-                  to="#tokenomics"
-                  scroll={(el) =>
-                    window.scrollTo({
-                      behavior: 'smooth',
-                      top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                    })
-                  }
-                >
-                  Tokenomics
-                </HashLink>
-              </LitepaperLink>
-              <ul className="nav">
-                <li>
-                  <LitepaperLink selected={tops['revenue-model'] <= 110 && tops['token-flow'] > 110}>
-                    <HashLink
-                      to="#revenue-model"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Revenue Model
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-                <li>
-                  <LitepaperLink selected={tops['token-flow'] <= 110}>
-                    <HashLink
-                      to="#token-flow"
-                      scroll={(el) =>
-                        window.scrollTo({
-                          behavior: 'smooth',
-                          top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-                        })
-                      }
-                    >
-                      Token Flow
-                    </HashLink>
-                  </LitepaperLink>
-                </li>
-              </ul>
-            </li>
+            {LitepaperTableOfContentsItems.map((listItem) => (
+              <LitepaperToCHeaderItem key={`${listItem.id}${listItem.title}`} {...listItem} />
+            ))}
           </LitepaperIndex>
         </div>
         <LitepaperMarkdown>
@@ -667,3 +135,203 @@ export const LitepaperView = () => {
     </LitepaperStyled>
   )
 }
+
+const LitepaperTableOfContentsItems = [
+  { id: 0, title: 'Abstract', hashLinkId: 'abstract', next: 'problem', children: null },
+  { id: 1, title: 'Problem', hashLinkId: 'problem', next: 'solution', children: null },
+  { id: 2, title: 'Solution', hashLinkId: 'solution', next: 'multi-asset-backed-loans', children: null },
+  {
+    id: 3,
+    title: 'Multi-Asset Backed Loans',
+    hashLinkId: 'multi-asset-backed-loans',
+    next: 'peer-to-peer-lending',
+    children: [
+      {
+        id: 31,
+        title: 'Peer To Peer Lending',
+        hashLinkId: 'peer-to-peer-lending',
+        next: 'lending-earning-yield-on-your-assets',
+      },
+      {
+        id: 32,
+        title: 'Lending: Earning Yield on Your Assets',
+        hashLinkId: 'lending-earning-yield-on-your-assets',
+        next: 'borrowing-single--multi-collateral-vaults',
+      },
+      {
+        id: 33,
+        title: 'Borrowing: Single & Multi-Collateral Vaults',
+        hashLinkId: 'borrowing-single--multi-collateral-vaults',
+        next: 'multi-collateral-vaults',
+      },
+      {
+        id: 34,
+        title: 'Multi-Collateral Vaults',
+        hashLinkId: 'multi-collateral-vaults',
+        next: 'liquidations',
+      },
+      {
+        id: 35,
+        title: 'Liquidations',
+        hashLinkId: 'liquidations',
+        next: 'satellites-governance-and-the-decentralized-oracle',
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: 'Satellites, Governance, and the Decentralized Oracle',
+    hashLinkId: 'satellites-governance-and-the-decentralized-oracle',
+    next: 'satellites',
+    children: [
+      {
+        id: 41,
+        title: 'Satellites',
+        hashLinkId: 'satellites',
+        next: 'governance',
+      },
+      {
+        id: 42,
+        title: 'Governance',
+        hashLinkId: 'governance',
+        next: 'satellite-delegations',
+      },
+      {
+        id: 43,
+        title: 'Satellite Delegations',
+        hashLinkId: 'satellite-delegations',
+        next: 'the-decentralized-oracle',
+      },
+      {
+        id: 44,
+        title: 'The Decentralized Oracle',
+        hashLinkId: 'the-decentralized-oracle',
+        next: 'mvk-and-smvk-doorman-module',
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: 'MVK and sMVK (Doorman Module)',
+    hashLinkId: 'mvk-and-smvk-doorman-module',
+    next: 'what-is-mvk-and-how-does-it-differ-from-smvk',
+    children: [
+      {
+        id: 51,
+        title: 'What is MVK and how does it differ from sMVK?',
+        hashLinkId: 'what-is-mvk-and-how-does-it-differ-from-smvk',
+        next: 'obtaining-smvk',
+      },
+      {
+        id: 52,
+        title: 'Obtaining sMVK',
+        hashLinkId: 'obtaining-smvk',
+        next: 'converting-smvk-back-to-mvk-exit-fees',
+      },
+      {
+        id: 53,
+        title: 'Converting sMVK back to MVK (exit fees)',
+        hashLinkId: 'converting-smvk-back-to-mvk-exit-fees',
+        next: 'governance--treasury',
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: 'Governance & Treasury',
+    hashLinkId: 'governance--treasury',
+    next: 'decentralization',
+    children: [
+      {
+        id: 61,
+        title: 'Decentralization',
+        hashLinkId: 'decentralization',
+        next: 'core-governance',
+      },
+      {
+        id: 62,
+        title: 'Core Governance',
+        hashLinkId: 'core-governance',
+        next: 'threshold-governance',
+      },
+      {
+        id: 63,
+        title: 'Threshold Governance',
+        hashLinkId: 'threshold-governance',
+        next: 'voting-power',
+      },
+      {
+        id: 64,
+        title: 'Voting Power',
+        hashLinkId: 'voting-power',
+        next: 'voting-with-satellites-electoral-delegates',
+      },
+      {
+        id: 65,
+        title: 'Voting with Satellites (electoral delegates)',
+        hashLinkId: 'voting-with-satellites-electoral-delegates',
+        next: 'treasury',
+      },
+      {
+        id: 66,
+        title: 'Treasury',
+        hashLinkId: 'treasury',
+        next: 'mavryk-council',
+      },
+    ],
+  },
+  {
+    id: 7,
+    title: 'Mavryk Council',
+    hashLinkId: 'mavryk-council',
+    next: 'emergency-governance--break-glass',
+    children: null,
+  },
+  {
+    id: 8,
+    title: 'Emergency Governance & Break Glass',
+    hashLinkId: 'emergency-governance--break-glass',
+    next: 'emergency-governance',
+    children: [
+      {
+        id: 81,
+        title: 'Emergency Governance',
+        hashLinkId: 'emergency-governance',
+        next: 'break-glass-council',
+      },
+      {
+        id: 82,
+        title: 'Break Glass Council',
+        hashLinkId: 'break-glass-council',
+        next: 'break-glass-access-control-layer',
+      },
+      {
+        id: 83,
+        title: 'Break Glass: Access Control Layer',
+        hashLinkId: 'break-glass-access-control-layer',
+        next: 'yield-farming',
+      },
+    ],
+  },
+  { id: 9, title: 'Yield Farming', hashLinkId: 'yield-farming', next: 'tokenomics', children: null },
+  {
+    id: 10,
+    title: 'Tokenomics',
+    hashLinkId: 'tokenomics',
+    next: 'revenue-model',
+    children: [
+      {
+        id: 101,
+        title: 'Revenue Model',
+        hashLinkId: 'revenue-model',
+        next: 'token-flow',
+      },
+      {
+        id: 102,
+        title: 'Token Flow',
+        hashLinkId: 'token-flow',
+        next: null,
+      },
+    ],
+  },
+]
