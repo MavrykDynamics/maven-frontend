@@ -130,11 +130,11 @@ export const LitepaperIndex = styled.ul`
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-top: 10px;
-    line-height: 12px !important;
+    line-height: 14px !important;
   }
 
   li a {
-    font-size: 12px;
+    font-size: 14px;
     color: ${({ theme }) => theme.litepaperLinkColor};
     text-decoration: none;
   }
