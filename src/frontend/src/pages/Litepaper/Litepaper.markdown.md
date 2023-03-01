@@ -180,6 +180,9 @@ Satellites are required to stake MVK to participate in governance and thus are e
 
 *For example, suppose a malicious actor wants to skew the price of a Bitcoin collateral in the Mavryk Finance system so that he can borrow an excessive amount of USDT. He purchases MVK, stakes it to set up a malicious Satellite that feeds false pricing data into the system. The system will then detect this attempt – thanks to the distribution of Satellites – and the Satellite network may remove a malicious Satellite with a super majority Satellite vote, banning the address from further Satellite operations.*
 
+**Note:** Mavryk Finance's oracles are designed so 3rd party decentralized applications may operate their own Satellite oracle, utilize the data feeds, request new data sets, and bring additional data on-chain beyond price information. This interoperability and composability will solidify Mavryk Finance as a pillar of decentralized finance.
+
+
 ## MVK and sMVK (Doorman Module)
 
 ### What is MVK and how does it differ from sMVK?
