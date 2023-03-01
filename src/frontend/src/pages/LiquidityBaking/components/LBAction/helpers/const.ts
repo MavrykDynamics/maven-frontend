@@ -1,4 +1,4 @@
-import { DEXType } from 'utils/DEX/Dex.types'
+import { DEXType } from 'utils/interfaces'
 
 export const SLIPPAGE_TOGGLE_VALUES = [
   { title: '0.5%', value: 0.5 },

@@ -140,3 +140,9 @@ export interface PurschasedStatsTable {
   amount: number
   usdPrice: number
 }
+
+export type DEXType = {
+  fee: number
+  burn: number
+  includeSubsidy: boolean
+}
