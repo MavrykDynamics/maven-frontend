@@ -33,7 +33,10 @@ export interface UserData {
   estimatedPoolXtzOwned: number
 }
 
-export interface ChartItem { time: UTCTimestamp; value: number }
+export interface ChartItem {
+  time: UTCTimestamp
+  value: number
+}
 
 export interface TokenInfo {
   lbData: {
@@ -139,4 +142,10 @@ export interface PurschasedStatsTable {
   symbol: string
   amount: number
   usdPrice: number
+}
+
+export type DEXType = {
+  fee: number
+  burn: number
+  includeSubsidy: boolean
 }
