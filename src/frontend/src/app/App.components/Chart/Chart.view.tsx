@@ -5,7 +5,7 @@ import { createChart, ColorType, BusinessDay, UTCTimestamp } from 'lightweight-c
 import { ChartStyled, Plug, TradingViewTooltipStyled } from './Chart.style'
 
 // helpers
-import { parseDate } from 'utils/time' 
+import { parseDate } from 'utils/time'
 
 // components
 import Icon from '../Icon/Icon.view'
@@ -87,7 +87,16 @@ export const TradingViewChart = ({
     textColor = lightTextColor,
     borderColor = headerColor,
   } = {},
-  settings: { height, dateTooltipFormatter, valueTooltipFormatter, tickPriceFormatter, tickDateFormatter, hideTooltip, hideXAxis, hideYAxis },
+  settings: {
+    height,
+    dateTooltipFormatter,
+    valueTooltipFormatter,
+    tickPriceFormatter,
+    tickDateFormatter,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+  },
   className,
 }: TradingViewChartProps) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null)
@@ -155,10 +164,11 @@ export const TradingViewChart = ({
     // Setting the border color for the horizontal axis
     chart.timeScale().applyOptions({
       borderColor,
-      visible: true,
       tickMarkFormatter: (time: UTCTimestamp | BusinessDay) => {
         return tickDateFormatter?.(Number(time)) ?? parseDate({ time: Number(time), timeFormat: 'HH:mm' }) ?? ''
       },
+      fixRightEdge: true,
+      fixLeftEdge: true,
     })
 
     const series = chart.addAreaSeries({

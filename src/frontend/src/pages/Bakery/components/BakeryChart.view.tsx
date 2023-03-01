@@ -9,7 +9,7 @@ import { Chart } from 'app/App.components/Chart/Chart.view'
 import Icon from 'app/App.components/Icon/Icon.view'
 
 // styles
-import { BakeryChartStyled } from "../Bakery.style"
+import { BakeryChartStyled } from '../Bakery.style'
 import themeColors from 'styles/colors'
 
 // helpers
@@ -19,19 +19,19 @@ type Props = {
   chartData: ChartItem[]
 }
 
-export function BakeryChart ({ chartData }: Props) {
+export function BakeryChart({ chartData }: Props) {
   const { themeSelected } = useSelector((state: State) => state.preferences)
 
   const currentPrice = chartData.length ? Number(chartData[chartData.length - 1].value.toFixed(7)) : 0
   const initialPrice = chartData.length ? Number(chartData[0].value.toFixed(7)) : 0
-  const changesInValue = percentageDifference(currentPrice, initialPrice)
+  const changesInValue = percentageDifference(currentPrice, initialPrice) || 0
   const isPositiveGrowth = currentPrice > initialPrice
 
   return (
     <BakeryChartStyled>
-      <div className='header'>
-        <div className='info'>
-          <Icon id='XTZ_tezos' />
+      <div className="header">
+        <div className="info">
+          <Icon id="XTZ_tezos" />
 
           <div>
             <h3>XTZ/USD</h3>
@@ -39,7 +39,7 @@ export function BakeryChart ({ chartData }: Props) {
           </div>
         </div>
 
-        <div className='percentages'>
+        <div className="percentages">
           <span className={isPositiveGrowth ? 'green' : 'red'}>{changesInValue}%</span>
         </div>
       </div>
@@ -51,7 +51,7 @@ export function BakeryChart ({ chartData }: Props) {
           areaTopColor: '#86D4C9',
           areaBottomColor: 'rgba(119, 164, 242, 0)',
           textColor: themeColors[themeSelected].primaryTextCardColor,
-          borderColor: 'transparent' 
+          borderColor: 'transparent',
         }}
         settings={{
           height: 100,
