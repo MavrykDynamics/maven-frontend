@@ -10,13 +10,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { State } from 'utils/interfaces'
 import { LIGHT_THEME, toggleRPCNodePopup } from 'redux/actions/preferences.action'
+import { PopupChangeNode } from '../../app/App.components/SettingsPopup/SettingsPopup.controller'
+import { PopupChangeNodeView } from '../../app/App.components/SettingsPopup/SettingsPopup.view'
 
 export const LitepaperView = () => {
-  const themeSelected = useSelector((state: State) => state.preferences.themeSelected)
+  const { changeNodePopupOpen, themeSelected } = useSelector((state: State) => state.preferences)
   const dispatch = useDispatch()
   const openChangeNodePopup = useCallback(() => dispatch(toggleRPCNodePopup(true)), [])
+  const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [])
   const darkThemeEnabled = themeSelected !== LIGHT_THEME
-
+  const [isIOS, setIsIOS] = useState(true)
   const [tops, setTops] = useState<any>({
     abstract: 0,
   })
@@ -32,6 +35,9 @@ export const LitepaperView = () => {
   useEffect(() => {
     window.scroll(0, 0)
     setImagesByTheme()
+    setIsIOS(
+      ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform),
+    )
   }, [setImagesByTheme])
 
   useScrollPosition(
@@ -117,22 +123,30 @@ export const LitepaperView = () => {
       </LitepaperLink>
     )
   }
+
+  if (isIOS && changeNodePopupOpen) {
+    return <PopupChangeNodeView closeModal={closeModalHandler} />
+  }
+
   return (
-    <LitepaperStyled>
-      <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
-      <LitepaperGrid>
-        <div>
-          <LitepaperIndex>
-            {LitepaperTableOfContentsItems.map((listItem) => (
-              <LitepaperToCHeaderItem key={`${listItem.id}${listItem.title}`} {...listItem} />
-            ))}
-          </LitepaperIndex>
-        </div>
-        <LitepaperMarkdown>
-          <Markdown children={litepaper} />
-        </LitepaperMarkdown>
-      </LitepaperGrid>
-    </LitepaperStyled>
+    <>
+      <PopupChangeNode isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
+      <LitepaperStyled>
+        <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
+        <LitepaperGrid>
+          <div>
+            <LitepaperIndex>
+              {LitepaperTableOfContentsItems.map((listItem) => (
+                <LitepaperToCHeaderItem key={`${listItem.id}${listItem.title}`} {...listItem} />
+              ))}
+            </LitepaperIndex>
+          </div>
+          <LitepaperMarkdown>
+            <Markdown children={litepaper} />
+          </LitepaperMarkdown>
+        </LitepaperGrid>
+      </LitepaperStyled>
+    </>
   )
 }
 
