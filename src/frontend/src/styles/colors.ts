@@ -47,6 +47,9 @@ export const darkMode: MavrykTheme = {
   divider: '#282F3A',
   messagesBackground: '#38237C',
   strokeCards: 'rgba(0, 0, 0, 0.2)',
+  // tabs
+  forTabs: 'linear-gradient(90deg, #86D4C9 0.31%, #8D86EB 99.97%)',
+
   // old color schema
   whatMakesBackground: '/images/what-makes-dark.svg',
   calculatorBackground: '/images/calculator-bg-dark.svg',
@@ -162,6 +165,9 @@ export const lightMode: MavrykTheme = {
   divider: 'rgba(0, 0, 0, 0.1)',
   messagesBackground: '#E1E6FF',
   strokeCards: 'rgba(0, 0, 0, 0.1)',
+  // tabs
+  forTabs: 'linear-gradient(90deg, #03C9A3 0.31%, #8D86EB 99.97%)',
+
   // old color schema
   whatMakesBackground: '/images/what-makes-light.svg',
   calculatorBackground: '/images/calculator-bg-light.svg',
@@ -276,6 +282,9 @@ export const spaceMode: MavrykTheme = {
   divider: '#503EAA',
   messagesBackground: '#38237C',
   strokeCards: '#503EAA',
+  // tabs
+  forTabs: 'linear-gradient(90deg, #86D4C9 0.31%, #8D86EB 99.97%)',
+
   // old color schema
   whatMakesBackground: '/images/what-makes-dark.svg',
   calculatorBackground: '/images/calculator-bg-dark.svg',

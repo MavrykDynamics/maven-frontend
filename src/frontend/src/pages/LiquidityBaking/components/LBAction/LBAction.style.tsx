@@ -4,8 +4,8 @@ import { MavrykTheme } from 'utils/interfaces'
 export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMobile?: boolean }>`
   z-index: 1;
   padding: 20px 40px 20px 40px;
-  background: ${({ theme }) => theme.darkBackroundColor};
-  border: 1px solid ${({ theme }) => theme.lbBorder};
+  background: ${({ theme }) => theme.cards};
+  border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: 10px;
   width: calc(50% - 5px);
   position: relative;
@@ -26,7 +26,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
       width: 21px;
       height: 21px;
       cursor: pointer;
-      fill: ${({ theme }) => theme.topBarLinkColor};
+      fill: ${({ theme }) => theme.regularText};
       transition: opacity 300ms;
 
       &:hover {
@@ -37,7 +37,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
     span {
       font-size: 37px;
       font-weight: 300;
-      color: ${({ theme }) => theme.primaryTextCardColor};
+      color: ${({ theme }) => theme.regularText};
     }
 
     &.reverted {
@@ -313,7 +313,7 @@ export const StepBlock = styled.div`
   font-weight: 700;
   font-size: 18px;
   line-height: 25px;
-  color: ${({ theme }) => theme.primaryTextCardColor};
+  color: ${({ theme }) => theme.mainHeadingText};
   position: relative;
   padding-left: 35px;
   display: flex;
@@ -323,9 +323,9 @@ export const StepBlock = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #503eaa;
+    border: 1px solid ${({ theme }) => theme.divider};
     border-radius: 50%;
-    color: ${({ theme }) => theme.primaryTextCardColor};
+    color: ${({ theme }) => theme.mainHeadingText};
     font-weight: 700;
     font-size: 16px;
     position: absolute;

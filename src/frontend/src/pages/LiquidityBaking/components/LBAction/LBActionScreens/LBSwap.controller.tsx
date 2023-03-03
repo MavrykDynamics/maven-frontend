@@ -385,9 +385,10 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       </div>
 
       <div className="exchange-rate">
-        <CustomizedText color={PRIMARY_COLOR} fontWidth={500} fontSize={16}>
+        <CustomizedText className={PRIMARY_COLOR} fontWidth={500} fontSize={16}>
           Exc. Rate
         </CustomizedText>
+        
         <CustomizedText className={SECONDARY_COLOR} fontWidth={500} fontSize={16}>
           1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
           <CommaNumber
@@ -402,7 +403,13 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       </div>
 
       {ready ? (
-        <Button text={'Swap'} icon={'swapBtnIcon'} onClick={swapBtnHandler} className="LB swap-btn" kind={ACTION_PRIMARY} />
+        <Button
+          text={'Swap'}
+          icon={'swapBtnIcon'}
+          onClick={swapBtnHandler}
+          className="LB swap-btn"
+          kind={ACTION_PRIMARY}
+        />
       ) : (
         <ConnectWallet className="LB swap-btn" />
       )}

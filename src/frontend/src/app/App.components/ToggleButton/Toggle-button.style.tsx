@@ -7,8 +7,8 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   width: fit-content;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.toggleButtonBg};
-  border: 1px solid ${({ theme }) => theme.subHeaderColor};
+  background-color: ${({ theme }) => theme.nBackgroundColor};
+  border: 1px solid ${({ theme }) => theme.nSelectedColor};
   border-radius: 20px;
   font-size: 16px;
   max-height: 40px;
@@ -48,7 +48,7 @@ export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${({ theme }) => theme.subHeaderColor};
+  color: ${({ theme }) => theme.nSelectedColor};
   font-weight: 600;
   cursor: pointer;
   text-transform: capitalize;
@@ -60,8 +60,8 @@ export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`
   }
 
   &.selected {
-    color: ${({ theme }) => theme.toggleButtonColorSelected};
-    background: ${({ theme }) => theme.sliderTabBgGradient};
+    color: ${({ theme }) => theme.cards};
+    background: ${({ theme }) => theme.forTabs};
     border-radius: 20px;
   }
 

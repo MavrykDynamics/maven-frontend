@@ -160,7 +160,7 @@ export const CustomizedText = styled.div<{
     svg {
       width: 16px;
       height: 16px;
-      fill: ${({ theme }) => theme.primaryTextCardColor};
+      fill: ${({ theme }) => theme.subHeadingText};
     }
 
     .text {
@@ -223,10 +223,10 @@ export const CustomizedText = styled.div<{
   }
 
   &.${PRIMARY_COLOR} {
-    color: ${({ theme }) => theme.primaryTextCardColor};
+    color: ${({ theme }) => theme.mainHeadingText};
   }
 
   &.${SECONDARY_COLOR} {
-    color: ${({ theme }) => theme.headingThirdCardColor};
+    color: ${({ theme }) => theme.primaryText};
   }
 `

@@ -11,7 +11,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
   .title {
     font-weight: 700;
     font-size: 30px;
-    color: ${({ theme }) => theme.headingColor};
+    color: ${({ theme }) => theme.mainHeadingText};
   }
 
   .stats-grid {
@@ -34,10 +34,14 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
           height: 16px;
           width: 16px;
           margin-left: 3px;
-          fill: ${({ theme }) => theme.headingThirdCardColor};
+          fill: ${({ theme }) => theme.primaryText};
         }
       }
     }
+  }
+
+  .block-name {
+    color: ${({ theme }) => theme.subHeadingText};
   }
 
   @media screen and (max-width: 1400px) {

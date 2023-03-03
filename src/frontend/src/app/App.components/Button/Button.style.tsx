@@ -1,16 +1,7 @@
 import styled, { keyframes } from 'styled-components/macro'
 import { MavrykTheme } from 'utils/interfaces'
 
-import {
-  backgroundColor,
-  cyanColor,
-  darkColor,
-  headerColor,
-  primaryColor,
-  silverColor,
-  skyColor,
-  titleColor,
-} from '../../../styles'
+import { darkColor, primaryColor } from '../../../styles'
 import { BUTTON_RADIUS } from '../../../styles/constants'
 
 export const clickWave = keyframes`
@@ -70,8 +61,8 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
   }
 
   &.actionPrimary {
-    color: ${({ theme }) => theme.containerColor};
-    background-color: ${({ theme }) => theme.primaryButtonColor};
+    color: ${({ theme }) => theme.cards};
+    background-color: ${({ theme }) => theme.linksAndButtons};
   }
 
   &.actionSecondary {
