@@ -31,6 +31,23 @@ export const silverTwoColor = '#CDCDCD'
 export const lightTextColor = '#D0CFD9'
 
 export const darkMode: MavrykTheme = {
+  // new color schema
+  nSelectedColor: '#8D86EB',
+  linksAndButtons: '#88D1C3',
+  nBackgroundColor: '#121212',
+  cards: '#1E1E1E',
+  mainHeadingText: '#EBF0FF',
+  subHeadingText: '#BBBBBB',
+  primaryText: '#EBF0FF',
+  menuButtonText: '#D2D2D2',
+  menuButtonSelected: '#8D86EB',
+  topbarMenuAndPlaceholders: '#C0DBFF',
+  regularText: '#BBBBBB',
+  strokeColor: '#8D86EB',
+  divider: '#282F3A',
+  messagesBackground: '#38237C',
+  strokeCards: 'rgba(0, 0, 0, 0.2)',
+  // old color schema
   whatMakesBackground: '/images/what-makes-dark.svg',
   calculatorBackground: '/images/calculator-bg-dark.svg',
   featuresBackground: '/images/features-bg-dark.svg',
@@ -129,6 +146,23 @@ export const darkMode: MavrykTheme = {
 }
 
 export const lightMode: MavrykTheme = {
+  // new color schema
+  nSelectedColor: '#03C9A3',
+  linksAndButtons: '#27007A',
+  nBackgroundColor: '#F7F9FD',
+  cards: '#FFFFFF',
+  mainHeadingText: '#1F1F1F',
+  subHeadingText: '#5B616E',
+  primaryText: '#1F1F1F',
+  menuButtonText: '#4C4C4C',
+  menuButtonSelected: '#86D4C9',
+  topbarMenuAndPlaceholders: '#8D86EB',
+  regularText: '#5B616E',
+  strokeColor: '#8D86EB',
+  divider: 'rgba(0, 0, 0, 0.1)',
+  messagesBackground: '#E1E6FF',
+  strokeCards: 'rgba(0, 0, 0, 0.1)',
+  // old color schema
   whatMakesBackground: '/images/what-makes-light.svg',
   calculatorBackground: '/images/calculator-bg-light.svg',
   featuresBackground: '/images/features-bg-light.svg',
@@ -226,6 +260,23 @@ export const lightMode: MavrykTheme = {
 }
 
 export const spaceMode: MavrykTheme = {
+  // new color schema
+  nSelectedColor: '#8D86EB',
+  linksAndButtons: '#86D4C9',
+  nBackgroundColor: '#080628',
+  cards: '#160E3F',
+  mainHeadingText: '#CDCDCD',
+  subHeadingText: '#D0CFD9',
+  primaryText: '#77A4F2',
+  menuButtonText: '#86D4C9',
+  menuButtonSelected: '#8D86EB',
+  topbarMenuAndPlaceholders: '#C0DBFF',
+  regularText: '#D0CFD9',
+  strokeColor: '#503EAA',
+  divider: '#503EAA',
+  messagesBackground: '#38237C',
+  strokeCards: '#503EAA',
+  // old color schema
   whatMakesBackground: '/images/what-makes-dark.svg',
   calculatorBackground: '/images/calculator-bg-dark.svg',
   featuresBackground: '/images/features-bg-dark.svg',
