@@ -94,18 +94,18 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     justify-content: center;
     align-items: center;
     background: transparent;
-    border: 1px solid ${({ theme }) => theme.toggleButtonColor};
+    border: 1px solid ${({ theme }) => theme.strokeColor};
     transition: 0.5s all;
     margin: 0;
     svg {
       width: 24px;
       height: 24px;
       margin: 0;
-      fill: ${({ theme }) => theme.toggleButtonColor};
-      stroke: ${({ theme }) => theme.toggleButtonColor};
+      fill: ${({ theme }) => theme.strokeColor};
+      stroke: ${({ theme }) => theme.strokeColor};
 
       &.arrow {
-        fill: ${({ theme }) => theme.toggleButtonColor};
+        fill: ${({ theme }) => theme.strokeColor};
         stroke: unset;
       }
     }

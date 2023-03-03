@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
-  background: ${({ theme }) => theme.darkBackroundColor};
-  border: 1px solid ${({ theme }) => theme.lbBorder};
+  background: ${({ theme }) => theme.cards};
+  border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: 10px;
   min-height: 90px;
   z-index: 1;

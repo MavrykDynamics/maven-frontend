@@ -8,7 +8,7 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.nBackgroundColor};
-  border: 1px solid ${({ theme }) => theme.nSelectedColor};
+  border: 1px solid ${({ theme }) => theme.strokeColor};
   border-radius: 20px;
   font-size: 16px;
   max-height: 40px;

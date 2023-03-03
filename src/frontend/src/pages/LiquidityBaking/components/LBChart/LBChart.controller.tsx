@@ -10,6 +10,7 @@ import { useMedia } from 'react-use'
 import { toogleChartInterval, toogleChartType } from 'redux/actions/chart.action'
 import { IntervalType, State } from 'utils/interfaces'
 import { ChartStyled } from './LBChart.style'
+import { SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 const intervalData = [
   {
@@ -96,12 +97,8 @@ export const LBChart = ({
             <use xlinkHref="/icons/sprites.svg#exchange" />
           </svg>
           <div className="info">
-            <CustomizedText color="#8D86EB" fontSize={14} fontWidth={600}>
-              XTZ/tzBTC (Sirius)
-            </CustomizedText>
-            <CustomizedText fontSize={14} fontWidth={600} className="value">
-              <CommaNumber value={LAST_CHART_COMPARE_VALUE} endingIconName="tezosAsset" />
-            </CustomizedText>
+            XTZ/tzBTC (Sirius)
+            <CommaNumber value={LAST_CHART_COMPARE_VALUE} endingIconName="tezosAsset" />
           </div>
         </div>
         {!isMobileChart ? <ChartControllsButtons className="right-wrapper" /> : null}

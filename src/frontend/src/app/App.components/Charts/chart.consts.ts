@@ -3,10 +3,10 @@ import dayjs from 'dayjs'
 import { INTERVAL_PRICE_CUSHION } from 'utils/consts'
 
 export const getTooltipMarkup = (price: number, date: Date, themeColors: Record<string, string>) => `
-<div style='color: ${themeColors.tooltipValue}'>
+<div style='color: ${themeColors.primaryText}'>
   ${price.toLocaleString('en-US', { maximumFractionDigits: 10 })}tz
 </div>
-<div style='color: ${themeColors.tooltipDate}; font-size: 11px; margin: 0 auto;'>${dayjs(date).format(
+<div style='color: ${themeColors.subHeadingText}; font-size: 11px; margin: 0 auto;'>${dayjs(date).format(
   'MMM DD, HH:mm',
 )}</div>
 `
@@ -15,7 +15,7 @@ const GRID_SETTING = {
   show: false,
 }
 
-const YAXIS_SETTING = (interval: IntervalType, textColor: string, isMobile?: boolean) => ({
+const YAXIS_SETTING = (interval: IntervalType, textColor: string, axisColor: string, isMobile?: boolean) => ({
   opposite: true,
   show: true,
   showAlways: !isMobile,
@@ -35,11 +35,11 @@ const YAXIS_SETTING = (interval: IntervalType, textColor: string, isMobile?: boo
   },
   axisBorder: {
     show: true,
-    color: textColor,
+    color: axisColor,
   },
 })
 
-const XAXIS_SETTING = (textColor: string) => ({
+const XAXIS_SETTING = (textColor: string, axisColor: string) => ({
   type: 'category' as 'category',
   tickAmount: 6,
   tickPlacement: 'on',
@@ -58,13 +58,13 @@ const XAXIS_SETTING = (textColor: string) => ({
   },
   axisBorder: {
     show: true,
-    color: textColor,
+    color: axisColor,
     width: '100%',
     offsetY: 1,
   },
   axisTicks: {
     show: true,
-    color: textColor,
+    color: axisColor,
   },
   tooltip: {
     enabled: false,
@@ -146,8 +146,8 @@ const RESPONSIVE_SETTING = [
 
 export const CANDLESTICK_CHART_OPTIONS = (interval: IntervalType, isMobileChart: boolean, theme: MavrykTheme) => ({
   chart: CHART_SETTING,
-  xaxis: XAXIS_SETTING(theme.toggleButtonColor),
-  yaxis: YAXIS_SETTING(interval, theme.toggleButtonColor, isMobileChart),
+  xaxis: XAXIS_SETTING(theme.regularText, theme.strokeColor),
+  yaxis: YAXIS_SETTING(interval, theme.regularText, theme.strokeColor, isMobileChart),
   responsive: RESPONSIVE_SETTING,
   grid: GRID_SETTING,
   tooltip: {
@@ -168,7 +168,7 @@ export const CANDLESTICK_CHART_OPTIONS = (interval: IntervalType, isMobileChart:
 
 export const AREA_CHART_OPTIONS = (interval: IntervalType, isMobileChart: boolean, theme: MavrykTheme) => ({
   chart: CHART_SETTING,
-  xaxis: XAXIS_SETTING(theme.toggleButtonColor),
+  xaxis: XAXIS_SETTING(theme.regularText, theme.strokeColor),
   responsive: RESPONSIVE_SETTING,
   tooltip: {
     custom: function ({ dataPointIndex, w }: any) {
@@ -176,7 +176,7 @@ export const AREA_CHART_OPTIONS = (interval: IntervalType, isMobileChart: boolea
       return getTooltipMarkup(dataForToltip.y, dataForToltip.x, theme)
     },
   },
-  yaxis: YAXIS_SETTING(interval, theme.toggleButtonColor, isMobileChart),
+  yaxis: YAXIS_SETTING(interval, theme.regularText, theme.strokeColor, isMobileChart),
   grid: GRID_SETTING,
   dataLabels: {
     enabled: false,
@@ -192,28 +192,28 @@ export const AREA_CHART_OPTIONS = (interval: IntervalType, isMobileChart: boolea
         [
           {
             offset: 0,
-            color: '#86D4C9',
+            color: '#77A4F2',
             opacity: 1,
           },
           {
             offset: 10,
-            color: '#86D4C9',
+            color: '#77A4F2',
             opacity: 0.6,
           },
           {
             offset: 30,
-            color: '#86D4C9',
+            color: '#77A4F2',
             opacity: 0.4,
           },
           {
             offset: 60,
-            color: '#86D4C9',
+            color: '#77A4F2',
             opacity: 0.2,
           },
           {
             offset: 100,
-            color: '#86D4C9',
-            opacity: 0.05,
+            color: '#77A4F2',
+            opacity: 0,
           },
         ],
       ],
