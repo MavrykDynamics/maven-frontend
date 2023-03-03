@@ -12,10 +12,11 @@ export const InputStyled = styled.div<{ theme: MavrykTheme }>`
     top: -20px;
     right: 10px;
     cursor: pointer;
-    transition: 0.25s all;
+    color: ${({ theme }) => theme.topBarLinkColor};
+    transition: opacity 0.25s;
 
     &:hover {
-      color: ${({ theme }) => theme.selectedColor};
+      opacity: 0.8;
     }
   }
 
@@ -115,7 +116,7 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
     line-height: 22px;
     padding-top: 0;
     padding-left: 10px;
-    color: ${({ theme }) => theme.headerColor};
+    color: ${({ theme }) => theme.socialColor};
     background-color: ${({ theme }) => theme.toggleButtonBg};
     border: 1px solid ${titleColor};
   }

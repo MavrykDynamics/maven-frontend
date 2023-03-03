@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
-import { skyColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
+
+export const PRIMARY_COLOR = 'primary'
+export const SECONDARY_COLOR = 'secondary'
 
 export const LBStyled = styled.div<{ theme: MavrykTheme }>`
   background-image: ${({ theme }) =>
@@ -139,7 +141,7 @@ export const CustomizedText = styled.div<{
   font-weight: ${({ fontWidth }) => (fontWidth ? fontWidth : 400)};
   font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : '18px')};
   line-height: ${({ lineHeight }) => (lineHeight ? `${lineHeight}px` : '18px')};
-  color: ${({ color, theme }) => (theme.isDarkTheme ? (color ? color : skyColor) : theme.headerTeam)};
+  color: ${({ color, theme }) => (theme.isDarkTheme ? (color ? color : theme.skyColor) : theme.headerTeam)};
   display: flex;
   width: fit-content;
 
@@ -158,7 +160,7 @@ export const CustomizedText = styled.div<{
     svg {
       width: 16px;
       height: 16px;
-      fill: ${({ theme }) => theme.toggleButtonColor};
+      fill: ${({ theme }) => theme.primaryTextCardColor};
     }
 
     .text {
@@ -218,5 +220,13 @@ export const CustomizedText = styled.div<{
 
   p {
     margin: 0;
+  }
+
+  &.${PRIMARY_COLOR} {
+    color: ${({ theme }) => theme.primaryTextCardColor};
+  }
+
+  &.${SECONDARY_COLOR} {
+    color: ${({ theme }) => theme.headingThirdCardColor};
   }
 `

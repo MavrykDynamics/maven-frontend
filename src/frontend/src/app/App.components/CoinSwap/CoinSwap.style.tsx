@@ -12,7 +12,7 @@ export const CoinSwapStyled = styled.div<{ theme: MavrykTheme }>`
 
     svg {
       stroke: none;
-      fill: ${({ theme }) => theme.labelColor};
+      fill: ${({ theme }) => theme.primaryTextCardColor};
       transform: rotate(90deg);
     }
   }

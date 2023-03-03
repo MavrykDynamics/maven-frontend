@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-import { cyanColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMobile?: boolean }>`
@@ -27,17 +26,18 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
       width: 21px;
       height: 21px;
       cursor: pointer;
-      fill: ${({ theme }) => theme.toggleButtonColor};
+      fill: ${({ theme }) => theme.topBarLinkColor};
+      transition: opacity 300ms;
 
       &:hover {
-        fill: ${({ theme }) => theme.selectedColor};
+        opacity: 0.8;
       }
     }
 
     span {
       font-size: 37px;
       font-weight: 300;
-      color: ${({ theme }) => theme.headingColor};
+      color: ${({ theme }) => theme.primaryTextCardColor};
     }
 
     &.reverted {
@@ -132,10 +132,6 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
       display: flex;
       justify-content: space-between;
       column-gap: 7px;
-
-      div:first-child {
-        color: ${({ theme }) => theme.toggleButtonColor};
-      }
     }
 
     &:not(.no-before):before {
@@ -317,7 +313,7 @@ export const StepBlock = styled.div`
   font-weight: 700;
   font-size: 18px;
   line-height: 25px;
-  color: #8d86eb;
+  color: ${({ theme }) => theme.primaryTextCardColor};
   position: relative;
   padding-left: 35px;
   display: flex;
@@ -329,7 +325,7 @@ export const StepBlock = styled.div`
     align-items: center;
     border: 1px solid #503eaa;
     border-radius: 50%;
-    color: #8d86eb;
+    color: ${({ theme }) => theme.primaryTextCardColor};
     font-weight: 700;
     font-size: 16px;
     position: absolute;
