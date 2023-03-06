@@ -198,7 +198,7 @@ export const lightMode: MavrykTheme = {
   primaryColor: '#7068AA',
   upColor: 'green',
   downColor: '#F90021',
-  litepaperLinkColor: '#7068AA',
+  litepaperLinkColor: '#38237C',
   navColor: titleColor,
   inputBorderColor: '#C0DBFF',
   headerColor,

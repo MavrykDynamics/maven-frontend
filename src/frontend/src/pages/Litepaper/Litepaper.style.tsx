@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/macro'
-import { Page, secondaryColor } from 'styles'
+import { Page } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const LitepaperStyled = styled(Page)<{ theme: MavrykTheme }>`
@@ -25,7 +25,7 @@ export const LitepaperStyled = styled(Page)<{ theme: MavrykTheme }>`
   }
 
   a {
-    color: ${secondaryColor};
+    color: ${({ theme }) => theme.litepaperLinkColor};
     /* text-decoration: underline; */
   }
 

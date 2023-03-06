@@ -26,6 +26,7 @@ import { useMedia } from 'react-use'
 import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { getFullNumber } from '../../../../../utils/utils'
+import { log } from 'console'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -111,10 +112,6 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
     setInputValues(DEFAULT_COINS_AMOUNT)
   }, [ready])
 
-  useEffect(() => {
-    setExchangeRate(Number(coinPrices.tzbtc.usd))
-  }, [coinPrices.tzbtc.usd])
-
   const calculateTokenToXtz = (amount: number) => {
     const convertedSlippagePercentToValue = slippagePercentToValue(slippagePercent)
 
@@ -138,9 +135,13 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
       convertedSlippagePercentToValue,
       dexType,
     )
-
-    return { tzBTCValue: expected, minimum, priceImpact, rate: amount !== 0 ? rate : Number(coinPrices.tzbtc.usd) }
+    return { tzBTCValue: expected, minimum, priceImpact, rate: amount !== 0 ? rate : exchangeRate }
   }
+
+  useEffect(() => {
+    const { rate } = calculateXtzToToken(1)
+    setExchangeRate(rate)
+  }, [generalDexStats])
 
   // handle slippage value changing
   const slippageChangeHandler = (value: string | number, isInput?: boolean) => {
@@ -188,8 +189,8 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
     const parsedValue = isNaN(parseFloat(value)) ? 0 : parseFloat(value)
     if (isTypingBottomInput) {
       if (name === 'XTZ') {
-        const { tzBTCValue } = calculateXtzToToken(parsedValue)
-        const { minimum: XTZMinimum, priceImpact: XTZriceImpact, rate } = calculateTokenToXtz(tzBTCValue)
+        const { tzBTCValue, rate } = calculateXtzToToken(parsedValue)
+        const { minimum: XTZMinimum, priceImpact: XTZriceImpact } = calculateTokenToXtz(tzBTCValue)
         if (tzBTCValue > tzBTCBalance) {
           setInputErrors({
             ...inputErrors,
@@ -202,9 +203,12 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         }
         setAmountToSwap(tzBTCValue)
         setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
-        setExchangeRate(rate || exchangeRate)
         setMinReceived(XTZMinimum)
         setPriceImpact(XTZriceImpact)
+
+        if (rate && XTZMinimum !== 0) {
+          setExchangeRate(rate)
+        }
       } else {
         const { XTZ_Value, rate } = calculateTokenToXtz(parsedValue)
         const { minimum: tzBTCMinimum, priceImpact: tzBTCPI } = calculateXtzToToken(XTZ_Value)
@@ -220,19 +224,25 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         }
         setAmountToSwap(XTZ_Value)
         setInputValues({ ...inputValues, XTZ: XTZ_Value, [name]: value })
-        setExchangeRate(rate || exchangeRate)
         setMinReceived(tzBTCMinimum)
         setPriceImpact(tzBTCPI)
+
+        if (rate) {
+          setExchangeRate(Number(coinPrices.tezos.usd) / rate)
+        }
       }
     } else {
       if (name === 'XTZ') {
-        const { tzBTCValue, minimum, priceImpact } = calculateXtzToToken(parsedValue)
-        const { rate } = calculateTokenToXtz(tzBTCValue)
+        const { tzBTCValue, minimum, priceImpact, rate } = calculateXtzToToken(parsedValue)
+
         setAmountToSwap(parsedValue)
         setInputValues({ ...inputValues, tzBTC: tzBTCValue, [name]: value })
-        setExchangeRate(rate || exchangeRate)
         setMinReceived(minimum)
         setPriceImpact(priceImpact)
+
+        if (rate && minimum !== 0) {
+          setExchangeRate(rate)
+        }
       } else {
         const { XTZ_Value, minimum, priceImpact, rate } = calculateTokenToXtz(parsedValue) // 0.0003
         setAmountToSwap(parsedValue)
@@ -240,6 +250,10 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         setExchangeRate(rate || exchangeRate)
         setMinReceived(minimum)
         setPriceImpact(priceImpact)
+
+        if (rate) {
+          setExchangeRate(Number(coinPrices.tezos.usd) / rate)
+        }
       }
     }
   }
@@ -392,7 +406,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         <CustomizedText className={SECONDARY_COLOR} fontWidth={500} fontSize={16}>
           1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
           <CommaNumber
-            value={isNaN(coinPrices.tezos.usd / exchangeRate) ? 0 : coinPrices.tezos.usd / exchangeRate}
+            value={exchangeRate}
             showDecimal
             decimalsToShow={8}
             endingText="tzBTC"

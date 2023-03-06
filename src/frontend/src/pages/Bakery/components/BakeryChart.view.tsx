@@ -15,20 +15,6 @@ import themeColors from 'styles/colors'
 // helpers
 import { percentageDifference } from 'utils/utils'
 
-const chartColors = (theme: MavrykTheme) => ({
-  lineColor: '#77A4F2',
-  areaTopColor: '#77A4F2',
-  areaBottomColor: 'rgba(119, 164, 242, 0)',
-  textColor: theme.regularText,
-  borderColor: 'transparent',
-})
-
-const chartSettings = {
-  height: 100,
-  hideYAxis: true,
-  hideTooltip: true,
-}
-
 type Props = {
   chartData: ChartItem[]
 }
@@ -60,8 +46,21 @@ export function BakeryChart({ chartData }: Props) {
 
       <Chart
         data={chartData}
-        colors={chartColors(themeColors[themeSelected])}
-        settings={chartSettings}
+        colors={{
+          lineColor: '#86D4C9',
+          areaTopColor: '#86D4C9',
+          areaBottomColor: 'rgba(119, 164, 242, 0)',
+          textColor: themeColors[themeSelected].primaryTextCardColor,
+          borderColor: 'transparent',
+        }}
+        settings={{
+          height: 100,
+          hideYAxis: true,
+          hideTooltip: true,
+          xAsisTimeFormat: 'HH:mm',
+        }}
+        chartType={'area'}
+        tooltipAsset={'USD'}
       />
     </BakeryChartStyled>
   )
