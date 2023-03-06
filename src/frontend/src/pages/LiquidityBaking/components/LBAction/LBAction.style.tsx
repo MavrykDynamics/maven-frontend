@@ -26,7 +26,7 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
       width: 21px;
       height: 21px;
       cursor: pointer;
-      fill: ${({ theme }) => theme.regularText};
+      fill: ${({ theme }) => theme.linksAndButtons};
       transition: opacity 300ms;
 
       &:hover {

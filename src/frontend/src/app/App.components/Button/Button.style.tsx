@@ -97,25 +97,17 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     border: 1px solid ${({ theme }) => theme.strokeColor};
     transition: 0.5s all;
     margin: 0;
+
     svg {
       width: 24px;
       height: 24px;
       margin: 0;
-      fill: ${({ theme }) => theme.strokeColor};
-      stroke: ${({ theme }) => theme.strokeColor};
+      fill: ${({ theme }) => theme.linksAndButtons};
+      stroke: ${({ theme }) => theme.linksAndButtons};
 
       &.arrow {
-        fill: ${({ theme }) => theme.strokeColor};
+        fill: ${({ theme }) => theme.linksAndButtons};
         stroke: unset;
-      }
-    }
-
-    &:hover {
-      border: 1px solid ${({ theme }) => theme.selectedColor};
-
-      svg {
-        fill: ${({ theme }) => theme.selectedColor};
-        stroke: ${({ theme }) => theme.selectedColor};
       }
     }
 
