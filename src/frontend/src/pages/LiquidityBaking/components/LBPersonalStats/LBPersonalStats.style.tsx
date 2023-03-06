@@ -40,10 +40,6 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
     }
   }
 
-  .block-name {
-    color: ${({ theme }) => theme.subHeadingText};
-  }
-
   @media screen and (max-width: 1400px) {
     .stats-grid {
       column-gap: 35px;

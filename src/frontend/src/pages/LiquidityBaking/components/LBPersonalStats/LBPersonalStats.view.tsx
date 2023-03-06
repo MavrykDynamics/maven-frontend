@@ -1,6 +1,6 @@
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { SECONDARY_COLOR, THIRD_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { LBPersonalStatsStyled } from './LBPersonalStats.style'
 import Icon from 'app/App.components/Icon/Icon.view'
 
@@ -47,7 +47,7 @@ export const LBPersonalStatsView = ({
               showNone={showNone}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className="block-name">
+          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
             Unrealized PL
             <div className="info">
               <Icon id="infoIcon" />
@@ -67,7 +67,7 @@ export const LBPersonalStatsView = ({
               showNone={showNone}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className="block-name">
+          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
             Realized PL
             <div className="info">
               <Icon id="infoIcon" />
@@ -90,7 +90,7 @@ export const LBPersonalStatsView = ({
               decimalsToShow={6}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className="block-name">
+          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
             Pool Share
             <div className="info">
               <Icon id="infoIcon" />
@@ -107,7 +107,7 @@ export const LBPersonalStatsView = ({
               endingText=" "
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className="block-name">
+          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
             Sirius tokens
           </CustomizedText>
         </VertInfo>
@@ -123,7 +123,7 @@ export const LBPersonalStatsView = ({
               decimalsToShow={6}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className="block-name">
+          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
             Estimated XTZ owned
             {/* <div className="info">
               <Icon id="infoIcon" />
@@ -146,7 +146,7 @@ export const LBPersonalStatsView = ({
               decimalsToShow={8}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className="block-name">
+          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
             Estimated tzBTC owned
             {/* <div className="info">
               <Icon id="infoIcon" />

@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components/macro'
-import { downColor, titleColor } from 'styles'
+import { downColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const InputStyled = styled.div<{ theme: MavrykTheme }>`
@@ -12,7 +12,6 @@ export const InputStyled = styled.div<{ theme: MavrykTheme }>`
     top: -20px;
     right: 10px;
     cursor: pointer;
-    color: ${({ theme }) => theme.linksAndButtons};
     transition: opacity 0.25s;
 
     &:hover {
@@ -63,6 +62,10 @@ export const InputComponentContainer = styled.div<{ theme: MavrykTheme }>`
     left: 14px;
     bottom: 2px;
 
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+
     p {
       margin: 0;
       color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
@@ -71,6 +74,10 @@ export const InputComponentContainer = styled.div<{ theme: MavrykTheme }>`
 
   .pinned-text {
     color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
   }
 `
 
