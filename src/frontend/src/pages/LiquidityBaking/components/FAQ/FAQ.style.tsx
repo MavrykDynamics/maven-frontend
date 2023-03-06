@@ -24,6 +24,29 @@ export const FaqItem = styled.div<{ last?: boolean }>`
   position: relative;
   margin-bottom: 45px;
 
+  h2 {
+    font-size: 25px;
+    font-weight: 700;
+
+    color: ${({ theme }) => theme.mainHeadingText};
+  }
+
+  p {
+    color: ${({ theme }) => theme.regularText};
+  }
+
+  a {
+    color: ${({ theme }) => theme.linksAndButtons};
+    text-decoration: underline;
+  }
+
+  p,
+  a {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
   &:not(:last-child) {
     ::before {
       content: '';

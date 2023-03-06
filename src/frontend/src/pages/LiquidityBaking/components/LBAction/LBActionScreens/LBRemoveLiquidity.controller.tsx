@@ -12,14 +12,15 @@ import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFi
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { State } from 'utils/interfaces'
-import { nonNumberSymbolsValidation, parseSrtToNum, removeDecimal, slippagePercentToValue } from 'utils/utils'
+import { nonNumberSymbolsValidation, parseSrtToNum, slippagePercentToValue } from 'utils/utils'
 import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
-import { PRIMARY } from 'app/App.components/Button/Button.constants'
+import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 import { AddLiquidutityInputChangeEventType } from '../helpers/actionsScreen.types'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import { removeLiquidity } from '../../../../../redux/actions/liquidity.action'
 import { calculateRemoveLiquidity } from '../../../../../utils/DEX/liquidityUtils'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from '../../../../../utils/consts'
+import { PRIMARY_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 
@@ -164,7 +165,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
       />
 
       <div className="receive-info-wrapper">
-        <CustomizedText style={{ marginBottom: '10px' }} fontSize={16}>
+        <CustomizedText className={PRIMARY_COLOR} style={{ marginBottom: '10px' }} fontSize={16}>
           You Receive
         </CustomizedText>
 
@@ -187,7 +188,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
           icon={'minus'}
           onClick={removeLiquidityBtnHandler}
           className="LB removeLiq-btn"
-          kind={PRIMARY}
+          kind={ACTION_PRIMARY}
         />
       ) : (
         <ConnectWallet className="LB removeLiq-btn" />

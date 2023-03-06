@@ -1,7 +1,7 @@
 import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import { InputKind, InputStatusType } from './Input.controller'
 
-import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { CustomizedText, SECONDARY_COLOR, ACTIVE_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import {
   InputComponent,
   InputComponentContainer,
@@ -67,12 +67,12 @@ export const InputView = ({
   return (
     <InputStyled id={'inputStyled'} className={className}>
       {useMaxHandler ? (
-        <CustomizedText className="useMax" onClick={useMaxHandler} fontSize={14} fontWidth={600}>
+        <CustomizedText className={`${ACTIVE_COLOR} useMax`} onClick={useMaxHandler} fontSize={14} fontWidth={600}>
           Use Max
         </CustomizedText>
       ) : null}
       {userBalance !== undefined && pinnedText ? (
-        <CustomizedText className="balance" fontSize={14} fontWidth={600}>
+        <CustomizedText className={`${SECONDARY_COLOR} balance`} fontSize={14} fontWidth={600}>
           <CommaNumber
             beginningText="Balance:"
             value={userBalance}
@@ -118,19 +118,13 @@ export const InputView = ({
               </svg>
             )}
 
-            {pinnedText && (
-              <CustomizedText color="#C0DBFF" fontSize={22} fontWidth={600}>
-                {pinnedText}
-              </CustomizedText>
-            )}
+            {pinnedText && <div className="pinned-text">{pinnedText}</div>}
           </div>
         ) : null}
 
         {isLB && convertedValue !== undefined && (
           <div className="transfer_result">
-            <CustomizedText color="#C0DBFF" fontSize={12} fontWidth={500}>
-              <CommaNumber beginningText="= $" value={convertedValue ?? 0} decimalsToShow={6} />
-            </CustomizedText>
+            <CommaNumber beginningText="= $" value={convertedValue ?? 0} decimalsToShow={6} />
           </div>
         )}
       </InputComponentContainer>

@@ -257,7 +257,7 @@
     />
     </symbol>
     <symbol id='plus' viewBox="0 0 9 10"  xmlns="http://www.w3.org/2000/svg">
-        <path d="M8.666 4.052H5.372V0.704H3.41V4.052H0.116V5.924H3.41V9.254H5.372V5.924H8.666V4.052Z" fill="#77A4F2" />
+        <path d="M8.666 4.052H5.372V0.704H3.41V4.052H0.116V5.924H3.41V9.254H5.372V5.924H8.666V4.052Z"/>
     </symbol>
     <symbol id='minus' viewBox="0 0 22 4"  xmlns="http://www.w3.org/2000/svg">
         <path
