@@ -1,16 +1,19 @@
-import { Button } from 'app/App.components/Button/Button.controller'
-import AreaChart from 'app/App.components/Charts/AreaChart.controller'
-import CandlestickChart from 'app/App.components/Charts/CandlestickChart.controller'
-import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
-import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
-import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useMedia } from 'react-use'
+
 import { toogleChartInterval, toogleChartType } from 'redux/actions/chart.action'
 import { IntervalType, State } from 'utils/interfaces'
+import themeColors from 'styles/colors'
+
+import { Button } from 'app/App.components/Button/Button.controller'
+import { Chart } from 'app/App.components/Chart/Chart.view'
+import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
+import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view'
+
+import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { ChartStyled } from './LBChart.style'
-import { SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { SECONDARY_COLOR, THIRD_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 const intervalData = [
   {
@@ -43,13 +46,12 @@ export const LBChart = ({
   returnBackToActionScreenHandler?: () => void
 }) => {
   const { chartDataCandlestick, chartDataArea, chartInterval, chartType } = useSelector((state: State) => state.chart)
+  const { themeSelected } = useSelector((state: State) => state.preferences)
   const LAST_CHART_COMPARE_VALUE = useMemo(
-    () => chartDataArea.at(-1)?.y || chartDataCandlestick.at(-1)?.y[3] || 0,
+    () => chartDataArea.at(-1)?.value || chartDataCandlestick.at(-1)?.close || 0,
     [chartDataArea, chartDataCandlestick],
   )
   const dispatch = useDispatch()
-
-  const showSmall = useMedia('(max-width: 700px)')
 
   const changeIntervalHandler = useCallback(async (newInterval: IntervalType) => {
     await dispatch(toogleChartInterval(newInterval))
@@ -79,6 +81,9 @@ export const LBChart = ({
 
   const isMobileChart = className === 'mobile-chart'
 
+  const isMobileMax = useMedia('(max-width: 770px)')
+  const isMobileMin = useMedia('(min-width: 550px)')
+
   return (
     <ChartStyled className={className}>
       <div className="chart-controlls">
@@ -97,33 +102,40 @@ export const LBChart = ({
             <use xlinkHref="/icons/sprites.svg#exchange" />
           </svg>
           <div className="info">
-            XTZ/tzBTC (Sirius)
-            <CommaNumber value={LAST_CHART_COMPARE_VALUE} endingIconName="tezosAsset" />
+            <CustomizedText className={THIRD_COLOR} fontSize={20} fontWidth={600}>
+              XTZ/tzBTC (Sirius)
+            </CustomizedText>
+            <CustomizedText fontSize={14} fontWidth={600} className={`${SECONDARY_COLOR} value`}>
+              <CommaNumber
+                value={LAST_CHART_COMPARE_VALUE}
+                endingIconName="tezosAsset"
+                showDecimal
+                decimalsToShow={6}
+              />
+            </CustomizedText>
           </div>
         </div>
         {!isMobileChart ? <ChartControllsButtons className="right-wrapper" /> : null}
       </div>
 
       {chartDataCandlestick.length ? (
-        <div className="chart-wrapper">
-          {chartType === 'area' ? (
-            <AreaChart
-              isMobileChart={isMobileChart}
-              chartData={showSmall ? chartDataArea.slice(Math.floor(chartDataArea.length / 1.4)) : chartDataArea}
-              interval={chartInterval}
-            />
-          ) : (
-            <CandlestickChart
-              isMobileChart={isMobileChart}
-              chartData={
-                showSmall
-                  ? chartDataCandlestick.slice(Math.floor(chartDataCandlestick.length / 1.5))
-                  : chartDataCandlestick
-              }
-              interval={chartInterval}
-            />
-          )}
-        </div>
+        <Chart
+          className="lb-chart"
+          data={chartType === 'area' ? chartDataArea : chartDataCandlestick}
+          settings={{
+            height: isMobileMax && isMobileMin ? 410 : 500,
+            xAsisTimeFormat: chartInterval === 'quotes1dNogaps' || chartInterval === 'quotes1w' ? 'DD/MM' : 'HH:mm',
+          }}
+          colors={{
+            lineColor: '#77A4F2',
+            areaTopColor: '#77A4F2',
+            areaBottomColor: 'rgba(119, 164, 242, 0)',
+            textColor: themeColors[themeSelected].regularText,
+            borderColor: themeColors[themeSelected].strokeColor,
+          }}
+          chartType={chartType}
+          tooltipAsset={'tzBTC'}
+        />
       ) : null}
 
       {isMobileChart ? <ChartControllsButtons className="right-wrapper-mobile" /> : null}

@@ -59,8 +59,12 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
   position: relative;
   width: 100%;
 
-  &.portfolio {
-    margin-top: auto;
+  &.lb-chart {
+    padding: 0 10px 0 30px;
+
+    @media screen and (max-width: 769px) {
+      padding: 0;
+    }
   }
 `
 
@@ -68,8 +72,8 @@ export const TradingViewTooltipStyled = styled.div<{ theme: MavrykTheme }>`
   position: absolute;
   z-index: 100;
   padding: 7px 10px 7px 10px;
-  background: ${({ theme }) => theme.darkBackroundColor};
-  border: 1px solid ${({ theme }) => theme.borderCard};
+  background: ${({ theme }) => theme.cards};
+  border: 1px solid ${({ theme }) => theme.strokeColor};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -87,7 +91,7 @@ export const TradingViewTooltipStyled = styled.div<{ theme: MavrykTheme }>`
 
       font-weight: 600;
       font-size: 18px;
-      color: ${({ theme }) => theme.headingThirdCardColor};
+      color: ${({ theme }) => theme.primaryText};
       white-space: pre;
     }
   }
@@ -95,7 +99,7 @@ export const TradingViewTooltipStyled = styled.div<{ theme: MavrykTheme }>`
   .date {
     font-weight: 600;
     font-size: 12px;
-    color: ${({ theme }) => theme.primaryTextCardColor};
+    color: ${({ theme }) => theme.subHeadingText};
     white-space: pre;
   }
 `
