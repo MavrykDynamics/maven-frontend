@@ -123,9 +123,9 @@ export function BakeryView() {
                 text="Delegate to Mavryk Dynamics"
                 icon="plusDark"
                 kind={ACTION_PRIMARY}
-                onClick={() => handleClickDelegate(delegates[1].tzAddress)}
+                onClick={() => handleClickDelegate(delegates[1].bakeryAddress)}
                 className="media-margin-top-2"
-                disabled={delegates[1].tzAddress === delegates[1].delegateAddress}
+                disabled={delegates[1].bakeryAddress === delegates[1].delegateAddress}
               />
             </div>
           </div>

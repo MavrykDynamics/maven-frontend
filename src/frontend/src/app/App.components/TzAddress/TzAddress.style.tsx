@@ -58,7 +58,7 @@ export const TzAddressIcon = styled.svg<{ theme: MavrykTheme }>`
   }
 
   &.${CYAN} {
-    stroke: ${({ theme }) => theme.secondaryTextCardColor};
+    stroke: ${({ theme }) => theme.linksAndButtons};
     fill: transparent;
   }
 
