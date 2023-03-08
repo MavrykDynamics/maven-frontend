@@ -47,8 +47,8 @@ export function BakeryChart({ chartData }: Props) {
       <Chart
         data={chartData}
         colors={{
-          lineColor: '#86D4C9',
-          areaTopColor: '#86D4C9',
+          lineColor: '#77A4F2',
+          areaTopColor: '#77A4F2',
           areaBottomColor: 'rgba(119, 164, 242, 0)',
           textColor: themeColors[themeSelected].primaryTextCardColor,
           borderColor: 'transparent',
