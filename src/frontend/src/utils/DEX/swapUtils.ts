@@ -24,7 +24,7 @@ export function calculateXtzToToken(
   dex: { fee: number; burn: number; includeSubsidy: boolean },
 ): { expected: number; minimum: number; rate: number; priceImpact: number } {
 
-  let _xtzToSell = new BigNumber(xtzToSell * PRECISION_NUMBER_SIX_ZEROES),
+  let _xtzToSell = new BigNumber(Math.round(xtzToSell * PRECISION_NUMBER_SIX_ZEROES)),
     _xtzPool = new BigNumber(Math.round(xtzPool * PRECISION_NUMBER_SIX_ZEROES)),
     _tokenPool = new BigNumber(Math.round(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES))
 
