@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 
 // types
-import { MavrykTheme, State } from 'utils/interfaces'
+import { State } from 'utils/interfaces'
 import { ChartItem } from 'utils/interfaces'
 
 // components
@@ -47,8 +47,8 @@ export function BakeryChart({ chartData }: Props) {
       <Chart
         data={chartData}
         colors={{
-          lineColor: '#86D4C9',
-          areaTopColor: '#86D4C9',
+          lineColor: '#77A4F2',
+          areaTopColor: '#77A4F2',
           areaBottomColor: 'rgba(119, 164, 242, 0)',
           textColor: themeColors[themeSelected].primaryTextCardColor,
           borderColor: 'transparent',

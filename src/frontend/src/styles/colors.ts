@@ -47,6 +47,7 @@ export const darkMode: MavrykTheme = {
   divider: '#282F3A',
   messagesBackground: '#38237C',
   strokeCards: 'rgba(0, 0, 0, 0.2)',
+  footerColor: '#121212',
   // tabs
   forTabs: 'linear-gradient(90deg, #86D4C9 0.31%, #8D86EB 99.97%)',
 
@@ -165,6 +166,7 @@ export const lightMode: MavrykTheme = {
   divider: 'rgba(0, 0, 0, 0.1)',
   messagesBackground: '#E1E6FF',
   strokeCards: 'rgba(0, 0, 0, 0.1)',
+  footerColor: '#FFFFFF',
   // tabs
   forTabs: 'linear-gradient(90deg, #03C9A3 0.31%, #8D86EB 99.97%)',
 
@@ -282,6 +284,7 @@ export const spaceMode: MavrykTheme = {
   divider: '#503EAA',
   messagesBackground: '#38237C',
   strokeCards: '#503EAA',
+  footerColor: '#080628',
   // tabs
   forTabs: 'linear-gradient(90deg, #86D4C9 0.31%, #8D86EB 99.97%)',
 

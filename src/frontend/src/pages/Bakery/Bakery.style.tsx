@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { MavrykTheme } from 'utils/interfaces'
 
 // components
-import { Footer } from 'app/App.components/Footer/Footer.controller'
 import { Button } from 'app/App.components/Button/Button.controller'
 
 export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
@@ -198,10 +197,6 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
       display: block;
     }
   }
-`
-
-export const FooterStyled = styled(Footer)<{ theme: MavrykTheme }>`
-  background-color: ${({ theme }) => theme.darkestBackroundColor};
 `
 
 export const Card = styled.div`
