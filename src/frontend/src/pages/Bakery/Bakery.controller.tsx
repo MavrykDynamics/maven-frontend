@@ -7,9 +7,7 @@ import { PopupChangeNode } from 'app/App.components/SettingsPopup/SettingsPopup.
 import { connect } from 'redux/actions/connectWallet.actions'
 import { BakeryView } from './Bakery.view'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
-
-// styles
-import { FooterStyled } from './Bakery.style'
+import { Footer } from 'app/App.components/Footer/Footer.controller'
 
 // helpers
 import { SPACE_THEME, toggleRPCNodePopup } from 'redux/actions/preferences.action'
@@ -54,7 +52,7 @@ export function Bakery() {
       <PopupChangeNode isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
       <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
       <BakeryView />
-      <FooterStyled />
+      <Footer />
     </>
   )
 }

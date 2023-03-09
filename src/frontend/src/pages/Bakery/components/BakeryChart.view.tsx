@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 
 // types
-import { MavrykTheme, State } from 'utils/interfaces'
+import { State } from 'utils/interfaces'
 import { ChartItem } from 'utils/interfaces'
 
 // components
