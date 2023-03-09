@@ -178,7 +178,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
       const calcValue = calcAddLiquidityXtzAndTzbtc(value !== '' ? parseFloat(value.toString()) : 0, name)
 
       // if we enter XTZ we dynamic calc tzBTC amount, so check it there
-      if (name === 'xtz' && ready && calcValue > tzBTCBalance) {
+      if (name.toLowerCase() === 'xtz' && ready && calcValue > tzBTCBalance) {
         dispatch(showToaster(ERROR, 'Insufficient tzBTC wallet balance', 'Please enter sufficient XTZ amount'))
         setInputErrors({
           ...inputErrors,
@@ -188,7 +188,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
       }
 
       // if we enter tzBTC we dynamic calc XTZ amount, so check it there
-      if (name === 'tzBTC' && ready && calcValue > xtzBalance) {
+      if (name.toLowerCase() === 'tzbtc' && ready && calcValue > xtzBalance) {
         dispatch(showToaster(ERROR, 'Insufficient XTZ wallet balance', 'Please enter sufficient tzBTC amount'))
         setInputErrors({
           ...inputErrors,
