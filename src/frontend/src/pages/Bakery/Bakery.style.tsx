@@ -78,7 +78,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
 
     span {
       margin-right: 10px;
-      
+
       font-weight: 600;
       font-size: 18px;
       line-height: 27px;
@@ -89,6 +89,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     .address {
       display: flex;
       align-items: center;
+      white-space: nowrap;
 
       div {
         font-weight: 600;
@@ -195,6 +196,24 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
 
     .mobile {
       display: block;
+    }
+
+    .addresses {
+      span {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+
+        margin-right: 0;
+      }
+
+      .address {
+        div {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
     }
   }
 `
