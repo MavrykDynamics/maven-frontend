@@ -1,4 +1,4 @@
-import {PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES} from '../consts'
+import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from '../consts'
 // @ts-ignore
 import dexterCalculations from 'dex-calcs/dist/index-mobile.min'
 import BigNumber from 'bignumber.js'
@@ -23,14 +23,16 @@ export function calculateXtzToToken(
   maxSlippage: number,
   dex: { fee: number; burn: number; includeSubsidy: boolean },
 ): { expected: number; minimum: number; rate: number; priceImpact: number } {
-  let _xtzToSell = new BigNumber(xtzToSell * PRECISION_NUMBER_SIX_ZEROES),
-    _xtzPool = new BigNumber(xtzPool * PRECISION_NUMBER_SIX_ZEROES),
-    _tokenPool = new BigNumber(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES)
+
+  let _xtzToSell = new BigNumber(Math.round(xtzToSell * PRECISION_NUMBER_SIX_ZEROES)),
+    _xtzPool = new BigNumber(Math.round(xtzPool * PRECISION_NUMBER_SIX_ZEROES)),
+    _tokenPool = new BigNumber(Math.round(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES))
 
   const expectedTokenReceived = xtzToTokenExpectedReturn(_xtzToSell, _xtzPool, _tokenPool, dex)
   const minimumReceived = xtzToTokenMinimumReturn(expectedTokenReceived, maxSlippage)
   const exchangeRate = xtzToTokenExchangeRateDisplay(_xtzToSell, _xtzPool, _tokenPool, dex)
   const priceImpact = xtzToTokenPriceImpact(_xtzToSell, _xtzPool, _tokenPool, dex)
+
   return {
     expected: expectedTokenReceived.toNumber() / PRECISION_NUMBER_EIGHT_ZEROES,
     minimum: minimumReceived.toNumber() / PRECISION_NUMBER_EIGHT_ZEROES,
@@ -52,6 +54,7 @@ function xtzToTokenExpectedReturn(
     dex.fee.toString(),
     dex.burn.toString(),
   )
+
   return new BigNumber(result && result.gt(0) ? result : 0)
 }
 
@@ -116,8 +119,8 @@ export function calculateTokenToXtz(
   dex: { fee: number; burn: number; includeSubsidy: boolean },
 ): { expected: number; minimum: number; rate: number; priceImpact: number } {
   let _tokenToSell = new BigNumber(Math.round(tokenToSell * PRECISION_NUMBER_EIGHT_ZEROES)),
-    _xtzPool = new BigNumber(xtzPool * PRECISION_NUMBER_SIX_ZEROES),
-    _tokenPool = new BigNumber(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES)
+    _xtzPool = new BigNumber(Math.round(xtzPool * PRECISION_NUMBER_SIX_ZEROES)),
+    _tokenPool = new BigNumber(Math.round(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES))
   const expectedXtzReceived = tokenToXtzExpectedReturn(_tokenToSell, _xtzPool, _tokenPool, dex)
   const minimumReceived = tokenToXtzMinimumReturn(expectedXtzReceived, maxSlippage)
   const exchangeRate = tokenToXtzExchangeRateDisplay(_tokenToSell, _xtzPool, _tokenPool, dex)
@@ -185,3 +188,4 @@ function tokenToXtzPriceImpact(
   )
   return result ? Number(result) : 0
 }
+

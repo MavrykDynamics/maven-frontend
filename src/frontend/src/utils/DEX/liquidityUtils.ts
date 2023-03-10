@@ -15,9 +15,9 @@ export function calculateAddLiquidity(
   maxSlippage: number,
   dex: { fee: number; burn: number; includeSubsidy: boolean },
 ): { liquidityExpected: number; liquidityMinimum: number; required: number; exchangeRate: number } {
-  let _xtzToAdd = new BigNumber(xtzToAdd * PRECISION_NUMBER_SIX_ZEROES),
-    _xtzPool = new BigNumber(xtzPool * PRECISION_NUMBER_SIX_ZEROES),
-    _tokenPool = new BigNumber(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES),
+  let _xtzToAdd = new BigNumber(Math.round(xtzToAdd * PRECISION_NUMBER_SIX_ZEROES)),
+    _xtzPool = new BigNumber(Math.round(xtzPool * PRECISION_NUMBER_SIX_ZEROES)),
+    _tokenPool = new BigNumber(Math.round(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES)),
     _lqtTotal = new BigNumber(lqtTotal)
 
   const { liquidityExpected, liquidityMinimum, required, exchangeRate } = calculateAddLiquidityXTZ(
@@ -123,9 +123,9 @@ export function calculateRemoveLiquidity(
   tokenMinimum: number
   exchangeRate: number
 } {
-  let _liquidityBurned = new BigNumber(liquidityBurned),
-    _xtzPool = new BigNumber(xtzPool * PRECISION_NUMBER_SIX_ZEROES),
-    _tokenPool = new BigNumber(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES),
+  let _liquidityBurned = new BigNumber(Math.round(liquidityBurned)),
+    _xtzPool = new BigNumber(Math.round(xtzPool * PRECISION_NUMBER_SIX_ZEROES)),
+    _tokenPool = new BigNumber(Math.round(tokenPool * PRECISION_NUMBER_EIGHT_ZEROES)),
     _totalLiquidity = new BigNumber(totalLiquidity)
   const xtzOut = removeLiquidityXtzReceived(_liquidityBurned, _totalLiquidity, _xtzPool, maxSlippage, dex)
   const tokenOut = removeLiquidityTokenReceived(_liquidityBurned, _totalLiquidity, _tokenPool, maxSlippage)
