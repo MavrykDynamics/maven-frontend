@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components/macro'
 
-import { darkColor, primaryColor } from '../../../styles'
+import { primaryColor } from '../../../styles'
 import { BUTTON_RADIUS } from '../../../styles/constants'
 import { MavrykTheme } from 'utils/interfaces'
 import { PRIMARY, SECONDARY, TRANSPARENT } from './SlidingTabButtons.constants'
@@ -24,8 +24,8 @@ export const clickSlide = keyframes`
   }
 `
 export const SlidingTabButtonsStyled = styled.div<{ theme: MavrykTheme }>`
-  background-color: ${({ theme }) => theme.sliderBgColor};
-  border: 1px solid ${({ theme }) => theme.sliderBorderColor};
+  background-color: ${({ theme }) => theme.nBackgroundColor};
+  border: 1px solid ${({ theme }) => theme.strokeColor};
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -58,12 +58,13 @@ export const ButtonStyled = styled.button<{ disabled: boolean; theme: MavrykThem
   padding: 0 22px;
   border-radius: ${BUTTON_RADIUS};
   user-select: none;
-  color: ${({ theme }) => theme.sliderTextColor};
+  // use outside the theme because we need the same color for all themes
+  color: #8d86eb;
   background: transparent;
 
   &.selected {
-    color: ${({ theme }) => theme.sliderBgColor};
-    background: ${({ theme }) => theme.sliderTabBgColor};
+    color: ${({ theme }) => theme.cards};
+    background: ${({ theme }) => theme.forTabs};
   }
 
   &.loading {

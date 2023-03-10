@@ -29,7 +29,7 @@ export const TzAddressStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   &.${CYAN} {
-    color: ${({ theme }) => theme.secondaryTextCardColor};
+    color: ${({ theme }) => theme.linksAndButtons};
   }
 
   &.${BLUE} {
