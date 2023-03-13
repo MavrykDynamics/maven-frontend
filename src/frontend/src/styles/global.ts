@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle<{ theme: MavrykTheme }>`
   box-sizing: border-box;
 }
 
+html {
+  scroll-padding-top: 100px;
+}
+
 body {
   font-family: 'Metropolis', Helvetica, Arial, sans-serif;
   font-display: optional;
