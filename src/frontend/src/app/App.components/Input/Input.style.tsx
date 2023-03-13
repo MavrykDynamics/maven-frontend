@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components/macro'
-import { downColor } from 'styles'
+import { downColor, skyColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const InputStyled = styled.div<{ theme: MavrykTheme }>`
@@ -16,6 +16,16 @@ export const InputStyled = styled.div<{ theme: MavrykTheme }>`
 
     &:hover {
       opacity: 0.8;
+    }
+  }
+
+  &.use-max-disable {
+    .useMax {
+      cursor: not-allowed;
+
+      &:hover {
+        color: ${({ theme }) => (theme.isDarkTheme ? skyColor : theme.headerTeam)};
+      }
     }
   }
 

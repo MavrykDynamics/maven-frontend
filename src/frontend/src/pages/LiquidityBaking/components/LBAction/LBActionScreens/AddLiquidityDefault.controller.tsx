@@ -32,6 +32,9 @@ export const AddLiquidityDefault = ({
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
   const isMobile = useMedia('max-width: 500px')
 
+  const xtzUseMaxDisabled = xtzBalance * coinPrices.tezos.usd > tzBTCBalance * coinPrices.tzbtc.usd
+  const tzbtcUseMaxDisabled = tzBTCBalance * coinPrices.tzbtc.usd > xtzBalance * coinPrices.tezos.usd
+
   return (
     <>
       <div className="input-wrapper">
@@ -45,11 +48,13 @@ export const AddLiquidityDefault = ({
           convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
           icon={'XTZ_tezos'}
           pinnedText={'XTZ'}
-          className="addLiq-input"
+          className={`addLiq-input ${xtzUseMaxDisabled ? 'use-max-disable' : ''}`}
           inputStatus={inputErrors.XTZ}
           onKeyDown={nonNumberSymbolsValidation}
           onWheel={(e: React.WheelEvent<HTMLInputElement>) => e.currentTarget.blur()}
           useMaxHandler={() => {
+            if (xtzUseMaxDisabled) return
+
             inputChangeHandler({
               target: {
                 name: 'XTZ',
@@ -88,10 +93,11 @@ export const AddLiquidityDefault = ({
           value={inputValues.tzBTC}
           convertedValue={parseSrtToNum(inputValues.tzBTC) * coinPrices.tzbtc.usd}
           icon={'tzBTC'}
-          className="addLiq-input"
+          className={`addLiq-input ${tzbtcUseMaxDisabled ? 'use-max-disable' : ''}`}
           inputStatus={inputErrors.tzBTC}
           pinnedText={'tzBTC'}
           useMaxHandler={() => {
+            if (tzbtcUseMaxDisabled) return
             inputChangeHandler({
               target: {
                 name: 'tzBTC',
