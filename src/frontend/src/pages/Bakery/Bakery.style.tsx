@@ -279,7 +279,7 @@ export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   background-position: bottom right;
   background-size: auto;
 
-  @media screen and (max-width: 1300px) {
+  @media screen and (max-width: 1400px) {
     p {
       width: 55%;
     }
