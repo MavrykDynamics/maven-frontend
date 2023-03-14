@@ -23,6 +23,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+  font-family: 'Metropolis', Helvetica, Arial, sans-serif;
+}
+
 h1 {
   font-size: 40px;
   font-weight: bold;
