@@ -397,9 +397,9 @@ export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavrykTheme 
       }
 
       .main {
-        font-size: 17px;
-        line-height: 20px;
-        font-weight: 500;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 27px;
         color: ${({ theme }) => theme.policyPopupTextColor};
 
         @media screen and (max-width: 550px) {
@@ -438,11 +438,7 @@ export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavrykTheme 
       width: 6px;
       height: 13px;
       transform: rotate(180deg);
-    }
-    &:hover {
-      svg:not(.disabled) {
-        stroke: ${({ theme: { selectedColor } }) => selectedColor};
-      }
+      stroke: ${({ theme }) => theme.linksAndButtons};
     }
   }
 
@@ -508,15 +504,16 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   border-radius: ${BUTTON_RADIUS};
   border: none;
   text-align: center;
-  font-weight: bold;
-  line-height: 50px;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 190px;
   color: ${({ theme }) => theme.toggleButtonColorSelected};
   background-color: ${({ theme }) => theme.btnBackroundColor};
+  white-space: nowrap;
 
   svg {
     stroke: ${({ theme }) => theme.toggleButtonColorSelected};
