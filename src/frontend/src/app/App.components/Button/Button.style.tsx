@@ -122,7 +122,7 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     align-items: center;
     position: relative;
     margin-right: 15px;
-    color: ${({ theme: { toggleButtonColor } }) => toggleButtonColor};
+    color: ${({ theme }) => theme.linksAndButtons};
     opacity: 0.8;
     background-color: transparent;
 
