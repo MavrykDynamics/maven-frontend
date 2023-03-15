@@ -198,21 +198,18 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
         line-height: 22px;
         color: ${({ theme: { walletDetailsAddress } }) => walletDetailsAddress};
 
+        &:hover {
+          div {
+            color: ${({ theme }) => theme.linksAndButtons};
+          }
+
+          svg {
+            stroke: ${({ theme }) => theme.linksAndButtons};
+          }
+        }
+
         var {
           font-style: normal;
-          > div {
-            svg {
-              display: none;
-            }
-
-            &:hover {
-              svg {
-                display: block;
-                transform: scale(1.4);
-                margin-left: 10px;
-              }
-            }
-          }
         }
 
         svg {
@@ -306,19 +303,6 @@ export const MobileDetailsStyled = styled.div<{ theme: MavrykTheme }>`
 
       var {
         font-style: normal;
-        > div {
-          svg {
-            display: none;
-          }
-
-          &:hover {
-            svg {
-              display: block;
-              transform: scale(1.4);
-              margin-left: 10px;
-            }
-          }
-        }
       }
 
       svg {
