@@ -329,7 +329,7 @@ export const StepBlock = styled.div`
 export const CheckBoxWrapper = styled.div`
   position: relative;
 `
-export const CheckBoxLabel = styled.label`
+export const CheckBoxLabel = styled.label<{ theme: MavrykTheme }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -337,7 +337,7 @@ export const CheckBoxLabel = styled.label`
   height: 19px;
   border-radius: 15px;
   background: transparent;
-  border: 1px solid #503eaa;
+  border: 1px solid ${({ theme }) => theme.strokeColor};
   cursor: pointer;
   &::after {
     content: '';
@@ -346,8 +346,7 @@ export const CheckBoxLabel = styled.label`
     width: 15px;
     height: 15px;
     margin: 1px;
-    background: #8d86eb;
-    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    background: ${({ theme }) => theme.strokeColor};
     transition: 0.2s;
   }
 `
@@ -359,7 +358,6 @@ export const CheckBox = styled.input`
   height: 19px;
   margin: 0;
   &:checked + ${CheckBoxLabel} {
-    background: #503eaa;
     &::after {
       content: '';
       display: block;

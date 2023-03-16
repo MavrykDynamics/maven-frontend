@@ -164,7 +164,10 @@ export const CustomizedText = styled.div<{
     }
 
     .text {
+      font-weight: 500;
       font-size: 12px;
+      line-height: 18px;
+
       position: absolute;
       bottom: 150%;
       left: 50%;
@@ -173,9 +176,8 @@ export const CustomizedText = styled.div<{
       white-space: pre-line;
       padding: 3px 5px;
       border-radius: 3px;
-      line-height: 15px;
-      background: ${({ theme }) => theme.tooltipBg};
-      color: ${({ theme }) => theme.tooltipColor};
+      background-color: ${({ theme }) => theme.messagesBackground};
+      color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
       opacity: 0;
       transition: 0.2s all;
       visibility: hidden;

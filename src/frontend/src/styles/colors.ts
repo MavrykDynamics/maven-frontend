@@ -152,7 +152,7 @@ export const darkMode: MavrykTheme = {
 export const lightMode: MavrykTheme = {
   // new color schema
   nSelectedColor: '#03C9A3',
-  linksAndButtons: '#27007A',
+  linksAndButtons: '#8D86EB',
   nBackgroundColor: '#F7F9FD',
   cards: '#FFFFFF',
   mainHeadingText: '#1F1F1F',

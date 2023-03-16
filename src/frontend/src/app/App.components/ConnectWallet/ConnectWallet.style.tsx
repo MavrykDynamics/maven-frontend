@@ -494,7 +494,7 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 190px;
+  width: 220px;
   color: ${({ theme }) => theme.toggleButtonColorSelected};
   background-color: ${({ theme }) => theme.btnBackroundColor};
   white-space: nowrap;
