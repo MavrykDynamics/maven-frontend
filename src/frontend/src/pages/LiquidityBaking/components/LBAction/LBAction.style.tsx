@@ -45,17 +45,6 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
     }
   }
 
-  //swap stuff
-  .exchange-rate {
-    display: flex;
-    justify-content: space-between;
-    margin-top: auto;
-    margin-bottom: 10px;
-    column-gap: 15px;
-    font-size: 16px;
-    flex-wrap: wrap;
-  }
-
   .swap-input {
     @media screen and (max-width: 550px) {
       margin-bottom: 40px;
@@ -379,6 +368,33 @@ export const CheckBox = styled.input`
       height: 15px;
       margin-left: 17px;
       transition: 0.2s;
+    }
+  }
+`
+
+export const ExchangeRate = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: 10px;
+  column-gap: 15px;
+  flex-wrap: wrap;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  .exchange-rate-title {
+    color: ${({ theme }) => theme.mainHeadingText};
+  }
+
+  .exchange-rate-value {
+    display: flex;
+    width: fit-content;
+    color: ${({ theme }) => theme.primaryText};
+
+    p {
+      margin: 0;
     }
   }
 `

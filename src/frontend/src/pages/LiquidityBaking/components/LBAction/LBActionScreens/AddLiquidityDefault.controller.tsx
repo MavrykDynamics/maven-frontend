@@ -127,11 +127,11 @@ export const AddLiquidityDefault = ({
       </div>
 
       <HorisontalInfo className="liqTokens-created">
-        <CustomizedText fontWidth={500} fontSize={16} className={PRIMARY_COLOR}>
+        <CustomizedText fontWidth={600} fontSize={14} className={PRIMARY_COLOR}>
           Sirius LP tokens created
         </CustomizedText>
 
-        <CustomizedText fontWidth={500} fontSize={16} className={SECONDARY_COLOR}>
+        <CustomizedText fontWidth={600} fontSize={14} className={SECONDARY_COLOR}>
           <CommaNumber
             value={isNaN(lqtReceived) ? 0 : lqtReceived}
             showDecimal

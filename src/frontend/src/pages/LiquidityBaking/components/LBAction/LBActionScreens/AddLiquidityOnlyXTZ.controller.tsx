@@ -132,11 +132,11 @@ export const AddLiquidityOnlyXTZ = ({
         </div>
 
         <HorisontalInfo className="liq-tokens-created">
-          <CustomizedText className={PRIMARY_COLOR} fontWidth={500}>
+          <CustomizedText className={PRIMARY_COLOR} fontWidth={600} fontSize={14}>
             Sirius LP tokens created
           </CustomizedText>
 
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={500}>
+          <CustomizedText className={SECONDARY_COLOR} fontWidth={600} fontSize={14}>
             <CommaNumber value={isNaN(lqtReceived) ? 0 : lqtReceived} showDecimal endingText="SIRS" />
           </CustomizedText>
         </HorisontalInfo>

@@ -45,7 +45,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
       column-gap: 35px;
       > div {
         row-gap: 7px;
-        div:not(.block-name) {
+        div:not(.block-name, .text) {
           font-size: 22px;
           line-height: 100%;
         }

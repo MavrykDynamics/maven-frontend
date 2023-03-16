@@ -37,6 +37,12 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     width: 55%;
   }
 
+  .block-name {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
   @media screen and (max-width: 1400px) {
     .title {
       div {
@@ -45,15 +51,6 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
         }
         font-size: 28px;
       }
-    }
-
-    .block-name {
-      font-size: 17px;
-    }
-
-    div {
-      line-height: 10px;
-      font-size: 17px;
     }
   }
 
@@ -67,32 +64,15 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       flex-wrap: wrap;
       column-gap: 50px;
       row-gap: 30px;
-      justify-content: center;
-
-      .block-name {
-        font-size: 20px;
-      }
-
-      div {
-        line-height: 20px;
-        font-size: 20px;
-        align-items: center;
-      }
     }
   }
 
   @media screen and (max-width: 650px) {
-    .title {
-      > div {
-        line-height: 110%;
-      }
-    }
-
     .info-wrapper {
       padding: 0 10px;
       display: grid;
       grid-template-columns: repeat(2, fit-content(48%));
-      gap: 20px;
+      gap: 40px;
 
       div:nth-child(1) {
         order: 1;
@@ -109,16 +89,6 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       div:nth-child(4) {
         order: 4;
       }
-
-      div {
-        line-height: 19px;
-        font-size: 19px;
-        align-items: flex-start;
-
-        .block-name {
-          line-height: 25px;
-        }
-      }
     }
   }
 
@@ -126,10 +96,6 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     padding: 15px 10px;
     .title {
       column-gap: 10px;
-      div {
-        font-size: 25px;
-        line-height: 110%;
-      }
 
       img {
         width: 50px;
@@ -141,16 +107,12 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       padding: 0;
       width: fit-content;
       margin: 0 auto;
-      grid-template-columns: repeat(2, fit-content(42%));
-      div {
-        line-height: 16px;
-        font-size: 16px;
+      grid-template-columns: repeat(2, fit-content(45%));
+      gap: 10px;
+    }
 
-        .block-name {
-          line-height: 14px;
-          font-size: 14px;
-        }
-      }
+    div:not(.block-name) {
+      font-size: 18px;
     }
   }
 `

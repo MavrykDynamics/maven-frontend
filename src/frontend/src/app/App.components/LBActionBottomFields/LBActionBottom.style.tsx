@@ -16,12 +16,6 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
-  > div {
-    div {
-      font-size: 16px;
-    }
-  }
-
   .controls-wrapper {
     display: flex;
     align-items: center;
