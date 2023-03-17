@@ -13,6 +13,7 @@ export const InputStyled = styled.div<{ theme: MavrykTheme }>`
     right: 10px;
     cursor: pointer;
     transition: opacity 0.25s;
+    text-decoration: underline;
 
     &:hover {
       opacity: 0.8;

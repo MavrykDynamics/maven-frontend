@@ -21,7 +21,7 @@ export const Slippage = ({
 }) => {
   return (
     <HorisontalInfo className="slippage">
-      <CustomizedText className={PRIMARY_COLOR} fontWidth={500}>
+      <CustomizedText className={PRIMARY_COLOR} fontSize={14} fontWidth={600}>
         Slippage Tolerance
         <div className="info">
           <Icon id="infoIcon" />
@@ -34,7 +34,7 @@ export const Slippage = ({
       </CustomizedText>
 
       <div className="mobile-info">
-        <CustomizedText className={SECONDARY_COLOR} fontWidth={500}>
+        <CustomizedText className={SECONDARY_COLOR} fontSize={14} fontWidth={600}>
           <CommaNumber value={Number(slippagePersent)} endingText="%" />
         </CustomizedText>
       </div>

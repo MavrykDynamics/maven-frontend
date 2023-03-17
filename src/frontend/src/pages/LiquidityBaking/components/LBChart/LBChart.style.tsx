@@ -4,7 +4,7 @@ import { MavrykTheme } from 'utils/interfaces'
 
 export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
   background: ${({ theme }) => theme.cards};
-  border: 1px solid ${({ theme }) => theme.strokeColor};
+  border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: ${BLOCK_RADIUS};
   padding-top: 30px;
   z-index: 1;

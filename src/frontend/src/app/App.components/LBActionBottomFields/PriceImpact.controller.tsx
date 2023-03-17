@@ -9,7 +9,7 @@ export const PriceImpact = ({ priceImpact }: { priceImpact: number }) => {
 
   return (
     <HorisontalInfo>
-      <CustomizedText className={PRIMARY_COLOR} fontWidth={500}>
+      <CustomizedText className={PRIMARY_COLOR} fontSize={14} fontWidth={600}>
         Price Impact
         <div className="info">
           <Icon id="infoIcon" />
@@ -21,8 +21,8 @@ export const PriceImpact = ({ priceImpact }: { priceImpact: number }) => {
         </div>
       </CustomizedText>
 
-      <CustomizedText className={SECONDARY_COLOR} fontWidth={500}>
-        {value} 
+      <CustomizedText className={SECONDARY_COLOR} fontSize={14} fontWidth={600}>
+        {value}
       </CustomizedText>
     </HorisontalInfo>
   )

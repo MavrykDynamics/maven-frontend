@@ -28,7 +28,7 @@ export const MinimumReceived = ({
   }
   return (
     <HorisontalInfo className={className}>
-      <CustomizedText className={PRIMARY_COLOR} fontWidth={500} style={{ whiteSpace: 'pre', marginRight: '15px' }}>
+      <CustomizedText className={PRIMARY_COLOR} fontSize={14} fontWidth={600} style={{ whiteSpace: 'pre', marginRight: '15px' }}>
         Minimum Received
         <div className="info">
           <Icon id="infoIcon" />
@@ -39,7 +39,7 @@ export const MinimumReceived = ({
         </div>
       </CustomizedText>
 
-      <CustomizedText className={SECONDARY_COLOR} fontWidth={500} style={{ columnGap: '7px' }}>
+      <CustomizedText className={SECONDARY_COLOR} fontSize={14} fontWidth={600} style={{ columnGap: '7px' }}>
         {minimumReceived.map(({ value, tokenName }, idx) => (
           <div style={{ display: 'contents' }} key={value + tokenName}>
             <CommaNumber value={value} endingText={tokenName} decimalsToShow={decimals} />

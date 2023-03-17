@@ -64,7 +64,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
   .group-links {
     display: flex;
     padding: 20px 5px 20px 15px;
-    background: ${({ theme }) => theme.darkBackroundColor};
+    background: ${({ theme }) => theme.cards};
     transition: 0.6s all;
     flex-direction: column;
     row-gap: 15px;
@@ -86,7 +86,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
           font-size: 18px;
           top: 50%;
           transform: translateY(-50%);
-          color: ${({ theme }) => theme.topBarLinkColorActive};
+          color: ${({ theme }) => theme.nSelectedColor};
         }
       }
     }
@@ -102,7 +102,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
       font-weight: 600;
       padding-left: 10px;
       border-radius: 5px;
-      color: ${({ theme }) => theme.topBarLinkColor};
+      color: ${({ theme }) => theme.linksAndButtons};
 
       &.disabled {
         pointer-events: none;
@@ -110,7 +110,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
 
       &:hover:not(.disabled),
       &.selected {
-        color: ${({ theme }) => theme.topBarLinkColorActive};
+        color: ${({ theme }) => theme.nSelectedColor};
       }
     }
   }
