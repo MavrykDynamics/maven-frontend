@@ -24,7 +24,7 @@ export function BakeryChart({ chartData }: Props) {
 
   const currentPrice = chartData.length ? Number(chartData[chartData.length - 1].value.toFixed(7)) : 0
   const initialPrice = chartData.length ? Number(chartData[0].value.toFixed(7)) : 0
-  const changesInValue = percentageDifference(currentPrice, initialPrice)
+  const changesInValue = percentageDifference(currentPrice, initialPrice) || 0
   const isPositiveGrowth = currentPrice > initialPrice
 
   return (
@@ -47,8 +47,8 @@ export function BakeryChart({ chartData }: Props) {
       <Chart
         data={chartData}
         colors={{
-          lineColor: '#86D4C9',
-          areaTopColor: '#86D4C9',
+          lineColor: '#77A4F2',
+          areaTopColor: '#77A4F2',
           areaBottomColor: 'rgba(119, 164, 242, 0)',
           textColor: themeColors[themeSelected].primaryTextCardColor,
           borderColor: 'transparent',

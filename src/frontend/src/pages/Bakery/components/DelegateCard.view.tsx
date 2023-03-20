@@ -71,13 +71,13 @@ export function DelegateCard({
 
       <div>
         <div className="addresses">
-          <div className="address">
+          <div className='address'>
             <span>Bakery Address</span>
             &nbsp;
             <TzAddress type={CYAN} tzAddress={bakeryAddress} hasIcon />
           </div>
 
-          <div className="address">
+          <div className='address'>
             <span>Bakery Payout Address</span>
             &nbsp;
             <TzAddress type={CYAN} tzAddress={bakeryPayoutAddress} hasIcon />

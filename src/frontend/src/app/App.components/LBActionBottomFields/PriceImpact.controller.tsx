@@ -1,16 +1,15 @@
-import { PriceChange } from 'pages/LiquidityBaking/components/LBAction/LBAction.style'
-import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import React from 'react'
-import { subHeaderColor } from 'styles'
-import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
+import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { PRIMARY_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import Icon from '../Icon/Icon.view'
 
 export const PriceImpact = ({ priceImpact }: { priceImpact: number }) => {
   const value = priceImpact > 0.04 ? '> 4%' : priceImpact > 0.005 && priceImpact <= 0.04 ? '1.2-2%' : '< 0.5%'
   const isGreen = priceImpact <= 0.04
+
   return (
     <HorisontalInfo>
-      <CustomizedText color={subHeaderColor} fontWidth={500}>
+      <CustomizedText className={PRIMARY_COLOR} fontSize={14} fontWidth={600}>
         Price Impact
         <div className="info">
           <Icon id="infoIcon" />
@@ -22,8 +21,8 @@ export const PriceImpact = ({ priceImpact }: { priceImpact: number }) => {
         </div>
       </CustomizedText>
 
-      <CustomizedText fontWidth={500}>
-        <PriceChange up={isGreen}>{value}</PriceChange>
+      <CustomizedText className={SECONDARY_COLOR} fontSize={14} fontWidth={600}>
+        {value}
       </CustomizedText>
     </HorisontalInfo>
   )

@@ -1,16 +1,7 @@
 import styled, { keyframes } from 'styled-components/macro'
 import { MavrykTheme } from 'utils/interfaces'
 
-import {
-  backgroundColor,
-  cyanColor,
-  darkColor,
-  headerColor,
-  primaryColor,
-  silverColor,
-  skyColor,
-  titleColor,
-} from '../../../styles'
+import { darkColor, primaryColor } from '../../../styles'
 import { BUTTON_RADIUS } from '../../../styles/constants'
 
 export const clickWave = keyframes`
@@ -70,8 +61,8 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
   }
 
   &.actionPrimary {
-    color: ${({ theme }) => theme.containerColor};
-    background-color: ${({ theme }) => theme.primaryButtonColor};
+    color: ${({ theme }) => theme.cards};
+    background-color: ${({ theme }) => theme.linksAndButtons};
   }
 
   &.actionSecondary {
@@ -103,28 +94,20 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     justify-content: center;
     align-items: center;
     background: transparent;
-    border: 1px solid ${({ theme }) => theme.toggleButtonColor};
+    border: 1px solid ${({ theme }) => theme.strokeColor};
     transition: 0.5s all;
     margin: 0;
+
     svg {
       width: 24px;
       height: 24px;
       margin: 0;
-      fill: ${({ theme }) => theme.toggleButtonColor};
-      stroke: ${({ theme }) => theme.toggleButtonColor};
+      fill: ${({ theme }) => theme.linksAndButtons};
+      stroke: ${({ theme }) => theme.linksAndButtons};
 
       &.arrow {
-        fill: ${({ theme }) => theme.toggleButtonColor};
+        fill: ${({ theme }) => theme.linksAndButtons};
         stroke: unset;
-      }
-    }
-
-    &:hover {
-      border: 1px solid ${({ theme }) => theme.selectedColor};
-
-      svg {
-        fill: ${({ theme }) => theme.selectedColor};
-        stroke: ${({ theme }) => theme.selectedColor};
       }
     }
 
@@ -139,7 +122,7 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     align-items: center;
     position: relative;
     margin-right: 15px;
-    color: ${({ theme: { toggleButtonColor } }) => toggleButtonColor};
+    color: ${({ theme }) => theme.linksAndButtons};
     opacity: 0.8;
     background-color: transparent;
 

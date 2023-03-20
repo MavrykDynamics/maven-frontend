@@ -53,7 +53,7 @@ export const MobileDetailsBlock = ({
       <div className="wallet-details-header">
         <div className="details-wallet ">
           <Icon id="wallet" className="wallet hover" />
-          <var className="wallet-details-address hover">
+          <var className="hover">
             <TzAddress tzAddress={accountPkh} hasIcon type={BLUE} />
           </var>
         </div>
@@ -148,7 +148,7 @@ export const ConnectedWalletBlock = ({
         <div className="wallet-details-header">
           <div className="details-wallet ">
             <Icon id="wallet" className="wallet hover" />
-            <var className="wallet-details-address hover">
+            <var className="hover">
               <TzAddress tzAddress={accountPkh} hasIcon type={BLUE} />
             </var>
           </div>

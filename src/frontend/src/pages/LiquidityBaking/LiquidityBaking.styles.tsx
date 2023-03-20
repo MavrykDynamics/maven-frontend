@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components'
-import { skyColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
+
+export const PRIMARY_COLOR = 'primary'
+export const SECONDARY_COLOR = 'secondary'
+export const THIRD_COLOR = 'third'
+export const ACTIVE_COLOR = 'active'
 
 export const LBStyled = styled.div<{ theme: MavrykTheme }>`
   background-image: ${({ theme }) =>
@@ -130,7 +134,6 @@ export const HorisontalInfo = styled.div`
 export const CustomizedText = styled.div<{
   fontSize?: number
   fontWidth?: number
-  color?: string
   link?: boolean
   lineHeight?: number
   isDarkTheme?: boolean
@@ -139,7 +142,6 @@ export const CustomizedText = styled.div<{
   font-weight: ${({ fontWidth }) => (fontWidth ? fontWidth : 400)};
   font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : '18px')};
   line-height: ${({ lineHeight }) => (lineHeight ? `${lineHeight}px` : '18px')};
-  color: ${({ color, theme }) => (theme.isDarkTheme ? (color ? color : skyColor) : theme.headerTeam)};
   display: flex;
   width: fit-content;
 
@@ -158,11 +160,14 @@ export const CustomizedText = styled.div<{
     svg {
       width: 16px;
       height: 16px;
-      fill: ${({ theme }) => theme.toggleButtonColor};
+      fill: ${({ theme }) => theme.subHeadingText};
     }
 
     .text {
+      font-weight: 500;
       font-size: 12px;
+      line-height: 18px;
+
       position: absolute;
       bottom: 150%;
       left: 50%;
@@ -171,9 +176,8 @@ export const CustomizedText = styled.div<{
       white-space: pre-line;
       padding: 3px 5px;
       border-radius: 3px;
-      line-height: 15px;
-      background: ${({ theme }) => theme.tooltipBg};
-      color: ${({ theme }) => theme.tooltipColor};
+      background-color: ${({ theme }) => theme.messagesBackground};
+      color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
       opacity: 0;
       transition: 0.2s all;
       visibility: hidden;
@@ -218,5 +222,21 @@ export const CustomizedText = styled.div<{
 
   p {
     margin: 0;
+  }
+
+  &.${PRIMARY_COLOR} {
+    color: ${({ theme }) => theme.mainHeadingText};
+  }
+
+  &.${SECONDARY_COLOR} {
+    color: ${({ theme }) => theme.primaryText};
+  }
+
+  &.${THIRD_COLOR} {
+    color: ${({ theme }) => theme.subHeadingText};
+  }
+
+  &.${ACTIVE_COLOR} {
+    color: ${({ theme }) => theme.linksAndButtons};
   }
 `

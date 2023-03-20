@@ -1,13 +1,25 @@
 import styled from 'styled-components/macro'
-import { Page } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
+  position: relative;
   --max-container: calc(100vw - 550px);
-  background-color: ${({ theme }) => theme.darkBackroundColor};
+  background-color: ${({ theme }) => theme.footerColor};
   color: ${({ theme }) => theme.textColor};
   font-weight: 400;
   font-size: 18px;
+
+  // Overlap the border between background-image in body and footer
+  // Because on certain @media we have an unnecessary border from background in the body
+  &::before {
+    position: absolute;
+    background-color: ${({ theme }) => theme.footerColor};
+    top: -7px;
+    height: 10px;
+    width: 100%;
+    content: '';
+    z-index: 2;
+  }
 
   --max-container: 90vw;
 

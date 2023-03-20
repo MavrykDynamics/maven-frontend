@@ -1,12 +1,11 @@
 import styled, { css } from 'styled-components'
-import { cyanColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMobile?: boolean }>`
   z-index: 1;
   padding: 20px 40px 20px 40px;
-  background: ${({ theme }) => theme.darkBackroundColor};
-  border: 1px solid ${({ theme }) => theme.lbBorder};
+  background: ${({ theme }) => theme.cards};
+  border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: 10px;
   width: calc(50% - 5px);
   position: relative;
@@ -27,33 +26,23 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
       width: 21px;
       height: 21px;
       cursor: pointer;
-      fill: ${({ theme }) => theme.toggleButtonColor};
+      fill: ${({ theme }) => theme.linksAndButtons};
+      transition: opacity 300ms;
 
       &:hover {
-        fill: ${({ theme }) => theme.selectedColor};
+        opacity: 0.8;
       }
     }
 
     span {
       font-size: 37px;
       font-weight: 300;
-      color: ${({ theme }) => theme.headingColor};
+      color: ${({ theme }) => theme.regularText};
     }
 
     &.reverted {
       flex-direction: column-reverse;
     }
-  }
-
-  //swap stuff
-  .exchange-rate {
-    display: flex;
-    justify-content: space-between;
-    margin-top: auto;
-    margin-bottom: 10px;
-    column-gap: 15px;
-    font-size: 16px;
-    flex-wrap: wrap;
   }
 
   .swap-input {
@@ -132,10 +121,6 @@ export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMob
       display: flex;
       justify-content: space-between;
       column-gap: 7px;
-
-      div:first-child {
-        color: ${({ theme }) => theme.toggleButtonColor};
-      }
     }
 
     &:not(.no-before):before {
@@ -317,7 +302,7 @@ export const StepBlock = styled.div`
   font-weight: 700;
   font-size: 18px;
   line-height: 25px;
-  color: #8d86eb;
+  color: ${({ theme }) => theme.mainHeadingText};
   position: relative;
   padding-left: 35px;
   display: flex;
@@ -327,9 +312,9 @@ export const StepBlock = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #503eaa;
+    border: 1px solid ${({ theme }) => theme.divider};
     border-radius: 50%;
-    color: #8d86eb;
+    color: ${({ theme }) => theme.mainHeadingText};
     font-weight: 700;
     font-size: 16px;
     position: absolute;
@@ -344,7 +329,7 @@ export const StepBlock = styled.div`
 export const CheckBoxWrapper = styled.div`
   position: relative;
 `
-export const CheckBoxLabel = styled.label`
+export const CheckBoxLabel = styled.label<{ theme: MavrykTheme }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -352,7 +337,7 @@ export const CheckBoxLabel = styled.label`
   height: 19px;
   border-radius: 15px;
   background: transparent;
-  border: 1px solid #503eaa;
+  border: 1px solid ${({ theme }) => theme.strokeColor};
   cursor: pointer;
   &::after {
     content: '';
@@ -361,8 +346,7 @@ export const CheckBoxLabel = styled.label`
     width: 15px;
     height: 15px;
     margin: 1px;
-    background: #8d86eb;
-    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    background: ${({ theme }) => theme.strokeColor};
     transition: 0.2s;
   }
 `
@@ -374,7 +358,6 @@ export const CheckBox = styled.input`
   height: 19px;
   margin: 0;
   &:checked + ${CheckBoxLabel} {
-    background: #503eaa;
     &::after {
       content: '';
       display: block;
@@ -383,6 +366,33 @@ export const CheckBox = styled.input`
       height: 15px;
       margin-left: 17px;
       transition: 0.2s;
+    }
+  }
+`
+
+export const ExchangeRate = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: 10px;
+  column-gap: 15px;
+  flex-wrap: wrap;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  .exchange-rate-title {
+    color: ${({ theme }) => theme.mainHeadingText};
+  }
+
+  .exchange-rate-value {
+    display: flex;
+    width: fit-content;
+    color: ${({ theme }) => theme.primaryText};
+
+    p {
+      margin: 0;
     }
   }
 `

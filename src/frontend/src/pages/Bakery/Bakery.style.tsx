@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { MavrykTheme } from 'utils/interfaces'
 
 // components
-import { Footer } from 'app/App.components/Footer/Footer.controller'
 import { Button } from 'app/App.components/Button/Button.controller'
 
 export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
@@ -20,7 +19,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     font-size: 35px;
     line-height: 35px;
 
-    color: ${({ theme }) => theme.headingCardColor};
+    color: ${({ theme }) => theme.mainHeadingText};
 
     &::after {
       height: 0;
@@ -34,11 +33,11 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     font-size: 18px;
     line-height: 27px;
 
-    color: ${({ theme }) => theme.primaryTextCardColor};
+    color: ${({ theme }) => theme.regularText};
   }
 
   a {
-    color: ${({ theme }) => theme.secondaryTextCardColor};
+    color: ${({ theme }) => theme.linksAndButtons};
     text-decoration: underline;
   }
 
@@ -79,12 +78,12 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
 
     span {
       margin-right: 10px;
-      
+
       font-weight: 600;
       font-size: 18px;
       line-height: 27px;
 
-      color: ${({ theme }) => theme.primaryTextCardColor};
+      color: ${({ theme }) => theme.regularText};
     }
 
     .address {
@@ -204,6 +203,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
         font-weight: 600;
         font-size: 16px;
         line-height: 22px;
+
         margin-right: 0;
       }
 
@@ -218,15 +218,11 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const FooterStyled = styled(Footer)<{ theme: MavrykTheme }>`
-  background-color: ${({ theme }) => theme.darkestBackroundColor};
-`
-
 export const Card = styled.div`
   padding: 40px;
 
-  background-color: ${({ theme }) => theme.darkBackroundColor};
-  border: 1px solid ${({ theme }) => theme.borderCard};
+  background-color: ${({ theme }) => theme.cards};
+  border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: 10px;
 
   p {
@@ -285,7 +281,7 @@ export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
   background-position: bottom right;
   background-size: auto;
 
-  @media screen and (max-width: 1300px) {
+  @media screen and (max-width: 1400px) {
     p {
       width: 55%;
     }
@@ -314,13 +310,13 @@ export const MiniCard = styled.div`
 
   padding: 25px 10px;
 
-  background-color: ${({ theme }) => theme.secondaryBgCardColor};
+  background-color: ${({ theme }) => theme.messagesBackground};
   border-radius: 10px;
 
   svg {
     width: 50px;
     height: 50px;
-    fill: ${({ theme }) => theme.headingSecondaryCardColor};
+    fill: ${({ theme }) => theme.mainHeadingText};
   }
 
   h4 {
@@ -330,7 +326,7 @@ export const MiniCard = styled.div`
     font-size: 16px;
     line-height: 22px;
 
-    color: ${({ theme }) => theme.headingSecondaryCardColor};
+    color: ${({ theme }) => theme.mainHeadingText};
     text-transform: capitalize;
   }
 
@@ -339,8 +335,9 @@ export const MiniCard = styled.div`
     font-weight: 700;
     font-size: 18px;
     line-height: 18px;
+    text-align: end;
 
-    color: ${({ theme }) => theme.skyColor};
+    color: ${({ theme }) => theme.primaryText};
   }
 
   @media screen and (max-width: 600px) {
@@ -376,11 +373,11 @@ export const ButtonStyled = styled(Button)`
   line-height: 16px;
 
   &.actionPrimary {
-    fill: ${({ theme }) => theme.containerColor};
+    fill: ${({ theme }) => theme.cards};
   }
 
   &.actionSecondary {
-    fill: ${({ theme }) => theme.primaryButtonColor};
+    fill: ${({ theme }) => theme.linksAndButtons};
   }
 `
 
@@ -404,20 +401,20 @@ export const RoundButton = styled.button`
   }
 
   &.actionPrimary {
-    background-color: ${({ theme }) => theme.primaryButtonColor};
-    border: 2px solid ${({ theme }) => theme.primaryButtonColor};
+    background-color: ${({ theme }) => theme.linksAndButtons};
+    border: 2px solid ${({ theme }) => theme.linksAndButtons};
 
     svg {
-      fill: ${({ theme }) => theme.darkBackroundColor};
+      fill: ${({ theme }) => theme.cards};
     }
   }
 
   &.actionSecondary {
     background-color: transparent;
-    border: 2px solid ${({ theme }) => theme.primaryButtonColor};
+    border: 2px solid ${({ theme }) => theme.linksAndButtons};
 
     svg {
-      fill: ${({ theme }) => theme.primaryButtonColor};
+      fill: ${({ theme }) => theme.linksAndButtons};
     }
   }
 
@@ -431,7 +428,7 @@ export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
   padding: 20px;
   width: 60%;
 
-  border: 1px solid ${({ theme }) => theme.borderCard};
+  border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: 10px;
 
   .header {
@@ -441,7 +438,7 @@ export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
       font-weight: 600;
       font-size: 14px;
 
-      color: ${({ theme }) => theme.primaryTextCardColor};
+      color: ${({ theme }) => theme.mainHeadingText};
     }
 
     p {
@@ -450,7 +447,7 @@ export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
       font-weight: 600;
       font-size: 18px;
 
-      color: ${({ theme }) => theme.headingThirdCardColor};
+      color: ${({ theme }) => theme.primaryText};
     }
 
     .percentages {

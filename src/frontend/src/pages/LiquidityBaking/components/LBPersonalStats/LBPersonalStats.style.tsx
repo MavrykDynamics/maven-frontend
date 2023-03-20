@@ -11,7 +11,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
   .title {
     font-weight: 700;
     font-size: 30px;
-    color: ${({ theme }) => theme.headingColor};
+    color: ${({ theme }) => theme.mainHeadingText};
   }
 
   .stats-grid {
@@ -34,7 +34,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
           height: 16px;
           width: 16px;
           margin-left: 3px;
-          fill: ${({ theme }) => theme.priceImpact};
+          fill: ${({ theme }) => theme.primaryText};
         }
       }
     }
@@ -45,7 +45,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
       column-gap: 35px;
       > div {
         row-gap: 7px;
-        div:not(.block-name) {
+        div:not(.block-name, .text) {
           font-size: 22px;
           line-height: 100%;
         }

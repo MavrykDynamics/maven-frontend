@@ -21,7 +21,7 @@ export const FrequentlyAskedQuestionsStyled = styled(Card)`
 
 export const FrequentlyAskedQuestionsCard = styled.div`
   position: relative;
-  border-bottom: 1px solid ${({ theme }) => theme.borderCard};
+  border-bottom: 1px solid ${({ theme }) => theme.strokeCards};
   cursor: pointer;
 
   &:last-of-type {
@@ -30,7 +30,7 @@ export const FrequentlyAskedQuestionsCard = styled.div`
 
   &:hover,
   &.active {
-    border-bottom: 1px solid ${({ theme }) => theme.secondaryTextCardColor};
+    border-bottom: 1px solid ${({ theme }) => theme.linksAndButtons};
 
     &::before {
       position: absolute;
@@ -41,7 +41,7 @@ export const FrequentlyAskedQuestionsCard = styled.div`
       width: 100%;
 
       content: '';
-      background-color: ${({ theme }) => theme.secondaryTextCardColor};
+      background-color: ${({ theme }) => theme.linksAndButtons};
     }
   }
 
@@ -60,7 +60,7 @@ export const FrequentlyAskedQuestionsCard = styled.div`
     font-size: 18px;
     line-height: 27px;
 
-    color: ${({ theme }) => theme.headingFourthCardColor};
+    color: ${({ theme }) => theme.linksAndButtons};
   }
   
   p:last-of-type {

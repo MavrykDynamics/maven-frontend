@@ -16,12 +16,6 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
     }
   }
 
-  > div {
-    div {
-      font-size: 16px;
-    }
-  }
-
   .controls-wrapper {
     display: flex;
     align-items: center;
@@ -38,16 +32,13 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
         align-items: center;
         padding: 0;
         padding-left: 10px;
-        border: 1px solid #503eaa;
-        color: ${({ theme }) => theme.toggleButtonColor};
-        background: ${({ theme }) => theme.toggleButtonBg};
+        color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
       }
 
       .pinned-text {
         top: 50%;
         font-size: 16px;
         transform: translateY(-50%);
-        color: ${({ theme }) => theme.toggleButtonColor};
       }
     }
   }

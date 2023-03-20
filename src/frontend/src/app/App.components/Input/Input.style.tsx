@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components/macro'
-import { downColor, skyColor, titleColor } from 'styles'
+import { downColor, skyColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const InputStyled = styled.div<{ theme: MavrykTheme }>`
@@ -12,10 +12,11 @@ export const InputStyled = styled.div<{ theme: MavrykTheme }>`
     top: -20px;
     right: 10px;
     cursor: pointer;
-    transition: 0.25s all;
+    transition: opacity 0.25s;
+    text-decoration: underline;
 
     &:hover {
-      color: ${({ theme }) => theme.selectedColor};
+      opacity: 0.8;
     }
   }
 
@@ -72,18 +73,31 @@ export const InputComponentContainer = styled.div<{ theme: MavrykTheme }>`
     left: 14px;
     bottom: 2px;
 
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+
     p {
       margin: 0;
+      color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
     }
+  }
+
+  .pinned-text {
+    color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
   }
 `
 
 export const InputComponent = styled.input<{ theme: MavrykTheme }>`
   width: 100%;
   height: 54px;
-  background-color: ${({ theme }) => theme.backgroundColor};
+  background-color: ${({ theme }) => theme.nBackgroundColor};
   font-weight: 500;
-  border: 1px solid ${({ theme }) => theme.cardBorderColor};
+  border: 1px solid ${({ theme }) => theme.strokeColor};
   margin: 0;
   color: ${({ theme }) => theme.headerColor};
   -webkit-appearance: none;
@@ -125,9 +139,9 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
     line-height: 22px;
     padding-top: 0;
     padding-left: 10px;
-    color: ${({ theme }) => theme.headerColor};
-    background-color: ${({ theme }) => theme.toggleButtonBg};
-    border: 1px solid ${titleColor};
+    color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
+    background-color: ${({ theme }) => theme.nBackgroundColor};
+    border: 1px solid ${({ theme }) => theme.strokeColor};
   }
 
   &.no-subtext {

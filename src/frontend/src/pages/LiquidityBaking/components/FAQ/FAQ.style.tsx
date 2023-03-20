@@ -3,8 +3,8 @@ import { MavrykTheme } from 'utils/interfaces'
 
 export const LBFAQStyled = styled.div<{ theme: MavrykTheme }>`
   z-index: 1;
-  background: ${({ theme }) => theme.darkBackroundColor};
-  border: 1px solid ${({ theme }) => theme.lbBorder};
+  background: ${({ theme }) => theme.cards};
+  border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: 10px;
   padding: 50px 40px 50px 40px;
   display: flex;
@@ -24,6 +24,29 @@ export const FaqItem = styled.div<{ last?: boolean }>`
   position: relative;
   margin-bottom: 45px;
 
+  h2 {
+    font-size: 25px;
+    font-weight: 700;
+
+    color: ${({ theme }) => theme.mainHeadingText};
+  }
+
+  p {
+    color: ${({ theme }) => theme.regularText};
+  }
+
+  a {
+    color: ${({ theme }) => theme.linksAndButtons};
+    text-decoration: underline;
+  }
+
+  p,
+  a {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
   &:not(:last-child) {
     ::before {
       content: '';
@@ -32,7 +55,7 @@ export const FaqItem = styled.div<{ last?: boolean }>`
       left: 0;
       height: 2px;
       width: 100%;
-      background: #503eaa;
+      background: ${({ theme }) => theme.divider};
     }
   }
 

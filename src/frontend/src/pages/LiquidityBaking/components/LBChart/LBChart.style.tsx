@@ -3,8 +3,8 @@ import { BLOCK_RADIUS } from 'styles/constants'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
-  background: ${({ theme }) => theme.darkBackroundColor};
-  border: 1px solid ${({ theme }) => theme.lbBorder};
+  background: ${({ theme }) => theme.cards};
+  border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: ${BLOCK_RADIUS};
   padding-top: 30px;
   z-index: 1;
@@ -96,29 +96,33 @@ export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
         transform: rotate(90deg);
         width: 21px;
         height: 21px;
-        fill: ${({ theme }) => theme.toggleButtonColor};
+        fill: ${({ theme }) => theme.regularText};
       }
 
       .info {
         display: flex;
         flex-direction: column;
 
+        font-size: 14px;
+        font-weight: 600;
+
+        color: ${({ theme }) => theme.subHeadingText};
+
         p {
           margin-top: 3px;
+          margin-bottom: 0;
           display: flex;
           align-items: center;
           font-size: 16px;
+
+          color: ${({ theme }) => theme.primaryText};
         }
 
         svg {
           height: 16px;
           width: 16px;
           margin-left: 3px;
-          fill: ${({ theme }) => theme.priceImpact};
-        }
-
-        .value {
-          color: ${({ theme }) => theme.priceImpact};
+          fill: ${({ theme }) => theme.primaryText};
         }
       }
     }

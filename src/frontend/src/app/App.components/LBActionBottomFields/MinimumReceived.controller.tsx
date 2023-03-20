@@ -1,7 +1,6 @@
 import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import React from 'react'
-import { useMedia } from 'react-use'
-import { subHeaderColor, cyanColor } from 'styles'
+import { PRIMARY_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import Icon from '../Icon/Icon.view'
 
@@ -29,7 +28,7 @@ export const MinimumReceived = ({
   }
   return (
     <HorisontalInfo className={className}>
-      <CustomizedText color={subHeaderColor} fontWidth={500} style={{ whiteSpace: 'pre', marginRight: '15px' }}>
+      <CustomizedText className={PRIMARY_COLOR} fontSize={14} fontWidth={600} style={{ whiteSpace: 'pre', marginRight: '15px' }}>
         Minimum Received
         <div className="info">
           <Icon id="infoIcon" />
@@ -40,7 +39,7 @@ export const MinimumReceived = ({
         </div>
       </CustomizedText>
 
-      <CustomizedText color={cyanColor} fontWidth={500} style={{ columnGap: '7px' }}>
+      <CustomizedText className={SECONDARY_COLOR} fontSize={14} fontWidth={600} style={{ columnGap: '7px' }}>
         {minimumReceived.map(({ value, tokenName }, idx) => (
           <div style={{ display: 'contents' }} key={value + tokenName}>
             <CommaNumber value={value} endingText={tokenName} decimalsToShow={decimals} />
