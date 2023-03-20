@@ -17,11 +17,11 @@ import { getDelegates, delegation } from '../../redux/actions/bakery.action'
 import { getTezosHistoryPrices } from 'redux/actions/tokenPrices.action'
 
 // styles
-import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from "./Bakery.style"
+import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from './Bakery.style'
 
 // types
 import { State } from 'utils/interfaces'
-  
+
 const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) => {
   return {
     text: item.shortTitle,
@@ -30,10 +30,12 @@ const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) =>
   }
 })
 
-export function BakeryView () {
+export function BakeryView() {
   const dispatch = useDispatch()
 
-  const { coinHistoryPrices: { tezos } } = useSelector((state: State) => state.tokens)
+  const {
+    coinHistoryPrices: { tezos },
+  } = useSelector((state: State) => state.tokens)
   const { delegates } = useSelector((state: State) => state.bakery)
   const { accountPkh } = useSelector((state: State) => state.wallet)
 
@@ -58,25 +60,21 @@ export function BakeryView () {
 
   return (
     <BakeryStyled>
-      <div className='main-content'>
+      <div className="main-content">
         <CardWithBackground>
           <h1>Delegate your Tezos</h1>
-          <Description list={bakeryData.delegateYourTezos} className='paragraph-max-width' />
+          <Description list={bakeryData.delegateYourTezos} className="paragraph-max-width" />
 
           <BakeryChart chartData={tezos} />
         </CardWithBackground>
-  
-        <div className='grid-two-columns desktop'>
-          {delegates.map(({id, ...item}) => (
-            <DelegateCard
-              key={id}
-              onClick={handleClickDelegate}
-              {...item}
-            />
+
+        <div className="grid-two-columns desktop">
+          {delegates.map(({ id, ...item }) => (
+            <DelegateCard key={id} onClick={handleClickDelegate} {...item} />
           ))}
         </div>
 
-        <div className='mobile'>
+        <div className="mobile">
           <DelegateCard
             onClick={handleClickDelegate}
             handleTabClick={handleTabClick}
@@ -85,34 +83,30 @@ export function BakeryView () {
           />
         </div>
 
-        <Card className='grid-two-columns grid-column-gap'>
+        <Card className="grid-two-columns grid-column-gap">
           <div>
             <h1>Delegation & Staking&nbsp;101</h1>
             <Description list={bakeryData.delegationAndStaking101} />
 
-            <a
-              href='https://opentezos.com/baking/delegating/'
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://opentezos.com/baking/delegating/" target="_blank" rel="noreferrer">
               Read more about staking here
             </a>
           </div>
 
-          <div className='space-between-vertical'>
+          <div className="space-between-vertical">
             <div>
-              <h1 className='media-margin-top-1'>How to delegate and receive rewards</h1>
+              <h1 className="media-margin-top-1">How to delegate and receive rewards</h1>
               <Description list={bakeryData.howToDelegateAndReceiveRewards} />
             </div>
 
-            <div className='centring-wrapper'>
+            <div className="centring-wrapper">
               <ButtonStyled
-                text='Delegate to Mavryk Dynamics'
-                icon='plusDark'
+                text="Delegate to Mavryk Dynamics"
+                icon="plusDark"
                 kind={ACTION_PRIMARY}
-                onClick={() => handleClickDelegate(delegates[1].tzAddress)}
-                className='media-margin-top-2'
-                disabled={delegates[1].tzAddress === delegates[1].delegateAddress}
+                onClick={() => handleClickDelegate(delegates[1].bakeryAddress)}
+                className="media-margin-top-2"
+                disabled={delegates[1].bakeryAddress === delegates[1].delegateAddress}
               />
             </div>
           </div>

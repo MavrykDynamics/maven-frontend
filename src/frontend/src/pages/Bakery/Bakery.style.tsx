@@ -1,18 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 // types
-import { MavrykTheme } from "utils/interfaces";
+import { MavrykTheme } from 'utils/interfaces'
 
 // components
-import { Footer } from "app/App.components/Footer/Footer.controller";
-import { Button } from "app/App.components/Button/Button.controller";
+import { Footer } from 'app/App.components/Footer/Footer.controller'
+import { Button } from 'app/App.components/Button/Button.controller'
 
 export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
   background-repeat: no-repeat;
   background-size: cover;
   background-image: ${({ theme }) =>
-    `url(${theme.theme === 'light' ? theme.primaryLightDesktopBg : theme.primaryDarkDesktopBg})`
-  };
+    `url(${theme.theme === 'light' ? theme.primaryLightDesktopBg : theme.primaryDarkDesktopBg})`};
 
   h1 {
     margin: 10px 0 30px 0;
@@ -75,12 +74,12 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     max-width: 845px;
   }
 
-  .address {
-    display: flex;
-    align-items: center;
-    margin: 25px 0 35px 0;
+  .addresses {
+    margin: 20px 0;
 
     span {
+      margin-right: 10px;
+      
       font-weight: 600;
       font-size: 18px;
       line-height: 27px;
@@ -88,16 +87,22 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
       color: ${({ theme }) => theme.primaryTextCardColor};
     }
 
-    div {
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 27px;
+    .address {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
 
-      transition: opacity 0.3;
-      cursor: pointer;
+      div {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 27px;
 
-      &:hover {
-        opacity: 0.8;
+        transition: opacity 0.3;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
   }
@@ -167,8 +172,8 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
 
   @media screen and (max-width: 770px) {
     background-image: ${({ theme }) =>
-       `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`
-  }};
+      `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`};
+  }
 
   @media screen and (max-width: 600px) {
     .main-content {
@@ -192,6 +197,23 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
 
     .mobile {
       display: block;
+    }
+
+    .addresses {
+      span {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        margin-right: 0;
+      }
+
+      .address {
+        div {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
     }
   }
 `
@@ -246,13 +268,14 @@ export const Card = styled.div`
     .address {
       margin: 20px 0;
 
-      span, div {
+      span,
+      div {
         font-weight: 600;
         font-size: 16px;
         line-height: 22px;
       }
     }
-  };
+  } ;
 `
 
 export const CardWithBackground = styled(Card)<{ theme: MavrykTheme }>`
@@ -361,7 +384,7 @@ export const ButtonStyled = styled(Button)`
   }
 `
 
-export const RoundButton =  styled.button`
+export const RoundButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -375,7 +398,7 @@ export const RoundButton =  styled.button`
     width: 22px;
     height: 22px;
   }
-  
+
   &:hover {
     opacity: 0.8;
   }
@@ -420,7 +443,7 @@ export const BakeryChartStyled = styled.div<{ theme: MavrykTheme }>`
 
       color: ${({ theme }) => theme.primaryTextCardColor};
     }
-    
+
     p {
       margin: 0;
 
