@@ -262,8 +262,6 @@ export const Card = styled.div`
     }
 
     .address {
-      margin: 20px 0;
-
       span,
       div {
         font-weight: 600;
