@@ -66,13 +66,13 @@ export const getDelegates = () => async (dispatch: AppDispatch, getState: GetSta
   try {
     const values = accountPkh 
     ? await Promise.all([
-      getBakeryDelegateData(delegateCardData[0].tzAddress),
-      getBakeryDelegateData(delegateCardData[1].tzAddress),
+      getBakeryDelegateData(delegateCardData[0].bakeryAddress),
+      getBakeryDelegateData(delegateCardData[1].bakeryAddress),
       getAccountByAddress(accountPkh)
     ])
     : await Promise.all([
-      getBakeryDelegateData(delegateCardData[0].tzAddress),
-      getBakeryDelegateData(delegateCardData[1].tzAddress),
+      getBakeryDelegateData(delegateCardData[0].bakeryAddress),
+      getBakeryDelegateData(delegateCardData[1].bakeryAddress),
     ])
     
     const availableXtzSpaces = values.slice(0, 2) as BakeryDelegateDataType[]
