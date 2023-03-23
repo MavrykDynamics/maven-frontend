@@ -6,7 +6,7 @@ import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import Icon from '../Icon/Icon.view'
 import { Input } from '../Input/Input.controller'
 import { ToggleButton } from '../ToggleButton/Toggle-button.view'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { THIRD_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 export const Slippage = ({
   onClickHandler,
@@ -21,7 +21,7 @@ export const Slippage = ({
 }) => {
   return (
     <HorisontalInfo className="slippage">
-      <CustomizedText className={PRIMARY_COLOR} fontSize={14} fontWidth={600}>
+      <CustomizedText className={THIRD_COLOR} fontSize={14} fontWidth={600}>
         Slippage Tolerance
         <div className="info">
           <Icon id="infoIcon" />

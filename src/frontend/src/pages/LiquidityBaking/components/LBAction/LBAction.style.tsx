@@ -383,7 +383,7 @@ export const ExchangeRate = styled.div`
   line-height: 21px;
 
   .exchange-rate-title {
-    color: ${({ theme }) => theme.mainHeadingText};
+    color: ${({ theme }) => theme.subHeadingText};
   }
 
   .exchange-rate-value {

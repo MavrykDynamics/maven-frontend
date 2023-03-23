@@ -5,7 +5,7 @@ import { State } from 'utils/interfaces'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { calculateAPY, diffBetweenCoinsInPercent } from 'utils/utils'
 import { useEffect, useMemo, useState } from 'react'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { THIRD_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 const LBHeader = () => {
   const {
@@ -24,14 +24,14 @@ const LBHeader = () => {
     <LBHeaderStyled>
       <div className="title">
         <img src="/images/sirius-icon.png" alt="sirius logo" />
-        <CustomizedText className={PRIMARY_COLOR} fontWidth={700} fontSize={30}>
+        <CustomizedText className={THIRD_COLOR} fontWidth={700} fontSize={30}>
           The Liquidity Baking DEX
         </CustomizedText>
       </div>
 
       <div className="info-wrapper">
         <VertInfo>
-          <CustomizedText fontWidth={500} className={`${PRIMARY_COLOR} block-name`}>
+          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
             Total Value Locked
           </CustomizedText>
           <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={23}>
@@ -40,7 +40,7 @@ const LBHeader = () => {
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText fontWidth={500} className={`${PRIMARY_COLOR} block-name`}>
+          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
             APY
           </CustomizedText>
           <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={23}>
@@ -49,7 +49,7 @@ const LBHeader = () => {
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText fontWidth={500} className={`${PRIMARY_COLOR} block-name`}>
+          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
             Total Sirius Tokens
           </CustomizedText>
           <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={23}>
@@ -58,7 +58,7 @@ const LBHeader = () => {
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText fontWidth={500} className={`${PRIMARY_COLOR} block-name`}>
+          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
             tzBTC/BTC Price Difference
           </CustomizedText>
           <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={23}>

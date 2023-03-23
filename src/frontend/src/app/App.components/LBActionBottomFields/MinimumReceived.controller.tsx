@@ -1,6 +1,6 @@
 import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import React from 'react'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { THIRD_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import Icon from '../Icon/Icon.view'
 
@@ -28,7 +28,12 @@ export const MinimumReceived = ({
   }
   return (
     <HorisontalInfo className={className}>
-      <CustomizedText className={PRIMARY_COLOR} fontSize={14} fontWidth={600} style={{ whiteSpace: 'pre', marginRight: '15px' }}>
+      <CustomizedText
+        className={THIRD_COLOR}
+        fontSize={14}
+        fontWidth={600}
+        style={{ whiteSpace: 'pre', marginRight: '15px' }}
+      >
         Minimum Received
         <div className="info">
           <Icon id="infoIcon" />

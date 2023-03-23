@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { Input } from 'app/App.components/Input/Input.controller'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { THIRD_COLOR, PRIMARY_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { AddLiquidutityInputChangeEventType, CoinsInputsValues } from '../helpers/actionsScreen.types'
 import { State } from 'utils/interfaces'
@@ -132,7 +132,7 @@ export const AddLiquidityOnlyXTZ = ({
         </div>
 
         <HorisontalInfo className="liq-tokens-created">
-          <CustomizedText className={PRIMARY_COLOR} fontWidth={600} fontSize={14}>
+          <CustomizedText className={THIRD_COLOR} fontWidth={600} fontSize={14}>
             Sirius LP tokens created
           </CustomizedText>
 
