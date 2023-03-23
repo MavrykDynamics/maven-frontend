@@ -1,6 +1,6 @@
 import React from 'react'
 import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { THIRD_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import Icon from '../Icon/Icon.view'
 
 export const PriceImpact = ({ priceImpact }: { priceImpact: number }) => {
@@ -9,7 +9,7 @@ export const PriceImpact = ({ priceImpact }: { priceImpact: number }) => {
 
   return (
     <HorisontalInfo>
-      <CustomizedText className={PRIMARY_COLOR} fontSize={14} fontWidth={600}>
+      <CustomizedText className={THIRD_COLOR} fontSize={14} fontWidth={600}>
         Price Impact
         <div className="info">
           <Icon id="infoIcon" />

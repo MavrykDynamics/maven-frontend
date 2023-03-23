@@ -495,12 +495,12 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   align-items: center;
   justify-content: center;
   width: 220px;
-  color: ${({ theme }) => theme.toggleButtonColorSelected};
-  background-color: ${({ theme }) => theme.btnBackroundColor};
+  color: ${({ theme }) => theme.cards};
+  background-color: ${({ theme }) => theme.linksAndButtons};
   white-space: nowrap;
 
   svg {
-    stroke: ${({ theme }) => theme.toggleButtonColorSelected};
+    stroke: ${({ theme }) => theme.cards};
     width: 25px;
     height: 30px;
     fill: transparent;
