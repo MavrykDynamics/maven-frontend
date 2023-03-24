@@ -5,7 +5,7 @@ import { State } from 'utils/interfaces'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { calculateAPY, diffBetweenCoinsInPercent } from 'utils/utils'
 import { useEffect, useMemo, useState } from 'react'
-import { THIRD_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { PRIMARY_COLOR, THIRD_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 const LBHeader = () => {
   const {
@@ -24,7 +24,7 @@ const LBHeader = () => {
     <LBHeaderStyled>
       <div className="title">
         <img src="/images/sirius-icon.png" alt="sirius logo" />
-        <CustomizedText className={THIRD_COLOR} fontWidth={700} fontSize={30}>
+        <CustomizedText className={PRIMARY_COLOR} fontWidth={700} fontSize={30}>
           The Liquidity Baking DEX
         </CustomizedText>
       </div>

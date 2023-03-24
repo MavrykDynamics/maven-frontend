@@ -97,9 +97,9 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
   height: 54px;
   background-color: ${({ theme }) => theme.nBackgroundColor};
   font-weight: 500;
-  border: 1px solid ${({ theme }) => theme.strokeColor};
+  border: 1px solid ${({ theme }) => theme.strokeForForms};
   margin: 0;
-  color: ${({ theme }) => theme.headerColor};
+  color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
   -webkit-appearance: none;
   appearance: none;
   display: block;
@@ -139,9 +139,6 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
     line-height: 22px;
     padding-top: 0;
     padding-left: 10px;
-    color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
-    background-color: ${({ theme }) => theme.nBackgroundColor};
-    border: 1px solid ${({ theme }) => theme.strokeColor};
   }
 
   &.no-subtext {
