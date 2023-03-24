@@ -48,8 +48,12 @@ export const darkMode: MavrykTheme = {
   messagesBackground: '#38237C',
   strokeCards: 'rgba(0, 0, 0, 0.2)',
   footerColor: '#121212',
+  strokeForForms: '#8D86EB',
   // tabs
   forTabs: 'linear-gradient(90deg, #86D4C9 0.31%, #8D86EB 99.97%)',
+
+  // custom color schema - variables which are not in figma but which are needed
+  tabSecondColor: '#D0CFD9',
 
   // old color schema
   whatMakesBackground: '/images/what-makes-dark.svg',
@@ -167,8 +171,12 @@ export const lightMode: MavrykTheme = {
   messagesBackground: '#E1E6FF',
   strokeCards: 'rgba(0, 0, 0, 0.1)',
   footerColor: '#FFFFFF',
+  strokeForForms: '#1F1F1F',
   // tabs
   forTabs: 'linear-gradient(90deg, #03C9A3 0.31%, #8D86EB 99.97%)',
+
+  // custom color schema - variables which are not in figma but which are needed
+  tabSecondColor: '#1F1F1F',
 
   // old color schema
   whatMakesBackground: '/images/what-makes-light.svg',
@@ -285,8 +293,12 @@ export const spaceMode: MavrykTheme = {
   messagesBackground: '#38237C',
   strokeCards: '#503EAA',
   footerColor: '#080628',
+  strokeForForms: '#503EAA',
   // tabs
   forTabs: 'linear-gradient(90deg, #86D4C9 0.31%, #8D86EB 99.97%)',
+
+  // custom color schema - variables which are not in figma but which are needed
+  tabSecondColor: '#D0CFD9',
 
   // old color schema
   whatMakesBackground: '/images/what-makes-dark.svg',

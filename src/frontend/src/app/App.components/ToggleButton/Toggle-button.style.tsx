@@ -48,8 +48,7 @@ export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  // use outside the theme because we need the same color for all themes
-  color: #8d86eb;
+  color: ${({ theme }) => theme.tabSecondColor};
   font-weight: 600;
   cursor: pointer;
   text-transform: capitalize;

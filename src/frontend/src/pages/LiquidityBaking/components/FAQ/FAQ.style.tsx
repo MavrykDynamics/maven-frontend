@@ -42,7 +42,7 @@ export const FaqItem = styled.div<{ last?: boolean }>`
 
   p,
   a {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 18px;
     line-height: 27px;
   }

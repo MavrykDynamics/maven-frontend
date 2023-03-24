@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/macro'
-import { cyanColor, skyColor } from 'styles'
+import { cyanColor } from 'styles'
 import { BUTTON_RADIUS } from 'styles/constants'
 import { MavrykTheme } from 'utils/interfaces'
 
@@ -14,7 +14,7 @@ const VISIBLE_PART_CONNECTED_WALLET = (theme: MavrykTheme, isMobileDetails?: boo
   var {
     font-weight: 400;
     font-size: 14px;
-    color: ${theme.walletDetailsAddress};
+    color: ${theme.linksAndButtons};
     transition: 0.6s all;
     display: flex;
     column-gap: 10px;
@@ -30,7 +30,7 @@ const VISIBLE_PART_CONNECTED_WALLET = (theme: MavrykTheme, isMobileDetails?: boo
     transform: rotate(-90deg);
     margin-left: 3px;
     transition: 0.6s all;
-    stroke: ${theme.walletDetailsAddress};
+    stroke: ${theme.linksAndButtons};
   }
 
   .openLink {
@@ -41,21 +41,9 @@ const VISIBLE_PART_CONNECTED_WALLET = (theme: MavrykTheme, isMobileDetails?: boo
   .wallet {
     width: 22px;
     height: 20px;
-    stroke: ${theme.walletDetailsAddress};
+    stroke: ${theme.linksAndButtons};
     fill: transparent;
     transition: 0.6s all;
-  }
-
-  ${
-    isMobileDetails
-      ? ''
-      : ` &:hover {
-      var, .wallet, .end-icon {
-        color: ${theme.selectedColor};
-        stroke: ${theme.selectedColor};
-      }
-    }
-  `
   }
 
   @media screen and (max-width: 870px) {
@@ -138,8 +126,7 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
     var,
     .wallet,
     .end-icon {
-      color: ${({ theme }) => theme.selectedColor};
-      stroke: ${({ theme }) => theme.selectedColor};
+      opacity: 0.8;
     }
     .end-icon {
       transform: rotate(90deg);
