@@ -16,6 +16,7 @@ export const LBStyled = styled.div<{ theme: MavrykTheme }>`
   }
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: bottom;
   position: relative;
   padding-bottom: 100px;
 
