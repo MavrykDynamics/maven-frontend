@@ -11,7 +11,8 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
   background-size: cover;
   background-image: ${({ theme }) =>
     `url(${theme.theme === 'light' ? theme.primaryLightDesktopBg : theme.primaryDarkDesktopBg})`};
-
+  background-position: bottom;
+  
   h1 {
     margin: 10px 0 30px 0;
 
