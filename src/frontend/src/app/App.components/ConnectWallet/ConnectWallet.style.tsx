@@ -12,8 +12,8 @@ const VISIBLE_PART_CONNECTED_WALLET = (theme: MavrykTheme, isMobileDetails?: boo
   cursor: pointer;
 
   var {
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 16px;
     color: ${theme.linksAndButtons};
     transition: 0.6s all;
     display: flex;
@@ -39,8 +39,8 @@ const VISIBLE_PART_CONNECTED_WALLET = (theme: MavrykTheme, isMobileDetails?: boo
   }
 
   .wallet {
-    width: 22px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     stroke: ${theme.linksAndButtons};
     fill: transparent;
     transition: 0.6s all;
