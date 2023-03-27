@@ -40,14 +40,14 @@ export const LBPersonalStatsView = ({
 
       <div className="stats-grid">
         <VertInfo>
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={isFinite(pnLStats.unrealizedPnL) ? pnLStats.unrealizedPnL : 0}
               endingIconName="tezosAsset"
               showNone={showNone}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Unrealized PL
             <div className="info">
               <Icon id="infoIcon" />
@@ -60,14 +60,14 @@ export const LBPersonalStatsView = ({
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={isFinite(pnLStats.realizedPnL) ? pnLStats.realizedPnL : 0}
               endingIconName="tezosAsset"
               showNone={showNone}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Realized PL
             <div className="info">
               <Icon id="infoIcon" />
@@ -81,7 +81,7 @@ export const LBPersonalStatsView = ({
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={isFinite(userPoolShare) ? userPoolShare : 0}
               endingText="%"
@@ -90,7 +90,7 @@ export const LBPersonalStatsView = ({
               decimalsToShow={6}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Pool Share
             <div className="info">
               <Icon id="infoIcon" />
@@ -100,20 +100,20 @@ export const LBPersonalStatsView = ({
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={isFinite(balances.siriusBalance) ? balances.siriusBalance : 0}
               showNone={showNone}
               endingText=" "
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Sirius tokens
           </CustomizedText>
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={
                 isFinite(estimatedAssetsOwned.estimatedPoolXtzOwned) ? estimatedAssetsOwned.estimatedPoolXtzOwned : 0
@@ -123,7 +123,7 @@ export const LBPersonalStatsView = ({
               decimalsToShow={6}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Estimated XTZ owned
             {/* <div className="info">
               <Icon id="infoIcon" />
@@ -134,7 +134,7 @@ export const LBPersonalStatsView = ({
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={
                 isFinite(estimatedAssetsOwned.estimatedPoolTzBTCOwned)
@@ -146,7 +146,7 @@ export const LBPersonalStatsView = ({
               decimalsToShow={8}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Estimated tzBTC owned
             {/* <div className="info">
               <Icon id="infoIcon" />

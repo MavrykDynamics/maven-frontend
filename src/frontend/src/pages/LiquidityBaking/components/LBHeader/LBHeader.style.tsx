@@ -18,10 +18,13 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     column-gap: 25px;
 
     div {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 32px;
+
       &::after {
         display: none;
       }
-      font-size: 32px;
     }
 
     img {
@@ -35,23 +38,18 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     align-items: center;
     justify-content: space-between;
     width: 55%;
+
+    div:not(.block-name) {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 22px;
+    }
   }
 
   .block-name {
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-  }
-
-  @media screen and (max-width: 1400px) {
-    .title {
-      div {
-        &::after {
-          display: none;
-        }
-        font-size: 28px;
-      }
-    }
   }
 
   @media screen and (max-width: 1260px) {
@@ -94,8 +92,14 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
 
   @media screen and (max-width: 500px) {
     padding: 15px 10px;
+
     .title {
       column-gap: 10px;
+
+      div {
+        font-size: 25px;
+        line-height: 30px;
+      }
 
       img {
         width: 50px;
@@ -109,10 +113,10 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       margin: 0 auto;
       grid-template-columns: repeat(2, fit-content(45%));
       gap: 10px;
-    }
 
-    div:not(.block-name) {
-      font-size: 18px;
+      div:not(.block-name) {
+        font-size: 18px;
+      }
     }
   }
 `

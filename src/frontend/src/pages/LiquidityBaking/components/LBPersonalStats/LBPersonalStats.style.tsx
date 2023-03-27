@@ -10,7 +10,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
 
   .title {
     font-weight: 700;
-    font-size: 30px;
+    font-size: 25px;
     color: ${({ theme }) => theme.mainHeadingText};
   }
 
@@ -30,29 +30,34 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
       p {
         display: flex;
         align-items: center;
+
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 40px;
+
         svg {
-          height: 16px;
-          width: 16px;
+          height: 30px;
+          width: 30px;
+
           margin-left: 3px;
           fill: ${({ theme }) => theme.primaryText};
         }
       }
+    }
+
+    .block-name {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 22px;
     }
   }
 
   @media screen and (max-width: 1400px) {
     .stats-grid {
       column-gap: 35px;
+
       > div {
         row-gap: 7px;
-        div:not(.block-name, .text) {
-          font-size: 22px;
-          line-height: 100%;
-        }
-
-        .block-name {
-          font-size: 17px;
-        }
       }
     }
   }
@@ -60,13 +65,15 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
   @media screen and (min-width: 1024px) and (max-width: 1160px) {
     .stats-grid {
       column-gap: 30px;
-      div {
-        div {
-          font-size: 29px;
-        }
 
-        .block-name {
-          font-size: 14px;
+      > div {
+        p {
+          font-size: 24px;
+
+          svg {
+            height: 20px;
+            width: 20px;
+          }
         }
       }
     }
@@ -75,9 +82,22 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
   @media screen and (max-width: 1024px) {
     min-height: unset;
     height: 420px;
+
     .stats-grid {
       margin-top: 20px;
-      row-gap: 0px;
+      column-gap: 20px;
+      row-gap: 5px;
+
+      > div {
+        p {
+          font-size: 32px;
+
+          svg {
+            height: 25px;
+            width: 25px;
+          }
+        }
+      }
     }
   }
 
@@ -102,21 +122,15 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
         justify-content: space-between;
         column-gap: 25px;
 
-        > div:not(.block-name) {
-          font-weight: 500;
-          white-space: nowrap;
-          margin-left: 7px;
-
-          P {
-            font-size: 16px;
-
-            svg {
-            }
-          }
-        }
-
+        p,
         .block-name {
           font-size: 14px;
+          line-height: 21px;
+
+          svg {
+            height: 12px;
+            width: 12px;
+          }
         }
       }
     }
