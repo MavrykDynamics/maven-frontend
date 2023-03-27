@@ -141,7 +141,7 @@ export const LBPersonalStatsView = ({
                   ? estimatedAssetsOwned.estimatedPoolTzBTCOwned
                   : 0
               }
-              endingText="tzBTC"
+              endingIconName="tezosAsset"
               showNone={showNone}
               decimalsToShow={8}
             />
