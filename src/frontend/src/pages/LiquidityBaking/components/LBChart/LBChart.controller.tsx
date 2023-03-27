@@ -102,10 +102,10 @@ export const LBChart = ({
             <use xlinkHref="/icons/sprites.svg#exchange" />
           </svg>
           <div className="info">
-            <CustomizedText className={THIRD_COLOR} fontSize={20} fontWidth={600}>
+            <CustomizedText className={THIRD_COLOR}>
               XTZ/tzBTC (Sirius)
             </CustomizedText>
-            <CustomizedText fontSize={14} fontWidth={600} className={`${SECONDARY_COLOR} value`}>
+            <CustomizedText className={`${SECONDARY_COLOR} value`}>
               <CommaNumber
                 value={LAST_CHART_COMPARE_VALUE}
                 endingIconName="tezosAsset"

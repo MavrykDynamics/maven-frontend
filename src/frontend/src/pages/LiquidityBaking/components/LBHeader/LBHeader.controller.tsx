@@ -24,44 +24,42 @@ const LBHeader = () => {
     <LBHeaderStyled>
       <div className="title">
         <img src="/images/sirius-icon.png" alt="sirius logo" />
-        <CustomizedText className={PRIMARY_COLOR} fontWidth={700} fontSize={30}>
-          The Liquidity Baking DEX
-        </CustomizedText>
+        <CustomizedText className={PRIMARY_COLOR}>The Liquidity Baking DEX</CustomizedText>
       </div>
 
       <div className="info-wrapper">
         <VertInfo>
-          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Total Value Locked
           </CustomizedText>
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={23}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber beginningText="$" value={xtz_pool * 2 * coinPrices.tezos.usd} />
           </CustomizedText>
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             APY
           </CustomizedText>
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={23}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber endingText="%" value={isFinite(APY) ? APY : 0} />
           </CustomizedText>
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Total Sirius Tokens
           </CustomizedText>
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={23}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber value={lqt_total} />
           </CustomizedText>
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText fontWidth={500} className={`${THIRD_COLOR} block-name`}>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             tzBTC/BTC Price Difference
           </CustomizedText>
-          <CustomizedText className={SECONDARY_COLOR} fontWidth={700} fontSize={23}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber endingText="%" value={priceDifference} />
           </CustomizedText>
         </VertInfo>

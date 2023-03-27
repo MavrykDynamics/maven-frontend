@@ -59,8 +59,8 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
 
       svg {
         fill: ${({ theme }) => theme.menuButtonText};
-        width: 33px;
-        height: 33px;
+        width: 30px;
+        height: 30px;
       }
     }
   }
