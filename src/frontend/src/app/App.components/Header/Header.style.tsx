@@ -40,6 +40,15 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
 
   > a {
     color: ${({ theme }) => theme.navColor};
+
+    svg {
+      fill: ${({ theme }) => theme.navColor};
+      width: 16px;
+      height: 16px;
+      margin-top: -2px;
+      margin-right: 5px;
+    }
+
     transition: all 0.25s linear;
     margin-top: 30px;
     font-size: 17px;

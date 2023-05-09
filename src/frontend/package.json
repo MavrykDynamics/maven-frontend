@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "PORT=3001 NODE_ENV=development react-scripts start && open http://localhost:3000",
+    "start:evenlop": "export NODE_OPTIONS=--openssl-legacy-provider && PORT=3001 NODE_ENV=development react-scripts start && open http://localhost:3000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "analyze": "react-scripts build && source-map-explorer 'build/static/js/*.js'"
