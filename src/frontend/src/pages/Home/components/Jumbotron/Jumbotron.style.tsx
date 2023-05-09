@@ -100,16 +100,6 @@ export const JubontronContainer = styled.div`
 export const JumbotronButtons = styled.div`
   width: 250px;
   margin: 0 auto;
-
-  /* a {
-    margin-left: 16px;
-    margin-right: 16px;
-
-    @media (max-width: 500px) {
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-  } */
 `
 
 export const JumbotronButton = styled.div<{ secondary?: boolean }>`

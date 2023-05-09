@@ -16,7 +16,7 @@ export const JumbotronView = () => {
             participating in the governance of the platform.
           </JubontronSubTitle>
           <JumbotronButtons>
-            <a href="https://discord.com/invite/7VXPR4gkT6" target="_blank" rel="noreferrer">
+            <a href="https://ghostnet.mavryk.finance/" target="_blank" rel="noreferrer">
               <JumbotronButton className={BUTTON_PULSE}>Enter DAPP</JumbotronButton>
             </a>
             {/* <HashLink */}
