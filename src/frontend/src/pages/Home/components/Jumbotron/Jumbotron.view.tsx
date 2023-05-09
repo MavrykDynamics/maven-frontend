@@ -1,17 +1,7 @@
-import * as React from 'react'
-import { Link } from 'react-router-dom'
 import { Page } from 'styles/components'
 
 // prettier-ignore
-import {
-  JubontronContainer,
-  JubontronSubTitle,
-  JubontronTitle,
-  JumbotronButton,
-  JumbotronButtons,
-  JumbotronSocials,
-  JumbotronStyled
-} from './Jumbotron.style'
+import { BUTTON_PULSE, JubontronContainer, JubontronSubTitle, JubontronTitle, JumbotronButton, JumbotronButtons, JumbotronSocials, JumbotronStyled } from './Jumbotron.style'
 
 export const JumbotronView = () => {
   return (
@@ -26,10 +16,10 @@ export const JumbotronView = () => {
             participating in the governance of the platform.
           </JubontronSubTitle>
           <JumbotronButtons>
-            <Link to="/litepaper">
-              <JumbotronButton>Litepaper</JumbotronButton>
-            </Link>
-            {/*<HashLink*/}
+            <a href="https://discord.com/invite/7VXPR4gkT6" target="_blank" rel="noreferrer">
+              <JumbotronButton className={BUTTON_PULSE}>Enter DAPP</JumbotronButton>
+            </a>
+            {/* <HashLink */}
             {/*  to="/#newsletter"*/}
             {/*  scroll={(el) =>*/}
             {/*    window.scrollTo({*/}
@@ -39,10 +29,7 @@ export const JumbotronView = () => {
             {/*  }*/}
             {/*>*/}
             {/*  <JumbotronButton>Sign Up</JumbotronButton>*/}
-            {/*</HashLink>*/}
-            <a href="https://ghostnet.mavryk.finance/" target="_blank" rel="noreferrer">
-              <JumbotronButton secondary>Enter Dapp</JumbotronButton>
-            </a>
+            {/*</HashLink> */}
           </JumbotronButtons>
           <JumbotronSocials>
             <a href="https://twitter.com/Mavryk_Finance" target="_blank" rel="noreferrer">

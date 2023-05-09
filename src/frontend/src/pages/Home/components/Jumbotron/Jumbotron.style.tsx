@@ -1,6 +1,22 @@
-import styled, { css } from 'styled-components/macro'
+import styled, { css, keyframes } from 'styled-components/macro'
 import { btnLightColor, headerColor, secondaryColor, subTextColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
+
+export const BUTTON_PULSE = 'BUTTON_PULSE'
+
+const pulse = keyframes`
+  0% {
+    box-shadow: 0 0 0 0 rgba(56, 35, 124, 1);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(56, 35, 124, 0); 
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(56, 35, 124201, 0);
+  }
+`
 
 export const JumbotronStyled = styled.div`
   padding: 266px 0px 30px 0px;
@@ -82,9 +98,10 @@ export const JubontronContainer = styled.div`
 `
 
 export const JumbotronButtons = styled.div`
-  display: flex;
+  width: 250px;
+  margin: 0 auto;
 
-  a {
+  /* a {
     margin-left: 16px;
     margin-right: 16px;
 
@@ -92,7 +109,7 @@ export const JumbotronButtons = styled.div`
       margin-left: 10px;
       margin-right: 10px;
     }
-  }
+  } */
 `
 
 export const JumbotronButton = styled.div<{ secondary?: boolean }>`
@@ -100,16 +117,19 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
   font-size: 16px;
   font-weight: bold;
   color: ${subTextColor};
-  text-align: center;
   background: ${headerColor};
   border-radius: 25px;
-  max-width: 200px;
+  height: 40px;
   moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   background-size: 300% 100%;
   padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 
   @media (max-width: 374px) {
     padding: 0 20px;
@@ -125,6 +145,11 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
       color: ${headerColor};
       background: ${btnLightColor};
     `}
+
+    &.${BUTTON_PULSE} {
+    animation: ${pulse} 2s infinite;
+    box-shadow: 0 0 0 0 ${headerColor};
+  }
 `
 
 export const JumbotronSocials = styled.div<{ theme: MavrykTheme }>`
