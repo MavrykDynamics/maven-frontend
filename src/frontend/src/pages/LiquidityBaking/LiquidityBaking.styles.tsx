@@ -10,15 +10,22 @@ export const LBStyled = styled.div<{ theme: MavrykTheme }>`
   background-image: ${({ theme }) =>
     `url(${theme.theme === 'light' ? theme.primaryLightDesktopBg : theme.primaryDarkDesktopBg})`};
 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 80%;
+  position: relative;
+  padding-bottom: 100px;
+
+  @media screen and (min-width: 1800px) {
+    background-position: bottom;
+  }
+
   @media screen and (max-width: 769px) {
     background-image: ${({ theme }) =>
       `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`};
+
+    background-position: bottom;
   }
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
-  position: relative;
-  padding-bottom: 100px;
 
   .content-wrapper {
     padding-top: 90px;
@@ -72,6 +79,10 @@ export const VertInfo = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+
+  &.centered {
+    align-items: center;
+  }
 `
 
 export const HorisontalInfo = styled.div`
