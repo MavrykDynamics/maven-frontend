@@ -10,7 +10,7 @@ export const InputStyled = styled.div<{ theme: MavrykTheme }>`
   .useMax {
     position: absolute;
     top: -20px;
-    right: 10px;
+    right: 18px;
     cursor: pointer;
     transition: opacity 0.25s;
     text-decoration: underline;
@@ -33,7 +33,7 @@ export const InputStyled = styled.div<{ theme: MavrykTheme }>`
   .balance {
     position: absolute;
     bottom: -22px;
-    right: 10px;
+    right: 18px;
     display: flex;
     row-gap: 5px;
     p {

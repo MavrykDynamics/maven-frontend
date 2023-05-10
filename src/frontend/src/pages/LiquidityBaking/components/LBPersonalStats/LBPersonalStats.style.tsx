@@ -8,6 +8,10 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
   background-position: bottom right;
   background-size: auto;
 
+  &:hover {
+    z-index: 2;
+  }
+
   .title {
     font-weight: 700;
     font-size: 25px;
@@ -35,6 +39,8 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
         font-size: 40px;
         line-height: 40px;
 
+        white-space: nowrap;
+
         svg {
           height: 30px;
           width: 30px;
@@ -58,6 +64,10 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
 
       > div {
         row-gap: 7px;
+
+        p {
+          font-size: 36px;
+        }
       }
     }
   }
