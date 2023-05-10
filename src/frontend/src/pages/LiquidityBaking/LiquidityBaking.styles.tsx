@@ -154,7 +154,7 @@ export const CustomizedText = styled.div<{
   font-weight: ${({ fontWidth }) => (fontWidth ? fontWidth : 400)};
   font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : '18px')};
   line-height: ${({ lineHeight }) => (lineHeight ? `${lineHeight}px` : '18px')};
-  display: flex;
+
   width: fit-content;
 
   ${({ link }) =>
@@ -165,6 +165,7 @@ export const CustomizedText = styled.div<{
       : ''}
 
   .info {
+    display: inline-block;
     margin-left: 5px;
     cursor: pointer;
     position: relative;
