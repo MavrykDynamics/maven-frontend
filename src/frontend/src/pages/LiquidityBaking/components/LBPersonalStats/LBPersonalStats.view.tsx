@@ -107,9 +107,7 @@ export const LBPersonalStatsView = ({
               endingText=" "
             />
           </CustomizedText>
-          <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Sirius tokens
-          </CustomizedText>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>Sirius tokens</CustomizedText>
         </VertInfo>
 
         <VertInfo>
@@ -125,11 +123,12 @@ export const LBPersonalStatsView = ({
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Estimated XTZ owned
-            {/* <div className="info">
+            <div className="info">
               <Icon id="infoIcon" />
-              TODO: add text
-              <div className="text">To fill in</div>
-            </div> */}
+              <div className="text">
+                Your estimated share of XTZ in the liquidity pool given how many SIRS tokens you have in your wallet.
+              </div>
+            </div>
           </CustomizedText>
         </VertInfo>
 
@@ -141,18 +140,19 @@ export const LBPersonalStatsView = ({
                   ? estimatedAssetsOwned.estimatedPoolTzBTCOwned
                   : 0
               }
-              endingIconName="tezosAsset"
+              endingText=" "
               showNone={showNone}
               decimalsToShow={8}
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Estimated tzBTC owned
-            {/* <div className="info">
+            <div className="info">
               <Icon id="infoIcon" />
-              TODO: add text
-              <div className="text"></div>
-            </div> */}
+              <div className="text">
+                Your estimated share of tzBTC in the liquidity pool given how many SIRS tokens you have in your wallet.
+              </div>
+            </div>
           </CustomizedText>
         </VertInfo>
       </div>
