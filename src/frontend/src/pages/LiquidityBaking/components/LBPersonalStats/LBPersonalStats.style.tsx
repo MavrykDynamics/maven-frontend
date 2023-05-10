@@ -24,7 +24,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, 82px);
-    column-gap: 50px;
+    column-gap: 35px;
     row-gap: 50px;
     height: 100%;
 
@@ -60,7 +60,6 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
 
   @media screen and (max-width: 1400px) {
     .stats-grid {
-      column-gap: 35px;
 
       > div {
         row-gap: 7px;
