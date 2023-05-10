@@ -28,7 +28,7 @@ const LBHeader = () => {
       </div>
 
       <div className="info-wrapper">
-        <VertInfo>
+        <VertInfo className='centered'>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Total Value Locked
           </CustomizedText>
@@ -37,7 +37,7 @@ const LBHeader = () => {
           </CustomizedText>
         </VertInfo>
 
-        <VertInfo>
+        <VertInfo className='centered'>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
             APY
           </CustomizedText>
@@ -46,7 +46,7 @@ const LBHeader = () => {
           </CustomizedText>
         </VertInfo>
 
-        <VertInfo>
+        <VertInfo className='centered'>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Total Sirius Tokens
           </CustomizedText>
@@ -55,7 +55,7 @@ const LBHeader = () => {
           </CustomizedText>
         </VertInfo>
 
-        <VertInfo>
+        <VertInfo className='centered'>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
             tzBTC/BTC Price Difference
           </CustomizedText>

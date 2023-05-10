@@ -72,6 +72,10 @@ export const VertInfo = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+
+  &.centered {
+    align-items: center;
+  }
 `
 
 export const HorisontalInfo = styled.div`
