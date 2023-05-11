@@ -80,8 +80,14 @@ export const VertInfo = styled.div`
   flex-direction: column;
   row-gap: 10px;
 
-  &.centered {
+  &.header {
     align-items: center;
+  }
+
+  @media screen and (max-width: 769px) {
+    &.header {
+      align-items: start;
+    }
   }
 `
 
@@ -223,6 +229,11 @@ export const CustomizedText = styled.div<{
     @media screen and (max-width: 650px) {
       .text {
         max-width: 270px;
+      }
+
+      svg {
+        width: 14px;
+        height: 14px;
       }
     }
 
