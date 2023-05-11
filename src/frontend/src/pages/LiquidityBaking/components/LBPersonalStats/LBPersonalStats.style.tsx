@@ -60,7 +60,6 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
 
   @media screen and (max-width: 1400px) {
     .stats-grid {
-
       > div {
         row-gap: 7px;
 
@@ -137,8 +136,8 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
           line-height: 21px;
 
           svg {
-            height: 12px;
-            width: 12px;
+            height: 14px;
+            width: 14px;
           }
         }
       }
