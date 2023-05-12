@@ -111,7 +111,7 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       padding: 0;
       width: fit-content;
       margin: 0 auto;
-      grid-template-columns: repeat(2, fit-content(45%));
+      grid-template-columns: repeat(2, fit-content(50%));
       gap: 10px;
 
       div:not(.block-name) {
