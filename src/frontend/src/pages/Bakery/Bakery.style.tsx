@@ -48,8 +48,6 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
     flex-direction: column;
     margin: 0 auto;
     padding: 110px 0 100px 0;
-    padding-top: 110px;
-    padding-bottom: 100px;
     row-gap: 20px;
     max-width: 1440px;
   }

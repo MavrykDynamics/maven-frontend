@@ -105,10 +105,8 @@ const LiquidityBaking = () => {
         proccedPolicy={proccedPolicy}
       />
       <PopupChangeNode isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
-      <LBStyled>
-        <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
-        <LiquidityBakingView />
-      </LBStyled>
+      <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
+      <LiquidityBakingView />
       <div ref={footerRef}>
         <Footer />
       </div>

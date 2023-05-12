@@ -7,33 +7,20 @@ export const THIRD_COLOR = 'third'
 export const ACTIVE_COLOR = 'active'
 
 export const LBStyled = styled.div<{ theme: MavrykTheme }>`
-  background-image: ${({ theme }) =>
-    `url(${theme.theme === 'light' ? theme.primaryLightDesktopBg : theme.primaryDarkDesktopBg})`};
-
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 100% 80%;
-  position: relative;
-  padding-bottom: 100px;
-
-  @media screen and (min-width: 1800px) {
+  background-image: ${({ theme }) =>
+    `url(${theme.theme === 'light' ? theme.primaryLightDesktopBg : theme.primaryDarkDesktopBg})`};
     background-position: bottom;
-  }
-
-  @media screen and (max-width: 769px) {
-    background-image: ${({ theme }) =>
-      `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`};
-
-    background-position: bottom;
-  }
 
   .content-wrapper {
-    padding-top: 90px;
+    position: relative;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    padding: 90px 0 100px 0;
     row-gap: 10px;
     max-width: 1440px;
-    margin: 0 auto;
   }
 
   .middle-block {
@@ -58,11 +45,12 @@ export const LBStyled = styled.div<{ theme: MavrykTheme }>`
       flex-direction: column;
       row-gap: 10px;
     }
-
-    padding-bottom: 0px;
   }
 
   @media screen and (max-width: 769px) {
+    background-image: ${({ theme }) =>
+      `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`};
+
     .desktop-chart {
       display: none;
     }

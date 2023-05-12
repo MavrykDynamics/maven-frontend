@@ -6,6 +6,7 @@ import { LBPersonalStats } from './components/LBPersonalStats/LBPersonalStats.co
 import { useEffect, useState } from 'react'
 import { GET_GENERAL_STATS_QUERY, GET_GENERAL_STATS_VARIABLES } from '../../gql/queries/generalStats.query'
 import useSWR from 'swr'
+import { LBStyled } from './LiquidityBaking.styles'
 
 export interface LBGeneralStats {
   address: string
@@ -69,15 +70,17 @@ const LiquidityBakingView = () => {
   }, [setGeneralDexStats, generalStats, checkGeneralStatsLoading])
 
   return (
-    <div className="content-wrapper">
-      <LBHeader />
-      <div className="middle-block">
-        <LBPersonalStats generalStats={generalDexStats} />
-        <LBAction generalDexStats={generalDexStats} />
+    <LBStyled>
+      <div className="content-wrapper">
+        <LBHeader />
+        <div className="middle-block">
+          <LBPersonalStats generalStats={generalDexStats} />
+          <LBAction generalDexStats={generalDexStats} />
+        </div>
+        <LBChart className="desktop-chart" />
+        <LBFAQ />
       </div>
-      <LBChart className="desktop-chart" />
-      <LBFAQ />
-    </div>
+    </LBStyled>
   )
 }
 
