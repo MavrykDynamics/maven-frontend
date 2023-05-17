@@ -7,11 +7,11 @@ export const THIRD_COLOR = 'third'
 export const ACTIVE_COLOR = 'active'
 
 export const LBStyled = styled.div<{ theme: MavrykTheme }>`
-  background-repeat: no-repeat;
-  background-size: cover;
   background-image: ${({ theme }) =>
-    `url(${theme.theme === 'light' ? theme.primaryLightDesktopBg : theme.primaryDarkDesktopBg})`};
-    background-position: bottom;
+    `url(${theme.topDesktopBackground}), url(${theme.bottomDesktopBackground}), ${theme.backgroundGradient}`};
+  background-position: center 100px, bottom, center;
+  background-repeat: no-repeat;
+  background-size: contain;
 
   .content-wrapper {
     position: relative;
@@ -48,9 +48,6 @@ export const LBStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   @media screen and (max-width: 769px) {
-    background-image: ${({ theme }) =>
-      `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`};
-
     .desktop-chart {
       display: none;
     }
