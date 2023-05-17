@@ -7,11 +7,11 @@ import { MavrykTheme } from 'utils/interfaces'
 import { Button } from 'app/App.components/Button/Button.controller'
 
 export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
-  background-repeat: no-repeat;
-  background-size: cover;
   background-image: ${({ theme }) =>
-    `url(${theme.theme === 'light' ? theme.primaryLightDesktopBg : theme.primaryDarkDesktopBg})`};
-  background-position: bottom;
+    `url(${theme.topDesktopBackground}), url(${theme.bottomDesktopBackground}), ${theme.backgroundGradient}`};
+  background-position: center 100px, bottom, center;
+  background-repeat: no-repeat;
+  background-size: contain;
   
   h1 {
     margin: 10px 0 30px 0;
@@ -166,11 +166,6 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
         margin-top: 40px;
       }
     }
-  }
-
-  @media screen and (max-width: 770px) {
-    background-image: ${({ theme }) =>
-      `url(${theme.theme === 'light' ? theme.primaryLightMobBg : theme.primaryDarkMobBg})`};
   }
 
   @media screen and (max-width: 600px) {
