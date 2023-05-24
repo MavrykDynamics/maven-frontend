@@ -44,7 +44,7 @@ export const Slippage = ({
           values={SLIPPAGE_TOGGLE_VALUES}
           selected={selectedToogle}
           handleSetSelectedToggler={(value: unknown) => onClickHandler(value as number)}
-          className="swap-toggler"
+          className="swap-toggler action-toggler"
         />
         <Input
           placeholder={''}

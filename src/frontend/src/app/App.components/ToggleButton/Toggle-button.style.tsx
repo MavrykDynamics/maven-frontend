@@ -4,6 +4,7 @@ import { MavrykTheme } from 'utils/interfaces'
 export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   margin: 0 auto;
+  padding: 1px;
   width: fit-content;
   justify-content: center;
   align-items: center;
@@ -14,28 +15,20 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   max-height: 40px;
 
   &.swap-toggler {
-    margin: 0;
     div {
-      padding: 8px 7px;
       font-size: 14px;
     }
   }
 
   &.action-toggler {
-    height: 28px;
-    
+    height: 30px;
+
     div {
       height: 26px;
     }
   }
 
   @media screen and (max-width: 800px) {
-    &.chart-toggler {
-      max-height: 30px;
-    }
-  }
-
-  @media screen and (max-width: 490px) {
     &.chart-toggler {
       max-height: 30px;
     }
