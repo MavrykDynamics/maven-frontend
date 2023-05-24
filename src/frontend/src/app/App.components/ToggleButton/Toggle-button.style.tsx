@@ -24,7 +24,7 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   &.action-toggler {
     height: 30px;
     div {
-      height: 29px;
+      height: 28px;
     }
   }
 
@@ -42,7 +42,7 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
 `
 
 export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`
-  padding: 15px 30px;
+  padding: 10px 30px;
   height: inherit;
   width: fit-content;
   display: flex;
