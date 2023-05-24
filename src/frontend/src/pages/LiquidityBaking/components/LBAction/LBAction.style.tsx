@@ -346,7 +346,7 @@ export const CheckBoxLabel = styled.label<{ theme: MavrykTheme }>`
     width: 15px;
     height: 15px;
     margin: 1px;
-    background: ${({ theme }) => theme.strokeColor};
+    background: ${({ theme }) => theme.nSelectedColor};
     transition: 0.2s;
   }
 `

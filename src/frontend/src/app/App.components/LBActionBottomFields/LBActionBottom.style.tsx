@@ -19,7 +19,7 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
   .controls-wrapper {
     display: flex;
     align-items: center;
-    height: 38px;
+    height: 30px;
     column-gap: 15px;
 
     #inputStyled {
@@ -27,7 +27,7 @@ export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
 
       input {
         max-width: 80px;
-        height: 32px;
+        height: 30px;
         display: flex;
         align-items: center;
         padding: 0;
