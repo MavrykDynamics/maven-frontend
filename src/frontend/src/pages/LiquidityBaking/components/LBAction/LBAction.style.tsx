@@ -375,6 +375,7 @@ export const CheckBox = styled.input`
       width: 15px;
       height: 15px;
       margin-left: 17px;
+      background: ${({ theme }) => theme.linksAndButtons};
       transition: 0.2s;
     }
   }
