@@ -1,4 +1,4 @@
-import { Input } from 'app/App.components/Input/Input.controller'
+import { Input, InputStatusType } from 'app/App.components/Input/Input.controller'
 import React, { useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -21,26 +21,47 @@ import {
   PopupContainerWrapper,
   PopupTitle,
 } from './SettingsPopup.style'
+import { isValidRPCNode } from 'utils/validatorFunctions'
+import { INPUT_STATUS_ERROR, INPUT_STATUS_SUCCESS } from '../Input/Input.constants'
 
 export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) => {
   const dispatch = useDispatch()
   const { RPC_NODES, REACT_APP_RPC_PROVIDER, themeSelected } = useSelector((state: State) => state.preferences)
 
-  const [inputData, setInputData] = useState('')
+  const [inputData, setInputData] = useState<{ node: string; nodeValidation: InputStatusType }>({
+    node: '',
+    nodeValidation: '',
+  })
   const [expandedInput, setExpandedInput] = useState(false)
   const [selectedNodeByClick, setSelectedNodeByClick] = useState(REACT_APP_RPC_PROVIDER)
 
   const confirmHandler = useCallback(() => {
     if (inputData) {
-      const newRPCNodes: Array<RPCNodeType> = [...RPC_NODES, { title: inputData, url: inputData, isUser: true }]
+      const newRPCNodes: Array<RPCNodeType> = [
+        ...RPC_NODES,
+        { title: inputData.node, url: inputData.node, isUser: true },
+      ]
       dispatch(setNewRPCNodes(newRPCNodes))
-      dispatch(selectNewRPCNode(inputData))
-      setSelectedNodeByClick(inputData)
-      setInputData('')
+      dispatch(selectNewRPCNode(inputData.node))
+      setSelectedNodeByClick(inputData.node)
+      setInputData({
+        node: '',
+        nodeValidation: '',
+      })
     } else {
       dispatch(selectNewRPCNode(selectedNodeByClick))
     }
   }, [inputData, RPC_NODES, selectedNodeByClick])
+
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const enteredNode = e.target.value.trim()
+    const isValidRPC = await isValidRPCNode(enteredNode, RPC_NODES)
+
+    setInputData({
+      node: enteredNode,
+      nodeValidation: isValidRPC ? INPUT_STATUS_SUCCESS : INPUT_STATUS_ERROR,
+    })
+  }
 
   const setNewThemeHandler = useCallback((newTheme: ThemeType) => dispatch(themeSetterAction(newTheme)), [])
 
@@ -74,12 +95,12 @@ export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) 
           <Input
             placeholder="https://..."
             name="add_new_node_input"
-            className="LB"
-            value={inputData}
+            value={inputData.node}
             type="text"
             onFocus={() => setExpandedInput(true)}
             onBlur={() => setExpandedInput(false)}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputData(e.target.value)}
+            onChange={handleChange}
+            inputStatus={inputData.nodeValidation}
           />
         </ChangeNodeNodesListItem>
 

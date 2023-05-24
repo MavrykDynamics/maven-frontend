@@ -224,6 +224,16 @@ export const ToggleButtonsWrapper = styled.div`
   width: fit-content;
   position: relative;
 
+  .toggle-btn {
+    width: 199px;
+  }
+
+  .main {
+    .toggle-btn {
+      width: 149px;
+    }
+  }
+
   &.addLiquidity {
     margin-bottom: 20px;
   }
