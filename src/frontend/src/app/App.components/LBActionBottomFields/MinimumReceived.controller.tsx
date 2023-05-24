@@ -46,10 +46,10 @@ export const MinimumReceived = ({
 
       <CustomizedText className={SECONDARY_COLOR} fontSize={14} fontWidth={600} style={{ columnGap: '7px' }}>
         {minimumReceived.map(({ value, tokenName }, idx) => (
-          <div style={{ display: 'contents' }} key={value + tokenName}>
-            <CommaNumber value={value} endingText={tokenName} decimalsToShow={decimals} />
+          <span key={value + tokenName}>
+            <CommaNumber value={value} endingText={tokenName} decimalsToShow={decimals} className="commaNumber" />
             {minimumReceived.length > 1 && idx < minimumReceived.length - 1 ? ' + ' : ''}
-          </div>
+          </span>
         ))}
       </CustomizedText>
     </HorisontalInfo>
