@@ -48,7 +48,7 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Unrealized PL
+            Unrealized PL&nbsp;
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">
@@ -68,7 +68,7 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Realized PL
+            Realized PL&nbsp;
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">
@@ -91,7 +91,7 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Pool Share
+            Pool Share&nbsp;
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">Your percentage share of the pool</div>
@@ -122,7 +122,7 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Estimated XTZ owned
+            Estimated XTZ owned&nbsp;
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">
@@ -146,7 +146,7 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Estimated tzBTC owned
+            Estimated tzBTC owned&nbsp;
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">
