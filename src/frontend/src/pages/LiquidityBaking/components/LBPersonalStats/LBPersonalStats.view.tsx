@@ -48,7 +48,7 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Unrealized PL&nbsp;
+            Unrealized PL
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">
@@ -68,7 +68,7 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Realized PL&nbsp;
+            Realized PL
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">
@@ -91,7 +91,7 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Pool Share&nbsp;
+            Pool Share
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">Your percentage share of the pool</div>
@@ -122,13 +122,17 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Estimated XTZ owned&nbsp;
-            <div className="info">
-              <Icon id="infoIcon" />
-              <div className="text">
-                Your estimated share of XTZ in the liquidity pool given how many SIRS tokens you have in your wallet.
+            Estimated XTZ{' '}
+            <span>
+              owned
+              <div className="info">
+                <Icon id="infoIcon" />
+
+                <div className="text">
+                  Your estimated share of XTZ in the liquidity pool given how many SIRS tokens you have in your wallet.
+                </div>
               </div>
-            </div>
+            </span>
           </CustomizedText>
         </VertInfo>
 
@@ -146,13 +150,17 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Estimated tzBTC owned&nbsp;
-            <div className="info">
-              <Icon id="infoIcon" />
-              <div className="text">
-                Your estimated share of tzBTC in the liquidity pool given how many SIRS tokens you have in your wallet.
+            Estimated tzBTC{' '}
+            <span>
+              owned
+              <div className="info">
+                <Icon id="infoIcon" />
+                <div className="text">
+                  Your estimated share of tzBTC in the liquidity pool given how many SIRS tokens you have in your
+                  wallet.
+                </div>
               </div>
-            </div>
+            </span>
           </CustomizedText>
         </VertInfo>
       </div>

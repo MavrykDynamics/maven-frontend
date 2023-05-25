@@ -55,6 +55,10 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
       font-weight: 600;
       font-size: 22px;
       line-height: 22px;
+
+      span {
+        white-space: nowrap;
+      }
     }
   }
 
