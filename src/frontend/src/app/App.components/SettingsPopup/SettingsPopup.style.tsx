@@ -129,17 +129,11 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
       margin: 0;
       padding: 0;
       padding-left: 7px;
-      color: ${({ theme }) => theme.settingsPopupText};
-      border-color: ${({ theme }) => theme.toggleButtonBgSelected};
       font-size: 16px;
       text-overflow: ellipsis;
       transition: 0.5s all;
       overflow: hidden;
       white-space: nowrap;
-      &::placeholder {
-        color: ${({ theme }) => theme.settingsPopupText};
-        opacity: 0.8;
-      }
     }
 
     &.expanded {

@@ -34,6 +34,7 @@ export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) 
   })
   const [expandedInput, setExpandedInput] = useState(false)
   const [selectedNodeByClick, setSelectedNodeByClick] = useState(REACT_APP_RPC_PROVIDER)
+  const isDisabledButton = inputData.nodeValidation !== INPUT_STATUS_SUCCESS
 
   const confirmHandler = useCallback(() => {
     if (inputData) {
@@ -94,7 +95,6 @@ export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) 
           <div className="add-new-node-handler">Add New Node</div>
           <Input
             placeholder="https://..."
-            name="add_new_node_input"
             value={inputData.node}
             type="text"
             onFocus={() => setExpandedInput(true)}
@@ -114,6 +114,7 @@ export const PopupChangeNodeView = ({ closeModal }: { closeModal: () => void }) 
           text="Confirm"
           icon="okIcon"
           kind={ACTION_PRIMARY}
+          disabled={isDisabledButton}
         />
       </div>
 
