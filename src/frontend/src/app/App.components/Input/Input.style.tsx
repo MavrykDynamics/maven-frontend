@@ -170,6 +170,10 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
       border-color: ${({ theme }) => theme.downColor};
       color: ${({ theme }) => theme.downColor};
     }
+
+    &::placeholder {
+      color: ${({ theme }) => theme.downColor};
+    }
   }
 
   &.success {
@@ -178,6 +182,10 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
 
     &:focus {
       border-color: ${({ theme }) => theme.upColor};
+      color: ${({ theme }) => theme.upColor};
+    }
+
+    &::placeholder {
       color: ${({ theme }) => theme.upColor};
     }
   }
