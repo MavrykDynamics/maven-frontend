@@ -123,11 +123,6 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
   }
 
   &:hover {
-    var,
-    .wallet,
-    .end-icon {
-      opacity: 0.8;
-    }
     .end-icon {
       transform: rotate(90deg);
     }
@@ -186,12 +181,9 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
         color: ${({ theme: { walletDetailsAddress } }) => walletDetailsAddress};
 
         &:hover {
-          div {
-            color: ${({ theme }) => theme.linksAndButtons};
-          }
-
+          div,
           svg {
-            stroke: ${({ theme }) => theme.linksAndButtons};
+            opacity: 0.8;
           }
         }
 
@@ -277,7 +269,7 @@ export const MobileDetailsStyled = styled.div<{ theme: MavrykTheme }>`
       left: 50%;
       transform: translateX(-50%);
       height: 1px;
-      background: #503eaa;
+      background: ${({ theme }) => theme.divider};
     }
 
     .details-wallet {

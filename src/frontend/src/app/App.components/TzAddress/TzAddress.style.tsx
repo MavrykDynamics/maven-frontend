@@ -58,12 +58,10 @@ export const TzAddressIcon = styled.svg<{ theme: MavrykTheme }>`
   }
 
   &.${CYAN} {
-    stroke: ${({ theme }) => theme.linksAndButtons};
-    fill: transparent;
+    fill: ${({ theme }) => theme.linksAndButtons};
   }
 
   &.${BLUE} {
-    stroke: ${({ theme }) => theme.walletDetailsAddress};
-    fill: transparent;
+    fill: ${({ theme }) => theme.walletDetailsAddress};
   }
 `
