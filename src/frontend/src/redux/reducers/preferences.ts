@@ -11,9 +11,9 @@ const defaultPreferences: PreferencesType = {
   scrollPosition: 0,
   RPC_NODES: [
     {
-      title: 'SmartPy',
-      url: 'https://mainnet.smartpy.io',
-      nodeLogoUrl: 'smartpy.png',
+      title: 'MARIGOLD',
+      url: 'https://mainnet.tezos.marigold.dev/',
+      nodeLogoUrl: 'marigold_logo.png',
     },
     { title: 'ECADLABS', url: 'https://mainnet.api.tez.ie', nodeLogoUrl: 'ECAD_logo.png' },
   ],
