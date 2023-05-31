@@ -145,7 +145,7 @@ export const ConnectedWalletBlock = ({
       </div>
 
       <div className={`wallet-details ${detailsShown ? 'visible' : ''} ${isMobile ? 'mobile' : ''}`}>
-        <div className="wallet-details-header">
+        <div className="padding-wrapper wallet-details-header">
           <div className="details-wallet ">
             <Icon id="wallet" className="wallet hover" />
             <var className="hover">
@@ -158,27 +158,29 @@ export const ConnectedWalletBlock = ({
           </a>
         </div>
 
-        <ConnectedWalletDetailsItem
-          buttonText={'Buy XTZ'}
-          coinAmount={coinsInfo.userXTZBalance}
-          coinName={'XTZ'}
-          buttonHandler={detailsHandlers.buyXTZHandler}
-          subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
-          iconName={'XTZ_tezos'}
-          decimals={6}
-          disableBtn
-        />
-        <ConnectedWalletDetailsItem
-          buttonText={'Buy tzBTC'}
-          coinAmount={coinsInfo.usertzBTCBalance}
-          coinName={'tzBTC'}
-          buttonHandler={detailsHandlers.buyTZBTCHandler}
-          subtextAmount={coinsInfo.usertzBTCBalance * coinsInfo.tzBTCExchnageRate}
-          iconName={'tzBTC'}
-          decimals={8}
-          disableBtn
-        />
-        <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
+        <div className="padding-wrapper">
+          <ConnectedWalletDetailsItem
+            buttonText={'Buy XTZ'}
+            coinAmount={coinsInfo.userXTZBalance}
+            coinName={'XTZ'}
+            buttonHandler={detailsHandlers.buyXTZHandler}
+            subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
+            iconName={'XTZ_tezos'}
+            decimals={6}
+            disableBtn
+          />
+          <ConnectedWalletDetailsItem
+            buttonText={'Buy tzBTC'}
+            coinAmount={coinsInfo.usertzBTCBalance}
+            coinName={'tzBTC'}
+            buttonHandler={detailsHandlers.buyTZBTCHandler}
+            subtextAmount={coinsInfo.usertzBTCBalance * coinsInfo.tzBTCExchnageRate}
+            iconName={'tzBTC'}
+            decimals={8}
+            disableBtn
+          />
+          <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
+        </div>
 
         <div className="buttons-wrapper">
           <Button onClick={signOutHandler} icon="signOut" text="Sign out" className="sign-out" />
