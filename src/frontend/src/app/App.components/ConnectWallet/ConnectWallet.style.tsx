@@ -69,7 +69,7 @@ const BUTTONS_WRAPPER_CONNECTED_WALLET = `
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: 23px;
+  margin-top: 9px;
 }
 `
 // Common style parts END
@@ -137,7 +137,7 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
     position: absolute;
     visibility: hidden;
     padding-top: 35px;
-    padding-bottom: 45px;
+    padding-bottom: 35px;
     top: 85px;
     opacity: 0;
     right: 15px;
@@ -166,9 +166,8 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
       display: flex;
       justify-content: space-between;
       position: relative;
-      padding-bottom: 42px;
+      padding-bottom: 30px;
       border-bottom: 1px solid ${({ theme }) => theme.divider};
-
 
       .details-wallet {
         display: flex;
@@ -327,6 +326,10 @@ export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavrykTheme 
   padding: 10px 0;
   position: relative;
   border-bottom: 1px solid ${({ theme }) => theme.divider};
+
+  &:first-of-type {
+    margin-top: 10px;
+  }
 
   &:last-of-type {
     border-bottom: none;
