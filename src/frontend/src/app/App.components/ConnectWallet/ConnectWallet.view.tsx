@@ -34,6 +34,8 @@ type ConnectedWalletBlockProps = {
     buyTZBTCHandler: () => void
   }
   closeMobileMenu: (e: React.MouseEvent<HTMLElement>) => void
+  isLiqudityBaking?: boolean
+  handleClickGetSir: () => void
 }
 
 export const MobileDetailsBlock = ({
@@ -44,6 +46,8 @@ export const MobileDetailsBlock = ({
   detailsHandlers,
   handleCloseBtn,
   closeMobileMenu,
+  isLiqudityBaking,
+  handleClickGetSir,
 }: ConnectedWalletBlockProps & { handleCloseBtn: () => void }) => {
   return (
     <MobileDetailsStyled>
@@ -88,7 +92,19 @@ export const MobileDetailsBlock = ({
           decimals={8}
           disableBtn
         />
-        <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
+
+        <ConnectedWalletDetailsItem
+          buttonText={isLiqudityBaking ? undefined : 'Get SIR'}
+          coinAmount={coinsInfo.userLBTBalance}
+          coinName={'Sirius'}
+          buttonHandler={handleClickGetSir}
+          // TODO: use rate instead of 1
+          subtextAmount={coinsInfo.userLBTBalance * 1}
+          iconName={'sirius'}
+          // TODO: use valid decimals
+          decimals={8}
+          disableBtn
+        />
 
         <div className="buttons-wrapper">
           <Button onClick={signOutHandler} icon="signOut" text="Sign out" className="sign-out" />
@@ -113,6 +129,8 @@ export const ConnectedWalletBlock = ({
   detailsHandlers,
   isMobile,
   closeMobileMenu,
+  isLiqudityBaking,
+  handleClickGetSir,
 }: ConnectedWalletBlockProps) => {
   const [detailsShown, setDetailsShown] = useState(false)
 
@@ -131,6 +149,8 @@ export const ConnectedWalletBlock = ({
         handleCloseBtn={closeHandler}
         detailsHandlers={detailsHandlers}
         closeMobileMenu={closeMobileMenu}
+        isLiqudityBaking={isLiqudityBaking}
+        handleClickGetSir={handleClickGetSir}
       />
     )
 
@@ -179,7 +199,19 @@ export const ConnectedWalletBlock = ({
             decimals={8}
             disableBtn
           />
-          <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
+
+          <ConnectedWalletDetailsItem
+            buttonText={isLiqudityBaking ? undefined : 'Get SIR'}
+            coinAmount={coinsInfo.userLBTBalance}
+            coinName={'Sirius'}
+            buttonHandler={handleClickGetSir}
+            // TODO: use rate instead of 1
+            subtextAmount={coinsInfo.userLBTBalance * 1}
+            iconName={'sirius'}
+            // TODO: use valid decimals
+            decimals={8}
+            disableBtn
+          />
         </div>
 
         <div className="buttons-wrapper">

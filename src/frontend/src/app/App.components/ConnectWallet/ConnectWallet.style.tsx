@@ -167,17 +167,8 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
       justify-content: space-between;
       position: relative;
       padding-bottom: 42px;
+      border-bottom: 1px solid ${({ theme }) => theme.divider};
 
-      &:before {
-        content: '';
-        position: absolute;
-        bottom: 7px;
-        width: 375px;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 1px;
-        background: #503eaa;
-      }
 
       .details-wallet {
         display: flex;
@@ -267,17 +258,7 @@ export const MobileDetailsStyled = styled.div<{ theme: MavrykTheme }>`
     width: 88%;
     max-width: 500px;
     margin: 0px auto 5px auto;
-
-    &:before {
-      content: '';
-      position: absolute;
-      bottom: 0px;
-      width: 100vw;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 1px;
-      background: ${({ theme }) => theme.divider};
-    }
+    border-bottom: 1px solid ${({ theme }) => theme.divider};
 
     .details-wallet {
       display: flex;
@@ -345,6 +326,11 @@ export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavrykTheme 
   justify-content: space-between;
   padding: 10px 0;
   position: relative;
+  border-bottom: 1px solid ${({ theme }) => theme.divider};
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 
   .left-part {
     display: flex;
@@ -410,15 +396,6 @@ export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavrykTheme 
       transform: rotate(180deg);
       stroke: ${({ theme }) => theme.linksAndButtons};
     }
-  }
-
-  &:not(:nth-last-child(2)):before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background: #503eaa;
   }
 `
 
