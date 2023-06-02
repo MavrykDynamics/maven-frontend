@@ -17,7 +17,6 @@ import { PolicyPopup } from 'app/App.components/PolicyPopup/Policy.controller'
 import { useLocation } from 'react-router'
 import { useCookies } from 'react-cookie'
 import { PolicyPopupContent } from 'app/App.components/PolicyPopup/PolicyPopupContent.controller'
-// import { PopupChangeNodeView } from 'app/App.components/SettingsPopupOLD/SettingsPopup.view'
 import { connect } from 'redux/actions/connectWallet.actions'
 import { SettingPopup } from 'app/App.components/SettingsPopup/SettingsPopup'
 
@@ -89,7 +88,7 @@ const LiquidityBaking = () => {
   }
 
   if (isIOS && changeNodePopupOpen) {
-    // return <PopupChangeNodeView closeModal={closeModalHandler} />
+    return <SettingPopup isModalOpened showBackdrop={false} closeModal={closeModalHandler} />
   }
 
   return (
