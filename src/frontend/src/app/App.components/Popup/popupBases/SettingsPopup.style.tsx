@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { cyanColor, titleColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const SettingsPopupBase = styled.div<{ theme: MavrykTheme }>`
@@ -60,7 +59,8 @@ export const ChangeNodeNodesListItem = styled.div<{ isSelected?: boolean }>`
 
   color: ${({ theme }) => theme.mainHeadingText};
   border-radius: 10px;
-  border: ${({ isSelected }) => (isSelected ? `1px solid ${cyanColor}` : `1px solid ${titleColor};`)};
+  border: ${({ isSelected, theme }) =>
+    isSelected ? `1px solid ${theme.linksAndButtons}` : `1px solid ${theme.inputBorderColor};`};
 
   position: relative;
   height: 75px;
