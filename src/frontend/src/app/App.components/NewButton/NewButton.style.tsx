@@ -22,7 +22,8 @@ import { MavrykTheme } from 'utils/interfaces'
 const BUTTONS_KIND_STYLES = css`
   &.${BUTTON_PRIMARY} {
     color: ${({ theme }) => theme.darkBackroundColor};
-    background-color: ${({ theme }) => theme.menuButtonText};
+    background-color: ${({ theme }) => theme.linksAndButtons};
+    border: none;
 
     svg {
       fill: ${({ theme }) => theme.darkBackroundColor};
@@ -30,12 +31,12 @@ const BUTTONS_KIND_STYLES = css`
   }
 
   &.${BUTTON_SECONDARY} {
-    color: ${({ theme }) => theme.menuButtonText};
+    color: ${({ theme }) => theme.linksAndButtons};
     background-color: transparent;
-    border: 2px solid ${({ theme }) => theme.menuButtonText};
+    border: 2px solid ${({ theme }) => theme.linksAndButtons};
 
     svg {
-      fill: ${({ theme }) => theme.menuButtonText};
+      fill: ${({ theme }) => theme.linksAndButtons};
     }
   }
   &.${BUTTON_SECONDARY_PURPLE} {
@@ -56,7 +57,7 @@ const BUTTONS_KIND_STYLES = css`
     border: 1px solid ${({ theme }) => theme.strokeCards};
 
     svg {
-      fill: ${({ theme }) => theme.menuButtonText};
+      fill: ${({ theme }) => theme.linksAndButtons};
     }
   }
 
@@ -65,9 +66,9 @@ const BUTTONS_KIND_STYLES = css`
     height: fit-content;
     padding: 0;
 
-    color: ${({ theme }) => theme.menuButtonText};
+    color: ${({ theme }) => theme.linksAndButtons};
     svg {
-      fill: ${({ theme }) => theme.menuButtonText};
+      fill: ${({ theme }) => theme.linksAndButtons};
     }
   }
 
@@ -76,11 +77,11 @@ const BUTTONS_KIND_STYLES = css`
     height: fit-content;
     padding: 0;
 
-    color: ${({ theme }) => theme.menuButtonText};
+    color: ${({ theme }) => theme.linksAndButtons};
     svg {
       width: 14px;
       height: 14px;
-      fill: ${({ theme }) => theme.menuButtonText};
+      fill: ${({ theme }) => theme.linksAndButtons};
     }
   }
 
@@ -90,7 +91,7 @@ const BUTTONS_KIND_STYLES = css`
     padding: 0;
     position: relative;
     transition: 0.3s all;
-    color: ${({ theme }) => theme.menuButtonText};
+    color: ${({ theme }) => theme.linksAndButtons};
 
     &.selected:not(:disabled),
     &:hover:not(:disabled) {

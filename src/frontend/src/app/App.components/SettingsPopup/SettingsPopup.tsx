@@ -3,28 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useClickAway, useLockBodyScroll } from 'react-use'
 
 // helpers, consts
-import { INPUT_STATUS_DEFAULT, INPUT_STATUS_SUCCESS } from 'app/App.components/Input/Input.constants'
-import { INPUT_STATUS_ERROR } from 'app/App.components/Input/Input.constants'
-import { isValidRPCNode } from 'utils/validatorFunctions'
-
-// actions
-import { selectNewRPCNode, setNewRPCNodes } from './SettingsPopup.actions'
-
-// types
-
-// views
-import Icon from '../Icon/Icon.view'
-import { ImageWithPlug } from '../Icon/ImageWithPlug'
-
-// styles
-import { PopupContainer, PopupContainerWrapper } from '../Popup/PopupMain.style'
-import { RPCNodeType, State } from 'utils/interfaces'
-import { ThemeType, themeSetterAction, SPACE_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
-import {
-  ChangeNodeNodesList,
-  ChangeNodeNodesListItem,
-  SettingsPopupBase,
-} from '../Popup/popupBases/SettingsPopup.style'
 import {
   BUTTON_SIMPLE,
   BUTTON_PRIMARY,
@@ -32,9 +10,34 @@ import {
   BUTTON_SECONDARY,
   BUTTON_SECONDARY_PURPLE,
 } from '../NewButton/NewButton.constants'
+import {
+  INPUT_STATUS_DEFAULT,
+  INPUT_STATUS_SUCCESS,
+  INPUT_STATUS_ERROR,
+  InputStatusType,
+} from '../NewInput/NewInput.constants'
+import { isValidRPCNode } from 'utils/validatorFunctions'
+import { ThemeType, themeSetterAction, SPACE_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
+
+// actions
+import { selectNewRPCNode, setNewRPCNodes } from './SettingsPopup.actions'
+
+// types
+import { RPCNodeType, State } from 'utils/interfaces'
+
+// views
+import Icon from '../Icon/Icon.view'
+import { ImageWithPlug } from '../Icon/ImageWithPlug'
 import Button from '../NewButton/NewButton'
 import { Input } from '../NewInput/NewInput'
-import { InputStatusType } from '../NewInput/NewInput.constants'
+
+// styles
+import { PopupContainer, PopupContainerWrapper } from '../Popup/PopupMain.style'
+import {
+  ChangeNodeNodesList,
+  ChangeNodeNodesListItem,
+  SettingsPopupBase,
+} from '../Popup/popupBases/SettingsPopup.style'
 
 const MAX_NODES_AMOUNT = 3
 const DEFAULT_NODE_INPUT_STATE: { node: string; nodeValidation: InputStatusType } = {
@@ -222,7 +225,6 @@ const Themes = () => {
           isThin
           isSquare
           onClick={() => setNewThemeHandler(LIGHT_THEME)}
-          disabled
         >
           Light
         </Button>

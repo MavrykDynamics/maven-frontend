@@ -198,7 +198,7 @@ export const LoaderShineTextAnimation = styled.div<{ theme: MavrykTheme }>`
 `
 
 export const SpinnerCircleLoaderStyled = styled.div<{ theme: MavrykTheme }>`
-  color: #ffffff;
+  color: ${({ theme }) => theme.headerTeam};
   font-size: 20px;
   width: 1em;
   height: 1em;
