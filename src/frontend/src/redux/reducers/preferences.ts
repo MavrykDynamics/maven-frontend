@@ -3,19 +3,18 @@ import { getItemFromStorage } from 'utils/utils'
 import * as actions from '../action.types'
 import { DARK_THEME, SPACE_THEME } from '../actions/preferences.action'
 
+const mariGoldUrl = 'https://mainnet.tezos.marigold.dev/'
+const ecadLabSUrl = 'https://mainnet.api.tez.ie'
+
 const defaultPreferences: PreferencesType = {
   themeSelected: getItemFromStorage('theme') || SPACE_THEME,
-  REACT_APP_RPC_PROVIDER: 'https://mainnet.api.tez.ie',
+  REACT_APP_RPC_PROVIDER: ecadLabSUrl,
   changeNodePopupOpen: false,
   policyPopup: false,
   scrollPosition: 0,
   RPC_NODES: [
-    {
-      title: 'SmartPy',
-      url: 'https://mainnet.smartpy.io',
-      nodeLogoUrl: 'smartpy.png',
-    },
-    { title: 'ECADLABS', url: 'https://mainnet.api.tez.ie', nodeLogoUrl: 'ECAD_logo.png' },
+    { title: 'ECADLABS', url: ecadLabSUrl, nodeLogoUrl: 'ECAD_logo.png', isUser: false },
+    { title: 'MARIGOLD', url: mariGoldUrl, nodeLogoUrl: 'marigold_logo.png', isUser: false },
   ],
 }
 

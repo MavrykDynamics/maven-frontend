@@ -29,6 +29,7 @@ export const dangerColor = '#FF8486'
 export const awaitingColor = '#FFCA43'
 export const silverTwoColor = '#CDCDCD'
 export const lightTextColor = '#D0CFD9'
+export const dropDownColor = '#0000007a'
 
 export const darkMode: MavrykTheme = {
   // new color schema
