@@ -10,8 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { State } from 'utils/interfaces'
 import { LIGHT_THEME, toggleRPCNodePopup } from 'redux/actions/preferences.action'
-import { PopupChangeNode } from '../../app/App.components/SettingsPopup/SettingsPopup.controller'
-import { PopupChangeNodeView } from '../../app/App.components/SettingsPopup/SettingsPopup.view'
+import { SettingPopup } from 'app/App.components/SettingsPopup/SettingsPopup'
 
 export const LitepaperView = () => {
   const { changeNodePopupOpen, themeSelected } = useSelector((state: State) => state.preferences)
@@ -125,12 +124,12 @@ export const LitepaperView = () => {
   }
 
   if (isIOS && changeNodePopupOpen) {
-    return <PopupChangeNodeView closeModal={closeModalHandler} />
+    ;<SettingPopup isModalOpened showBackdrop={false} closeModal={closeModalHandler} />
   }
 
   return (
     <>
-      <PopupChangeNode isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
+      <SettingPopup isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
       <LitepaperStyled>
         <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
         <LitepaperGrid>

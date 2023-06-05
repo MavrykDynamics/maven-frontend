@@ -2,8 +2,6 @@ import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // components
-import { PopupChangeNodeView } from 'app/App.components/SettingsPopup/SettingsPopup.view'
-import { PopupChangeNode } from 'app/App.components/SettingsPopup/SettingsPopup.controller'
 import { connect } from 'redux/actions/connectWallet.actions'
 import { BakeryView } from './Bakery.view'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
@@ -15,6 +13,7 @@ import { getItemFromStorage, setItemInStorage } from 'utils/utils'
 
 // types
 import { State } from 'utils/interfaces'
+import { SettingPopup } from 'app/App.components/SettingsPopup/SettingsPopup'
 
 export function Bakery() {
   const dispatch = useDispatch()
@@ -42,14 +41,13 @@ export function Bakery() {
     )
   }, [])
 
-
   if (isIOS && changeNodePopupOpen) {
-    return <PopupChangeNodeView closeModal={closeModalHandler} />
+    ;<SettingPopup isModalOpened showBackdrop={false} closeModal={closeModalHandler} />
   }
 
   return (
     <>
-      <PopupChangeNode isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
+      <SettingPopup isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
       <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
       <BakeryView />
       <Footer />

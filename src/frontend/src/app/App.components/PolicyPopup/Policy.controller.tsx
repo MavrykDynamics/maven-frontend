@@ -1,7 +1,8 @@
 import { CSSTransition } from 'react-transition-group'
 import { useLockBodyScroll } from 'react-use'
-import { PopupContainer, PopupStyled } from '../SettingsPopup/SettingsPopup.style'
 import { PolicyPopupContent } from './PolicyPopupContent.controller'
+import { PopupStyled } from '../Popup/Popup.style'
+import { PopupContainer } from '../Popup/PopupMain.style'
 
 export const PolicyPopup = ({
   isModalOpened,

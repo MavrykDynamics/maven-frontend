@@ -196,3 +196,19 @@ export const LoaderShineTextAnimation = styled.div<{ theme: MavrykTheme }>`
   text-decoration: none;
   white-space: nowrap;
 `
+
+export const SpinnerCircleLoaderStyled = styled.div<{ theme: MavrykTheme }>`
+  color: ${({ theme }) => theme.headerTeam};
+  font-size: 20px;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-animation: load4 1.3s infinite linear;
+  animation: load4 1.3s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  transform: scale(0.1);
+`
