@@ -108,7 +108,7 @@ export const SettingPopup = ({
 
     setSelectedNode(newSelectedNode)
     dispatch(setNewRPCNodes(filteredNodes, true))
-    dispatch(selectNewRPCNode(newSelectedNode, true))
+    dispatch(selectNewRPCNode(newSelectedNode))
   }
 
   const nodeClickHandler = (nodeUrl: string) => {

@@ -66,6 +66,8 @@ const BUTTONS_KIND_STYLES = css`
     height: fit-content;
     padding: 0;
 
+    background: none;
+    border: unset;
     color: ${({ theme }) => theme.linksAndButtons};
     svg {
       fill: ${({ theme }) => theme.linksAndButtons};
@@ -77,6 +79,8 @@ const BUTTONS_KIND_STYLES = css`
     height: fit-content;
     padding: 0;
 
+    background: none;
+    border: unset;
     color: ${({ theme }) => theme.linksAndButtons};
     svg {
       width: 14px;
