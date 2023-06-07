@@ -41,8 +41,7 @@ const VISIBLE_PART_CONNECTED_WALLET = (theme: MavrykTheme, isMobileDetails?: boo
   .wallet {
     width: 24px;
     height: 24px;
-    stroke: ${theme.linksAndButtons};
-    fill: transparent;
+    fill: ${theme.linksAndButtons};
     transition: 0.6s all;
   }
 
@@ -160,6 +159,12 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
       padding: 0 19px;
       column-gap: 10px;
       align-items: center;
+
+      button {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 16px;
+      }
     }
 
     .wallet-details-header {
@@ -193,8 +198,7 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavrykTheme }>`
             width: 27px;
             height: 22px;
           }
-          stroke: ${({ theme: { walletDetailsAddress } }) => walletDetailsAddress};
-          fill: transparent;
+          fill: ${({ theme: { walletDetailsAddress } }) => walletDetailsAddress};
         }
       }
 
@@ -276,8 +280,7 @@ export const MobileDetailsStyled = styled.div<{ theme: MavrykTheme }>`
           width: 27px;
           height: 22px;
         }
-        stroke: ${({ theme: { walletDetailsAddress } }) => walletDetailsAddress};
-        fill: transparent;
+        fill: ${({ theme: { walletDetailsAddress } }) => walletDetailsAddress};
       }
     }
 

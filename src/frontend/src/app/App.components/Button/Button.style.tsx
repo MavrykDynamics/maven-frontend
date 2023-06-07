@@ -123,11 +123,11 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
     position: relative;
     margin-right: 15px;
     color: ${({ theme }) => theme.linksAndButtons};
-    opacity: 0.8;
+    opacity: 1;
     background-color: transparent;
 
     &:hover:not(:disabled) {
-      opacity: 1;
+      opacity: 0.8;
       color: ${({ theme: { selectedColor } }) => selectedColor};
     }
 
@@ -171,7 +171,7 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
 
   &.sign-out {
     color: ${({ theme: { priceImpact } }) => priceImpact};
-    border: 1px solid ${({ theme: { priceImpact } }) => priceImpact};
+    border: 2px solid ${({ theme: { priceImpact } }) => priceImpact};
     background: transparent;
     width: 140px;
     svg {
