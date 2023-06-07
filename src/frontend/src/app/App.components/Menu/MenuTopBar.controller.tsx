@@ -3,7 +3,7 @@ import Icon from 'app/App.components/Icon/Icon.view'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { TopBarLinks } from './TopBarLinks/TopBarLinks.controller'
-import { MenuTopStyled, MenuLogo } from './MenuTopBar.style'
+import { MenuLogo, MenuTopStyled } from './MenuTopBar.style'
 import { MobileTopBar } from './TopBarLinks/MobileTopBar.controller'
 import { useCallback, useState } from 'react'
 import { useMedia } from 'react-use'
@@ -36,9 +36,8 @@ export const SocialIcons = () => (
 
 export const PRODUCTS_LINKS = [
   {
-    name: 'Dapp (Soon)',
-    href: 'https://front-dev.mavryk-dapp.pages.dev/dashboard/lending',
-    disabled: true,
+    name: 'Dapp',
+    href: 'https://ghostnet.mavryk.finance/',
     path: '/dashboard/lending',
   },
   { name: 'Liquidity Baking', href: 'liquidity-baking', path: '/liquidity-baking' },
