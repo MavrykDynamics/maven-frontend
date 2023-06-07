@@ -469,10 +469,9 @@ export const WalletNotConnectedButton = styled.button<{ theme: MavrykTheme }>`
   white-space: nowrap;
 
   svg {
-    stroke: ${({ theme }) => theme.cards};
+    fill: ${({ theme }) => theme.cards};
     width: 25px;
     height: 30px;
-    fill: transparent;
     margin-right: 16px;
   }
 
@@ -517,7 +516,7 @@ export const SimpleConnectedButton = styled.div<{ theme: MavrykTheme }>`
     width: 24px;
     height: 24px;
     margin: 14px 9px 13px 8px;
-    stroke: ${({ theme }) => theme.connectWalletSecondary};
+    fill: ${({ theme }) => theme.connectWalletSecondary};
     vertical-align: top;
   }
 
