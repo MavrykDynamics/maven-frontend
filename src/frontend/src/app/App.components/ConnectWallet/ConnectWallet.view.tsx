@@ -210,7 +210,6 @@ export const ConnectedWalletBlock = ({
             iconName={'sirius'}
             // TODO: use valid decimals
             decimals={8}
-            disableBtn
           />
         </div>
 
