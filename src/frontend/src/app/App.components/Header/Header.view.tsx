@@ -9,12 +9,14 @@ import Toggle from 'react-toggle'
 import { State } from 'utils/interfaces'
 import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
 import { useMedia } from 'react-use'
+import Icon from '../Icon/Icon.view'
 
 export const HeaderView = () => {
   const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected !== LIGHT_THEME)
   const dispatch = useDispatch()
 
   const isMobile = useMedia('(max-width: 1240px)')
+  const isSmallMobile = useMedia('(max-width: 450px)')
 
   const isLitepaperPage = window.location.pathname === '/litepaper'
 
@@ -59,7 +61,7 @@ export const HeaderView = () => {
 
         <Link to="/litepaper">Litepaper</Link>
         <Link to="/liquidity-baking">{isMobile ? 'LB' : 'Liquidity Baking'}</Link>
-        <Link to="/bakery">{isMobile ? 'Bakeries' : 'Mavryk Bakeries'}</Link>
+        <Link to="/bakery">{isSmallMobile ? <Icon id='bakery' /> : isMobile ? 'Bakeries' : 'Mavryk Bakeries'}</Link>
 
         <HashLink
           to="/#calculator"

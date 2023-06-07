@@ -41,7 +41,11 @@ export const TeamView = () => {
   if (isMobile)
     return (
       <TeamStyled id="team">
-        {data.map((item) => (
+        {data.map((item) => {
+          // Not showing advisors
+          if(item.id === 2) return null
+
+          return (
           <article key={item.id}>
             <h2>{item.header}</h2>
             <TeamCarouselWrap>
@@ -59,13 +63,16 @@ export const TeamView = () => {
               </Carousel>
             </TeamCarouselWrap>
           </article>
-        ))}
+        )})}
       </TeamStyled>
     )
 
   return (
     <TeamStyled id="team">
-      {data.map((item) => (
+      {data.map((item) => {
+        // Not showing advisors
+        if(item.id === 2) return null
+        return (
         <article key={item.id}>
           <h2>{item.header}</h2>
           <TeamsGrid>
@@ -81,7 +88,8 @@ export const TeamView = () => {
             ))}
           </TeamsGrid>
         </article>
-      ))}
+      )}
+      )}
     </TeamStyled>
   )
 }
