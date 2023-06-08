@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
-import { subHeaderColor } from 'styles'
+import { PRIMARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
@@ -18,7 +18,7 @@ import { AddLiquidutityInputChangeEventType, CoinsInputsValues } from '../helper
 import { AddLiquidityDefault } from './AddLiquidityDefault.controller'
 import { AddLiquidityOnlyXTZ } from './AddLiquidityOnlyXTZ.controller'
 import { Button } from 'app/App.components/Button/Button.controller'
-import { PRIMARY } from 'app/App.components/Button/Button.constants'
+import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
 import { addLiquidity, addLiquidityOnlyXTZ } from 'redux/actions/liquidity.action'
@@ -261,7 +261,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
           <CheckBoxLabel htmlFor="checkbox" />
         </CheckBoxWrapper>
 
-        <CustomizedText fontSize={14} color={subHeaderColor} fontWidth={500}>
+        <CustomizedText className={PRIMARY_COLOR} fontSize={14} fontWidth={500}>
           Provide only XTZ
           <div className="info">
             <Icon id="infoIcon" />
@@ -300,7 +300,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
           icon={'plusDark'}
           onClick={addLiquidityBtnHandler}
           className="LB addLiq-btn"
-          kind={PRIMARY}
+          kind={ACTION_PRIMARY}
         />
       ) : (
         <ConnectWallet className="LB addLiq-btn" />

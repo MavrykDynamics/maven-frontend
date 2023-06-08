@@ -8,19 +8,17 @@ import { State } from 'utils/interfaces'
 import { getGeneralStats } from 'redux/actions/stats.action'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { Footer } from 'app/App.components/Footer/Footer.controller'
-import { LBStyled } from './LiquidityBaking.styles'
 import { SPACE_THEME, togglePolicyPopup, toggleRPCNodePopup } from 'redux/actions/preferences.action'
 import { dexGqlFetcher } from '../../gql/gql.helpers'
 import { SWRConfig } from 'swr'
 import { getItemFromStorage, setItemInStorage } from 'utils/utils'
 import { ScrollToTop } from 'app/App.components/ScrollToTop/ScrollToTop.controller'
 import { PolicyPopup } from 'app/App.components/PolicyPopup/Policy.controller'
-import { PopupChangeNode } from 'app/App.components/SettingsPopup/SettingsPopup.controller'
 import { useLocation } from 'react-router'
 import { useCookies } from 'react-cookie'
 import { PolicyPopupContent } from 'app/App.components/PolicyPopup/PolicyPopupContent.controller'
-import { PopupChangeNodeView } from 'app/App.components/SettingsPopup/SettingsPopup.view'
 import { connect } from 'redux/actions/connectWallet.actions'
+import { SettingPopup } from 'app/App.components/SettingsPopup/SettingsPopup'
 
 const LiquidityBaking = () => {
   const dispatch = useDispatch()
@@ -90,7 +88,7 @@ const LiquidityBaking = () => {
   }
 
   if (isIOS && changeNodePopupOpen) {
-    return <PopupChangeNodeView closeModal={closeModalHandler} />
+    return <SettingPopup isModalOpened showBackdrop={false} closeModal={closeModalHandler} />
   }
 
   return (
@@ -104,11 +102,9 @@ const LiquidityBaking = () => {
         isModalOpened={!isIOS && policyPopup && pathname === '/liquidity-baking'}
         proccedPolicy={proccedPolicy}
       />
-      <PopupChangeNode isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
-      <LBStyled>
-        <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
-        <LiquidityBakingView />
-      </LBStyled>
+      <SettingPopup isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
+      <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
+      <LiquidityBakingView />
       <div ref={footerRef}>
         <Footer />
       </div>

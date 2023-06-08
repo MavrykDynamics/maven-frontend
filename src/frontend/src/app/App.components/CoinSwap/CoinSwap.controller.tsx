@@ -1,9 +1,8 @@
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { cyanColor } from 'styles'
+import { SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { CoinSwapCoinWrapper, CoinSwapStyled } from './CoinSwap.style'
 
 import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
-import { useMedia } from 'react-use'
 
 type CoinDataType = {
   icon: string
@@ -24,7 +23,7 @@ export const CoinSwap = ({ icon, XTZCoinData, tzBTCCoinData, className }: CoinSw
         <svg>
           <use xlinkHref={`/icons/sprites.svg#${XTZCoinData.icon}`} />
         </svg>
-        <CustomizedText fontWidth={500} color={cyanColor}>
+        <CustomizedText fontWidth={500} className={SECONDARY_COLOR}>
           <CommaNumber value={XTZCoinData.amount} showDecimal decimalsToShow={6} endingText={'XTZ'} />
         </CustomizedText>
       </CoinSwapCoinWrapper>
@@ -39,7 +38,7 @@ export const CoinSwap = ({ icon, XTZCoinData, tzBTCCoinData, className }: CoinSw
         <svg>
           <use xlinkHref={`/icons/sprites.svg#${tzBTCCoinData.icon}`} />
         </svg>
-        <CustomizedText fontWidth={500} color={cyanColor}>
+        <CustomizedText fontWidth={500} className={SECONDARY_COLOR}>
           <CommaNumber value={tzBTCCoinData.amount} showDecimal decimalsToShow={6} endingText={'tzBTC'} />
         </CustomizedText>
       </CoinSwapCoinWrapper>

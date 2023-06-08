@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
-  background: ${({ theme }) => theme.darkBackroundColor};
-  border: 1px solid ${({ theme }) => theme.lbBorder};
+  background: ${({ theme }) => theme.cards};
+  border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: 10px;
   min-height: 90px;
   z-index: 1;
@@ -18,10 +18,13 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     column-gap: 25px;
 
     div {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 32px;
+
       &::after {
         display: none;
       }
-      font-size: 32px;
     }
 
     img {
@@ -35,26 +38,18 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
     align-items: center;
     justify-content: space-between;
     width: 55%;
+
+    div:not(.block-name) {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 22px;
+    }
   }
 
-  @media screen and (max-width: 1400px) {
-    .title {
-      div {
-        &::after {
-          display: none;
-        }
-        font-size: 28px;
-      }
-    }
-
-    .block-name {
-      font-size: 17px;
-    }
-
-    div {
-      line-height: 10px;
-      font-size: 17px;
-    }
+  .block-name {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
   }
 
   @media screen and (max-width: 1260px) {
@@ -67,32 +62,15 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       flex-wrap: wrap;
       column-gap: 50px;
       row-gap: 30px;
-      justify-content: center;
-
-      .block-name {
-        font-size: 20px;
-      }
-
-      div {
-        line-height: 20px;
-        font-size: 20px;
-        align-items: center;
-      }
     }
   }
 
   @media screen and (max-width: 650px) {
-    .title {
-      > div {
-        line-height: 110%;
-      }
-    }
-
     .info-wrapper {
       padding: 0 10px;
       display: grid;
       grid-template-columns: repeat(2, fit-content(48%));
-      gap: 20px;
+      gap: 40px;
 
       div:nth-child(1) {
         order: 1;
@@ -109,26 +87,18 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       div:nth-child(4) {
         order: 4;
       }
-
-      div {
-        line-height: 19px;
-        font-size: 19px;
-        align-items: flex-start;
-
-        .block-name {
-          line-height: 25px;
-        }
-      }
     }
   }
 
   @media screen and (max-width: 500px) {
     padding: 15px 10px;
+
     .title {
       column-gap: 10px;
+
       div {
         font-size: 25px;
-        line-height: 110%;
+        line-height: 30px;
       }
 
       img {
@@ -141,15 +111,11 @@ export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
       padding: 0;
       width: fit-content;
       margin: 0 auto;
-      grid-template-columns: repeat(2, fit-content(42%));
-      div {
-        line-height: 16px;
-        font-size: 16px;
+      grid-template-columns: repeat(2, fit-content(50%));
+      gap: 10px;
 
-        .block-name {
-          line-height: 14px;
-          font-size: 14px;
-        }
+      div:not(.block-name) {
+        font-size: 18px;
       }
     }
   }

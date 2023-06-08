@@ -8,10 +8,14 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
   background-position: bottom right;
   background-size: auto;
 
+  &:hover {
+    z-index: 2;
+  }
+
   .title {
     font-weight: 700;
-    font-size: 30px;
-    color: ${({ theme }) => theme.headingColor};
+    font-size: 25px;
+    color: ${({ theme }) => theme.mainHeadingText};
   }
 
   .stats-grid {
@@ -20,7 +24,7 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, 82px);
-    column-gap: 50px;
+    column-gap: 35px;
     row-gap: 50px;
     height: 100%;
 
@@ -30,28 +34,41 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
       p {
         display: flex;
         align-items: center;
+
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 40px;
+
+        white-space: nowrap;
+
         svg {
-          height: 16px;
-          width: 16px;
+          height: 30px;
+          width: 30px;
+
           margin-left: 3px;
-          fill: ${({ theme }) => theme.priceImpact};
+          fill: ${({ theme }) => theme.primaryText};
         }
+      }
+    }
+
+    .block-name {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 22px;
+
+      span {
+        white-space: nowrap;
       }
     }
   }
 
   @media screen and (max-width: 1400px) {
     .stats-grid {
-      column-gap: 35px;
       > div {
         row-gap: 7px;
-        div:not(.block-name) {
-          font-size: 22px;
-          line-height: 100%;
-        }
 
-        .block-name {
-          font-size: 17px;
+        p {
+          font-size: 36px;
         }
       }
     }
@@ -60,13 +77,15 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
   @media screen and (min-width: 1024px) and (max-width: 1160px) {
     .stats-grid {
       column-gap: 30px;
-      div {
-        div {
-          font-size: 29px;
-        }
 
-        .block-name {
-          font-size: 14px;
+      > div {
+        p {
+          font-size: 24px;
+
+          svg {
+            height: 20px;
+            width: 20px;
+          }
         }
       }
     }
@@ -75,9 +94,22 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
   @media screen and (max-width: 1024px) {
     min-height: unset;
     height: 420px;
+
     .stats-grid {
       margin-top: 20px;
-      row-gap: 0px;
+      column-gap: 20px;
+      row-gap: 5px;
+
+      > div {
+        p {
+          font-size: 32px;
+
+          svg {
+            height: 25px;
+            width: 25px;
+          }
+        }
+      }
     }
   }
 
@@ -102,21 +134,15 @@ export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme
         justify-content: space-between;
         column-gap: 25px;
 
-        > div:not(.block-name) {
-          font-weight: 500;
-          white-space: nowrap;
-          margin-left: 7px;
-
-          P {
-            font-size: 16px;
-
-            svg {
-            }
-          }
-        }
-
+        p,
         .block-name {
           font-size: 14px;
+          line-height: 21px;
+
+          svg {
+            height: 14px;
+            width: 14px;
+          }
         }
       }
     }

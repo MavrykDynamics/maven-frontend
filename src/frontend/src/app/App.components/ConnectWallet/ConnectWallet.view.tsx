@@ -34,6 +34,8 @@ type ConnectedWalletBlockProps = {
     buyTZBTCHandler: () => void
   }
   closeMobileMenu: (e: React.MouseEvent<HTMLElement>) => void
+  isLiqudityBaking?: boolean
+  handleClickGetSir: () => void
 }
 
 export const MobileDetailsBlock = ({
@@ -44,6 +46,8 @@ export const MobileDetailsBlock = ({
   detailsHandlers,
   handleCloseBtn,
   closeMobileMenu,
+  isLiqudityBaking,
+  handleClickGetSir,
 }: ConnectedWalletBlockProps & { handleCloseBtn: () => void }) => {
   return (
     <MobileDetailsStyled>
@@ -53,7 +57,7 @@ export const MobileDetailsBlock = ({
       <div className="wallet-details-header">
         <div className="details-wallet ">
           <Icon id="wallet" className="wallet hover" />
-          <var className="wallet-details-address hover">
+          <var className="hover">
             <TzAddress tzAddress={accountPkh} hasIcon type={BLUE} />
           </var>
         </div>
@@ -88,7 +92,19 @@ export const MobileDetailsBlock = ({
           decimals={8}
           disableBtn
         />
-        <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
+
+        <ConnectedWalletDetailsItem
+          buttonText={isLiqudityBaking ? undefined : 'Get SIR'}
+          coinAmount={coinsInfo.userLBTBalance}
+          coinName={'Sirius'}
+          buttonHandler={handleClickGetSir}
+          // TODO: use rate instead of 1
+          subtextAmount={coinsInfo.userLBTBalance * 1}
+          iconName={'sirius'}
+          // TODO: use valid decimals
+          decimals={8}
+          disableBtn
+        />
 
         <div className="buttons-wrapper">
           <Button onClick={signOutHandler} icon="signOut" text="Sign out" className="sign-out" />
@@ -113,6 +129,8 @@ export const ConnectedWalletBlock = ({
   detailsHandlers,
   isMobile,
   closeMobileMenu,
+  isLiqudityBaking,
+  handleClickGetSir,
 }: ConnectedWalletBlockProps) => {
   const [detailsShown, setDetailsShown] = useState(false)
 
@@ -131,6 +149,8 @@ export const ConnectedWalletBlock = ({
         handleCloseBtn={closeHandler}
         detailsHandlers={detailsHandlers}
         closeMobileMenu={closeMobileMenu}
+        isLiqudityBaking={isLiqudityBaking}
+        handleClickGetSir={handleClickGetSir}
       />
     )
 
@@ -145,10 +165,10 @@ export const ConnectedWalletBlock = ({
       </div>
 
       <div className={`wallet-details ${detailsShown ? 'visible' : ''} ${isMobile ? 'mobile' : ''}`}>
-        <div className="wallet-details-header">
+        <div className="padding-wrapper wallet-details-header">
           <div className="details-wallet ">
             <Icon id="wallet" className="wallet hover" />
-            <var className="wallet-details-address hover">
+            <var className="hover">
               <TzAddress tzAddress={accountPkh} hasIcon type={BLUE} />
             </var>
           </div>
@@ -158,27 +178,40 @@ export const ConnectedWalletBlock = ({
           </a>
         </div>
 
-        <ConnectedWalletDetailsItem
-          buttonText={'Buy XTZ'}
-          coinAmount={coinsInfo.userXTZBalance}
-          coinName={'XTZ'}
-          buttonHandler={detailsHandlers.buyXTZHandler}
-          subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
-          iconName={'XTZ_tezos'}
-          decimals={6}
-          disableBtn
-        />
-        <ConnectedWalletDetailsItem
-          buttonText={'Buy tzBTC'}
-          coinAmount={coinsInfo.usertzBTCBalance}
-          coinName={'tzBTC'}
-          buttonHandler={detailsHandlers.buyTZBTCHandler}
-          subtextAmount={coinsInfo.usertzBTCBalance * coinsInfo.tzBTCExchnageRate}
-          iconName={'tzBTC'}
-          decimals={8}
-          disableBtn
-        />
-        <ConnectedWalletDetailsItem coinAmount={coinsInfo.userLBTBalance} coinName={'Sirius'} iconName={'sirius'} />
+        <div className="padding-wrapper">
+          <ConnectedWalletDetailsItem
+            buttonText={'Buy XTZ'}
+            coinAmount={coinsInfo.userXTZBalance}
+            coinName={'XTZ'}
+            buttonHandler={detailsHandlers.buyXTZHandler}
+            subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
+            iconName={'XTZ_tezos'}
+            decimals={6}
+            disableBtn
+          />
+          <ConnectedWalletDetailsItem
+            buttonText={'Buy tzBTC'}
+            coinAmount={coinsInfo.usertzBTCBalance}
+            coinName={'tzBTC'}
+            buttonHandler={detailsHandlers.buyTZBTCHandler}
+            subtextAmount={coinsInfo.usertzBTCBalance * coinsInfo.tzBTCExchnageRate}
+            iconName={'tzBTC'}
+            decimals={8}
+            disableBtn
+          />
+
+          <ConnectedWalletDetailsItem
+            buttonText={isLiqudityBaking ? undefined : 'Get SIR'}
+            coinAmount={coinsInfo.userLBTBalance}
+            coinName={'Sirius'}
+            buttonHandler={handleClickGetSir}
+            // TODO: use rate instead of 1
+            subtextAmount={coinsInfo.userLBTBalance * 1}
+            iconName={'sirius'}
+            // TODO: use valid decimals
+            decimals={8}
+          />
+        </div>
 
         <div className="buttons-wrapper">
           <Button onClick={signOutHandler} icon="signOut" text="Sign out" className="sign-out" />

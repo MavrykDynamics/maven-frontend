@@ -1,6 +1,6 @@
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { cyanColor, subHeaderColor } from 'styles'
+import { SECONDARY_COLOR, THIRD_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { LBPersonalStatsStyled } from './LBPersonalStats.style'
 import Icon from 'app/App.components/Icon/Icon.view'
 
@@ -40,14 +40,14 @@ export const LBPersonalStatsView = ({
 
       <div className="stats-grid">
         <VertInfo>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={isFinite(pnLStats.unrealizedPnL) ? pnLStats.unrealizedPnL : 0}
               endingIconName="tezosAsset"
               showNone={showNone}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Unrealized PL
             <div className="info">
               <Icon id="infoIcon" />
@@ -60,14 +60,14 @@ export const LBPersonalStatsView = ({
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={isFinite(pnLStats.realizedPnL) ? pnLStats.realizedPnL : 0}
               endingIconName="tezosAsset"
               showNone={showNone}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Realized PL
             <div className="info">
               <Icon id="infoIcon" />
@@ -81,7 +81,7 @@ export const LBPersonalStatsView = ({
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={isFinite(userPoolShare) ? userPoolShare : 0}
               endingText="%"
@@ -90,7 +90,7 @@ export const LBPersonalStatsView = ({
               decimalsToShow={6}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
             Pool Share
             <div className="info">
               <Icon id="infoIcon" />
@@ -100,20 +100,18 @@ export const LBPersonalStatsView = ({
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={isFinite(balances.siriusBalance) ? balances.siriusBalance : 0}
               showNone={showNone}
               endingText=" "
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
-            Sirius tokens
-          </CustomizedText>
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>Sirius tokens</CustomizedText>
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={
                 isFinite(estimatedAssetsOwned.estimatedPoolXtzOwned) ? estimatedAssetsOwned.estimatedPoolXtzOwned : 0
@@ -123,36 +121,46 @@ export const LBPersonalStatsView = ({
               decimalsToShow={6}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
-            Estimated XTZ owned
-            {/* <div className="info">
-              <Icon id="infoIcon" />
-              TODO: add text
-              <div className="text">To fill in</div>
-            </div> */}
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
+            Estimated XTZ{' '}
+            <span>
+              owned
+              <div className="info">
+                <Icon id="infoIcon" />
+
+                <div className="text">
+                  Your estimated share of XTZ in the liquidity pool given how many SIRS tokens you have in your wallet.
+                </div>
+              </div>
+            </span>
           </CustomizedText>
         </VertInfo>
 
         <VertInfo>
-          <CustomizedText color={cyanColor} fontWidth={700} fontSize={25}>
+          <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={
                 isFinite(estimatedAssetsOwned.estimatedPoolTzBTCOwned)
                   ? estimatedAssetsOwned.estimatedPoolTzBTCOwned
                   : 0
               }
-              endingText="tzBTC"
+              endingText=" "
               showNone={showNone}
               decimalsToShow={8}
             />
           </CustomizedText>
-          <CustomizedText fontWidth={500} color={subHeaderColor} className="block-name">
-            Estimated tzBTC owned
-            {/* <div className="info">
-              <Icon id="infoIcon" />
-              TODO: add text
-              <div className="text"></div>
-            </div> */}
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>
+            Estimated tzBTC{' '}
+            <span>
+              owned
+              <div className="info">
+                <Icon id="infoIcon" />
+                <div className="text">
+                  Your estimated share of tzBTC in the liquidity pool given how many SIRS tokens you have in your
+                  wallet.
+                </div>
+              </div>
+            </span>
           </CustomizedText>
         </VertInfo>
       </div>

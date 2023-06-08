@@ -4,7 +4,7 @@ import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controll
 import { Input } from 'app/App.components/Input/Input.controller'
 
 import { HorisontalInfo, CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { cyanColor, subHeaderColor } from 'styles'
+import { THIRD_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 
@@ -127,11 +127,11 @@ export const AddLiquidityDefault = ({
       </div>
 
       <HorisontalInfo className="liqTokens-created">
-        <CustomizedText fontWidth={500} fontSize={16} color={subHeaderColor}>
+        <CustomizedText fontWidth={600} fontSize={14} className={THIRD_COLOR}>
           Sirius LP tokens created
         </CustomizedText>
 
-        <CustomizedText fontWidth={500} color={cyanColor} fontSize={16}>
+        <CustomizedText fontWidth={600} fontSize={14} className={SECONDARY_COLOR}>
           <CommaNumber
             value={isNaN(lqtReceived) ? 0 : lqtReceived}
             showDecimal

@@ -4,27 +4,27 @@ import { MavrykTheme } from 'utils/interfaces'
 export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   display: flex;
   margin: 0 auto;
+  padding: 1px;
   width: fit-content;
   justify-content: center;
   align-items: center;
-  border: 1px solid #503eaa;
-  background: ${({ theme }) => theme.toggleButtonBg};
+  background-color: ${({ theme }) => theme.nBackgroundColor};
+  border: 1px solid ${({ theme }) => theme.strokeColor};
   border-radius: 20px;
   font-size: 16px;
   max-height: 40px;
 
   &.swap-toggler {
-    margin: 0;
     div {
-      padding: 8px 7px;
       font-size: 14px;
     }
   }
 
   &.action-toggler {
     height: 30px;
+
     div {
-      height: 29px;
+      height: 26px;
     }
   }
 
@@ -33,23 +33,16 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
       max-height: 30px;
     }
   }
-
-  @media screen and (max-width: 490px) {
-    &.chart-toggler {
-      max-height: 30px;
-    }
-  }
 `
 
 export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`
-  padding: 15px 30px;
+  padding: 10px 30px;
   height: inherit;
   width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 0.4s all ease-in-out;
-  color: ${({ theme }) => theme.toggleButtonColor};
+  color: ${({ theme }) => theme.tabSecondColor};
   font-weight: 600;
   cursor: pointer;
   text-transform: capitalize;
@@ -61,10 +54,9 @@ export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`
   }
 
   &.selected {
-    color: ${({ theme }) => theme.toggleButtonColorSelected};
-    background: ${({ theme }) => theme.toggleButtonBgSelected};
+    color: ${({ theme }) => theme.cards};
+    background: ${({ theme }) => theme.forTabs};
     border-radius: 20px;
-    transition: 0.4s all ease-in-out;
   }
 
   @media screen and (max-width: 425px) {

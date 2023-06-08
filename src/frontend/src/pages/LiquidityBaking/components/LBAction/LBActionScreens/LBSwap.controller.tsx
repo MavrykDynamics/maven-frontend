@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { PRIMARY } from 'app/App.components/Button/Button.constants'
+import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { nonNumberSymbolsValidation, parseSrtToNum, slippagePercentToValue } from 'utils/utils'
 import { State } from 'utils/interfaces'
@@ -14,10 +14,9 @@ import { MinimumReceived } from 'app/App.components/LBActionBottomFields/Minimum
 import { PriceImpact } from 'app/App.components/LBActionBottomFields/PriceImpact.controller'
 import { Slippage } from 'app/App.components/LBActionBottomFields/Slippage.contoller'
 
-import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { LBActionBottomWrapperStyled } from 'app/App.components/LBActionBottomFields/LBActionBottom.style'
-import { cyanColor, subHeaderColor } from 'styles'
 import { swapTokenToXtz, swapXtzToToken } from '../../../../../redux/actions/swap.action'
+import { ExchangeRate } from '../LBAction.style'
 
 import { calculateTokenToXtz as CalcTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
 import { LBGeneralStats } from '../../../LiquidityBaking.view'
@@ -26,7 +25,6 @@ import { useMedia } from 'react-use'
 import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { getFullNumber } from '../../../../../utils/utils'
-import { log } from 'console'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -398,11 +396,10 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         />
       </div>
 
-      <div className="exchange-rate">
-        <CustomizedText color={subHeaderColor} fontWidth={500} fontSize={16}>
-          Exc. Rate
-        </CustomizedText>
-        <CustomizedText color={cyanColor} fontWidth={500} fontSize={16}>
+      <ExchangeRate>
+        <div className="exchange-rate-title">Exc. Rate</div>
+
+        <div className="exchange-rate-value">
           1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
           <CommaNumber
             value={exchangeRate}
@@ -412,11 +409,17 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
             maxSymbols={10}
             useMaxSymbols={isMobile}
           />
-        </CustomizedText>
-      </div>
+        </div>
+      </ExchangeRate>
 
       {ready ? (
-        <Button text={'Swap'} icon={'swapBtnIcon'} onClick={swapBtnHandler} className="LB swap-btn" kind={PRIMARY} />
+        <Button
+          text={'Swap'}
+          icon={'swapBtnIcon'}
+          onClick={swapBtnHandler}
+          className="LB swap-btn"
+          kind={ACTION_PRIMARY}
+        />
       ) : (
         <ConnectWallet className="LB swap-btn" />
       )}

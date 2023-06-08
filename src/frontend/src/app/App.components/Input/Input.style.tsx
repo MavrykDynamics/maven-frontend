@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components/macro'
-import { downColor, skyColor, titleColor } from 'styles'
+import { downColor, skyColor } from 'styles'
 import { MavrykTheme } from 'utils/interfaces'
 
 export const InputStyled = styled.div<{ theme: MavrykTheme }>`
@@ -10,12 +10,13 @@ export const InputStyled = styled.div<{ theme: MavrykTheme }>`
   .useMax {
     position: absolute;
     top: -20px;
-    right: 10px;
+    right: 18px;
     cursor: pointer;
-    transition: 0.25s all;
+    transition: opacity 0.25s;
+    text-decoration: underline;
 
     &:hover {
-      color: ${({ theme }) => theme.selectedColor};
+      opacity: 0.8;
     }
   }
 
@@ -32,7 +33,7 @@ export const InputStyled = styled.div<{ theme: MavrykTheme }>`
   .balance {
     position: absolute;
     bottom: -22px;
-    right: 10px;
+    right: 18px;
     display: flex;
     row-gap: 5px;
     p {
@@ -72,20 +73,33 @@ export const InputComponentContainer = styled.div<{ theme: MavrykTheme }>`
     left: 14px;
     bottom: 2px;
 
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+
     p {
       margin: 0;
+      color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
     }
+  }
+
+  .pinned-text {
+    color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
   }
 `
 
 export const InputComponent = styled.input<{ theme: MavrykTheme }>`
   width: 100%;
   height: 54px;
-  background-color: ${({ theme }) => theme.backgroundColor};
+  background-color: ${({ theme }) => theme.nBackgroundColor};
   font-weight: 500;
-  border: 1px solid ${({ theme }) => theme.cardBorderColor};
+  border: 1px solid ${({ theme }) => theme.strokeForForms};
   margin: 0;
-  color: ${({ theme }) => theme.headerColor};
+  color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
   -webkit-appearance: none;
   appearance: none;
   display: block;
@@ -125,9 +139,6 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
     line-height: 22px;
     padding-top: 0;
     padding-left: 10px;
-    color: ${({ theme }) => theme.headerColor};
-    background-color: ${({ theme }) => theme.toggleButtonBg};
-    border: 1px solid ${titleColor};
   }
 
   &.no-subtext {
@@ -154,16 +165,28 @@ export const InputComponent = styled.input<{ theme: MavrykTheme }>`
   &.error {
     border-color: ${({ theme }) => theme.downColor};
     color: ${({ theme }) => theme.downColor};
+
     &:focus {
-      box-shadow: 0 0 0 2px ${({ theme }) => theme.downColor}7F;
+      border-color: ${({ theme }) => theme.downColor};
+      color: ${({ theme }) => theme.downColor};
+    }
+
+    &::placeholder {
+      color: ${({ theme }) => theme.downColor};
     }
   }
 
   &.success {
-    border: 1px solid ${({ theme }) => theme.upColor};
+    border-color: ${({ theme }) => theme.upColor};
     color: ${({ theme }) => theme.upColor};
+
     &:focus {
-      box-shadow: 0 0 0 2px ${({ theme }) => theme.upColor}7F;
+      border-color: ${({ theme }) => theme.upColor};
+      color: ${({ theme }) => theme.upColor};
+    }
+
+    &::placeholder {
+      color: ${({ theme }) => theme.upColor};
     }
   }
 `

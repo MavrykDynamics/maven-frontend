@@ -90,8 +90,8 @@ export interface ToasterState {
 export type RPCNodeType = {
   url: string
   title: string
+  isUser: boolean
   nodeLogoUrl?: string
-  isUser?: boolean
 }
 
 export type PreferencesType = {

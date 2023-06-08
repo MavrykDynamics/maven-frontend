@@ -1,5 +1,5 @@
 import WertWidget from '@wert-io/widget-initializer'
-
+import { useHistory, useLocation } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { useMedia } from 'react-use'
 
@@ -20,6 +20,9 @@ type ConnectWalletProps = {
 
 export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps) => {
   const dispatch = useDispatch()
+  const history = useHistory()
+  const location = useLocation()
+
   const [showWertIoPopup, setShowWertIoPopup] = useState(false)
   const { ready, accountPkh } = useSelector((state: State) => state.wallet)
   const {
@@ -30,6 +33,12 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
   } = useSelector((state: State) => state.tokens)
   const { xtzBalance, LBTBalance, tzBTCBalance } = useSelector((state: State) => state.user)
   const isMobileView = useMedia('(max-width: 870px)')
+
+  const isLiqudityBaking = location.pathname === '/liquidity-baking'
+
+  const handleClickGetSir = () => {
+    history.push(`/liquidity-baking`)
+  }
 
   const handleConnect = () => {
     dispatch(connect())
@@ -91,6 +100,8 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
             isMobile={isMobileView}
             detailsHandlers={detailsHandlers}
             closeMobileMenu={closeAllForMobileMenu}
+            isLiqudityBaking={isLiqudityBaking}
+            handleClickGetSir={handleClickGetSir}
           />
           <WertIoPopup closePopup={() => setShowWertIoPopup(false)} isOpened={showWertIoPopup} />
         </>

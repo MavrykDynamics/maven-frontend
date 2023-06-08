@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // components
@@ -21,6 +21,8 @@ import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from './Bakery.s
 
 // types
 import { State } from 'utils/interfaces'
+import { ROCKET_LOADER } from 'utils/consts'
+import { toggleLoader } from 'redux/actions/preferences.action'
 
 const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) => {
   return {
@@ -38,17 +40,34 @@ export function BakeryView() {
   } = useSelector((state: State) => state.tokens)
   const { delegates } = useSelector((state: State) => state.bakery)
   const { accountPkh } = useSelector((state: State) => state.wallet)
+  const isLoading = useSelector((state: State) => state.loading)
 
   const [activeSliderTab, setActiveSliderTab] = useState(tabItems[0].id)
+  const timerIdRef = useRef<NodeJS.Timeout | null>(null)
+
   const delegateMobileData = delegates.find((item) => item.id === activeSliderTab) || delegates[activeSliderTab - 1]
 
-  const handleClickDelegate = (bakerAddress: string) => {
-    dispatch(delegation(bakerAddress))
+  const handleClickDelegate = async (bakerAddress: string) => {
+    // TODO: get rid of the unknown conversion
+    const timerId = (await dispatch(delegation(bakerAddress))) as unknown as NodeJS.Timeout | null
+    timerIdRef.current = timerId
   }
 
   const handleTabClick = (id: number) => {
     setActiveSliderTab(id)
   }
+
+  useEffect(() => {
+    return () => {
+      if (timerIdRef.current) clearTimeout(timerIdRef.current)
+    }
+  }, [timerIdRef])
+
+  useEffect(() => {
+    return () => {
+      if (isLoading === ROCKET_LOADER) dispatch(toggleLoader())
+    }
+  }, [isLoading])
 
   useEffect(() => {
     dispatch(getTezosHistoryPrices())

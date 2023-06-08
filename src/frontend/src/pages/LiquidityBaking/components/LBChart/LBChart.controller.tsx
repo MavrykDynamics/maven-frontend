@@ -13,6 +13,7 @@ import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view
 
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { ChartStyled } from './LBChart.style'
+import { SECONDARY_COLOR, THIRD_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 const intervalData = [
   {
@@ -101,10 +102,10 @@ export const LBChart = ({
             <use xlinkHref="/icons/sprites.svg#exchange" />
           </svg>
           <div className="info">
-            <CustomizedText color="#8D86EB" fontSize={20} fontWidth={600}>
+            <CustomizedText className={THIRD_COLOR}>
               XTZ/tzBTC (Sirius)
             </CustomizedText>
-            <CustomizedText fontSize={14} fontWidth={600} className="value">
+            <CustomizedText className={`${SECONDARY_COLOR} value`}>
               <CommaNumber
                 value={LAST_CHART_COMPARE_VALUE}
                 endingIconName="tezosAsset"
@@ -126,11 +127,11 @@ export const LBChart = ({
             xAsisTimeFormat: chartInterval === 'quotes1dNogaps' || chartInterval === 'quotes1w' ? 'DD/MM' : 'HH:mm',
           }}
           colors={{
-            lineColor: '#86D4C9',
-            areaTopColor: '#86D4C9',
+            lineColor: '#77A4F2',
+            areaTopColor: '#77A4F2',
             areaBottomColor: 'rgba(119, 164, 242, 0)',
-            textColor: themeColors[themeSelected].primaryTextCardColor,
-            borderColor: themeColors[themeSelected].headingColor,
+            textColor: themeColors[themeSelected].regularText,
+            borderColor: themeColors[themeSelected].strokeColor,
           }}
           chartType={chartType}
           tooltipAsset={'tzBTC'}

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
 import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controller'
 import { Input } from 'app/App.components/Input/Input.controller'
+import { THIRD_COLOR, PRIMARY_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 
 import { AddLiquidutityInputChangeEventType, CoinsInputsValues } from '../helpers/actionsScreen.types'
 import { State } from 'utils/interfaces'
@@ -10,7 +11,6 @@ import { State } from 'utils/interfaces'
 import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 
 import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { cyanColor } from 'styles'
 import { StepBlock } from '../LBAction.style'
 import { CoinsInputsErrors, DEFAULT_COINS_ERRORS, MinCoinsData } from './LBAddLiquidity.controller'
 
@@ -102,8 +102,10 @@ export const AddLiquidityOnlyXTZ = ({
         </div>
 
         <HorisontalInfo className="liq-tokens-created">
-          <CustomizedText fontWidth={500}>Minimum tzBTC Received</CustomizedText>
-          <CustomizedText fontWidth={500} color={cyanColor}>
+          <CustomizedText className={PRIMARY_COLOR} fontWidth={500}>
+            Minimum tzBTC Received
+          </CustomizedText>
+          <CustomizedText className={SECONDARY_COLOR} fontWidth={500}>
             <CommaNumber value={minCoinsForSwap.minTzBTC} showDecimal decimalsToShow={8} endingText="tzBTC" />
           </CustomizedText>
         </HorisontalInfo>
@@ -117,7 +119,7 @@ export const AddLiquidityOnlyXTZ = ({
           </StepBlock>
           <CoinSwap
             className="onlyXtz"
-            icon={{ name: 'plus', width: 'auto', height: 18 }}
+            icon={{ name: 'exchange', width: 24, height: 20 }}
             XTZCoinData={{
               icon: 'XTZ_tezos',
               amount: parseSrtToNum(swapData.XTZ),
@@ -130,9 +132,11 @@ export const AddLiquidityOnlyXTZ = ({
         </div>
 
         <HorisontalInfo className="liq-tokens-created">
-          <CustomizedText fontWidth={500}>Sirius LP tokens created</CustomizedText>
+          <CustomizedText className={THIRD_COLOR} fontWidth={600} fontSize={14}>
+            Sirius LP tokens created
+          </CustomizedText>
 
-          <CustomizedText fontWidth={500} color={cyanColor}>
+          <CustomizedText className={SECONDARY_COLOR} fontWidth={600} fontSize={14}>
             <CommaNumber value={isNaN(lqtReceived) ? 0 : lqtReceived} showDecimal endingText="SIRS" />
           </CustomizedText>
         </HorisontalInfo>

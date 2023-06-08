@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components/macro'
-import { cyanColor, silverColor } from 'styles/colors'
 import { MENU_Z_INDEX, Z_INDEX_DEFAULT } from 'styles/constants'
 import { MavrykTheme } from 'utils/interfaces'
 
@@ -41,12 +40,11 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
         width: 28px;
         height: 28px;
         transition: 0.35s all;
+        fill: ${({ theme }) => theme.linksAndButtons};
       }
 
       &:hover {
-        svg {
-          stroke: ${({ theme }) => theme.selectedColor};
-        }
+        opacity: 0.8;
       }
     }
 
@@ -60,9 +58,9 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
       }
 
       svg {
-        fill: ${({ theme }) => theme.socialColor};
-        width: 33px;
-        height: 33px;
+        fill: ${({ theme }) => theme.menuButtonText};
+        width: 30px;
+        height: 30px;
       }
     }
   }
@@ -106,12 +104,11 @@ export const MenuTopStyled = styled.div<{ theme: MavrykTheme }>`
         width: 28px;
         height: 28px;
         transition: 0.35s all;
+        fill: ${({ theme }) => theme.linksAndButtons};
       }
 
       &:hover {
-        svg {
-          stroke: ${({ theme }) => theme.selectedColor};
-        }
+        opacity: 0.8;
       }
     }
   }
@@ -160,7 +157,7 @@ export const MobileTopBarStyled = styled.div<{ show: boolean; theme: MavrykTheme
   max-height: 0;
   left: 0;
   top: 80px;
-  background: ${({ theme }) => theme.darkBackroundColor};
+  background: ${({ theme }) => theme.cards};
   z-index: ${MENU_Z_INDEX};
   transition: 0.5s all;
   overflow: hidden;
@@ -195,7 +192,7 @@ export const MobileTopBarStyled = styled.div<{ show: boolean; theme: MavrykTheme
       margin-top: auto;
 
       svg {
-        fill: ${silverColor};
+        fill: ${({ theme }) => theme.menuButtonText};
         width: 35px;
         height: 35px;
       }
