@@ -72,7 +72,13 @@ export const FooterView = ({ className }: Props) => {
           <div className="links">
             <div className="powered-by">
               Powered by &nbsp;
-              <a href="https://tzkt.io/">TzKT API</a>&nbsp;&&nbsp;<a href=" https://dipdup.io/ ">DipDup</a>
+              <a href="https://tzkt.io" target="_blank" rel="noreferrer">
+                TzKT API
+              </a>
+              &nbsp;&&nbsp;
+              <a href=" https://dipdup.io" target="_blank" rel="noreferrer">
+                DipDup
+              </a>
             </div>
             <div className="aditional-links">
               <a
