@@ -71,7 +71,7 @@ export const FooterView = ({ className }: Props) => {
 
           <div className="links">
             <div className="powered-by">
-              Powered by &nbsp;
+              Powered by&nbsp;
               <a href="https://tzkt.io" target="_blank" rel="noreferrer">
                 TzKT API
               </a>
