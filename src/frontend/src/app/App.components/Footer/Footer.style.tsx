@@ -15,7 +15,7 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
     position: absolute;
     background-color: ${({ theme }) => theme.footerColor};
     top: -7px;
-    height: 10px;
+    height: 15px;
     width: 100%;
     content: '';
     z-index: 2;
