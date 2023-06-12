@@ -25,7 +25,7 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
 
   div {
     > div {
-      color: ${({ theme }) => theme.footerText};
+      color: ${({ theme }) => theme.mainHeadingText};
       font-size: 16px;
     }
   }
@@ -104,7 +104,7 @@ export const FooterBottom = styled.div`
     display: flex;
     column-gap: 15px;
     a {
-      color: ${({ theme }) => theme.footerText};
+      color: ${({ theme }) => theme.mainHeadingText};
       font-size: 16px;
       text-decoration: underline;
     }
@@ -181,7 +181,7 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
 
   svg {
     height: 30px;
-    fill: ${({ theme }) => theme.socialColor};
+    fill: ${({ theme }) => theme.mainHeadingText};
 
     @media (max-width: 700px) {
       height: 25px;
@@ -216,13 +216,15 @@ export const FooterButton = styled.div<{ theme: MavrykTheme }>`
   margin-top: 10px;
 `
 
-export const FooterDescription = styled.div`
+export const FooterDescription = styled.div<{ theme: MavrykTheme }>`
   margin: 10px 0;
   max-width: 665px;
   font-weight: 400;
   line-height: 20px;
   margin-top: 16px;
   padding-right: 32px;
+
+  color: ${({ theme }) => theme.mainHeadingText};
 
   @media (max-width: 700px) {
     margin-bottom: 20px;
