@@ -68,19 +68,34 @@ export const FooterView = ({ className }: Props) => {
           {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
           </FooterLinks> */}
-          <div className="aditional-links">
-            <a
-              target="_blank"
-              href="https://docs.google.com/document/d/1jW-XtRPv3TsCV2meV2ajgkQ6dI0iEwuz9xgZwnyMliw/edit?usp=sharing"
-            >
-              Privacy Policy
-            </a>
-            <a
-              target="_blank"
-              href="https://docs.google.com/document/d/1R0LA7CmVQjH7vr-FvWOy96LRxJ_XU3HXLXnqNZjZlJQ/edit?usp=sharing"
-            >
-              Terms of Use
-            </a>
+
+          <div className="links">
+            <div className="powered-by">
+              Powered by&nbsp;
+              <a href="https://tzkt.io" target="_blank" rel="noreferrer">
+                TzKT API
+              </a>
+              &nbsp;&&nbsp;
+              <a href=" https://dipdup.io" target="_blank" rel="noreferrer">
+                DipDup
+              </a>
+            </div>
+            <div className="aditional-links">
+              <a
+                target="_blank"
+                href="https://docs.google.com/document/d/1jW-XtRPv3TsCV2meV2ajgkQ6dI0iEwuz9xgZwnyMliw/edit?usp=sharing"
+                rel="noreferrer"
+              >
+                Privacy Policy
+              </a>
+              <a
+                target="_blank"
+                href="https://docs.google.com/document/d/1R0LA7CmVQjH7vr-FvWOy96LRxJ_XU3HXLXnqNZjZlJQ/edit?usp=sharing"
+                rel="noreferrer"
+              >
+                Terms of Use
+              </a>
+            </div>
           </div>
         </FooterBottom>
       </FooterContainer>

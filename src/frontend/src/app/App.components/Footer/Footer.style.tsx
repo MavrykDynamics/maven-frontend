@@ -15,7 +15,7 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
     position: absolute;
     background-color: ${({ theme }) => theme.footerColor};
     top: -7px;
-    height: 10px;
+    height: 15px;
     width: 100%;
     content: '';
     z-index: 2;
@@ -25,7 +25,7 @@ export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
 
   div {
     > div {
-      color: ${({ theme }) => theme.footerText};
+      color: ${({ theme }) => theme.mainHeadingText};
       font-size: 16px;
     }
   }
@@ -84,11 +84,27 @@ export const FooterBottom = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  .powered-by {
+    position: relative;
+    bottom: 40px;
+    text-align: right;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 10px;
+
+    color: ${({ theme }) => theme.mainHeadingText};
+
+    a {
+      color: ${({ theme }) => theme.linksAndButtons};
+    }
+  }
+
   .aditional-links {
     display: flex;
     column-gap: 15px;
     a {
-      color: ${({ theme }) => theme.footerText};
+      color: ${({ theme }) => theme.mainHeadingText};
       font-size: 16px;
       text-decoration: underline;
     }
@@ -100,6 +116,17 @@ export const FooterBottom = styled.div`
   }
 
   @media (max-width: 700px) {
+    .links {
+      display: flex;
+      flex-direction: column-reverse;
+      row-gap: 20px;
+    }
+
+    .powered-by {
+      bottom: 0;
+      text-align: center;
+    }
+
     .hide {
       display: none;
     }
@@ -114,6 +141,13 @@ export const FooterBottom = styled.div`
 
   @media (min-width: 500px) and (max-width: 700px) {
     justify-content: center;
+  }
+
+  @media (max-width: 500px) {
+    .powered-by {
+      bottom: 0;
+      text-align: left;
+    }
   }
 `
 export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
@@ -147,7 +181,7 @@ export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
 
   svg {
     height: 30px;
-    fill: ${({ theme }) => theme.socialColor};
+    fill: ${({ theme }) => theme.mainHeadingText};
 
     @media (max-width: 700px) {
       height: 25px;
@@ -182,13 +216,15 @@ export const FooterButton = styled.div<{ theme: MavrykTheme }>`
   margin-top: 10px;
 `
 
-export const FooterDescription = styled.div`
+export const FooterDescription = styled.div<{ theme: MavrykTheme }>`
   margin: 10px 0;
   max-width: 665px;
   font-weight: 400;
   line-height: 20px;
   margin-top: 16px;
   padding-right: 32px;
+
+  color: ${({ theme }) => theme.mainHeadingText};
 
   @media (max-width: 700px) {
     margin-bottom: 20px;
