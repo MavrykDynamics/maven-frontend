@@ -13,8 +13,8 @@ const defaultPreferences: PreferencesType = {
   policyPopup: false,
   scrollPosition: 0,
   RPC_NODES: [
-    { title: 'ECADLABS', url: ecadLabSUrl, nodeLogoUrl: 'ECAD_logo.png', isUser: false },
     { title: 'MARIGOLD', url: mariGoldUrl, nodeLogoUrl: 'marigold_logo.png', isUser: false },
+    { title: 'ECADLABS', url: ecadLabSUrl, nodeLogoUrl: 'ECAD_logo.png', isUser: false },
   ],
 }
 
