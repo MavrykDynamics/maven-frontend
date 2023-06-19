@@ -16,7 +16,7 @@ export const PolicyPopup = ({
   return (
     <PopupStyled>
       <CSSTransition in={isModalOpened} timeout={200} classNames="popup" unmountOnExit>
-        <PopupContainer style={{ zIndex: 15 }}>
+        <PopupContainer show={isModalOpened} style={{ zIndex: 15 }}>
           <PolicyPopupContent proccedPolicy={proccedPolicy} />
         </PopupContainer>
       </CSSTransition>
