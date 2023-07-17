@@ -12,7 +12,7 @@ export const BakeryStyled = styled.div<{ theme: MavrykTheme }>`
   background-position: center 100px, bottom, center;
   background-repeat: no-repeat;
   background-size: contain;
-  
+
   h1 {
     margin: 10px 0 30px 0;
 
@@ -225,6 +225,18 @@ export const Card = styled.div`
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  .coming-soon {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+
+    color: ${({ theme }) => theme.primaryText};
   }
 
   @media screen and (max-width: 600px) {

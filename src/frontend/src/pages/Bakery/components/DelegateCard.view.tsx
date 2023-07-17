@@ -46,6 +46,8 @@ export function DelegateCard({
   handleTabClick,
 }: Props) {
   const showSlider = tabItems?.length && handleTabClick
+  // TODO: MAV-1730, delete variable for unlock Mavryk Dynamics Bakery
+  const isDisabled = title === 'Mavryk Dynamics Bakery'
 
   return (
     <Card className="space-between-vertical">
@@ -58,7 +60,7 @@ export function DelegateCard({
 
             <RoundButton
               className={kind}
-              disabled={bakeryAddress === delegateAddress}
+              disabled={isDisabled || bakeryAddress === delegateAddress}
               onClick={() => onClick(bakeryAddress)}
             >
               <Icon id="plusDark" />
@@ -70,19 +72,23 @@ export function DelegateCard({
       </div>
 
       <div>
-        <div className="addresses">
-          <div className='address'>
-            <span>Bakery Address</span>
-            &nbsp;
-            <TzAddress type={CYAN} tzAddress={bakeryAddress} hasIcon />
-          </div>
+        {!isDisabled ? (
+          <div className="addresses">
+            <div className="address">
+              <span>Bakery Address</span>
+              &nbsp;
+              <TzAddress type={CYAN} tzAddress={bakeryAddress} hasIcon />
+            </div>
 
-          <div className='address'>
-            <span>Bakery Payout Address</span>
-            &nbsp;
-            <TzAddress type={CYAN} tzAddress={bakeryPayoutAddress} hasIcon />
+            <div className="address">
+              <span>Bakery Payout Address</span>
+              &nbsp;
+              <TzAddress type={CYAN} tzAddress={bakeryPayoutAddress} hasIcon />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="coming-soon">Not currently accepting delegations.</div>
+        )}
 
         <div className="grid-three-columns">
           <MiniCard>
@@ -102,10 +108,17 @@ export function DelegateCard({
           <MiniCard>
             <Icon id="planet" />
             <h4>Available XTZ Space</h4>
-            {availableXtzSpace[0] === -1 ? (
-              <span>no data</span>
+            {!isDisabled ? (
+              <>
+                {availableXtzSpace[0] === -1 ? (
+                  <span>no data</span>
+                ) : (
+                  <CommaNumber value={availableXtzSpace[0]} className="commaNumber" />
+                )}
+              </>
             ) : (
-              <CommaNumber value={availableXtzSpace[0]} className="commaNumber" />
+              // TODO: MAV-1730, delete <CommaNumber value={0} className="commaNumber" /> after unlock Mavryk Dynamics Bakery
+              <CommaNumber value={0} className="commaNumber" />
             )}
           </MiniCard>
         </div>
@@ -116,7 +129,7 @@ export function DelegateCard({
             icon="plusDark"
             kind={kind as ButtonStyle}
             onClick={() => onClick(bakeryAddress)}
-            disabled={bakeryAddress === delegateAddress}
+            disabled={isDisabled || bakeryAddress === delegateAddress}
           />
         </div>
       </div>

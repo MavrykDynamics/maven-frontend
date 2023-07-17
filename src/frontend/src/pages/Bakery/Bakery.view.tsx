@@ -41,7 +41,9 @@ export function BakeryView() {
   const { delegates } = useSelector((state: State) => state.bakery)
   const { accountPkh } = useSelector((state: State) => state.wallet)
   const isLoading = useSelector((state: State) => state.loading)
-
+  // TODO: MAV-1730, delete isDisabled for unlock Mavryk Dynamics Bakery
+  const isDisabled = true
+  
   const [activeSliderTab, setActiveSliderTab] = useState(tabItems[0].id)
   const timerIdRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -125,7 +127,7 @@ export function BakeryView() {
                 kind={ACTION_PRIMARY}
                 onClick={() => handleClickDelegate(delegates[1].bakeryAddress)}
                 className="media-margin-top-2"
-                disabled={delegates[1].bakeryAddress === delegates[1].delegateAddress}
+                disabled={isDisabled || delegates[1].bakeryAddress === delegates[1].delegateAddress}
               />
             </div>
           </div>
