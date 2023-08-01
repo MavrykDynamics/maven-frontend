@@ -55,8 +55,12 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
     font-weight: bold;
     margin-left: 30px;
 
-    @media (max-width: 1070px) {
+    @media (max-width: 1200px) {
       margin-left: 16px;
+    }
+
+    @media (max-width: 1080px) {
+      margin-left: 9px;
     }
 
     &:nth-of-type(1) {
@@ -73,7 +77,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
     margin-top: 25px;
     margin-left: 30px;
 
-    @media (max-width: 1070px) {
+    @media (max-width: 1080px) {
       margin-left: 16px;
     }
   }
