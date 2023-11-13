@@ -1,14 +1,14 @@
-import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
+import {ConnectWallet} from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import Icon from 'app/App.components/Icon/Icon.view'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { TopBarLinks } from './TopBarLinks/TopBarLinks.controller'
-import { MenuLogo, MenuTopStyled } from './MenuTopBar.style'
-import { MobileTopBar } from './TopBarLinks/MobileTopBar.controller'
-import { useCallback, useState } from 'react'
-import { useMedia } from 'react-use'
-import { State } from 'utils/interfaces'
-import { LIGHT_THEME } from 'redux/actions/preferences.action'
+import {useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {TopBarLinks} from './TopBarLinks/TopBarLinks.controller'
+import {MenuLogo, MenuTopStyled} from './MenuTopBar.style'
+import {MobileTopBar} from './TopBarLinks/MobileTopBar.controller'
+import {useCallback, useState} from 'react'
+import {useMedia} from 'react-use'
+import {State} from 'utils/interfaces'
+import {LIGHT_THEME} from 'redux/actions/preferences.action'
 
 type MenuTopBarProps = {
   openChangeNodePopupHandler: () => void
@@ -55,9 +55,9 @@ export const BLOG_LINKS = []
 
 export const DOCS_LINKS = [
   { name: 'Litepaper', href: 'https://mavryk.finance/litepaper', path: 'https://mavryk.finance/litepaper' },
-  { name: 'DAO docs (Soon)', href: '/', disabled: true },
+  { name: 'DAO docs', href: 'https://docs.mavryk.finance/', disabled: false },
   { name: 'Security Audits (Soon)', href: '/', disabled: true },
-  { name: 'Github (Soon)', href: 'https://github.com/mavrykfinance/', disabled: true },
+  { name: 'Github', href: 'https://github.com/mavrykfinance/', disabled: false },
 ]
 
 export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {

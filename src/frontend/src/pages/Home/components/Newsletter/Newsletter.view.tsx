@@ -1,14 +1,22 @@
 import * as React from 'react'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useMailChimpForm } from 'use-mailchimp-form'
+import {useState} from 'react'
+import {useSelector} from 'react-redux'
+import {useMailChimpForm} from 'use-mailchimp-form'
 import Cookie from 'js-cookie'
 
 // prettier-ignore
-import { NewsletterButton, NewsletterClose, NewsletterFigure, NewsletterForm, NewsletterGrid, NewsletterStatus, NewsletterStyled } from './Newsletter.style'
+import {
+    NewsletterButton,
+    NewsletterClose,
+    NewsletterFigure,
+    NewsletterForm,
+    NewsletterGrid,
+    NewsletterStatus,
+    NewsletterStyled
+} from './Newsletter.style'
 import animationData from './ship-loop.json'
-import { State } from 'utils/interfaces'
-import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
+import {State} from 'utils/interfaces'
+import {LIGHT_THEME} from 'redux/actions/preferences.action'
 
 type NewsLetterProps = {
   closeCallback?: () => void
@@ -19,13 +27,13 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
   const frontImgUrl = themeSelected !== LIGHT_THEME ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
   const frontImgUrlPopup =
     themeSelected !== LIGHT_THEME ? '/images/city-bg-popup-dark.svg' : '/images/city-bg-popup-light.svg'
-  const url = 'https://Finance.us5.list-manage.com/subscribe/post?u=2c7f8eeb6244c13270dca7a76&amp;id=da98ceea07'
+  const url = 'https://mavryk.us9.list-manage.com/subscribe/post?u=05fca2aef18a53f210baf1ad7&amp;id=46683ae062&amp;f_id=00d626e1f0'
   const { loading, error, success, message, handleSubmit } = useMailChimpForm(url)
   //@ts-ignore
   const [values, setValues] = useState({
     EMAIL: '',
     NAME: '',
-    ORGANISATI: '',
+    COMPANY: '',
   })
 
   const subscribe = () => {}
@@ -82,11 +90,11 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
             required
             placeholder="Organization"
             type="text"
-            value={values.ORGANISATI}
+            value={values.COMPANY}
             onChange={(e: any) =>
               setValues({
                 ...values,
-                ORGANISATI: e.target.value,
+                  COMPANY: e.target.value,
               })
             }
           />
