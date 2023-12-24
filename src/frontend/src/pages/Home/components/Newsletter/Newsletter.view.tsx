@@ -64,7 +64,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
           </svg>
         </NewsletterClose>
       )}
-      <h2>Subscribe to Mavryk News</h2>
+      <h2>Subscribe to Maven News</h2>
       <NewsletterGrid>
         <NewsletterForm
           onSubmit={(event) => {

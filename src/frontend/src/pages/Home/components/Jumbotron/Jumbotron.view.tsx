@@ -26,7 +26,7 @@ export const JumbotronView = () => {
             <h1>A DeFi Bank for the People</h1>
           </JubontronTitle>
           <JubontronSubTitle>
-            Mavryk is a DAO operated financial ecosystem that lets users borrow and earn on their terms, while
+            Maven is a DAO operated financial ecosystem that lets users borrow and earn on their terms, while
             participating in the governance of the platform.
           </JubontronSubTitle>
           <JumbotronButtons>
