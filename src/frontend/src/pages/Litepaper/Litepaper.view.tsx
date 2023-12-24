@@ -1,16 +1,16 @@
 /* eslint import/no-webpack-loader-syntax: off */
 // @ts-ignore
 import litepaper from '!raw-loader!./Litepaper.markdown.md'
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+import {useScrollPosition} from '@n8tb1t/use-scroll-position'
 import Markdown from 'markdown-to-jsx'
-import { useCallback, useEffect, useState } from 'react'
-import { HashLink } from 'react-router-hash-link'
-import { LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperMarkdown, LitepaperStyled } from './Litepaper.style'
-import { useDispatch, useSelector } from 'react-redux'
-import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
-import { State } from 'utils/interfaces'
-import { LIGHT_THEME, toggleRPCNodePopup } from 'redux/actions/preferences.action'
-import { SettingPopup } from 'app/App.components/SettingsPopup/SettingsPopup'
+import {useCallback, useEffect, useState} from 'react'
+import {HashLink} from 'react-router-hash-link'
+import {LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperMarkdown, LitepaperStyled} from './Litepaper.style'
+import {useDispatch, useSelector} from 'react-redux'
+import {MenuTopBar} from 'app/App.components/Menu/MenuTopBar.controller'
+import {State} from 'utils/interfaces'
+import {LIGHT_THEME, toggleRPCNodePopup} from 'redux/actions/preferences.action'
+import {SettingPopup} from 'app/App.components/SettingsPopup/SettingsPopup'
 
 export const LitepaperView = () => {
   const { changeNodePopupOpen, themeSelected } = useSelector((state: State) => state.preferences)
@@ -58,10 +58,10 @@ export const LitepaperView = () => {
           'governance': document.getElementById('governance')?.getBoundingClientRect().top!,
           'satellite-delegations': document.getElementById('satellite-delegations')?.getBoundingClientRect().top!,
           'the-decentralized-oracle': document.getElementById('the-decentralized-oracle')?.getBoundingClientRect().top!,
-          'mvk-and-smvk-doorman-module': document.getElementById('mvk-and-smvk-doorman-module')?.getBoundingClientRect().top!,
-          'what-is-mvk-and-how-does-it-differ-from-smvk': document.getElementById('what-is-mvk-and-how-does-it-differ-from-smvk')?.getBoundingClientRect().top!,
-          'obtaining-smvk': document.getElementById('obtaining-smvk')?.getBoundingClientRect().top!,
-          'converting-smvk-back-to-mvk-exit-fees': document.getElementById('converting-smvk-back-to-mvk-exit-fees')?.getBoundingClientRect().top!,
+          'mvn-and-smvn-doorman-module': document.getElementById('mvn-and-smvn-doorman-module')?.getBoundingClientRect().top!,
+          'what-is-mvn-and-how-does-it-differ-from-smvn': document.getElementById('what-is-mvn-and-how-does-it-differ-from-smvn')?.getBoundingClientRect().top!,
+          'obtaining-smvn': document.getElementById('obtaining-smvn')?.getBoundingClientRect().top!,
+          'converting-smvn-back-to-mvn-exit-fees': document.getElementById('converting-smvn-back-to-mvn-exit-fees')?.getBoundingClientRect().top!,
           'governance--treasury': document.getElementById('governance--treasury')?.getBoundingClientRect().top!,
           'decentralization': document.getElementById('decentralization')?.getBoundingClientRect().top!,
           'core-governance': document.getElementById('core-governance')?.getBoundingClientRect().top!,
@@ -69,7 +69,7 @@ export const LitepaperView = () => {
           'voting-power': document.getElementById('voting-power')?.getBoundingClientRect().top!,
           'voting-with-satellites-electoral-delegates': document.getElementById('voting-with-satellites-electoral-delegates')?.getBoundingClientRect().top!,
           'treasury': document.getElementById('treasury')?.getBoundingClientRect().top!,
-          'mavryk-council': document.getElementById('mavryk-council')?.getBoundingClientRect().top!,
+          'maven-council': document.getElementById('maven-council')?.getBoundingClientRect().top!,
           'emergency-governance--break-glass': document.getElementById('emergency-governance--break-glass')?.getBoundingClientRect().top!,
           'emergency-governance': document.getElementById('emergency-governance')?.getBoundingClientRect().top!,
           'break-glass-council': document.getElementById('break-glass-council')?.getBoundingClientRect().top!,
@@ -219,32 +219,32 @@ const LitepaperTableOfContentsItems = [
         id: 44,
         title: 'The Decentralized Oracle',
         hashLinkId: 'the-decentralized-oracle',
-        next: 'mvk-and-smvk-doorman-module',
+        next: 'mvn-and-smvn-doorman-module',
       },
     ],
   },
   {
     id: 5,
-    title: 'MVK and sMVK (Doorman Module)',
-    hashLinkId: 'mvk-and-smvk-doorman-module',
-    next: 'what-is-mvk-and-how-does-it-differ-from-smvk',
+    title: 'MVN and sMVN (Doorman Module)',
+    hashLinkId: 'mvn-and-smvn-doorman-module',
+    next: 'what-is-mvn-and-how-does-it-differ-from-smvn',
     children: [
       {
         id: 51,
-        title: 'What is MVK and how does it differ from sMVK?',
-        hashLinkId: 'what-is-mvk-and-how-does-it-differ-from-smvk',
-        next: 'obtaining-smvk',
+        title: 'What is MVN and how does it differ from sMVN?',
+        hashLinkId: 'what-is-mvn-and-how-does-it-differ-from-smvn',
+        next: 'obtaining-smvn',
       },
       {
         id: 52,
-        title: 'Obtaining sMVK',
-        hashLinkId: 'obtaining-smvk',
-        next: 'converting-smvk-back-to-mvk-exit-fees',
+        title: 'Obtaining sMVN',
+        hashLinkId: 'obtaining-smvn',
+        next: 'converting-smvn-back-to-mvn-exit-fees',
       },
       {
         id: 53,
-        title: 'Converting sMVK back to MVK (exit fees)',
-        hashLinkId: 'converting-smvk-back-to-mvk-exit-fees',
+        title: 'Converting sMVN back to MVN (exit fees)',
+        hashLinkId: 'converting-smvn-back-to-mvn-exit-fees',
         next: 'governance--treasury',
       },
     ],
@@ -289,14 +289,14 @@ const LitepaperTableOfContentsItems = [
         id: 66,
         title: 'Treasury',
         hashLinkId: 'treasury',
-        next: 'mavryk-council',
+        next: 'maven-council',
       },
     ],
   },
   {
     id: 7,
-    title: 'Mavryk Council',
-    hashLinkId: 'mavryk-council',
+    title: 'Maven Council',
+    hashLinkId: 'maven-council',
     next: 'emergency-governance--break-glass',
     children: null,
   },
