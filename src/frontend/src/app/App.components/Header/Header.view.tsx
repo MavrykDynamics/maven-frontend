@@ -1,14 +1,14 @@
-import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from './Header.style'
-import { TOGGLE_DARK_THEME } from 'redux/action.types'
-import { useEffect, useState } from 'react'
-import { Helmet } from 'react-helmet'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link'
+import {HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled} from './Header.style'
+import {TOGGLE_DARK_THEME} from 'redux/action.types'
+import {useEffect, useState} from 'react'
+import {Helmet} from 'react-helmet'
+import {useDispatch, useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {HashLink} from 'react-router-hash-link'
 import Toggle from 'react-toggle'
-import { State } from 'utils/interfaces'
-import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
-import { useMedia } from 'react-use'
+import {State} from 'utils/interfaces'
+import {DARK_THEME, LIGHT_THEME} from 'redux/actions/preferences.action'
+import {useMedia} from 'react-use'
 import Icon from '../Icon/Icon.view'
 
 export const HeaderView = () => {
@@ -61,7 +61,7 @@ export const HeaderView = () => {
 
         <Link to="/litepaper">Litepaper</Link>
         <Link to="/liquidity-baking">{isMobile ? 'LB' : 'Liquidity Baking'}</Link>
-        <Link to="/bakery">{isSmallMobile ? <Icon id='bakery' /> : isMobile ? 'Bakeries' : 'Mavryk Bakeries'}</Link>
+        <Link to="/bakery">{isSmallMobile ? <Icon id='bakery' /> : isMobile ? 'Bakeries' : 'Maven Bakeries'}</Link>
 
         <HashLink
           to="/#calculator"

@@ -1,10 +1,18 @@
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
-import { State } from 'utils/interfaces'
+import {useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {LIGHT_THEME} from 'redux/actions/preferences.action'
+import {State} from 'utils/interfaces'
 
 // prettier-ignore
-import { FooterBottom, FooterContainer, FooterDescription, FooterLogo, FooterSocials, FooterStyled, FooterTop } from "./Footer.style";
+import {
+  FooterBottom,
+  FooterContainer,
+  FooterDescription,
+  FooterLogo,
+  FooterSocials,
+  FooterStyled,
+  FooterTop
+} from "./Footer.style";
 
 type Props = {
   className?: string
@@ -23,12 +31,12 @@ export const FooterView = ({ className }: Props) => {
               <FooterLogo alt="logo" src={logoUrl} />
             </Link>
             <FooterDescription>
-              Mavryk is a DAO operated financial ecosystem that lets users borrow and earn on their terms, while
+              Maven Finance is a DAO operated financial ecosystem that lets users borrow and earn on their terms, while
               participating in the governance of the platform.
             </FooterDescription>
 
             <FooterBottom className="mob">
-              <div>© Mavryk Finance {new Date().getFullYear()}</div>
+              <div>© Maven Finance {new Date().getFullYear()}</div>
               {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
           </FooterLinks> */}
@@ -51,7 +59,7 @@ export const FooterView = ({ className }: Props) => {
                 <use xlinkHref="/icons/sprites.svg#telegram" />
               </svg>
             </a>
-            <a href="https://medium.com/@Mavryk_Finance" target="_blank" rel="noreferrer">
+            <a href="https://blog.mavrykdynamics.com/" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#medium" />
               </svg>
@@ -64,7 +72,7 @@ export const FooterView = ({ className }: Props) => {
           </FooterSocials>
         </FooterTop>
         <FooterBottom>
-          <div className="hide">© Mavryk Finance {new Date().getFullYear()}</div>
+          <div className="hide">© Maven Finance {new Date().getFullYear()}</div>
           {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
           </FooterLinks> */}
