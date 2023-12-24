@@ -1,18 +1,18 @@
 import * as React from 'react'
-import { Parallax } from 'react-scroll-parallax'
-import { useSelector } from 'react-redux'
+import {Parallax} from 'react-scroll-parallax'
+import {useSelector} from 'react-redux'
 
 import {
   GovernanceContent,
-  GovernanceImage,
-  GovernanceStyled,
   GovernanceGrid,
-  GovernanceList,
+  GovernanceImage,
   GovernanceImagePlanet,
+  GovernanceList,
   GovernanceParallaxLayer,
+  GovernanceStyled,
 } from './Governance.style'
-import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
-import { State } from 'utils/interfaces'
+import {LIGHT_THEME} from 'redux/actions/preferences.action'
+import {State} from 'utils/interfaces'
 
 export const GovernanceView = () => {
   const { themeSelected } = useSelector((state: State) => state.preferences)
@@ -50,14 +50,14 @@ export const GovernanceView = () => {
           </Parallax>
           <Parallax speed={5}>
             <GovernanceImage img="/images/governance/governance3.svg" />
-            <h4>Earn MVK rewards</h4>
+            <h4>Earn MVN rewards</h4>
           </Parallax>
           <Parallax speed={-5} scale={[1.15, 1.15]}>
             <GovernanceImage img="/images/governance/arrow3.svg" backgroundSize="auto" translateY="70px" />
           </Parallax>
           <Parallax speed={5}>
             <GovernanceImage img="/images/governance/governance4.svg" />
-            <h4>Delegate MVK to a Satellite (locked value stays secure)</h4>
+            <h4>Delegate MVN to a Satellite (locked value stays secure)</h4>
           </Parallax>
         </GovernanceGrid>
         <GovernanceList>
@@ -68,10 +68,10 @@ export const GovernanceView = () => {
           <h4>Deposit tokens into Yield Farms (DSR)</h4>
           <GovernanceImage img="/images/governance/arrow2.svg" backgroundSize="auto" />
           <GovernanceImage img="/images/governance/governance3.svg" />
-          <h4>Earn MVK rewards</h4>
+          <h4>Earn MVN rewards</h4>
           <GovernanceImage img="/images/governance/arrow2.svg" backgroundSize="auto" />
           <GovernanceImage img="/images/governance/governance4.svg" />
-          <h4>Delegate MVK to a Satellite (locked value stays secure)</h4>
+          <h4>Delegate MVN to a Satellite (locked value stays secure)</h4>
         </GovernanceList>
       </GovernanceContent>
     </GovernanceStyled>

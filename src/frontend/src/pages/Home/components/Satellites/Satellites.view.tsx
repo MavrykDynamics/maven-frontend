@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-import { SatellitesImage, SatellitesStyled, SatellitesFrontFigure } from './Satellites.style'
-import { Parallax } from 'react-scroll-parallax'
-import { useSelector } from 'react-redux'
-import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
-import { State } from 'utils/interfaces'
+import {SatellitesFrontFigure, SatellitesImage, SatellitesStyled} from './Satellites.style'
+import {Parallax} from 'react-scroll-parallax'
+import {useSelector} from 'react-redux'
+import {LIGHT_THEME} from 'redux/actions/preferences.action'
+import {State} from 'utils/interfaces'
 
 export const SatellitesView = () => {
   const { themeSelected } = useSelector((state: State) => state.preferences)
@@ -18,9 +18,9 @@ export const SatellitesView = () => {
   const satelliteFrontImgUrl = darkThemeEnabled ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
   return (
     <SatellitesStyled id="satellites">
-      <h2>Satellites: The Key to Mavryk’s Governance Structure</h2>
+      <h2>Satellites: The Key to Maven’s Governance Structure</h2>
       <p>
-        Satellites are nodes that operate the Mavryk platform through governance voting and providing Oracle price feed
+        Satellites are nodes that operate the Maven platform through governance voting and providing Oracle price feed
         information.
       </p>
       <Parallax speed={-5}>

@@ -2,53 +2,73 @@
   {
     "id": 1,
     "title": "What is Tezos?",
-    "description": ["Tezos is a Blockchain network for building decentralized applications. The Tezos Mainnet launched in June 2018, and is one of the leading Proof of Stake blockchain networks. The native currency of the Tezos network is called Tez, and the trading symbol is XTZ. Unlike Ethereum, Tezos is based on a consensus mechanism named Liquid Proof-of-Stake (LPoS), so your XTZ tokens are never locked during delegation, and owners remain in complete control of their tokens even after they delegate their voting & baking rights to a baker (validator)."]
+    "description": [
+      "Tezos is a Blockchain network for building decentralized applications. The Tezos Mainnet launched in June 2018, and is one of the leading Proof of Stake blockchain networks. The native currency of the Tezos network is called Tez, and the trading symbol is XTZ. Unlike Ethereum, Tezos is based on a consensus mechanism named Liquid Proof-of-Stake (LPoS), so your XTZ tokens are never locked during delegation, and owners remain in complete control of their tokens even after they delegate their voting & baking rights to a baker (validator)."
+    ]
   },
   {
     "id": 2,
     "title": "What is Tezos Baking?",
-    "description": ["Tezos “Baking” is the act of validating blocks for the network, and validators are called “Bakers.” This is somewhat similar to “miners” for Bitcoin, except Tezos is 2,000,000 times more energy efficient."]
+    "description": [
+      "Tezos “Baking” is the act of validating blocks for the network, and validators are called “Bakers.” This is somewhat similar to “miners” for Bitcoin, except Tezos is 2,000,000 times more energy efficient."
+    ]
   },
   {
     "id": 3,
     "title": "What is Staking?",
-    "description": ["Staking is a process that allows cryptocurrency holders to use their tokens for governance, or locking their tokens to utilize them. On Tezos, staking your tokens means to delegate your voting rights to a Baker to vote on your behalf, and secure the network. The Baker never has control of your tokens, but has the right to the token’s voting rights for governance and validating blocks. By delegating to a Baker, users may earn ~5.8% APY in XTZ from inflation rewards, minus the Baker fee. By staking their XTZ, users earn rewards for network participation by remaining constant with the rate of inflation, as opposed to non-participants who become diluted by inflation rewards."]
+    "description": [
+      "Staking is a process that allows cryptocurrency holders to use their tokens for governance, or locking their tokens to utilize them. On Tezos, staking your tokens means to delegate your voting rights to a Baker to vote on your behalf, and secure the network. The Baker never has control of your tokens, but has the right to the token’s voting rights for governance and validating blocks. By delegating to a Baker, users may earn ~5.8% APY in XTZ from inflation rewards, minus the Baker fee. By staking their XTZ, users earn rewards for network participation by remaining constant with the rate of inflation, as opposed to non-participants who become diluted by inflation rewards."
+    ]
   },
   {
     "id": 4,
     "title": "Can I be a Tezos Baker?",
-    "description": ["Of course! With just as little as 6,000 XTZ and a computer as easily accessible as a Raspberry Pi, you can launch your own Bakery. Operating a Bakery requires some technological knowledge with computer hardware and software code. If you don’t want to actively operate a Bakery, you can always delegate your tokens to the Mavryk Dynamics or the Mavryk Finance DAO Bakery."]
+    "description": [
+      "Of course! With just as little as 6,000 XTZ and a computer as easily accessible as a Raspberry Pi, you can launch your own Bakery. Operating a Bakery requires some technological knowledge with computer hardware and software code. If you don’t want to actively operate a Bakery, you can always delegate your tokens to the Mavryk Dynamics or the Maven Finance DAO Bakery."
+    ]
   },
   {
     "id": 5,
     "title": "What happens to my XTZ after I delegate them?",
-    "description": ["It’s important to note that by delegating your tokens, you never give up ownership of your XTZ. You are only delegating the rights associated with your token, and allowing the validator to utilize those rights. The reward associated with securing the network is paid to those who delegate, and the Baker will pay you for your delegation rights, and take a small fee."]
+    "description": [
+      "It’s important to note that by delegating your tokens, you never give up ownership of your XTZ. You are only delegating the rights associated with your token, and allowing the validator to utilize those rights. The reward associated with securing the network is paid to those who delegate, and the Baker will pay you for your delegation rights, and take a small fee."
+    ]
   },
   {
     "id": 6,
-    "title": "What is the difference between the Mavryk Finance DAO Bakery, and the Mavryk Dynamics Bakery?",
-    "description": ["Both operate similar computer hardware and charge a 10% fee. So what’s the difference between them?", 
-      "The Mavryk Finance Bakery belongs to the DAO, helps fund the Oracle transaction fees, and the profits are paid to the DAO Treasury. It is operated by Mavryk Dynamics on behalf of the DAO.",
-      "The Mavryk Dynamics Bakery belongs to Mavryk Dynamics, and the profit goes towards building more amazing products."]
+    "title": "What is the difference between the Maven Finance DAO Bakery, and the Mavryk Dynamics Bakery?",
+    "description": [
+      "Both operate similar computer hardware and charge a 10% fee. So what’s the difference between them?",
+      "The Maven Finance Bakery belongs to the DAO, helps fund the Oracle transaction fees, and the profits are paid to the DAO Treasury. It is operated by Mavryk Dynamics on behalf of the DAO.",
+      "The Mavryk Dynamics Bakery belongs to Mavryk Dynamics, and the profit goes towards building more amazing products."
+    ]
   },
   {
     "id": 7,
     "title": "How will I receive my delegation rewards?",
-    "description": ["Delegation rewards flow from the Tezos protocol to Bakers, who then directly pay rewards directly to the delegator’s wallets."]
+    "description": [
+      "Delegation rewards flow from the Tezos protocol to Bakers, who then directly pay rewards directly to the delegator’s wallets."
+    ]
   },
   {
     "id": 8,
     "title": "Do I start earning rewards immediately?",
-    "description": ["Baking rewards take roughly 21 days (7 cycles) to receive in your wallet after delegating. You also receive rewards for 21 days after moving your tokens to another wallet."]
+    "description": [
+      "Baking rewards take roughly 21 days (7 cycles) to receive in your wallet after delegating. You also receive rewards for 21 days after moving your tokens to another wallet."
+    ]
   },
   {
     "id": 9,
     "title": "How often do I receive rewards?",
-    "description": ["After waiting for the initial 7 cycle period, you will receive rewards every 3 days paid directly to your wallet (1 cycle = ~3 days)."]
+    "description": [
+      "After waiting for the initial 7 cycle period, you will receive rewards every 3 days paid directly to your wallet (1 cycle = ~3 days)."
+    ]
   },
   {
     "id": 10,
     "title": "What happens if I use the XTZ I delegated?",
-    "description": ["Delegated XTZs are not locked and you may use them at anytime while still earning rewards."]
+    "description": [
+      "Delegated XTZs are not locked and you may use them at anytime while still earning rewards."
+    ]
   }
 ]
