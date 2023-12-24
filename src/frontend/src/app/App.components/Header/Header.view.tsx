@@ -61,7 +61,7 @@ export const HeaderView = () => {
 
         <Link to="/litepaper">Litepaper</Link>
         <Link to="/liquidity-baking">{isMobile ? 'LB' : 'Liquidity Baking'}</Link>
-        <Link to="/bakery">{isSmallMobile ? <Icon id='bakery' /> : isMobile ? 'Bakeries' : 'Mavryk Bakeries'}</Link>
+        <Link to="/bakery">{isSmallMobile ? <Icon id='bakery' /> : isMobile ? 'Bakeries' : 'Maven Bakeries'}</Link>
 
         <HashLink
           to="/#calculator"
