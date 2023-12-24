@@ -42,11 +42,11 @@ export const PRODUCTS_LINKS = [
     disabled: true
   },
   { name: 'Liquidity Baking', href: 'liquidity-baking', path: '/liquidity-baking' },
-  { name: 'Mavryk Bakeries', href: 'bakery', path: '/bakery' },
+  { name: 'Maven Bakeries', href: 'bakery', path: '/bakery' },
 ]
 
 export const ABOUT_LINKS = [
-  { name: 'MVK Token (Soon)', href: '/', disabled: true },
+  { name: 'MVN Token (Soon)', href: '/', disabled: true },
   { name: 'Team', href: 'https://mavryk.finance/#team', path: 'https://mavryk.finance/#team' },
   // { name: 'Who we are', href: 'https://mavryk.finance/' },
   // { name: 'Roadmap', href: 'https://mavryk.finance/#roadmap' },
