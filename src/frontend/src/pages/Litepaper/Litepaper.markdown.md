@@ -367,13 +367,13 @@ Below describes the access control layer for the Maven Finance smart contracts i
 2. During Break Glass and the different stages of it
 3. Upgrading - upgrades from governance decisions
 
-1. Outline of Maven Finance's Access control layer under normal conditions
+Outline of Maven Finance's Access control layer under normal conditions
 ![acl-normal.png](/images/acl-normal.png)
 
-2. Outline of Maven Finance's Access control layer during the Break Glass process
+Outline of Maven Finance's Access control layer during the Break Glass process
 ![acl-break-glass.png](/images/acl-break-glass.png)
 
-3. Outline of Maven Finance's Access control layer during the contract upgrade process
+Outline of Maven Finance's Access control layer during the contract upgrade process
 ![acl-upgrade.png](/images/acl-upgrade.png)
 
 ## Yield Farming
