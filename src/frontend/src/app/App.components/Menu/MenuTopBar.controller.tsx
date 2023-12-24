@@ -25,7 +25,7 @@ export const SocialIcons = () => (
     <a href="https://t.me/Mavryk_Finance" target="_blank" rel="noreferrer">
       <Icon id="socialTelegram" />
     </a>
-    <a href="https://medium.com/@Mavryk_Finance" target="_blank" rel="noreferrer">
+    <a href="https://blog.mavrykdynamics.com/" target="_blank" rel="noreferrer">
       <Icon id="socialMedium" />
     </a>
     <a href="https://github.com/mavrykfinance/" target="_blank" rel="noreferrer">
@@ -41,11 +41,11 @@ export const PRODUCTS_LINKS = [
     path: '/dashboard/lending',
   },
   { name: 'Liquidity Baking', href: 'liquidity-baking', path: '/liquidity-baking' },
-  { name: 'Mavryk Bakeries', href: 'bakery', path: '/bakery' },
+  { name: 'Maven Bakeries', href: 'bakery', path: '/bakery' },
 ]
 
 export const ABOUT_LINKS = [
-  { name: 'MVK Token (Soon)', href: '/', disabled: true },
+  { name: 'MVN Token (Soon)', href: '/', disabled: true },
   { name: 'Team', href: 'https://mavryk.finance/#team', path: 'https://mavryk.finance/#team' },
   // { name: 'Who we are', href: 'https://mavryk.finance/' },
   // { name: 'Roadmap', href: 'https://mavryk.finance/#roadmap' },
@@ -84,7 +84,7 @@ export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
       <div className="grouped-links">
         <TopBarLinks groupName={'Products'} groupLinks={PRODUCTS_LINKS} />
         <TopBarLinks groupName={'About'} groupLinks={ABOUT_LINKS} />
-        <TopBarLinks groupName={'Blog 🔥'} groupLinks={BLOG_LINKS} groupNameLink="https://blogs.mavryk.finance/" />
+        <TopBarLinks groupName={'Blog 🔥'} groupLinks={BLOG_LINKS} groupNameLink="https://blog.mavrykdynamics.com/" />
         <TopBarLinks groupName={'Docs'} groupLinks={DOCS_LINKS} />
       </div>
       <div className="right-side">
