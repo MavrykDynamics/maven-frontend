@@ -1,6 +1,6 @@
-import styled, { css, keyframes } from 'styled-components/macro'
-import { btnLightColor, headerColor, secondaryColor, subTextColor } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import styled, {css, keyframes} from 'styled-components/macro'
+import {btnLightColor, headerColor, subTextColor} from 'styles'
+import {MavrykTheme} from 'utils/interfaces'
 
 export const BUTTON_PULSE = 'BUTTON_PULSE'
 
@@ -129,6 +129,12 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
     background-position: -100% 0;
   }
 
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    border-width: 0;
+  }
+  
   ${(props) =>
     props.secondary &&
     css`

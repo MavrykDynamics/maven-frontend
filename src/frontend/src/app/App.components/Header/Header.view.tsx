@@ -1,14 +1,14 @@
-import { HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled } from './Header.style'
-import { TOGGLE_DARK_THEME } from 'redux/action.types'
-import { useEffect, useState } from 'react'
-import { Helmet } from 'react-helmet'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link'
+import {HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled} from './Header.style'
+import {TOGGLE_DARK_THEME} from 'redux/action.types'
+import {useEffect, useState} from 'react'
+import {Helmet} from 'react-helmet'
+import {useDispatch, useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {HashLink} from 'react-router-hash-link'
 import Toggle from 'react-toggle'
-import { State } from 'utils/interfaces'
-import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
-import { useMedia } from 'react-use'
+import {State} from 'utils/interfaces'
+import {DARK_THEME, LIGHT_THEME} from 'redux/actions/preferences.action'
+import {useMedia} from 'react-use'
 import Icon from '../Icon/Icon.view'
 
 export const HeaderView = () => {
@@ -107,7 +107,7 @@ export const HeaderView = () => {
         >
           Satellites
         </HashLink>
-        <a href="https://blogs.mavryk.finance/" target="_blank" rel="noreferrer">
+        <a href="https://blog.mavrykdynamics.com/" target="_blank" rel="noreferrer">
           Blog
         </a>
         <label>

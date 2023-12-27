@@ -1,9 +1,23 @@
-import { Page } from 'styles/components'
+import {Page} from 'styles/components'
 
 // prettier-ignore
-import { BUTTON_PULSE, JubontronContainer, JubontronSubTitle, JubontronTitle, JumbotronButton, JumbotronButtons, JumbotronSocials, JumbotronStyled } from './Jumbotron.style'
+import {
+  BUTTON_PULSE,
+  JubontronContainer,
+  JubontronSubTitle,
+  JubontronTitle,
+  JumbotronButton,
+  JumbotronButtons,
+  JumbotronSocials,
+  JumbotronStyled
+} from './Jumbotron.style'
 
 export const JumbotronView = () => {
+
+  const isDisabled = true
+
+  const jumbotronButtonClasses = isDisabled ? 'disabled': BUTTON_PULSE
+
   return (
     <JumbotronStyled>
       <Page>
@@ -16,9 +30,12 @@ export const JumbotronView = () => {
             participating in the governance of the platform.
           </JubontronSubTitle>
           <JumbotronButtons>
-            <a href="https://ghostnet.mavryk.finance/" target="_blank" rel="noreferrer">
-              <JumbotronButton className={BUTTON_PULSE}>Enter DAPP</JumbotronButton>
-            </a>
+            {isDisabled ? <JumbotronButton className={jumbotronButtonClasses}>Enter DAPP</JumbotronButton>:
+                <a href="https://ghostnet.mavryk.finance/" target="_blank" rel="noreferrer" className={isDisabled ? 'disabled': ''}>
+                  <JumbotronButton className={jumbotronButtonClasses}>Enter DAPP</JumbotronButton>
+                </a>
+            }
+
             {/* <HashLink */}
             {/*  to="/#newsletter"*/}
             {/*  scroll={(el) =>*/}
