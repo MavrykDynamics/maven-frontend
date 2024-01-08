@@ -28,7 +28,7 @@ export const SocialIcons = () => (
     <a href="https://blog.mavrykdynamics.com/" target="_blank" rel="noreferrer">
       <Icon id="socialMedium" />
     </a>
-    <a href="https://github.com/mavrykfinance/" target="_blank" rel="noreferrer">
+    <a href="https://github.com/mavenfinance/" target="_blank" rel="noreferrer">
       <Icon id="socialGitHub" />
     </a>
   </div>
@@ -37,7 +37,7 @@ export const SocialIcons = () => (
 export const PRODUCTS_LINKS = [
   {
     name: 'Dapp',
-    href: 'https://ghostnet.mavryk.finance/',
+    href: 'https://ghostnet.mavenfinance.io/',
     path: '/dashboard/lending',
   },
   { name: 'Liquidity Baking', href: 'liquidity-baking', path: '/liquidity-baking' },
@@ -46,18 +46,18 @@ export const PRODUCTS_LINKS = [
 
 export const ABOUT_LINKS = [
   { name: 'MVN Token (Soon)', href: '/', disabled: true },
-  { name: 'Team', href: 'https://mavryk.finance/#team', path: 'https://mavryk.finance/#team' },
-  // { name: 'Who we are', href: 'https://mavryk.finance/' },
-  // { name: 'Roadmap', href: 'https://mavryk.finance/#roadmap' },
+  { name: 'Team', href: 'https://mavenfinance.io/#team', path: 'https://mavenfinance.io/#team' },
+  // { name: 'Who we are', href: 'https://mavenfinance.io/' },
+  // { name: 'Roadmap', href: 'https://mavenfinance.io/#roadmap' },
 ]
 
 export const BLOG_LINKS = []
 
 export const DOCS_LINKS = [
-  { name: 'Litepaper', href: 'https://mavryk.finance/litepaper', path: 'https://mavryk.finance/litepaper' },
-  { name: 'DAO docs', href: 'https://docs.mavryk.finance/', disabled: false },
+  { name: 'Litepaper', href: 'https://mavenfinance.io/litepaper', path: 'https://mavenfinance.io/litepaper' },
+  { name: 'DAO docs', href: 'https://docs.mavenfinance.io/', disabled: false },
   { name: 'Security Audits (Soon)', href: '/', disabled: true },
-  { name: 'Github', href: 'https://github.com/mavrykfinance/', disabled: false },
+  { name: 'Github', href: 'https://github.com/mavenfinance/', disabled: false },
 ]
 
 export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
