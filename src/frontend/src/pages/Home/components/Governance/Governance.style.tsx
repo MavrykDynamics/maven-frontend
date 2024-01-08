@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
-import { Page } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import {Page} from 'styles'
+import {MavenTheme} from 'utils/interfaces'
 
-export const GovernanceStyled = styled.div<{theme: MavrykTheme}>`
+export const GovernanceStyled = styled.div<{theme: MavenTheme}>`
   //background: url('./images/governance-bg.svg'), ${({theme}) => theme.containerColor};
   background: ${({theme}) => theme.containerColor};
   background-repeat: no-repeat;
@@ -11,7 +11,7 @@ export const GovernanceStyled = styled.div<{theme: MavrykTheme}>`
   padding: 50px 0;
 `
 
-export const GovernanceContent = styled(Page)<{theme: MavrykTheme}>`
+export const GovernanceContent = styled(Page)<{theme: MavenTheme}>`
   > h1 {
     color: ${({theme}) => theme.subTextColor};
   }

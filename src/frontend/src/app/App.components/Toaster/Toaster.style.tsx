@@ -1,8 +1,8 @@
-import styled, { css, keyframes } from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
-import { ERROR, INFO, WARNING } from './Toaster.constants'
+import styled, {css, keyframes} from 'styled-components/macro'
+import {MavenTheme} from 'utils/interfaces'
+import {ERROR, INFO, WARNING} from './Toaster.constants'
 
-export const ToasterStyled = styled.div<{ showing: boolean; theme: MavrykTheme }>`
+export const ToasterStyled = styled.div<{ showing: boolean; theme: MavenTheme }>`
   position: fixed;
   top: 0;
   right: -470px;
@@ -35,7 +35,7 @@ export const decreaseBar = keyframes`
   }
 `
 
-export const ToasterCountdown = styled.div<{ showing: boolean; status?: string; theme: MavrykTheme }>`
+export const ToasterCountdown = styled.div<{ showing: boolean; status?: string; theme: MavenTheme }>`
   position: absolute;
   bottom: 0;
   right: 0;
@@ -73,7 +73,7 @@ export const ToasterGrid = styled.div`
   grid-template-columns: 30px calc(100% - 100px) 30px;
 `
 
-export const ToasterIcon = styled.div<{ status?: string; theme: MavrykTheme }>`
+export const ToasterIcon = styled.div<{ status?: string; theme: MavenTheme }>`
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -104,17 +104,17 @@ export const ToasterContent = styled.div`
   padding: 8px;
 `
 
-export const ToasterTitle = styled.div<{ theme: MavrykTheme }>`
+export const ToasterTitle = styled.div<{ theme: MavenTheme }>`
   color: ${({ theme }) => theme.textColor};
   font-weight: 700;
   margin-bottom: 8px;
 `
 
-export const ToasterMessage = styled.div<{ theme: MavrykTheme }>`
+export const ToasterMessage = styled.div<{ theme: MavenTheme }>`
   color: ${({ theme }) => theme.subTextColor};
 `
 
-export const ToasterClose = styled.div<{ theme: MavrykTheme }>`
+export const ToasterClose = styled.div<{ theme: MavenTheme }>`
   width: 30px;
   height: 30px;
   border-radius: 50%;

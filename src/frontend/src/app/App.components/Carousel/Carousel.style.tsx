@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
+import styled from 'styled-components/macro'
+import {MavenTheme} from 'utils/interfaces'
 
 export const CarouselStyle = styled.div`
   position: relative;
@@ -17,7 +17,7 @@ export const CarouselContainer = styled.div`
   user-select: none;
 `
 
-export const CarouselButton = styled.button<{ theme: MavrykTheme }>`
+export const CarouselButton = styled.button<{ theme: MavenTheme }>`
   outline: 0;
   cursor: pointer;
   background-color: var(--carousel-button-bg);

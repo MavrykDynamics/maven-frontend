@@ -1,9 +1,9 @@
 import styled from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
-import { CONTAINER_WIDTH } from '../../../pages/Home/Home.style'
+import {CONTAINER_WIDTH} from '../../../pages/Home/Home.style'
 
-export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
+export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavenTheme }>`
   width: 100%;
   position: fixed;
   top: 0;
@@ -25,7 +25,7 @@ export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   }
 `
 
-export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
+export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavenTheme }>`
   margin: 0 auto;
   max-width: calc(100vw - 80px);
   width: ${CONTAINER_WIDTH};
@@ -134,7 +134,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavrykTheme }>`
   }
 `
 
-export const HeaderLogo = styled.div<{ theme: MavrykTheme; showBg: boolean; src: string }>`
+export const HeaderLogo = styled.div<{ theme: MavenTheme; showBg: boolean; src: string }>`
   background: url(${(props) => props.src}) no-repeat;
   height: 60px;
   margin-top: ${(props) => (props.showBg ? ({ theme }) => '-16px' : '-8px')};
@@ -162,7 +162,7 @@ export const HeaderLogo = styled.div<{ theme: MavrykTheme; showBg: boolean; src:
   }
 `
 
-export const HeaderButton = styled.div<{ theme: MavrykTheme }>`
+export const HeaderButton = styled.div<{ theme: MavenTheme }>`
   cursor: pointer;
   background: ${({ theme }) => theme.textColor};
   border-radius: 5px;

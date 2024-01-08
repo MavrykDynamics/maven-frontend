@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
-export const TokenomicsStyled = styled.section<{ theme: MavrykTheme }>`
+export const TokenomicsStyled = styled.section<{ theme: MavenTheme }>`
   text-align: center;
   padding-top: 64px;
   padding-bottom: 120px;

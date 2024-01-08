@@ -1,8 +1,7 @@
-import styled, { css } from 'styled-components/macro'
-import { btnLightColor, headerColor, primaryColor, secondaryColor, subTextColor } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import styled from 'styled-components/macro'
+import {MavenTheme} from 'utils/interfaces'
 
-export const IdeasSection = styled.section<{ theme: MavrykTheme }>`
+export const IdeasSection = styled.section<{ theme: MavenTheme }>`
   --carousel-button-indent: -100px;
   --carousel-button-bg: ${({ theme }) => theme.darkBackroundColor};
   background-image: url(${({ theme }) => theme.starsBachground}), ${({ theme }) => theme.skyGradient};
@@ -46,7 +45,7 @@ export const IdeasSection = styled.section<{ theme: MavrykTheme }>`
   }
 `
 
-export const IdeasFigure = styled.figure<{ theme: MavrykTheme }>`
+export const IdeasFigure = styled.figure<{ theme: MavenTheme }>`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -60,7 +59,7 @@ export const IdeasFigure = styled.figure<{ theme: MavrykTheme }>`
   }
 `
 
-export const IdeasCarouselWrap = styled.div<{ theme: MavrykTheme }>`
+export const IdeasCarouselWrap = styled.div<{ theme: MavenTheme }>`
   width: 1140px;
   margin: auto;
   min-height: 250px;
@@ -81,7 +80,7 @@ export const IdeasCarouselWrap = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const IdeasGroupSection = styled.div<{ theme: MavrykTheme }>`
+export const IdeasGroupSection = styled.div<{ theme: MavenTheme }>`
   width: 1140px;
   max-width: 100%;
   flex-shrink: 0;
@@ -90,7 +89,7 @@ export const IdeasGroupSection = styled.div<{ theme: MavrykTheme }>`
   justify-content: space-between;
 `
 
-export const IdeaLoading = styled.div<{ theme: MavrykTheme }>`
+export const IdeaLoading = styled.div<{ theme: MavenTheme }>`
   margin: 0;
   padding-top: 64px;
 
@@ -100,7 +99,7 @@ export const IdeaLoading = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const IdeaLink = styled.a<{ theme: MavrykTheme }>`
+export const IdeaLink = styled.a<{ theme: MavenTheme }>`
   width: 329px;
   height: 305px;
   display: flex;

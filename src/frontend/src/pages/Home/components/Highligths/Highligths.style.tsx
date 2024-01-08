@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
-import { Page } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import {Page} from 'styles'
+import {MavenTheme} from 'utils/interfaces'
 
 export const HighligthsStyled = styled.div`
   padding: 100px 0 200px 0;
@@ -12,7 +12,7 @@ export const HighligthsStyled = styled.div`
 
 export const HighligthsContainer = styled(Page)``
 
-export const HighligthsGrid = styled.div<{theme: MavrykTheme}>`
+export const HighligthsGrid = styled.div<{theme: MavenTheme}>`
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -26,7 +26,7 @@ export const HighligthsGrid = styled.div<{theme: MavrykTheme}>`
   }
 `
 
-export const HighligthsSelector = styled.div<{theme: MavrykTheme}>`
+export const HighligthsSelector = styled.div<{theme: MavenTheme}>`
   background: ${({theme}) => theme.backgroundColor};
   // box-shadow: 0 1px 0 rgb(34 37 49 / 8%), 0 8px 8px rgb(34 37 49 / 4%);
   border-radius: 10px;
@@ -38,7 +38,7 @@ export const HighligthsSelector = styled.div<{theme: MavrykTheme}>`
   }
 `
 
-export const HighligthsItem = styled.div<{ selected?: boolean, theme: MavrykTheme }>`
+export const HighligthsItem = styled.div<{ selected?: boolean, theme: MavenTheme }>`
   padding: 16px 24px;
   display: grid;
   grid-template-columns: 56px auto;

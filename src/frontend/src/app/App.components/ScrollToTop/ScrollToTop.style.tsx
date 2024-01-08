@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
-import { MavrykTheme } from 'utils/interfaces'
+import styled, {css} from 'styled-components'
+import {MavenTheme} from 'utils/interfaces'
 
-export const StyledScrollToTop = styled.div<{ theme: MavrykTheme; show: boolean }>`
+export const StyledScrollToTop = styled.div<{ theme: MavenTheme; show: boolean }>`
   position: fixed;
   bottom: 25px;
   right: 9px;

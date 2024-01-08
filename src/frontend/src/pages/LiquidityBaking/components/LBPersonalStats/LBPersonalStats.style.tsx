@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { MavrykTheme } from 'utils/interfaces'
-import { LBActionStyled } from '../LBAction/LBAction.style'
+import {MavenTheme} from 'utils/interfaces'
+import {LBActionStyled} from '../LBAction/LBAction.style'
 
-export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavrykTheme }>`
+export const LBPersonalStatsStyled = styled(LBActionStyled)<{ theme: MavenTheme }>`
   background-image: url('images/stats_bg.png');
   background-repeat: no-repeat;
   background-position: bottom right;

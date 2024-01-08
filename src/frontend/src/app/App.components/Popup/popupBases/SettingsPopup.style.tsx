@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
-export const SettingsPopupBase = styled.div<{ theme: MavrykTheme }>`
+export const SettingsPopupBase = styled.div<{ theme: MavenTheme }>`
   .title {
     font-weight: 700;
     font-size: 25px;

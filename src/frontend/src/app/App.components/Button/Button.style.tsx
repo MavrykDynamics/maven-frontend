@@ -1,8 +1,8 @@
-import styled, { keyframes } from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
+import styled, {keyframes} from 'styled-components/macro'
+import {MavenTheme} from 'utils/interfaces'
 
-import { darkColor, primaryColor } from '../../../styles'
-import { BUTTON_RADIUS } from '../../../styles/constants'
+import {darkColor, primaryColor} from '../../../styles'
+import {BUTTON_RADIUS} from '../../../styles/constants'
 
 export const clickWave = keyframes`
   from {
@@ -13,7 +13,7 @@ export const clickWave = keyframes`
   }
 `
 
-export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
+export const ButtonStyled = styled.button<{ theme: MavenTheme }>`
   padding: 0;
   height: 50px;
   border: none;
@@ -190,7 +190,7 @@ export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
   }
 `
 
-export const ButtonText = styled.div<{ theme: MavrykTheme }>`
+export const ButtonText = styled.div<{ theme: MavenTheme }>`
   > div {
     text-align: center;
     margin: auto;
@@ -221,7 +221,7 @@ export const ButtonText = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const ButtonIcon = styled.svg<{ theme: MavrykTheme }>`
+export const ButtonIcon = styled.svg<{ theme: MavenTheme }>`
   width: 24px;
   height: 24px;
   display: inline-block;
@@ -255,7 +255,7 @@ const turn = keyframes`
   }
 `
 
-export const ButtonLoadingIcon = styled.svg<{ theme: MavrykTheme }>`
+export const ButtonLoadingIcon = styled.svg<{ theme: MavenTheme }>`
   width: 16px;
   height: 16px;
   margin-top: 4px;
