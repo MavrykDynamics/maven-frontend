@@ -1,10 +1,7 @@
-import styled, { css } from 'styled-components/macro'
-import { coralColor, subHeaderColor } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import styled from 'styled-components/macro'
+import {MavenTheme} from 'utils/interfaces'
 
-import { CONTAINER_WIDTH } from '../../Home.style'
-
-export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
+export const AppFeaturesSection = styled.section<{ theme: MavenTheme }>`
   --max-container: calc(100vw - 360px);
   padding-top: 50px;
   padding-bottom: 190px;
@@ -39,7 +36,7 @@ export const AppFeaturesSection = styled.section<{ theme: MavrykTheme }>`
   }
 `
 
-export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
+export const AppFeaturesList = styled.article<{ theme: MavenTheme }>`
   width: var(--max-container);
   max-width: 100%;
   margin: 0;
@@ -80,7 +77,7 @@ export const AppFeaturesList = styled.article<{ theme: MavrykTheme }>`
   }
 `
 
-export const AppFeaturesFigure = styled.figure<{ theme: MavrykTheme }>`
+export const AppFeaturesFigure = styled.figure<{ theme: MavenTheme }>`
   margin: 0;
   padding: 0 20px;
 

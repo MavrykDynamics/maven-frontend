@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
 export const CONTAINER_WIDTH = '1480px'
 
@@ -19,7 +19,7 @@ export const HomeStyled = styled.div`
   }
 `
 
-export const HomeNoParallax = styled.div<{ theme: MavrykTheme }>`
+export const HomeNoParallax = styled.div<{ theme: MavenTheme }>`
   @media (max-width: 1000px) {
     position: relative;
     padding-top: 50px;

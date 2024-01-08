@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
-export const LBActionBottomWrapperStyled = styled.div<{ theme: MavrykTheme }>`
+export const LBActionBottomWrapperStyled = styled.div<{ theme: MavenTheme }>`
   row-gap: 7px;
   display: flex;
   flex-direction: column;

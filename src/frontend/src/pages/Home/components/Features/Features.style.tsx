@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro'
-import { Page } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import {Page} from 'styles'
+import {MavenTheme} from 'utils/interfaces'
 
-import { CONTAINER_WIDTH } from '../../Home.style'
+import {CONTAINER_WIDTH} from '../../Home.style'
 
-export const FeaturesSection = styled.div<{ theme: MavrykTheme }>`
+export const FeaturesSection = styled.div<{ theme: MavenTheme }>`
   background-color: ${({ theme }) => theme.darkestBackroundColor};
   background-image: url(${({ theme }) => theme.featuresBackground});
   background-position: bottom;
@@ -44,7 +44,7 @@ export const FeaturesGrid = styled.div`
   }
 `
 
-export const FeaturesComponent = styled.div<{ theme: MavrykTheme }>`
+export const FeaturesComponent = styled.div<{ theme: MavenTheme }>`
   background-color: ${({ theme }) => theme.darkBackroundColor};
   border-radius: 15px;
   padding: 40px 30px;

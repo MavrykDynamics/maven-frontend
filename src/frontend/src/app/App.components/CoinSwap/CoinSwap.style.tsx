@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
-export const CoinSwapStyled = styled.div<{ theme: MavrykTheme }>`
+export const CoinSwapStyled = styled.div<{ theme: MavenTheme }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +39,7 @@ export const CoinSwapStyled = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const CoinSwapCoinWrapper = styled.div<{ theme: MavrykTheme }>`
+export const CoinSwapCoinWrapper = styled.div<{ theme: MavenTheme }>`
   display: flex;
   align-items: center;
 

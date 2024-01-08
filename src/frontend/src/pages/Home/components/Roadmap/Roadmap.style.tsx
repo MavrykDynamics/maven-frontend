@@ -1,10 +1,7 @@
-import styled, { css } from 'styled-components/macro'
-import { coralColor, subHeaderColor } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import styled from 'styled-components/macro'
+import {MavenTheme} from 'utils/interfaces'
 
-import { CONTAINER_WIDTH } from '../../Home.style'
-
-export const RoadmapStyled = styled.section<{ theme: MavrykTheme }>`
+export const RoadmapStyled = styled.section<{ theme: MavenTheme }>`
   background-image: url(${({ theme }) => theme.starsBachground});
   background-repeat: no-repeat;
   background-position: center;
@@ -44,7 +41,7 @@ export const RoadmapStyled = styled.section<{ theme: MavrykTheme }>`
   }
 `
 
-export const RoadmapArticles = styled.div<{ theme: MavrykTheme }>`
+export const RoadmapArticles = styled.div<{ theme: MavenTheme }>`
   display: flex;
   justify-content: center;
 
@@ -91,7 +88,7 @@ export const RoadmapArticles = styled.div<{ theme: MavrykTheme }>`
     }
   }
 `
-export const RoadmapArticle = styled.article<{ theme: MavrykTheme }>`
+export const RoadmapArticle = styled.article<{ theme: MavenTheme }>`
   display: grid;
   grid-template-rows: 202px 124px 1fr;
 

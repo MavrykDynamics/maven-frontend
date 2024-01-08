@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
-import { subHeaderColor } from 'styles/colors'
-import { MavrykTheme } from 'utils/interfaces'
+import {subHeaderColor} from 'styles/colors'
+import {MavenTheme} from 'utils/interfaces'
 
-import { CONTAINER_WIDTH } from '../../Home.style'
+import {CONTAINER_WIDTH} from '../../Home.style'
 
 export const PartnersStyled = styled.section`
   margin-top: 120px;
@@ -31,7 +31,7 @@ export const PartnersStyled = styled.section`
   }
 `
 
-export const PartnersGrid = styled.div<{ theme: MavrykTheme }>`
+export const PartnersGrid = styled.div<{ theme: MavenTheme }>`
   .partner-nomadic {
     display: flex;
     align-items: center;

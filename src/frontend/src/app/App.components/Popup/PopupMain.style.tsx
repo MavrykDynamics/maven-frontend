@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components'
-import { dropDownColor } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import styled, {css} from 'styled-components'
+import {dropDownColor} from 'styles'
+import {MavenTheme} from 'utils/interfaces'
 
 // TODO: update colors
 // TODO: extract all classname styles to it's own bases
-export const PopupContainerWrapper = styled.div<{ theme: MavrykTheme; widthSize?: 586 | 750 | 395 | 950 }>`
+export const PopupContainerWrapper = styled.div<{ theme: MavenTheme; widthSize?: 586 | 750 | 395 | 950 }>`
   display: flex;
   flex-direction: column;
   padding: 40px;

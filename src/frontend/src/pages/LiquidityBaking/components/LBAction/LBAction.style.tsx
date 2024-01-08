@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
-import { MavrykTheme } from 'utils/interfaces'
+import styled, {css} from 'styled-components'
+import {MavenTheme} from 'utils/interfaces'
 
-export const LBActionStyled = styled.div<{ theme: MavrykTheme; isShowingChartMobile?: boolean }>`
+export const LBActionStyled = styled.div<{ theme: MavenTheme; isShowingChartMobile?: boolean }>`
   z-index: 1;
   padding: 20px 40px 20px 40px;
   background: ${({ theme }) => theme.cards};
@@ -301,7 +301,7 @@ export const ToggleButtonsWrapper = styled.div`
   }
 `
 
-export const PriceChange = styled.div<{ up?: boolean; theme: MavrykTheme }>`
+export const PriceChange = styled.div<{ up?: boolean; theme: MavenTheme }>`
   color: ${({ up, theme }) => (up ? theme.priceImpact : theme.downColor)};
   font-weight: 500;
   font-size: 18px;
@@ -339,7 +339,7 @@ export const StepBlock = styled.div`
 export const CheckBoxWrapper = styled.div`
   position: relative;
 `
-export const CheckBoxLabel = styled.label<{ theme: MavrykTheme }>`
+export const CheckBoxLabel = styled.label<{ theme: MavenTheme }>`
   position: absolute;
   top: 0;
   left: 0;

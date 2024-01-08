@@ -1,4 +1,4 @@
-import {MavrykTheme} from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
 export const backgroundColor = '#160E3F' //'#FFFFFF'
 export const containerColor = '#1C1C3F' //'#F7F9FD'
@@ -31,7 +31,7 @@ export const silverTwoColor = '#CDCDCD'
 export const lightTextColor = '#D0CFD9'
 export const dropDownColor = '#0000007a'
 
-export const darkMode: MavrykTheme = {
+export const darkMode: MavenTheme = {
     // new color schema
     nSelectedColor: '#8D86EB',
     linksAndButtons: '#88D1C3',
@@ -153,7 +153,7 @@ export const darkMode: MavrykTheme = {
     skyColor,
 }
 
-export const lightMode: MavrykTheme = {
+export const lightMode: MavenTheme = {
     // new color schema
     nSelectedColor: '#03C9A3',
     linksAndButtons: '#8D86EB',
@@ -277,7 +277,7 @@ export const lightMode: MavrykTheme = {
     skyColor,
 }
 
-export const spaceMode: MavrykTheme = {
+export const spaceMode: MavenTheme = {
     // new color schema
     nSelectedColor: '#8D86EB',
     linksAndButtons: '#86D4C9',

@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components/macro'
-import { Page } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import styled, {css} from 'styled-components/macro'
+import {Page} from 'styles'
+import {MavenTheme} from 'utils/interfaces'
 
-export const LitepaperStyled = styled(Page)<{ theme: MavrykTheme }>`
+export const LitepaperStyled = styled(Page)<{ theme: MavenTheme }>`
   font-size: 16px;
   color: ${({ theme }) => theme.subTextColor};
   margin: 0 auto;

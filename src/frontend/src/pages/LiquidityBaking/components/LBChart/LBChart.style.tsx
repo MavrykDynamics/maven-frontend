@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { BLOCK_RADIUS } from 'styles/constants'
-import { MavrykTheme } from 'utils/interfaces'
+import {BLOCK_RADIUS} from 'styles/constants'
+import {MavenTheme} from 'utils/interfaces'
 
-export const ChartStyled = styled.div<{ theme: MavrykTheme }>`
+export const ChartStyled = styled.div<{ theme: MavenTheme }>`
   background: ${({ theme }) => theme.cards};
   border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: ${BLOCK_RADIUS};

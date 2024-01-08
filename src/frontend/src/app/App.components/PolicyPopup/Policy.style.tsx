@@ -1,8 +1,7 @@
-import styled, { css } from 'styled-components'
-import { cyanColor, titleColor } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import styled from 'styled-components'
+import {MavenTheme} from 'utils/interfaces'
 
-export const PolicyStyled = styled.div<{ theme: MavrykTheme }>`
+export const PolicyStyled = styled.div<{ theme: MavenTheme }>`
   display: flex;
   flex-direction: column;
   padding: 40px;

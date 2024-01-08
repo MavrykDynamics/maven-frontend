@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
+import styled, {keyframes} from 'styled-components/macro'
+import {MavenTheme} from 'utils/interfaces'
 
 const turn = keyframes`
   100% {
@@ -7,7 +7,7 @@ const turn = keyframes`
   }
 `
 
-export const LoadingIcon = styled.svg<{ theme: MavrykTheme }>`
+export const LoadingIcon = styled.svg<{ theme: MavenTheme }>`
   width: 20px;
   height: 20px;
   vertical-align: sub;

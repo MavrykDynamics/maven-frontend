@@ -1,9 +1,9 @@
-import styled, { css, keyframes } from 'styled-components/macro'
+import styled, {css, keyframes} from 'styled-components/macro'
 
-import { primaryColor } from '../../../styles'
-import { BUTTON_RADIUS } from '../../../styles/constants'
-import { MavrykTheme } from 'utils/interfaces'
-import { PRIMARY, SECONDARY, TRANSPARENT } from './SlidingTabButtons.constants'
+import {primaryColor} from '../../../styles'
+import {BUTTON_RADIUS} from '../../../styles/constants'
+import {MavenTheme} from 'utils/interfaces'
+import {PRIMARY, SECONDARY, TRANSPARENT} from './SlidingTabButtons.constants'
 
 export const clickWave = keyframes`
   from {
@@ -23,7 +23,7 @@ export const clickSlide = keyframes`
     transform: translateX(100px);
   }
 `
-export const SlidingTabButtonsStyled = styled.div<{ theme: MavrykTheme }>`
+export const SlidingTabButtonsStyled = styled.div<{ theme: MavenTheme }>`
   background-color: ${({ theme }) => theme.nBackgroundColor};
   border: 1px solid ${({ theme }) => theme.strokeColor};
   display: flex;
@@ -50,7 +50,7 @@ export const SlidingTabButtonsStyled = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const ButtonStyled = styled.button<{ disabled: boolean; theme: MavrykTheme }>`
+export const ButtonStyled = styled.button<{ disabled: boolean; theme: MavenTheme }>`
   width: 100%;
   border: none;
   cursor: pointer;
@@ -81,7 +81,7 @@ export const ButtonStyled = styled.button<{ disabled: boolean; theme: MavrykThem
       : ''}
 `
 
-export const ButtonText = styled.div<{ theme: MavrykTheme }>`
+export const ButtonText = styled.div<{ theme: MavenTheme }>`
   > div {
     text-align: center;
     margin: auto;
@@ -110,7 +110,7 @@ const turn = keyframes`
   }
 `
 
-export const ButtonLoadingIcon = styled.svg<{ theme: MavrykTheme }>`
+export const ButtonLoadingIcon = styled.svg<{ theme: MavenTheme }>`
   width: 16px;
   height: 16px;
   margin-top: 4px;
