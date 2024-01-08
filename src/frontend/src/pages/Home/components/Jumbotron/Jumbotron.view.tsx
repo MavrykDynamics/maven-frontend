@@ -30,11 +30,9 @@ export const JumbotronView = () => {
             participating in the governance of the platform.
           </JubontronSubTitle>
           <JumbotronButtons>
-            {isDisabled ? <JumbotronButton className={jumbotronButtonClasses}>Enter DAPP</JumbotronButton>:
-                <a href="https://ghostnet.mavryk.finance/" target="_blank" rel="noreferrer" className={isDisabled ? 'disabled': ''}>
-                  <JumbotronButton className={jumbotronButtonClasses}>Enter DAPP</JumbotronButton>
-                </a>
-            }
+            <a href="https://ghostnet.mavenfinance.io/" target="_blank" rel="noreferrer">
+              <JumbotronButton className={BUTTON_PULSE}>Enter DAPP</JumbotronButton>
+            </a>
 
             {/* <HashLink */}
             {/*  to="/#newsletter"*/}
@@ -64,7 +62,7 @@ export const JumbotronView = () => {
                 <use xlinkHref="/icons/sprites.svg#telegram" />
               </svg>
             </a>
-            <a href="https://github.com/mavrykfinance/" target="_blank" rel="noreferrer">
+            <a href="https://github.com/mavenfinance/" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#gitHub" />
               </svg>
