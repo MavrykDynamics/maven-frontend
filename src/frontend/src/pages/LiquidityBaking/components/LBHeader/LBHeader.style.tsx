@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
-export const LBHeaderStyled = styled.div<{ theme: MavrykTheme }>`
+export const LBHeaderStyled = styled.div<{ theme: MavenTheme }>`
   background: ${({ theme }) => theme.cards};
   border: 1px solid ${({ theme }) => theme.strokeCards};
   border-radius: 10px;

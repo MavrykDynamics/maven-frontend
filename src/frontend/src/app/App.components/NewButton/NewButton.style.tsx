@@ -1,23 +1,23 @@
-import styled, { css } from 'styled-components'
-import { BUTTON_RADIUS } from 'styles/constants'
+import styled, {css} from 'styled-components'
+import {BUTTON_RADIUS} from 'styles/constants'
 import {
+  BUTTON_LARGE,
   BUTTON_NAVIGATION,
   BUTTON_PRIMARY,
   BUTTON_PULSE,
+  BUTTON_REGULAR,
   BUTTON_ROUND,
   BUTTON_SECONDARY,
-  BUTTON_THIRD,
+  BUTTON_SECONDARY_PURPLE,
   BUTTON_SIMPLE,
   BUTTON_SIMPLE_SMALL,
+  BUTTON_THIRD,
   BUTTON_WIDE,
   VOTING_AGAINST,
   VOTING_FOR,
   VOTING_PASS,
-  BUTTON_LARGE,
-  BUTTON_REGULAR,
-  BUTTON_SECONDARY_PURPLE,
 } from './NewButton.constants'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
 const BUTTONS_KIND_STYLES = css`
   &.${BUTTON_PRIMARY} {
@@ -172,7 +172,7 @@ const BUTTONS_ANIMATIONS_STYLES = css`
 `
 
 // TODO: refactor colors with theme implementation
-export const ButtonStyled = styled.button<{ theme: MavrykTheme }>`
+export const ButtonStyled = styled.button<{ theme: MavenTheme }>`
   font-weight: 600;
   font-size: 16px;
   line-height: 16px;

@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
 export const PopupStyled = styled.div`
   .popup-enter {
@@ -31,7 +31,7 @@ export const PopupContainer = styled.div`
   left: 0;
   display: flex;
 `
-export const PopupNewsletter = styled.div<{ theme: MavrykTheme }>`
+export const PopupNewsletter = styled.div<{ theme: MavenTheme }>`
   width: 1232px;
   height: 576px;
   margin: 16px;

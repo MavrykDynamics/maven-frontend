@@ -14,7 +14,7 @@ export const WhatMakesView = () => {
   return (
     <WhatMakesStyled id="whatMakes">
       <WhatMakesContainerStyled>
-        <h2>What Makes Mavryk Unique</h2>
+        <h2>What Makes Maven Unique</h2>
         <WhatMakesArticlesStyled>
           {data.map((item) => (
             <WhatMakesArticleStyled key={item.id}>

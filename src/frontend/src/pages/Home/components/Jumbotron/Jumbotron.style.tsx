@@ -1,6 +1,6 @@
 import styled, {css, keyframes} from 'styled-components/macro'
 import {btnLightColor, headerColor, subTextColor} from 'styles'
-import {MavrykTheme} from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
 export const BUTTON_PULSE = 'BUTTON_PULSE'
 
@@ -37,7 +37,7 @@ export const JumbotronStyled = styled.div`
   }
 `
 
-export const JubontronTitle = styled.div<{ theme: MavrykTheme }>`
+export const JubontronTitle = styled.div<{ theme: MavenTheme }>`
   > h1 {
     font-weight: bold;
     font-size: 64px;
@@ -148,7 +148,7 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
   }
 `
 
-export const JumbotronSocials = styled.div<{ theme: MavrykTheme }>`
+export const JumbotronSocials = styled.div<{ theme: MavenTheme }>`
   margin: 24px 0 269px 0;
   display: flex;
 

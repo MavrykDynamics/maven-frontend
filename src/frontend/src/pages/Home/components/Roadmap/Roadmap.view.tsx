@@ -10,8 +10,8 @@ export const RoadmapView = () => {
     <RoadmapStyled id="roadmap">
       <h2>Roadmap</h2>
       <RoadmapArticles>
-        {data.map((item) => (
-          <RoadmapArticle key={item.value}>
+        {data.map((item, idx) => (
+          <RoadmapArticle key={item.value.concat(idx.toString())}>
             <aside />
             <figure>
               <img src="/images/flag.svg" alt={item.header} />

@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
+import styled, {keyframes} from 'styled-components/macro'
+import {MavenTheme} from 'utils/interfaces'
 
 export const LoaderStyled = styled.div`
   display: flex;
@@ -151,7 +151,7 @@ export const LoaderStyled = styled.div`
   }
 `
 
-export const LoaderStyledWithBackdrop = styled.div<{ theme: MavrykTheme; backdropAlpha?: number }>`
+export const LoaderStyledWithBackdrop = styled.div<{ theme: MavenTheme; backdropAlpha?: number }>`
   position: fixed;
   inset: 0;
   transition: background-color 0.15s ease-in-out;
@@ -181,7 +181,7 @@ const shine = keyframes`
   }
 `
 
-export const LoaderShineTextAnimation = styled.div<{ theme: MavrykTheme }>`
+export const LoaderShineTextAnimation = styled.div<{ theme: MavenTheme }>`
   background-image: ${({ theme }) => theme.shineAnimationGradient};
   background-size: auto auto;
   background-clip: border-box;
@@ -197,7 +197,7 @@ export const LoaderShineTextAnimation = styled.div<{ theme: MavrykTheme }>`
   white-space: nowrap;
 `
 
-export const SpinnerCircleLoaderStyled = styled.div<{ theme: MavrykTheme }>`
+export const SpinnerCircleLoaderStyled = styled.div<{ theme: MavenTheme }>`
   color: ${({ theme }) => theme.headerTeam};
   font-size: 20px;
   width: 1em;

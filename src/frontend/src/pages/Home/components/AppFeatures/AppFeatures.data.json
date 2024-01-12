@@ -9,30 +9,30 @@
     "id": 2,
     "img": "/images/app-features/yield-farming.svg",
     "header": "Yield Farming",
-    "text": "Provide liquidity to DEX's and Mavryk's lending pools, stake your LP tokens in our yield farms, and earn staked MVK in return."
+    "text": "Provide liquidity to DEX's and Maven's lending pools, stake your LP tokens in our yield farms, and earn staked MVN in return."
   },
   {
     "id": 3,
     "img": "/images/app-features/staking.svg",
     "header": "Staking",
-    "text": "Stake your MVK, delegate your votes, and earn rewards for participating in and securing the network."
+    "text": "Stake your MVN, delegate your votes, and earn rewards for participating in and securing the network."
   },
   {
     "id": 4,
     "img": "/images/app-features/governance-delegation.svg",
     "header": "Governance & Delegation",
-    "text": "Mavryk’s governance is completely controlled by the community through an on-chain DAO. Stake your MVK tokens and delegate to the Satellite of your choice, or run your own Satellite."
+    "text": "Maven’s governance is completely controlled by the community through an on-chain DAO. Stake your MVN tokens and delegate to the Satellite of your choice, or run your own Satellite."
   },
   {
     "id": 5,
     "img": "/images/app-features/own-satellite.svg",
     "header": "Run Your Own Satellite",
-    "text": "Operate a Satellite to play an active role in Mavryk’s governance, control the Treasury, and provide the network with on-chain data via the oracle. Get paid in staked MVK and XTZ."
+    "text": "Operate a Satellite to play an active role in Maven’s governance, control the Treasury, and provide the network with on-chain data via the oracle. Get paid in staked MVN and XTZ."
   },
   {
     "id": 6,
     "img": "/images/app-features/decentralized-oracle.svg",
     "header": "Decentralized Oracle",
-    "text": "Mavryk relies on Satellites to provide accurate and reliable on-chain real-world data, and get rewarded according their respective stake and delegations."
+    "text": "Maven relies on Satellites to provide accurate and reliable on-chain real-world data, and get rewarded according their respective stake and delegations."
   }
 ]

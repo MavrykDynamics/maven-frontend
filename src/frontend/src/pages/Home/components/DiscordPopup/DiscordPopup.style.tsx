@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
-import {headerColor, Page, primaryColor, secondaryColor, textColor} from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import {textColor} from 'styles'
+import {MavenTheme} from 'utils/interfaces'
 
-export const DiscordPopupStyled = styled.section<{ theme: MavrykTheme }>`
+export const DiscordPopupStyled = styled.section<{ theme: MavenTheme }>`
   background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradientTransparent};
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -79,7 +79,7 @@ export const DiscordPopupFigure = styled.figure`
   }
 `
 
-export const DiscordPopupButton = styled.a<{ theme: MavrykTheme }>`
+export const DiscordPopupButton = styled.a<{ theme: MavenTheme }>`
   line-height: 32px;
   font-size: 18px;
   font-weight: bold;
@@ -99,7 +99,7 @@ export const DiscordPopupButton = styled.a<{ theme: MavrykTheme }>`
   z-index: 999;
 `
 
-export const DiscordPopupStatus = styled.div<{ theme: MavrykTheme }>`
+export const DiscordPopupStatus = styled.div<{ theme: MavenTheme }>`
   position: relative;
   top: 20px;
 
@@ -132,7 +132,7 @@ export const DiscordPopupClose = styled.div`
     stroke: ${({ theme }) => theme.textColor};
   }
 `
-export const DiscordPopupSocials = styled.div<{ theme: MavrykTheme }>`
+export const DiscordPopupSocials = styled.div<{ theme: MavenTheme }>`
   display: flex;
   align-items: center;
   margin-left: auto;

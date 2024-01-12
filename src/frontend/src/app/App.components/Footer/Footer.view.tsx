@@ -31,12 +31,12 @@ export const FooterView = ({ className }: Props) => {
               <FooterLogo alt="logo" src={logoUrl} />
             </Link>
             <FooterDescription>
-              Mavryk is a DAO operated financial ecosystem that lets users borrow and earn on their terms, while
+              Maven Finance is a DAO operated financial ecosystem that lets users borrow and earn on their terms, while
               participating in the governance of the platform.
             </FooterDescription>
 
             <FooterBottom className="mob">
-              <div>© Mavryk Finance {new Date().getFullYear()}</div>
+              <div>© Maven Finance {new Date().getFullYear()}</div>
               {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
           </FooterLinks> */}
@@ -72,7 +72,7 @@ export const FooterView = ({ className }: Props) => {
           </FooterSocials>
         </FooterTop>
         <FooterBottom>
-          <div className="hide">© Mavryk Finance {new Date().getFullYear()}</div>
+          <div className="hide">© Maven Finance {new Date().getFullYear()}</div>
           {/* <FooterLinks>
             <Link to="privacy">Privacy Policy</Link>
           </FooterLinks> */}

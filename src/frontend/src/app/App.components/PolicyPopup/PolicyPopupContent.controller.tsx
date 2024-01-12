@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { PRIMARY } from '../Button/Button.constants'
-import { Button } from '../Button/Button.controller'
+import React, {useState} from 'react'
+import {PRIMARY} from '../Button/Button.constants'
+import {Button} from '../Button/Button.controller'
 import Icon from '../Icon/Icon.view'
-import { PolicyStyled } from './Policy.style'
+import {PolicyStyled} from './Policy.style'
 
 export const PolicyPopupContent = ({ proccedPolicy }: { proccedPolicy: () => void }) => {
   const [checkbox, setCheckbox] = useState(false)
@@ -18,26 +18,26 @@ export const PolicyPopupContent = ({ proccedPolicy }: { proccedPolicy: () => voi
         </div>
         <b>Use at Your Own Risk:</b>
         <div className="text">
-          Mavryk Finance is a cutting edge & unique decentralized platform & protocol that allows users to deposit
-          assets, trade, lend, and borrow assets. The Mavryk Finance platform & protocol is made up of both proprietary
+          Maven Finance is a cutting edge & unique decentralized platform & protocol that allows users to deposit
+          assets, trade, lend, and borrow assets. The Maven Finance platform & protocol is made up of both proprietary
           and free, public, and open-source software. <br /> <br />
-          Your use of Mavryk Finance involves various risks, including, but not limited, to losses while digital assets
-          are deposited into Mavryk Finance via smart contract or economic exploits, and losses due to liquidations and
+          Your use of Maven Finance involves various risks, including, but not limited, to losses while digital assets
+          are deposited into Maven Finance via smart contract or economic exploits, and losses due to liquidations and
           redemptions.
           <br />
           <br />
           Before lending, borrowing, staking, trading, or liquidity providing you should fully review our technical
-          documentation to understand how the Mavryk Finance platform & protocol works. <br />
+          documentation to understand how the Maven Finance platform & protocol works. <br />
           <br />
-          While Mavryk Finance will be thoroughly audited by an independent software security firm and undergone beta
+          While Maven Finance will be thoroughly audited by an independent software security firm and undergone beta
           testing and public testnet testing, there remains a risk that assets deposited into the protocol as well as
-          Mavryk tokens may suffer complete and permanent economic loss should the protocol’s technical or economic
+          Maven tokens may suffer complete and permanent economic loss should the protocol’s technical or economic
           mechanisms suffer catastrophic failure. <br />
           <br />
-          THE MAVRYK FINANCE PLATFORM IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND. No
-          developer or entity involved in creating the MAVRYK FINANCE PLATFORM & PROTOCOL will be liable for any damages
+          THE MAVEN FINANCE PLATFORM IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND. No
+          developer or entity involved in creating the MAVEN FINANCE PLATFORM & PROTOCOL will be liable for any damages
           or claims whatsoever associated with your use, inability to use, or your interaction with other users of
-          Mavryk Finance, including any direct, indirect, incidental, special, exemplary, punitive or consequential
+          Maven Finance, including any direct, indirect, incidental, special, exemplary, punitive or consequential
           damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
         </div>
       </div>

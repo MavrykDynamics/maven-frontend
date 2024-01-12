@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
-export const FooterStyled = styled.footer<{ theme: MavrykTheme }>`
+export const FooterStyled = styled.footer<{ theme: MavenTheme }>`
   position: relative;
   --max-container: calc(100vw - 550px);
   background-color: ${({ theme }) => theme.footerColor};
@@ -150,7 +150,7 @@ export const FooterBottom = styled.div`
     }
   }
 `
-export const FooterSocials = styled.div<{ theme: MavrykTheme }>`
+export const FooterSocials = styled.div<{ theme: MavenTheme }>`
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -205,7 +205,7 @@ export const FooterLogo = styled.img`
   }
 `
 
-export const FooterButton = styled.div<{ theme: MavrykTheme }>`
+export const FooterButton = styled.div<{ theme: MavenTheme }>`
   cursor: pointer;
   background: ${({ theme }) => theme.textColor};
   border-radius: 5px;
@@ -216,7 +216,7 @@ export const FooterButton = styled.div<{ theme: MavrykTheme }>`
   margin-top: 10px;
 `
 
-export const FooterDescription = styled.div<{ theme: MavrykTheme }>`
+export const FooterDescription = styled.div<{ theme: MavenTheme }>`
   margin: 10px 0;
   max-width: 665px;
   font-weight: 400;
@@ -232,7 +232,7 @@ export const FooterDescription = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const FooterLinks = styled.div<{ theme: MavrykTheme }>`
+export const FooterLinks = styled.div<{ theme: MavenTheme }>`
   float: right;
   text-align: center;
   margin-right: 10px;

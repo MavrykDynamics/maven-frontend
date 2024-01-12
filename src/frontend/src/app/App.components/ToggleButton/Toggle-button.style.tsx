@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
-import { MavrykTheme } from 'utils/interfaces'
+import {MavenTheme} from 'utils/interfaces'
 
-export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
+export const ToggleButtonWrapper = styled.div<{ theme: MavenTheme }>`
   display: flex;
   margin: 0 auto;
   padding: 1px;
@@ -35,7 +35,7 @@ export const ToggleButtonWrapper = styled.div<{ theme: MavrykTheme }>`
   }
 `
 
-export const ToggleButtonItem = styled.div<{ theme: MavrykTheme }>`
+export const ToggleButtonItem = styled.div<{ theme: MavenTheme }>`
   padding: 10px 30px;
   height: inherit;
   width: fit-content;

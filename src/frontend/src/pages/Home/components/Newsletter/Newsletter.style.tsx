@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
-import { Page, primaryColor, secondaryColor, textColor } from 'styles'
-import { MavrykTheme } from 'utils/interfaces'
+import {textColor} from 'styles'
+import {MavenTheme} from 'utils/interfaces'
 
-export const NewsletterStyled = styled.section<{ theme: MavrykTheme }>`
+export const NewsletterStyled = styled.section<{ theme: MavenTheme }>`
   background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradientTransparent};
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -65,7 +65,7 @@ export const NewsletterFigure = styled.figure`
   }
 `
 
-export const NewsletterForm = styled.form<{ theme: MavrykTheme }>`
+export const NewsletterForm = styled.form<{ theme: MavenTheme }>`
   width: 694px;
   max-width: 100%;
   margin-bottom: 250px;
@@ -102,7 +102,7 @@ export const NewsletterForm = styled.form<{ theme: MavrykTheme }>`
   }
 `
 
-export const NewsletterButton = styled.button<{ theme: MavrykTheme }>`
+export const NewsletterButton = styled.button<{ theme: MavenTheme }>`
   line-height: 32px;
   font-size: 16px;
   font-weight: bold;
@@ -118,7 +118,7 @@ export const NewsletterButton = styled.button<{ theme: MavrykTheme }>`
   border: none;
 `
 
-export const NewsletterStatus = styled.div<{ theme: MavrykTheme }>`
+export const NewsletterStatus = styled.div<{ theme: MavenTheme }>`
   position: relative;
   top: 20px;
 
