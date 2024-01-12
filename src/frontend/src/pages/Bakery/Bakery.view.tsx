@@ -43,7 +43,7 @@ export function BakeryView() {
   const isLoading = useSelector((state: State) => state.loading)
   // TODO: MAV-1730, delete isDisabled for unlock Mavryk Dynamics Bakery
   const isDisabled = true
-  
+
   const [activeSliderTab, setActiveSliderTab] = useState(tabItems[0].id)
   const timerIdRef = useRef<NodeJS.Timeout | null>(null)
 

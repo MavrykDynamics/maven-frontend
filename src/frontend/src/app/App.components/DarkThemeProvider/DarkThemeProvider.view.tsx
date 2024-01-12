@@ -9,13 +9,7 @@ const DarkThemeProvider = ({ children }: any) => {
   const { themeSelected } = useSelector((state: State) => state.preferences)
   return (
     <ThemeProvider
-      theme={
-        themeSelected === LIGHT_THEME
-          ? { isDarkTheme: false, ...lightMode }
-          : themeSelected === DARK_THEME
-          ? { isDarkTheme: true, ...darkMode }
-          : { isDarkTheme: true, ...spaceMode }
-      }
+      theme={themeSelected === LIGHT_THEME ? { isDarkTheme: false, ...lightMode } : { isDarkTheme: true, ...spaceMode }}
     >
       {children}
     </ThemeProvider>
