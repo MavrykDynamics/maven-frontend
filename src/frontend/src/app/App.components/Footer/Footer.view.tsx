@@ -44,7 +44,7 @@ export const FooterView = ({ className }: Props) => {
           </div>
 
           <FooterSocials>
-            <a href="https://twitter.com/Mavryk_Finance" target="_blank" rel="noreferrer">
+            <a href="https://twitter.com/MavenFinanceDAO" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#twitter" />
               </svg>
@@ -64,7 +64,7 @@ export const FooterView = ({ className }: Props) => {
                 <use xlinkHref="/icons/sprites.svg#medium" />
               </svg>
             </a>
-            <a href="https://github.com/mavrykfinance/" target="_blank" rel="noreferrer">
+            <a href="https://github.com/mavenfinance/" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#gitHub" />
               </svg>
