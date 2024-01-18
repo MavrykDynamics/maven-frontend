@@ -280,7 +280,7 @@ export const Card = styled.div`
 
 export const CardWithBackground = styled(Card)<{ theme: MavenTheme }>`
   min-height: 425px;
-  background-image: url(${({ theme }) => theme.mavrykFinanceBg});
+  background-image: url(${({ theme }) => theme.mavenFinanceBakeriesBg});
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: auto;
