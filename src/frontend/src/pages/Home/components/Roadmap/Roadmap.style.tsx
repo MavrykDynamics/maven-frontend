@@ -91,14 +91,14 @@ export const RoadmapArticles = styled.div<{ theme: MavenTheme }>`
 export const RoadmapArticle = styled.article<{ theme: MavenTheme }>`
   display: grid;
 
-  grid-template-rows: 202px 124px 1fr;
+  grid-template-rows: 222px 124px 1fr;
 
   @media (max-width: 1265px) {
-    grid-template-rows: 202px 152px 1fr;
+    grid-template-rows: 222px 152px 1fr;
   }
 
   @media (max-width: 1190px) {
-    grid-template-rows: 222px 134px 1fr;
+    grid-template-rows: 242px 134px 1fr;
   }
 
   @media (max-width: 1000px) {
