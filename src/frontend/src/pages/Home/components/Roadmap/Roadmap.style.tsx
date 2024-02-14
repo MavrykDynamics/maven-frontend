@@ -126,6 +126,13 @@ export const RoadmapArticle = styled.article<{ theme: MavenTheme }>`
 
       figure {
         align-items: baseline;
+        padding-left: 10px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      figure {
+        padding-left: 7px;
       }
     }
 
