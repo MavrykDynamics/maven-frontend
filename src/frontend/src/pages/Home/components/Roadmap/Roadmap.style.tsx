@@ -211,7 +211,7 @@ export const RoadmapArticle = styled.article<{ theme: MavenTheme }>`
     font-weight: 500;
     font-size: 17px;
     line-height: 25px;
-    color: ${({ theme }) => theme.headingColor};
+    color: ${({ theme }) => theme.topbarMenuAndPlaceholders};
 
     @media (max-width: 1000px) {
       font-size: 15px;

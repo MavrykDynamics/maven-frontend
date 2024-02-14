@@ -5,30 +5,32 @@
     "list": [
       "DAO core protocol launch",
       "Satellite v1 launch",
+      "Oracles v1 launch",
       "Public Treasury sale",
       "MVN token listing",
       "Lending begins",
-      "Mavryk & DAO Bakery launch"
+      "Maven DAO Validator launch"
     ]
   },
   {
     "value": "",
-    "header": "Satellite Oracle Launch",
+    "header": "RWAs & Oracles v2 Launch",
     "list": [
-      "Satellite v2 oracle launch",
-      "Oracle feed rewards",
+      "Collateralized RWAs",
+      "Satellite \"array\" v2 oracle launch",
       "Custom oracle data API calls",
-      "OTC trading integration"
+      "New lending & collateral assets",
+      "BUY with USD/CC integration"
     ]
   },
   {
     "value": "",
     "header": "The Expanse",
     "list": [
-      "Satellite “array” v3 launch",
       "3rd Party Oracle Integration",
-      "New borrowable assets",
-      "Increased collateral tokens"
+      "New lending & collateral assets",
+      "OTC trading integration",
+      "DEX"
     ]
   }
 ]
