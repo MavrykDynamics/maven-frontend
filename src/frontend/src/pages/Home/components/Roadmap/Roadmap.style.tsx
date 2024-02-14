@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import { MavenTheme } from 'utils/interfaces'
 
 export const RoadmapStyled = styled.section<{ theme: MavenTheme }>`
   background-image: url(${({ theme }) => theme.starsBachground});
@@ -67,10 +67,10 @@ export const RoadmapArticles = styled.div<{ theme: MavenTheme }>`
     width: 100%;
     position: absolute;
     left: 0;
-    top: calc(50% + 70px);
+    top: calc(50% + 58px);
 
     @media (max-width: 1190px) {
-      top: calc(50% + 65px);
+      top: calc(50% + 58px);
     }
 
     @media (max-width: 1000px) {
@@ -90,10 +90,15 @@ export const RoadmapArticles = styled.div<{ theme: MavenTheme }>`
 `
 export const RoadmapArticle = styled.article<{ theme: MavenTheme }>`
   display: grid;
-  grid-template-rows: 202px 124px 1fr;
+
+  grid-template-rows: 222px 124px 1fr;
+
+  @media (max-width: 1265px) {
+    grid-template-rows: 222px 152px 1fr;
+  }
 
   @media (max-width: 1190px) {
-    grid-template-rows: 222px 124px 1fr;
+    grid-template-rows: 242px 134px 1fr;
   }
 
   @media (max-width: 1000px) {
@@ -121,6 +126,13 @@ export const RoadmapArticle = styled.article<{ theme: MavenTheme }>`
 
       figure {
         align-items: baseline;
+        padding-left: 10px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      figure {
+        padding-left: 7px;
       }
     }
 
@@ -236,7 +248,7 @@ export const RoadmapArticle = styled.article<{ theme: MavenTheme }>`
     align-items: flex-end;
 
     @media (max-width: 1000px) {
-      flex-direction: column;
+      flex-direction: column-reverse;
     }
 
     @media (max-width: 500px) {
