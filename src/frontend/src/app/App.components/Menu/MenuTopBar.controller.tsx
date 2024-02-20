@@ -25,7 +25,7 @@ export const SocialIcons = () => (
     <a href="https://t.me/MavenFinance" target="_blank" rel="noreferrer">
       <Icon id="socialTelegram" />
     </a>
-    <a href="https://blog.mavrykdynamics.com/" target="_blank" rel="noreferrer">
+    <a href="https://blog.mavenfinance.io/" target="_blank" rel="noreferrer">
       <Icon id="socialMedium" />
     </a>
     <a href="https://github.com/mavenfinance/" target="_blank" rel="noreferrer">
@@ -85,7 +85,7 @@ export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
       <div className="grouped-links">
         <TopBarLinks groupName={'Products'} groupLinks={PRODUCTS_LINKS} />
         <TopBarLinks groupName={'About'} groupLinks={ABOUT_LINKS} />
-        <TopBarLinks groupName={'Blog 🔥'} groupLinks={BLOG_LINKS} groupNameLink="https://blog.mavrykdynamics.com/" />
+        <TopBarLinks groupName={'Blog 🔥'} groupLinks={BLOG_LINKS} groupNameLink="https://blog.mavenfinance.io/" />
         <TopBarLinks groupName={'Docs'} groupLinks={DOCS_LINKS} />
       </div>
       <div className="right-side">

@@ -63,7 +63,7 @@ export const DiscordPopupView = ({ closeCallback }: NewsLetterProps) => {
               <use xlinkHref="/icons/sprites.svg#telegram" />
             </svg>
           </a>
-          <a href="https://medium.com/@Mavryk_Finance" target="_blank" rel="noreferrer">
+          <a href="https://blog.mavenfinance.io/" target="_blank" rel="noreferrer">
             <svg>
               <use xlinkHref="/icons/sprites.svg#medium" />
             </svg>

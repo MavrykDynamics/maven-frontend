@@ -59,7 +59,7 @@ export const FooterView = ({ className }: Props) => {
                 <use xlinkHref="/icons/sprites.svg#telegram" />
               </svg>
             </a>
-            <a href="https://blog.mavrykdynamics.com/" target="_blank" rel="noreferrer">
+            <a href="https://blog.mavenfinance.io/" target="_blank" rel="noreferrer">
               <svg>
                 <use xlinkHref="/icons/sprites.svg#medium" />
               </svg>

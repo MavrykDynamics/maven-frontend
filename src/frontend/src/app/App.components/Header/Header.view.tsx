@@ -107,7 +107,7 @@ export const HeaderView = () => {
         >
           Satellites
         </HashLink>
-        <a href="https://blog.mavrykdynamics.com/" target="_blank" rel="noreferrer">
+        <a href="https://blog.mavenfinance.io/" target="_blank" rel="noreferrer">
           Blog
         </a>
         <label>
