@@ -1,6 +1,6 @@
-import styled, {css} from 'styled-components/macro'
-import {Page} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { css } from 'styled-components/macro'
+import { Page } from 'styles'
+import { MavenTheme } from 'utils/interfaces'
 
 export const LitepaperStyled = styled(Page)<{ theme: MavenTheme }>`
   font-size: 16px;
@@ -120,7 +120,7 @@ export const LitepaperIndex = styled.ul`
   }
 
   @media (max-height: 940px) {
-    height: 652px;
+    height: calc(100vh - 140px);
   }
 
   @media (max-width: 700px) {
