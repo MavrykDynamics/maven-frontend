@@ -9,7 +9,6 @@ import Toggle from 'react-toggle'
 import {State} from 'utils/interfaces'
 import {DARK_THEME, LIGHT_THEME} from 'redux/actions/preferences.action'
 import {useMedia} from 'react-use'
-import Icon from '../Icon/Icon.view'
 
 export const HeaderView = () => {
   const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected !== LIGHT_THEME)
@@ -60,8 +59,8 @@ export const HeaderView = () => {
         </Link>
 
         <Link to="/litepaper">Litepaper</Link>
-        <Link to="/liquidity-baking">{isMobile ? 'LB' : 'Liquidity Baking'}</Link>
-        <Link to="/bakery">{isSmallMobile ? <Icon id='bakery' /> : isMobile ? 'Bakeries' : 'Maven Bakeries'}</Link>
+        {/*<Link to="/liquidity-baking">{isMobile ? 'LB' : 'Liquidity Baking'}</Link>*/}
+        {/*<Link to="/bakery">{isSmallMobile ? <Icon id='bakery' /> : isMobile ? 'Bakeries' : 'Maven Bakeries'}</Link>*/}
 
         <HashLink
           to="/#calculator"
