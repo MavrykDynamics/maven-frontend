@@ -41,8 +41,8 @@ export const PRODUCTS_LINKS = [
     path: '/dashboard/lending',
     disabled: true
   },
-  { name: 'Liquidity Baking', href: 'liquidity-baking', path: '/liquidity-baking' },
-  { name: 'Maven Bakeries', href: 'bakery', path: '/bakery' },
+  // { name: 'Liquidity Baking', href: 'liquidity-baking', path: '/liquidity-baking' },
+  // { name: 'Maven Bakeries', href: 'bakery', path: '/bakery' },
 ]
 
 export const ABOUT_LINKS = [
