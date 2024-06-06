@@ -1,6 +1,5 @@
-import {ConnectWallet} from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import Icon from 'app/App.components/Icon/Icon.view'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {TopBarLinks} from './TopBarLinks/TopBarLinks.controller'
 import {MenuLogo, MenuTopStyled} from './MenuTopBar.style'
@@ -8,7 +7,9 @@ import {MobileTopBar} from './TopBarLinks/MobileTopBar.controller'
 import {useCallback, useState} from 'react'
 import {useMedia} from 'react-use'
 import {State} from 'utils/interfaces'
-import {LIGHT_THEME} from 'redux/actions/preferences.action'
+import {LIGHT_THEME, SPACE_THEME, themeSetterAction, ThemeType} from 'redux/actions/preferences.action'
+import Toggle from "react-toggle";
+import {HeaderIcon} from "../Header/Header.style";
 
 type MenuTopBarProps = {
   openChangeNodePopupHandler: () => void
@@ -37,9 +38,9 @@ export const SocialIcons = () => (
 export const PRODUCTS_LINKS = [
   {
     name: 'Dapp',
-    href: 'https://ghostnet.mavenfinance.io/',
+    href: 'https://atlasnet.mavenfinance.io/',
     path: '/dashboard/lending',
-    disabled: true
+    disabled: false
   },
   // { name: 'Liquidity Baking', href: 'liquidity-baking', path: '/liquidity-baking' },
   // { name: 'Maven Bakeries', href: 'bakery', path: '/bakery' },
@@ -62,11 +63,13 @@ export const DOCS_LINKS = [
 ]
 
 export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
-  const { themeSelected } = useSelector((state: State) => state.preferences)
+  const dispatch = useDispatch()
+  const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected !== LIGHT_THEME)
+  const setNewThemeHandler = useCallback((newTheme: ThemeType) => dispatch(themeSetterAction(newTheme)), [])
   const [showMobileTopBar, setShowMobileTopBar] = useState(false)
   const isMobileView = useMedia('(max-width: 870px)')
 
-  const logoImg = themeSelected === LIGHT_THEME ? '/logo-light.svg' : '/logo-dark.svg'
+  const logoImg = !darkThemeEnabled ? '/logo-light.svg' : '/logo-dark.svg'
   const logoMobile = '/logo-mobile.svg'
 
   const burgerClickHandlerWrapped = useCallback((e) => {
@@ -91,10 +94,19 @@ export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
       <div className="right-side">
         <SocialIcons />
         {/* Need this condition cuz of wert io container, technically without it will be 2 containers, and wert will take this container on mobile, not the mobile one */}
-        {!isMobileView ? <ConnectWallet className="connect-wallet-small" /> : null}
-        <div className="settingsIcon" onClick={openChangeNodePopupHandler}>
-          <Icon id="gear" />
-        </div>
+        {/*{!isMobileView ? <ConnectWallet className="connect-wallet-small" /> : null}*/}
+          <label>
+              <Toggle
+                  //defaultChecked={themeMode}
+                  defaultChecked={darkThemeEnabled}
+                  icons={{
+                      checked: <HeaderIcon src="/images/moon.svg" />,
+                      unchecked: <HeaderIcon src="/images/sun.svg" />,
+                  }}
+                  aria-label="Dark mode toggle"
+                  onChange={() => darkThemeEnabled ? setNewThemeHandler(LIGHT_THEME) :setNewThemeHandler(SPACE_THEME)}
+              />
+          </label>
       </div>
 
       <div className="mobile-menu">
