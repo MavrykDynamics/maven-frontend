@@ -7,9 +7,8 @@ import {MobileTopBar} from './TopBarLinks/MobileTopBar.controller'
 import {useCallback, useState} from 'react'
 import {useMedia} from 'react-use'
 import {State} from 'utils/interfaces'
-import {LIGHT_THEME, SPACE_THEME, themeSetterAction, ThemeType} from 'redux/actions/preferences.action'
-import Toggle from "react-toggle";
-import {HeaderIcon} from "../Header/Header.style";
+import {LIGHT_THEME} from 'redux/actions/preferences.action'
+import {ThemeToggle} from "../ToggleButton/ThemeToggle.controller";
 
 type MenuTopBarProps = {
   openChangeNodePopupHandler: () => void
@@ -47,8 +46,8 @@ export const PRODUCTS_LINKS = [
 ]
 
 export const ABOUT_LINKS = [
-  { name: 'MVN Token (Soon)', href: '/', disabled: true },
   { name: 'Team', href: 'https://mavenfinance.io/#team', path: 'https://mavenfinance.io/#team' },
+  { name: 'MVN Token (Soon)', href: '/', disabled: true },
   // { name: 'Who we are', href: 'https://mavenfinance.io/' },
   // { name: 'Roadmap', href: 'https://mavenfinance.io/#roadmap' },
 ]
@@ -65,7 +64,6 @@ export const DOCS_LINKS = [
 export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
   const dispatch = useDispatch()
   const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected !== LIGHT_THEME)
-  const setNewThemeHandler = useCallback((newTheme: ThemeType) => dispatch(themeSetterAction(newTheme)), [])
   const [showMobileTopBar, setShowMobileTopBar] = useState(false)
   const isMobileView = useMedia('(max-width: 870px)')
 
@@ -95,18 +93,7 @@ export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
         <SocialIcons />
         {/* Need this condition cuz of wert io container, technically without it will be 2 containers, and wert will take this container on mobile, not the mobile one */}
         {/*{!isMobileView ? <ConnectWallet className="connect-wallet-small" /> : null}*/}
-          <label>
-              <Toggle
-                  //defaultChecked={themeMode}
-                  defaultChecked={darkThemeEnabled}
-                  icons={{
-                      checked: <HeaderIcon src="/images/moon.svg" />,
-                      unchecked: <HeaderIcon src="/images/sun.svg" />,
-                  }}
-                  aria-label="Dark mode toggle"
-                  onChange={() => setNewThemeHandler(darkThemeEnabled ? SPACE_THEME : LIGHT_THEME)}
-              />
-          </label>
+          <ThemeToggle />
       </div>
 
       <div className="mobile-menu">

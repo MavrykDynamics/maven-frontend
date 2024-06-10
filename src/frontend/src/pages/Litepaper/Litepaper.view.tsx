@@ -124,12 +124,12 @@ export const LitepaperView = () => {
   }
 
   if (isIOS && changeNodePopupOpen) {
-    ;<SettingPopup isModalOpened showBackdrop={false} closeModal={closeModalHandler} />
+    <SettingPopup isModalOpened showBackdrop={false} closeModal={closeModalHandler} />
   }
 
   return (
     <>
-      <SettingPopup isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />
+      {/*<SettingPopup isModalOpened={!isIOS && changeNodePopupOpen} closeModal={closeModalHandler} />*/}
       <LitepaperStyled>
         <MenuTopBar openChangeNodePopupHandler={openChangeNodePopup} />
         <LitepaperGrid>
