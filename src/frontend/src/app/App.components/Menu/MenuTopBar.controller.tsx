@@ -104,7 +104,7 @@ export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
                       unchecked: <HeaderIcon src="/images/sun.svg" />,
                   }}
                   aria-label="Dark mode toggle"
-                  onChange={() => darkThemeEnabled ? setNewThemeHandler(LIGHT_THEME) :setNewThemeHandler(SPACE_THEME)}
+                  onChange={() => setNewThemeHandler(darkThemeEnabled ? SPACE_THEME : LIGHT_THEME)}
               />
           </label>
       </div>

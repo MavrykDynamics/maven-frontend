@@ -113,6 +113,8 @@ export const SettingPopup = ({
       <button onClick={closeModal} className="close-modal" />
 
       <SettingsPopupBase>
+
+        {/*// TODO: Undo removing the RPC node in the future. */}
         {/*<div className="title">Change RPC Node</div>*/}
 
         {/*<ChangeNodeNodesList>*/}
