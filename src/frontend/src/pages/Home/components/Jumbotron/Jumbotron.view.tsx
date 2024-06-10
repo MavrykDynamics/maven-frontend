@@ -30,7 +30,7 @@ export const JumbotronView = () => {
             participating in the governance of the platform.
           </JubontronSubTitle>
           <JumbotronButtons>
-            <a href="https://ghostnet.mavenfinance.io/" target="_blank" rel="noreferrer">
+            <a href="https://atlasnet.mavenfinance.io/" target="_blank" rel="noreferrer">
               <JumbotronButton className={BUTTON_PULSE}>Enter DAPP</JumbotronButton>
             </a>
 

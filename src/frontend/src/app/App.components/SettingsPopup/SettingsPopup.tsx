@@ -1,43 +1,30 @@
-import React, { useCallback, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useClickAway, useLockBodyScroll } from 'react-use'
+import React, {useCallback, useRef, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {useClickAway, useLockBodyScroll} from 'react-use'
 
 // helpers, consts
-import {
-  BUTTON_SIMPLE,
-  BUTTON_PRIMARY,
-  BUTTON_WIDE,
-  BUTTON_SECONDARY,
-  BUTTON_SECONDARY_PURPLE,
-} from '../NewButton/NewButton.constants'
+import {BUTTON_SECONDARY, BUTTON_SECONDARY_PURPLE, BUTTON_WIDE,} from '../NewButton/NewButton.constants'
 import {
   INPUT_STATUS_DEFAULT,
-  INPUT_STATUS_SUCCESS,
   INPUT_STATUS_ERROR,
+  INPUT_STATUS_SUCCESS,
   InputStatusType,
 } from '../NewInput/NewInput.constants'
-import { isValidRPCNode } from 'utils/validatorFunctions'
-import { ThemeType, themeSetterAction, SPACE_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
+import {isValidRPCNode} from 'utils/validatorFunctions'
+import {LIGHT_THEME, SPACE_THEME, themeSetterAction, ThemeType} from 'redux/actions/preferences.action'
 
 // actions
-import { selectNewRPCNode, setNewRPCNodes } from './SettingsPopup.actions'
+import {selectNewRPCNode, setNewRPCNodes} from './SettingsPopup.actions'
 
 // types
-import { RPCNodeType, State } from 'utils/interfaces'
+import {RPCNodeType, State} from 'utils/interfaces'
 
 // views
-import Icon from '../Icon/Icon.view'
-import { ImageWithPlug } from '../Icon/ImageWithPlug'
 import Button from '../NewButton/NewButton'
-import { Input } from '../NewInput/NewInput'
 
 // styles
-import { PopupContainer, PopupContainerWrapper } from '../Popup/PopupMain.style'
-import {
-  ChangeNodeNodesList,
-  ChangeNodeNodesListItem,
-  SettingsPopupBase,
-} from '../Popup/popupBases/SettingsPopup.style'
+import {PopupContainer, PopupContainerWrapper} from '../Popup/PopupMain.style'
+import {SettingsPopupBase,} from '../Popup/popupBases/SettingsPopup.style'
 
 const MAX_NODES_AMOUNT = 3
 const DEFAULT_NODE_INPUT_STATE: { node: string; nodeValidation: InputStatusType } = {
@@ -126,56 +113,58 @@ export const SettingPopup = ({
       <button onClick={closeModal} className="close-modal" />
 
       <SettingsPopupBase>
-        <div className="title">Change RPC Node</div>
 
-        <ChangeNodeNodesList>
-          {RPC_NODES.map(({ title, url, nodeLogoUrl, isUser }) => (
-            <ChangeNodeNodesListItem key={url} onClick={() => nodeClickHandler(url)} isSelected={selectedNode === url}>
-              {nodeLogoUrl ? (
-                <ImageWithPlug imageLink={`/images/${nodeLogoUrl}`} alt={`${title ?? url} node logo`} />
-              ) : null}
-              <span className={isUser ? 'user-node' : ''}>{isUser ? url : title}</span>
-              {isUser ? (
-                <div className="remove-node">
-                  <Button kind={BUTTON_SIMPLE} isThin onClick={removeUserNode}>
-                    <Icon id="delete" />
-                  </Button>
-                </div>
-              ) : null}
-            </ChangeNodeNodesListItem>
-          ))}
+        {/*// TODO: Undo removing the RPC node in the future. */}
+        {/*<div className="title">Change RPC Node</div>*/}
 
-          {RPC_NODES.length < MAX_NODES_AMOUNT ? (
-            <ChangeNodeNodesListItem
-              className={`add_node ${expandedInput ? 'expanded' : ''}`}
-              onClick={() => inputRef.current?.focus()}
-              ref={inputWrapperRef}
-            >
-              <div className="add-new-node-title">Add New Node</div>
-              <Input
-                settings={{ inputStatus: inputData.nodeValidation, showErrorMessage: false }}
-                inputProps={{
-                  onFocus: () => setExpandedInput(true),
-                  onChange: handleChange,
-                  placeholder: 'https://...',
-                  type: 'text',
-                  value: inputData.node,
-                }}
-                ref={inputRef}
-              />
-            </ChangeNodeNodesListItem>
-          ) : null}
-        </ChangeNodeNodesList>
+        {/*<ChangeNodeNodesList>*/}
+        {/*  {RPC_NODES.map(({ title, url, nodeLogoUrl, isUser }) => (*/}
+        {/*    <ChangeNodeNodesListItem key={url} onClick={() => nodeClickHandler(url)} isSelected={selectedNode === url}>*/}
+        {/*      {nodeLogoUrl ? (*/}
+        {/*        <ImageWithPlug imageLink={`/images/${nodeLogoUrl}`} alt={`${title ?? url} node logo`} />*/}
+        {/*      ) : null}*/}
+        {/*      <span className={isUser ? 'user-node' : ''}>{isUser ? url : title}</span>*/}
+        {/*      {isUser ? (*/}
+        {/*        <div className="remove-node">*/}
+        {/*          <Button kind={BUTTON_SIMPLE} isThin onClick={removeUserNode}>*/}
+        {/*            <Icon id="delete" />*/}
+        {/*          </Button>*/}
+        {/*        </div>*/}
+        {/*      ) : null}*/}
+        {/*    </ChangeNodeNodesListItem>*/}
+        {/*  ))}*/}
 
-        {rpcNodeError ? <div className="error-msg">Error: {rpcNodeError}</div> : null}
+        {/*  {RPC_NODES.length < MAX_NODES_AMOUNT ? (*/}
+        {/*    <ChangeNodeNodesListItem*/}
+        {/*      className={`add_node ${expandedInput ? 'expanded' : ''}`}*/}
+        {/*      onClick={() => inputRef.current?.focus()}*/}
+        {/*      ref={inputWrapperRef}*/}
+        {/*    >*/}
+        {/*      <div className="add-new-node-title">Add New Node</div>*/}
+        {/*      <Input*/}
+        {/*        settings={{ inputStatus: inputData.nodeValidation, showErrorMessage: false }}*/}
+        {/*        inputProps={{*/}
+        {/*          onFocus: () => setExpandedInput(true),*/}
+        {/*          onChange: handleChange,*/}
+        {/*          placeholder: 'https://...',*/}
+        {/*          type: 'text',*/}
+        {/*          value: inputData.node,*/}
+        {/*        }}*/}
+        {/*        ref={inputRef}*/}
+        {/*      />*/}
+        {/*    </ChangeNodeNodesListItem>*/}
+        {/*  ) : null}*/}
+        {/*</ChangeNodeNodesList>*/}
 
-        <div className="change-node-descr">
-          Changing node can improve stability and speed when the network is saturated.
-        </div>
+        {/*{rpcNodeError ? <div className="error-msg">Error: {rpcNodeError}</div> : null}*/}
 
-        <Button onClick={confirmHandler} kind={BUTTON_PRIMARY} form={BUTTON_WIDE} disabled={confirmDisabled}>
-          <Icon id="okIcon" /> Confirm
-        </Button>
+        {/*<div className="change-node-descr">*/}
+        {/*  Changing node can improve stability and speed when the network is saturated.*/}
+        {/*</div>*/}
+
+        {/*<Button onClick={confirmHandler} kind={BUTTON_PRIMARY} form={BUTTON_WIDE} disabled={confirmDisabled}>*/}
+        {/*  <Icon id="okIcon" /> Confirm*/}
+        {/*</Button>*/}
 
         <Themes />
       </SettingsPopupBase>
@@ -198,7 +187,7 @@ const Themes = () => {
 
   return (
     <div className="theme-switcher-block">
-      <div className="title">Choose the theme</div>
+      <div className="title">Choose Theme</div>
       <div className="buttons-wrapper">
         <Button
           kind={themeSelected === SPACE_THEME ? BUTTON_SECONDARY : BUTTON_SECONDARY_PURPLE}

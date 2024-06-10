@@ -1,15 +1,13 @@
-import {HeaderGrid, HeaderIcon, HeaderLogo, HeaderStyled} from './Header.style'
-import {TOGGLE_DARK_THEME} from 'redux/action.types'
+import {HeaderGrid, HeaderLogo, HeaderStyled} from './Header.style'
 import {useEffect, useState} from 'react'
 import {Helmet} from 'react-helmet'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {HashLink} from 'react-router-hash-link'
-import Toggle from 'react-toggle'
 import {State} from 'utils/interfaces'
-import {DARK_THEME, LIGHT_THEME} from 'redux/actions/preferences.action'
+import {LIGHT_THEME} from 'redux/actions/preferences.action'
 import {useMedia} from 'react-use'
-import Icon from '../Icon/Icon.view'
+import {ThemeToggle} from "../ToggleButton/ThemeToggle.controller";
 
 export const HeaderView = () => {
   const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected !== LIGHT_THEME)
@@ -60,8 +58,8 @@ export const HeaderView = () => {
         </Link>
 
         <Link to="/litepaper">Litepaper</Link>
-        <Link to="/liquidity-baking">{isMobile ? 'LB' : 'Liquidity Baking'}</Link>
-        <Link to="/bakery">{isSmallMobile ? <Icon id='bakery' /> : isMobile ? 'Bakeries' : 'Maven Bakeries'}</Link>
+        {/*<Link to="/liquidity-baking">{isMobile ? 'LB' : 'Liquidity Baking'}</Link>*/}
+        {/*<Link to="/bakery">{isSmallMobile ? <Icon id='bakery' /> : isMobile ? 'Bakeries' : 'Maven Bakeries'}</Link>*/}
 
         <HashLink
           to="/#calculator"
@@ -110,20 +108,7 @@ export const HeaderView = () => {
         <a href="https://blog.mavenfinance.io/" target="_blank" rel="noreferrer">
           Blog
         </a>
-        <label>
-          <Toggle
-            //defaultChecked={themeMode}
-            defaultChecked={darkThemeEnabled}
-            icons={{
-              checked: <HeaderIcon src="/images/moon.svg" />,
-              unchecked: <HeaderIcon src="/images/sun.svg" />,
-            }}
-            aria-label="Dark mode toggle"
-            onChange={() =>
-              dispatch({ type: TOGGLE_DARK_THEME, newThemeSelected: darkThemeEnabled ? LIGHT_THEME : DARK_THEME })
-            }
-          />
-        </label>
+        <ThemeToggle />
       </HeaderGrid>
     </HeaderStyled>
   )
