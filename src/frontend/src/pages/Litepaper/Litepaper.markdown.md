@@ -26,7 +26,7 @@ Maven Finance offers an innovative approach to finance, and is cooperatively ope
 
 While the applications for such a system are nearly infinite, we *start* in practice with *one specific use case*: borrowing known stablecoins & assets against a multi-asset collateral.
 
-To this end, Maven Finance introduces peer-2-peer stablecoin & asset lending of well-known digital assets: **USDT**, **EURL**, **XTZ**, and **tzBTC** which can be borrowed by depositing assets as collateral in a multi-asset, non-custodial vault.
+To this end, Maven Finance introduces peer-2-peer stablecoin & asset lending of well-known digital assets: **USDT**, **MVRK**, and **wBTC** which can be borrowed by depositing assets as collateral in a multi-asset, non-custodial vault.
 
 Notably:
 
@@ -42,7 +42,7 @@ Maven Finance uses [decentralized oracles](#satellites-governance-and-the-decent
 
 ## Multi-Asset Backed Loans
 
-Stablecoins are secure and convenient means of payment for goods and services in the context of a crypto-asset portfolio. Maven Finance allows its users to put up existing crypto-assets as collateral for a stablecoin loan in assets such as USDT or EURL, up to a 50% loan-to-value ratio (**LTV**). For this, we are using a peer-2-peer lending model, where the liquidity for borrowing is provided by user’s seeking to earn yield by lending.
+Stablecoins are secure and convenient means of payment for goods and services in the context of a crypto-asset portfolio. Maven Finance allows its users to put up existing crypto-assets as collateral for a stablecoin loan in assets such as USDT, up to a 50% loan-to-value ratio (**LTV**). For this, we are using a peer-2-peer lending model, where the liquidity for borrowing is provided by user’s seeking to earn yield by lending.
 
 However:
 
@@ -62,7 +62,7 @@ You can take out a loan by depositing a single/multi-asset collateral into a vau
 
 **_The system does not allow you to obtain a loan that would be lower than the required collateralization ratio, i.e., you can borrow up to half the value of the underlying assets. It is highly recommended to healthily over-collateralize the loan, to avoid [liquidations](#liquidations) in the event of a sudden price movement!_**
 
-_For example: Bob deposits $3,000 worth of tzBTC to collateralize a vault, and borrows $1,000 USDT. Bob’s loan is 300% collateralized, and considered an active “healthy” vault. The maximum Bob would be able to borrow is $1,500._
+_For example: Bob deposits $3,000 worth of wBTC to collateralize a vault, and borrows $1,000 USDT. Bob’s loan is 300% collateralized, and considered an active “healthy” vault. The maximum Bob would be able to borrow is $1,500._
 
 ### Peer to Peer Lending
 
@@ -70,27 +70,27 @@ The Maven Finance lending module works in a p2p structure. Users (Lenders) suppl
 
 ### Lending: Earning Yield on Your Assets
 
-Lenders can supply assets; USDT, EURL, XTZ, & tzBTC to lending pools and earn interest. Upon supplying assets to the lending pools, a lender will receive an mToken in return that is a 1-1 representation of their share of the lending pool, such as mUSDT or mEURL. These tokens can be staked in Maven Finance’s Yield Farms, further increasing their yield, or traded/sold on the open market. These tokens are the ticket for reimbursement of the original deposit into the lending pool and for claiming lending rewards.
+Lenders can supply assets; USDT, MVRK, & wBTC to lending pools and earn interest. Upon supplying assets to the lending pools, a lender will receive an mToken in return that is a 1-1 representation of their share of the lending pool, such as mUSDT or mMVRK. These tokens can be staked in Maven Finance’s Yield Farms, further increasing their yield, or traded/sold on the open market. These tokens are the ticket for reimbursement of the original deposit into the lending pool and for claiming lending rewards.
 
 *For example: Alice supplies 25,000 USDT to the Maven Finance USDT lending pool. She will receive 25,000  mUSDT which she can keep in her wallet, stake in Maven Finance Farms, or trade/sell on the open market. If she chooses to sell/trade her mUSDT tokens, she will be forfeiting the tokens she deposited into the pools (per the amount she sold) and from receiving the rewards for her deposits as she is selling her rights to the new buyer.*
 
 ### Borrowing: Single & Multi-Collateral Vaults
 
-Borrowers can borrow assets; (ex. USDT, EURL) from Maven Finance’s lending pools and are charged an interest rate on their loans, and a one-time admin origination fee. To borrow from the Maven Finance lending pools, borrowers must open a vault and deposit collateral in them. Upon supplying collateral to a vault, users will be able to borrow a supported asset of their choice (one loaned asset type per vault) with up to a minimum 200% collateral relative to borrowed assets (in dollar value). Our vaults support the ability to deposit multiple types of collateral to back a single loan. Additionally, vaults only support a single asset type to be borrowed, if a user wishes to borrow two different assets (ex. borrowing USDT & EURL) they must open separate vaults.
+Borrowers can borrow assets; (ex. USDT, MVRK) from Maven Finance’s lending pools and are charged an interest rate on their loans, and a one-time admin origination fee. To borrow from the Maven Finance lending pools, borrowers must open a vault and deposit collateral in them. Upon supplying collateral to a vault, users will be able to borrow a supported asset of their choice (one loaned asset type per vault) with up to a minimum 200% collateral relative to borrowed assets (in dollar value). Our vaults support the ability to deposit multiple types of collateral to back a single loan. Additionally, vaults only support a single asset type to be borrowed, if a user wishes to borrow two different assets (ex. borrowing USDT & MVRK) they must open separate vaults.
 
-*For example: Bob wants to borrow 1,000 USDT so he deposits 3,000 XTZ (~ $3,000 @ $1/XTZ) into a vault he creates. Upon depositing the XTZ into the vault, Bob is able to withdraw up to 1,500 USDT from the lending pools. The interest Bob will pay is in USDT. Once Bob repays the loan and interest, he will be able to withdraw the collateral in his vault.*
+*For example: Bob wants to borrow 1,000 USDT so he deposits 3,000 MVRK (~ $3,000 @ $1/MVRK) into a vault he creates. Upon depositing the MVRK into the vault, Bob is able to withdraw up to 1,500 USDT from the lending pools. The interest Bob will pay is in USDT. Once Bob repays the loan and interest, he will be able to withdraw the collateral in his vault.*
 
-Note 1: Deposited XTZ in personal vaults may be delegated to a Bakery of your choice, and the earned baking rewards accrue to the vault, and contribute to the vaults collateral ratio.
+Note 1: Deposited MVRK in personal vaults may be delegated to a Bakery of your choice, and the earned baking rewards accrue to the vault, and contribute to the vaults collateral ratio.
 
 Note 2: sMVN collateralized in vaults may be delegated to Satellites. However, sMVN collateralization will not be supported at Genesis, and will be voted in via Governance.
 
 ### Multi-Collateral Vaults
 
-The Maven Finance platform allows users to open multi-collateral vaults for the same loan asset type, while ensuring that the collateral to loan ratio stays above the required 200% ratio (collateral to the loan in dollar value). A user is allowed to open a vault and deposit multiple asset types as collateral for their loans. At launch, Maven Finance will accept XTZ, tzBTC, SIRS, USDT, EURL, and mTokens as supported assets for collateral. A user is also able to open a vault with one asset as collateral, and later add multiple assets to increase their collateral. However, only one loaned asset per vault is allowed. A user is not able to open a vault and use the collateral they deposited into that vault to borrow different assets. In order to borrow different assets, they will need to open a vault for each type of asset they wish to borrow.
+The Maven Finance platform allows users to open multi-collateral vaults for the same loan asset type, while ensuring that the collateral to loan ratio stays above the required 200% ratio (collateral to the loan in dollar value). A user is allowed to open a vault and deposit multiple asset types as collateral for their loans. At launch, Maven Finance will accept MVRK, wBTC, USDT, and mTokens as supported assets for collateral. A user is also able to open a vault with one asset as collateral, and later add multiple assets to increase their collateral. However, only one loaned asset per vault is allowed. A user is not able to open a vault and use the collateral they deposited into that vault to borrow different assets. In order to borrow different assets, they will need to open a vault for each type of asset they wish to borrow.
 
-*Example 1: Alice borrows 1,000 USDT by depositing the required amount of XTZ as collateral. Later, she sees that the value of XTZ has dropped and needs to add more collateral to avoid liquidation. Alice realizes she does not have more XTZ but does have tzBTC, so she deposits tzBTC into the USDT vault to increase the collateral ratio. Her vault now has two forms of collateral (XTZ & tzBTC) securing her USDT loan. The loan interest for this vault is in USDT.*
+*Example 1: Alice borrows 1,000 USDT by depositing the required amount of MVRK as collateral. Later, she sees that the value of MVRK has dropped and needs to add more collateral to avoid liquidation. Alice realizes she does not have more MVRK but does have wBTC, so she deposits wBTC into the USDT vault to increase the collateral ratio. Her vault now has two forms of collateral (MVRK & wBTC) securing her USDT loan. The loan interest for this vault is in USDT.*
 
-*Example 1, Continued: Alice decides that she wants to borrow EURL. As the vault she originally opened was for USDT, she must open a new vault for EURL. Alice opens a new EURL vault and deposits $3,000 of tzBTC as collateral, and then borrows $800 worth of EURL. The loan interest for this vault is in EURL.*
+*Example 1, Continued: Alice decides that she wants to borrow MVRK. As the vault she originally opened was for USDT, she must open a new vault for MVRK. Alice opens a new MVRK vault and deposits $3,000 of wBTC as collateral, and then borrows $800 worth of MVRK. The loan interest for this vault is in MVRK.*
 
 ### Liquidations
 
@@ -111,7 +111,7 @@ Note: A user will not be able to liquidate a vault if it is not liquidatable at 
 
 ***Example 1, a Liquidatable Vault:***
 
-*Alice wants to borrow 500 USDT so she opens a vault and deposits $1,000 worth of XTZ as collateral*
+*Alice wants to borrow 500 USDT so she opens a vault and deposits $1,000 worth of MVRK as collateral*
 
 - *Collateral Ratio: 200% (or Loan-To-Value Ratio of 50%)*
 - *Liquidation Ratio: 150%*
@@ -124,7 +124,7 @@ Note: A user will not be able to liquidate a vault if it is not liquidatable at 
 
 *Alice’s vault in the example above is open for liquidation. Bob steps in to liquidate up to 50% of Alice’s $500 in USDT debt, and repays $250 in USDT. By repaying $250 of Alice’s USDT debt, Bob receives $250 in collateral which secured Alice’s loan, plus an additional $25 of collateral (10%) as a reward for liquidating the vault. The Maven Finance Treasury also receives $25 of collateral as a fee (this fee is paid by the vault’s collateral, not from the liquidator).*
 
-Note: If the vault is secured by multiple collateral types, the reward paid to the liquidator will be proportional to their percentages in the vault. If the vault has 50% XTZ, and 50% tzBTC, then the liquidation rewards will be paid as 50% XTZ & 50% tzBTC.
+Note: If the vault is secured by multiple collateral types, the reward paid to the liquidator will be proportional to their percentages in the vault. If the vault has 50% MVRK, and 50% wBTC, then the liquidation rewards will be paid as 50% MVRK & 50% wBTC.
 
 ## Satellites, Governance, and the Decentralized Oracle
 
@@ -135,18 +135,18 @@ Note: If the vault is secured by multiple collateral types, the reward paid to t
 1. **Curators of Governance Voting:** Satellites vote on:
     - Updates to business logic (e.g. disbursing funds from the [Treasury](#governance--treasury), altering the interest rate algorithm for loans etc
     - Updates to the core Maven Finance protocol (e.g. adding a new [collateral asset class for vaults](#multi-asset-backed-loans), or adding new smart contracts)
-2. **Oracle Price Feed Providers:** Satellites are nodes of Maven Finance's decentralized oracle, which provides price data for the assets that can be used as collateral for [the vaults](#multi-asset-backed-loans) (XTZ, tzBTC, SIRS, etc.)
+2. **Oracle Price Feed Providers:** Satellites are nodes of Maven Finance's decentralized oracle, which provides price data for the assets that can be used as collateral for [the vaults](#multi-asset-backed-loans) (MVRK, wBTC, etc.)
 
 A Satellite can act on its own behalf and can receive delegations on behalf of others.
 
 To operate a Maven Finance Satellite, a user needs to stake a security deposit in MVN as a bond, which the user can buy on the open market or earn by participating in the ecosystem (e.g. through yield farming). Technically speaking, a Satellite may stake a security deposit to participate in governance and *not* operate an oracle node. Operating a Satellite node for governance is required to operate the oracle node software in order to sign the data feeds.
 
-The supported collateral assets at launch will be XTZ, tzBTC (wrapped BTC), SIRS (the liquidity baking LP token),, USDT, EURL, and Maven Finance’s [mTokens](#lending-earning-yield-on-your-assets).
+The supported collateral assets at launch will be MVRK, wBTC (wrapped BTC), USDT, and Maven Finance’s [mTokens](#lending-earning-yield-on-your-assets).
 
-Satellites sign transactions and pay the fees in XTZ. For their XTZ costs, Satellites are reimbursed directly with XTZ. Satellite rewards for their services are paid in sMVN (Governance may add the ability to receive compensation in other assets). The amount that Satellites are paid is set by a [Governance decision](#governance) (to be applied transparently by smart contracts), but as a general rule:
+Satellites sign transactions and pay the fees in MVRK. For their MVRK costs, Satellites are reimbursed directly with MVRK. Satellite rewards for their services are paid in sMVN (Governance may add the ability to receive compensation in other assets). The amount that Satellites are paid is set by a [Governance decision](#governance) (to be applied transparently by smart contracts), but as a general rule:
 
 - Governance operations earns staked MVN, and other invoiced assets (ex. USDT)
-- Providing Oracle pricing information earns staked MVN and XTZ (reimbursement)
+- Providing Oracle pricing information earns staked MVN and MVRK (reimbursement)
 
 **In other words: you get paid cash for contributing your governance power, and you get governance power from helping to determine the value of cash.**
 
@@ -156,7 +156,7 @@ Rewards are distributed to Satellites’ delegates, just as blockchain validator
 
 Stakeholders can participate in governance by either delegating their voting power to a Satellite or by operating a Satellite themselves. For this participation, users receive governance and oracle rewards.
 
-There is no cost to [staking MVN to obtain sMVN](#obtaining-sMVN) (from here on known as sMVN) aside from the corresponding network transaction fee, and stakeholders are not required to delegate the sMVN that they hold. However, if sMVN is not delegated, there is an opportunity cost of *not* participating in governance and so *not* receiving these rewards (similarly for XTZ in a wallet that is not delegated; it just sits there).
+There is no cost to [staking MVN to obtain sMVN](#obtaining-sMVN) (from here on known as sMVN) aside from the corresponding network transaction fee, and stakeholders are not required to delegate the sMVN that they hold. However, if sMVN is not delegated, there is an opportunity cost of *not* participating in governance and so *not* receiving these rewards (similarly for MVRK in a wallet that is not delegated; it just sits there).
 
 Stakeholders are free to re-delegate to a different Satellite whenever desired, and with zero penalties.
 
@@ -331,7 +331,7 @@ A series of sub-treasuries will be created for specific purposes, similar to sub
 - Research & Development
 - Investment Treasury
 - MVN buyback for oracle rewards & yield farms
-- DAO Bakery Fund via XTZ purchases
+- DAO Bakery Fund via MVRK purchases
 
 ## Maven Council
 
@@ -378,15 +378,15 @@ Outline of Maven Finance's Access control layer during the contract upgrade proc
 
 ## Yield Farming
 
-The Maven Finance platform produces several liquid tokens in its ecosystem, such as the different LP “receipt” tokens from the p2p lending (known as mTokens) and its own native MVN governance token. As part of the strategy to increase on-chain liquidity, a liquidity pool of MVN/XTZ will be launched with initial liquidity provided by the bootstrapping contributions from the public.
+The Maven Finance platform produces several liquid tokens in its ecosystem, such as the different LP “receipt” tokens from the p2p lending (known as mTokens) and its own native MVN governance token. As part of the strategy to increase on-chain liquidity, a liquidity pool of MVN/MVRK will be launched with initial liquidity provided by the bootstrapping contributions from the public.
 
-Initially, the liquidity should be sufficient to enable low-slippage trading at reasonable volumes as providing liquidity for the MVN/XTZ pair is incentivized by a series of yield/liquidity farms.
+Initially, the liquidity should be sufficient to enable low-slippage trading at reasonable volumes as providing liquidity for the MVN/MVRK pair is incentivized by a series of yield/liquidity farms.
 
 Additionally, Maven Finance will also incentivize users to deposit liquidity for the lending pools. Liquidity providers will be able to stake their mTokens (programmable shares of a liquidity pool) within yield farms to receive additional sMVN as a bonus incentive, in addition to the yield they earn from the lending pools. The amount of sMVN rewards depends on how long the LP mTokens are staked. By default, Maven Finance farms are spawned for three months. Afterward, a governance vote will be required to either rehydrate existing farms and restart their lifecycle or spawn new farms.
 
 When the Maven Finance platform goes live, yield farms for the following liquidity pools will be available:
 
-MVN/XTZ, MVN/USDT, mXTZ, mUSDT, and mtzBTC.
+MVN/MVRK, MVN/USDT, mMVRK, mUSDT, and mwBTC.
 
 ## Tokenomics
 
@@ -418,7 +418,7 @@ Revenue is generated through loan interest, admin origination fees, and liquidat
 
 **The interest, liquidation, and admin origination fees are all governable by stakeholders and can be updated by community vote.**
 
-The revenue is automatically deposited within the Treasury, where a reserve of XTZ, USDT, and EURL is put aside to hedge against extreme market drops which might push at-risk vaults into an under-collateralized ratio so low that it would impossible to liquidate (as no rational investor would pay more money than what the collateral in the vault is worth). The reserve provides stablecoin liquidity to be injected in case of such an event and to maintain overall system stability.
+The revenue is automatically deposited within the Treasury, where a reserve of MVRK and USDT is put aside to hedge against extreme market drops which might push at-risk vaults into an under-collateralized ratio so low that it would impossible to liquidate (as no rational investor would pay more money than what the collateral in the vault is worth). The reserve provides stablecoin liquidity to be injected in case of such an event and to maintain overall system stability.
 
 Once Maven Finance is adopted and generating revenue, it is up to Governance to vote on disbursing the stablecoin revenue generated from the Treasury to fund further development, to incentivize Governance participation, to perform a buyback of MVN on the open market to incentivize Satellite price feeds & yield farms, and to invest in assets to be held by the Treasury.
 
