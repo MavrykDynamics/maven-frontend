@@ -20,7 +20,7 @@ Banks are not always incentivized to innovate, provide lending quickly, or serve
 
 Maven Finance offers an innovative approach to finance, and is cooperatively operated & independent of legacy banks. In technical terms, Maven Finance is a Decentralized Autonomous Organization (**DAO**) with:
 
-- Non-custodial peer-to-peer lending
+- Non-custodial peer-2-peer lending
 - Integrated & decentralized pricing oracles
 - A decentralized and upgradable governance system modeled after Proof-of-Stake (PoS)
 
@@ -64,7 +64,7 @@ You can take out a loan by depositing a single/multi-asset collateral into a vau
 
 _For example: Bob deposits $3,000 worth of wBTC to collateralize a vault, and borrows $1,000 USDT. Bob’s loan is 300% collateralized, and considered an active “healthy” vault. The maximum Bob would be able to borrow is $1,500._
 
-### Peer to Peer Lending
+### Peer-2-Peer Lending
 
 The Maven Finance lending module works in a p2p structure. Users (Lenders) supply assets for other users (borrowers) to borrow using their crypto-assets as collateral in multi-collateral, non-custodial vaults.
 
