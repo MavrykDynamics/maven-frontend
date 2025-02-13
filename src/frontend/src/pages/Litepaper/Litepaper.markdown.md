@@ -80,7 +80,7 @@ Borrowers can borrow assets; (ex. USDT, MVRK) from Maven Finance’s lending poo
 
 *For example: Bob wants to borrow 1,000 USDT so he deposits 3,000 MVRK (~ $3,000 @ $1/MVRK) into a vault he creates. Upon depositing the MVRK into the vault, Bob is able to withdraw up to 1,500 USDT from the lending pools. The interest Bob will pay is in USDT. Once Bob repays the loan and interest, he will be able to withdraw the collateral in his vault.*
 
-Note 1: Deposited MVRK in personal vaults may be delegated to a Validator of your choice, and the earned baking rewards accrue to the vault, and contribute to the vaults collateral ratio.
+Note 1: Deposited MVRK in personal vaults may be delegated to a Validator of your choice, and the earned validating rewards accrue to the vault, and contribute to the vaults collateral ratio.
 
 Note 2: sMVN collateralized in vaults may be delegated to Satellites. However, sMVN collateralization will not be supported at Genesis, and will be voted in via Governance.
 
