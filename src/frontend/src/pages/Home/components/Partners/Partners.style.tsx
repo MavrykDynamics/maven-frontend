@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
-import {subHeaderColor} from 'styles/colors'
-import {MavenTheme} from 'utils/interfaces'
+import { subHeaderColor } from 'styles/colors'
+import { MavenTheme } from 'utils/interfaces'
 
-import {CONTAINER_WIDTH} from '../../Home.style'
+import { CONTAINER_WIDTH } from '../../Home.style'
 
 export const PartnersStyled = styled.section`
   margin-top: 120px;
@@ -174,6 +174,14 @@ export const PartnersGrid = styled.div<{ theme: MavenTheme }>`
     a:nth-child(9),
     a:nth-child(10) {
       grid-column: span 7;
+    }
+  }
+
+  @media (min-width: 701px) {
+    > a.partner-neo-facto,
+    > a.partner-nomadic {
+      grid-column: span 5;
+      justify-self: center; /* center inside their grid cell */
     }
   }
 
