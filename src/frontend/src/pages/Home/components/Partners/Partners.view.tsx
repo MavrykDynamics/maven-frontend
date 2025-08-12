@@ -112,7 +112,7 @@ export const PartnersView = () => {
           <img alt="partner" src="/images/blockchase.svg" />
         </a>
 
-        <a className="empty" />
+        {/* <a className="empty" /> */}
         <a href="https://www.cluster.vc/" target="_blank" rel="noreferrer" className="partner-cluster">
           <div>
             <img alt="partner" src="/images/partners/cluster.png" />
