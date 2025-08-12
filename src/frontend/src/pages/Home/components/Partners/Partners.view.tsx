@@ -112,18 +112,20 @@ export const PartnersView = () => {
           <img alt="partner" src="/images/blockchase.svg" />
         </a>
 
-        {/* <a className="empty" /> */}
         <a href="https://www.cluster.vc/" target="_blank" rel="noreferrer" className="partner-cluster">
           <div>
             <img alt="partner" src="/images/partners/cluster.png" />
           </div>
         </a>
+        <a className="empty" />
+
         <a href="https://neofacto.com/home/" target="_blank" rel="noreferrer" className="partner-neo-facto">
           <img alt="partner" src="/images/partners/neo-facto.svg" />
         </a>
         <a href="https://www.nomadic-labs.com/" target="_blank" rel="noreferrer" className="partner-nomadic">
           <img alt="partner" src="/images/partners/nomadic-labs.svg" />
         </a>
+        <a className="empty" />
       </PartnersGrid>
     </PartnersStyled>
   )
