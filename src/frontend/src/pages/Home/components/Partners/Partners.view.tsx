@@ -74,7 +74,7 @@ export const PartnersView = () => {
           <img alt="partner" src="/images/draper_goren_holm.png" />
         </a>
         <a href="https://tezos.co.il/" target="_blank" rel="noreferrer">
-          <img alt="partner" src="/images/tezos-israel.svg" />
+          <img alt="partner" src="/images/tezos-foundation.png" />
         </a>
         <a href="https://ghafcapital.ae/" target="_blank" rel="noreferrer">
           <img alt="partner" src="/images/ghaf_capital_partners.png" />
@@ -99,9 +99,9 @@ export const PartnersView = () => {
           <img alt="partner" src="/images/atlas_fund.png" />
         </a>
 
-        <a href="https://tzbaker.co.il/" target="_blank" rel="noreferrer">
+        {/* <a href="https://tzbaker.co.il/" target="_blank" rel="noreferrer">
           <img alt="partner" src="/images/bakery-il.png" />
-        </a>
+        </a> */}
         <a href="https://www.wentworthhall.com/" target="_blank" rel="noreferrer">
           <img alt="partner" src="/images/wentworth-hall.png" />
         </a>
