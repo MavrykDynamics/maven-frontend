@@ -3,7 +3,7 @@
     "id": 1,
     "title": "What is Tezos?",
     "description": [
-      "Tezos is a Blockchain network for building decentralized applications. The Tezos Mainnet launched in June 2018, and is one of the leading Proof of Stake blockchain networks. The native currency of the Tezos network is called Tez, and the trading symbol is XTZ. Unlike Ethereum, Tezos is based on a consensus mechanism named Liquid Proof-of-Stake (LPoS), so your XTZ tokens are never locked during delegation, and owners remain in complete control of their tokens even after they delegate their voting & baking rights to a baker (validator)."
+      "Tezos is a Blockchain network for building decentralized applications. The Tezos Mainnet launched in June 2018, and is one of the leading Proof of Stake blockchain networks. The native currency shown in this app is MVRK. Unlike Ethereum, Tezos is based on a consensus mechanism named Liquid Proof-of-Stake (LPoS), so your MVRK tokens are never locked during delegation, and owners remain in complete control of their tokens even after they delegate their voting & baking rights to a baker (validator)."
     ]
   },
   {
@@ -17,21 +17,21 @@
     "id": 3,
     "title": "What is Staking?",
     "description": [
-      "Staking is a process that allows cryptocurrency holders to use their tokens for governance, or locking their tokens to utilize them. On Tezos, staking your tokens means to delegate your voting rights to a Baker to vote on your behalf, and secure the network. The Baker never has control of your tokens, but has the right to the token’s voting rights for governance and validating blocks. By delegating to a Baker, users may earn ~5.8% APY in XTZ from inflation rewards, minus the Baker fee. By staking their XTZ, users earn rewards for network participation by remaining constant with the rate of inflation, as opposed to non-participants who become diluted by inflation rewards."
+      "Staking is a process that allows cryptocurrency holders to use their tokens for governance, or locking their tokens to utilize them. On Tezos, staking your tokens means to delegate your voting rights to a Baker to vote on your behalf, and secure the network. The Baker never has control of your tokens, but has the right to the token’s voting rights for governance and validating blocks. By delegating to a Baker, users may earn ~5.8% APY in MVRK from inflation rewards, minus the Baker fee. By staking their MVRK, users earn rewards for network participation by remaining constant with the rate of inflation, as opposed to non-participants who become diluted by inflation rewards."
     ]
   },
   {
     "id": 4,
     "title": "Can I be a Tezos Baker?",
     "description": [
-      "Of course! With just as little as 6,000 XTZ and a computer as easily accessible as a Raspberry Pi, you can launch your own Bakery. Operating a Bakery requires some technological knowledge with computer hardware and software code. If you don’t want to actively operate a Bakery, you can always delegate your tokens to the Mavryk Dynamics or the Maven Finance DAO Bakery."
+      "Of course! With just as little as 6,000 MVRK and a computer as easily accessible as a Raspberry Pi, you can launch your own Bakery. Operating a Bakery requires some technological knowledge with computer hardware and software code. If you don’t want to actively operate a Bakery, you can always delegate your tokens to the Mavryk Dynamics or the Maven Finance DAO Bakery."
     ]
   },
   {
     "id": 5,
-    "title": "What happens to my XTZ after I delegate them?",
+    "title": "What happens to my MVRK after I delegate them?",
     "description": [
-      "It’s important to note that by delegating your tokens, you never give up ownership of your XTZ. You are only delegating the rights associated with your token, and allowing the validator to utilize those rights. The reward associated with securing the network is paid to those who delegate, and the Baker will pay you for your delegation rights, and take a small fee."
+      "It’s important to note that by delegating your tokens, you never give up ownership of your MVRK. You are only delegating the rights associated with your token, and allowing the validator to utilize those rights. The reward associated with securing the network is paid to those who delegate, and the Baker will pay you for your delegation rights, and take a small fee."
     ]
   },
   {
@@ -66,9 +66,7 @@
   },
   {
     "id": 10,
-    "title": "What happens if I use the XTZ I delegated?",
-    "description": [
-      "Delegated XTZs are not locked and you may use them at anytime while still earning rewards."
-    ]
+    "title": "What happens if I use the MVRK I delegated?",
+    "description": ["Delegated MVRK is not locked and you may use it at anytime while still earning rewards."]
   }
 ]

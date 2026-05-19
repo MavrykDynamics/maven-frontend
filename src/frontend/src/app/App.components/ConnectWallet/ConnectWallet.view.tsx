@@ -14,6 +14,7 @@ import {
   ConnectedWalletDetailsItemStyled,
   MobileDetailsStyled,
 } from './ConnectWallet.style'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 export type CoinsInfoType = {
   userXTZBalance: number
@@ -69,9 +70,9 @@ export const MobileDetailsBlock = ({
 
       <div className="details">
         <ConnectedWalletDetailsItem
-          buttonText={'Buy XTZ'}
+          buttonText={`Buy ${NATIVE_TOKEN_DISPLAY_SYMBOL}`}
           coinAmount={coinsInfo.userXTZBalance}
-          coinName={'XTZ'}
+          coinName={NATIVE_TOKEN_DISPLAY_SYMBOL}
           buttonHandler={detailsHandlers.buyXTZHandler}
           subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
           iconName={'XTZ_tezos'}
@@ -180,9 +181,9 @@ export const ConnectedWalletBlock = ({
 
         <div className="padding-wrapper">
           <ConnectedWalletDetailsItem
-            buttonText={'Buy XTZ'}
+            buttonText={`Buy ${NATIVE_TOKEN_DISPLAY_SYMBOL}`}
             coinAmount={coinsInfo.userXTZBalance}
-            coinName={'XTZ'}
+            coinName={NATIVE_TOKEN_DISPLAY_SYMBOL}
             buttonHandler={detailsHandlers.buyXTZHandler}
             subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
             iconName={'XTZ_tezos'}

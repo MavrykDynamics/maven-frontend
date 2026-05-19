@@ -25,6 +25,7 @@ import { useMedia } from 'react-use'
 import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { getFullNumber } from '../../../../../utils/utils'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -169,7 +170,9 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
     }
 
     if (name === 'XTZ' && !isValidXTZ(value)) {
-      dispatch(showToaster(ERROR, 'Invalid Input', `Please input a number that exists in XTZ`))
+      dispatch(
+        showToaster(ERROR, 'Invalid Input', `Please input a number that exists in ${NATIVE_TOKEN_DISPLAY_SYMBOL}`),
+      )
       setInputErrors({
         ...inputErrors,
         [name]: ERROR,
@@ -264,7 +267,9 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
     }
 
     if (inputValues.tzBTC <= 0) {
-      dispatch(showToaster(ERROR, 'Invalid Input', `Please input a number that exists in XTZ`))
+      dispatch(
+        showToaster(ERROR, 'Invalid Input', `Please input a number that exists in ${NATIVE_TOKEN_DISPLAY_SYMBOL}`),
+      )
       return
     }
 
@@ -319,7 +324,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
           value={inputValues.XTZ}
           convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
           icon={'XTZ_tezos'}
-          pinnedText={'XTZ'}
+          pinnedText={NATIVE_TOKEN_DISPLAY_SYMBOL}
           className="swap-input"
           useMaxHandler={() => maxHandler('XTZ', 'tzBTC')}
           userBalance={xtzBalance}
@@ -400,7 +405,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         <div className="exchange-rate-title">Exc. Rate</div>
 
         <div className="exchange-rate-value">
-          1 XTZ (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
+          1 {NATIVE_TOKEN_DISPLAY_SYMBOL} (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
           <CommaNumber
             value={exchangeRate}
             showDecimal

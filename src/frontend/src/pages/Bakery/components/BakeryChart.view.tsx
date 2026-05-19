@@ -14,6 +14,7 @@ import themeColors from 'styles/colors'
 
 // helpers
 import { percentageDifference } from 'utils/utils'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 type Props = {
   chartData: ChartItem[]
@@ -34,7 +35,7 @@ export function BakeryChart({ chartData }: Props) {
           <Icon id="XTZ_tezos" />
 
           <div>
-            <h3>XTZ/USD</h3>
+            <h3>{NATIVE_TOKEN_DISPLAY_SYMBOL}/USD</h3>
             <p>{currentPrice}</p>
           </div>
         </div>

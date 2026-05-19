@@ -11,6 +11,7 @@ import { Card, MiniCard, RoundButton, ButtonStyled } from '../Bakery.style'
 import { TzAddress } from 'app/App.components/TzAddress/TzAddress.view'
 import { ButtonStyle } from 'app/App.components/Button/Button.constants'
 import { CYAN } from 'app/App.components/TzAddress/TzAddress.constants'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 type Props = {
   title: string
@@ -107,7 +108,7 @@ export function DelegateCard({
 
           <MiniCard>
             <Icon id="planet" />
-            <h4>Available XTZ Space</h4>
+            <h4>Available {NATIVE_TOKEN_DISPLAY_SYMBOL} Space</h4>
             {!isDisabled ? (
               <>
                 {availableXtzSpace[0] === -1 ? (
