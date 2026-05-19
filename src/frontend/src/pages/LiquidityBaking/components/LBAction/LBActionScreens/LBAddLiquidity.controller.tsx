@@ -27,6 +27,7 @@ import Icon from 'app/App.components/Icon/Icon.view'
 import { InputStatusType } from 'app/App.components/Input/Input.controller'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 const DEFAULT_COINS_AMOUNT = {
   XTZ: 0,
@@ -179,7 +180,13 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
 
       // if we enter XTZ we dynamic calc tzBTC amount, so check it there
       if (name.toLowerCase() === 'xtz' && ready && calcValue > tzBTCBalance) {
-        dispatch(showToaster(ERROR, 'Insufficient tzBTC wallet balance', 'Please enter sufficient XTZ amount'))
+        dispatch(
+          showToaster(
+            ERROR,
+            'Insufficient tzBTC wallet balance',
+            `Please enter sufficient ${NATIVE_TOKEN_DISPLAY_SYMBOL} amount`,
+          ),
+        )
         setInputErrors({
           ...inputErrors,
           tzBTC: ERROR,
@@ -189,7 +196,13 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
 
       // if we enter tzBTC we dynamic calc XTZ amount, so check it there
       if (name.toLowerCase() === 'tzbtc' && ready && calcValue > xtzBalance) {
-        dispatch(showToaster(ERROR, 'Insufficient XTZ wallet balance', 'Please enter sufficient tzBTC amount'))
+        dispatch(
+          showToaster(
+            ERROR,
+            `Insufficient ${NATIVE_TOKEN_DISPLAY_SYMBOL} wallet balance`,
+            'Please enter sufficient tzBTC amount',
+          ),
+        )
         setInputErrors({
           ...inputErrors,
           XTZ: ERROR,
@@ -262,11 +275,12 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
         </CheckBoxWrapper>
 
         <CustomizedText className={PRIMARY_COLOR} fontSize={14} fontWidth={500}>
-          Provide only XTZ
+          Provide only {NATIVE_TOKEN_DISPLAY_SYMBOL}
           <div className="info">
             <Icon id="infoIcon" />
             <div className="text">
-              You can add liquidity with only XTZ. <br />A swap of half the XTZ to tzBTC will be done first.
+              You can add liquidity with only {NATIVE_TOKEN_DISPLAY_SYMBOL}. <br />A swap of half the{' '}
+              {NATIVE_TOKEN_DISPLAY_SYMBOL} to tzBTC will be done first.
             </div>
           </div>
         </CustomizedText>

@@ -12,6 +12,7 @@ import { AddLiquidutityInputChangeEventType, CoinsInputsValues } from '../helper
 import { State } from 'utils/interfaces'
 import { useMedia } from 'react-use'
 import { CoinsInputsErrors, DEFAULT_COINS_ERRORS } from './LBAddLiquidity.controller'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 export const AddLiquidityDefault = ({
   inputValues,
@@ -47,7 +48,7 @@ export const AddLiquidityDefault = ({
           value={inputValues.XTZ}
           convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
           icon={'XTZ_tezos'}
-          pinnedText={'XTZ'}
+          pinnedText={NATIVE_TOKEN_DISPLAY_SYMBOL}
           className={`addLiq-input ${xtzUseMaxDisabled ? 'use-max-disable' : ''}`}
           inputStatus={inputErrors.XTZ}
           onKeyDown={nonNumberSymbolsValidation}

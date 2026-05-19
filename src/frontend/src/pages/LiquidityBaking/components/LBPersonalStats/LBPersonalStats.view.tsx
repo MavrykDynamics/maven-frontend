@@ -3,6 +3,7 @@ import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.
 import { SECONDARY_COLOR, THIRD_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { LBPersonalStatsStyled } from './LBPersonalStats.style'
 import Icon from 'app/App.components/Icon/Icon.view'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 type PersonalStatsProps = {
   showNone: boolean
@@ -52,8 +53,9 @@ export const LBPersonalStatsView = ({
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">
-                Potential gains converted into tez, calculated as current LP token balance multiplied by the difference
-                between current LP token price and weighted average LP token price over all your liquidity investments
+                Potential gains converted into {NATIVE_TOKEN_DISPLAY_SYMBOL}, calculated as current LP token balance
+                multiplied by the difference between current LP token price and weighted average LP token price over all
+                your liquidity investments
               </div>
             </div>
           </CustomizedText>
@@ -72,9 +74,9 @@ export const LBPersonalStatsView = ({
             <div className="info">
               <Icon id="infoIcon" />
               <div className="text">
-                Realized potential gains converted into tez, calculated as sold LP token amount multiplied by the
-                difference between close LP token price and weighted average LP token price over all your liquidity
-                investments.
+                Realized potential gains converted into {NATIVE_TOKEN_DISPLAY_SYMBOL}, calculated as sold LP token
+                amount multiplied by the difference between close LP token price and weighted average LP token price
+                over all your liquidity investments.
               </div>
             </div>
           </CustomizedText>
@@ -122,14 +124,15 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Estimated XTZ{' '}
+            Estimated {NATIVE_TOKEN_DISPLAY_SYMBOL}{' '}
             <span>
               owned
               <div className="info">
                 <Icon id="infoIcon" />
 
                 <div className="text">
-                  Your estimated share of XTZ in the liquidity pool given how many SIRS tokens you have in your wallet.
+                  Your estimated share of {NATIVE_TOKEN_DISPLAY_SYMBOL} in the liquidity pool given how many SIRS tokens
+                  you have in your wallet.
                 </div>
               </div>
             </span>

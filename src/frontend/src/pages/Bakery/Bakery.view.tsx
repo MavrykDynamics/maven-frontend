@@ -23,6 +23,7 @@ import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from './Bakery.s
 import { State } from 'utils/interfaces'
 import { ROCKET_LOADER } from 'utils/consts'
 import { toggleLoader } from 'redux/actions/preferences.action'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) => {
   return {
@@ -83,7 +84,7 @@ export function BakeryView() {
     <BakeryStyled>
       <div className="main-content">
         <CardWithBackground>
-          <h1>Delegate your Tezos</h1>
+          <h1>Delegate your {NATIVE_TOKEN_DISPLAY_SYMBOL}</h1>
           <Description list={bakeryData.delegateYourTezos} className="paragraph-max-width" />
 
           <BakeryChart chartData={tezos} />

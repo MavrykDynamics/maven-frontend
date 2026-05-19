@@ -3,6 +3,7 @@ import React from 'react'
 import { THIRD_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
 import Icon from '../Icon/Icon.view'
+import { getTokenDisplayName } from 'utils/tokenDisplay'
 
 export const MinimumReceived = ({
   minimumReceived,
@@ -45,12 +46,21 @@ export const MinimumReceived = ({
       </CustomizedText>
 
       <CustomizedText className={SECONDARY_COLOR} fontSize={14} fontWidth={600} style={{ columnGap: '7px' }}>
-        {minimumReceived.map(({ value, tokenName }, idx) => (
-          <span key={value + tokenName}>
-            <CommaNumber value={value} endingText={tokenName} decimalsToShow={decimals} className="commaNumber" />
-            {minimumReceived.length > 1 && idx < minimumReceived.length - 1 ? ' + ' : ''}
-          </span>
-        ))}
+        {minimumReceived.map(({ value, tokenName }, idx) => {
+          const displayTokenName = getTokenDisplayName(tokenName)
+
+          return (
+            <span key={value + tokenName}>
+              <CommaNumber
+                value={value}
+                endingText={displayTokenName}
+                decimalsToShow={decimals}
+                className="commaNumber"
+              />
+              {minimumReceived.length > 1 && idx < minimumReceived.length - 1 ? ' + ' : ''}
+            </span>
+          )
+        })}
       </CustomizedText>
     </HorisontalInfo>
   )

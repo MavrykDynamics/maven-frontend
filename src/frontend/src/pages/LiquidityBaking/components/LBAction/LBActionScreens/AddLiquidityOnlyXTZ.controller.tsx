@@ -13,6 +13,7 @@ import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { StepBlock } from '../LBAction.style'
 import { CoinsInputsErrors, DEFAULT_COINS_ERRORS, MinCoinsData } from './LBAddLiquidity.controller'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 export const AddLiquidityOnlyXTZ = ({
   inputValues,
@@ -39,7 +40,7 @@ export const AddLiquidityOnlyXTZ = ({
   return (
     <>
       <Input
-        placeholder={'XTZ'}
+        placeholder={NATIVE_TOKEN_DISPLAY_SYMBOL}
         name="XTZ"
         onChange={inputChangeHandler}
         type={'number'}
@@ -47,7 +48,7 @@ export const AddLiquidityOnlyXTZ = ({
         value={inputValues.XTZ}
         convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
         icon={'XTZ_tezos'}
-        pinnedText={'XTZ'}
+        pinnedText={NATIVE_TOKEN_DISPLAY_SYMBOL}
         className="addLiq-input-XTZ"
         inputStatus={inputErrors.XTZ}
         onKeyDown={nonNumberSymbolsValidation}

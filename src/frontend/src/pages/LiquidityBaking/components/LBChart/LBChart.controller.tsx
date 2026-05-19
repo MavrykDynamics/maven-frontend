@@ -14,6 +14,7 @@ import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { ChartStyled } from './LBChart.style'
 import { SECONDARY_COLOR, THIRD_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 const intervalData = [
   {
@@ -102,9 +103,7 @@ export const LBChart = ({
             <use xlinkHref="/icons/sprites.svg#exchange" />
           </svg>
           <div className="info">
-            <CustomizedText className={THIRD_COLOR}>
-              XTZ/tzBTC (Sirius)
-            </CustomizedText>
+            <CustomizedText className={THIRD_COLOR}>{NATIVE_TOKEN_DISPLAY_SYMBOL}/tzBTC (Sirius)</CustomizedText>
             <CustomizedText className={`${SECONDARY_COLOR} value`}>
               <CommaNumber
                 value={LAST_CHART_COMPARE_VALUE}
