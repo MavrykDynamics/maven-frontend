@@ -1,5 +1,4 @@
-import styled, {keyframes} from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { keyframes } from 'styled-components'
 
 const turn = keyframes`
   100% {
@@ -7,7 +6,7 @@ const turn = keyframes`
   }
 `
 
-export const LoadingIcon = styled.svg<{ theme: MavenTheme }>`
+export const LoadingIcon = styled.svg`
   width: 20px;
   height: 20px;
   vertical-align: sub;

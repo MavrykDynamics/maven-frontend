@@ -1,6 +1,6 @@
 import * as React from 'react'
-import {useState} from 'react'
-import {useSelector} from 'react-redux'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import Cookie from 'js-cookie'
 
 // prettier-ignore
@@ -12,8 +12,8 @@ import {
     DiscordPopupSocials,
     DiscordPopupStyled
 } from './DiscordPopup.style'
-import {State} from 'utils/interfaces'
-import {LIGHT_THEME} from 'redux/actions/preferences.action'
+import { State } from 'utils/interfaces'
+import { LIGHT_THEME } from '../../../../redux/actions/preferences.action'
 
 type NewsLetterProps = {
   closeCallback?: () => void

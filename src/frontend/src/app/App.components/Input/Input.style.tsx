@@ -1,8 +1,7 @@
-import styled, {keyframes} from 'styled-components/macro'
-import {downColor, skyColor} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { keyframes } from 'styled-components'
+import { downColor, skyColor } from 'styles'
 
-export const InputStyled = styled.div<{ theme: MavenTheme }>`
+export const InputStyled = styled.div`
   position: relative;
   width: 100%;
   margin: 18px 0;
@@ -42,7 +41,7 @@ export const InputStyled = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const InputComponentContainer = styled.div<{ theme: MavenTheme }>`
+export const InputComponentContainer = styled.div`
   display: block;
   position: relative;
 
@@ -92,7 +91,7 @@ export const InputComponentContainer = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const InputComponent = styled.input<{ theme: MavenTheme }>`
+export const InputComponent = styled.input`
   width: 100%;
   height: 54px;
   background-color: ${({ theme }) => theme.nBackgroundColor};
@@ -191,7 +190,7 @@ export const InputComponent = styled.input<{ theme: MavenTheme }>`
   }
 `
 
-export const InputLabel = styled.div<{ theme: MavenTheme }>`
+export const InputLabel = styled.div`
   position: absolute;
   right: 16px;
   top: 18px;
@@ -219,7 +218,7 @@ const zoomIn = keyframes`
   }
 `
 
-export const InputStatus = styled.div<{ theme: MavenTheme }>`
+export const InputStatus = styled.div`
   display: block;
   position: absolute;
   top: 14px;
@@ -250,7 +249,7 @@ export const InputStatus = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const InputIcon = styled.svg<{ theme: MavenTheme }>`
+export const InputIcon = styled.svg`
   display: block;
   position: absolute;
   top: 20px;
@@ -277,7 +276,7 @@ const slideDown = keyframes`
   }
 `
 
-export const InputErrorMessage = styled.div<{ theme: MavenTheme }>`
+export const InputErrorMessage = styled.div`
   color: ${({ theme }) => theme.downColor};
   line-height: 24px;
   will-change: transform, opacity;

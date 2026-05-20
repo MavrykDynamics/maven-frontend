@@ -1,7 +1,7 @@
-import styled, {css} from 'styled-components/macro'
-import {cyanColor} from 'styles'
-import {BUTTON_RADIUS} from 'styles/constants'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { css } from 'styled-components'
+import { cyanColor } from 'styles'
+import { BUTTON_RADIUS } from 'styles/constants'
+import { MavenTheme } from 'utils/interfaces'
 
 // Common style parts START
 const VISIBLE_PART_CONNECTED_WALLET = (theme: MavenTheme, isMobileDetails?: boolean) => `
@@ -73,7 +73,7 @@ const BUTTONS_WRAPPER_CONNECTED_WALLET = `
 `
 // Common style parts END
 
-export const ConnectWalletStyled = styled.div<{ theme: MavenTheme }>`
+export const ConnectWalletStyled = styled.div`
   text-align: center;
   border-radius: ${BUTTON_RADIUS};
   margin: 10px auto 34px;
@@ -94,7 +94,7 @@ export const ConnectWalletStyled = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const ConnectedWalletStyled = styled.div<{ theme: MavenTheme }>`
+export const ConnectedWalletStyled = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
@@ -222,7 +222,7 @@ export const ConnectedWalletStyled = styled.div<{ theme: MavenTheme }>`
   ${BUTTONS_WRAPPER_CONNECTED_WALLET}
 `
 
-export const MobileDetailsStyled = styled.div<{ theme: MavenTheme }>`
+export const MobileDetailsStyled = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -323,7 +323,7 @@ export const MobileDetailsStyled = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavenTheme }>`
+export const ConnectedWalletDetailsItemStyled = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
@@ -405,7 +405,7 @@ export const ConnectedWalletDetailsItemStyled = styled.div<{ theme: MavenTheme }
   }
 `
 
-export const WalletConnectedButton = styled.div<{ theme: MavenTheme }>`
+export const WalletConnectedButton = styled.div`
   font-weight: 600;
   margin: 10px auto;
   display: flex;
@@ -450,7 +450,7 @@ export const WalletConnectedButton = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const WalletNotConnectedButton = styled.button<{ theme: MavenTheme }>`
+export const WalletNotConnectedButton = styled.button`
   margin: 0 auto;
   height: 50px;
   cursor: pointer;
@@ -499,7 +499,7 @@ export const SignOutButton = styled(WalletNotConnectedButton)`
   font-size: 14px;
 `
 
-export const SimpleConnectedButton = styled.div<{ theme: MavenTheme }>`
+export const SimpleConnectedButton = styled.div`
   margin: 0 auto;
   height: 50px;
   cursor: pointer;
@@ -528,7 +528,7 @@ export const SimpleConnectedButton = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const ConnectWalletInfoStyled = styled.blockquote<{ theme: MavenTheme }>`
+export const ConnectWalletInfoStyled = styled.blockquote`
   border-radius: 10px;
   margin: 0;
   display: flex;
@@ -552,7 +552,7 @@ export const ConnectWalletInfoStyled = styled.blockquote<{ theme: MavenTheme }>`
   }
 `
 
-export const ConnectWalletClose = styled.button<{ theme: MavenTheme }>`
+export const ConnectWalletClose = styled.button`
   background: transparent;
   border: none;
   padding: 0;

@@ -1,17 +1,18 @@
-import {HeaderGrid, HeaderLogo, HeaderStyled} from './Header.style'
-import {useEffect, useState} from 'react'
-import {Helmet} from 'react-helmet'
-import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {HashLink} from 'react-router-hash-link'
-import {State} from 'utils/interfaces'
-import {LIGHT_THEME} from 'redux/actions/preferences.action'
-import {useMedia} from 'react-use'
-import {ThemeToggle} from "../ToggleButton/ThemeToggle.controller";
+import { HeaderGrid, HeaderLogo, HeaderStyled } from './Header.style'
+import { useAppDispatch } from 'app/App.hooks'
+import { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet-async'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router'
+import { HashLink } from 'app/App.components/HashLink/HashLink.view'
+import { State } from 'utils/interfaces'
+import { LIGHT_THEME } from '../../../redux/actions/preferences.action'
+import { useMedia } from 'react-use'
+import { ThemeToggle } from '../ToggleButton/ThemeToggle.controller'
 
 export const HeaderView = () => {
   const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected !== LIGHT_THEME)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const isMobile = useMedia('(max-width: 1240px)')
   const isSmallMobile = useMedia('(max-width: 450px)')

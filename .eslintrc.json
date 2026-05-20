@@ -8,9 +8,7 @@
     },
     "ecmaVersion": 2018,
     "sourceType": "module",
-    "project": [
-      "./frontend/tsconfig.json"
-    ],
+    "project": ["./frontend/tsconfig.json"],
     "tsconfigRootDir": "src"
   },
   "env": {
@@ -27,7 +25,7 @@
     "standard",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier/@typescript-eslint", // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+    "prettier", // Uses eslint-config-prettier to disable rules that conflict with prettier
     "plugin:prettier/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
@@ -43,7 +41,7 @@
       "@typescript-eslint/parser": [".ts", ".tsx"]
     }
   },
-  "plugins": ["@typescript-eslint/eslint-plugin", "import", "prettier", "standard", "react", "jsx-a11y", "security"],
+  "plugins": ["@typescript-eslint", "import", "prettier", "react", "jsx-a11y", "security"],
   "rules": {
     //"no-unused-variable": "warn",
     "import/no-unresolved": "error",

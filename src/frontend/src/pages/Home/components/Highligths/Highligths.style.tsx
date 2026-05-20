@@ -1,6 +1,6 @@
-import styled from 'styled-components/macro'
-import {Page} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
+import { Page } from 'styles'
+import { MavenTheme } from 'utils/interfaces'
 
 export const HighligthsStyled = styled.div`
   padding: 100px 0 200px 0;
@@ -12,22 +12,22 @@ export const HighligthsStyled = styled.div`
 
 export const HighligthsContainer = styled(Page)``
 
-export const HighligthsGrid = styled.div<{theme: MavenTheme}>`
+export const HighligthsGrid = styled.div<{ theme: MavenTheme }>`
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 50px;
 
   @media (max-width: 1000px) {
-    background-color: ${({theme}) => theme.backgroundColor};
+    background-color: ${({ theme }) => theme.backgroundColor};
     border-radius: 10px;
     grid-template-columns: auto;
     grid-gap: 15px;
   }
 `
 
-export const HighligthsSelector = styled.div<{theme: MavenTheme}>`
-  background: ${({theme}) => theme.backgroundColor};
+export const HighligthsSelector = styled.div<{ theme: MavenTheme }>`
+  background: ${({ theme }) => theme.backgroundColor};
   // box-shadow: 0 1px 0 rgb(34 37 49 / 8%), 0 8px 8px rgb(34 37 49 / 4%);
   border-radius: 10px;
   overflow: hidden;
@@ -38,13 +38,14 @@ export const HighligthsSelector = styled.div<{theme: MavenTheme}>`
   }
 `
 
-export const HighligthsItem = styled.div<{ selected?: boolean, theme: MavenTheme }>`
+export const HighligthsItem = styled.div<{ selected?: boolean; theme: MavenTheme }>`
   padding: 16px 24px;
   display: grid;
   grid-template-columns: 56px auto;
   grid-gap: 30px;
-  background: ${(props) => (props.selected ? ({theme}) => theme.containerColor : ({theme}) => theme.backgroundColor)};
-  color: ${(props) => (props.selected ? ({theme}) => theme.litepaperLinkColor : ({theme}) => theme.subTextColor)};
+  background: ${(props) =>
+    props.selected ? ({ theme }) => theme.containerColor : ({ theme }) => theme.backgroundColor};
+  color: ${(props) => (props.selected ? ({ theme }) => theme.litepaperLinkColor : ({ theme }) => theme.subTextColor)};
   border-radius: 10px;
   cursor: pointer;
   font-size: 24px;
@@ -52,10 +53,10 @@ export const HighligthsItem = styled.div<{ selected?: boolean, theme: MavenTheme
   font-weight: 500;
   text-align: left;
 
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 
   @media (max-width: 1000px) {
     padding: 16px 0;

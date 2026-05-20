@@ -1,20 +1,21 @@
 /* eslint import/no-webpack-loader-syntax: off */
+import { useAppDispatch } from 'app/App.hooks'
 // @ts-ignore
 import litepaper from '!raw-loader!./Litepaper.markdown.md'
-import {useScrollPosition} from '@n8tb1t/use-scroll-position'
+import { useWindowScrollPosition } from '@n8tb1t/use-scroll-position'
 import Markdown from 'markdown-to-jsx'
-import {useCallback, useEffect, useState} from 'react'
-import {HashLink} from 'react-router-hash-link'
-import {LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperMarkdown, LitepaperStyled} from './Litepaper.style'
-import {useDispatch, useSelector} from 'react-redux'
-import {MenuTopBar} from 'app/App.components/Menu/MenuTopBar.controller'
-import {State} from 'utils/interfaces'
-import {LIGHT_THEME, toggleRPCNodePopup} from 'redux/actions/preferences.action'
-import {SettingPopup} from 'app/App.components/SettingsPopup/SettingsPopup'
+import { useCallback, useEffect, useState } from 'react'
+import { HashLink } from 'app/App.components/HashLink/HashLink.view'
+import { LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperMarkdown, LitepaperStyled } from './Litepaper.style'
+import { useSelector } from 'react-redux'
+import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
+import { State } from 'utils/interfaces'
+import { LIGHT_THEME, toggleRPCNodePopup } from '../../redux/actions/preferences.action'
+import { SettingPopup } from 'app/App.components/SettingsPopup/SettingsPopup'
 
 export const LitepaperView = () => {
   const { changeNodePopupOpen, themeSelected } = useSelector((state: State) => state.preferences)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const openChangeNodePopup = useCallback(() => dispatch(toggleRPCNodePopup(true)), [])
   const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [])
   const darkThemeEnabled = themeSelected !== LIGHT_THEME
@@ -39,7 +40,7 @@ export const LitepaperView = () => {
     )
   }, [setImagesByTheme])
 
-  useScrollPosition(
+  useWindowScrollPosition(
     () => {
       // prettier-ignore
       //@ts-ignore/*-//
@@ -80,10 +81,7 @@ export const LitepaperView = () => {
           'token-flow': document.getElementById('token-flow')?.getBoundingClientRect().top!,
             })
     },
-    [],
-    undefined,
-    false,
-    300,
+    { wait: 300 },
   )
 
   const LitepaperToCHeaderItem = (props: any) => {
@@ -124,7 +122,7 @@ export const LitepaperView = () => {
   }
 
   if (isIOS && changeNodePopupOpen) {
-    <SettingPopup isModalOpened showBackdrop={false} closeModal={closeModalHandler} />
+    ;<SettingPopup isModalOpened showBackdrop={false} closeModal={closeModalHandler} />
   }
 
   return (

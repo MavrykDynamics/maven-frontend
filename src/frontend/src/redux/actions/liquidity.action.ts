@@ -53,23 +53,30 @@ export const addLiquidity =
           .batch([
             {
               kind: OpKind.TRANSACTION,
-              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0).toTransferParams(),
+              ...tzBTCContract.methodsObject.approve({ spender: LB_DEX_CONTRACT, value: 0 }).toTransferParams(),
             },
             {
               kind: OpKind.TRANSACTION,
-              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, removeDecimal(tokensToSell)).toTransferParams(),
+              ...tzBTCContract.methodsObject
+                .approve({ spender: LB_DEX_CONTRACT, value: removeDecimal(tokensToSell) })
+                .toTransferParams(),
             },
             {
               kind: OpKind.TRANSACTION,
-              ...lqdContract.methods
-                .addLiquidity(state.user.userAddress, minLqtMinted - 3, removeDecimal(tokensToSell), deadline)
+              ...lqdContract.methodsObject
+                .addLiquidity({
+                  owner: state.user.userAddress,
+                  minLqtMinted: minLqtMinted - 3,
+                  maxTokensDeposited: removeDecimal(tokensToSell),
+                  deadline,
+                })
                 .toTransferParams(),
               amount: removeDecimal(xtzToAdd),
               mutez: true,
             },
             {
               kind: OpKind.TRANSACTION,
-              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0).toTransferParams(),
+              ...tzBTCContract.methodsObject.approve({ spender: LB_DEX_CONTRACT, value: 0 }).toTransferParams(),
             },
           ])
           .send()
@@ -124,14 +131,14 @@ export const removeLiquidity =
         const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
         const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
         dispatch(showToaster(INFO, 'Removing Liquidity', 'Please wait 30s...'))
-        const op = await lqdContract.methods
-          .removeLiquidity(
-            state.wallet.accountPkh,
-            lqtToSell,
-            removeDecimal(xtzToReceive),
-            removeDecimal(tzBtcToReceive),
+        const op = await lqdContract.methodsObject
+          .removeLiquidity({
+            to: state.wallet.accountPkh,
+            lqtBurned: lqtToSell,
+            minXtzWithdrawn: removeDecimal(xtzToReceive),
+            minTokensWithdrawn: removeDecimal(tzBtcToReceive),
             deadline,
-          )
+          })
           .send()
 
         await dispatch(toggleLoader(ROCKET_LOADER))
@@ -190,31 +197,42 @@ export const addLiquidityOnlyXTZ =
           .batch([
             {
               kind: OpKind.TRANSACTION,
-              ...lqdContract.methods
-                .xtzToToken(state.user.userAddress, removeDecimal(minTokensToBuy).toString(), deadline)
+              ...lqdContract.methodsObject
+                .xtzToToken({
+                  to: state.user.userAddress,
+                  minTokensBought: removeDecimal(minTokensToBuy).toString(),
+                  deadline,
+                })
                 .toTransferParams(),
               amount: removeDecimal(xtzToSwap),
               mutez: true,
             },
             {
               kind: OpKind.TRANSACTION,
-              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0).toTransferParams(),
+              ...tzBTCContract.methodsObject.approve({ spender: LB_DEX_CONTRACT, value: 0 }).toTransferParams(),
             },
             {
               kind: OpKind.TRANSACTION,
-              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, removeDecimal(tokensToSell)).toTransferParams(),
+              ...tzBTCContract.methodsObject
+                .approve({ spender: LB_DEX_CONTRACT, value: removeDecimal(tokensToSell) })
+                .toTransferParams(),
             },
             {
               kind: OpKind.TRANSACTION,
-              ...lqdContract.methods
-                .addLiquidity(state.user.userAddress, minLqtMinted - 3, removeDecimal(tokensToSell), deadline)
+              ...lqdContract.methodsObject
+                .addLiquidity({
+                  owner: state.user.userAddress,
+                  minLqtMinted: minLqtMinted - 3,
+                  maxTokensDeposited: removeDecimal(tokensToSell),
+                  deadline,
+                })
                 .toTransferParams(),
               amount: removeDecimal(xtzToAdd),
               mutez: true,
             },
             {
               kind: OpKind.TRANSACTION,
-              ...tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0).toTransferParams(),
+              ...tzBTCContract.methodsObject.approve({ spender: LB_DEX_CONTRACT, value: 0 }).toTransferParams(),
             },
           ])
           .send()

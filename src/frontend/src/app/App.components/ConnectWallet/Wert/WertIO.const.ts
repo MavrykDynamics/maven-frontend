@@ -1,11 +1,9 @@
-import { env } from 'process'
-
 export const getWertOptions = (
   commodity: string,
   setPopupActive: (open: boolean) => void,
   showErrorToast: () => void,
 ) => ({
-  partner_id: env.WERT_PARTNER_ID,
+  partner_id: process.env.REACT_APP_WERT_PARTNER_ID || process.env.WERT_PARTNER_ID,
   commodity,
   container_id: 'wert-io-popup-wrapper',
   color_background: 'transparent',

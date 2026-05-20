@@ -1,30 +1,31 @@
-import React, {useCallback, useRef, useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {useClickAway, useLockBodyScroll} from 'react-use'
+import React, { useCallback, useRef, useState } from 'react'
+import { useAppDispatch } from 'app/App.hooks'
+import { useSelector } from 'react-redux'
+import { useClickAway, useLockBodyScroll } from 'react-use'
 
 // helpers, consts
-import {BUTTON_SECONDARY, BUTTON_SECONDARY_PURPLE, BUTTON_WIDE,} from '../NewButton/NewButton.constants'
+import { BUTTON_SECONDARY, BUTTON_SECONDARY_PURPLE, BUTTON_WIDE } from '../NewButton/NewButton.constants'
 import {
   INPUT_STATUS_DEFAULT,
   INPUT_STATUS_ERROR,
   INPUT_STATUS_SUCCESS,
   InputStatusType,
 } from '../NewInput/NewInput.constants'
-import {isValidRPCNode} from 'utils/validatorFunctions'
-import {LIGHT_THEME, SPACE_THEME, themeSetterAction, ThemeType} from 'redux/actions/preferences.action'
+import { isValidRPCNode } from 'utils/validatorFunctions'
+import { LIGHT_THEME, SPACE_THEME, themeSetterAction, ThemeType } from '../../../redux/actions/preferences.action'
 
 // actions
-import {selectNewRPCNode, setNewRPCNodes} from './SettingsPopup.actions'
+import { selectNewRPCNode, setNewRPCNodes } from './SettingsPopup.actions'
 
 // types
-import {RPCNodeType, State} from 'utils/interfaces'
+import { RPCNodeType, State } from 'utils/interfaces'
 
 // views
 import Button from '../NewButton/NewButton'
 
 // styles
-import {PopupContainer, PopupContainerWrapper} from '../Popup/PopupMain.style'
-import {SettingsPopupBase,} from '../Popup/popupBases/SettingsPopup.style'
+import { PopupContainer, PopupContainerWrapper } from '../Popup/PopupMain.style'
+import { SettingsPopupBase } from '../Popup/popupBases/SettingsPopup.style'
 
 const MAX_NODES_AMOUNT = 3
 const DEFAULT_NODE_INPUT_STATE: { node: string; nodeValidation: InputStatusType } = {
@@ -43,7 +44,7 @@ export const SettingPopup = ({
 }) => {
   useLockBodyScroll(isModalOpened)
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { RPC_NODES, REACT_APP_RPC_PROVIDER } = useSelector((state: State) => state.preferences)
 
   const inputRef = useRef<HTMLInputElement>(null)
@@ -113,7 +114,6 @@ export const SettingPopup = ({
       <button onClick={closeModal} className="close-modal" />
 
       <SettingsPopupBase>
-
         {/*// TODO: Undo removing the RPC node in the future. */}
         {/*<div className="title">Change RPC Node</div>*/}
 
@@ -181,7 +181,7 @@ export const SettingPopup = ({
 }
 
 const Themes = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { themeSelected } = useSelector((state: State) => state.preferences)
   const setNewThemeHandler = useCallback((newTheme: ThemeType) => dispatch(themeSetterAction(newTheme)), [])
 

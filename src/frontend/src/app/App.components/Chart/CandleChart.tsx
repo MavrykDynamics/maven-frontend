@@ -30,6 +30,9 @@ export const TradingViewCandleChart = ({
     const handleResize = () => {
       chart.applyOptions({ width: chartContainerRef?.current?.clientWidth ?? 0 })
     }
+    const tickMarkFormatter = (time: UTCTimestamp | BusinessDay) => {
+      return parseDate({ time: Number(time), timeFormat: xAsisTimeFormat }) ?? ''
+    }
 
     const chart = createChart(chartContainerRef?.current ?? '', {
       layout: {
@@ -49,17 +52,15 @@ export const TradingViewCandleChart = ({
       height,
       localization: {
         locale: 'en-US',
-        timeFormatter: (time: BusinessDay | UTCTimestamp) => {
-          return parseDate({ time: Number(time), timeFormat: xAsisTimeFormat }) ?? ''
-        },
+        timeFormatter: tickMarkFormatter,
       },
-      ...(hideXAxis
-        ? {
-            timeScale: {
-              visible: false,
-            },
-          }
-        : {}),
+      timeScale: {
+        borderColor,
+        visible: !hideXAxis,
+        tickMarkFormatter,
+        fixLeftEdge: true,
+        fixRightEdge: true,
+      },
       ...(hideYAxis
         ? {
             rightPriceScale: {
@@ -80,17 +81,6 @@ export const TradingViewCandleChart = ({
         top: 0.03,
         bottom: 0.03,
       },
-    })
-
-    // Setting the border color for the horizontal axis
-    chart.timeScale().applyOptions({
-      borderColor,
-      visible: true,
-      tickMarkFormatter: (time: UTCTimestamp | BusinessDay) => {
-        return parseDate({ time: Number(time), timeFormat: xAsisTimeFormat }) ?? ''
-      },
-      fixLeftEdge: true,
-      fixRightEdge: true,
     })
 
     const series = chart.addCandlestickSeries({
@@ -146,7 +136,7 @@ export const TradingViewCandleChart = ({
       window.removeEventListener('resize', handleResize)
       chart.remove()
     }
-  }, [borderColor, data, height, hideXAxis, hideYAxis, textColor])
+  }, [borderColor, data, height, hideXAxis, hideYAxis, textColor, xAsisTimeFormat])
 
   return (
     <ChartStyled className={className} ref={mainChartWrapperRef}>

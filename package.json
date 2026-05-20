@@ -2,6 +2,10 @@
   "name": "maven-frontend",
   "version": "2.0.0",
   "type": "module",
+  "engines": {
+    "node": "^22.0.0",
+    "yarn": "^1.22.0"
+  },
   "scripts": {
     "start": "lerna exec -- yarn run --parallel start",
     "build": "lerna exec -- yarn run --parallel build",
@@ -12,25 +16,25 @@
     "postinstall": "lerna bootstrap"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.31.2",
-    "@typescript-eslint/parser": "^4.31.2",
-    "babel-eslint": "^10.1.0",
-    "eslint-config-prettier": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^8.10.2",
     "eslint-config-sinon": "^4.0.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-import-resolver-webpack": "^0.13.1",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jest": "^24.4.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-import-resolver-webpack": "^0.13.11",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jest": "^27.9.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.26.0",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^5.0.0",
-    "lerna": "^4.0.0",
-    "lint-staged": "^11.1.2",
-    "prettier": "^2.4.1",
+    "eslint-plugin-prettier": "^4.2.5",
+    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-security": "^3.0.1",
+    "lerna": "^6.6.2",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.8.8",
     "stylelint": "^13.13.1",
     "stylelint-config-recommended": "^5.0.0",
     "stylelint-config-standard": "^22.0.0",
@@ -49,9 +53,25 @@
       "git add"
     ]
   },
-  "dependencies": {
-    "@types/react-lottie": "^1.2.6",
-    "react-lottie": "^1.2.3",
-    "react-toggle": "^4.1.2"
-  }
+  "resolutions": {
+    "@babel/traverse": "^7.29.0",
+    "ansi-regex": "^5.0.1",
+    "brace-expansion": "^2.0.3",
+    "cross-spawn": "^7.0.6",
+    "flatted": "^3.4.2",
+    "glob-parent": "^6.0.2",
+    "handlebars": "^4.7.9",
+    "http-cache-semantics": "^4.1.1",
+    "json5": "^2.2.3",
+    "lodash": "^4.18.1",
+    "lodash.template": "^4.18.1",
+    "micromatch": "^4.0.8",
+    "minimatch": "^3.1.5",
+    "minimist": "^1.2.8",
+    "picomatch": "^2.3.2",
+    "semver": "^7.8.0",
+    "tar": "^7.5.11",
+    "trim-newlines": "^3.0.1"
+  },
+  "dependencies": {}
 }

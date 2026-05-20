@@ -1,6 +1,7 @@
 import WertWidget from '@wert-io/widget-initializer'
-import { useHistory, useLocation } from 'react-router'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch } from 'app/App.hooks'
+import { useLocation, useNavigate } from 'react-router'
+import { useSelector } from 'react-redux'
 import { useMedia } from 'react-use'
 
 import { ConnectWalletStyled } from './ConnectWallet.style'
@@ -11,7 +12,7 @@ import WertIoPopup from './Wert/WertIoPopup'
 import { State } from 'utils/interfaces'
 import { showToaster } from '../Toaster/Toaster.actions'
 import { ERROR } from '../Toaster/Toaster.constants'
-import { changeWallet, connect, disconnect } from 'redux/actions/connectWallet.actions'
+import { changeWallet, connect, disconnect } from '../../../redux/actions/connectWallet.actions'
 
 type ConnectWalletProps = {
   className?: string
@@ -19,8 +20,8 @@ type ConnectWalletProps = {
 }
 
 export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps) => {
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const location = useLocation()
 
   const [showWertIoPopup, setShowWertIoPopup] = useState(false)
@@ -37,7 +38,7 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
   const isLiqudityBaking = location.pathname === '/liquidity-baking'
 
   const handleClickGetSir = () => {
-    history.push(`/liquidity-baking`)
+    navigate('/liquidity-baking')
   }
 
   const handleConnect = () => {

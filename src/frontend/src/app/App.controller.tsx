@@ -1,19 +1,19 @@
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom'
-import {AnyAction} from 'redux'
-import {ThunkDispatch} from 'redux-thunk'
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router'
+import { AnyAction } from 'redux'
+import { ThunkDispatch } from 'redux-thunk'
 
 // components
-import {Toaster} from './App.components/Toaster/Toaster.controller'
+import { Toaster } from './App.components/Toaster/Toaster.controller'
 import Loader from './App.components/Loader/Loader.view'
-import {Home} from 'pages/Home/Home.controller'
-import {Litepaper} from 'pages/Litepaper/Litepaper.controller'
-import {Privacy} from 'pages/Privacy/Privacy.controller'
+import { Home } from 'pages/Home/Home.controller'
+import { Litepaper } from 'pages/Litepaper/Litepaper.controller'
+import { Privacy } from 'pages/Privacy/Privacy.controller'
 
 // helpers
-import {configureStore} from 'redux/storeConfigurator'
+import { configureStore } from '../redux/storeConfigurator'
 
 // types
-import {State} from 'utils/interfaces'
+import { State } from 'utils/interfaces'
 
 export const store = configureStore({})
 
@@ -27,22 +27,10 @@ export const App = () => {
       <Router>
         {/* <Popup /> */}
 
-        <Switch>
-          <Route
-            exact
-            path="/"
-            component={Home}
-          />
-          <Route
-            exact
-            path="/litepaper"
-            component={Litepaper}
-          />
-          <Route
-            exact
-            path="/privacy"
-            component={Privacy}
-          />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/litepaper" element={<Litepaper />} />
+          <Route path="/privacy" element={<Privacy />} />
           {/*<Route*/}
           {/*  exact*/}
           {/*  path="/liquidity-baking"*/}
@@ -53,14 +41,9 @@ export const App = () => {
           {/*  path="/bakery"*/}
           {/*  component={Bakery}*/}
           {/*/>*/}
-          <Route
-            exact
-            path="/404"
-          >
-            <Home />
-          </Route>
-          <Redirect to='/404' />
-        </Switch>
+          <Route path="/404" element={<Home />} />
+          <Route path="*" element={<Navigate to="/404" replace />} />
+        </Routes>
         <Toaster />
       </Router>
     </>

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/macro'
+import styled, { css } from 'styled-components'
 import { Page } from 'styles'
 import { MavenTheme } from 'utils/interfaces'
 

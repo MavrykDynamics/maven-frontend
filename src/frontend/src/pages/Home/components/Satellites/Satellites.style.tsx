@@ -1,7 +1,6 @@
-import styled from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
 
-export const SatellitesStyled = styled.section<{ theme: MavenTheme }>`
+export const SatellitesStyled = styled.section`
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -51,7 +50,7 @@ export const SatellitesStyled = styled.section<{ theme: MavenTheme }>`
   }
 `
 
-export const SatellitesFrontFigure = styled.figure<{ theme: MavenTheme }>`
+export const SatellitesFrontFigure = styled.figure`
   margin: 0;
   position: absolute;
   bottom: -10px;

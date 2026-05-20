@@ -1,4 +1,4 @@
-import { GET_USER_DATA } from 'redux/action.types'
+import { GET_USER_DATA } from '../action.types'
 import { PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
 import { State, UserData } from 'utils/interfaces'
 import env from 'utils/env'

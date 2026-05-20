@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 // types
-import {MavenTheme} from 'utils/interfaces'
+import { MavenTheme } from 'utils/interfaces'
 
 // components
-import {Button} from 'app/App.components/Button/Button.controller'
+import { Button } from 'app/App.components/Button/Button.controller'
 
-export const BakeryStyled = styled.div<{ theme: MavenTheme }>`
+export const BakeryStyled = styled.div`
   background-image: ${({ theme }) =>
     `url(${theme.topDesktopBackground}), url(${theme.bottomDesktopBackground}), ${theme.backgroundGradient}`};
   background-position: center 100px, bottom, center;
@@ -275,7 +275,7 @@ export const Card = styled.div`
         line-height: 22px;
       }
     }
-  } ;
+  }
 `
 
 export const CardWithBackground = styled(Card)<{ theme: MavenTheme }>`
@@ -428,7 +428,7 @@ export const RoundButton = styled.button`
   }
 `
 
-export const BakeryChartStyled = styled.div<{ theme: MavenTheme }>`
+export const BakeryChartStyled = styled.div`
   padding: 20px;
   width: 60%;
 

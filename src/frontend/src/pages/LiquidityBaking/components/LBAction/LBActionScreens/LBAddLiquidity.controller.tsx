@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch } from 'app/App.hooks'
+import { useSelector } from 'react-redux'
 
 import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { PRIMARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
@@ -21,7 +22,7 @@ import { Button } from 'app/App.components/Button/Button.controller'
 import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
-import { addLiquidity, addLiquidityOnlyXTZ } from 'redux/actions/liquidity.action'
+import { addLiquidity, addLiquidityOnlyXTZ } from '../../../../../redux/actions/liquidity.action'
 import { calculateTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
 import Icon from 'app/App.components/Icon/Icon.view'
 import { InputStatusType } from 'app/App.components/Input/Input.controller'
@@ -57,7 +58,7 @@ export const DEFAULT_COINS_ERRORS = {
 const dexType = getSettings('liquidity')
 
 export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
   const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)

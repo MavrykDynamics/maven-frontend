@@ -1,8 +1,9 @@
 import { useCallback, useMemo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch } from 'app/App.hooks'
+import { useSelector } from 'react-redux'
 import { useMedia } from 'react-use'
 
-import { toogleChartInterval, toogleChartType } from 'redux/actions/chart.action'
+import { toogleChartInterval, toogleChartType } from '../../../../redux/actions/chart.action'
 import { IntervalType, State } from 'utils/interfaces'
 import themeColors from 'styles/colors'
 
@@ -52,7 +53,7 @@ export const LBChart = ({
     () => chartDataArea.at(-1)?.value || chartDataCandlestick.at(-1)?.close || 0,
     [chartDataArea, chartDataCandlestick],
   )
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const changeIntervalHandler = useCallback(async (newInterval: IntervalType) => {
     await dispatch(toogleChartInterval(newInterval))

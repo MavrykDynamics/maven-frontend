@@ -1,7 +1,7 @@
-import styled from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
+import { MavenTheme } from 'utils/interfaces'
 
-import {CONTAINER_WIDTH} from '../../../pages/Home/Home.style'
+import { CONTAINER_WIDTH } from '../../../pages/Home/Home.style'
 
 export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavenTheme }>`
   width: 100%;
@@ -162,7 +162,7 @@ export const HeaderLogo = styled.div<{ theme: MavenTheme; showBg: boolean; src: 
   }
 `
 
-export const HeaderButton = styled.div<{ theme: MavenTheme }>`
+export const HeaderButton = styled.div`
   cursor: pointer;
   background: ${({ theme }) => theme.textColor};
   border-radius: 5px;

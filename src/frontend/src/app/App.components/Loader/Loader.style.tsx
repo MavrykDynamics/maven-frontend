@@ -1,5 +1,5 @@
-import styled, {keyframes} from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { keyframes } from 'styled-components'
+import { MavenTheme } from 'utils/interfaces'
 
 export const LoaderStyled = styled.div`
   display: flex;
@@ -181,7 +181,7 @@ const shine = keyframes`
   }
 `
 
-export const LoaderShineTextAnimation = styled.div<{ theme: MavenTheme }>`
+export const LoaderShineTextAnimation = styled.div`
   background-image: ${({ theme }) => theme.shineAnimationGradient};
   background-size: auto auto;
   background-clip: border-box;
@@ -197,7 +197,7 @@ export const LoaderShineTextAnimation = styled.div<{ theme: MavenTheme }>`
   white-space: nowrap;
 `
 
-export const SpinnerCircleLoaderStyled = styled.div<{ theme: MavenTheme }>`
+export const SpinnerCircleLoaderStyled = styled.div`
   color: ${({ theme }) => theme.headerTeam};
   font-size: 20px;
   width: 1em;

@@ -1,14 +1,13 @@
-import styled from 'styled-components/macro'
-import {backgroundTextColor, headerColor, primaryColor} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
-import {BLUE, CYAN} from './TzAddress.constants'
+import styled from 'styled-components'
+import { backgroundTextColor, headerColor, primaryColor } from 'styles'
+import { BLUE, CYAN } from './TzAddress.constants'
 
 export const TzAddressContainer = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
 `
-export const TzAddressStyled = styled.div<{ theme: MavenTheme }>`
+export const TzAddressStyled = styled.div`
   &.primary {
     color: #86d4c9;
   }
@@ -37,7 +36,7 @@ export const TzAddressStyled = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const TzAddressIcon = styled.svg<{ theme: MavenTheme }>`
+export const TzAddressIcon = styled.svg`
   width: 16px;
   height: 16px;
   display: inline-block;

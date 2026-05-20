@@ -1,5 +1,5 @@
-import styled, {css} from 'styled-components'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { css } from 'styled-components'
+import { MavenTheme } from 'utils/interfaces'
 
 export const LBActionStyled = styled.div<{ theme: MavenTheme; isShowingChartMobile?: boolean }>`
   z-index: 1;
@@ -339,7 +339,7 @@ export const StepBlock = styled.div`
 export const CheckBoxWrapper = styled.div`
   position: relative;
 `
-export const CheckBoxLabel = styled.label<{ theme: MavenTheme }>`
+export const CheckBoxLabel = styled.label`
   position: absolute;
   top: 0;
   left: 0;

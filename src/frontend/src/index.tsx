@@ -1,6 +1,7 @@
 import DarkThemeProvider from 'app/App.components/DarkThemeProvider/DarkThemeProvider.view'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Provider as ReduxProvider } from 'react-redux'
+import { HelmetProvider } from 'react-helmet-async'
 import { ParallaxProvider } from 'react-scroll-parallax'
 
 import { App, store } from './app/App.controller'
@@ -20,18 +21,25 @@ export const Root = () => {
       }}
     >
       <ReduxProvider store={store}>
-        <DarkThemeProvider>
-          <ParallaxProvider>
-            <GlobalStyle />
-            <App />
-          </ParallaxProvider>
-        </DarkThemeProvider>
+        <HelmetProvider>
+          <DarkThemeProvider>
+            <ParallaxProvider>
+              <GlobalStyle />
+              <App />
+            </ParallaxProvider>
+          </DarkThemeProvider>
+        </HelmetProvider>
       </ReduxProvider>
     </SWRConfig>
   )
 }
 
 const rootElement = document.getElementById('root')
-ReactDOM.render(<Root />, rootElement)
+
+if (!rootElement) {
+  throw new Error('Root element not found')
+}
+
+createRoot(rootElement).render(<Root />)
 
 unregister()

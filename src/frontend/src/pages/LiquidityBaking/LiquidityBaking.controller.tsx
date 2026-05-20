@@ -1,14 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getTokensData } from 'redux/actions/swap.action'
+import { useAppDispatch } from 'app/App.hooks'
+import { useSelector } from 'react-redux'
+import { getTokensData } from '../../redux/actions/swap.action'
 import LiquidityBakingView from './LiquidityBaking.view'
-import { getTokensPrices } from 'redux/actions/tokenPrices.action'
-import { getChartData } from 'redux/actions/chart.action'
+import { getTokensPrices } from '../../redux/actions/tokenPrices.action'
+import { getChartData } from '../../redux/actions/chart.action'
 import { State } from 'utils/interfaces'
-import { getGeneralStats } from 'redux/actions/stats.action'
+import { getGeneralStats } from '../../redux/actions/stats.action'
 import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
 import { Footer } from 'app/App.components/Footer/Footer.controller'
-import { SPACE_THEME, togglePolicyPopup, toggleRPCNodePopup } from 'redux/actions/preferences.action'
+import { SPACE_THEME, togglePolicyPopup, toggleRPCNodePopup } from '../../redux/actions/preferences.action'
 import { dexGqlFetcher } from '../../gql/gql.helpers'
 import { SWRConfig } from 'swr'
 import { getItemFromStorage, setItemInStorage } from 'utils/utils'
@@ -17,11 +18,11 @@ import { PolicyPopup } from 'app/App.components/PolicyPopup/Policy.controller'
 import { useLocation } from 'react-router'
 import { useCookies } from 'react-cookie'
 import { PolicyPopupContent } from 'app/App.components/PolicyPopup/PolicyPopupContent.controller'
-import { connect } from 'redux/actions/connectWallet.actions'
+import { connect } from '../../redux/actions/connectWallet.actions'
 import { SettingPopup } from 'app/App.components/SettingsPopup/SettingsPopup'
 
 const LiquidityBaking = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { pathname } = useLocation()
   const [isVisible, setIsVisible] = useState(false)
   const [isIOS, setIsIOS] = useState(true)

@@ -1,7 +1,6 @@
-import styled from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
 
-export const ChartTooltip = styled.div<{ theme: MavenTheme }>`
+export const ChartTooltip = styled.div`
   padding: 6px 10px;
   text-align: center;
 
@@ -53,7 +52,7 @@ export const Plug = styled.div`
   }
 `
 
-export const ChartStyled = styled.div<{ theme: MavenTheme }>`
+export const ChartStyled = styled.div`
   width: fit-content;
   height: fit-content;
   position: relative;
@@ -68,7 +67,7 @@ export const ChartStyled = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const TradingViewTooltipStyled = styled.div<{ theme: MavenTheme }>`
+export const TradingViewTooltipStyled = styled.div`
   position: absolute;
   z-index: 100;
   padding: 7px 10px 7px 10px;

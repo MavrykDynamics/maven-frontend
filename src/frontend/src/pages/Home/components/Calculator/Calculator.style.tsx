@@ -1,10 +1,10 @@
-import styled from 'styled-components/macro'
-import {Page} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
+import { Page } from 'styles'
+import { MavenTheme } from 'utils/interfaces'
 
-import {CONTAINER_WIDTH} from '../../Home.style'
+import { CONTAINER_WIDTH } from '../../Home.style'
 
-export const CalculatorSection = styled.div<{ theme: MavenTheme }>`
+export const CalculatorSection = styled.div`
   background-color: ${({ theme }) => theme.darkestBackroundColor};
   padding-top: 16px;
   margin-top: -1px;
@@ -39,7 +39,7 @@ export const CalculatorStyled = styled(Page)`
   }
 `
 
-export const CalculatorCointainer = styled.div<{ theme: MavenTheme }>`
+export const CalculatorCointainer = styled.div`
   display: flex;
   border-radius: 15px;
 
@@ -146,7 +146,7 @@ export const CalculatorInput = styled.div<{ shift?: boolean; theme: MavenTheme }
   }
 `
 
-export const CalculatorResults = styled.div<{ theme: MavenTheme }>`
+export const CalculatorResults = styled.div`
   background: url(${({ theme }) => theme.calculatorBackground});
   background-repeat: no-repeat;
   background-position: top right;
@@ -179,7 +179,7 @@ export const CalculatorResults = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const CalculatorResult = styled.div<{ theme: MavenTheme }>`
+export const CalculatorResult = styled.div`
   margin-top: 0;
   margin-bottom: 28px;
   color: ${({ theme }) => theme.headerColor};
@@ -204,14 +204,14 @@ export const CalculatorResult = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const CalculatorResultFee = styled.div<{ theme: MavenTheme }>`
+export const CalculatorResultFee = styled.div`
   font-size: 14px;
   line-height: 14px;
   font-weight: 500;
   opacity: 0.8;
 `
 
-export const CalculatorControls = styled.div<{ theme: MavenTheme }>`
+export const CalculatorControls = styled.div`
   flex-shrink: 0;
   max-width: 77%;
   background-color: ${({ theme }) => theme.darkBackroundColor};
@@ -226,7 +226,7 @@ export const CalculatorControls = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const CalculatorButton = styled.button<{ theme: MavenTheme }>`
+export const CalculatorButton = styled.button`
   height: 50px;
   line-height: 50px;
   font-size: 16px;

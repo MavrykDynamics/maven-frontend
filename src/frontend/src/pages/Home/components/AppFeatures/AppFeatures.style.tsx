@@ -1,7 +1,6 @@
-import styled from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
 
-export const AppFeaturesSection = styled.section<{ theme: MavenTheme }>`
+export const AppFeaturesSection = styled.section`
   --max-container: calc(100vw - 360px);
   padding-top: 50px;
   padding-bottom: 190px;
@@ -36,7 +35,7 @@ export const AppFeaturesSection = styled.section<{ theme: MavenTheme }>`
   }
 `
 
-export const AppFeaturesList = styled.article<{ theme: MavenTheme }>`
+export const AppFeaturesList = styled.article`
   width: var(--max-container);
   max-width: 100%;
   margin: 0;
@@ -77,7 +76,7 @@ export const AppFeaturesList = styled.article<{ theme: MavenTheme }>`
   }
 `
 
-export const AppFeaturesFigure = styled.figure<{ theme: MavenTheme }>`
+export const AppFeaturesFigure = styled.figure`
   margin: 0;
   padding: 0 20px;
 

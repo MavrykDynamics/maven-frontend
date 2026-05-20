@@ -2,13 +2,20 @@
   "name": "server",
   "version": "0.1.0",
   "type": "module",
+  "engines": {
+    "node": "^22.0.0"
+  },
   "scripts": {
     "serve": "nodemon node-server.js"
   },
+  "overrides": {
+    "braces": "^3.0.3",
+    "picomatch": "^2.3.2"
+  },
   "dependencies": {
-    "dotenv": "^16.0.0",
-    "jsdom": "^19.0.0",
-    "nodemon": "^2.0.15",
-    "xml2js": "^0.4.23"
+    "dotenv": "^17.4.2",
+    "jsdom": "^27.0.1",
+    "nodemon": "^3.1.14",
+    "xml2js": "^0.6.2"
   }
 }

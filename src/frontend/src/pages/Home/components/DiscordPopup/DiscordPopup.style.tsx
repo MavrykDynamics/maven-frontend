@@ -1,8 +1,7 @@
-import styled from 'styled-components/macro'
-import {textColor} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
+import { textColor } from 'styles'
 
-export const DiscordPopupStyled = styled.section<{ theme: MavenTheme }>`
+export const DiscordPopupStyled = styled.section`
   background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradientTransparent};
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -43,7 +42,7 @@ export const DiscordPopupGrid = styled.div`
     margin: 15px auto;
   }
   > h4 {
-    max-width:40%;
+    max-width: 40%;
     font-weight: 600;
 
     color: ${({ theme }) => theme.headerColor};
@@ -59,7 +58,7 @@ export const DiscordPopupFigure = styled.figure`
   margin: 0;
   left: 0;
   bottom: -8px;
-  z-index:0;
+  z-index: 0;
   width: 100%;
 
   @media (max-width: 700px) {
@@ -79,7 +78,7 @@ export const DiscordPopupFigure = styled.figure`
   }
 `
 
-export const DiscordPopupButton = styled.a<{ theme: MavenTheme }>`
+export const DiscordPopupButton = styled.a`
   line-height: 32px;
   font-size: 18px;
   font-weight: bold;
@@ -99,7 +98,7 @@ export const DiscordPopupButton = styled.a<{ theme: MavenTheme }>`
   z-index: 999;
 `
 
-export const DiscordPopupStatus = styled.div<{ theme: MavenTheme }>`
+export const DiscordPopupStatus = styled.div`
   position: relative;
   top: 20px;
 
@@ -132,7 +131,7 @@ export const DiscordPopupClose = styled.div`
     stroke: ${({ theme }) => theme.textColor};
   }
 `
-export const DiscordPopupSocials = styled.div<{ theme: MavenTheme }>`
+export const DiscordPopupSocials = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -163,8 +162,8 @@ export const DiscordPopupSocials = styled.div<{ theme: MavenTheme }>`
 
   svg {
     height: 44px;
-    fill: ${({theme}) => theme.socialsColor};
-    
+    fill: ${({ theme }) => theme.socialsColor};
+
     @media (max-width: 700px) {
       height: 25px;
     }

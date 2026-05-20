@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import {MavenTheme} from 'utils/interfaces'
 
-export const LBFAQStyled = styled.div<{ theme: MavenTheme }>`
+export const LBFAQStyled = styled.div`
   z-index: 1;
   background: ${({ theme }) => theme.cards};
   border: 1px solid ${({ theme }) => theme.strokeCards};

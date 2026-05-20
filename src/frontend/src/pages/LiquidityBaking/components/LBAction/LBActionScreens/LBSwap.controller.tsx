@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch } from 'app/App.hooks'
+import { useSelector } from 'react-redux'
 
 import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
@@ -82,7 +83,7 @@ const isValidTZBTC = (tzBTC: string | number) => {
 }
 
 export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: LBGeneralStats }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { coinPrices } = useSelector((state: State) => state.tokens)
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
@@ -261,12 +262,12 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
 
   // performing swap for xtz=>tzBTC & tzBTC=>xtz
   const swapBtnHandler = async () => {
-    if (inputValues.XTZ <= 0) {
+    if (parseSrtToNum(inputValues.XTZ) <= 0) {
       dispatch(showToaster(ERROR, 'Invalid Input', `Please input a number that exists in tzBTC`))
       return
     }
 
-    if (inputValues.tzBTC <= 0) {
+    if (parseSrtToNum(inputValues.tzBTC) <= 0) {
       dispatch(
         showToaster(ERROR, 'Invalid Input', `Please input a number that exists in ${NATIVE_TOKEN_DISPLAY_SYMBOL}`),
       )

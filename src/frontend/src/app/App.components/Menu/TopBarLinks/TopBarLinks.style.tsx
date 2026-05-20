@@ -1,7 +1,6 @@
-import styled, {css} from 'styled-components'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { css } from 'styled-components'
 
-export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selected?: boolean; theme: MavenTheme }>`
+export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selected?: boolean }>`
   margin: 0 25px;
   height: 100%;
   position: relative;

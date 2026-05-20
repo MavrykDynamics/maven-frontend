@@ -1,4 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from 'app/App.hooks'
 import React, { useEffect, useState } from 'react'
 
 import { CoinSwap } from 'app/App.components/CoinSwap/CoinSwap.controller'
@@ -35,7 +36,7 @@ const DEFAULT_COINS_ERRORS = {
 }
 
 export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { LBTBalance } = useSelector((state: State) => state.user)
 
   const [inputValues, setInputValues] = useState<{ SIR: number | string }>({ SIR: '0' })
