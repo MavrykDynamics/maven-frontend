@@ -1,4 +1,4 @@
-import { ComponentProps, MouseEvent, useEffect } from 'react'
+import { ComponentProps, MouseEvent, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router'
 
 type HashLinkProps = Omit<ComponentProps<typeof Link>, 'to'> & {
@@ -26,19 +26,35 @@ const scrollToHash = (hash: string, scroll?: (element: HTMLElement) => void) => 
 }
 
 const requestHashScroll = (hash: string, scroll?: (element: HTMLElement) => void) => {
-  window.setTimeout(() => scrollToHash(hash, scroll), 0)
-  window.setTimeout(() => scrollToHash(hash, scroll), 100)
+  const scrollTimers = [
+    window.setTimeout(() => scrollToHash(hash, scroll), 0),
+    window.setTimeout(() => scrollToHash(hash, scroll), 100),
+  ]
+
+  return () => {
+    scrollTimers.forEach((timer) => window.clearTimeout(timer))
+  }
 }
 
 export const HashLink = ({ to, scroll, onClick, ...props }: HashLinkProps) => {
   const location = useLocation()
   const hash = getHashFromTo(to)
+  const locationKey = `${location.pathname}${location.search}${location.hash}`
+  const lastScrolledLocation = useRef<string | null>(null)
+  const scrollRef = useRef(scroll)
 
   useEffect(() => {
-    if (location.hash.slice(1) === hash) {
-      requestHashScroll(hash, scroll)
+    scrollRef.current = scroll
+  }, [scroll])
+
+  useEffect(() => {
+    if (!hash || location.hash.slice(1) !== hash || lastScrolledLocation.current === locationKey) {
+      return
     }
-  }, [hash, location.hash, location.pathname, scroll])
+
+    lastScrolledLocation.current = locationKey
+    return requestHashScroll(hash, scrollRef.current)
+  }, [hash, location.hash, locationKey])
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event)
@@ -54,7 +70,8 @@ export const HashLink = ({ to, scroll, onClick, ...props }: HashLinkProps) => {
       return
     }
 
-    requestHashScroll(hash, scroll)
+    lastScrolledLocation.current = locationKey
+    requestHashScroll(hash, scrollRef.current)
   }
 
   return <Link {...props} to={to} onClick={handleClick} />

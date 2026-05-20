@@ -9,7 +9,7 @@ import { ThemeToggleButton } from './Toggle-button.style'
 export const ThemeToggle = () => {
   const dispatch = useAppDispatch()
   const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected !== LIGHT_THEME)
-  const setNewThemeHandler = useCallback((newTheme: ThemeType) => dispatch(themeSetterAction(newTheme)), [])
+  const setNewThemeHandler = useCallback((newTheme: ThemeType) => dispatch(themeSetterAction(newTheme)), [dispatch])
 
   const handleThemeToggle = () => {
     setNewThemeHandler(darkThemeEnabled ? LIGHT_THEME : SPACE_THEME)
@@ -17,7 +17,8 @@ export const ThemeToggle = () => {
   return (
     <ThemeToggleButton
       type="button"
-      checked={darkThemeEnabled}
+      className="theme-toggle"
+      $checked={darkThemeEnabled}
       aria-label="Dark mode toggle"
       aria-pressed={darkThemeEnabled}
       onClick={handleThemeToggle}

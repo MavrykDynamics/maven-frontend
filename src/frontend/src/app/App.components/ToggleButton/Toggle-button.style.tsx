@@ -78,7 +78,7 @@ export const ToggleButtonItem = styled.div`
   }
 `
 
-export const ThemeToggleButton = styled.button<{ checked: boolean; theme: MavenTheme }>`
+export const ThemeToggleButton = styled.button<{ $checked: boolean; theme: MavenTheme }>`
   display: inline-block;
   position: relative;
   width: 50px;
@@ -99,7 +99,7 @@ export const ThemeToggleButton = styled.button<{ checked: boolean; theme: MavenT
     width: 50px;
     height: 24px;
     border-radius: 30px;
-    background-color: ${({ checked, theme }) => (checked ? theme.darkestBackroundColor : theme.linksAndButtons)};
+    background-color: ${({ $checked, theme }) => ($checked ? theme.darkestBackroundColor : theme.linksAndButtons)};
     transition: background-color 0.2s ease;
   }
 
@@ -114,18 +114,18 @@ export const ThemeToggleButton = styled.button<{ checked: boolean; theme: MavenT
 
   .theme-toggle-icon.checked {
     left: 6px;
-    opacity: ${({ checked }) => (checked ? 1 : 0)};
+    opacity: ${({ $checked }) => ($checked ? 1 : 0)};
   }
 
   .theme-toggle-icon.unchecked {
     right: 6px;
-    opacity: ${({ checked }) => (checked ? 0 : 1)};
+    opacity: ${({ $checked }) => ($checked ? 0 : 1)};
   }
 
   .theme-toggle-thumb {
     position: absolute;
     top: 1px;
-    left: ${({ checked }) => (checked ? '27px' : '1px')};
+    left: ${({ $checked }) => ($checked ? '27px' : '1px')};
     width: 22px;
     height: 22px;
     border: 1px solid #fafafa;

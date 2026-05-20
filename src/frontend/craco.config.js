@@ -3,6 +3,15 @@ const webpack = require('webpack')
 module.exports = {
   webpack: {
     configure: (config) => {
+      const oneOfRule = config.module?.rules?.find((rule) => Array.isArray(rule.oneOf))
+
+      if (oneOfRule) {
+        oneOfRule.oneOf.unshift({
+          test: /\.markdown\.md$/,
+          type: 'asset/source',
+        })
+      }
+
       config.resolve = config.resolve || {}
       config.resolve.fallback = {
         ...(config.resolve.fallback || {}),

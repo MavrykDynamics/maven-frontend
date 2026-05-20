@@ -1,7 +1,5 @@
-/* eslint import/no-webpack-loader-syntax: off */
 import { useAppDispatch } from 'app/App.hooks'
-// @ts-ignore
-import litepaper from '!raw-loader!./Litepaper.markdown.md'
+import litepaper from './Litepaper.markdown.md'
 import { useWindowScrollPosition } from '@n8tb1t/use-scroll-position'
 import Markdown from 'markdown-to-jsx'
 import { useCallback, useEffect, useState } from 'react'
@@ -16,8 +14,8 @@ import { SettingPopup } from 'app/App.components/SettingsPopup/SettingsPopup'
 export const LitepaperView = () => {
   const { changeNodePopupOpen, themeSelected } = useSelector((state: State) => state.preferences)
   const dispatch = useAppDispatch()
-  const openChangeNodePopup = useCallback(() => dispatch(toggleRPCNodePopup(true)), [])
-  const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [])
+  const openChangeNodePopup = useCallback(() => dispatch(toggleRPCNodePopup(true)), [dispatch])
+  const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [dispatch])
   const darkThemeEnabled = themeSelected !== LIGHT_THEME
   const [isIOS, setIsIOS] = useState(true)
   const [tops, setTops] = useState<any>({
@@ -105,7 +103,7 @@ export const LitepaperView = () => {
     const { id, title, hashLinkId, next } = props
     const linkIsSelected = next !== null ? tops[hashLinkId] <= 110 && tops[next] > 110 : tops[hashLinkId] <= 110
     return (
-      <LitepaperLink selected={linkIsSelected} key={`${hashLinkId}${id}`}>
+      <LitepaperLink $selected={linkIsSelected} key={`${hashLinkId}${id}`}>
         <HashLink
           to={`#${hashLinkId}`}
           scroll={(el) =>

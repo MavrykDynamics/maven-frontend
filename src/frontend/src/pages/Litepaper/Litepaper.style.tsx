@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components'
 import { Page } from 'styles'
-import { MavenTheme } from 'utils/interfaces'
 
-export const LitepaperStyled = styled(Page)<{ theme: MavenTheme }>`
+export const LitepaperStyled = styled(Page)`
   font-size: 16px;
   color: ${({ theme }) => theme.subTextColor};
   margin: 0 auto;
@@ -152,23 +151,23 @@ export const LitepaperIndex = styled.ul`
   }
 `
 
-export const LitepaperRef = styled.a<{ selected?: boolean }>`
+export const LitepaperRef = styled.a<{ $selected?: boolean }>`
   padding-left: 5px;
 
   ${(props) =>
-    props.selected &&
+    props.$selected &&
     css`
       font-weight: bold;
       border-left: 2px solid ${({ theme }) => theme.subTextColor};
     `}
 `
 
-export const LitepaperLink = styled.div<{ selected?: boolean }>`
+export const LitepaperLink = styled.div<{ $selected?: boolean }>`
   padding-left: 5px;
   white-space: pre-wrap;
 
   ${(props) =>
-    props.selected &&
+    props.$selected &&
     css`
       font-weight: bold;
       border-left: 2px solid ${({ theme }) => theme.subTextColor};

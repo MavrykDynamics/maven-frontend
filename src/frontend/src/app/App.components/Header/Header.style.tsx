@@ -1,14 +1,13 @@
 import styled from 'styled-components'
-import { MavenTheme } from 'utils/interfaces'
 
 import { CONTAINER_WIDTH } from '../../../pages/Home/Home.style'
 
-export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavenTheme }>`
+export const HeaderStyled = styled.div<{ $showBg: boolean }>`
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 20;
-  background-color: ${(props) => (props.showBg ? ({ theme }) => theme.darkestBackroundColor : '#FFFFFF00')};
+  background-color: ${(props) => (props.$showBg ? ({ theme }) => theme.darkestBackroundColor : '#FFFFFF00')};
   will-change: background-color;
   transition: background-color 200ms ease-in-out;
   align-items: center;
@@ -25,11 +24,11 @@ export const HeaderStyled = styled.div<{ showBg: boolean; theme: MavenTheme }>`
   }
 `
 
-export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavenTheme }>`
+export const HeaderGrid = styled.div<{ $showBg: boolean }>`
   margin: 0 auto;
   max-width: calc(100vw - 80px);
   width: ${CONTAINER_WIDTH};
-  margin-top: ${(props) => (props.showBg ? '0' : '30px')};
+  margin-top: ${(props) => (props.$showBg ? '0' : '30px')};
   position: relative;
   text-align: center;
   height: 80px;
@@ -69,7 +68,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavenTheme }>`
     color: ${({ theme }) => theme.litepaperLinkColor};
   }
 
-  > label {
+  > .theme-toggle {
     margin-top: 25px;
     margin-left: 30px;
 
@@ -99,7 +98,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavenTheme }>`
       display: none;
     }
 
-    label {
+    .theme-toggle {
       margin: 0;
       margin-left: 8px;
       margin-top: -7px;
@@ -121,7 +120,7 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavenTheme }>`
       font-size: 14px;
     }
 
-    label {
+    .theme-toggle {
       margin-top: 0px;
       position: relative;
       bottom: 4px;
@@ -134,10 +133,10 @@ export const HeaderGrid = styled.div<{ showBg: boolean; theme: MavenTheme }>`
   }
 `
 
-export const HeaderLogo = styled.div<{ theme: MavenTheme; showBg: boolean; src: string }>`
-  background: url(${(props) => props.src}) no-repeat;
+export const HeaderLogo = styled.div<{ $showBg: boolean; $src: string }>`
+  background: url(${(props) => props.$src}) no-repeat;
   height: 60px;
-  margin-top: ${(props) => (props.showBg ? ({ theme }) => '-16px' : '-8px')};
+  margin-top: ${(props) => (props.$showBg ? ({ theme }) => '-16px' : '-8px')};
   z-index: 1;
   width: 276px;
   transition: margin-top 0.25s linear;
