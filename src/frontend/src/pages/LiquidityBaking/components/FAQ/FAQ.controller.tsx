@@ -1,5 +1,5 @@
 import { FaqItem, LBFAQStyled } from './FAQ.style'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 const LBFAQ = () => {
   return (
@@ -8,8 +8,8 @@ const LBFAQ = () => {
         <h2>What is Liquidity Baking DEX (Sirius)?</h2>
         <p>
           Liquidity Baking (LB) is a protocol level DeFi feature of the Tezos blockchain. LB is a stand-alone DEX which
-          features a trading pair between {NATIVE_TOKEN_DISPLAY_SYMBOL}/tzBTC (wrapped Bitcoin), and incentivized
-          directly by the Tezos protocol. By providing liquidity to the DEX, you earn newly minted{' '}
+          features a trading pair between {NATIVE_TOKEN_DISPLAY_SYMBOL}/{WRAPPED_BTC_DISPLAY_SYMBOL} (wrapped Bitcoin),
+          and incentivized directly by the Tezos protocol. By providing liquidity to the DEX, you earn newly minted{' '}
           {NATIVE_TOKEN_DISPLAY_SYMBOL} as yield, along with trading fees.
         </p>
       </FaqItem>

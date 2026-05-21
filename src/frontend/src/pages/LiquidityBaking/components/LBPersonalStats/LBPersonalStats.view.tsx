@@ -3,7 +3,7 @@ import { CustomizedText, VertInfo } from 'pages/LiquidityBaking/LiquidityBaking.
 import { SECONDARY_COLOR, THIRD_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { LBPersonalStatsStyled } from './LBPersonalStats.style'
 import Icon from 'app/App.components/Icon/Icon.view'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 type PersonalStatsProps = {
   showNone: boolean
@@ -153,14 +153,14 @@ export const LBPersonalStatsView = ({
             />
           </CustomizedText>
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Estimated tzBTC{' '}
+            Estimated {WRAPPED_BTC_DISPLAY_SYMBOL}{' '}
             <span>
               owned
               <div className="info">
                 <Icon id="infoIcon" />
                 <div className="text">
-                  Your estimated share of tzBTC in the liquidity pool given how many SIRS tokens you have in your
-                  wallet.
+                  Your estimated share of {WRAPPED_BTC_DISPLAY_SYMBOL} in the liquidity pool given how many SIRS tokens
+                  you have in your wallet.
                 </div>
               </div>
             </span>

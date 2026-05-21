@@ -13,7 +13,7 @@ import { nonNumberSymbolsValidation, parseSrtToNum } from 'utils/utils'
 import { CustomizedText, HorisontalInfo } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { StepBlock } from '../LBAction.style'
 import { CoinsInputsErrors, DEFAULT_COINS_ERRORS, MinCoinsData } from './LBAddLiquidity.controller'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 export const AddLiquidityOnlyXTZ = ({
   inputValues,
@@ -104,10 +104,15 @@ export const AddLiquidityOnlyXTZ = ({
 
         <HorisontalInfo className="liq-tokens-created">
           <CustomizedText className={PRIMARY_COLOR} fontWidth={500}>
-            Minimum tzBTC Received
+            Minimum {WRAPPED_BTC_DISPLAY_SYMBOL} Received
           </CustomizedText>
           <CustomizedText className={SECONDARY_COLOR} fontWidth={500}>
-            <CommaNumber value={minCoinsForSwap.minTzBTC} showDecimal decimalsToShow={8} endingText="tzBTC" />
+            <CommaNumber
+              value={minCoinsForSwap.minTzBTC}
+              showDecimal
+              decimalsToShow={8}
+              endingText={WRAPPED_BTC_DISPLAY_SYMBOL}
+            />
           </CustomizedText>
         </HorisontalInfo>
       </div>

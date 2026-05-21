@@ -6,6 +6,7 @@ import { CommaNumber } from 'app/App.components/CommaNumber/CommaNumber.controll
 import { calculateAPY, diffBetweenCoinsInPercent } from 'utils/utils'
 import { useEffect, useMemo, useState } from 'react'
 import { PRIMARY_COLOR, THIRD_COLOR, SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
+import { WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 const LBHeader = () => {
   const {
@@ -28,36 +29,30 @@ const LBHeader = () => {
       </div>
 
       <div className="info-wrapper">
-        <VertInfo className='header'>
-          <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Total Value Locked
-          </CustomizedText>
+        <VertInfo className="header">
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>Total Value Locked</CustomizedText>
           <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber beginningText="$" value={xtz_pool * 2 * coinPrices.tezos.usd} />
           </CustomizedText>
         </VertInfo>
 
-        <VertInfo className='header'>
-          <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            APY
-          </CustomizedText>
+        <VertInfo className="header">
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>APY</CustomizedText>
           <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber endingText="%" value={isFinite(APY) ? APY : 0} />
           </CustomizedText>
         </VertInfo>
 
-        <VertInfo className='header'>
-          <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            Total Sirius Tokens
-          </CustomizedText>
+        <VertInfo className="header">
+          <CustomizedText className={`${THIRD_COLOR} block-name`}>Total Sirius Tokens</CustomizedText>
           <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber value={lqt_total} />
           </CustomizedText>
         </VertInfo>
 
-        <VertInfo className='header'>
+        <VertInfo className="header">
           <CustomizedText className={`${THIRD_COLOR} block-name`}>
-            tzBTC/BTC Price Difference
+            {WRAPPED_BTC_DISPLAY_SYMBOL}/BTC Price Difference
           </CustomizedText>
           <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber endingText="%" value={priceDifference} />

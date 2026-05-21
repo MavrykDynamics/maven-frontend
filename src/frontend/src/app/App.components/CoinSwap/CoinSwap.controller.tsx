@@ -3,7 +3,7 @@ import { SECONDARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { CoinSwapCoinWrapper, CoinSwapStyled } from './CoinSwap.style'
 
 import { CommaNumber } from '../CommaNumber/CommaNumber.controller'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 type CoinDataType = {
   icon: string
@@ -45,7 +45,12 @@ export const CoinSwap = ({ icon, XTZCoinData, tzBTCCoinData, className }: CoinSw
           <use xlinkHref={`/icons/sprites.svg#${tzBTCCoinData.icon}`} />
         </svg>
         <CustomizedText fontWidth={500} className={SECONDARY_COLOR}>
-          <CommaNumber value={tzBTCCoinData.amount} showDecimal decimalsToShow={6} endingText={'tzBTC'} />
+          <CommaNumber
+            value={tzBTCCoinData.amount}
+            showDecimal
+            decimalsToShow={6}
+            endingText={WRAPPED_BTC_DISPLAY_SYMBOL}
+          />
         </CustomizedText>
       </CoinSwapCoinWrapper>
     </CoinSwapStyled>

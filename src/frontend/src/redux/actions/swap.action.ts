@@ -10,7 +10,7 @@ import { BeaconWallet } from '@taquito/beacon-wallet'
 import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
 import { toggleLoader } from './preferences.action'
 import { ROCKET_LOADER } from 'utils/consts'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 export const TZBTC_CONTRACT = 'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
   LB_DEX_CONTRACT = 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5',
@@ -86,7 +86,13 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
       const batchOp = await batch?.send()
 
       await dispatch(toggleLoader(ROCKET_LOADER))
-      await dispatch(showToaster(INFO, `Swapping tzBTC -> ${NATIVE_TOKEN_DISPLAY_SYMBOL}`, 'Please wait 30s...'))
+      await dispatch(
+        showToaster(
+          INFO,
+          `Swapping ${WRAPPED_BTC_DISPLAY_SYMBOL} -> ${NATIVE_TOKEN_DISPLAY_SYMBOL}`,
+          'Please wait 30s...',
+        ),
+      )
 
       await batchOp?.confirmation()
       await dispatch(toggleLoader())
@@ -143,7 +149,13 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
         .send({ amount })
 
       await dispatch(toggleLoader(ROCKET_LOADER))
-      await dispatch(showToaster(INFO, `Swapping ${NATIVE_TOKEN_DISPLAY_SYMBOL} -> tzBTC`, 'Please wait 30s...'))
+      await dispatch(
+        showToaster(
+          INFO,
+          `Swapping ${NATIVE_TOKEN_DISPLAY_SYMBOL} -> ${WRAPPED_BTC_DISPLAY_SYMBOL}`,
+          'Please wait 30s...',
+        ),
+      )
 
       await op.confirmation()
       await dispatch(toggleLoader())

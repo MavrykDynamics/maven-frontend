@@ -28,7 +28,7 @@ import Icon from 'app/App.components/Icon/Icon.view'
 import { InputStatusType } from 'app/App.components/Input/Input.controller'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 const DEFAULT_COINS_AMOUNT = {
   XTZ: 0,
@@ -184,7 +184,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
         dispatch(
           showToaster(
             ERROR,
-            'Insufficient tzBTC wallet balance',
+            `Insufficient ${WRAPPED_BTC_DISPLAY_SYMBOL} wallet balance`,
             `Please enter sufficient ${NATIVE_TOKEN_DISPLAY_SYMBOL} amount`,
           ),
         )
@@ -201,7 +201,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
           showToaster(
             ERROR,
             `Insufficient ${NATIVE_TOKEN_DISPLAY_SYMBOL} wallet balance`,
-            'Please enter sufficient tzBTC amount',
+            `Please enter sufficient ${WRAPPED_BTC_DISPLAY_SYMBOL} amount`,
           ),
         )
         setInputErrors({
@@ -281,7 +281,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
             <Icon id="infoIcon" />
             <div className="text">
               You can add liquidity with only {NATIVE_TOKEN_DISPLAY_SYMBOL}. <br />A swap of half the{' '}
-              {NATIVE_TOKEN_DISPLAY_SYMBOL} to tzBTC will be done first.
+              {NATIVE_TOKEN_DISPLAY_SYMBOL} to {WRAPPED_BTC_DISPLAY_SYMBOL} will be done first.
             </div>
           </div>
         </CustomizedText>

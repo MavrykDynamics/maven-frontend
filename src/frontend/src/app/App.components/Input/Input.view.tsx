@@ -14,6 +14,7 @@ import {
 import Icon from '../Icon/Icon.view'
 import { ERROR } from '../Toaster/Toaster.constants'
 import { getFullNumber } from '../../../utils/utils'
+import { getTokenDisplayName, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 type InputViewProps = {
   icon?: string
@@ -63,6 +64,8 @@ export const InputView = ({
   const isLB = kind === 'LB'
   const status = inputStatus !== undefined ? inputStatus : 'none'
   const classNames = `${kind} ${status} ${isLB ? 'LB' : ''} ${convertedValue === undefined ? 'no-subtext' : ''}`
+  const displayPinnedText = pinnedText ? getTokenDisplayName(pinnedText) : ''
+  const balanceDecimals = displayPinnedText === WRAPPED_BTC_DISPLAY_SYMBOL ? 8 : 6
 
   return (
     <InputStyled id={'inputStyled'} className={className}>
@@ -76,8 +79,8 @@ export const InputView = ({
           <CommaNumber
             beginningText="Balance:"
             value={userBalance}
-            endingText={pinnedText}
-            decimalsToShow={pinnedText === 'tzBTC' ? 8 : 6}
+            endingText={displayPinnedText}
+            decimalsToShow={balanceDecimals}
           />
         </CustomizedText>
       ) : null}
@@ -104,7 +107,7 @@ export const InputView = ({
           disabled={disabled}
         />
         <InputStatus className={`${classNames} ${pinnedText ? 'with-text' : ''}`} />
-        {pinnedText && !isLB && <InputLabel className={`${classNames} pinned-text`}>{pinnedText}</InputLabel>}
+        {pinnedText && !isLB && <InputLabel className={`${classNames} pinned-text`}>{displayPinnedText}</InputLabel>}
 
         {isLB && pinnedText && icon ? (
           <div className="LB-coin-info">
@@ -118,7 +121,7 @@ export const InputView = ({
               </svg>
             )}
 
-            {pinnedText && <div className="pinned-text">{pinnedText}</div>}
+            {pinnedText && <div className="pinned-text">{displayPinnedText}</div>}
           </div>
         ) : null}
 

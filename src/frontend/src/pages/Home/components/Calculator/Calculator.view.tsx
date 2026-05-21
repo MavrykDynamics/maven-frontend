@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 // prettier-ignore
 import {
@@ -87,9 +87,9 @@ export const CalculatorView = () => {
                   }
                 >
                   <option value="XTZ">{NATIVE_TOKEN_DISPLAY_SYMBOL}</option>
-                  <option value="wWBTC">tzBTZ</option>
+                  <option value="wWBTC">{WRAPPED_BTC_DISPLAY_SYMBOL}</option>
                   <option value="wWETH" disabled title="Coming soon">
-                    {NATIVE_TOKEN_DISPLAY_SYMBOL}/tzBTC LB LP (Сoming soon)
+                    {NATIVE_TOKEN_DISPLAY_SYMBOL}/{WRAPPED_BTC_DISPLAY_SYMBOL} LB LP (Сoming soon)
                   </option>
                 </select>
               </CalculatorInput>
