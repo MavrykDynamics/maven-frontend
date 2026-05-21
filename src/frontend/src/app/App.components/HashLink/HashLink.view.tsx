@@ -12,27 +12,36 @@ const getHashFromTo = (to: string) => {
 }
 
 const scrollToHash = (hash: string, scroll?: (element: HTMLElement) => void) => {
-  if (!hash) return
+  if (!hash) return false
 
   const element = document.getElementById(decodeURIComponent(hash))
-  if (!element) return
+  if (!element) return false
 
   if (scroll) {
     scroll(element)
-    return
+    return true
   }
 
   element.scrollIntoView({ behavior: 'smooth' })
+  return true
 }
 
 const requestHashScroll = (hash: string, scroll?: (element: HTMLElement) => void) => {
-  const scrollTimers = [
-    window.setTimeout(() => scrollToHash(hash, scroll), 0),
-    window.setTimeout(() => scrollToHash(hash, scroll), 100),
-  ]
+  let retryTimer: number | null = null
+  const animationFrame = window.requestAnimationFrame(() => {
+    const didScroll = scrollToHash(hash, scroll)
+
+    if (!didScroll) {
+      retryTimer = window.setTimeout(() => scrollToHash(hash, scroll), 100)
+    }
+  })
 
   return () => {
-    scrollTimers.forEach((timer) => window.clearTimeout(timer))
+    window.cancelAnimationFrame(animationFrame)
+
+    if (retryTimer !== null) {
+      window.clearTimeout(retryTimer)
+    }
   }
 }
 
@@ -70,8 +79,10 @@ export const HashLink = ({ to, scroll, onClick, ...props }: HashLinkProps) => {
       return
     }
 
-    lastScrolledLocation.current = locationKey
-    requestHashScroll(hash, scrollRef.current)
+    if (hash && location.hash.slice(1) === hash) {
+      lastScrolledLocation.current = locationKey
+      requestHashScroll(hash, scrollRef.current)
+    }
   }
 
   return <Link {...props} to={to} onClick={handleClick} />

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { MavenTheme } from 'utils/interfaces'
+import { backgroundColor, secondaryColor } from 'styles/colors'
 
 export const ToggleButtonWrapper = styled.div`
   display: flex;
@@ -78,7 +78,7 @@ export const ToggleButtonItem = styled.div`
   }
 `
 
-export const ThemeToggleButton = styled.button<{ $checked: boolean; theme: MavenTheme }>`
+export const ThemeToggleButton = styled.button<{ $checked: boolean }>`
   display: inline-block;
   position: relative;
   width: 50px;
@@ -93,13 +93,22 @@ export const ThemeToggleButton = styled.button<{ $checked: boolean; theme: Maven
     opacity: 0.5;
   }
 
+  &:focus .theme-toggle-thumb,
+  &:focus-visible .theme-toggle-thumb {
+    box-shadow: 0 0 2px 3px ${secondaryColor};
+  }
+
+  &:active:not(:disabled) .theme-toggle-thumb {
+    box-shadow: 0 0 5px 5px ${secondaryColor};
+  }
+
   .theme-toggle-track {
     position: relative;
     display: block;
     width: 50px;
     height: 24px;
     border-radius: 30px;
-    background-color: ${({ $checked, theme }) => ($checked ? theme.darkestBackroundColor : theme.linksAndButtons)};
+    background-color: ${({ $checked }) => ($checked ? backgroundColor : secondaryColor)};
     transition: background-color 0.2s ease;
   }
 
@@ -131,6 +140,6 @@ export const ThemeToggleButton = styled.button<{ $checked: boolean; theme: Maven
     border: 1px solid #fafafa;
     border-radius: 50%;
     background-color: #fafafa;
-    transition: left 0.25s ease;
+    transition: left 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s ease;
   }
 `

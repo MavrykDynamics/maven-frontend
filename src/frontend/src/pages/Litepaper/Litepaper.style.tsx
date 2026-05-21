@@ -111,11 +111,14 @@ export const LitepaperIndex = styled.ul`
   position: fixed;
   width: 260px;
   padding-left: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: rgba(255, 255, 255, 0);
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 
   @media (max-height: 940px) {
