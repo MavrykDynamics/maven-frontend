@@ -1,8 +1,7 @@
-import styled from 'styled-components/macro'
-import {textColor} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
+import { textColor } from 'styles'
 
-export const NewsletterStyled = styled.section<{ theme: MavenTheme }>`
+export const NewsletterStyled = styled.section`
   background-image: url(${({ theme }) => theme.subscribeBachground}), ${({ theme }) => theme.skyGradientTransparent};
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -65,7 +64,7 @@ export const NewsletterFigure = styled.figure`
   }
 `
 
-export const NewsletterForm = styled.form<{ theme: MavenTheme }>`
+export const NewsletterForm = styled.form`
   width: 694px;
   max-width: 100%;
   margin-bottom: 250px;
@@ -102,7 +101,7 @@ export const NewsletterForm = styled.form<{ theme: MavenTheme }>`
   }
 `
 
-export const NewsletterButton = styled.button<{ theme: MavenTheme }>`
+export const NewsletterButton = styled.button`
   line-height: 32px;
   font-size: 16px;
   font-weight: bold;
@@ -118,7 +117,7 @@ export const NewsletterButton = styled.button<{ theme: MavenTheme }>`
   border: none;
 `
 
-export const NewsletterStatus = styled.div<{ theme: MavenTheme }>`
+export const NewsletterStatus = styled.div`
   position: relative;
   top: 20px;
 

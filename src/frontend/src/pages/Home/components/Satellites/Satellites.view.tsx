@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-import {SatellitesFrontFigure, SatellitesImage, SatellitesStyled} from './Satellites.style'
-import {Parallax} from 'react-scroll-parallax'
-import {useSelector} from 'react-redux'
-import {LIGHT_THEME} from 'redux/actions/preferences.action'
-import {State} from 'utils/interfaces'
+import { SatellitesFrontFigure, SatellitesImage, SatellitesStyled } from './Satellites.style'
+import { Parallax } from 'react-scroll-parallax'
+import { useSelector } from 'react-redux'
+import { LIGHT_THEME } from '../../../../redux/actions/preferences.action'
+import { State } from 'utils/interfaces'
 
 export const SatellitesView = () => {
   const { themeSelected } = useSelector((state: State) => state.preferences)

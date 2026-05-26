@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import {MavenTheme} from 'utils/interfaces'
 
-export const PolicyStyled = styled.div<{ theme: MavenTheme }>`
+export const PolicyStyled = styled.div`
   display: flex;
   flex-direction: column;
   padding: 40px;

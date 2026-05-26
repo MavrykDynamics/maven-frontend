@@ -1,7 +1,7 @@
 import * as React from 'react'
-import {useState} from 'react'
-import {useSelector} from 'react-redux'
-import {useMailChimpForm} from 'use-mailchimp-form'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useMailChimpForm } from 'use-mailchimp-form'
 import Cookie from 'js-cookie'
 
 // prettier-ignore
@@ -15,8 +15,8 @@ import {
     NewsletterStyled
 } from './Newsletter.style'
 import animationData from './ship-loop.json'
-import {State} from 'utils/interfaces'
-import {LIGHT_THEME} from 'redux/actions/preferences.action'
+import { State } from 'utils/interfaces'
+import { LIGHT_THEME } from '../../../../redux/actions/preferences.action'
 
 type NewsLetterProps = {
   closeCallback?: () => void
@@ -27,7 +27,8 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
   const frontImgUrl = themeSelected !== LIGHT_THEME ? '/images/city-bg-dark.svg' : '/images/city-bg-light.svg'
   const frontImgUrlPopup =
     themeSelected !== LIGHT_THEME ? '/images/city-bg-popup-dark.svg' : '/images/city-bg-popup-light.svg'
-  const url = 'https://mavryk.us9.list-manage.com/subscribe/post?u=05fca2aef18a53f210baf1ad7&amp;id=46683ae062&amp;f_id=00d626e1f0'
+  const url =
+    'https://mavryk.us9.list-manage.com/subscribe/post?u=05fca2aef18a53f210baf1ad7&amp;id=46683ae062&amp;f_id=00d626e1f0'
   const { loading, error, success, message, handleSubmit } = useMailChimpForm(url)
   //@ts-ignore
   const [values, setValues] = useState({
@@ -94,7 +95,7 @@ export const NewsletterView = ({ closeCallback }: NewsLetterProps) => {
             onChange={(e: any) =>
               setValues({
                 ...values,
-                  COMPANY: e.target.value,
+                COMPANY: e.target.value,
               })
             }
           />

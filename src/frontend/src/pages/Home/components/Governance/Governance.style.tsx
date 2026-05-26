@@ -1,19 +1,19 @@
-import styled from 'styled-components/macro'
-import {Page} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
+import { Page } from 'styles'
+import { MavenTheme } from 'utils/interfaces'
 
-export const GovernanceStyled = styled.div<{theme: MavenTheme}>`
-  //background: url('./images/governance-bg.svg'), ${({theme}) => theme.containerColor};
-  background: ${({theme}) => theme.containerColor};
+export const GovernanceStyled = styled.div<{ theme: MavenTheme }>`
+  //background: url('./images/governance-bg.svg'), ${({ theme }) => theme.containerColor};
+  background: ${({ theme }) => theme.containerColor};
   background-repeat: no-repeat;
   background-position: bottom right;
   margin-bottom: 100px;
   padding: 50px 0;
 `
 
-export const GovernanceContent = styled(Page)<{theme: MavenTheme}>`
+export const GovernanceContent = styled(Page)<{ theme: MavenTheme }>`
   > h1 {
-    color: ${({theme}) => theme.subTextColor};
+    color: ${({ theme }) => theme.subTextColor};
   }
 
   > img {
@@ -22,37 +22,47 @@ export const GovernanceContent = styled(Page)<{theme: MavenTheme}>`
   }
 `
 
-export const GovernanceParallaxLayer = styled.div<{zIndex: number}>`
-  z-index: ${props => props.zIndex || "0"};
+export const GovernanceParallaxLayer = styled.div<{ zIndex: number }>`
+  z-index: ${(props) => props.zIndex || '0'};
 `
 
-export const GovernanceImage = styled.div<{img: string, height?: string, backgroundSize?: string, translateY?: string}>`
-  background-image: url(${props => props.img || ""});
+export const GovernanceImage = styled.div<{
+  img: string
+  height?: string
+  backgroundSize?: string
+  translateY?: string
+}>`
+  background-image: url(${(props) => props.img || ''});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: ${props => props.backgroundSize || "contain"};
-  height: ${props => props.height || "200px"};
+  background-size: ${(props) => props.backgroundSize || 'contain'};
+  height: ${(props) => props.height || '200px'};
   margin: auto auto 20px auto;
-  transform: translateY(${props => props.translateY || "0px"});
+  transform: translateY(${(props) => props.translateY || '0px'});
 
   @media (max-width: 500px) {
-    background-image: url(${props => props.img || ""});
+    background-image: url(${(props) => props.img || ''});
   }
 `
 
-export const GovernanceImagePlanet = styled.div<{img: string, height?: string, top?: string, backgroundSize?: string}>`
+export const GovernanceImagePlanet = styled.div<{
+  img: string
+  height?: string
+  top?: string
+  backgroundSize?: string
+}>`
   position: absolute;
-  background-image: url(${props => props.img || ""});
+  background-image: url(${(props) => props.img || ''});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: ${props => props.backgroundSize || "contain"};
-  height: ${props => props.height || "200px"};
+  background-size: ${(props) => props.backgroundSize || 'contain'};
+  height: ${(props) => props.height || '200px'};
   width: 100%;
   margin: auto auto 20px auto;
-  top: ${props => props.top || "-50%"};
+  top: ${(props) => props.top || '-50%'};
 
   @media (max-width: 500px) {
-    background-image: url(${props => props.img || ""});
+    background-image: url(${(props) => props.img || ''});
   }
 `
 
@@ -72,7 +82,7 @@ export const GovernanceGrid = styled.div`
 
 export const GovernanceList = styled.div`
   display: none;
-  
+
   @media (max-width: 1000px) {
     display: block;
   }

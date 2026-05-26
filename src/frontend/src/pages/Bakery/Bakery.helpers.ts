@@ -2,7 +2,7 @@
 import { calcWithoutMu } from 'utils/utils'
 
 // types
-import { BakeryDelegateDataType } from 'redux/actions/bakery.action'
+import { BakeryDelegateDataType } from '../../redux/actions/bakery.action'
 
 export const getFreeSpace = (data: BakeryDelegateDataType) => {
   if (data.balance === -1) return [-1]

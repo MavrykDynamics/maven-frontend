@@ -1,7 +1,6 @@
-import styled, {css} from 'styled-components'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { css } from 'styled-components'
 
-export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selected?: boolean; theme: MavenTheme }>`
+export const TopBarLinksStyled = styled.div<{ $useClickOpening?: boolean; $selected?: boolean }>`
   margin: 0 25px;
   height: 100%;
   position: relative;
@@ -37,8 +36,8 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
       transition: 0.35s all;
     }
 
-    ${({ useClickOpening }) =>
-      !useClickOpening
+    ${({ $useClickOpening }) =>
+      !$useClickOpening
         ? css`
             &:hover {
               color: ${({ theme }) => theme.nSelectedColor};
@@ -114,8 +113,8 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
     }
   }
 
-  ${({ useClickOpening }) =>
-    !useClickOpening
+  ${({ $useClickOpening }) =>
+    !$useClickOpening
       ? css`
           &:hover {
             cursor: pointer;
@@ -126,8 +125,8 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
         `
       : ''}
 
-  ${({ useClickOpening, selected }) =>
-    useClickOpening
+  ${({ $useClickOpening, $selected }) =>
+    $useClickOpening
       ? css`
           display: flex;
           flex-direction: column;
@@ -193,7 +192,7 @@ export const TopBarLinksStyled = styled.div<{ useClickOpening?: boolean; selecte
             }
 
             ${() =>
-              selected &&
+              $selected &&
               css`
                 display: flex;
                 max-height: fit-content;

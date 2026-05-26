@@ -1,11 +1,11 @@
-import { TezosOperationType } from '@airgap/beacon-sdk'
 import { BeaconWallet } from '@taquito/beacon-wallet'
+import type { TezosDelegationOperation } from '@ecadlabs/beacon-types'
 
 // helpers
 import type { AppDispatch, GetState } from '../../app/App.controller'
 import { ROCKET_LOADER } from 'utils/consts'
 import { ERROR, INFO, SUCCESS } from '../../app/App.components/Toaster/Toaster.constants'
-import { GET_BAKERY_DELEGATES } from 'redux/action.types'
+import { GET_BAKERY_DELEGATES } from '../action.types'
 import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
 import { toggleLoader } from './preferences.action'
 import { getFreeSpace } from 'pages/Bakery/Bakery.helpers'
@@ -18,6 +18,8 @@ import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions
 
 // types
 import { State } from 'utils/interfaces'
+
+const DELEGATION_OPERATION_KIND = 'delegation' as TezosDelegationOperation['kind']
 
 export type BakeryDelegateDataType = {
   balance: number
@@ -126,7 +128,7 @@ export const delegation =
         await wallet.client.requestOperation({
           operationDetails: [
             {
-              kind: TezosOperationType.DELEGATION,
+              kind: DELEGATION_OPERATION_KIND,
               delegate: bakerAddress,
             },
           ],

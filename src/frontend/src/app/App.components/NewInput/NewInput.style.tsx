@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 import {
   INPUT_BIG,
   INPUT_LARGE,
@@ -7,10 +7,9 @@ import {
   INPUT_STATUS_ERROR,
   INPUT_STATUS_SUCCESS,
 } from './NewInput.constants'
-import {MavenTheme} from 'utils/interfaces'
 
 // TODO: refactor colors with theme implementation
-export const StyledInput = styled.input<{ theme: MavenTheme }>`
+export const StyledInput = styled.input`
   width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.darkestBackroundColor};
@@ -45,7 +44,7 @@ export const StyledInput = styled.input<{ theme: MavenTheme }>`
   }
 `
 
-export const InputPinnedChild = styled.div<{ theme: MavenTheme }>`
+export const InputPinnedChild = styled.div`
   height: 100%;
   border-left: 1px solid ${({ theme }) => theme.socialBackroundColor};
   background-color: ${({ theme }) => theme.darkestBackroundColor};
@@ -65,7 +64,7 @@ export const InputPinnedChild = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const InputWrapper = styled.div<{ theme: MavenTheme }>`
+export const InputWrapper = styled.div`
   position: relative;
   display: flex;
   border: 1px solid ${({ theme }) => theme.socialBackroundColor};
@@ -280,7 +279,7 @@ export const NewInputLabel = styled.label`
   left: 12px;
 `
 
-export const InputStyledStatus = styled.div<{ theme: MavenTheme }>`
+export const InputStyledStatus = styled.div`
   display: block;
   position: absolute;
   top: 50%;
@@ -306,7 +305,7 @@ export const InputStyledStatus = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const InputPinnedTokenInfo = styled.div<{ theme: MavenTheme }>`
+export const InputPinnedTokenInfo = styled.div`
   display: flex;
   column-gap: 10px;
   min-width: max-content;
@@ -333,7 +332,7 @@ export const InputPinnedTokenInfo = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const InputPinnedDropDown = styled.div<{ theme: MavenTheme }>`
+export const InputPinnedDropDown = styled.div`
   display: flex;
   min-width: max-content;
   align-items: center;

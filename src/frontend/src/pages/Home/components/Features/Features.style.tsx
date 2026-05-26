@@ -1,10 +1,9 @@
-import styled from 'styled-components/macro'
-import {Page} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
+import { Page } from 'styles'
 
-import {CONTAINER_WIDTH} from '../../Home.style'
+import { CONTAINER_WIDTH } from '../../Home.style'
 
-export const FeaturesSection = styled.div<{ theme: MavenTheme }>`
+export const FeaturesSection = styled.div`
   background-color: ${({ theme }) => theme.darkestBackroundColor};
   background-image: url(${({ theme }) => theme.featuresBackground});
   background-position: bottom;
@@ -44,7 +43,7 @@ export const FeaturesGrid = styled.div`
   }
 `
 
-export const FeaturesComponent = styled.div<{ theme: MavenTheme }>`
+export const FeaturesComponent = styled.div`
   background-color: ${({ theme }) => theme.darkBackroundColor};
   border-radius: 15px;
   padding: 40px 30px;

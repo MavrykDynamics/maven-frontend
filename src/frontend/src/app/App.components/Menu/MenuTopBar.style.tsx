@@ -1,8 +1,7 @@
-import styled, {css} from 'styled-components/macro'
-import {MENU_Z_INDEX, Z_INDEX_DEFAULT} from 'styles/constants'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { css } from 'styled-components'
+import { MENU_Z_INDEX, Z_INDEX_DEFAULT } from 'styles/constants'
 
-export const MenuTopStyled = styled.div<{ theme: MavenTheme }>`
+export const MenuTopStyled = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -126,7 +125,7 @@ export const MenuTopStyled = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const MenuMobileBurger = styled.div<{ theme: MavenTheme }>`
+export const MenuMobileBurger = styled.div`
   display: block;
   width: fit-content;
   margin: 0 auto;
@@ -150,7 +149,7 @@ export const MenuMobileBurger = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const MobileTopBarStyled = styled.div<{ show: boolean; theme: MavenTheme }>`
+export const MobileTopBarStyled = styled.div<{ $show: boolean }>`
   position: absolute;
   width: 100vw;
   height: calc(100vh - 80px);
@@ -203,8 +202,8 @@ export const MobileTopBarStyled = styled.div<{ show: boolean; theme: MavenTheme 
     display: none;
   }
 
-  ${({ show }) =>
-    show
+  ${({ $show }) =>
+    $show
       ? css`
           max-height: calc(100vh - 80px);
         `

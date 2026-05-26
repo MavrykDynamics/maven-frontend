@@ -1,6 +1,6 @@
 import { fetchFromIndexer } from 'gql/gql.helpers'
 import { LB_DATA_QUERY, LB_DATA_QUERY_NAME } from 'gql/queries/lbData.query'
-import { GET_TOKENS_DATA, SET_TEZOS_TOOLKIT } from 'redux/action.types'
+import { GET_TOKENS_DATA, SET_TEZOS_TOOLKIT } from '../action.types'
 import { State } from '../../utils/interfaces'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { ERROR, INFO, SUCCESS } from 'app/App.components/Toaster/Toaster.constants'
@@ -10,7 +10,7 @@ import { BeaconWallet } from '@taquito/beacon-wallet'
 import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
 import { toggleLoader } from './preferences.action'
 import { ROCKET_LOADER } from 'utils/consts'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 export const TZBTC_CONTRACT = 'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
   LB_DEX_CONTRACT = 'KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5',
@@ -71,20 +71,28 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
       const deadline = new Date(Date.now() + 60000).toISOString()
       let batch = await state.wallet.tezos?.wallet
         .batch()
-        .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, 0))
-        .withContractCall(tzBTCContract.methods.approve(LB_DEX_CONTRACT, removeDecimal(tokensSold)))
+        .withContractCall(tzBTCContract.methodsObject.approve({ spender: LB_DEX_CONTRACT, value: 0 }))
         .withContractCall(
-          lqdContract.methods.tokenToXtz(
-            state.user.userAddress,
-            removeDecimal(tokensSold),
-            removeDecimal(minXTZBought),
+          tzBTCContract.methodsObject.approve({ spender: LB_DEX_CONTRACT, value: removeDecimal(tokensSold) }),
+        )
+        .withContractCall(
+          lqdContract.methodsObject.tokenToXtz({
+            to: state.user.userAddress,
+            tokensSold: removeDecimal(tokensSold),
+            minXtzBought: removeDecimal(minXTZBought),
             deadline,
-          ),
+          }),
         )
       const batchOp = await batch?.send()
 
       await dispatch(toggleLoader(ROCKET_LOADER))
-      await dispatch(showToaster(INFO, `Swapping tzBTC -> ${NATIVE_TOKEN_DISPLAY_SYMBOL}`, 'Please wait 30s...'))
+      await dispatch(
+        showToaster(
+          INFO,
+          `Swapping ${WRAPPED_BTC_DISPLAY_SYMBOL} -> ${NATIVE_TOKEN_DISPLAY_SYMBOL}`,
+          'Please wait 30s...',
+        ),
+      )
 
       await batchOp?.confirmation()
       await dispatch(toggleLoader())
@@ -132,12 +140,22 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
       const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
       const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
 
-      const op = await lqdContract.methods
-        .xtzToToken(state.user.userAddress, removeDecimal(minTokensBought).toString(), deadline)
+      const op = await lqdContract.methodsObject
+        .xtzToToken({
+          to: state.user.userAddress,
+          minTokensBought: removeDecimal(minTokensBought).toString(),
+          deadline,
+        })
         .send({ amount })
 
       await dispatch(toggleLoader(ROCKET_LOADER))
-      await dispatch(showToaster(INFO, `Swapping ${NATIVE_TOKEN_DISPLAY_SYMBOL} -> tzBTC`, 'Please wait 30s...'))
+      await dispatch(
+        showToaster(
+          INFO,
+          `Swapping ${NATIVE_TOKEN_DISPLAY_SYMBOL} -> ${WRAPPED_BTC_DISPLAY_SYMBOL}`,
+          'Please wait 30s...',
+        ),
+      )
 
       await op.confirmation()
       await dispatch(toggleLoader())

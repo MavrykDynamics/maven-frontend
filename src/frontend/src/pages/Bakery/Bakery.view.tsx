@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch } from 'app/App.hooks'
+import { useSelector } from 'react-redux'
 
 // components
 import { FrequentlyAskedQuestions } from './components/FrequentlyAskedQuestions/FrequentlyAskedQuestions.view'
@@ -14,7 +15,7 @@ import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 
 // actions
 import { getDelegates, delegation } from '../../redux/actions/bakery.action'
-import { getTezosHistoryPrices } from 'redux/actions/tokenPrices.action'
+import { getTezosHistoryPrices } from '../../redux/actions/tokenPrices.action'
 
 // styles
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from './Bakery.style'
@@ -22,7 +23,7 @@ import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from './Bakery.s
 // types
 import { State } from 'utils/interfaces'
 import { ROCKET_LOADER } from 'utils/consts'
-import { toggleLoader } from 'redux/actions/preferences.action'
+import { toggleLoader } from '../../redux/actions/preferences.action'
 import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) => {
@@ -34,7 +35,7 @@ const tabItems: TabItem[] = [...delegateCardData].reverse().map((item, index) =>
 })
 
 export function BakeryView() {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const {
     coinHistoryPrices: { tezos },

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import {MavenTheme} from 'utils/interfaces'
 
-export const LBActionBottomWrapperStyled = styled.div<{ theme: MavenTheme }>`
+export const LBActionBottomWrapperStyled = styled.div`
   row-gap: 7px;
   display: flex;
   flex-direction: column;

@@ -1,8 +1,7 @@
-import styled from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
 import Icon from './Icon.view'
 
-export const FarmCardTokenLogoContainer = styled.figure<{ theme: MavenTheme }>`
+export const FarmCardTokenLogoContainer = styled.figure`
   height: 50px;
   align-items: center;
   position: relative;
@@ -14,7 +13,7 @@ export const FarmCardTokenLogoContainer = styled.figure<{ theme: MavenTheme }>`
     position: absolute;
   }
 `
-export const FarmCardFirstTokenIcon = styled.img<{ theme: MavenTheme }>`
+export const FarmCardFirstTokenIcon = styled.img`
   height: 43px;
   width: 43px;
   bottom: 5px;
@@ -22,7 +21,7 @@ export const FarmCardFirstTokenIcon = styled.img<{ theme: MavenTheme }>`
   align-self: flex-end;
   z-index: 1;
 `
-export const FarmCardSecondTokenIcon = styled.img<{ theme: MavenTheme }>`
+export const FarmCardSecondTokenIcon = styled.img`
   height: 30px;
   width: 30px;
   top: -8px;

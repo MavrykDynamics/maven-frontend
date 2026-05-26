@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
+import { DARK_THEME, LIGHT_THEME } from '../../../../redux/actions/preferences.action'
 import { State } from 'utils/interfaces'
 
 import Carousel from '../../../../app/App.components/Carousel/Carousel.view'

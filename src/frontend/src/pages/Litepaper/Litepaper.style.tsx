@@ -1,8 +1,7 @@
-import styled, { css } from 'styled-components/macro'
+import styled, { css } from 'styled-components'
 import { Page } from 'styles'
-import { MavenTheme } from 'utils/interfaces'
 
-export const LitepaperStyled = styled(Page)<{ theme: MavenTheme }>`
+export const LitepaperStyled = styled(Page)`
   font-size: 16px;
   color: ${({ theme }) => theme.subTextColor};
   margin: 0 auto;
@@ -112,11 +111,14 @@ export const LitepaperIndex = styled.ul`
   position: fixed;
   width: 260px;
   padding-left: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: rgba(255, 255, 255, 0);
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 
   @media (max-height: 940px) {
@@ -152,23 +154,23 @@ export const LitepaperIndex = styled.ul`
   }
 `
 
-export const LitepaperRef = styled.a<{ selected?: boolean }>`
+export const LitepaperRef = styled.a<{ $selected?: boolean }>`
   padding-left: 5px;
 
   ${(props) =>
-    props.selected &&
+    props.$selected &&
     css`
       font-weight: bold;
       border-left: 2px solid ${({ theme }) => theme.subTextColor};
     `}
 `
 
-export const LitepaperLink = styled.div<{ selected?: boolean }>`
+export const LitepaperLink = styled.div<{ $selected?: boolean }>`
   padding-left: 5px;
   white-space: pre-wrap;
 
   ${(props) =>
-    props.selected &&
+    props.$selected &&
     css`
       font-weight: bold;
       border-left: 2px solid ${({ theme }) => theme.subTextColor};

@@ -1,6 +1,5 @@
-import styled, {css, keyframes} from 'styled-components/macro'
-import {btnLightColor, headerColor, subTextColor} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { css, keyframes } from 'styled-components'
+import { btnLightColor, headerColor, subTextColor } from 'styles'
 
 export const BUTTON_PULSE = 'BUTTON_PULSE'
 
@@ -37,7 +36,7 @@ export const JumbotronStyled = styled.div`
   }
 `
 
-export const JubontronTitle = styled.div<{ theme: MavenTheme }>`
+export const JubontronTitle = styled.div`
   > h1 {
     font-weight: bold;
     font-size: 64px;
@@ -134,7 +133,7 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
     cursor: not-allowed;
     border-width: 0;
   }
-  
+
   ${(props) =>
     props.secondary &&
     css`
@@ -142,13 +141,13 @@ export const JumbotronButton = styled.div<{ secondary?: boolean }>`
       background: ${btnLightColor};
     `}
 
-    &.${BUTTON_PULSE} {
+  &.${BUTTON_PULSE} {
     animation: ${pulse} 2s infinite;
     box-shadow: 0 0 0 0 ${headerColor};
   }
 `
 
-export const JumbotronSocials = styled.div<{ theme: MavenTheme }>`
+export const JumbotronSocials = styled.div`
   margin: 24px 0 269px 0;
   display: flex;
 
@@ -159,7 +158,7 @@ export const JumbotronSocials = styled.div<{ theme: MavenTheme }>`
     svg {
       height: 30px;
       width: 40px;
-      fill: ${({theme}) => theme.socialsColor};
+      fill: ${({ theme }) => theme.socialsColor};
     }
   }
 

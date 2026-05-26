@@ -36,6 +36,9 @@ export const TradingViewAreaChart = ({
     const handleResize = () => {
       chart.applyOptions({ width: chartContainerRef?.current?.clientWidth ?? 0 })
     }
+    const tickMarkFormatter = (time: UTCTimestamp | BusinessDay) => {
+      return parseDate({ time: Number(time), timeFormat: xAsisTimeFormat }) ?? ''
+    }
 
     const chart = createChart(chartContainerRef?.current ?? '', {
       layout: {
@@ -55,17 +58,15 @@ export const TradingViewAreaChart = ({
       height,
       localization: {
         locale: 'en-US',
-        timeFormatter: (time: BusinessDay | UTCTimestamp) => {
-          return parseDate({ time: Number(time), timeFormat: xAsisTimeFormat }) ?? ''
-        },
+        timeFormatter: tickMarkFormatter,
       },
-      ...(hideXAxis
-        ? {
-            timeScale: {
-              visible: false,
-            },
-          }
-        : {}),
+      timeScale: {
+        borderColor,
+        visible: !hideXAxis,
+        tickMarkFormatter,
+        fixRightEdge: true,
+        fixLeftEdge: true,
+      },
       ...(hideYAxis
         ? {
             rightPriceScale: {
@@ -86,17 +87,6 @@ export const TradingViewAreaChart = ({
         top: 0.03,
         bottom: 0.03,
       },
-    })
-
-    // Setting the border color for the horizontal axis
-    chart.timeScale().applyOptions({
-      borderColor,
-      visible: true,
-      tickMarkFormatter: (time: UTCTimestamp | BusinessDay) => {
-        return parseDate({ time: Number(time), timeFormat: xAsisTimeFormat }) ?? ''
-      },
-      fixRightEdge: true,
-      fixLeftEdge: true,
     })
 
     const series = chart.addAreaSeries({
@@ -153,7 +143,18 @@ export const TradingViewAreaChart = ({
       window.removeEventListener('resize', handleResize)
       chart.remove()
     }
-  }, [areaBottomColor, areaTopColor, borderColor, data, height, hideXAxis, hideYAxis, lineColor, textColor])
+  }, [
+    areaBottomColor,
+    areaTopColor,
+    borderColor,
+    data,
+    height,
+    hideXAxis,
+    hideYAxis,
+    lineColor,
+    textColor,
+    xAsisTimeFormat,
+  ])
 
   return (
     <ChartStyled className={className} ref={mainChartWrapperRef}>

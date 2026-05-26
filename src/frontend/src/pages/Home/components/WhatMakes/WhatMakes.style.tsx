@@ -1,10 +1,9 @@
-import styled from 'styled-components/macro'
-import {coralColor} from 'styles'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
+import { coralColor } from 'styles'
 
-import {CONTAINER_WIDTH} from '../../Home.style'
+import { CONTAINER_WIDTH } from '../../Home.style'
 
-export const WhatMakesStyled = styled.section<{ theme: MavenTheme }>`
+export const WhatMakesStyled = styled.section`
   --max-container: calc(100vw - 400px);
   background-image: url(${({ theme }) => theme.whatMakesBackground});
   padding-top: 134px;
@@ -67,7 +66,7 @@ export const WhatMakesArticlesStyled = styled.div`
     flex-direction: column;
   }
 `
-export const WhatMakesArticleStyled = styled.article<{ theme: MavenTheme }>`
+export const WhatMakesArticleStyled = styled.article`
   max-width: 290px;
 
   @media (max-width: 700px) {

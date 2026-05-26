@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useSelector } from 'react-redux'
-import { DARK_THEME, LIGHT_THEME } from 'redux/actions/preferences.action'
+import { DARK_THEME, LIGHT_THEME } from '../../../../redux/actions/preferences.action'
 import { State } from 'utils/interfaces'
 
 import { TokenomicsStyled } from './Tokenomics.style'

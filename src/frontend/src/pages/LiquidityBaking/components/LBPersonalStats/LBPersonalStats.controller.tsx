@@ -1,4 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from 'app/App.hooks'
 import { State } from 'utils/interfaces'
 import { LBPersonalStatsView } from './LBPersonalStats.view'
 import { useCallback, useEffect, useState } from 'react'
@@ -7,7 +8,7 @@ import useSWR from 'swr'
 import { LBGeneralStats } from '../../LiquidityBaking.view'
 
 export const LBPersonalStats = ({ generalStats }: { generalStats: LBGeneralStats }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { ready, accountPkh } = useSelector((state: State) => state.wallet)
   const { LBTBalance, xtzBalance, tzBTCBalance, realizedPl, unrealizedPL } = useSelector((state: State) => state.user)
   const {

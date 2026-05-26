@@ -1,8 +1,28 @@
 import env from 'utils/env'
 import { DexGqlClient, MavrykGqlClient } from './gqlClient'
 
-export const dexGqlFetcher = (query: string, variables: any) => DexGqlClient.request(query, variables)
-export const mavrykGqlFetcher = (query: string, variables: any) => MavrykGqlClient.request(query, variables)
+type GqlFetcherKey = string | [string, Record<string, any>?]
+
+const getGqlFetcherArgs = (queryOrKey: GqlFetcherKey, variables?: Record<string, any>) => {
+  if (Array.isArray(queryOrKey)) {
+    return {
+      query: queryOrKey[0],
+      variables: queryOrKey[1],
+    }
+  }
+
+  return { query: queryOrKey, variables }
+}
+
+export const dexGqlFetcher = (queryOrKey: GqlFetcherKey, variables?: Record<string, any>) => {
+  const args = getGqlFetcherArgs(queryOrKey, variables)
+  return DexGqlClient.request(args.query, args.variables)
+}
+
+export const mavrykGqlFetcher = (queryOrKey: GqlFetcherKey, variables?: Record<string, any>) => {
+  const args = getGqlFetcherArgs(queryOrKey, variables)
+  return MavrykGqlClient.request(args.query, args.variables)
+}
 
 async function fetchGraphQL(
   operationsDoc: string,

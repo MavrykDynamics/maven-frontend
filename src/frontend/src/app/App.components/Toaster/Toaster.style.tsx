@@ -1,6 +1,6 @@
-import styled, {css, keyframes} from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
-import {ERROR, INFO, WARNING} from './Toaster.constants'
+import styled, { css, keyframes } from 'styled-components'
+import { MavenTheme } from 'utils/interfaces'
+import { ERROR, INFO, WARNING } from './Toaster.constants'
 
 export const ToasterStyled = styled.div<{ showing: boolean; theme: MavenTheme }>`
   position: fixed;
@@ -104,17 +104,17 @@ export const ToasterContent = styled.div`
   padding: 8px;
 `
 
-export const ToasterTitle = styled.div<{ theme: MavenTheme }>`
+export const ToasterTitle = styled.div`
   color: ${({ theme }) => theme.textColor};
   font-weight: 700;
   margin-bottom: 8px;
 `
 
-export const ToasterMessage = styled.div<{ theme: MavenTheme }>`
+export const ToasterMessage = styled.div`
   color: ${({ theme }) => theme.subTextColor};
 `
 
-export const ToasterClose = styled.div<{ theme: MavenTheme }>`
+export const ToasterClose = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;

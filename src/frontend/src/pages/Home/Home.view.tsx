@@ -1,8 +1,9 @@
-import { scroll } from 'redux/actions/preferences.action'
+import { scroll } from '../../redux/actions/preferences.action'
+import { useAppDispatch } from 'app/App.hooks'
 import { Footer } from 'app/App.components/Footer/Footer.controller'
 import * as React from 'react'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { AppFeaturesView } from './components/AppFeatures/AppFeatures.view'
 import { CalculatorView } from './components/Calculator/Calculator.view'
@@ -21,7 +22,7 @@ import { HomeNoParallax, HomeStyled } from './Home.style'
 import { State } from 'utils/interfaces'
 
 export const HomeView = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   useEffect(() => {
     window.scroll(0, 0)
   }, [])

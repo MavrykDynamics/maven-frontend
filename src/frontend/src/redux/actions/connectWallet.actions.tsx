@@ -1,10 +1,10 @@
 import { BeaconWallet } from '@taquito/beacon-wallet'
-import { Network, NetworkType } from '@airgap/beacon-sdk'
+import type { Network, NetworkType } from '@ecadlabs/beacon-types'
 import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
 import { ERROR, SUCCESS } from '../../app/App.components/Toaster/Toaster.constants'
 import type { AppDispatch, GetState } from '../../app/App.controller'
 import { State } from 'utils/interfaces'
-import { CONNECT, DISCONNECT, SET_WALLET } from 'redux/action.types'
+import { CONNECT, DISCONNECT, SET_WALLET } from '../action.types'
 import { getUserData } from './user.action'
 import { TezosToolkit } from '@taquito/taquito'
 
@@ -15,7 +15,9 @@ const Beacon_localStorage_keys = [
   'beacon:sdk-secret-seed',
   'beacon:sdk_version',
 ]
-export const network: Network = { type: NetworkType.MAINNET }
+const DEFAULT_NETWORK_TYPE = (process.env.REACT_APP_NETWORK || 'mainnet') as NetworkType
+
+export const network: Network = { type: DEFAULT_NETWORK_TYPE }
 export const WalletOptions = {
   name: process.env.REACT_APP_NAME || 'MAVRYK',
   preferredNetwork: network.type,
@@ -24,7 +26,7 @@ export const setWallet = (wallet?: BeaconWallet) => (dispatch: AppDispatch) => {
   try {
     const walletOptions = {
       name: process.env.REACT_APP_NAME || 'MAVRYK',
-      preferredNetwork: (process.env.REACT_APP_NETWORK || 'mainnet') as any,
+      preferredNetwork: DEFAULT_NETWORK_TYPE,
     }
     const wallet = new BeaconWallet(walletOptions)
     dispatch({
@@ -62,9 +64,7 @@ export const connect = () => async (dispatch: AppDispatch, getState: GetState) =
       const Tezos = new TezosToolkit(rpcNetwork)
       let account = await wallet.client.getActiveAccount()
       if (!account) {
-        await wallet.client.requestPermissions({
-          network,
-        })
+        await wallet.client.requestPermissions()
         account = await wallet.client.getActiveAccount()
       }
 
@@ -103,9 +103,7 @@ export const checkIfWalletIsConnected = async (wallet: any) => {
   try {
     const activeAccount = await wallet.client.getActiveAccount()
     if (!activeAccount) {
-      await wallet.client.requestPermissions({
-        network,
-      })
+      await wallet.client.requestPermissions()
     }
     return {
       success: true,

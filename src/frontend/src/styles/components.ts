@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
 export const Page = styled.div`
   margin: auto;
@@ -7,10 +7,10 @@ export const Page = styled.div`
   width: 1280px;
   position: relative;
 
-  @media (max-width: 700px) { 
+  @media (max-width: 700px) {
     padding: 0 10px;
     max-width: calc(100vw - 20px);
-   }
+  }
 `
 
 export const Message = styled.div`

@@ -1,25 +1,37 @@
-/* eslint import/no-webpack-loader-syntax: off */
-// @ts-ignore
-import litepaper from '!raw-loader!./Litepaper.markdown.md'
-import {useScrollPosition} from '@n8tb1t/use-scroll-position'
+import { useAppDispatch } from 'app/App.hooks'
+import litepaper from './Litepaper.markdown.md'
+import { useWindowScrollPosition } from '@n8tb1t/use-scroll-position'
 import Markdown from 'markdown-to-jsx'
-import {useCallback, useEffect, useState} from 'react'
-import {HashLink} from 'react-router-hash-link'
-import {LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperMarkdown, LitepaperStyled} from './Litepaper.style'
-import {useDispatch, useSelector} from 'react-redux'
-import {MenuTopBar} from 'app/App.components/Menu/MenuTopBar.controller'
-import {State} from 'utils/interfaces'
-import {LIGHT_THEME, toggleRPCNodePopup} from 'redux/actions/preferences.action'
-import {SettingPopup} from 'app/App.components/SettingsPopup/SettingsPopup'
+import { useCallback, useEffect, useState } from 'react'
+import { HashLink } from 'app/App.components/HashLink/HashLink.view'
+import { LitepaperGrid, LitepaperIndex, LitepaperLink, LitepaperMarkdown, LitepaperStyled } from './Litepaper.style'
+import { useSelector } from 'react-redux'
+import { MenuTopBar } from 'app/App.components/Menu/MenuTopBar.controller'
+import { State } from 'utils/interfaces'
+import { LIGHT_THEME, toggleRPCNodePopup } from '../../redux/actions/preferences.action'
+import { SettingPopup } from 'app/App.components/SettingsPopup/SettingsPopup'
+
+type LitepaperTops = Record<string, number>
+
+type LitepaperTableOfContentsItem = {
+  id: number
+  title: string
+  hashLinkId: string
+  next: string | null
+  children?: LitepaperTableOfContentsItem[] | null
+}
+
+const SELECTED_SECTION_OFFSET = 110
+const SCROLL_TO_SECTION_OFFSET = 100
 
 export const LitepaperView = () => {
   const { changeNodePopupOpen, themeSelected } = useSelector((state: State) => state.preferences)
-  const dispatch = useDispatch()
-  const openChangeNodePopup = useCallback(() => dispatch(toggleRPCNodePopup(true)), [])
-  const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [])
+  const dispatch = useAppDispatch()
+  const openChangeNodePopup = useCallback(() => dispatch(toggleRPCNodePopup(true)), [dispatch])
+  const closeModalHandler = useCallback(() => dispatch(toggleRPCNodePopup(false)), [dispatch])
   const darkThemeEnabled = themeSelected !== LIGHT_THEME
   const [isIOS, setIsIOS] = useState(true)
-  const [tops, setTops] = useState<any>({
+  const [tops, setTops] = useState<LitepaperTops>({
     abstract: 0,
   })
   const setImagesByTheme = useCallback(() => {
@@ -32,99 +44,26 @@ export const LitepaperView = () => {
   }, [darkThemeEnabled])
 
   useEffect(() => {
-    window.scroll(0, 0)
+    if (!window.location.hash) {
+      window.scroll(0, 0)
+    }
+
     setImagesByTheme()
+    setTops(getLitepaperTops())
     setIsIOS(
       ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform),
     )
   }, [setImagesByTheme])
 
-  useScrollPosition(
+  useWindowScrollPosition(
     () => {
-      // prettier-ignore
-      //@ts-ignore/*-//
-      setTops({
-          'abstract': document.getElementById('abstract')?.getBoundingClientRect().top!,
-          'problem': document.getElementById('problem')?.getBoundingClientRect().top!,
-          'solution': document.getElementById('solution')?.getBoundingClientRect().top!,
-          'multi-asset-backed-loans': document.getElementById('multi-asset-backed-loans')?.getBoundingClientRect().top!,
-          'peer-to-peer-lending': document.getElementById('peer-to-peer-lending')?.getBoundingClientRect().top!,
-          'lending-earning-yield-on-your-assets': document.getElementById('lending-earning-yield-on-your-assets')?.getBoundingClientRect().top!,
-          'borrowing-single--multi-collateral-vaults': document.getElementById('borrowing-single--multi-collateral-vaults')?.getBoundingClientRect().top!,
-          'multi-collateral-vaults': document.getElementById('multi-collateral-vaults')?.getBoundingClientRect().top!,
-          'liquidations': document.getElementById('liquidations')?.getBoundingClientRect().top!,
-          'satellites-governance-and-the-decentralized-oracle': document.getElementById('satellites-governance-and-the-decentralized-oracle')?.getBoundingClientRect().top!,
-          'satellites': document.getElementById('satellites')?.getBoundingClientRect().top!,
-          'governance': document.getElementById('governance')?.getBoundingClientRect().top!,
-          'satellite-delegations': document.getElementById('satellite-delegations')?.getBoundingClientRect().top!,
-          'the-decentralized-oracle': document.getElementById('the-decentralized-oracle')?.getBoundingClientRect().top!,
-          'mvn-and-smvn-doorman-module': document.getElementById('mvn-and-smvn-doorman-module')?.getBoundingClientRect().top!,
-          'what-is-mvn-and-how-does-it-differ-from-smvn': document.getElementById('what-is-mvn-and-how-does-it-differ-from-smvn')?.getBoundingClientRect().top!,
-          'obtaining-smvn': document.getElementById('obtaining-smvn')?.getBoundingClientRect().top!,
-          'converting-smvn-back-to-mvn-exit-fees': document.getElementById('converting-smvn-back-to-mvn-exit-fees')?.getBoundingClientRect().top!,
-          'governance--treasury': document.getElementById('governance--treasury')?.getBoundingClientRect().top!,
-          'decentralization': document.getElementById('decentralization')?.getBoundingClientRect().top!,
-          'core-governance': document.getElementById('core-governance')?.getBoundingClientRect().top!,
-          'threshold-governance': document.getElementById('threshold-governance')?.getBoundingClientRect().top!,
-          'voting-power': document.getElementById('voting-power')?.getBoundingClientRect().top!,
-          'voting-with-satellites-electoral-delegates': document.getElementById('voting-with-satellites-electoral-delegates')?.getBoundingClientRect().top!,
-          'treasury': document.getElementById('treasury')?.getBoundingClientRect().top!,
-          'maven-council': document.getElementById('maven-council')?.getBoundingClientRect().top!,
-          'emergency-governance--break-glass': document.getElementById('emergency-governance--break-glass')?.getBoundingClientRect().top!,
-          'emergency-governance': document.getElementById('emergency-governance')?.getBoundingClientRect().top!,
-          'break-glass-council': document.getElementById('break-glass-council')?.getBoundingClientRect().top!,
-          'break-glass-access-control-layer': document.getElementById('break-glass-access-control-layer')?.getBoundingClientRect().top!,
-          'yield-farming': document.getElementById('yield-farming')?.getBoundingClientRect().top!,
-          'tokenomics': document.getElementById('tokenomics')?.getBoundingClientRect().top!,
-          'revenue-model': document.getElementById('revenue-model')?.getBoundingClientRect().top!,
-          'token-flow': document.getElementById('token-flow')?.getBoundingClientRect().top!,
-            })
+      setTops(getLitepaperTops())
     },
-    [],
-    undefined,
-    false,
-    300,
+    { wait: 300 },
   )
 
-  const LitepaperToCHeaderItem = (props: any) => {
-    const { id, children } = props
-    return (
-      <li key={`header${id}`}>
-        <LitepaperToCSubItem key={id.toString()} {...props} />
-        {children && (
-          <ul className="nav">
-            {children.map((child: any) => (
-              <li key={`child${child.id}`}>
-                <LitepaperToCSubItem key={`child${child.id}-${child.hashLinkId}`} {...child} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </li>
-    )
-  }
-  const LitepaperToCSubItem = (props: any) => {
-    const { id, title, hashLinkId, next } = props
-    const linkIsSelected = next !== null ? tops[hashLinkId] <= 110 && tops[next] > 110 : tops[hashLinkId] <= 110
-    return (
-      <LitepaperLink selected={linkIsSelected} key={`${hashLinkId}${id}`}>
-        <HashLink
-          to={`#${hashLinkId}`}
-          scroll={(el) =>
-            window.scrollTo({
-              behavior: 'smooth',
-              top: el.getBoundingClientRect().top + window.pageYOffset - 100,
-            })
-          }
-        >
-          {title}
-        </HashLink>
-      </LitepaperLink>
-    )
-  }
-
   if (isIOS && changeNodePopupOpen) {
-    <SettingPopup isModalOpened showBackdrop={false} closeModal={closeModalHandler} />
+    ;<SettingPopup isModalOpened showBackdrop={false} closeModal={closeModalHandler} />
   }
 
   return (
@@ -136,7 +75,7 @@ export const LitepaperView = () => {
           <div>
             <LitepaperIndex>
               {LitepaperTableOfContentsItems.map((listItem) => (
-                <LitepaperToCHeaderItem key={`${listItem.id}${listItem.title}`} {...listItem} />
+                <LitepaperToCHeaderItem key={`${listItem.id}${listItem.title}`} item={listItem} tops={tops} />
               ))}
             </LitepaperIndex>
           </div>
@@ -149,7 +88,67 @@ export const LitepaperView = () => {
   )
 }
 
-const LitepaperTableOfContentsItems = [
+type LitepaperToCItemProps = {
+  item: LitepaperTableOfContentsItem
+  tops: LitepaperTops
+}
+
+const LitepaperToCHeaderItem = ({ item, tops }: LitepaperToCItemProps) => {
+  const { children } = item
+
+  return (
+    <li>
+      <LitepaperToCSubItem item={item} tops={tops} />
+      {children && (
+        <ul className="nav">
+          {children.map((child) => (
+            <li key={`child${child.id}`}>
+              <LitepaperToCSubItem item={child} tops={tops} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  )
+}
+
+const LitepaperToCSubItem = ({ item, tops }: LitepaperToCItemProps) => {
+  const { title, hashLinkId, next } = item
+  const currentTop = tops[hashLinkId] ?? Number.POSITIVE_INFINITY
+  const nextTop = next ? tops[next] ?? Number.POSITIVE_INFINITY : Number.POSITIVE_INFINITY
+  const linkIsSelected = currentTop <= SELECTED_SECTION_OFFSET && (!next || nextTop > SELECTED_SECTION_OFFSET)
+
+  return (
+    <LitepaperLink $selected={linkIsSelected}>
+      <HashLink to={`#${hashLinkId}`} scroll={scrollToLitepaperSection}>
+        {title}
+      </HashLink>
+    </LitepaperLink>
+  )
+}
+
+const scrollToLitepaperSection = (element: HTMLElement) => {
+  window.scrollTo({
+    behavior: 'smooth',
+    top: element.getBoundingClientRect().top + window.pageYOffset - SCROLL_TO_SECTION_OFFSET,
+  })
+}
+
+const getLitepaperSectionIds = (items: LitepaperTableOfContentsItem[]): string[] =>
+  items.flatMap((item) => [item.hashLinkId, ...(item.children ? getLitepaperSectionIds(item.children) : [])])
+
+const getLitepaperTops = () =>
+  LitepaperSectionIds.reduce<LitepaperTops>((sectionTops, sectionId) => {
+    const section = document.getElementById(sectionId)
+
+    if (section) {
+      sectionTops[sectionId] = section.getBoundingClientRect().top
+    }
+
+    return sectionTops
+  }, {})
+
+const LitepaperTableOfContentsItems: LitepaperTableOfContentsItem[] = [
   { id: 0, title: 'Abstract', hashLinkId: 'abstract', next: 'problem', children: null },
   { id: 1, title: 'Problem', hashLinkId: 'problem', next: 'solution', children: null },
   { id: 2, title: 'Solution', hashLinkId: 'solution', next: 'multi-asset-backed-loans', children: null },
@@ -348,3 +347,5 @@ const LitepaperTableOfContentsItems = [
     ],
   },
 ]
+
+const LitepaperSectionIds = getLitepaperSectionIds(LitepaperTableOfContentsItems)

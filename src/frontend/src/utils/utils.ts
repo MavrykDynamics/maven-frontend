@@ -48,7 +48,7 @@ export const slippagePercentToValue = (slippagePercent: string | number): number
   return (1 / 100) * convertedPercent
 }
 
-export const inputNumberValidation = (value: number | string): any => value >= 0 || value === ''
+export const inputNumberValidation = (value: number | string): boolean => value === '' || Number(value) >= 0
 
 export const calculateAPY = (xtzPool: number): number => {
   const annualSubsidy = new BigNumber(2.5 * 2 * 60 * 24 * 365)

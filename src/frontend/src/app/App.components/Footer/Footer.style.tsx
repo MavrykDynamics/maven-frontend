@@ -1,7 +1,6 @@
-import styled from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
 
-export const FooterStyled = styled.footer<{ theme: MavenTheme }>`
+export const FooterStyled = styled.footer`
   position: relative;
   --max-container: calc(100vw - 550px);
   background-color: ${({ theme }) => theme.footerColor};
@@ -150,7 +149,7 @@ export const FooterBottom = styled.div`
     }
   }
 `
-export const FooterSocials = styled.div<{ theme: MavenTheme }>`
+export const FooterSocials = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -205,7 +204,7 @@ export const FooterLogo = styled.img`
   }
 `
 
-export const FooterButton = styled.div<{ theme: MavenTheme }>`
+export const FooterButton = styled.div`
   cursor: pointer;
   background: ${({ theme }) => theme.textColor};
   border-radius: 5px;
@@ -216,7 +215,7 @@ export const FooterButton = styled.div<{ theme: MavenTheme }>`
   margin-top: 10px;
 `
 
-export const FooterDescription = styled.div<{ theme: MavenTheme }>`
+export const FooterDescription = styled.div`
   margin: 10px 0;
   max-width: 665px;
   font-weight: 400;
@@ -232,7 +231,7 @@ export const FooterDescription = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const FooterLinks = styled.div<{ theme: MavenTheme }>`
+export const FooterLinks = styled.div`
   float: right;
   text-align: center;
   margin-right: 10px;

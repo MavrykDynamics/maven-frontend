@@ -1,14 +1,13 @@
 import Icon from 'app/App.components/Icon/Icon.view'
-import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {TopBarLinks} from './TopBarLinks/TopBarLinks.controller'
-import {MenuLogo, MenuTopStyled} from './MenuTopBar.style'
-import {MobileTopBar} from './TopBarLinks/MobileTopBar.controller'
-import {useCallback, useState} from 'react'
-import {useMedia} from 'react-use'
-import {State} from 'utils/interfaces'
-import {LIGHT_THEME} from 'redux/actions/preferences.action'
-import {ThemeToggle} from "../ToggleButton/ThemeToggle.controller";
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router'
+import { TopBarLinks } from './TopBarLinks/TopBarLinks.controller'
+import { MenuLogo, MenuTopStyled } from './MenuTopBar.style'
+import { MobileTopBar } from './TopBarLinks/MobileTopBar.controller'
+import { useCallback, useState, type MouseEvent } from 'react'
+import { State } from 'utils/interfaces'
+import { LIGHT_THEME } from '../../../redux/actions/preferences.action'
+import { ThemeToggle } from '../ToggleButton/ThemeToggle.controller'
 
 type MenuTopBarProps = {
   openChangeNodePopupHandler: () => void
@@ -39,7 +38,7 @@ export const PRODUCTS_LINKS = [
     name: 'Dapp',
     href: 'https://atlasnet.mavenfinance.io/',
     path: '/dashboard/lending',
-    disabled: false
+    disabled: false,
   },
   // { name: 'Liquidity Baking', href: 'liquidity-baking', path: '/liquidity-baking' },
   // { name: 'Maven Bakeries', href: 'bakery', path: '/bakery' },
@@ -62,15 +61,13 @@ export const DOCS_LINKS = [
 ]
 
 export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
-  const dispatch = useDispatch()
   const darkThemeEnabled = useSelector((state: State) => state.preferences.themeSelected !== LIGHT_THEME)
   const [showMobileTopBar, setShowMobileTopBar] = useState(false)
-  const isMobileView = useMedia('(max-width: 870px)')
 
   const logoImg = !darkThemeEnabled ? '/logo-light.svg' : '/logo-dark.svg'
   const logoMobile = '/logo-mobile.svg'
 
-  const burgerClickHandlerWrapped = useCallback((e) => {
+  const burgerClickHandlerWrapped = useCallback((e: MouseEvent<HTMLElement>) => {
     e.stopPropagation()
     setShowMobileTopBar(false)
   }, [])
@@ -93,7 +90,7 @@ export const MenuTopBar = ({ openChangeNodePopupHandler }: MenuTopBarProps) => {
         <SocialIcons />
         {/* Need this condition cuz of wert io container, technically without it will be 2 containers, and wert will take this container on mobile, not the mobile one */}
         {/*{!isMobileView ? <ConnectWallet className="connect-wallet-small" /> : null}*/}
-          <ThemeToggle />
+        <ThemeToggle />
       </div>
 
       <div className="mobile-menu">

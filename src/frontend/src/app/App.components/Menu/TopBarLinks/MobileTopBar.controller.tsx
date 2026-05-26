@@ -13,7 +13,7 @@ export const MobileTopBar = ({
 }) => {
   const [selectedLinksBlock, setSelectedLinksBlock] = useState<null | string>(null)
   return (
-    <MobileTopBarStyled show={show}>
+    <MobileTopBarStyled $show={show}>
       <ConnectWallet closeMobileMenu={closeMobileMenu} className="connect-wallet-small" />
 
       <div className="container">

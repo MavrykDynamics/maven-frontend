@@ -14,7 +14,7 @@ import {
   ConnectedWalletDetailsItemStyled,
   MobileDetailsStyled,
 } from './ConnectWallet.style'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 export type CoinsInfoType = {
   userXTZBalance: number
@@ -80,9 +80,9 @@ export const MobileDetailsBlock = ({
           disableBtn
         />
         <ConnectedWalletDetailsItem
-          buttonText={'But tzBTC'}
+          buttonText={`Buy ${WRAPPED_BTC_DISPLAY_SYMBOL}`}
           coinAmount={coinsInfo.usertzBTCBalance}
-          coinName={'tzBTC'}
+          coinName={WRAPPED_BTC_DISPLAY_SYMBOL}
           buttonHandler={(e: React.MouseEvent<HTMLElement>) => {
             closeMobileMenu(e)
             handleCloseBtn()
@@ -191,9 +191,9 @@ export const ConnectedWalletBlock = ({
             disableBtn
           />
           <ConnectedWalletDetailsItem
-            buttonText={'Buy tzBTC'}
+            buttonText={`Buy ${WRAPPED_BTC_DISPLAY_SYMBOL}`}
             coinAmount={coinsInfo.usertzBTCBalance}
-            coinName={'tzBTC'}
+            coinName={WRAPPED_BTC_DISPLAY_SYMBOL}
             buttonHandler={detailsHandlers.buyTZBTCHandler}
             subtextAmount={coinsInfo.usertzBTCBalance * coinsInfo.tzBTCExchnageRate}
             iconName={'tzBTC'}

@@ -1,8 +1,9 @@
 import { useCallback, useMemo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch } from 'app/App.hooks'
+import { useSelector } from 'react-redux'
 import { useMedia } from 'react-use'
 
-import { toogleChartInterval, toogleChartType } from 'redux/actions/chart.action'
+import { toogleChartInterval, toogleChartType } from '../../../../redux/actions/chart.action'
 import { IntervalType, State } from 'utils/interfaces'
 import themeColors from 'styles/colors'
 
@@ -14,7 +15,7 @@ import { ToggleButton } from 'app/App.components/ToggleButton/Toggle-button.view
 import { CustomizedText } from 'pages/LiquidityBaking/LiquidityBaking.styles'
 import { ChartStyled } from './LBChart.style'
 import { SECONDARY_COLOR, THIRD_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 const intervalData = [
   {
@@ -52,7 +53,7 @@ export const LBChart = ({
     () => chartDataArea.at(-1)?.value || chartDataCandlestick.at(-1)?.close || 0,
     [chartDataArea, chartDataCandlestick],
   )
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const changeIntervalHandler = useCallback(async (newInterval: IntervalType) => {
     await dispatch(toogleChartInterval(newInterval))
@@ -103,7 +104,9 @@ export const LBChart = ({
             <use xlinkHref="/icons/sprites.svg#exchange" />
           </svg>
           <div className="info">
-            <CustomizedText className={THIRD_COLOR}>{NATIVE_TOKEN_DISPLAY_SYMBOL}/tzBTC (Sirius)</CustomizedText>
+            <CustomizedText className={THIRD_COLOR}>
+              {NATIVE_TOKEN_DISPLAY_SYMBOL}/{WRAPPED_BTC_DISPLAY_SYMBOL} (Sirius)
+            </CustomizedText>
             <CustomizedText className={`${SECONDARY_COLOR} value`}>
               <CommaNumber
                 value={LAST_CHART_COMPARE_VALUE}
@@ -133,7 +136,7 @@ export const LBChart = ({
             borderColor: themeColors[themeSelected].strokeColor,
           }}
           chartType={chartType}
-          tooltipAsset={'tzBTC'}
+          tooltipAsset={WRAPPED_BTC_DISPLAY_SYMBOL}
         />
       ) : null}
 

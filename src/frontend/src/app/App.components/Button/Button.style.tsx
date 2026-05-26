@@ -1,8 +1,7 @@
-import styled, {keyframes} from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { keyframes } from 'styled-components'
 
-import {darkColor, primaryColor} from '../../../styles'
-import {BUTTON_RADIUS} from '../../../styles/constants'
+import { darkColor, primaryColor } from '../../../styles'
+import { BUTTON_RADIUS } from '../../../styles/constants'
 
 export const clickWave = keyframes`
   from {
@@ -13,7 +12,7 @@ export const clickWave = keyframes`
   }
 `
 
-export const ButtonStyled = styled.button<{ theme: MavenTheme }>`
+export const ButtonStyled = styled.button`
   padding: 0;
   height: 50px;
   border: none;
@@ -190,7 +189,7 @@ export const ButtonStyled = styled.button<{ theme: MavenTheme }>`
   }
 `
 
-export const ButtonText = styled.div<{ theme: MavenTheme }>`
+export const ButtonText = styled.div`
   > div {
     text-align: center;
     margin: auto;
@@ -221,7 +220,7 @@ export const ButtonText = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const ButtonIcon = styled.svg<{ theme: MavenTheme }>`
+export const ButtonIcon = styled.svg`
   width: 24px;
   height: 24px;
   display: inline-block;
@@ -255,7 +254,7 @@ const turn = keyframes`
   }
 `
 
-export const ButtonLoadingIcon = styled.svg<{ theme: MavenTheme }>`
+export const ButtonLoadingIcon = styled.svg`
   width: 16px;
   height: 16px;
   margin-top: 4px;

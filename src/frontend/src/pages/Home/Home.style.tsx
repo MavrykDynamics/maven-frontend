@@ -1,5 +1,4 @@
-import styled from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
 
 export const CONTAINER_WIDTH = '1480px'
 
@@ -19,7 +18,7 @@ export const HomeStyled = styled.div`
   }
 `
 
-export const HomeNoParallax = styled.div<{ theme: MavenTheme }>`
+export const HomeNoParallax = styled.div`
   @media (max-width: 1000px) {
     position: relative;
     padding-top: 50px;

@@ -1,7 +1,7 @@
 import { fetchFromIndexer } from 'gql/gql.helpers'
 import { CHART_QUERY_NAME, CHART_QUERY_VARIABLES, getChartQuery } from 'gql/queries/chart.query'
 import { UTCTimestamp } from 'lightweight-charts'
-import { GET_CHART_DATA, TOOGLE_CHART_INTERVAL, TOOGLE_CHART_TYPE } from 'redux/action.types'
+import { GET_CHART_DATA, TOOGLE_CHART_INTERVAL, TOOGLE_CHART_TYPE } from '../action.types'
 import { ChartPoint, ChartTypeType, IntervalType } from 'utils/interfaces'
 
 export const getChartData = (interval: IntervalType) => async (dispatch: any, getState: any) => {

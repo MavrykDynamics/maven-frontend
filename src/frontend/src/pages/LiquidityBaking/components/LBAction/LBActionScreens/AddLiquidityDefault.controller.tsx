@@ -12,7 +12,7 @@ import { AddLiquidutityInputChangeEventType, CoinsInputsValues } from '../helper
 import { State } from 'utils/interfaces'
 import { useMedia } from 'react-use'
 import { CoinsInputsErrors, DEFAULT_COINS_ERRORS } from './LBAddLiquidity.controller'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 export const AddLiquidityDefault = ({
   inputValues,
@@ -96,7 +96,7 @@ export const AddLiquidityDefault = ({
           icon={'tzBTC'}
           className={`addLiq-input ${tzbtcUseMaxDisabled ? 'use-max-disable' : ''}`}
           inputStatus={inputErrors.tzBTC}
-          pinnedText={'tzBTC'}
+          pinnedText={WRAPPED_BTC_DISPLAY_SYMBOL}
           useMaxHandler={() => {
             if (tzbtcUseMaxDisabled) return
             inputChangeHandler({

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch } from 'app/App.hooks'
+import { useSelector } from 'react-redux'
 
 import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
 import { PRIMARY_COLOR } from 'pages/LiquidityBaking/LiquidityBaking.styles'
@@ -21,13 +22,13 @@ import { Button } from 'app/App.components/Button/Button.controller'
 import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 import { ConnectWallet } from 'app/App.components/ConnectWallet/ConnectWallet.controller'
 import { PRECISION_NUMBER_EIGHT_ZEROES, PRECISION_NUMBER_SIX_ZEROES } from 'utils/consts'
-import { addLiquidity, addLiquidityOnlyXTZ } from 'redux/actions/liquidity.action'
+import { addLiquidity, addLiquidityOnlyXTZ } from '../../../../../redux/actions/liquidity.action'
 import { calculateTokenToXtz, calculateXtzToToken as CalcXtzToToken } from 'utils/DEX/swapUtils'
 import Icon from 'app/App.components/Icon/Icon.view'
 import { InputStatusType } from 'app/App.components/Input/Input.controller'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 const DEFAULT_COINS_AMOUNT = {
   XTZ: 0,
@@ -57,7 +58,7 @@ export const DEFAULT_COINS_ERRORS = {
 const dexType = getSettings('liquidity')
 
 export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: any }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
   const [inputValues, setInputValues] = useState<CoinsInputsValues>(DEFAULT_COINS_AMOUNT)
@@ -183,7 +184,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
         dispatch(
           showToaster(
             ERROR,
-            'Insufficient tzBTC wallet balance',
+            `Insufficient ${WRAPPED_BTC_DISPLAY_SYMBOL} wallet balance`,
             `Please enter sufficient ${NATIVE_TOKEN_DISPLAY_SYMBOL} amount`,
           ),
         )
@@ -200,7 +201,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
           showToaster(
             ERROR,
             `Insufficient ${NATIVE_TOKEN_DISPLAY_SYMBOL} wallet balance`,
-            'Please enter sufficient tzBTC amount',
+            `Please enter sufficient ${WRAPPED_BTC_DISPLAY_SYMBOL} amount`,
           ),
         )
         setInputErrors({
@@ -280,7 +281,7 @@ export const LBAddLiquidity = ({ ready, generalDexStats }: { ready: boolean; gen
             <Icon id="infoIcon" />
             <div className="text">
               You can add liquidity with only {NATIVE_TOKEN_DISPLAY_SYMBOL}. <br />A swap of half the{' '}
-              {NATIVE_TOKEN_DISPLAY_SYMBOL} to tzBTC will be done first.
+              {NATIVE_TOKEN_DISPLAY_SYMBOL} to {WRAPPED_BTC_DISPLAY_SYMBOL} will be done first.
             </div>
           </div>
         </CustomizedText>

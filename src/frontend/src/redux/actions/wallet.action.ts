@@ -1,6 +1,5 @@
-import { TezosToolkit } from "@taquito/taquito"
-import { TempleWallet } from "@temple-wallet/dapp"
-import { CONNECT, SET_WALLET } from "redux/action.types"
+import { TezosToolkit } from '@taquito/taquito'
+import { CONNECT, SET_WALLET } from '../action.types'
 
 export const connectWalletAction = (tzs: TezosToolkit | undefined, accountPkh?: string) => ({
   type: CONNECT,
@@ -9,7 +8,7 @@ export const connectWalletAction = (tzs: TezosToolkit | undefined, accountPkh?: 
   accountPkh: accountPkh,
 })
 
-export const setWalletAction = (wallet: TempleWallet) => ({
+export const setWalletAction = (wallet: unknown) => ({
   type: SET_WALLET,
   wallet,
 })

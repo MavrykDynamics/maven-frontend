@@ -1,7 +1,6 @@
-import styled from 'styled-components/macro'
-import { MavenTheme } from 'utils/interfaces'
+import styled from 'styled-components'
 
-export const RoadmapStyled = styled.section<{ theme: MavenTheme }>`
+export const RoadmapStyled = styled.section`
   background-image: url(${({ theme }) => theme.starsBachground});
   background-repeat: no-repeat;
   background-position: center;
@@ -41,7 +40,7 @@ export const RoadmapStyled = styled.section<{ theme: MavenTheme }>`
   }
 `
 
-export const RoadmapArticles = styled.div<{ theme: MavenTheme }>`
+export const RoadmapArticles = styled.div`
   display: flex;
   justify-content: center;
 
@@ -88,7 +87,7 @@ export const RoadmapArticles = styled.div<{ theme: MavenTheme }>`
     }
   }
 `
-export const RoadmapArticle = styled.article<{ theme: MavenTheme }>`
+export const RoadmapArticle = styled.article`
   display: grid;
 
   grid-template-rows: 222px 124px 1fr;

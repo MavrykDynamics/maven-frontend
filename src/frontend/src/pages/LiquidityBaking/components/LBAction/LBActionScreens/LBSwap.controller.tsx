@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch } from 'app/App.hooks'
+import { useSelector } from 'react-redux'
 
 import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 import { getSettings, SLIPPAGE_TOGGLE_VALUES } from '../helpers/const'
@@ -25,7 +26,7 @@ import { useMedia } from 'react-use'
 import { ERROR } from 'app/App.components/Toaster/Toaster.constants'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { getFullNumber } from '../../../../../utils/utils'
-import { NATIVE_TOKEN_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
+import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 type CoinsOrderType = {
   from: 'XTZ' | 'tzBTC'
@@ -82,7 +83,7 @@ const isValidTZBTC = (tzBTC: string | number) => {
 }
 
 export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexStats: LBGeneralStats }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { coinPrices } = useSelector((state: State) => state.tokens)
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
 
@@ -180,7 +181,9 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
     }
 
     if (name === 'tzBTC' && !isValidTZBTC(value)) {
-      dispatch(showToaster(ERROR, 'Invalid Input', `Please input a number that exists in tzBTC`))
+      dispatch(
+        showToaster(ERROR, 'Invalid Input', `Please input a number that exists in ${WRAPPED_BTC_DISPLAY_SYMBOL}`),
+      )
       setInputErrors({
         ...inputErrors,
         [name]: ERROR,
@@ -261,12 +264,14 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
 
   // performing swap for xtz=>tzBTC & tzBTC=>xtz
   const swapBtnHandler = async () => {
-    if (inputValues.XTZ <= 0) {
-      dispatch(showToaster(ERROR, 'Invalid Input', `Please input a number that exists in tzBTC`))
+    if (parseSrtToNum(inputValues.XTZ) <= 0) {
+      dispatch(
+        showToaster(ERROR, 'Invalid Input', `Please input a number that exists in ${WRAPPED_BTC_DISPLAY_SYMBOL}`),
+      )
       return
     }
 
-    if (inputValues.tzBTC <= 0) {
+    if (parseSrtToNum(inputValues.tzBTC) <= 0) {
       dispatch(
         showToaster(ERROR, 'Invalid Input', `Please input a number that exists in ${NATIVE_TOKEN_DISPLAY_SYMBOL}`),
       )
@@ -376,7 +381,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
           convertedValue={parseSrtToNum(inputValues.tzBTC) * coinPrices.tzbtc.usd}
           icon={'tzBTC'}
           className="swap-input"
-          pinnedText={'tzBTC'}
+          pinnedText={WRAPPED_BTC_DISPLAY_SYMBOL}
           useMaxHandler={() => maxHandler('tzBTC', 'XTZ')}
           userBalance={tzBTCBalance}
           onKeyDown={nonNumberSymbolsValidation}
@@ -410,7 +415,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
             value={exchangeRate}
             showDecimal
             decimalsToShow={8}
-            endingText="tzBTC"
+            endingText={WRAPPED_BTC_DISPLAY_SYMBOL}
             maxSymbols={10}
             useMaxSymbols={isMobile}
           />

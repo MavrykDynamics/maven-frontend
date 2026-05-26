@@ -1,9 +1,8 @@
-import styled from 'styled-components/macro'
-import {MavenTheme} from 'utils/interfaces'
+import styled from 'styled-components'
 
-import {CONTAINER_WIDTH} from '../../Home.style'
+import { CONTAINER_WIDTH } from '../../Home.style'
 
-export const TeamStyled = styled.section<{ theme: MavenTheme }>`
+export const TeamStyled = styled.section`
   --carousel-button-bg: ${({ theme }) => theme.darkestBackroundColor};
   width: ${CONTAINER_WIDTH};
   max-width: 100%;
@@ -48,7 +47,7 @@ export const TeamStyled = styled.section<{ theme: MavenTheme }>`
   }
 `
 
-export const TeamsGrid = styled.div<{ theme: MavenTheme }>`
+export const TeamsGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -68,7 +67,7 @@ export const TeamsGrid = styled.div<{ theme: MavenTheme }>`
   }
 `
 
-export const TeamFigure = styled.figure<{ theme: MavenTheme }>`
+export const TeamFigure = styled.figure`
   margin: 0;
   background-color: ${({ theme }) => theme.darkestBackroundColor};
   min-height: 310px;
@@ -160,7 +159,7 @@ export const TeamFigure = styled.figure<{ theme: MavenTheme }>`
   }
 `
 
-export const TeamCityDecor = styled.figure<{ theme: MavenTheme }>`
+export const TeamCityDecor = styled.figure`
   background: url(${({ theme }) => theme.teamCityDecor});
   width: 300px;
   height: 227px;
@@ -171,7 +170,7 @@ export const TeamCityDecor = styled.figure<{ theme: MavenTheme }>`
   left: 0;
 `
 
-export const TeamCarouselWrap = styled.div<{ theme: MavenTheme }>`
+export const TeamCarouselWrap = styled.div`
   width: 80%;
   margin: auto;
   margin-bottom: 32px;

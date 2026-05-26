@@ -1,12 +1,12 @@
-import styled, {css} from 'styled-components'
-import {MavenTheme} from 'utils/interfaces'
+import styled, { css } from 'styled-components'
+import { MavenTheme } from 'utils/interfaces'
 
 export const PRIMARY_COLOR = 'primary'
 export const SECONDARY_COLOR = 'secondary'
 export const THIRD_COLOR = 'third'
 export const ACTIVE_COLOR = 'active'
 
-export const LBStyled = styled.div<{ theme: MavenTheme }>`
+export const LBStyled = styled.div`
   background-image: ${({ theme }) =>
     `url(${theme.topDesktopBackground}), url(${theme.bottomDesktopBackground}), ${theme.backgroundGradient}`};
   background-position: center 100px, bottom, center;

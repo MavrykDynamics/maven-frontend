@@ -1,6 +1,6 @@
 import * as React from 'react'
-import {Parallax} from 'react-scroll-parallax'
-import {useSelector} from 'react-redux'
+import { Parallax } from 'react-scroll-parallax'
+import { useSelector } from 'react-redux'
 
 import {
   GovernanceContent,
@@ -11,8 +11,8 @@ import {
   GovernanceParallaxLayer,
   GovernanceStyled,
 } from './Governance.style'
-import {LIGHT_THEME} from 'redux/actions/preferences.action'
-import {State} from 'utils/interfaces'
+import { LIGHT_THEME } from '../../../../redux/actions/preferences.action'
+import { State } from 'utils/interfaces'
 
 export const GovernanceView = () => {
   const { themeSelected } = useSelector((state: State) => state.preferences)

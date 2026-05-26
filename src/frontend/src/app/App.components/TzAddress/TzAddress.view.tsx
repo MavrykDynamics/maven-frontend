@@ -1,5 +1,4 @@
-import { useDispatch } from 'react-redux'
-
+import { useAppDispatch } from 'app/App.hooks'
 // helpers
 import { getShortTzAddress } from 'utils/tzAddress'
 
@@ -31,7 +30,7 @@ export const TzAddress = ({
   amountFromEnd = 4,
 }: TzAddressProps) => {
   const addrClasses = `${type} ${isBold ? 'bold' : ''} copyIcon`
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const handleCopyToClipboard = () => {
     if (shouldCopy) {

@@ -1,6 +1,5 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 import { subHeaderColor } from 'styles/colors'
-import { MavenTheme } from 'utils/interfaces'
 
 import { CONTAINER_WIDTH } from '../../Home.style'
 
@@ -31,7 +30,7 @@ export const PartnersStyled = styled.section`
   }
 `
 
-export const PartnersGrid = styled.div<{ theme: MavenTheme }>`
+export const PartnersGrid = styled.div`
   .partner-nomadic {
     display: flex;
     align-items: center;

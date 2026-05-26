@@ -1,4 +1,4 @@
-import { TOGGLE_LOADER } from 'redux/actions/preferences.action'
+import { TOGGLE_LOADER } from '../actions/preferences.action'
 import { ROCKET_LOADER, WERT_IO_LOADER } from 'utils/consts'
 
 export type LoadingState = null | typeof ROCKET_LOADER | typeof WERT_IO_LOADER
