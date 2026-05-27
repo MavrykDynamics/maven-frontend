@@ -44,7 +44,7 @@ export const LBPersonalStatsView = ({
           <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={isFinite(pnLStats.unrealizedPnL) ? pnLStats.unrealizedPnL : 0}
-              endingIconName="tezosAsset"
+              endingIconName="mvrkAsset"
               showNone={showNone}
             />
           </CustomizedText>
@@ -65,7 +65,7 @@ export const LBPersonalStatsView = ({
           <CustomizedText className={SECONDARY_COLOR}>
             <CommaNumber
               value={isFinite(pnLStats.realizedPnL) ? pnLStats.realizedPnL : 0}
-              endingIconName="tezosAsset"
+              endingIconName="mvrkAsset"
               showNone={showNone}
             />
           </CustomizedText>
@@ -118,7 +118,7 @@ export const LBPersonalStatsView = ({
               value={
                 isFinite(estimatedAssetsOwned.estimatedPoolXtzOwned) ? estimatedAssetsOwned.estimatedPoolXtzOwned : 0
               }
-              endingIconName="tezosAsset"
+              endingIconName="mvrkAsset"
               showNone={showNone}
               decimalsToShow={6}
             />

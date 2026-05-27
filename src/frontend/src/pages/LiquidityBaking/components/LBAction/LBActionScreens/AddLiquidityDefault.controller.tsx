@@ -33,8 +33,8 @@ export const AddLiquidityDefault = ({
   const { xtzBalance, tzBTCBalance } = useSelector((state: State) => state.user)
   const isMobile = useMedia('max-width: 500px')
 
-  const xtzUseMaxDisabled = xtzBalance * coinPrices.tezos.usd > tzBTCBalance * coinPrices.tzbtc.usd
-  const tzbtcUseMaxDisabled = tzBTCBalance * coinPrices.tzbtc.usd > xtzBalance * coinPrices.tezos.usd
+  const xtzUseMaxDisabled = xtzBalance * coinPrices.mavryk.usd > tzBTCBalance * coinPrices.tzbtc.usd
+  const tzbtcUseMaxDisabled = tzBTCBalance * coinPrices.tzbtc.usd > xtzBalance * coinPrices.mavryk.usd
 
   return (
     <>
@@ -46,8 +46,8 @@ export const AddLiquidityDefault = ({
           type={'number'}
           kind={'LB'}
           value={inputValues.XTZ}
-          convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
-          icon={'XTZ_tezos'}
+          convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.mavryk.usd}
+          icon={'MVRK_mavryk'}
           pinnedText={NATIVE_TOKEN_DISPLAY_SYMBOL}
           className={`addLiq-input ${xtzUseMaxDisabled ? 'use-max-disable' : ''}`}
           inputStatus={inputErrors.XTZ}

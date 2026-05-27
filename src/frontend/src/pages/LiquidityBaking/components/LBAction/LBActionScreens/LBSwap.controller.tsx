@@ -232,7 +232,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         setPriceImpact(tzBTCPI)
 
         if (rate) {
-          setExchangeRate(Number(coinPrices.tezos.usd) / rate)
+          setExchangeRate(Number(coinPrices.mavryk.usd) / rate)
         }
       }
     } else {
@@ -256,7 +256,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         setPriceImpact(priceImpact)
 
         if (rate) {
-          setExchangeRate(Number(coinPrices.tezos.usd) / rate)
+          setExchangeRate(Number(coinPrices.mavryk.usd) / rate)
         }
       }
     }
@@ -327,8 +327,8 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
           type={'number'}
           kind={'LB'}
           value={inputValues.XTZ}
-          convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
-          icon={'XTZ_tezos'}
+          convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.mavryk.usd}
+          icon={'MVRK_mavryk'}
           pinnedText={NATIVE_TOKEN_DISPLAY_SYMBOL}
           className="swap-input"
           useMaxHandler={() => maxHandler('XTZ', 'tzBTC')}
@@ -410,7 +410,7 @@ export const LBSwap = ({ ready, generalDexStats }: { ready: boolean; generalDexS
         <div className="exchange-rate-title">Exc. Rate</div>
 
         <div className="exchange-rate-value">
-          1 {NATIVE_TOKEN_DISPLAY_SYMBOL} (<CommaNumber beginningText="$" value={coinPrices.tezos.usd} /> ) = &nbsp;
+          1 {NATIVE_TOKEN_DISPLAY_SYMBOL} (<CommaNumber beginningText="$" value={coinPrices.mavryk.usd} /> ) = &nbsp;
           <CommaNumber
             value={exchangeRate}
             showDecimal

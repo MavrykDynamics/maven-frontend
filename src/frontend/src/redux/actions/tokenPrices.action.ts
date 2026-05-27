@@ -1,17 +1,20 @@
-import { GET_TOKENS_PRICES, GET_TEZOS_HISTORY_PRICES } from './../action.types';
+import { GET_TOKENS_PRICES, GET_MAVRYK_HISTORY_PRICES } from './../action.types';
 
 import CoinGecko from 'coingecko-api'
 import axios from 'axios'
 
 const coinGeckoClient = new CoinGecko()
+const MAVRYK_COINGECKO_ID = 'mavryk-network'
 
 export const getTokensPrices = () => async (dispatch: any, getState: any) => {
   try {
     const tokensInfoFromCoingecko = await coinGeckoClient.simple.price({
-      ids: ['bitcoin', 'tezos', 'tzbtc'],
+      ids: ['bitcoin', MAVRYK_COINGECKO_ID, 'tzbtc'],
       vs_currencies: ['usd', 'eur'],
     })
     const getTzBTCPrice = await getExchangeRateFromQuipu('KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn')
+    tokensInfoFromCoingecko.data.mavryk = tokensInfoFromCoingecko.data[MAVRYK_COINGECKO_ID]
+    delete tokensInfoFromCoingecko.data[MAVRYK_COINGECKO_ID]
     tokensInfoFromCoingecko.data.tzbtc = { usd: getTzBTCPrice, eur: undefined }
 
     dispatch({
@@ -23,12 +26,12 @@ export const getTokensPrices = () => async (dispatch: any, getState: any) => {
   }
 }
 
-export const getTezosHistoryPrices = () => async (dispatch: any, getState: any) => {
+export const getMavrykHistoryPrices = () => async (dispatch: any, getState: any) => {
   try {
-    const response = await coinGeckoClient.coins.fetchMarketChart('tezos', { vs_currency: 'usd', days: '1' });
+    const response = await coinGeckoClient.coins.fetchMarketChart(MAVRYK_COINGECKO_ID, { vs_currency: 'usd', days: '1' });
     const { prices = [] } = response.data
   
-    const tezos = prices.length 
+    const mavryk = prices.length 
       ? prices.map((item) => {
           return {
             value: item[1],
@@ -38,11 +41,11 @@ export const getTezosHistoryPrices = () => async (dispatch: any, getState: any) 
       : []
 
     dispatch({
-      type: GET_TEZOS_HISTORY_PRICES,
-      tezos,
+      type: GET_MAVRYK_HISTORY_PRICES,
+      mavryk,
     })
   } catch (error: any) {
-    console.error('getTezosHistoryPrices', error)
+    console.error('getMavrykHistoryPrices', error)
   }
 }
 

@@ -1,12 +1,12 @@
 import { fetchFromIndexer } from 'gql/gql.helpers'
 import { LB_DATA_QUERY, LB_DATA_QUERY_NAME } from 'gql/queries/lbData.query'
-import { GET_TOKENS_DATA, SET_TEZOS_TOOLKIT } from '../action.types'
+import { GET_TOKENS_DATA, SET_MAVRYK_TOOLKIT } from '../action.types'
 import { State } from '../../utils/interfaces'
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { ERROR, INFO, SUCCESS } from 'app/App.components/Toaster/Toaster.constants'
 import { isWholeNumber, removeDecimal } from 'utils/utils'
 import { getUserData } from './user.action'
-import { BeaconWallet } from '@taquito/beacon-wallet'
+import { BeaconWallet } from '@mavrykdynamics/taquito-beacon-wallet'
 import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions'
 import { toggleLoader } from './preferences.action'
 import { ROCKET_LOADER } from 'utils/consts'
@@ -54,22 +54,22 @@ export const swapTokenToXtz = (tokensSold: number, minXTZBought: number) => asyn
   }
 
   try {
-    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
+    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://atlasnet.rpc.mavryk.network'
     const wallet = new BeaconWallet(WalletOptions)
     const walletResponse = await checkIfWalletIsConnected(wallet)
 
     if (walletResponse.success) {
-      const tzs = state.wallet.tezos
-      await tzs.setRpcProvider(rpcNetwork)
-      await tzs.setWalletProvider(wallet)
+      const mavrykToolkit = state.wallet.mavryk
+      await mavrykToolkit.setRpcProvider(rpcNetwork)
+      await mavrykToolkit.setWalletProvider(wallet)
 
-      await dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+      await dispatch({ type: SET_MAVRYK_TOOLKIT, mavryk: mavrykToolkit })
 
-      const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
-      const tzBTCContract = await tzs.wallet.at(TZBTC_CONTRACT)
+      const lqdContract = await mavrykToolkit.wallet.at(LB_DEX_CONTRACT)
+      const tzBTCContract = await mavrykToolkit.wallet.at(TZBTC_CONTRACT)
 
       const deadline = new Date(Date.now() + 60000).toISOString()
-      let batch = await state.wallet.tezos?.wallet
+      let batch = await state.wallet.mavryk?.wallet
         .batch()
         .withContractCall(tzBTCContract.methodsObject.approve({ spender: LB_DEX_CONTRACT, value: 0 }))
         .withContractCall(
@@ -126,18 +126,18 @@ export const swapXtzToToken = (amount: number, minTokensBought: number) => async
   }
 
   try {
-    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
+    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://atlasnet.rpc.mavryk.network'
     const wallet = new BeaconWallet(WalletOptions)
     const walletResponse = await checkIfWalletIsConnected(wallet)
 
     if (walletResponse.success) {
-      const tzs = state.wallet.tezos
-      await tzs.setRpcProvider(rpcNetwork)
-      await tzs.setWalletProvider(wallet)
+      const mavrykToolkit = state.wallet.mavryk
+      await mavrykToolkit.setRpcProvider(rpcNetwork)
+      await mavrykToolkit.setWalletProvider(wallet)
 
-      await dispatch({ type: SET_TEZOS_TOOLKIT, tezos: tzs })
+      await dispatch({ type: SET_MAVRYK_TOOLKIT, mavryk: mavrykToolkit })
 
-      const lqdContract = await tzs.wallet.at(LB_DEX_CONTRACT)
+      const lqdContract = await mavrykToolkit.wallet.at(LB_DEX_CONTRACT)
       const deadline = new Date(Date.now() + 60 * 60 * 1000).toISOString()
 
       const op = await lqdContract.methodsObject

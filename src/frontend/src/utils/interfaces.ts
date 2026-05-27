@@ -1,7 +1,7 @@
-import { TezosToolkit } from '@taquito/taquito'
+import { MavrykToolkit } from '@mavrykdynamics/taquito'
 import { ThemeType } from '../redux/actions/preferences.action'
 import { LoadingState } from '../redux/reducers/loading'
-import { BeaconWallet } from '@taquito/beacon-wallet'
+import { BeaconWallet } from '@mavrykdynamics/taquito-beacon-wallet'
 import { UTCTimestamp } from 'lightweight-charts'
 import { delegateCardData } from 'pages/Bakery/BakeryData'
 import { normalizeChartData } from '../redux/actions/chart.action'
@@ -13,12 +13,12 @@ export type MavenTheme = Record<string, string>
 
 export interface WalletState {
   wallet?: BeaconWallet
-  tezos: TezosToolkit
+  mavryk: MavrykToolkit
   accountPkh?: string
   ready: boolean
   error?: any
   connect?: any
-  toTezos?: () => number | any
+  toMavryk?: () => number | any
 }
 
 export interface UserData {
@@ -52,7 +52,7 @@ export interface TokenInfo {
   }
   coinPrices: Record<string, Record<string, number>>
   coinHistoryPrices: {
-    tezos: ChartItem[]
+    mavryk: ChartItem[]
   }
   stats: {
     tvlUSD: number

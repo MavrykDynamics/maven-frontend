@@ -110,7 +110,7 @@ export const LBChart = ({
             <CustomizedText className={`${SECONDARY_COLOR} value`}>
               <CommaNumber
                 value={LAST_CHART_COMPARE_VALUE}
-                endingIconName="tezosAsset"
+                endingIconName="mvrkAsset"
                 showDecimal
                 decimalsToShow={6}
               />

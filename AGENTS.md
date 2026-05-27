@@ -22,7 +22,7 @@
 - Routing: `react-router` `7.x`; this app imports router APIs from `react-router`, not `react-router-dom`.
 - State: Redux `5.x`, `react-redux` `9.x`, `redux-thunk` `3.x`.
 - Data: `swr` `2.x`, `graphql-request` `7.x`, `axios` `1.x`.
-- Blockchain: Taquito `24.x` and ECAD Beacon packages via `@taquito/beacon-wallet`.
+- Blockchain: Mavryk Taquito `20.x`, `@mavrykdynamics/beacon-dapp`, `@mavrykdynamics/taquito-beacon-wallet`, and `@mavrykdynamics/taquito-rpc`.
 - Styling: `styled-components` `6.x` through the main `styled-components` entry; no `styled-components/macro` and no Tailwind in this repo.
 - Server helper: Node ESM HTTP server using `dotenv`, `jsdom`, and `xml2js`.
 
@@ -55,10 +55,10 @@
 - Use `useAppDispatch` from `src/frontend/src/app/App.hooks.ts` for thunk dispatch in React components.
 - Keep GraphQL endpoint definitions and request helpers in `src/frontend/src/gql/gqlClient.ts` and `src/frontend/src/gql/gql.helpers.ts`. Put query documents in `src/frontend/src/gql/queries`.
 - Use existing SWR fetchers (`mavrykGqlFetcher`, `dexGqlFetcher`) instead of ad hoc fetch logic in render code.
-- Keep wallet connection behavior in `connectWallet.actions.tsx`. Reuse `WalletOptions`, `network`, and `checkIfWalletIsConnected` for Beacon flows.
-- Keep RPC node defaults and selected RPC state in `redux/reducers/preferences.ts`; validate custom RPC nodes through `utils/validatorFunctions.ts`.
+- Keep wallet connection behavior in `connectWallet.actions.tsx`. Reuse `WalletOptions`, `network`, and `checkIfWalletIsConnected` for Mavryk Beacon flows.
+- Keep RPC node defaults and selected RPC state in `redux/reducers/preferences.ts`; the default Mavryk network is Atlasnet (`https://atlasnet.rpc.mavryk.network`) and custom RPC nodes are validated through `utils/validatorFunctions.ts`.
 - Liquidity Baking transaction code lives in `redux/actions/swap.action.ts` and `redux/actions/liquidity.action.ts`; UI orchestration lives under `pages/LiquidityBaking`.
-- Taquito `24.x` wallet contract calls use `methodsObject` object-parameter entrypoints. Do not reintroduce removed `contract.methods` calls.
+- Mavryk Taquito `20.x` wallet contract calls use `methodsObject` object-parameter entrypoints. Do not reintroduce removed `contract.methods` calls.
 - DEX calculations belong in `src/frontend/src/utils/DEX/*`; do not duplicate swap/liquidity math in components.
 - Existing contract constants are in `swap.action.ts`, with local duplicates in `liquidity.action.ts`. Do not add another duplicate; centralize or reuse before extending contract references.
 - User balances and stats are loaded through Redux actions such as `user.action.ts`, `stats.action.ts`, `chart.action.ts`, and `tokenPrices.action.ts`; avoid direct API calls from page JSX.

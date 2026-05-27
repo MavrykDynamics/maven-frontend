@@ -173,7 +173,7 @@ export const LBRemoveLiquidity = ({ ready, generalDexStats }: { ready: boolean; 
         <CoinSwap
           icon={{ name: 'plus', width: 12, height: 18 }}
           XTZCoinData={{
-            icon: 'XTZ_tezos',
+            icon: 'MVRK_mavryk',
             amount: receivedAmount.xtz,
           }}
           tzBTCCoinData={{

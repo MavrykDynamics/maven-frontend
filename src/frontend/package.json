@@ -17,8 +17,10 @@
   },
   "dependencies": {
     "@n8tb1t/use-scroll-position": "^4.0.0",
-    "@taquito/beacon-wallet": "^24.3.0",
-    "@taquito/taquito": "^24.3.0",
+    "@mavrykdynamics/beacon-dapp": "^4.2.3",
+    "@mavrykdynamics/taquito": "^20.1.0",
+    "@mavrykdynamics/taquito-beacon-wallet": "^20.1.0",
+    "@mavrykdynamics/taquito-rpc": "^20.1.0",
     "@types/js-cookie": "^3.0.6",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",

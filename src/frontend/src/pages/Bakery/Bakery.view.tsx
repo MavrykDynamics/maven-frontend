@@ -15,7 +15,7 @@ import { ACTION_PRIMARY } from 'app/App.components/Button/Button.constants'
 
 // actions
 import { getDelegates, delegation } from '../../redux/actions/bakery.action'
-import { getTezosHistoryPrices } from '../../redux/actions/tokenPrices.action'
+import { getMavrykHistoryPrices } from '../../redux/actions/tokenPrices.action'
 
 // styles
 import { BakeryStyled, Card, CardWithBackground, ButtonStyled } from './Bakery.style'
@@ -38,7 +38,7 @@ export function BakeryView() {
   const dispatch = useAppDispatch()
 
   const {
-    coinHistoryPrices: { tezos },
+    coinHistoryPrices: { mavryk },
   } = useSelector((state: State) => state.tokens)
   const { delegates } = useSelector((state: State) => state.bakery)
   const { accountPkh } = useSelector((state: State) => state.wallet)
@@ -74,7 +74,7 @@ export function BakeryView() {
   }, [isLoading])
 
   useEffect(() => {
-    dispatch(getTezosHistoryPrices())
+    dispatch(getMavrykHistoryPrices())
   }, [dispatch])
 
   useEffect(() => {
@@ -86,9 +86,9 @@ export function BakeryView() {
       <div className="main-content">
         <CardWithBackground>
           <h1>Delegate your {NATIVE_TOKEN_DISPLAY_SYMBOL}</h1>
-          <Description list={bakeryData.delegateYourTezos} className="paragraph-max-width" />
+          <Description list={bakeryData.delegateYourMavryk} className="paragraph-max-width" />
 
-          <BakeryChart chartData={tezos} />
+          <BakeryChart chartData={mavryk} />
         </CardWithBackground>
 
         <div className="grid-two-columns desktop">
@@ -111,7 +111,7 @@ export function BakeryView() {
             <h1>Delegation & Staking&nbsp;101</h1>
             <Description list={bakeryData.delegationAndStaking101} />
 
-            <a href="https://opentezos.com/baking/delegating/" target="_blank" rel="noreferrer">
+            <a href="https://documentation.mavryk.org/node-baking/overview/" target="_blank" rel="noreferrer">
               Read more about staking here
             </a>
           </div>

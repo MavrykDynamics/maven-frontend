@@ -4,7 +4,6 @@ const env = {
     rpcLink: 'https://atlasnet.rpc.mavryk.network',
     rpcTestNetNetwork: 'atlasnet',
     NODE_ENV: 'production',
-    // rpcLink: 'https://mainnet.tezos.marigold.dev/',
 }
 
 export default env

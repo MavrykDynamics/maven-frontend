@@ -1,5 +1,5 @@
 import { State } from './interfaces'
-import { RpcClient } from '@taquito/rpc'
+import { RpcClient } from '@mavrykdynamics/taquito-rpc'
 
 export const isValidRPCNode = async (
   input: string,
@@ -10,8 +10,8 @@ export const isValidRPCNode = async (
     return { status: false, errorMsg: 'link is already a default option, please enter in new link.' }
 
   try {
-    // Enumeration ChainIds - https://tezostaquito.io/typedoc/enums/_taquito_taquito.chainids.html
-    const chainPublicKey = process.env.REACT_APP_CHAIN_ID ?? 'NetXdQprcVkpaWU' // mainnet
+    // Atlasnet chain id from https://atlasnet.rpc.mavryk.network/chains/main/chain_id
+    const chainPublicKey = process.env.REACT_APP_CHAIN_ID ?? 'NetXUrNc8uioxP8' // atlasnet
     const client = new RpcClient(input, chainPublicKey)
     const chainID = await client.getChainId()
     const isValid = chainID === chainPublicKey

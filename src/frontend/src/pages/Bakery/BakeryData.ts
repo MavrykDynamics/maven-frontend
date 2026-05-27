@@ -40,12 +40,12 @@ export const delegateCardData = [
 ]
 
 export const bakeryData = {
-  delegateYourTezos: [
-    `Earn rewards for helping to secure the Tezos blockchain! There are two Bakeries that are part of the Maven Finance ecosystem, check them out below and delegate your ${NATIVE_TOKEN_DISPLAY_SYMBOL} with no risk.`,
+  delegateYourMavryk: [
+    `Earn rewards for helping to secure the Mavryk blockchain! There are two Bakeries that are part of the Maven Finance ecosystem, check them out below and delegate your ${NATIVE_TOKEN_DISPLAY_SYMBOL} with no risk.`,
   ],
   delegationAndStaking101: [
-    `Delegating your ${NATIVE_TOKEN_DISPLAY_SYMBOL} tokens allows you to earn rewards for helping secure the Tezos network. By delegating, you are assigning your token’s voting rights to a Tezos Baker, who uses the token’s voting weight to secure the network and vote on Tezos governance.`,
-    'You remain in control of your tokens at all times. Tezos uses Liquid Proof of Stake, so your delegated tokens are liquid and not locked.',
+    `Delegating your ${NATIVE_TOKEN_DISPLAY_SYMBOL} tokens allows you to earn rewards for helping secure the Mavryk network. By delegating, you are assigning your token’s voting rights to a Mavryk Baker, who uses the token’s voting weight to secure the network and vote on Mavryk governance.`,
+    'You remain in control of your tokens at all times. Mavryk uses Liquid Proof of Stake, so your delegated tokens are liquid and not locked.',
   ],
   howToDelegateAndReceiveRewards: [
     `You can stake your ${NATIVE_TOKEN_DISPLAY_SYMBOL} tokens using your wallet or ledger device. The process is simple and requires you to delegate your staking rights to our address. You’re always in control of your private keys.`,

@@ -1,28 +1,28 @@
 [
   {
     "id": 1,
-    "title": "What is Tezos?",
+    "title": "What is Mavryk?",
     "description": [
-      "Tezos is a Blockchain network for building decentralized applications. The Tezos Mainnet launched in June 2018, and is one of the leading Proof of Stake blockchain networks. The native currency shown in this app is MVRK. Unlike Ethereum, Tezos is based on a consensus mechanism named Liquid Proof-of-Stake (LPoS), so your MVRK tokens are never locked during delegation, and owners remain in complete control of their tokens even after they delegate their voting & baking rights to a baker (validator)."
+      "Mavryk is a blockchain network for building decentralized applications. The native currency shown in this app is MVRK. Mavryk is based on a consensus mechanism named Liquid Proof-of-Stake (LPoS), so your MVRK tokens are never locked during delegation, and owners remain in complete control of their tokens even after they delegate their voting & baking rights to a baker (validator)."
     ]
   },
   {
     "id": 2,
-    "title": "What is Tezos Baking?",
+    "title": "What is Mavryk Baking?",
     "description": [
-      "Tezos “Baking” is the act of validating blocks for the network, and validators are called “Bakers.” This is somewhat similar to “miners” for Bitcoin, except Tezos is 2,000,000 times more energy efficient."
+      "Mavryk “Baking” is the act of validating blocks for the network, and validators are called “Bakers.” This is somewhat similar to “miners” for Bitcoin, except Mavryk is designed for energy-efficient validation."
     ]
   },
   {
     "id": 3,
     "title": "What is Staking?",
     "description": [
-      "Staking is a process that allows cryptocurrency holders to use their tokens for governance, or locking their tokens to utilize them. On Tezos, staking your tokens means to delegate your voting rights to a Baker to vote on your behalf, and secure the network. The Baker never has control of your tokens, but has the right to the token’s voting rights for governance and validating blocks. By delegating to a Baker, users may earn ~5.8% APY in MVRK from inflation rewards, minus the Baker fee. By staking their MVRK, users earn rewards for network participation by remaining constant with the rate of inflation, as opposed to non-participants who become diluted by inflation rewards."
+      "Staking is a process that allows cryptocurrency holders to use their tokens for governance, or locking their tokens to utilize them. On Mavryk, staking your tokens means to delegate your voting rights to a Baker to vote on your behalf, and secure the network. The Baker never has control of your tokens, but has the right to the token’s voting rights for governance and validating blocks. By delegating to a Baker, users may earn ~5.8% APY in MVRK from inflation rewards, minus the Baker fee. By staking their MVRK, users earn rewards for network participation by remaining constant with the rate of inflation, as opposed to non-participants who become diluted by inflation rewards."
     ]
   },
   {
     "id": 4,
-    "title": "Can I be a Tezos Baker?",
+    "title": "Can I be a Mavryk Baker?",
     "description": [
       "Of course! With just as little as 6,000 MVRK and a computer as easily accessible as a Raspberry Pi, you can launch your own Bakery. Operating a Bakery requires some technological knowledge with computer hardware and software code. If you don’t want to actively operate a Bakery, you can always delegate your tokens to the Mavryk Dynamics or the Maven Finance DAO Bakery."
     ]
@@ -47,7 +47,7 @@
     "id": 7,
     "title": "How will I receive my delegation rewards?",
     "description": [
-      "Delegation rewards flow from the Tezos protocol to Bakers, who then directly pay rewards directly to the delegator’s wallets."
+      "Delegation rewards flow from the Mavryk protocol to Bakers, who then directly pay rewards directly to the delegator’s wallets."
     ]
   },
   {

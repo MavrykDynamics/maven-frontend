@@ -1,10 +1,10 @@
-import { TezosToolkit } from '@taquito/taquito'
+import { MavrykToolkit } from '@mavrykdynamics/taquito'
 import { CONNECT, SET_WALLET } from '../action.types'
 
-export const connectWalletAction = (tzs: TezosToolkit | undefined, accountPkh?: string) => ({
+export const connectWalletAction = (mavrykToolkit: MavrykToolkit | undefined, accountPkh?: string) => ({
   type: CONNECT,
-  tezos: tzs,
-  ready: Boolean(tzs),
+  mavryk: mavrykToolkit,
+  ready: Boolean(mavrykToolkit),
   accountPkh: accountPkh,
 })
 

@@ -32,7 +32,7 @@ export function BakeryChart({ chartData }: Props) {
     <BakeryChartStyled>
       <div className="header">
         <div className="info">
-          <Icon id="XTZ_tezos" />
+          <Icon id="MVRK_mavryk" />
 
           <div>
             <h3>{NATIVE_TOKEN_DISPLAY_SYMBOL}/USD</h3>

@@ -1,5 +1,5 @@
-import { BeaconWallet } from '@taquito/beacon-wallet'
-import type { TezosDelegationOperation } from '@ecadlabs/beacon-types'
+import { BeaconWallet } from '@mavrykdynamics/taquito-beacon-wallet'
+import type { MavrykDelegationOperation } from '@mavrykdynamics/beacon-dapp'
 
 // helpers
 import type { AppDispatch, GetState } from '../../app/App.controller'
@@ -19,7 +19,7 @@ import { checkIfWalletIsConnected, WalletOptions } from './connectWallet.actions
 // types
 import { State } from 'utils/interfaces'
 
-const DELEGATION_OPERATION_KIND = 'delegation' as TezosDelegationOperation['kind']
+const DELEGATION_OPERATION_KIND = 'delegation' as MavrykDelegationOperation['kind']
 
 export type BakeryDelegateDataType = {
   balance: number

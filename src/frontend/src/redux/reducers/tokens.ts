@@ -14,12 +14,12 @@ export const defaultTokens: TokenInfo = {
   },
   coinPrices: {
     bitcoin: { usd: 0, eur: 0 },
-    tezos: { usd: 0, eur: 0 },
+    mavryk: { usd: 0, eur: 0 },
     tzbtc: { usd: 0, eur: 0 },
     mvk: { usd: 0.25, eur: 0.3 },
   },
   coinHistoryPrices: {
-    tezos: []
+    mavryk: []
   },
   stats: {
     tvlUSD: 0,
@@ -53,12 +53,12 @@ const tokens = (state = defaultTokens, action: any) => {
           ...action.generalStats,
         },
       }
-    case actions.GET_TEZOS_HISTORY_PRICES:
+    case actions.GET_MAVRYK_HISTORY_PRICES:
       return {
         ...state,
         coinHistoryPrices: {
           ...state.coinHistoryPrices,
-          tezos: action.tezos,
+          mavryk: action.mavryk,
         }
       }
     default:

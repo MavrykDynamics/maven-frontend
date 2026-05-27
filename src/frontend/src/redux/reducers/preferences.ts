@@ -3,18 +3,16 @@ import { getItemFromStorage } from 'utils/utils'
 import * as actions from '../action.types'
 import { DARK_THEME, SPACE_THEME } from '../actions/preferences.action'
 
-const mariGoldUrl = 'https://mainnet.tezos.marigold.dev/'
-const ecadLabSUrl = 'https://mainnet.api.tez.ie'
+const atlasnetUrl = 'https://atlasnet.rpc.mavryk.network'
 
 const defaultPreferences: PreferencesType = {
   themeSelected: getItemFromStorage('theme') || SPACE_THEME,
-  REACT_APP_RPC_PROVIDER: ecadLabSUrl,
+  REACT_APP_RPC_PROVIDER: atlasnetUrl,
   changeNodePopupOpen: false,
   policyPopup: false,
   scrollPosition: 0,
   RPC_NODES: [
-    { title: 'MARIGOLD', url: mariGoldUrl, nodeLogoUrl: 'marigold_logo.png', isUser: false },
-    { title: 'ECADLABS', url: ecadLabSUrl, nodeLogoUrl: 'ECAD_logo.png', isUser: false },
+    { title: 'MAVRYK ATLASNET', url: atlasnetUrl, isUser: false },
   ],
 }
 

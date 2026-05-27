@@ -46,8 +46,8 @@ export const AddLiquidityOnlyXTZ = ({
         type={'number'}
         kind={'LB'}
         value={inputValues.XTZ}
-        convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.tezos.usd}
-        icon={'XTZ_tezos'}
+        convertedValue={parseSrtToNum(inputValues.XTZ) * coinPrices.mavryk.usd}
+        icon={'MVRK_mavryk'}
         pinnedText={NATIVE_TOKEN_DISPLAY_SYMBOL}
         className="addLiq-input-XTZ"
         inputStatus={inputErrors.XTZ}
@@ -92,7 +92,7 @@ export const AddLiquidityOnlyXTZ = ({
             className="onlyXtz"
             icon={{ name: 'exchange', width: 24, height: 20 }}
             XTZCoinData={{
-              icon: 'XTZ_tezos',
+              icon: 'MVRK_mavryk',
               amount: parseSrtToNum(swapData.XTZ),
             }}
             tzBTCCoinData={{
@@ -127,7 +127,7 @@ export const AddLiquidityOnlyXTZ = ({
             className="onlyXtz"
             icon={{ name: 'exchange', width: 24, height: 20 }}
             XTZCoinData={{
-              icon: 'XTZ_tezos',
+              icon: 'MVRK_mavryk',
               amount: parseSrtToNum(swapData.XTZ),
             }}
             tzBTCCoinData={{

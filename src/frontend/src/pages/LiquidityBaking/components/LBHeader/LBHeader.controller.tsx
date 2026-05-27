@@ -32,7 +32,7 @@ const LBHeader = () => {
         <VertInfo className="header">
           <CustomizedText className={`${THIRD_COLOR} block-name`}>Total Value Locked</CustomizedText>
           <CustomizedText className={SECONDARY_COLOR}>
-            <CommaNumber beginningText="$" value={xtz_pool * 2 * coinPrices.tezos.usd} />
+            <CommaNumber beginningText="$" value={xtz_pool * 2 * coinPrices.mavryk.usd} />
           </CustomizedText>
         </VertInfo>
 

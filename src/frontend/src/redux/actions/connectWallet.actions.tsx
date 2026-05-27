@@ -1,12 +1,12 @@
-import { BeaconWallet } from '@taquito/beacon-wallet'
-import type { Network, NetworkType } from '@ecadlabs/beacon-types'
+import { BeaconWallet } from '@mavrykdynamics/taquito-beacon-wallet'
+import type { Network, NetworkType } from '@mavrykdynamics/beacon-dapp'
 import { showToaster } from '../../app/App.components/Toaster/Toaster.actions'
 import { ERROR, SUCCESS } from '../../app/App.components/Toaster/Toaster.constants'
 import type { AppDispatch, GetState } from '../../app/App.controller'
 import { State } from 'utils/interfaces'
 import { CONNECT, DISCONNECT, SET_WALLET } from '../action.types'
 import { getUserData } from './user.action'
-import { TezosToolkit } from '@taquito/taquito'
+import { MavrykToolkit } from '@mavrykdynamics/taquito'
 
 const Beacon_localStorage_keys = [
   'beacon:active-account',
@@ -15,18 +15,23 @@ const Beacon_localStorage_keys = [
   'beacon:sdk-secret-seed',
   'beacon:sdk_version',
 ]
-const DEFAULT_NETWORK_TYPE = (process.env.REACT_APP_NETWORK || 'mainnet') as NetworkType
+const DEFAULT_NETWORK_TYPE = (process.env.REACT_APP_NETWORK || 'atlasnet') as NetworkType
 
-export const network: Network = { type: DEFAULT_NETWORK_TYPE }
+export const network: Network = {
+  type: DEFAULT_NETWORK_TYPE,
+  rpcUrl: process.env.REACT_APP_RPC_PROVIDER || 'https://atlasnet.rpc.mavryk.network',
+}
 export const WalletOptions = {
   name: process.env.REACT_APP_NAME || 'MAVRYK',
   preferredNetwork: network.type,
+  network,
 }
 export const setWallet = (wallet?: BeaconWallet) => (dispatch: AppDispatch) => {
   try {
     const walletOptions = {
       name: process.env.REACT_APP_NAME || 'MAVRYK',
       preferredNetwork: DEFAULT_NETWORK_TYPE,
+      network,
     }
     const wallet = new BeaconWallet(walletOptions)
     dispatch({
@@ -56,22 +61,22 @@ export const changeWallet = () => async (dispatch: AppDispatch) => {
 export const connect = () => async (dispatch: AppDispatch, getState: GetState) => {
   const state: State = getState()
   try {
-    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || 'https://mainnet.smartpy.io'
+    const rpcNetwork = state.preferences.REACT_APP_RPC_PROVIDER || network.rpcUrl || 'https://atlasnet.rpc.mavryk.network'
     const wallet = new BeaconWallet(WalletOptions)
     const walletResponse = await checkIfWalletIsConnected(wallet)
 
     if (walletResponse.success) {
-      const Tezos = new TezosToolkit(rpcNetwork)
+      const mavrykToolkit = new MavrykToolkit(rpcNetwork)
       let account = await wallet.client.getActiveAccount()
       if (!account) {
-        await wallet.client.requestPermissions()
+        await wallet.client.requestPermissions({ network })
         account = await wallet.client.getActiveAccount()
       }
 
       await dispatch({
         type: CONNECT,
         wallet,
-        tezos: Tezos,
+        mavryk: mavrykToolkit,
         ready: Boolean(wallet),
         accountPkh: account?.address,
       })
@@ -103,7 +108,7 @@ export const checkIfWalletIsConnected = async (wallet: any) => {
   try {
     const activeAccount = await wallet.client.getActiveAccount()
     if (!activeAccount) {
-      await wallet.client.requestPermissions()
+      await wallet.client.requestPermissions({ network })
     }
     return {
       success: true,

@@ -17,8 +17,8 @@ import {
 import { NATIVE_TOKEN_DISPLAY_SYMBOL, WRAPPED_BTC_DISPLAY_SYMBOL } from 'utils/tokenDisplay'
 
 export type CoinsInfoType = {
-  userXTZBalance: number
-  XTZExchnageRate: number
+  userMvrkBalance: number
+  mvrkExchangeRate: number
   tzBTCExchnageRate: number
   usertzBTCBalance: number
   userLBTBalance: number
@@ -31,7 +31,7 @@ type ConnectedWalletBlockProps = {
   coinsInfo: CoinsInfoType
   isMobile: boolean
   detailsHandlers: {
-    buyXTZHandler: () => void
+    buyMvrkHandler: () => void
     buyTZBTCHandler: () => void
   }
   closeMobileMenu: (e: React.MouseEvent<HTMLElement>) => void
@@ -71,11 +71,11 @@ export const MobileDetailsBlock = ({
       <div className="details">
         <ConnectedWalletDetailsItem
           buttonText={`Buy ${NATIVE_TOKEN_DISPLAY_SYMBOL}`}
-          coinAmount={coinsInfo.userXTZBalance}
+          coinAmount={coinsInfo.userMvrkBalance}
           coinName={NATIVE_TOKEN_DISPLAY_SYMBOL}
-          buttonHandler={detailsHandlers.buyXTZHandler}
-          subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
-          iconName={'XTZ_tezos'}
+          buttonHandler={detailsHandlers.buyMvrkHandler}
+          subtextAmount={coinsInfo.userMvrkBalance * coinsInfo.mvrkExchangeRate}
+          iconName={'MVRK_mavryk'}
           decimals={6}
           disableBtn
         />
@@ -182,11 +182,11 @@ export const ConnectedWalletBlock = ({
         <div className="padding-wrapper">
           <ConnectedWalletDetailsItem
             buttonText={`Buy ${NATIVE_TOKEN_DISPLAY_SYMBOL}`}
-            coinAmount={coinsInfo.userXTZBalance}
+            coinAmount={coinsInfo.userMvrkBalance}
             coinName={NATIVE_TOKEN_DISPLAY_SYMBOL}
-            buttonHandler={detailsHandlers.buyXTZHandler}
-            subtextAmount={coinsInfo.userXTZBalance * coinsInfo.XTZExchnageRate}
-            iconName={'XTZ_tezos'}
+            buttonHandler={detailsHandlers.buyMvrkHandler}
+            subtextAmount={coinsInfo.userMvrkBalance * coinsInfo.mvrkExchangeRate}
+            iconName={'MVRK_mavryk'}
             decimals={6}
             disableBtn
           />

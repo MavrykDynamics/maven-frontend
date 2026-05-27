@@ -18,15 +18,17 @@ import {
   CalculatorStyled
 } from './Calculator.style'
 
+const tokenPricesDefault = {
+  MVRK: 8,
+  wWBTC: 50000,
+  wWETH: 3500,
+}
+
 export const CalculatorView = () => {
-  const [prices, setPrices] = useState({
-    XTZ: 8,
-    wWBTC: 50000,
-    wWETH: 3500,
-  })
+  const [prices, setPrices] = useState(tokenPricesDefault)
 
   const [values, setValues] = useState({
-    collateral: 'XTZ',
+    collateral: 'MVRK',
     amountOfCollateral: '1000',
     valueOfCollateral: '8000',
     collateralRatio: '300',
@@ -36,22 +38,27 @@ export const CalculatorView = () => {
 
   useEffect(() => {
     const getPrices = async () => {
-      const { data }: any = await axios.get(
-        'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XTZ&tsyms=USD',
-      )
-      setPrices({
-        XTZ: data.XTZ.USD,
-        wWBTC: data.BTC.USD,
-        wWETH: data.ETH.USD,
-      })
-      setValues({
-        collateral: 'XTZ',
-        amountOfCollateral: '1000',
-        valueOfCollateral: (data.XTZ.USD * 1000).toString(),
-        collateralRatio: '300',
-        loanAmount: '0',
-        debt: '0',
-      })
+      try {
+        const { data }: any = await axios.get(
+          'https://api.coingecko.com/api/v3/simple/price?ids=mavryk-network,bitcoin,ethereum&vs_currencies=usd',
+        )
+        const nextPrices = {
+          MVRK: data['mavryk-network']?.usd ?? tokenPricesDefault.MVRK,
+          wWBTC: data.bitcoin?.usd ?? tokenPricesDefault.wWBTC,
+          wWETH: data.ethereum?.usd ?? tokenPricesDefault.wWETH,
+        }
+        setPrices(nextPrices)
+        setValues({
+          collateral: 'MVRK',
+          amountOfCollateral: '1000',
+          valueOfCollateral: (nextPrices.MVRK * 1000).toString(),
+          collateralRatio: '300',
+          loanAmount: '0',
+          debt: '0',
+        })
+      } catch (error) {
+        console.error('Failed to load calculator token prices', error)
+      }
     }
     getPrices()
   }, [])
@@ -86,7 +93,7 @@ export const CalculatorView = () => {
                     })
                   }
                 >
-                  <option value="XTZ">{NATIVE_TOKEN_DISPLAY_SYMBOL}</option>
+                  <option value="MVRK">{NATIVE_TOKEN_DISPLAY_SYMBOL}</option>
                   <option value="wWBTC">{WRAPPED_BTC_DISPLAY_SYMBOL}</option>
                   <option value="wWETH" disabled title="Coming soon">
                     {NATIVE_TOKEN_DISPLAY_SYMBOL}/{WRAPPED_BTC_DISPLAY_SYMBOL} LB LP (Сoming soon)

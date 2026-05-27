@@ -28,7 +28,7 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
   const { ready, accountPkh } = useSelector((state: State) => state.wallet)
   const {
     coinPrices: {
-      tezos: { usd: xtzUsdRate },
+      mavryk: { usd: mvrkUsdRate },
       tzbtc: { usd: tzBTCRate },
     },
   } = useSelector((state: State) => state.tokens)
@@ -70,17 +70,17 @@ export const ConnectWallet = ({ className, closeMobileMenu }: ConnectWalletProps
   }
 
   const coinsInfo: CoinsInfoType = {
-    userXTZBalance: xtzBalance,
+    userMvrkBalance: xtzBalance,
     usertzBTCBalance: tzBTCBalance,
     userLBTBalance: LBTBalance,
-    XTZExchnageRate: xtzUsdRate,
+    mvrkExchangeRate: mvrkUsdRate,
     tzBTCExchnageRate: Number(tzBTCRate),
   }
 
   const detailsHandlers = {
     // TODO: wert is  implementing this stuff
     buyTZBTCHandler: () => mountWertWiget('tzBTC'),
-    buyXTZHandler: () => mountWertWiget('XTZ'),
+    buyMvrkHandler: () => mountWertWiget('MVRK'),
   }
 
   const closeAllForMobileMenu = useCallback((e: React.MouseEvent<HTMLElement>) => {
