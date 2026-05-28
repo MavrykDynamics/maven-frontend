@@ -11,8 +11,8 @@ export const PartnersView = () => {
           <a href="https://drapergorenholm.com/" target="_blank" rel="noreferrer">
             <img  alt="partner" src="/images/draper_goren_holm.png" />
           </a>
-          <a href="https://mavryk.finance/" target="_blank" rel="noreferrer">
-            <img  alt="partner" src="/images/mavryk-finance.svg" />
+          <a href="https://tezos.co.il/" target="_blank" rel="noreferrer">
+            <img  alt="partner" src="/images/tezos-israel.svg" />
           </a>
           <a href="https://ghafcapital.ae/" target="_blank" rel="noreferrer">
             <img  alt="partner" src="/images/ghaf_capital_partners.png" />
@@ -73,8 +73,8 @@ export const PartnersView = () => {
         <a href="https://drapergorenholm.com/" target="_blank" rel="noreferrer">
           <img alt="partner" src="/images/draper_goren_holm.png" />
         </a>
-        <a href="https://mavryk.finance/" target="_blank" rel="noreferrer">
-          <img alt="partner" src="/images/mavryk-finance.svg" />
+        <a href="https://tezos.co.il/" target="_blank" rel="noreferrer">
+          <img alt="partner" src="/images/tezos-foundation.png" />
         </a>
         <a href="https://ghafcapital.ae/" target="_blank" rel="noreferrer">
           <img alt="partner" src="/images/ghaf_capital_partners.png" />
